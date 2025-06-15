@@ -1,11 +1,10 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
+import { IdeComponent } from "../ide/ide.component";
 
 @Component({
-  selector: 'app-question',
-  imports: [],
-  templateUrl: './question.component.html',
-  styleUrl: './question.component.scss'
+  selector: "app-question",
+  imports: [IdeComponent],
+  templateUrl: "./question.component.html",
+  styleUrl: "./question.component.scss",
 })
-export class QuestionComponent {
-
-}
+export class QuestionComponent {}

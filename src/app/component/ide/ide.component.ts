@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
+import { Component, AfterViewInit, ElementRef, ViewChild } from "@angular/core";
 import { EditorView, basicSetup } from "codemirror";
 import { python } from "@codemirror/lang-python";
 
@@ -8,10 +8,10 @@ import { python } from "@codemirror/lang-python";
   templateUrl: "./ide.component.html",
   styleUrl: "./ide.component.scss",
 })
-export class IdeComponent implements OnInit {
-  @ViewChild("editor", { static: true }) editorElement!: ElementRef;
+export class IdeComponent implements AfterViewInit {
+  @ViewChild("editor") editorElement!: ElementRef;
 
-  ngOnInit() {
+  ngAfterViewInit() {
     new EditorView({
       parent: this.editorElement.nativeElement,
       doc: 'print("Hello world")',

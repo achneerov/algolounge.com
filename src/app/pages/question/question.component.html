@@ -1,3 +1,23 @@
-<app-question-header></app-question-header>
-<app-ide></app-ide>
-<app-console></app-console>
+<div class="layout-container">
+  <app-question-header class="header"></app-question-header>
+
+  <p-splitter
+    [style]="{ height: 'calc(100vh - 50px)' }"
+    [panelSizes]="[40, 60]"
+    styleClass="mb-5"
+  >
+    <ng-template pTemplate="panel1">
+      <app-description class="description-panel"></app-description>
+    </ng-template>
+    <ng-template pTemplate="panel2">
+      <p-splitter layout="vertical" [panelSizes]="[70, 30]">
+        <ng-template pTemplate="panel1"
+          ><app-ide class="ide-panel"></app-ide
+        ></ng-template>
+        <ng-template pTemplate="panel2"
+          ><app-console class="console-panel"></app-console
+        ></ng-template>
+      </p-splitter>
+    </ng-template>
+  </p-splitter>
+</div>

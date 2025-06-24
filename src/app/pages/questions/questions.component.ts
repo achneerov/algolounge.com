@@ -14,7 +14,7 @@ import { SplitterModule } from "primeng/splitter";
     DescriptionComponent,
     SplitterModule,
   ],
-  templateUrl: "./question.component.html",
-  styleUrl: "./question.component.scss",
+  templateUrl: "./questions.component.html",
+  styleUrl: "./questions.component.scss",
 })
-export class QuestionComponent {}
+export class QuestionsComponent {}

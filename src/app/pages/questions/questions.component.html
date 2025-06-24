@@ -1,6 +1,6 @@
-<div class="layout-container">
-  <app-header class="header" (go)="onGo($event)"></app-header>
+<app-header class="header" (go)="onGo($event)"></app-header>
 
+<ng-container *ngIf="!notFound; else notFoundTpl">
   <p-splitter
     [style]="{ height: 'calc(100vh - 50px)' }"
     [panelSizes]="[40, 60]"
@@ -18,4 +18,7 @@
       </p-splitter>
     </ng-template>
   </p-splitter>
-</div>
+</ng-container>
+<ng-template #notFoundTpl>
+  <app-not-found></app-not-found>
+</ng-template>

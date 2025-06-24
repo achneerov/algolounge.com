@@ -1,3 +1,10 @@
 <div class="card flex justify-center">
+  <input
+    type="text"
+    [(ngModel)]="questionId"
+    placeholder="Enter question ID"
+    style="margin-right: 8px"
+  />
+  <button pButton type="button" label="Go" (click)="onGo()"></button>
   <p-button label="Run" (click)="onRun()" />
 </div>

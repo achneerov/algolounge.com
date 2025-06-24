@@ -1,1 +1,6 @@
-<p>description works!</p>
+<div *ngIf="description; else noDesc">
+  {{ description }}
+</div>
+<ng-template #noDesc>
+  <p>No description available.</p>
+</ng-template>

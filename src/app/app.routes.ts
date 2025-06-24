@@ -4,8 +4,8 @@ import { NotFoundComponent } from "./pages/not-found/not-found.component";
 import { HomeComponent } from "./pages/home/home.component";
 
 export const routes: Routes = [
-  { path: "questions", component: QuestionsComponent },
+  { path: "questions/:id", component: QuestionsComponent },
+  { path: "questions", redirectTo: "questions/0", pathMatch: "full" },
   { path: "home", component: HomeComponent },
-
   { path: "**", component: NotFoundComponent },
 ];

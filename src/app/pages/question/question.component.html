@@ -7,15 +7,13 @@
     styleClass="mb-5"
   >
     <ng-template pTemplate="panel1">
-      <app-description class="description-panel"></app-description>
+      <app-description></app-description>
     </ng-template>
     <ng-template pTemplate="panel2">
       <p-splitter layout="vertical" [panelSizes]="[70, 30]">
-        <ng-template pTemplate="panel1"
-          ><app-ide class="ide-panel"></app-ide
-        ></ng-template>
+        <ng-template pTemplate="panel1"><app-ide></app-ide></ng-template>
         <ng-template pTemplate="panel2"
-          ><app-console class="console-panel"></app-console
+          ><app-console></app-console
         ></ng-template>
       </p-splitter>
     </ng-template>

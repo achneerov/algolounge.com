@@ -11,10 +11,12 @@
     </ng-template>
     <ng-template pTemplate="panel2">
       <p-splitter layout="vertical" [panelSizes]="[70, 30]">
-        <ng-template pTemplate="panel1"><app-ide></app-ide></ng-template>
-        <ng-template pTemplate="panel2"
-          ><app-console></app-console
-        ></ng-template>
+        <ng-template pTemplate="panel1">
+          <app-ide [params]="functionParams"></app-ide>
+        </ng-template>
+        <ng-template pTemplate="panel2">
+          <app-console></app-console>
+        </ng-template>
       </p-splitter>
     </ng-template>
   </p-splitter>

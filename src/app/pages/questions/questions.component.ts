@@ -27,6 +27,7 @@ import { NotFoundComponent } from "../not-found/not-found.component";
 })
 export class QuestionsComponent {
   description: string = "";
+  functionParams: string[] = []; // <-- Add this line
 
   constructor(
     private router: Router,
@@ -51,14 +52,20 @@ export class QuestionsComponent {
 
   loadQuestion(id: string) {
     this.notFound = false;
-    this.http.get<{ description: string }>(`/questions/${id}.json`).subscribe({
-      next: (data) => {
-        this.description = data.description;
-        this.notFound = false;
-      },
-      error: () => {
-        this.notFound = true;
-      },
-    });
+    this.http
+      .get<{
+        description: string;
+        function_params_names: string[];
+      }>(`/questions/${id}.json`)
+      .subscribe({
+        next: (data) => {
+          this.description = data.description;
+          this.functionParams = data.function_params_names || []; // <-- Set params here
+          this.notFound = false;
+        },
+        error: () => {
+          this.notFound = true;
+        },
+      });
   }
 }

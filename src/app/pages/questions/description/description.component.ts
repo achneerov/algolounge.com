@@ -10,4 +10,7 @@ import { CommonModule } from "@angular/common";
 })
 export class DescriptionComponent {
   @Input() description: string = "";
+  @Input() solution: string = "";
+
+  tab: "description" | "solution" = "description";
 }

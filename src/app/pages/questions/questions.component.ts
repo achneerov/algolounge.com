@@ -27,7 +27,8 @@ import { NotFoundComponent } from "../not-found/not-found.component";
 })
 export class QuestionsComponent {
   description: string = "";
-  functionParams: string[] = []; // <-- Add this line
+  solution: string = ""; // <-- Added solution property
+  functionParams: string[] = [];
 
   constructor(
     private router: Router,
@@ -55,12 +56,14 @@ export class QuestionsComponent {
     this.http
       .get<{
         description: string;
+        solution: string; // <-- Added solution type
         function_params_names: string[];
       }>(`/questions/${id}.json`)
       .subscribe({
         next: (data) => {
           this.description = data.description;
-          this.functionParams = data.function_params_names || []; // <-- Set params here
+          this.solution = data.solution; // <-- Set solution
+          this.functionParams = data.function_params_names || [];
           this.notFound = false;
         },
         error: () => {

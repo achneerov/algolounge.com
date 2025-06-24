@@ -1,10 +1,25 @@
-<div class="card flex justify-center">
+<div class="header-flex">
   <input
     type="text"
+    pInputText
     [(ngModel)]="questionId"
     placeholder="Enter question ID"
-    style="margin-right: 8px"
+    class="question-input"
   />
-  <button pButton type="button" label="Go" (click)="onGo()"></button>
-  <p-button label="Run" (click)="onRun()" />
+  <button
+    pButton
+    type="button"
+    label="Go"
+    (click)="onGo()"
+    class="go-btn"
+  ></button>
+  <div class="flex-spacer"></div>
+  <button
+    pButton
+    type="button"
+    label="Run"
+    (click)="onRun()"
+    class="run-btn"
+  ></button>
+  <div class="flex-spacer"></div>
 </div>

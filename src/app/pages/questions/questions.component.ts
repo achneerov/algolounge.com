@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { IdeComponent } from "./ide/ide.component";
 import { HeaderComponent } from "./header/header.component";
 import { ConsoleComponent, ExecutionResult } from "./console/console.component";
-import { DescriptionComponent } from "./description/description.component";
+import { ContentTabsComponent } from "../../components/general/content-tabs.component";
 import { SplitterModule } from "primeng/splitter";
 import { ActivatedRoute, Router } from "@angular/router";
 import { CommonModule } from "@angular/common";
@@ -19,7 +19,7 @@ import { CodeExecutionService } from "../../services/code-execution.service";
     IdeComponent,
     HeaderComponent,
     ConsoleComponent,
-    DescriptionComponent,
+    ContentTabsComponent,
     SplitterModule,
     NotFoundComponent,
   ],
@@ -30,7 +30,8 @@ export class QuestionsComponent implements OnInit {
   @ViewChild(IdeComponent) ideComponent!: IdeComponent;
   
   description: string = "";
-  solution: string = "";
+  solutionText: string = "";
+  solutionCode: string = "";
   functionParams: string[] = [];
   selectedLanguage: string = "python";
   questionData: any = null;
@@ -126,7 +127,8 @@ export class QuestionsComponent implements OnInit {
       // New multi-language format
       const langData = this.questionData.languages[this.selectedLanguage];
       if (langData) {
-        this.solution = langData.solution;
+        this.solutionText = langData.solution_text || "";
+        this.solutionCode = langData.solution_code || "";
         this.functionSignature = langData.function_signature;
       }
       // Set description from the global level for multi-language format
@@ -134,7 +136,8 @@ export class QuestionsComponent implements OnInit {
     } else {
       // Old single-language format (fallback)
       this.description = this.questionData.description || "";
-      this.solution = this.questionData.solution || "";
+      this.solutionText = this.questionData.solution || "";
+      this.solutionCode = "";
       this.functionSignature = "";
     }
   }

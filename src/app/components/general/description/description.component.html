@@ -1,0 +1,6 @@
+<div class="description-container">
+  <div *ngIf="content; else noContent" [innerHTML]="content"></div>
+  <ng-template #noContent>
+    <p class="no-content">No description available.</p>
+  </ng-template>
+</div>

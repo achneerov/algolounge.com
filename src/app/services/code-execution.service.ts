@@ -42,7 +42,9 @@ export class CodeExecutionService {
       if (language === 'python') {
         return await this.executePython(code, testCases, functionName, startTime, output);
       } else if (language === 'javascript' || language === 'typescript') {
-        return await this.executeJavaScript(code, testCases, functionName, startTime, output);
+        // For TypeScript, strip type annotations before execution
+        const processedCode = language === 'typescript' ? this.stripTypeScript(code) : code;
+        return await this.executeJavaScript(processedCode, testCases, functionName, startTime, output);
       } else {
         throw new Error(`Unsupported language: ${language}`);
       }
@@ -230,6 +232,31 @@ sys.stdout = test_output
       totalCount: testResults.length,
       output
     };
+  }
+
+  private stripTypeScript(code: string): string {
+    // Remove type annotations from function parameters and return types
+    let jsCode = code;
+    
+    // Remove return type annotations (: type after function parameters)
+    jsCode = jsCode.replace(/\)\s*:\s*[^{]+(?=\s*\{)/g, ')');
+    
+    // Remove parameter type annotations (: type after parameter name)
+    jsCode = jsCode.replace(/(\w+)\s*:\s*[^,)]+/g, '$1');
+    
+    // Remove generic type parameters (<T, U>)
+    jsCode = jsCode.replace(/<[^>]+>/g, '');
+    
+    // Remove interface declarations and type aliases (basic removal)
+    jsCode = jsCode.replace(/^(interface|type)\s+\w+.*$/gm, '');
+    
+    // Remove import type statements
+    jsCode = jsCode.replace(/^import\s+type\s+.*$/gm, '');
+    
+    // Remove as type assertions
+    jsCode = jsCode.replace(/\s+as\s+\w+/g, '');
+    
+    return jsCode.trim();
   }
 
   private deepEqual(a: any, b: any): boolean {

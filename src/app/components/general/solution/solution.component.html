@@ -1,0 +1,31 @@
+<div class="solution-container">
+  <div *ngIf="solutionText || solutionCode; else noContent">
+    
+    <!-- Solution Text Section -->
+    <div *ngIf="solutionText" class="solution-text">
+      <h3>Approach</h3>
+      <p>{{ solutionText }}</p>
+    </div>
+    
+    <!-- Solution Code Section -->
+    <div *ngIf="solutionCode" class="solution-code">
+      <div class="code-header">
+        <h3>Implementation</h3>
+        <button 
+          class="copy-button" 
+          (click)="copyCode()" 
+          title="Copy code">
+          📋 Copy
+        </button>
+      </div>
+      <div class="code-block">
+        <pre><code>{{ solutionCode }}</code></pre>
+      </div>
+    </div>
+    
+  </div>
+  
+  <ng-template #noContent>
+    <p class="no-content">No solution available.</p>
+  </ng-template>
+</div>

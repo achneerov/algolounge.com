@@ -1,1 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Fix for PrimeNG splitter layout shifting bug */
+p-splitter {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+p-splitter .p-splitter {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+p-splitter .p-splitter .p-splitter-panel {
+  box-sizing: border-box !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+p-splitter .p-splitter .p-splitter-panel:first-child {
+  flex-shrink: 0 !important;
+  min-width: 250px !important;
+  max-width: 70% !important;
+}
+
+/* Prevent content changes from affecting parent layout */
+app-content-tabs {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+  contain: layout style !important;
+  will-change: contents !important;
+}
+
+/* Ensure tab content doesn't trigger layout shifts */
+app-description, app-solution {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+  contain: layout !important;
+}

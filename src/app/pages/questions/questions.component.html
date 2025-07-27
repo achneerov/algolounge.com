@@ -16,10 +16,11 @@
     styleClass="mb-5"
   >
     <ng-template pTemplate="panel1">
-      <app-description
+      <app-content-tabs
         [description]="description"
-        [solution]="solution"
-      ></app-description>
+        [solutionText]="solutionText"
+        [solutionCode]="solutionCode">
+      </app-content-tabs>
     </ng-template>
     <ng-template pTemplate="panel2">
       <p-splitter layout="vertical" [panelSizes]="verticalPanelSizes" [minSizes]="[40, 20]" (onResizeEnd)="onVerticalResizeEnd($event)">

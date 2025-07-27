@@ -10,7 +10,9 @@
 <ng-container *ngIf="!notFound; else notFoundTpl">
   <p-splitter
     [style]="{ height: 'calc(100vh - 50px)' }"
-    [panelSizes]="[40, 60]"
+    [panelSizes]="horizontalPanelSizes"
+    [minSizes]="[20, 30]"
+    (onResizeEnd)="onHorizontalResizeEnd($event)"
     styleClass="mb-5"
   >
     <ng-template pTemplate="panel1">
@@ -20,7 +22,7 @@
       ></app-description>
     </ng-template>
     <ng-template pTemplate="panel2">
-      <p-splitter layout="vertical" [panelSizes]="[70, 30]">
+      <p-splitter layout="vertical" [panelSizes]="verticalPanelSizes" [minSizes]="[40, 20]" (onResizeEnd)="onVerticalResizeEnd($event)">
         <ng-template pTemplate="panel1">
           <app-ide 
             [params]="functionParams"

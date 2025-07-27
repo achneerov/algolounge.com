@@ -37,6 +37,8 @@ export class QuestionsComponent implements OnInit {
   functionSignature: string = "";
   executionResult: ExecutionResult | null = null;
   isRunning: boolean = false;
+  horizontalPanelSizes: number[] = [40, 60];
+  verticalPanelSizes: number[] = [70, 30];
 
   constructor(
     private router: Router,
@@ -134,6 +136,32 @@ export class QuestionsComponent implements OnInit {
       this.description = this.questionData.description || "";
       this.solution = this.questionData.solution || "";
       this.functionSignature = "";
+    }
+  }
+
+  onHorizontalResizeEnd(event: any) {
+    const sizes = event.sizes;
+    const maxSizes = [70, 80];
+    
+    if (sizes[0] > maxSizes[0]) {
+      this.horizontalPanelSizes = [maxSizes[0], 100 - maxSizes[0]];
+    } else if (sizes[1] > maxSizes[1]) {
+      this.horizontalPanelSizes = [100 - maxSizes[1], maxSizes[1]];
+    } else {
+      this.horizontalPanelSizes = sizes;
+    }
+  }
+
+  onVerticalResizeEnd(event: any) {
+    const sizes = event.sizes;
+    const maxSizes = [85, 60];
+    
+    if (sizes[0] > maxSizes[0]) {
+      this.verticalPanelSizes = [maxSizes[0], 100 - maxSizes[0]];
+    } else if (sizes[1] > maxSizes[1]) {
+      this.verticalPanelSizes = [100 - maxSizes[1], maxSizes[1]];
+    } else {
+      this.verticalPanelSizes = sizes;
     }
   }
 }

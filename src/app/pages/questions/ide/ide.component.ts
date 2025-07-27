@@ -38,7 +38,7 @@ export class IdeComponent implements AfterViewInit, OnChanges {
 
   private initEditor() {
     const paramList = (this.params || []).join(", ");
-    const doc = `def function(${paramList}):\n    `;
+    const doc = `def function(${paramList}):\n  `;
     if (this.editorView) {
       this.editorView.destroy();
     }

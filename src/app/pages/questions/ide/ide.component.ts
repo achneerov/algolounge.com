@@ -9,6 +9,7 @@ import {
 } from "@angular/core";
 import { EditorView, basicSetup } from "codemirror";
 import { python } from "@codemirror/lang-python";
+import { javascript } from "@codemirror/lang-javascript";
 
 @Component({
   selector: "app-ide",
@@ -19,6 +20,8 @@ import { python } from "@codemirror/lang-python";
 export class IdeComponent implements AfterViewInit, OnChanges {
   @ViewChild("editor") editorElement!: ElementRef;
   @Input() params: string[] = [];
+  @Input() language: string = "python";
+  @Input() functionSignature: string = "";
 
   private editorView?: EditorView;
 
@@ -28,8 +31,7 @@ export class IdeComponent implements AfterViewInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (
-      changes["params"] &&
-      !changes["params"].firstChange &&
+      (changes["params"] || changes["language"] || changes["functionSignature"]) &&
       this.editorElement
     ) {
       this.initEditor();
@@ -37,15 +39,39 @@ export class IdeComponent implements AfterViewInit, OnChanges {
   }
 
   private initEditor() {
-    const paramList = (this.params || []).join(", ");
-    const doc = `def function(${paramList}):\n  `;
+    let doc = "";
+    let languageExtension;
+
+    if (this.functionSignature) {
+      doc = `${this.functionSignature}\n  `;
+    } else {
+      const paramList = (this.params || []).join(", ");
+      if (this.language === "python") {
+        doc = `def function(${paramList}):\n  `;
+      } else if (this.language === "javascript" || this.language === "typescript") {
+        doc = `function containsDuplicate(${paramList}) {\n  \n}`;
+      }
+    }
+
+    switch (this.language) {
+      case "python":
+        languageExtension = python();
+        break;
+      case "javascript":
+      case "typescript":
+        languageExtension = javascript();
+        break;
+      default:
+        languageExtension = python();
+    }
+
     if (this.editorView) {
       this.editorView.destroy();
     }
     this.editorView = new EditorView({
       parent: this.editorElement.nativeElement,
       doc,
-      extensions: [basicSetup, python()],
+      extensions: [basicSetup, languageExtension],
     });
   }
 }

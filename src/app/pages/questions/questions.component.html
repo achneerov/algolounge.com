@@ -1,4 +1,9 @@
-<app-header class="header" (go)="onGo($event)"></app-header>
+<app-header 
+  class="header" 
+  [selectedLanguage]="selectedLanguage"
+  (go)="onGo($event)"
+  (languageChange)="onLanguageChange($event)"
+></app-header>
 
 <ng-container *ngIf="!notFound; else notFoundTpl">
   <p-splitter
@@ -15,7 +20,11 @@
     <ng-template pTemplate="panel2">
       <p-splitter layout="vertical" [panelSizes]="[70, 30]">
         <ng-template pTemplate="panel1">
-          <app-ide [params]="functionParams"></app-ide>
+          <app-ide 
+            [params]="functionParams"
+            [language]="selectedLanguage"
+            [functionSignature]="functionSignature"
+          ></app-ide>
         </ng-template>
         <ng-template pTemplate="panel2">
           <app-console></app-console>

@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { IdeComponent } from "./ide/ide.component";
 import { HeaderComponent } from "./header/header.component";
 import { ConsoleComponent } from "./console/console.component";
@@ -25,10 +25,13 @@ import { NotFoundComponent } from "../not-found/not-found.component";
   templateUrl: "./questions.component.html",
   styleUrl: "./questions.component.scss",
 })
-export class QuestionsComponent {
+export class QuestionsComponent implements OnInit {
   description: string = "";
-  solution: string = ""; // <-- Added solution property
+  solution: string = "";
   functionParams: string[] = [];
+  selectedLanguage: string = "python";
+  questionData: any = null;
+  functionSignature: string = "";
 
   constructor(
     private router: Router,
@@ -49,26 +52,47 @@ export class QuestionsComponent {
     this.router.navigate(["/questions", id]);
   }
 
+  onLanguageChange(language: string) {
+    this.selectedLanguage = language;
+    this.updateLanguageContent();
+  }
+
   notFound = false;
 
   loadQuestion(id: string) {
     this.notFound = false;
     this.http
-      .get<{
-        description: string;
-        solution: string; // <-- Added solution type
-        function_params_names: string[];
-      }>(`/questions/${id}.json`)
+      .get<any>(`/questions/${id}.json`)
       .subscribe({
         next: (data) => {
-          this.description = data.description;
-          this.solution = data.solution; // <-- Set solution
+          this.questionData = data;
           this.functionParams = data.function_params_names || [];
+          this.updateLanguageContent();
           this.notFound = false;
         },
         error: () => {
           this.notFound = true;
         },
       });
+  }
+
+  updateLanguageContent() {
+    if (!this.questionData) return;
+    
+    if (this.questionData.languages) {
+      // New multi-language format
+      const langData = this.questionData.languages[this.selectedLanguage];
+      if (langData) {
+        this.solution = langData.solution;
+        this.functionSignature = langData.function_signature;
+      }
+      // Set description from the global level for multi-language format
+      this.description = this.questionData.description || "";
+    } else {
+      // Old single-language format (fallback)
+      this.description = this.questionData.description || "";
+      this.solution = this.questionData.solution || "";
+      this.functionSignature = "";
+    }
   }
 }

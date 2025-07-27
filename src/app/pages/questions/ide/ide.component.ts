@@ -74,4 +74,24 @@ export class IdeComponent implements AfterViewInit, OnChanges {
       extensions: [basicSetup, languageExtension],
     });
   }
+
+  getCode(): string {
+    if (!this.editorView) {
+      return "";
+    }
+    return this.editorView.state.doc.toString();
+  }
+
+  getFunctionName(): string {
+    if (this.language === "python") {
+      return "function";
+    } else {
+      // For JS/TS, extract function name from signature or default to containsDuplicate
+      if (this.functionSignature) {
+        const match = this.functionSignature.match(/function\s+(\w+)/);
+        return match ? match[1] : "containsDuplicate";
+      }
+      return "containsDuplicate";
+    }
+  }
 }

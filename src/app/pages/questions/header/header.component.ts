@@ -13,8 +13,10 @@ import { DropdownModule } from "primeng/dropdown";
 export class HeaderComponent {
   questionId: string = "";
   @Input() selectedLanguage: string = "python";
+  @Input() isRunning: boolean = false;
   @Output() go = new EventEmitter<string>();
   @Output() languageChange = new EventEmitter<string>();
+  @Output() run = new EventEmitter<void>();
 
   languages = [
     { label: "Python", value: "python" },
@@ -33,5 +35,7 @@ export class HeaderComponent {
     this.languageChange.emit(language);
   }
 
-  onRun(): void {}
+  onRun(): void {
+    this.run.emit();
+  }
 }

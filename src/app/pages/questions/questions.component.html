@@ -1,8 +1,10 @@
 <app-header 
   class="header" 
   [selectedLanguage]="selectedLanguage"
+  [isRunning]="isRunning"
   (go)="onGo($event)"
   (languageChange)="onLanguageChange($event)"
+  (run)="onRun()"
 ></app-header>
 
 <ng-container *ngIf="!notFound; else notFoundTpl">
@@ -27,7 +29,7 @@
           ></app-ide>
         </ng-template>
         <ng-template pTemplate="panel2">
-          <app-console></app-console>
+          <app-console [result]="executionResult"></app-console>
         </ng-template>
       </p-splitter>
     </ng-template>

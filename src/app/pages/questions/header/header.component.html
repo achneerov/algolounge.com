@@ -26,8 +26,9 @@
   <button
     pButton
     type="button"
-    label="Run"
+    [label]="isRunning ? 'Running...' : 'Run'"
     (click)="onRun()"
+    [disabled]="isRunning"
     class="run-btn"
   ></button>
   <div class="flex-spacer"></div>

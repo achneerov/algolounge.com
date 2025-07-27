@@ -1,1 +1,45 @@
-<p>console works!</p>
+<div class="console-container" *ngIf="result; else emptyConsole">
+  <!-- Summary at top -->
+  <div class="summary">
+    <div class="summary-line">
+      Execution completed in {{ result.executionTime }}ms
+    </div>
+    <div class="summary-line">
+      {{ result.passedCount }}/{{ result.totalCount }} test cases passed
+    </div>
+  </div>
+
+  <!-- Test Results -->
+  <div class="test-results">
+    <div 
+      *ngFor="let testResult of result.testResults" 
+      class="test-case"
+      [ngClass]="{ 'passed': testResult.passed, 'failed': !testResult.passed }"
+    >
+      <div class="test-header">Test Case {{ testResult.id }}</div>
+      <div class="test-input">Input: {{ formatValue(testResult.input) }}</div>
+      <div class="test-expected">Expected: {{ formatValue(testResult.expectedOutput) }}</div>
+      <div class="test-actual">
+        <span *ngIf="!testResult.error">Actual: {{ formatValue(testResult.actualOutput) }}</span>
+        <span *ngIf="testResult.error" class="error">Error: {{ testResult.error }}</span>
+      </div>
+      <div *ngIf="testResult.output && testResult.output.length > 0" class="test-output">
+        <div class="output-label">Output:</div>
+        <div *ngFor="let line of testResult.output" class="output-line">{{ line }}</div>
+      </div>
+      <div class="test-status">
+        <span *ngIf="testResult.passed" class="pass-icon">✓ PASS</span>
+        <span *ngIf="!testResult.passed" class="fail-icon">✗ FAIL</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #emptyConsole>
+  <div class="console-container empty">
+    <div class="empty-message">
+      Click Run to execute your code and see test results here.
+    </div>
+  </div>
+</ng-template>

@@ -3,9 +3,9 @@
 
   "languages": {
     "python": {
-      "function_signature": "def function(nums):",
+      "function_signature": "def containsDuplicate(nums):",
       "solution_text": "The most efficient approach uses a hash set to keep track of elements we've seen. This algorithm has O(n) time complexity and O(n) space complexity in the worst case.",
-      "solution_code": "def function(nums):\n    # Create a set to track seen numbers\n    seen = set()\n    \n    # Iterate through the array\n    for num in nums:\n        # If we've already seen this number, return True\n        if num in seen:\n            return True\n        \n        # Add the number to our set of seen numbers\n        seen.add(num)\n    \n    # If we get through the entire array without finding a duplicate\n    return False"
+      "solution_code": "def containsDuplicate(nums):\n    # Create a set to track seen numbers\n    seen = set()\n    \n    # Iterate through the array\n    for num in nums:\n        # If we've already seen this number, return True\n        if num in seen:\n            return True\n        \n        # Add the number to our set of seen numbers\n        seen.add(num)\n    \n    # If we get through the entire array without finding a duplicate\n    return False"
     },
     "javascript": {
       "function_signature": "function containsDuplicate(nums) { }",

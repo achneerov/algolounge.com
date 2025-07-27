@@ -1,6 +1,26 @@
 {
   "description": "<h2>Valid Anagram</h2><h3>Problem</h3><p>Given two strings <code>s</code> and <code>t</code>, return <code>true</code> if <code>t</code> is an anagram of <code>s</code>, and <code>false</code> otherwise.</p><p>An anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.</p><h3>Examples:</h3><ul><li>If <code>s = \"anagram\"</code> and <code>t = \"nagaram\"</code>, the output should be <code>true</code>.</li><li>If <code>s = \"rat\"</code> and <code>t = \"car\"</code>, the output should be <code>false</code>.</li></ul>",
-  "solution": "<p>The most efficient approach is to count character frequencies:</p><pre><code>def function(s, t):\n    # If lengths are different, they can't be anagrams\n    if len(s) != len(t):\n        return False\n    \n    # Create dictionaries to track character counts\n    char_count_s = {}\n    char_count_t = {}\n    \n    # Count characters in both strings\n    for i in range(len(s)):\n        char_count_s[s[i]] = char_count_s.get(s[i], 0) + 1\n        char_count_t[t[i]] = char_count_t.get(t[i], 0) + 1\n    \n    # Compare the character counts\n    return char_count_s == char_count_t\n    \n    # Alternative solution using sorting:\n    # return sorted(s) == sorted(t)</code></pre>",
+
+  "languages": {
+    "python": {
+      "function_signature": "def isAnagram(s, t):",
+      "solution_text": "The most efficient approach is to count character frequencies. We can create dictionaries to track the occurrence of each character in both strings and compare them. This approach has O(n) time complexity and O(1) space complexity (since there are at most 26 lowercase English letters).",
+      "solution_code": "def isAnagram(s, t):\n    # If lengths are different, they can't be anagrams\n    if len(s) != len(t):\n        return False\n    \n    # Create dictionaries to track character counts\n    char_count_s = {}\n    char_count_t = {}\n    \n    # Count characters in both strings\n    for i in range(len(s)):\n        char_count_s[s[i]] = char_count_s.get(s[i], 0) + 1\n        char_count_t[t[i]] = char_count_t.get(t[i], 0) + 1\n    \n    # Compare the character counts\n    return char_count_s == char_count_t\n    \n    # Alternative solution using sorting:\n    # return sorted(s) == sorted(t)"
+    },
+    "javascript": {
+      "function_signature": "function isAnagram(s, t) { }",
+      "solution_text": "The most efficient approach is to count character frequencies. We can create objects to track the occurrence of each character in both strings and compare them. This approach has O(n) time complexity and O(1) space complexity.",
+      "solution_code": "function isAnagram(s, t) {\n    // If lengths are different, they can't be anagrams\n    if (s.length !== t.length) {\n        return false;\n    }\n    \n    // Create objects to track character counts\n    const charCountS = {};\n    const charCountT = {};\n    \n    // Count characters in both strings\n    for (let i = 0; i < s.length; i++) {\n        charCountS[s[i]] = (charCountS[s[i]] || 0) + 1;\n        charCountT[t[i]] = (charCountT[t[i]] || 0) + 1;\n    }\n    \n    // Compare the character counts\n    for (let char in charCountS) {\n        if (charCountS[char] !== charCountT[char]) {\n            return false;\n        }\n    }\n    \n    return true;\n    \n    // Alternative solution using sorting:\n    // return s.split('').sort().join('') === t.split('').sort().join('');\n}"
+    },
+    "typescript": {
+      "function_signature": "function isAnagram(s: string, t: string): boolean { }",
+      "solution_text": "The most efficient approach is to count character frequencies. We can create objects to track the occurrence of each character in both strings and compare them. This approach has O(n) time complexity and O(1) space complexity. Note: TypeScript type annotations are automatically stripped during execution.",
+      "solution_code": "function isAnagram(s: string, t: string): boolean {\n    // If lengths are different, they can't be anagrams\n    if (s.length !== t.length) {\n        return false;\n    }\n    \n    // Create objects to track character counts\n    const charCountS: { [key: string]: number } = {};\n    const charCountT: { [key: string]: number } = {};\n    \n    // Count characters in both strings\n    for (let i = 0; i < s.length; i++) {\n        charCountS[s[i]] = (charCountS[s[i]] || 0) + 1;\n        charCountT[t[i]] = (charCountT[t[i]] || 0) + 1;\n    }\n    \n    // Compare the character counts\n    for (let char in charCountS) {\n        if (charCountS[char] !== charCountT[char]) {\n            return false;\n        }\n    }\n    \n    return true;\n    \n    // Alternative solution using sorting:\n    // return s.split('').sort().join('') === t.split('').sort().join('');\n}"
+    }
+  },
+
+  "order_matters": false,
+
   "function_params_names": ["s", "t"],
   "test_cases": [
     {

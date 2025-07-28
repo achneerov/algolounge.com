@@ -22,6 +22,7 @@ export class IdeComponent implements AfterViewInit, OnChanges {
   @Input() params: string[] = [];
   @Input() language: string = "python";
   @Input() functionSignature: string = "";
+  @Input() functionName: string = "";
 
   private editorView?: EditorView;
 
@@ -31,7 +32,7 @@ export class IdeComponent implements AfterViewInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (
-      (changes["params"] || changes["language"] || changes["functionSignature"]) &&
+      (changes["params"] || changes["language"] || changes["functionSignature"] || changes["functionName"]) &&
       this.editorElement
     ) {
       this.initEditor();
@@ -46,10 +47,13 @@ export class IdeComponent implements AfterViewInit, OnChanges {
       doc = `${this.functionSignature}\n  `;
     } else {
       const paramList = (this.params || []).join(", ");
+      const funcName = this.functionName || "function";
+      
       if (this.language === "python") {
-        doc = `def function(${paramList}):\n  `;
+        doc = `def ${funcName}(${paramList}):\n  `;
       } else if (this.language === "javascript" || this.language === "typescript") {
-        doc = `function containsDuplicate(${paramList}) {\n  \n}`;
+        const tsTypes = this.language === "typescript" ? this.getTypeScript(funcName) : "";
+        doc = `function ${funcName}(${paramList}${tsTypes}) {\n  \n}`;
       }
     }
 
@@ -83,15 +87,37 @@ export class IdeComponent implements AfterViewInit, OnChanges {
   }
 
   getFunctionName(): string {
-    if (this.language === "python") {
-      return "function";
-    } else {
-      // For JS/TS, extract function name from signature or default to containsDuplicate
-      if (this.functionSignature) {
-        const match = this.functionSignature.match(/function\s+(\w+)/);
-        return match ? match[1] : "containsDuplicate";
-      }
-      return "containsDuplicate";
+    // First try to use the explicit functionName input
+    if (this.functionName) {
+      return this.functionName;
     }
+    
+    // If we have a function signature, extract the name from it
+    if (this.functionSignature) {
+      if (this.language === "python") {
+        const match = this.functionSignature.match(/def\s+(\w+)\s*\(/);
+        return match ? match[1] : "function";
+      } else {
+        const match = this.functionSignature.match(/function\s+(\w+)\s*\(/);
+        return match ? match[1] : "function";
+      }
+    }
+    
+    // Fallback to generic name
+    return "function";
+  }
+
+  private getTypeScript(funcName: string): string {
+    // Basic TypeScript type annotations based on common function names
+    if (funcName === "containsDuplicate") {
+      return ": boolean";
+    } else if (funcName === "isAnagram") {
+      return ": boolean";
+    } else if (funcName === "twoSum") {
+      return ": number[]";
+    } else if (funcName === "groupAnagrams") {
+      return ": string[][]";
+    }
+    return "";
   }
 }

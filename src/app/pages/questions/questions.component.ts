@@ -36,6 +36,7 @@ export class QuestionsComponent implements OnInit {
   selectedLanguage: string = "python";
   questionData: any = null;
   functionSignature: string = "";
+  functionName: string = "";
   executionResult: ExecutionResult | null = null;
   isRunning: boolean = false;
   horizontalPanelSizes: number[] = [40, 60];
@@ -85,7 +86,8 @@ export class QuestionsComponent implements OnInit {
         code,
         this.selectedLanguage,
         testCases,
-        functionName
+        functionName,
+        this.questionData.order_matters !== false // Default to true if not specified
       );
     } catch (error) {
       console.error('Execution error:', error);
@@ -130,6 +132,9 @@ export class QuestionsComponent implements OnInit {
         this.solutionText = langData.solution_text || "";
         this.solutionCode = langData.solution_code || "";
         this.functionSignature = langData.function_signature;
+        
+        // Extract function name from signature
+        this.functionName = this.extractFunctionName(langData.function_signature, this.selectedLanguage);
       }
       // Set description from the global level for multi-language format
       this.description = this.questionData.description || "";
@@ -139,6 +144,19 @@ export class QuestionsComponent implements OnInit {
       this.solutionText = this.questionData.solution || "";
       this.solutionCode = "";
       this.functionSignature = "";
+      this.functionName = "";
+    }
+  }
+
+  private extractFunctionName(signature: string, language: string): string {
+    if (!signature) return "";
+    
+    if (language === "python") {
+      const match = signature.match(/def\s+(\w+)\s*\(/);
+      return match ? match[1] : "";
+    } else {
+      const match = signature.match(/function\s+(\w+)\s*\(/);
+      return match ? match[1] : "";
     }
   }
 

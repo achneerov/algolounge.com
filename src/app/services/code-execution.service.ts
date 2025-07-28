@@ -32,7 +32,8 @@ export class CodeExecutionService {
     code: string, 
     language: string, 
     testCases: any[], 
-    functionName: string
+    functionName: string,
+    orderMatters: boolean = true
   ): Promise<ExecutionResult> {
     const startTime = performance.now();
     const testResults: TestResult[] = [];
@@ -40,11 +41,11 @@ export class CodeExecutionService {
 
     try {
       if (language === 'python') {
-        return await this.executePython(code, testCases, functionName, startTime, output);
+        return await this.executePython(code, testCases, functionName, startTime, output, orderMatters);
       } else if (language === 'javascript' || language === 'typescript') {
         // For TypeScript, strip type annotations before execution
         const processedCode = language === 'typescript' ? this.stripTypeScript(code) : code;
-        return await this.executeJavaScript(processedCode, testCases, functionName, startTime, output);
+        return await this.executeJavaScript(processedCode, testCases, functionName, startTime, output, orderMatters);
       } else {
         throw new Error(`Unsupported language: ${language}`);
       }
@@ -72,7 +73,8 @@ export class CodeExecutionService {
     testCases: any[], 
     functionName: string, 
     startTime: number,
-    output: string[]
+    output: string[],
+    orderMatters: boolean = true
   ): Promise<ExecutionResult> {
     const pyodide = await this.initPyodide();
     const testResults: TestResult[] = [];
@@ -101,6 +103,9 @@ sys.stdout = test_output
           
           const result = pyodide.runPython(`${functionName}(${argString})`);
           
+          // Convert Pyodide result to JS immediately to avoid proxy destruction
+          const jsResult = result && typeof result.toJs === 'function' ? result.toJs() : result;
+          
           // Get output for this test case
           const capturedOutput = pyodide.runPython('test_output.getvalue()');
           if (capturedOutput) {
@@ -111,8 +116,8 @@ sys.stdout = test_output
             id: testCase.id,
             input: testCase.input,
             expectedOutput: testCase.output,
-            actualOutput: result,
-            passed: this.deepEqual(result, testCase.output),
+            actualOutput: jsResult,
+            passed: this.deepEqual(jsResult, testCase.output, orderMatters),
             output: testOutput
           });
         } catch (error) {
@@ -161,7 +166,8 @@ sys.stdout = test_output
     testCases: any[], 
     functionName: string, 
     startTime: number,
-    output: string[]
+    output: string[],
+    orderMatters: boolean = true
   ): Promise<ExecutionResult> {
     const testResults: TestResult[] = [];
 
@@ -192,7 +198,7 @@ sys.stdout = test_output
             input: testCase.input,
             expectedOutput: testCase.output,
             actualOutput: result,
-            passed: this.deepEqual(result, testCase.output),
+            passed: this.deepEqual(result, testCase.output, orderMatters),
             output: testOutput
           });
         } catch (error) {
@@ -244,6 +250,9 @@ sys.stdout = test_output
     // Remove parameter type annotations (: type after parameter name)
     jsCode = jsCode.replace(/(\w+)\s*:\s*[^,)]+/g, '$1');
     
+    // Remove variable type annotations including complex object types
+    jsCode = jsCode.replace(/:\s*\{[^}]*\}/g, '');
+    
     // Remove generic type parameters (<T, U>)
     jsCode = jsCode.replace(/<[^>]+>/g, '');
     
@@ -259,21 +268,53 @@ sys.stdout = test_output
     return jsCode.trim();
   }
 
-  private deepEqual(a: any, b: any): boolean {
+  private deepEqual(a: any, b: any, orderMatters: boolean = true): boolean {
     if (a === b) return true;
     
-    if (Array.isArray(a) && Array.isArray(b)) {
-      if (a.length !== b.length) return false;
-      return a.every((val, index) => this.deepEqual(val, b[index]));
+    // Handle null/undefined cases
+    if (a == null || b == null) return a === b;
+    
+    // Since we now convert Pyodide objects earlier, we don't need to do it here
+    const normalizedA = a;
+    const normalizedB = b;
+    
+    // Check if both are arrays (handles Pyodide arrays too)
+    const isArrayA = Array.isArray(normalizedA) || (normalizedA && typeof normalizedA[Symbol.iterator] === 'function' && typeof normalizedA.length === 'number');
+    const isArrayB = Array.isArray(normalizedB) || (normalizedB && typeof normalizedB[Symbol.iterator] === 'function' && typeof normalizedB.length === 'number');
+    
+    if (isArrayA && isArrayB) {
+      const arrayA = Array.from(normalizedA);
+      const arrayB = Array.from(normalizedB);
+      if (arrayA.length !== arrayB.length) return false;
+      
+      if (!orderMatters) {
+        // For order-agnostic comparison (like Group Anagrams)
+        // Check if it's a 2D array
+        if (arrayA.length > 0 && Array.isArray(arrayA[0])) {
+          // Sort both arrays and their sub-arrays for comparison
+          const sortedA = (arrayA as any[][]).map(arr => [...arr].sort()).sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b)));
+          const sortedB = (arrayB as any[][]).map(arr => [...arr].sort()).sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b)));
+          return this.deepEqual(sortedA, sortedB, true); // Use order-sensitive comparison for sorted arrays
+        } else {
+          // For 1D arrays, just sort and compare
+          const sortedA = [...arrayA].sort();
+          const sortedB = [...arrayB].sort();
+          return this.deepEqual(sortedA, sortedB, true);
+        }
+      }
+      
+      return arrayA.every((val, index) => this.deepEqual(val, arrayB[index], orderMatters));
     }
     
-    if (typeof a === 'object' && typeof b === 'object' && a !== null && b !== null) {
-      const keysA = Object.keys(a);
-      const keysB = Object.keys(b);
+    // Handle objects
+    if (typeof normalizedA === 'object' && typeof normalizedB === 'object' && normalizedA !== null && normalizedB !== null && !isArrayA && !isArrayB) {
+      const keysA = Object.keys(normalizedA);
+      const keysB = Object.keys(normalizedB);
       if (keysA.length !== keysB.length) return false;
-      return keysA.every(key => this.deepEqual(a[key], b[key]));
+      return keysA.every(key => this.deepEqual(normalizedA[key], normalizedB[key]));
     }
     
-    return false;
+    // For primitive types and final comparison
+    return normalizedA === normalizedB;
   }
 }

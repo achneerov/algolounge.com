@@ -1,6 +1,15 @@
 import { Injectable } from '@angular/core';
-import { loadPyodide, PyodideInterface } from 'pyodide';
 import { TestResult, ExecutionResult } from '../pages/questions/console/console.component';
+
+declare global {
+  interface Window {
+    loadPyodide: any;
+  }
+}
+
+interface PyodideInterface {
+  runPython: (code: string) => any;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -20,12 +29,27 @@ export class CodeExecutionService {
       return this.pyodideLoading;
     }
 
-    this.pyodideLoading = loadPyodide({
+    // Load Pyodide script dynamically to avoid Vite warnings
+    if (!window.loadPyodide) {
+      await this.loadPyodideScript();
+    }
+
+    this.pyodideLoading = window.loadPyodide({
       indexURL: "https://cdn.jsdelivr.net/pyodide/v0.28.0/full/"
     });
 
     this.pyodide = await this.pyodideLoading;
-    return this.pyodide;
+    return this.pyodide!;
+  }
+
+  private async loadPyodideScript(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/pyodide/v0.28.0/full/pyodide.js';
+      script.onload = () => resolve();
+      script.onerror = () => reject(new Error('Failed to load Pyodide'));
+      document.head.appendChild(script);
+    });
   }
 
   async executeCode(

@@ -9,11 +9,11 @@
 
 <ng-container *ngIf="!notFound; else notFoundTpl">
   <p-splitter
-    [style]="{ height: 'calc(100vh - 50px)' }"
+    [style]="{ height: 'calc(100vh - 74px)' }"
     [panelSizes]="horizontalPanelSizes"
     [minSizes]="[20, 30]"
     (onResizeEnd)="onHorizontalResizeEnd($event)"
-    styleClass="mb-5"
+    styleClass="mb-4"
   >
     <ng-template pTemplate="panel1">
       <app-content-tabs

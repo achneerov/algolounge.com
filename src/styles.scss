@@ -5,6 +5,11 @@ html, body {
   overflow: hidden;
 }
 
+app-root {
+  display: block;
+  height: 100vh;
+}
+
 /* Fix for PrimeNG splitter layout shifting bug */
 p-splitter {
   width: 100% !important;

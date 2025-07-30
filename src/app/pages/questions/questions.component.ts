@@ -143,28 +143,10 @@ export class QuestionsComponent implements OnInit {
 
 
   onHorizontalResizeEnd(event: any) {
-    const sizes = event.sizes;
-    const maxSizes = [70, 80];
-    
-    if (sizes[0] > maxSizes[0]) {
-      this.horizontalPanelSizes = [maxSizes[0], 100 - maxSizes[0]];
-    } else if (sizes[1] > maxSizes[1]) {
-      this.horizontalPanelSizes = [100 - maxSizes[1], maxSizes[1]];
-    } else {
-      this.horizontalPanelSizes = sizes;
-    }
+    this.horizontalPanelSizes = event.sizes;
   }
 
   onVerticalResizeEnd(event: any) {
-    const sizes = event.sizes;
-    const maxSizes = [85, 60];
-    
-    if (sizes[0] > maxSizes[0]) {
-      this.verticalPanelSizes = [maxSizes[0], 100 - maxSizes[0]];
-    } else if (sizes[1] > maxSizes[1]) {
-      this.verticalPanelSizes = [100 - maxSizes[1], maxSizes[1]];
-    } else {
-      this.verticalPanelSizes = sizes;
-    }
+    this.verticalPanelSizes = event.sizes;
   }
 }

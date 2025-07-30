@@ -3,8 +3,7 @@
   align-items: center;
   width: 100%;
   padding: 0.75rem 1rem;
-  background: var(--surface-card, #fff);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  background: transparent;
   border-radius: 8px;
   gap: 0.5rem;
 }
@@ -48,7 +47,7 @@
 
 // Dark mode overrides
 :host-context(.dark-mode) .header-flex {
-  background: var(--surface-card, #1f1f1f) !important;
+  background: transparent !important;
   color: var(--text-color, #ffffff) !important;
 }
 
@@ -62,7 +61,7 @@
 
 @media (prefers-color-scheme: dark) {
   .header-flex {
-    background: var(--surface-card, #1f1f1f) !important;
+    background: transparent !important;
     color: var(--text-color, #ffffff) !important;
   }
   

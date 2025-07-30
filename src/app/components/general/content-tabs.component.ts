@@ -44,6 +44,11 @@ import { SolutionComponent } from './solution/solution.component';
       height: 100%;
       box-sizing: border-box;
       contain: layout;
+      background: var(--surface-card, #ffffff);
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      overflow: hidden;
     }
     
     .content-tabs {
@@ -122,6 +127,11 @@ import { SolutionComponent } from './solution/solution.component';
       background-color: var(--surface-card, #1f1f1f) !important;
     }
     
+    :host-context(.dark-mode) {
+      background: var(--surface-card, #1f1f1f) !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    
     @media (prefers-color-scheme: dark) {
       .tab-header {
         background-color: var(--surface-200, #2d2d2d) !important;
@@ -145,6 +155,11 @@ import { SolutionComponent } from './solution/solution.component';
       
       .tab-content {
         background-color: var(--surface-card, #1f1f1f) !important;
+      }
+      
+      :host {
+        background: var(--surface-card, #1f1f1f) !important;
+        border-color: rgba(255, 255, 255, 0.1) !important;
       }
     }
   `]

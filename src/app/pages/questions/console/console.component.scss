@@ -2,6 +2,11 @@
   display: block;
   height: 100%;
   width: 100%;
+  background: var(--surface-card, #ffffff);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 .console-container {
@@ -13,7 +18,6 @@
   font-size: 13px;
   padding: 15px;
   overflow-y: auto;
-  border: 1px solid var(--surface-border, #e0e0e0);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -157,10 +161,14 @@
 }
 
 // Dark mode overrides
+:host-context(.dark-mode) {
+  background: var(--surface-card, #1f1f1f) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
 :host-context(.dark-mode) .console-container {
   background: var(--surface-card, #1f1f1f) !important;
   color: var(--text-color, #ffffff) !important;
-  border-color: var(--surface-border, #555) !important;
 }
 
 :host-context(.dark-mode) .console-container.empty .empty-message {
@@ -169,7 +177,6 @@
 
 :host-context(.dark-mode) .summary {
   background: var(--surface-200, #2d2d2d) !important;
-  border-color: var(--surface-border, #555) !important;
 }
 
 :host-context(.dark-mode) .summary .summary-line {
@@ -178,7 +185,6 @@
 
 :host-context(.dark-mode) .test-case {
   background: var(--surface-card, #2a2a2a) !important;
-  border-color: var(--surface-border, #555) !important;
 }
 
 :host-context(.dark-mode) .test-case .test-header {
@@ -192,10 +198,14 @@
 }
 
 @media (prefers-color-scheme: dark) {
+  :host {
+    background: var(--surface-card, #1f1f1f) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+  }
+  
   .console-container {
     background: var(--surface-card, #1f1f1f) !important;
     color: var(--text-color, #ffffff) !important;
-    border-color: var(--surface-border, #555) !important;
   }
   
   .console-container.empty .empty-message {
@@ -204,7 +214,6 @@
   
   .summary {
     background: var(--surface-200, #2d2d2d) !important;
-    border-color: var(--surface-border, #555) !important;
   }
   
   .summary .summary-line {
@@ -213,7 +222,6 @@
   
   .test-case {
     background: var(--surface-card, #2a2a2a) !important;
-    border-color: var(--surface-border, #555) !important;
   }
   
   .test-case .test-header {

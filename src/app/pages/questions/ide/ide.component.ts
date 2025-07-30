@@ -12,6 +12,8 @@ import {
 } from "@angular/core";
 import { isPlatformBrowser } from "@angular/common";
 import { EditorView, basicSetup } from "codemirror";
+import { keymap } from "@codemirror/view";
+import { indentWithTab } from "@codemirror/commands";
 import { python } from "@codemirror/lang-python";
 import { javascript } from "@codemirror/lang-javascript";
 import { oneDark } from "@codemirror/theme-one-dark";
@@ -101,7 +103,11 @@ export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
                       (window.matchMedia('(prefers-color-scheme: dark)').matches || 
                        document.documentElement.classList.contains('dark-mode'));
 
-    const extensions = [basicSetup, languageExtension];
+    const extensions = [
+      basicSetup,
+      keymap.of([indentWithTab]),
+      languageExtension
+    ];
     if (isDarkMode) {
       extensions.push(oneDark);
     }

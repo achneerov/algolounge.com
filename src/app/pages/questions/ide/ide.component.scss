@@ -9,6 +9,11 @@
   height: 100%;
   width: 100%;
   overflow: auto;
+
+  // Remove outline from CodeMirror editor
+  ::ng-deep .cm-editor {
+    outline: none !important;
+  }
 }
 
 // Dark mode overrides for CodeMirror

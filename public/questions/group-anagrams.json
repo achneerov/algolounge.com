@@ -1,4 +1,7 @@
 {
+  "filename": "group-anagrams",
+  "title": "Group Anagrams",
+  "keywords": ["group", "anagrams", "array", "strings", "rearrange", "letters", "sorted", "key", "character", "phrase"],
   "description": "<h2>Group Anagrams</h2><h3>Problem</h3><p>Given an array of strings <code>strs</code>, group the anagrams together. You can return the answer in any order.</p><p>An <strong>anagram</strong> is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.</p><h3>Examples:</h3><ul><li>If <code>strs = [\"eat\",\"tea\",\"tan\",\"ate\",\"nat\",\"bat\"]</code>, the output should be <code>[[\"bat\"],[\"nat\",\"tan\"],[\"ate\",\"eat\",\"tea\"]]</code>.</li><li>If <code>strs = [\"\"]</code>, the output should be <code>[[\"\"]]</code>.</li><li>If <code>strs = [\"a\"]</code>, the output should be <code>[[\"a\"]]</code>.</li></ul>",
 
   "languages": {

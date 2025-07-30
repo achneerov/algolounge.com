@@ -1,4 +1,7 @@
 {
+  "filename": "valid-anagram",
+  "title": "Valid Anagram",
+  "keywords": ["valid", "anagram", "string", "rearrange", "letters", "character", "frequency", "count", "phrase", "word"],
   "description": "<h2>Valid Anagram</h2><h3>Problem</h3><p>Given two strings <code>s</code> and <code>t</code>, return <code>true</code> if <code>t</code> is an anagram of <code>s</code>, and <code>false</code> otherwise.</p><p>An anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.</p><h3>Examples:</h3><ul><li>If <code>s = \"anagram\"</code> and <code>t = \"nagaram\"</code>, the output should be <code>true</code>.</li><li>If <code>s = \"rat\"</code> and <code>t = \"car\"</code>, the output should be <code>false</code>.</li></ul>",
 
   "languages": {

@@ -1,18 +1,21 @@
 <div class="header-flex">
-  <input
-    type="text"
-    pInputText
-    [(ngModel)]="questionName"
-    placeholder="Enter question name"
-    class="question-input"
-  />
-  <button
-    pButton
-    type="button"
-    label="Go"
-    (click)="onGo()"
-    class="go-btn"
-  ></button>
+  <p-autoComplete
+    [(ngModel)]="selectedQuestion"
+    [suggestions]="searchResults"
+    (completeMethod)="onSearch($event)"
+    (onSelect)="onSelect($event)"
+    (keydown)="onKeyDown($event)"
+    field="title"
+    placeholder="Search questions..."
+    [forceSelection]="false"
+    class="question-search"
+  >
+    <ng-template let-question pTemplate="item">
+      <div class="search-item">
+        <div class="search-title">{{ question.title }}</div>
+      </div>
+    </ng-template>
+  </p-autoComplete>
   <div class="flex-spacer"></div>
   <p-dropdown
     [options]="languages"

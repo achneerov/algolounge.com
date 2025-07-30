@@ -1,4 +1,7 @@
 {
+  "filename": "contains-duplicate",
+  "title": "Contains Duplicate",
+  "keywords": ["contains", "duplicate", "array", "integer", "hash", "set", "distinct", "twice", "appears", "element"],
   "description": "<h2>Contains Duplicate</h2><h3>Problem</h3><p>Given an integer array <code>nums</code>, return <code>true</code> if any value appears at least twice in the array, and return <code>false</code> if every element is distinct.</p><h3>Examples:</h3><ul><li>If <code>nums = [1,2,3,1]</code>, the output should be <code>true</code>.</li><li>If <code>nums = [1,2,3,4]</code>, the output should be <code>false</code>.</li></ul>",
 
   "languages": {

@@ -1,0 +1,86 @@
+{
+  "questions": [
+    {
+      "filename": "contains-duplicate",
+      "title": "Contains Duplicate",
+      "keywords": [
+        "contains",
+        "duplicate",
+        "array",
+        "integer",
+        "hash",
+        "set",
+        "distinct",
+        "twice",
+        "appears",
+        "element"
+      ]
+    },
+    {
+      "filename": "group-anagrams",
+      "title": "Group Anagrams",
+      "keywords": [
+        "group",
+        "anagrams",
+        "array",
+        "strings",
+        "rearrange",
+        "letters",
+        "sorted",
+        "key",
+        "character",
+        "phrase"
+      ]
+    },
+    {
+      "filename": "multiply-and-divide",
+      "title": "Complete the Function",
+      "keywords": [
+        "complete",
+        "function",
+        "multiply",
+        "divide",
+        "number",
+        "mathematical",
+        "operation",
+        "result",
+        "calculation",
+        "arithmetic"
+      ]
+    },
+    {
+      "filename": "two-sum",
+      "title": "Two Sum",
+      "keywords": [
+        "two",
+        "sum",
+        "array",
+        "integer",
+        "target",
+        "indices",
+        "add",
+        "numbers",
+        "hash",
+        "map"
+      ]
+    },
+    {
+      "filename": "valid-anagram",
+      "title": "Valid Anagram",
+      "keywords": [
+        "valid",
+        "anagram",
+        "string",
+        "rearrange",
+        "letters",
+        "character",
+        "frequency",
+        "count",
+        "phrase",
+        "word"
+      ]
+    }
+  ],
+  "lastUpdated": "2025-07-30T02:24:48.705Z",
+  "totalQuestions": 5
+}

@@ -5,8 +5,8 @@ import { HomeComponent } from "./pages/home/home.component";
 
 export const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
-  { path: "questions/:id", component: QuestionsComponent },
-  { path: "questions", redirectTo: "questions/0", pathMatch: "full" },
+  { path: "questions/:name", component: QuestionsComponent },
+  { path: "questions", redirectTo: "questions/contains-duplicate", pathMatch: "full" },
   { path: "home", component: HomeComponent },
   { path: "**", component: NotFoundComponent },
 ];

@@ -11,7 +11,7 @@ import { DropdownModule } from "primeng/dropdown";
   styleUrl: "./header.component.scss",
 })
 export class HeaderComponent {
-  questionId: string = "";
+  questionName: string = "";
   @Input() selectedLanguage: string = "python";
   @Input() isRunning: boolean = false;
   @Output() go = new EventEmitter<string>();
@@ -25,8 +25,8 @@ export class HeaderComponent {
   ];
 
   onGo(): void {
-    if (this.questionId.trim()) {
-      this.go.emit(this.questionId.trim());
+    if (this.questionName.trim()) {
+      this.go.emit(this.questionName.trim());
     }
   }
 

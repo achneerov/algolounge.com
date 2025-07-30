@@ -49,15 +49,15 @@ export class QuestionsComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
-      const id = params.get("id");
-      if (id) {
-        this.loadQuestion(id);
+      const name = params.get("name");
+      if (name) {
+        this.loadQuestion(name);
       }
     });
   }
 
-  onGo(id: string) {
-    this.router.navigate(["/questions", id]);
+  onGo(name: string) {
+    this.router.navigate(["/questions", name]);
   }
 
   onLanguageChange(language: string) {
@@ -103,10 +103,10 @@ export class QuestionsComponent implements OnInit {
 
   notFound = false;
 
-  loadQuestion(id: string) {
+  loadQuestion(name: string) {
     this.notFound = false;
     this.http
-      .get<any>(`/questions/${id}.json`)
+      .get<any>(`/questions/${name}.json`)
       .subscribe({
         next: (data) => {
           this.questionData = data;

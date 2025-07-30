@@ -26,10 +26,8 @@
       <p-splitter layout="vertical" [panelSizes]="verticalPanelSizes" [minSizes]="[10, 5]" (onResizeEnd)="onVerticalResizeEnd($event)">
         <ng-template pTemplate="panel1">
           <app-ide 
-            [params]="functionParams"
             [language]="selectedLanguage"
-            [functionSignature]="functionSignature"
-            [functionName]="functionName"
+            [template]="template"
           ></app-ide>
         </ng-template>
         <ng-template pTemplate="panel2">

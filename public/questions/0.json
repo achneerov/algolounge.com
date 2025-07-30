@@ -3,17 +3,17 @@
 
   "languages": {
     "python": {
-      "function_signature": "def containsDuplicate(nums):",
+      "template": "def containsDuplicate(nums):\n    ",
       "solution_text": "The most efficient approach uses a hash set to keep track of elements we've seen. This algorithm has O(n) time complexity and O(n) space complexity in the worst case.",
       "solution_code": "def containsDuplicate(nums):\n    # Create a set to track seen numbers\n    seen = set()\n    \n    # Iterate through the array\n    for num in nums:\n        # If we've already seen this number, return True\n        if num in seen:\n            return True\n        \n        # Add the number to our set of seen numbers\n        seen.add(num)\n    \n    # If we get through the entire array without finding a duplicate\n    return False"
     },
     "javascript": {
-      "function_signature": "function containsDuplicate(nums) { }",
+      "template": "function containsDuplicate(nums) {\n  \n}",
       "solution_text": "The most efficient approach uses a Set to keep track of elements we've seen. This algorithm has O(n) time complexity and O(n) space complexity in the worst case.",
       "solution_code": "function containsDuplicate(nums) {\n    // Create a set to track seen numbers\n    const seen = new Set();\n    \n    // Iterate through the array\n    for (const num of nums) {\n        // If we've already seen this number, return true\n        if (seen.has(num)) {\n            return true;\n        }\n        // Add the number to our set of seen numbers\n        seen.add(num);\n    }\n    // If we get through the entire array without finding a duplicate\n    return false;\n}"
     },
     "typescript": {
-      "function_signature": "function containsDuplicate(nums: number[]): boolean { }",
+      "template": "function containsDuplicate(nums: number[]): boolean {\n  \n}",
       "solution_text": "The most efficient approach uses a Set to keep track of elements we've seen. This algorithm has O(n) time complexity and O(n) space complexity in the worst case. Note: TypeScript type annotations are automatically stripped during execution.",
       "solution_code": "function containsDuplicate(nums: number[]): boolean {\n    // Create a set to track seen numbers\n    const seen = new Set<number>();\n    \n    // Iterate through the array\n    for (const num of nums) {\n        // If we've already seen this number, return true\n        if (seen.has(num)) {\n            return true;\n        }\n        // Add the number to our set of seen numbers\n        seen.add(num);\n    }\n    // If we get through the entire array without finding a duplicate\n    return false;\n}"
     }
@@ -21,7 +21,6 @@
 
   "order_matters": false,
 
-  "function_params_names": ["nums"],
 
   "test_cases": [
     {

@@ -19,10 +19,8 @@ import { javascript } from "@codemirror/lang-javascript";
 })
 export class IdeComponent implements AfterViewInit, OnChanges {
   @ViewChild("editor") editorElement!: ElementRef;
-  @Input() params: string[] = [];
   @Input() language: string = "python";
-  @Input() functionSignature: string = "";
-  @Input() functionName: string = "";
+  @Input() template: string = "";
 
   private editorView?: EditorView;
 
@@ -32,7 +30,7 @@ export class IdeComponent implements AfterViewInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (
-      (changes["params"] || changes["language"] || changes["functionSignature"] || changes["functionName"]) &&
+      (changes["language"] || changes["template"]) &&
       this.editorElement
     ) {
       this.initEditor();
@@ -40,22 +38,8 @@ export class IdeComponent implements AfterViewInit, OnChanges {
   }
 
   private initEditor() {
-    let doc = "";
+    const doc = this.template || "";
     let languageExtension;
-
-    if (this.functionSignature) {
-      doc = `${this.functionSignature}\n  `;
-    } else {
-      const paramList = (this.params || []).join(", ");
-      const funcName = this.functionName || "function";
-      
-      if (this.language === "python") {
-        doc = `def ${funcName}(${paramList}):\n  `;
-      } else if (this.language === "javascript" || this.language === "typescript") {
-        const tsTypes = this.language === "typescript" ? this.getTypeScript(funcName) : "";
-        doc = `function ${funcName}(${paramList}${tsTypes}) {\n  \n}`;
-      }
-    }
 
     switch (this.language) {
       case "python":
@@ -87,37 +71,18 @@ export class IdeComponent implements AfterViewInit, OnChanges {
   }
 
   getFunctionName(): string {
-    // First try to use the explicit functionName input
-    if (this.functionName) {
-      return this.functionName;
-    }
-    
-    // If we have a function signature, extract the name from it
-    if (this.functionSignature) {
+    // Extract function name from template
+    if (this.template) {
       if (this.language === "python") {
-        const match = this.functionSignature.match(/def\s+(\w+)\s*\(/);
+        const match = this.template.match(/def\s+(\w+)\s*\(/);
         return match ? match[1] : "function";
       } else {
-        const match = this.functionSignature.match(/function\s+(\w+)\s*\(/);
+        const match = this.template.match(/function\s+(\w+)\s*\(/);
         return match ? match[1] : "function";
       }
     }
     
     // Fallback to generic name
     return "function";
-  }
-
-  private getTypeScript(funcName: string): string {
-    // Basic TypeScript type annotations based on common function names
-    if (funcName === "containsDuplicate") {
-      return ": boolean";
-    } else if (funcName === "isAnagram") {
-      return ": boolean";
-    } else if (funcName === "twoSum") {
-      return ": number[]";
-    } else if (funcName === "groupAnagrams") {
-      return ": string[][]";
-    }
-    return "";
   }
 }

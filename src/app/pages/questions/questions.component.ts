@@ -32,11 +32,9 @@ export class QuestionsComponent implements OnInit {
   description: string = "";
   solutionText: string = "";
   solutionCode: string = "";
-  functionParams: string[] = [];
   selectedLanguage: string = "python";
   questionData: any = null;
-  functionSignature: string = "";
-  functionName: string = "";
+  template: string = "";
   executionResult: ExecutionResult | null = null;
   isRunning: boolean = false;
   horizontalPanelSizes: number[] = [40, 60];
@@ -112,7 +110,6 @@ export class QuestionsComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.questionData = data;
-          this.functionParams = data.function_params_names || [];
           this.updateLanguageContent();
           this.notFound = false;
         },
@@ -131,10 +128,7 @@ export class QuestionsComponent implements OnInit {
       if (langData) {
         this.solutionText = langData.solution_text || "";
         this.solutionCode = langData.solution_code || "";
-        this.functionSignature = langData.function_signature;
-        
-        // Extract function name from signature
-        this.functionName = this.extractFunctionName(langData.function_signature, this.selectedLanguage);
+        this.template = langData.template || "";
       }
       // Set description from the global level for multi-language format
       this.description = this.questionData.description || "";
@@ -143,22 +137,10 @@ export class QuestionsComponent implements OnInit {
       this.description = this.questionData.description || "";
       this.solutionText = this.questionData.solution || "";
       this.solutionCode = "";
-      this.functionSignature = "";
-      this.functionName = "";
+      this.template = "";
     }
   }
 
-  private extractFunctionName(signature: string, language: string): string {
-    if (!signature) return "";
-    
-    if (language === "python") {
-      const match = signature.match(/def\s+(\w+)\s*\(/);
-      return match ? match[1] : "";
-    } else {
-      const match = signature.match(/function\s+(\w+)\s*\(/);
-      return match ? match[1] : "";
-    }
-  }
 
   onHorizontalResizeEnd(event: any) {
     const sizes = event.sizes;

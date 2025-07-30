@@ -7,6 +7,42 @@ html, body {
   overflow: hidden;
 }
 
+/* Dark mode detection and activation */
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  
+  html, body {
+    background-color: var(--surface-ground, #121212);
+    color: var(--text-color, #ffffff);
+  }
+  
+  html:not(.light-mode) {
+    &.dark-mode, & {
+      .dark-mode {
+        display: contents;
+      }
+    }
+  }
+}
+
+html.dark-mode, 
+html:not(.light-mode) {
+  background-color: var(--surface-ground, #121212);
+  color: var(--text-color, #ffffff);
+}
+
+/* Light mode override */
+html.light-mode {
+  background-color: var(--surface-ground, #ffffff);
+  color: var(--text-color, #000000);
+  
+  .dark-mode {
+    display: none;
+  }
+}
+
 app-root {
   display: block;
   height: 100vh;
@@ -53,4 +89,23 @@ app-description, app-solution {
   height: 100% !important;
   box-sizing: border-box !important;
   contain: layout !important;
+}
+
+/* Global CodeMirror dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  .cm-editor.cm-focused .cm-lineNumbers .cm-gutterElement,
+  .cm-editor .cm-lineNumbers .cm-gutterElement,
+  .cm-lineNumbers .cm-gutterElement,
+  .cm-gutter.cm-lineNumbers {
+    color: #888888 !important;
+  }
+}
+
+html.dark-mode {
+  .cm-editor.cm-focused .cm-lineNumbers .cm-gutterElement,
+  .cm-editor .cm-lineNumbers .cm-gutterElement,
+  .cm-lineNumbers .cm-gutterElement,
+  .cm-gutter.cm-lineNumbers {
+    color: #888888 !important;
+  }
 }

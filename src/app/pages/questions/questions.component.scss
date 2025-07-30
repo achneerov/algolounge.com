@@ -1,0 +1,36 @@
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: var(--surface-ground, #ffffff);
+}
+
+// Dark mode overrides
+:host-context(.dark-mode) {
+  background: var(--surface-ground, #121212) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :host {
+    background: var(--surface-ground, #121212) !important;
+  }
+}
+
+// PrimeNG splitter dark mode fixes
+:host-context(.dark-mode) ::ng-deep .p-splitter {
+  background: var(--surface-ground, #121212) !important;
+}
+
+:host-context(.dark-mode) ::ng-deep .p-splitter-panel {
+  background: var(--surface-ground, #121212) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  ::ng-deep .p-splitter {
+    background: var(--surface-ground, #121212) !important;
+  }
+  
+  ::ng-deep .p-splitter-panel {
+    background: var(--surface-ground, #121212) !important;
+  }
+}

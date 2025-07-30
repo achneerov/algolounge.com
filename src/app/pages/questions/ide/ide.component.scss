@@ -10,3 +10,96 @@
   width: 100%;
   overflow: auto;
 }
+
+// Dark mode overrides for CodeMirror
+:host-context(.dark-mode) .editor-container {
+  :deep(.cm-editor) {
+    background: var(--surface-card, #1f1f1f) !important;
+    color: var(--text-color, #ffffff) !important;
+  }
+  
+  :deep(.cm-content) {
+    background: var(--surface-card, #1f1f1f) !important;
+    color: var(--text-color, #ffffff) !important;
+  }
+  
+  :deep(.cm-gutters) {
+    background: var(--surface-200, #2d2d2d) !important;
+    border-right: 1px solid var(--surface-border, #555) !important;
+  }
+  
+  :deep(.cm-lineNumbers .cm-gutterElement) {
+    color: var(--text-color-secondary, #888) !important;
+  }
+  
+  :deep(.cm-gutter.cm-lineNumbers) {
+    color: var(--text-color-secondary, #888) !important;
+  }
+  
+  :deep(.cm-lineNumbers) {
+    color: var(--text-color-secondary, #888) !important;
+  }
+  
+  :deep(.cm-activeLine) {
+    background: var(--surface-100, rgba(255, 255, 255, 0.05)) !important;
+  }
+  
+  :deep(.cm-activeLineGutter) {
+    background: var(--surface-300, #444) !important;
+  }
+  
+  :deep(.cm-selectionBackground) {
+    background: var(--primary-color, rgba(102, 204, 255, 0.3)) !important;
+  }
+  
+  :deep(.cm-focused .cm-cursor) {
+    border-left-color: var(--text-color, #ffffff) !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .editor-container {
+    :deep(.cm-editor) {
+      background: var(--surface-card, #1f1f1f) !important;
+      color: var(--text-color, #ffffff) !important;
+    }
+    
+    :deep(.cm-content) {
+      background: var(--surface-card, #1f1f1f) !important;
+      color: var(--text-color, #ffffff) !important;
+    }
+    
+    :deep(.cm-gutters) {
+      background: var(--surface-200, #2d2d2d) !important;
+      border-right: 1px solid var(--surface-border, #555) !important;
+    }
+    
+    :deep(.cm-lineNumbers .cm-gutterElement) {
+      color: var(--text-color-secondary, #888) !important;
+    }
+    
+    :deep(.cm-gutter.cm-lineNumbers) {
+      color: var(--text-color-secondary, #888) !important;
+    }
+    
+    :deep(.cm-lineNumbers) {
+      color: var(--text-color-secondary, #888) !important;
+    }
+    
+    :deep(.cm-activeLine) {
+      background: var(--surface-100, rgba(255, 255, 255, 0.05)) !important;
+    }
+    
+    :deep(.cm-activeLineGutter) {
+      background: var(--surface-300, #444) !important;
+    }
+    
+    :deep(.cm-selectionBackground) {
+      background: var(--primary-color, rgba(102, 204, 255, 0.3)) !important;
+    }
+    
+    :deep(.cm-focused .cm-cursor) {
+      border-left-color: var(--text-color, #ffffff) !important;
+    }
+  }
+}

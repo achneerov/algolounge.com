@@ -96,6 +96,57 @@ import { SolutionComponent } from './solution/solution.component';
       min-width: 0;
       box-sizing: border-box;
     }
+    
+    // Dark mode overrides
+    :host-context(.dark-mode) .tab-header {
+      background-color: var(--surface-200, #2d2d2d) !important;
+      border-bottom-color: var(--surface-border, #555) !important;
+    }
+    
+    :host-context(.dark-mode) .tab-header button {
+      color: var(--text-color-secondary, #cccccc) !important;
+    }
+    
+    :host-context(.dark-mode) .tab-header button:hover {
+      color: var(--text-color, #ffffff) !important;
+      background-color: var(--surface-300, #444) !important;
+    }
+    
+    :host-context(.dark-mode) .tab-header button.active {
+      color: var(--primary-300, #66ccff) !important;
+      border-bottom-color: var(--primary-300, #66ccff) !important;
+      background-color: var(--surface-card, #1f1f1f) !important;
+    }
+    
+    :host-context(.dark-mode) .tab-content {
+      background-color: var(--surface-card, #1f1f1f) !important;
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      .tab-header {
+        background-color: var(--surface-200, #2d2d2d) !important;
+        border-bottom-color: var(--surface-border, #555) !important;
+      }
+      
+      .tab-header button {
+        color: var(--text-color-secondary, #cccccc) !important;
+      }
+      
+      .tab-header button:hover {
+        color: var(--text-color, #ffffff) !important;
+        background-color: var(--surface-300, #444) !important;
+      }
+      
+      .tab-header button.active {
+        color: var(--primary-300, #66ccff) !important;
+        border-bottom-color: var(--primary-300, #66ccff) !important;
+        background-color: var(--surface-card, #1f1f1f) !important;
+      }
+      
+      .tab-content {
+        background-color: var(--surface-card, #1f1f1f) !important;
+      }
+    }
   `]
 })
 export class ContentTabsComponent {

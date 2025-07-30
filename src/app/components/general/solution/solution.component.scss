@@ -12,12 +12,14 @@
   min-width: 0;
   overflow-y: auto;
   box-sizing: border-box;
+  background: var(--surface-card, #ffffff);
+  color: var(--text-color, #000000);
   
   .solution-text {
     margin-bottom: 2rem;
     
     h3 {
-      color: #333;
+      color: var(--text-color, #333);
       margin-bottom: 0.75rem;
       font-size: 1.25rem;
       font-weight: 600;
@@ -25,7 +27,7 @@
     
     p {
       line-height: 1.6;
-      color: #555;
+      color: var(--text-color-secondary, #555);
       word-wrap: break-word;
       margin: 0;
     }
@@ -39,15 +41,16 @@
       margin-bottom: 0.75rem;
       
       h3 {
-        color: #333;
+        color: var(--text-color, #333);
         font-size: 1.25rem;
         font-weight: 600;
         margin: 0;
       }
       
       .copy-button {
-        background: #f6f8fa;
-        border: 1px solid #d0d7de;
+        background: var(--surface-100, #f6f8fa);
+        border: 1px solid var(--surface-border, #d0d7de);
+        color: var(--text-color, #000);
         border-radius: 6px;
         padding: 6px 12px;
         font-size: 12px;
@@ -55,20 +58,20 @@
         transition: all 0.2s ease;
         
         &:hover {
-          background: #f1f3f4;
-          border-color: #c1c8cd;
+          background: var(--surface-200, #f1f3f4);
+          border-color: var(--surface-border, #c1c8cd);
         }
         
         &:active {
-          background: #dfe2e5;
+          background: var(--surface-300, #dfe2e5);
         }
       }
     }
     
     .code-block {
       pre {
-        background-color: #f6f8fa;
-        border: 1px solid #d0d7de;
+        background-color: var(--surface-100, #f6f8fa);
+        border: 1px solid var(--surface-border, #d0d7de);
         border-radius: 6px;
         padding: 1rem;
         margin: 0;
@@ -83,7 +86,7 @@
           padding: 0;
           border: none;
           font-size: inherit;
-          color: #24292f;
+          color: var(--text-color, #24292f);
           white-space: pre;
         }
       }
@@ -91,7 +94,84 @@
   }
   
   .no-content {
-    color: #888;
+    color: var(--text-color-secondary, #888);
     font-style: italic;
+  }
+}
+
+// Dark mode overrides
+:host-context(.dark-mode) .solution-container {
+  background: var(--surface-card, #1f1f1f) !important;
+  color: var(--text-color, #ffffff) !important;
+}
+
+:host-context(.dark-mode) .solution-container .solution-text h3,
+:host-context(.dark-mode) .solution-container .code-header h3 {
+  color: var(--text-color, #ffffff) !important;
+}
+
+:host-context(.dark-mode) .solution-container .solution-text p {
+  color: var(--text-color-secondary, #cccccc) !important;
+}
+
+:host-context(.dark-mode) .solution-container .copy-button {
+  background: var(--surface-200, #333) !important;
+  border-color: var(--surface-border, #555) !important;
+  color: var(--text-color, #ffffff) !important;
+}
+
+:host-context(.dark-mode) .solution-container .copy-button:hover {
+  background: var(--surface-300, #444) !important;
+}
+
+:host-context(.dark-mode) .solution-container pre {
+  background-color: var(--surface-200, #2d2d2d) !important;
+  border-color: var(--surface-border, #555) !important;
+}
+
+:host-context(.dark-mode) .solution-container pre code {
+  color: var(--text-color, #ffffff) !important;
+}
+
+:host-context(.dark-mode) .solution-container .no-content {
+  color: var(--text-color-secondary, #aaaaaa) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .solution-container {
+    background: var(--surface-card, #1f1f1f) !important;
+    color: var(--text-color, #ffffff) !important;
+  }
+  
+  .solution-container .solution-text h3,
+  .solution-container .code-header h3 {
+    color: var(--text-color, #ffffff) !important;
+  }
+  
+  .solution-container .solution-text p {
+    color: var(--text-color-secondary, #cccccc) !important;
+  }
+  
+  .solution-container .copy-button {
+    background: var(--surface-200, #333) !important;
+    border-color: var(--surface-border, #555) !important;
+    color: var(--text-color, #ffffff) !important;
+  }
+  
+  .solution-container .copy-button:hover {
+    background: var(--surface-300, #444) !important;
+  }
+  
+  .solution-container pre {
+    background-color: var(--surface-200, #2d2d2d) !important;
+    border-color: var(--surface-border, #555) !important;
+  }
+  
+  .solution-container pre code {
+    color: var(--text-color, #ffffff) !important;
+  }
+  
+  .solution-container .no-content {
+    color: var(--text-color-secondary, #aaaaaa) !important;
   }
 }

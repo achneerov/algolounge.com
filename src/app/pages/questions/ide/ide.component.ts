@@ -6,10 +6,15 @@ import {
   Input,
   OnChanges,
   SimpleChanges,
+  OnDestroy,
+  Inject,
+  PLATFORM_ID,
 } from "@angular/core";
+import { isPlatformBrowser } from "@angular/common";
 import { EditorView, basicSetup } from "codemirror";
 import { python } from "@codemirror/lang-python";
 import { javascript } from "@codemirror/lang-javascript";
+import { oneDark } from "@codemirror/theme-one-dark";
 
 @Component({
   selector: "app-ide",
@@ -17,15 +22,41 @@ import { javascript } from "@codemirror/lang-javascript";
   templateUrl: "./ide.component.html",
   styleUrl: "./ide.component.scss",
 })
-export class IdeComponent implements AfterViewInit, OnChanges {
+export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
   @ViewChild("editor") editorElement!: ElementRef;
   @Input() language: string = "python";
   @Input() template: string = "";
 
   private editorView?: EditorView;
+  private darkModeQuery?: MediaQueryList;
+  private darkModeListener?: (e: MediaQueryListEvent) => void;
+  private forceTemplateReload = false;
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngAfterViewInit() {
     this.initEditor();
+    this.setupThemeListener();
+  }
+
+  ngOnDestroy() {
+    if (this.editorView) {
+      this.editorView.destroy();
+    }
+    if (this.darkModeQuery && this.darkModeListener) {
+      this.darkModeQuery.removeEventListener('change', this.darkModeListener);
+    }
+  }
+
+  private setupThemeListener() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      this.darkModeListener = () => {
+        // Re-initialize editor when theme changes (don't force template reload)
+        this.initEditor();
+      };
+      this.darkModeQuery.addEventListener('change', this.darkModeListener);
+    }
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -33,24 +64,46 @@ export class IdeComponent implements AfterViewInit, OnChanges {
       (changes["language"] || changes["template"]) &&
       this.editorElement
     ) {
+      // Force template reload when language or template changes
+      this.forceTemplateReload = true;
       this.initEditor();
     }
   }
 
   private initEditor() {
-    const doc = this.template || "";
+    // Use template if forced reload or no editor exists, otherwise preserve content
+    const currentDoc = (this.forceTemplateReload || !this.editorView || this.editorView.state.doc.toString().trim() === "")
+      ? (this.template || "")
+      : this.editorView.state.doc.toString();
+    
+    // Reset the force reload flag
+    this.forceTemplateReload = false;
     let languageExtension;
 
-    switch (this.language) {
+    switch (this.language.toLowerCase()) {
       case "python":
         languageExtension = python();
         break;
       case "javascript":
+      case "js":
+        languageExtension = javascript({ jsx: false });
+        break;
       case "typescript":
-        languageExtension = javascript();
+      case "ts":
+        languageExtension = javascript({ typescript: true });
         break;
       default:
         languageExtension = python();
+    }
+
+    // Check if dark mode is active
+    const isDarkMode = isPlatformBrowser(this.platformId) && 
+                      (window.matchMedia('(prefers-color-scheme: dark)').matches || 
+                       document.documentElement.classList.contains('dark-mode'));
+
+    const extensions = [basicSetup, languageExtension];
+    if (isDarkMode) {
+      extensions.push(oneDark);
     }
 
     if (this.editorView) {
@@ -58,8 +111,8 @@ export class IdeComponent implements AfterViewInit, OnChanges {
     }
     this.editorView = new EditorView({
       parent: this.editorElement.nativeElement,
-      doc,
-      extensions: [basicSetup, languageExtension],
+      doc: currentDoc,
+      extensions,
     });
   }
 

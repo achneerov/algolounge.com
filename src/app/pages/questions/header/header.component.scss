@@ -45,3 +45,32 @@
 .flex-spacer {
   flex: 1 1 auto;
 }
+
+// Dark mode overrides
+:host-context(.dark-mode) .header-flex {
+  background: var(--surface-card, #1f1f1f) !important;
+  color: var(--text-color, #ffffff) !important;
+}
+
+:host-context(.dark-mode) .search-item .search-title {
+  color: var(--text-color, #ffffff) !important;
+}
+
+:host-context(.dark-mode) .search-item .search-filename {
+  color: var(--text-color-secondary, #cccccc) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .header-flex {
+    background: var(--surface-card, #1f1f1f) !important;
+    color: var(--text-color, #ffffff) !important;
+  }
+  
+  .search-item .search-title {
+    color: var(--text-color, #ffffff) !important;
+  }
+  
+  .search-item .search-filename {
+    color: var(--text-color-secondary, #cccccc) !important;
+  }
+}

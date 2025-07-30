@@ -6,7 +6,7 @@
 
   "languages": {
     "python": {
-      "template": "def twoSum(nums, target):\n    ",
+      "template": "def twoSum(nums, target):\n  ",
       "solution_text": "The most efficient approach uses a hash map (dictionary) to keep track of the numbers we've seen and their indices. As we iterate through the array, for each number we calculate its complement (target - current number) and check if we've seen it before. This achieves O(n) time complexity and O(n) space complexity.",
       "solution_code": "def twoSum(nums, target):\n    seen = {}\n    \n    for i, num in enumerate(nums):\n        complement = target - num\n        \n        if complement in seen:\n            return [seen[complement], i]\n        \n        seen[num] = i\n    \n    return []"
     },

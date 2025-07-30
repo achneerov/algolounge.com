@@ -6,7 +6,7 @@
 
   "languages": {
     "python": {
-      "template": "def groupAnagrams(strs):\n    ",
+      "template": "def groupAnagrams(strs):\n  ",
       "solution_text": "The most efficient approach uses a hash map where the key is a sorted version of each string. Since anagrams will have the same characters, sorting them will produce identical keys. We group strings with the same sorted key together. This approach has O(n * m log m) time complexity, where n is the number of strings and m is the average length of the strings.",
       "solution_code": "def groupAnagrams(strs):\n    # Create a dictionary to group anagrams\n    anagram_groups = {}\n    \n    # Iterate through each string in the input array\n    for s in strs:\n        # Sort the string to use as key\n        # Since anagrams will have the same sorted string\n        sorted_str = ''.join(sorted(s))\n        \n        # If we've seen this sorted string before, add the original\n        # string to its group\n        if sorted_str in anagram_groups:\n            anagram_groups[sorted_str].append(s)\n        # Otherwise, create a new group\n        else:\n            anagram_groups[sorted_str] = [s]\n    \n    # Return the values (groups of anagrams) as a list\n    return list(anagram_groups.values())"
     },

@@ -122,7 +122,7 @@
 }
 
 :host-context(.dark-mode) .taskbar {
-  background: var(--surface-200, #1f1f1f) !important;
+  background: var(--surface-200, #2d2d2d) !important;
   border-bottom-color: rgba(255, 255, 255, 0.1) !important;
 }
 
@@ -162,7 +162,7 @@
   }
   
   .taskbar {
-    background: var(--surface-200, #1f1f1f) !important;
+    background: var(--surface-200, #2d2d2d) !important;
     border-bottom-color: rgba(255, 255, 255, 0.1) !important;
   }
   

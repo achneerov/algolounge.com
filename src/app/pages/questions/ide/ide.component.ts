@@ -4,6 +4,8 @@ import {
   ElementRef,
   ViewChild,
   Input,
+  Output,
+  EventEmitter,
   OnChanges,
   SimpleChanges,
   OnDestroy,
@@ -17,10 +19,13 @@ import { indentWithTab } from "@codemirror/commands";
 import { python } from "@codemirror/lang-python";
 import { javascript } from "@codemirror/lang-javascript";
 import { oneDark } from "@codemirror/theme-one-dark";
+import { DropdownModule } from "primeng/dropdown";
+import { FormsModule } from "@angular/forms";
+import { ButtonModule } from "primeng/button";
 
 @Component({
   selector: "app-ide",
-  imports: [],
+  imports: [DropdownModule, FormsModule, ButtonModule],
   templateUrl: "./ide.component.html",
   styleUrl: "./ide.component.scss",
 })
@@ -28,6 +33,13 @@ export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
   @ViewChild("editor") editorElement!: ElementRef;
   @Input() language: string = "python";
   @Input() template: string = "";
+  @Output() languageChange = new EventEmitter<string>();
+
+  languages = [
+    { label: "Python", value: "python" },
+    { label: "JavaScript", value: "javascript" },
+    { label: "TypeScript", value: "typescript" }
+  ];
 
   private editorView?: EditorView;
   private darkModeQuery?: MediaQueryList;
@@ -143,5 +155,18 @@ export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
     
     // Fallback to generic name
     return "function";
+  }
+
+  onLanguageChange(event: Event): void {
+    const target = event.target as HTMLSelectElement;
+    this.languageChange.emit(target.value);
+  }
+
+  resetTemplate(): void {
+    if (this.template && this.editorView) {
+      // Force template reload and reinitialize editor
+      this.forceTemplateReload = true;
+      this.initEditor();
+    }
   }
 }

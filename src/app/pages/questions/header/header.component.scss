@@ -1,11 +1,27 @@
 .header-flex {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   width: 100%;
   padding: 0.75rem 1rem;
   background: transparent;
   border-radius: 8px;
   gap: 0.5rem;
+}
+
+.header-left {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.header-center {
+  display: flex;
+  justify-content: center;
+}
+
+.header-right {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .question-search {

@@ -1,1 +1,26 @@
-<div #editor class="editor-container"></div>
+<div class="ide-wrapper">
+  <div class="taskbar">
+    <div class="taskbar-left">
+      <select 
+        class="language-dropdown" 
+        [value]="language" 
+        (change)="onLanguageChange($event)"
+      >
+        <option value="python">Python</option>
+        <option value="javascript">JavaScript</option>
+        <option value="typescript">TypeScript</option>
+      </select>
+    </div>
+    <div class="taskbar-right">
+      <button
+        pButton
+        type="button"
+        (click)="resetTemplate()"
+        [disabled]="!template"
+        class="reset-btn"
+        title="Reset Template"
+      >🔄</button>
+    </div>
+  </div>
+  <div #editor class="editor-container"></div>
+</div>

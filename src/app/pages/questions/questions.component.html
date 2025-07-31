@@ -29,6 +29,7 @@
           <app-ide 
             [language]="selectedLanguage"
             [template]="template"
+            (languageChange)="onLanguageChange($event)"
           ></app-ide>
         </ng-template>
         <ng-template pTemplate="panel2">

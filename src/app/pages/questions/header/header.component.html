@@ -1,38 +1,33 @@
 <div class="header-flex">
-  <p-autoComplete
-    [(ngModel)]="selectedQuestion"
-    [suggestions]="searchResults"
-    (completeMethod)="onSearch($event)"
-    (onSelect)="onSelect($event)"
-    (keydown)="onKeyDown($event)"
-    field="title"
-    placeholder="Search questions..."
-    [forceSelection]="false"
-    class="question-search"
-  >
-    <ng-template let-question pTemplate="item">
-      <div class="search-item">
-        <div class="search-title">{{ question.title }}</div>
-      </div>
-    </ng-template>
-  </p-autoComplete>
-  <div class="flex-spacer"></div>
-  <p-dropdown
-    [options]="languages"
-    [(ngModel)]="selectedLanguage"
-    (ngModelChange)="onLanguageChange($event)"
-    optionLabel="label"
-    optionValue="value"
-    placeholder="Select Language"
-    class="language-dropdown"
-  ></p-dropdown>
-  <button
-    pButton
-    type="button"
-    [label]="isRunning ? 'Running...' : 'Run'"
-    (click)="onRun()"
-    [disabled]="isRunning"
-    class="run-btn"
-  ></button>
-  <div class="flex-spacer"></div>
+  <div class="header-left">
+    <p-autoComplete
+      [(ngModel)]="selectedQuestion"
+      [suggestions]="searchResults"
+      (completeMethod)="onSearch($event)"
+      (onSelect)="onSelect($event)"
+      (keydown)="onKeyDown($event)"
+      field="title"
+      placeholder="Search questions..."
+      [forceSelection]="false"
+      class="question-search"
+    >
+      <ng-template let-question pTemplate="item">
+        <div class="search-item">
+          <div class="search-title">{{ question.title }}</div>
+        </div>
+      </ng-template>
+    </p-autoComplete>
+  </div>
+  <div class="header-center">
+    <button
+      pButton
+      type="button"
+      [label]="isRunning ? 'Running...' : 'Run'"
+      (click)="onRun()"
+      [disabled]="isRunning"
+      class="run-btn"
+    ></button>
+  </div>
+  <div class="header-right">
+  </div>
 </div>

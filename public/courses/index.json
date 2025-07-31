@@ -1,0 +1,93 @@
+{
+  "courses": [
+    {
+      "filename": "algotime_summer_2025",
+      "title": "AlgoTime Summer 2025",
+      "keywords": [
+        "algorithm",
+        "data",
+        "structures",
+        "bootcamp",
+        "interview",
+        "preparation",
+        "8",
+        "weeks",
+        "beginner",
+        "intermediate",
+        "summer",
+        "comprehensive"
+      ]
+    },
+    {
+      "filename": "javascript_interview_prep",
+      "title": "JavaScript Interview Prep Sprint", 
+      "keywords": [
+        "javascript",
+        "interview",
+        "preparation",
+        "sprint",
+        "10",
+        "days",
+        "intermediate",
+        "advanced",
+        "frontend",
+        "fullstack",
+        "intensive"
+      ]
+    },
+    {
+      "filename": "data_structures_bootcamp",
+      "title": "Data Structures Bootcamp",
+      "keywords": [
+        "data",
+        "structures",
+        "bootcamp",
+        "fundamental",
+        "coding",
+        "exercises",
+        "beginner",
+        "advanced",
+        "6",
+        "modules",
+        "hands-on"
+      ]
+    },
+    {
+      "filename": "beginner_coding_challenge",
+      "title": "30-Day Beginner Coding Challenge",
+      "keywords": [
+        "30",
+        "day",
+        "beginner",
+        "coding",
+        "challenge",
+        "absolute",
+        "beginner",
+        "problem",
+        "solving",
+        "computational",
+        "thinking"
+      ]
+    },
+    {
+      "filename": "weekend_warrior_algorithms",
+      "title": "Weekend Warrior Algorithms",
+      "keywords": [
+        "weekend",
+        "warrior",
+        "algorithms",
+        "professionals",
+        "busy",
+        "coding",
+        "skills",
+        "8",
+        "weekends",
+        "intermediate",
+        "working",
+        "developers"
+      ]
+    }
+  ],
+  "lastUpdated": "2025-07-31T12:00:00.000Z",
+  "totalCourses": 5
+}

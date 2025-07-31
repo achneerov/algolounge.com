@@ -1,24 +1,36 @@
 <div class="courses-container">
-  <h1>Courses</h1>
-  <p>Coming soon! This is where you'll find programming courses and tutorials.</p>
+  <div class="courses-header">
+    <h1>Courses</h1>
+    <p>Discover programming courses and tutorials designed to level up your coding skills.</p>
+  </div>
   
-  <div class="course-grid">
-    <div class="course-card">
-      <h3>Python Fundamentals</h3>
-      <p>Learn the basics of Python programming</p>
-      <span class="status">Coming Soon</span>
+  <div class="search-container">
+    <p-autoComplete
+      [(ngModel)]="selectedCourse"
+      [suggestions]="searchResults"
+      (completeMethod)="onSearch($event)"
+      (onSelect)="onSelect($event.value)"
+      (keydown)="onKeyDown($event)"
+      field="title"
+      placeholder="Search courses..."
+      [forceSelection]="false"
+      class="course-search"
+    >
+      <ng-template let-course pTemplate="item">
+        <div class="search-item">
+          <div class="search-title">{{ course.title }}</div>
+        </div>
+      </ng-template>
+    </p-autoComplete>
+  </div>
+  
+  <div class="course-list" *ngIf="displayResults.length > 0">
+    <div *ngFor="let course of displayResults" class="course-item" (click)="onSelect(course)">
+      <h3>{{ course.title }}</h3>
     </div>
-    
-    <div class="course-card">
-      <h3>JavaScript Essentials</h3>
-      <p>Master modern JavaScript development</p>
-      <span class="status">Coming Soon</span>
-    </div>
-    
-    <div class="course-card">
-      <h3>Data Structures & Algorithms</h3>
-      <p>Essential CS concepts for interviews</p>
-      <span class="status">Coming Soon</span>
-    </div>
+  </div>
+  
+  <div *ngIf="displayResults.length === 0" class="no-results">
+    <p>No courses found. Try a different search term.</p>
   </div>
 </div>

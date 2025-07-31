@@ -1,0 +1,86 @@
+{
+  "course_name": "JavaScript Interview Prep Sprint",
+  "course_description": "A fast-paced 10-day intensive course focused on JavaScript-specific coding challenges and interview questions. Perfect for developers preparing for frontend/fullstack interviews at top tech companies.",
+  "duration": "10 days",
+  "difficulty": "Intermediate to Advanced",
+  "target_audience": "JavaScript developers with 1+ years experience",
+  "days": {
+    "day_1": {
+      "title": "JavaScript Fundamentals Review",
+      "description": "Brush up on core JS concepts with practical problems",
+      "focus_topics": ["Arrays", "Objects", "ES6+ features"],
+      "questions": [
+        "two-sum",
+        "contains-duplicate"
+      ]
+    },
+    "day_2": {
+      "title": "String Manipulation Mastery",
+      "description": "Master string processing with JavaScript's powerful methods",
+      "focus_topics": ["String methods", "Regular expressions", "Unicode handling"],
+      "questions": [
+        "valid-anagram",
+        "group-anagrams"
+      ]
+    },
+    "day_3": {
+      "title": "Hash Maps & Sets",
+      "description": "Leverage JavaScript's Map and Set for optimal solutions",
+      "focus_topics": ["Map vs Object", "Set operations", "Time complexity"],
+      "questions": [
+        "contains-duplicate",
+        "group-anagrams"
+      ]
+    },
+    "day_4": {
+      "title": "Mathematical Operations",
+      "description": "Handle edge cases in mathematical computations",
+      "focus_topics": ["Number precision", "BigInt", "Math object"],
+      "questions": [
+        "multiply-and-divide"
+      ]
+    },
+    "day_5": {
+      "title": "Midpoint Challenge",
+      "description": "Mixed problems to test your progress so far",
+      "focus_topics": ["Problem identification", "Optimal approach selection"],
+      "questions": [
+        "two-sum",
+        "valid-anagram",
+        "multiply-and-divide"
+      ]
+    }
+  },
+  "upcoming_days": {
+    "day_6": {
+      "title": "Async JavaScript Challenges",
+      "description": "Coming soon - Promises, async/await, and concurrency",
+      "questions": []
+    },
+    "day_7": {
+      "title": "Functional Programming Patterns",
+      "description": "Coming soon - Higher-order functions and immutability",
+      "questions": []
+    },
+    "day_8": {
+      "title": "DOM Manipulation Problems",
+      "description": "Coming soon - Browser-specific coding challenges",
+      "questions": []
+    },
+    "day_9": {
+      "title": "Performance Optimization",
+      "description": "Coming soon - Memory management and performance tuning",
+      "questions": []
+    },
+    "day_10": {
+      "title": "Mock Interview Simulation",
+      "description": "Final assessment with realistic interview scenarios",
+      "questions": [
+        "two-sum",
+        "group-anagrams",
+        "contains-duplicate",
+        "valid-anagram"
+      ]
+    }
+  }
+}

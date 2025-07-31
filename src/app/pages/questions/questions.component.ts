@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, OnDestroy, ViewChild } from "@angular/core";
 import { IdeComponent } from "./ide/ide.component";
 import { HeaderComponent } from "./header/header.component";
 import { ConsoleComponent, ExecutionResult } from "./console/console.component";
@@ -26,7 +26,7 @@ import { CodeExecutionService } from "../../services/code-execution.service";
   templateUrl: "./questions.component.html",
   styleUrl: "./questions.component.scss",
 })
-export class QuestionsComponent implements OnInit {
+export class QuestionsComponent implements OnInit, OnDestroy {
   @ViewChild(IdeComponent) ideComponent!: IdeComponent;
   
   description: string = "";
@@ -48,12 +48,20 @@ export class QuestionsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // Add questions-page class to body
+    document.body.classList.add('questions-page');
+    
     this.route.paramMap.subscribe((params) => {
       const name = params.get("name");
       if (name) {
         this.loadQuestion(name);
       }
     });
+  }
+
+  ngOnDestroy() {
+    // Remove questions-page class when leaving
+    document.body.classList.remove('questions-page');
   }
 
   onGo(name: string) {

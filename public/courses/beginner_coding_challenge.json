@@ -1,0 +1,58 @@
+{
+  "course_name": "30-Day Beginner Coding Challenge",
+  "course_description": "A gentle introduction to programming problem-solving for absolute beginners. Each day builds upon the previous, creating a solid foundation in computational thinking and basic algorithms.",
+  "duration": "30 days",
+  "difficulty": "Absolute Beginner",
+  "time_commitment": "30-45 minutes per day",
+  "languages_supported": ["Python", "JavaScript", "TypeScript"],
+  "fortnights": {
+    "fortnight_1": {
+      "title": "Getting Started with Problem Solving",
+      "description": "Learn the basics of breaking down problems and thinking algorithmically",
+      "days_covered": "Days 1-14",
+      "key_concepts": ["Variables", "Basic operations", "Simple logic"],
+      "questions": [
+        "two-sum"
+      ]
+    },
+    "fortnight_2": {
+      "title": "Intermediate Concepts & Practice",
+      "description": "Dive deeper into data manipulation and more complex problem solving",
+      "days_covered": "Days 15-30",
+      "key_concepts": ["Arrays", "Hash tables", "String manipulation", "Optimization"],
+      "milestone_projects": [
+        {
+          "day": 20,
+          "title": "Duplicate Detective",
+          "description": "Build a program to find duplicates in various datasets"
+        },
+        {
+          "day": 25,
+          "title": "Word Wizard",
+          "description": "Create an anagram solver and word game"
+        },
+        {
+          "day": 30,
+          "title": "Math Master",
+          "description": "Implement a calculator with advanced operations"
+        }
+      ],
+      "questions": [
+        "contains-duplicate",
+        "valid-anagram",
+        "group-anagrams",
+        "multiply-and-divide"
+      ]
+    }
+  },
+  "daily_structure": {
+    "warm_up": "5 minutes of concept review",
+    "main_challenge": "20-30 minutes of problem solving",
+    "reflection": "5-10 minutes of code review and notes"
+  },
+  "completion_rewards": {
+    "certificate": "30-Day Coding Challenge Certificate",
+    "badge": "Problem Solver",
+    "next_steps": "Ready for AlgoTime Summer 2025 or JavaScript Interview Prep"
+  }
+}

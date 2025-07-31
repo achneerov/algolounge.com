@@ -1,0 +1,34 @@
+<div class="course-detail-container">
+  <div class="course-header">
+    <button class="back-btn" (click)="goBack()">← Back to Courses</button>
+    <h1 *ngIf="course">{{ course.course_name }}</h1>
+    <p *ngIf="course" class="course-description">{{ course.course_description }}</p>
+  </div>
+  
+  <div class="sections-container" *ngIf="courseSections.length > 0">
+    <div *ngFor="let section of courseSections" class="course-section">
+      <div class="section-header">
+        <h2>{{ section.title }}</h2>
+        <p *ngIf="section.description" class="section-description">{{ section.description }}</p>
+      </div>
+      
+      <div class="questions-list" *ngIf="section.questions.length > 0">
+        <div 
+          *ngFor="let question of section.questions" 
+          class="question-item"
+          (click)="onQuestionClick(question)"
+        >
+          <h3>{{ question.title }}</h3>
+        </div>
+      </div>
+      
+      <div *ngIf="section.questions.length === 0" class="no-questions-in-section">
+        <p>No questions in this section yet.</p>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="courseSections.length === 0 && course" class="no-sections">
+    <p>No sections found in this course.</p>
+  </div>
+</div>

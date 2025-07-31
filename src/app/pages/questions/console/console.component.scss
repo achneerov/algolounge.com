@@ -58,7 +58,8 @@
     border-left: 4px solid transparent;
     
     &.passed {
-      border-left-color: var(--green-500, #28a745);
+      border: 1px solid var(--green-500, #28a745);
+      border-left: 4px solid var(--green-500, #28a745);
       background: var(--green-50, #f8fff9);
       
       .test-status .pass-icon {
@@ -68,7 +69,8 @@
     }
     
     &.failed {
-      border-left-color: var(--red-500, #dc3545);
+      border: 1px solid var(--red-500, #dc3545);
+      border-left: 4px solid var(--red-500, #dc3545);
       background: var(--red-50, #fff8f8);
       
       .test-status .fail-icon {
@@ -187,6 +189,14 @@
   background: var(--surface-card, #2a2a2a) !important;
 }
 
+:host-context(.dark-mode) .test-case.failed {
+  background: #3a2525 !important;
+}
+
+:host-context(.dark-mode) .test-case.passed {
+  background: #253a25 !important;
+}
+
 :host-context(.dark-mode) .test-case .test-header {
   color: var(--primary-300, #66ccff) !important;
 }
@@ -222,6 +232,14 @@
   
   .test-case {
     background: var(--surface-card, #2a2a2a) !important;
+  }
+  
+  .test-case.failed {
+    background: #3a2525 !important;
+  }
+  
+  .test-case.passed {
+    background: #253a25 !important;
   }
   
   .test-case .test-header {

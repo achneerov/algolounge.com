@@ -1,7 +1,15 @@
+:host {
+  display: block;
+  background: var(--surface-ground, #ffffff);
+  min-height: 100vh;
+}
+
 .course-detail-container {
   padding: 1rem;
   max-width: 1200px;
   margin: 0 auto;
+  background: var(--surface-ground, #ffffff);
+  min-height: 100vh;
 }
 
 .course-header {
@@ -42,10 +50,11 @@
 }
 
 .course-section {
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 8px;
   padding: 1.5rem;
   background: var(--surface-card, #ffffff);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 .section-header {
@@ -72,16 +81,17 @@
 }
 
 .question-item {
-  background: var(--surface-100, #f8f9fa);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: var(--surface-50, #f8f9fa);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 6px;
   padding: 0.75rem;
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.1s ease;
   
   &:hover {
-    background: var(--surface-200, #e9ecef);
+    background: var(--surface-100, #e9ecef);
     transform: translateY(-1px);
+    border-color: rgba(0, 0, 0, 0.15);
   }
   
   h3 {

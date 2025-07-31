@@ -5,23 +5,13 @@
   </div>
   
   <div class="search-container">
-    <p-autoComplete
-      [(ngModel)]="selectedCourse"
-      [suggestions]="searchResults"
-      (completeMethod)="onSearch($event)"
-      (onSelect)="onSelect($event.value)"
-      (keydown)="onKeyDown($event)"
-      field="title"
+    <input 
+      type="text" 
+      class="search-input"
       placeholder="Search courses..."
-      [forceSelection]="false"
-      class="course-search"
-    >
-      <ng-template let-course pTemplate="item">
-        <div class="search-item">
-          <div class="search-title">{{ course.title }}</div>
-        </div>
-      </ng-template>
-    </p-autoComplete>
+      [(ngModel)]="searchTerm"
+      (input)="onSearchChange($event)"
+    />
   </div>
   
   <div class="course-list" *ngIf="displayResults.length > 0">

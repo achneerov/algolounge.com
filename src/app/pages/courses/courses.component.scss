@@ -31,9 +31,26 @@
 .search-container {
   margin-bottom: 1rem;
   
-  .course-search {
+  .search-input {
     width: 100%;
     max-width: 500px;
+    padding: 0.75rem 1rem;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: var(--surface-card, #ffffff);
+    color: var(--text-color, #333333);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    
+    &:focus {
+      outline: none;
+      border-color: var(--primary-color, #007acc);
+      box-shadow: 0 0 0 3px rgba(0, 122, 204, 0.1);
+    }
+    
+    &::placeholder {
+      color: var(--text-color-secondary, #999999);
+    }
   }
 }
 
@@ -66,14 +83,6 @@
   }
 }
 
-.search-item {
-  padding: 0.5rem;
-  
-  .search-title {
-    font-weight: 500;
-    color: var(--text-color, #333333);
-  }
-}
 
 .no-results {
   text-align: center;
@@ -109,8 +118,19 @@
     }
   }
   
-  .search-item .search-title {
+  .search-input {
+    background: var(--surface-card, #2a2a2a) !important;
     color: var(--text-color, #ffffff) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    
+    &:focus {
+      border-color: var(--primary-300, #66ccff) !important;
+      box-shadow: 0 0 0 3px rgba(102, 204, 255, 0.1) !important;
+    }
+    
+    &::placeholder {
+      color: var(--text-color-secondary, #aaaaaa) !important;
+    }
   }
   
   .no-results {
@@ -144,8 +164,19 @@
     }
   }
   
-  .search-item .search-title {
+  .search-input {
+    background: var(--surface-card, #2a2a2a) !important;
     color: var(--text-color, #ffffff) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    
+    &:focus {
+      border-color: var(--primary-300, #66ccff) !important;
+      box-shadow: 0 0 0 3px rgba(102, 204, 255, 0.1) !important;
+    }
+    
+    &::placeholder {
+      color: var(--text-color-secondary, #aaaaaa) !important;
+    }
   }
   
   .no-results {

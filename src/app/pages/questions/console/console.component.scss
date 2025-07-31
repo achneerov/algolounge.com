@@ -2,7 +2,7 @@
   display: block;
   height: 100%;
   width: 100%;
-  background: var(--surface-card, #ffffff);
+  background: var(--surface-card, #fbfcfd);
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -12,7 +12,7 @@
 .console-container {
   height: 100%;
   width: 100%;
-  background: var(--surface-card, #ffffff);
+  background: var(--surface-card, #fbfcfd);
   color: var(--text-color, #333333);
   font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
   font-size: 13px;
@@ -50,7 +50,7 @@
 
 .test-results {
   .test-case {
-    background: var(--surface-card, #ffffff);
+    background: var(--surface-card, #fbfcfd);
     margin-bottom: 15px;
     padding: 16px;
     border-radius: 6px;
@@ -164,12 +164,12 @@
 
 // Dark mode overrides
 :host-context(.dark-mode) {
-  background: var(--surface-card, #1f1f1f) !important;
+  background: var(--surface-card, #2a2a2a) !important;
   border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 :host-context(.dark-mode) .console-container {
-  background: var(--surface-card, #1f1f1f) !important;
+  background: var(--surface-card, #2a2a2a) !important;
   color: var(--text-color, #ffffff) !important;
 }
 
@@ -209,12 +209,12 @@
 
 @media (prefers-color-scheme: dark) {
   :host {
-    background: var(--surface-card, #1f1f1f) !important;
+    background: var(--surface-card, #2a2a2a) !important;
     border-color: rgba(255, 255, 255, 0.1) !important;
   }
   
   .console-container {
-    background: var(--surface-card, #1f1f1f) !important;
+    background: var(--surface-card, #2a2a2a) !important;
     color: var(--text-color, #ffffff) !important;
   }
   

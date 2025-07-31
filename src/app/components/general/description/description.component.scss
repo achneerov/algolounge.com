@@ -12,7 +12,7 @@
   min-width: 0;
   overflow-y: auto;
   box-sizing: border-box;
-  background: var(--surface-card, #ffffff);
+  background: var(--surface-card, #fbfcfd);
   color: var(--text-color, #000000);
   
   :deep(h1), :deep(h2), :deep(h3) {
@@ -65,7 +65,7 @@
 
 // Dark mode overrides
 :host-context(.dark-mode) .description-container {
-  background: var(--surface-card, #1f1f1f) !important;
+  background: var(--surface-card, #2a2a2a) !important;
   color: var(--text-color, #ffffff) !important;
 }
 
@@ -99,7 +99,7 @@
 
 @media (prefers-color-scheme: dark) {
   .description-container {
-    background: var(--surface-card, #1f1f1f) !important;
+    background: var(--surface-card, #2a2a2a) !important;
     color: var(--text-color, #ffffff) !important;
   }
   

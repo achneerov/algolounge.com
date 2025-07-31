@@ -14,7 +14,7 @@ html, body {
   }
   
   html, body {
-    background-color: var(--surface-ground, #121212);
+    background-color: var(--surface-ground, #1a1a1a);
     color: var(--text-color, #ffffff);
   }
   
@@ -29,7 +29,7 @@ html, body {
 
 html.dark-mode, 
 html:not(.light-mode) {
-  background-color: var(--surface-ground, #121212);
+  background-color: var(--surface-ground, #1a1a1a);
   color: var(--text-color, #ffffff);
 }
 

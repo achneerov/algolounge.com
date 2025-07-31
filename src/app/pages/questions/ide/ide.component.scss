@@ -3,7 +3,7 @@
   height: 100%;
   width: 100%;
   overflow: hidden;
-  background: var(--surface-card, #ffffff);
+  background: var(--surface-card, #fbfcfd);
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -22,19 +22,19 @@
 
 // Dark mode overrides
 :host-context(.dark-mode) {
-  background: var(--surface-card, #1f1f1f) !important;
+  background: var(--surface-card, #2a2a2a) !important;
   border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 // Dark mode overrides for CodeMirror
 :host-context(.dark-mode) .editor-container {
   :deep(.cm-editor) {
-    background: var(--surface-card, #1f1f1f) !important;
+    background: var(--surface-card, #2a2a2a) !important;
     color: var(--text-color, #ffffff) !important;
   }
   
   :deep(.cm-content) {
-    background: var(--surface-card, #1f1f1f) !important;
+    background: var(--surface-card, #2a2a2a) !important;
     color: var(--text-color, #ffffff) !important;
   }
   
@@ -74,18 +74,18 @@
 
 @media (prefers-color-scheme: dark) {
   :host {
-    background: var(--surface-card, #1f1f1f) !important;
+    background: var(--surface-card, #2a2a2a) !important;
     border-color: rgba(255, 255, 255, 0.1) !important;
   }
   
   .editor-container {
     :deep(.cm-editor) {
-      background: var(--surface-card, #1f1f1f) !important;
+      background: var(--surface-card, #2a2a2a) !important;
       color: var(--text-color, #ffffff) !important;
     }
     
     :deep(.cm-content) {
-      background: var(--surface-card, #1f1f1f) !important;
+      background: var(--surface-card, #2a2a2a) !important;
       color: var(--text-color, #ffffff) !important;
     }
     

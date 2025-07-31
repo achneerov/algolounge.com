@@ -1,0 +1,65 @@
+.global-header {
+  background: var(--surface-card, #ffffff);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color, #333333);
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    color: var(--primary-color, #007acc);
+    border-bottom-color: var(--primary-color, #007acc);
+  }
+  
+  &.active {
+    color: var(--primary-color, #007acc);
+    border-bottom-color: var(--primary-color, #007acc);
+  }
+}
+
+// Dark mode overrides
+:host-context(.dark-mode) .global-header {
+  background: var(--surface-card, #2a2a2a) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+:host-context(.dark-mode) .nav-links a {
+  color: var(--text-color, #ffffff) !important;
+  
+  &:hover,
+  &.active {
+    color: var(--primary-300, #66ccff) !important;
+    border-bottom-color: var(--primary-300, #66ccff) !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .global-header {
+    background: var(--surface-card, #2a2a2a) !important;
+    border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+  }
+  
+  .nav-links a {
+    color: var(--text-color, #ffffff) !important;
+    
+    &:hover,
+    &.active {
+      color: var(--primary-300, #66ccff) !important;
+      border-bottom-color: var(--primary-300, #66ccff) !important;
+    }
+  }
+}

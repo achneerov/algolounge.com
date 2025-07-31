@@ -1,0 +1,114 @@
+.courses-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: var(--text-color, #333333);
+  margin-bottom: 1rem;
+}
+
+p {
+  color: var(--text-color-secondary, #666666);
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.course-card {
+  background: var(--surface-card, #ffffff);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+  
+  h3 {
+    color: var(--text-color, #333333);
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+  }
+  
+  p {
+    color: var(--text-color-secondary, #666666);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+  
+  .status {
+    background: var(--surface-200, #e9ecef);
+    color: var(--text-color-secondary, #666666);
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+}
+
+// Dark mode overrides
+:host-context(.dark-mode) {
+  h1 {
+    color: var(--text-color, #ffffff) !important;
+  }
+  
+  p {
+    color: var(--text-color-secondary, #cccccc) !important;
+  }
+  
+  .course-card {
+    background: var(--surface-card, #2a2a2a) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    
+    h3 {
+      color: var(--text-color, #ffffff) !important;
+    }
+    
+    p {
+      color: var(--text-color-secondary, #cccccc) !important;
+    }
+    
+    .status {
+      background: var(--surface-400, #444444) !important;
+      color: var(--text-color-secondary, #cccccc) !important;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  h1 {
+    color: var(--text-color, #ffffff) !important;
+  }
+  
+  p {
+    color: var(--text-color-secondary, #cccccc) !important;
+  }
+  
+  .course-card {
+    background: var(--surface-card, #2a2a2a) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    
+    h3 {
+      color: var(--text-color, #ffffff) !important;
+    }
+    
+    p {
+      color: var(--text-color-secondary, #cccccc) !important;
+    }
+    
+    .status {
+      background: var(--surface-400, #444444) !important;
+      color: var(--text-color-secondary, #cccccc) !important;
+    }
+  }
+}

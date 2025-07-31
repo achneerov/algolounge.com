@@ -4,11 +4,22 @@
   min-height: 100vh;
 }
 
+// Dark mode overrides for host
+:host-context(.dark-mode) {
+  background: var(--surface-ground, #1a1a1a) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :host {
+    background: var(--surface-ground, #1a1a1a) !important;
+  }
+}
+
 .course-detail-container {
   padding: 1rem;
   max-width: 1200px;
   margin: 0 auto;
-  background: var(--surface-ground, #ffffff);
+  background: transparent;
   min-height: 100vh;
 }
 

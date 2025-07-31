@@ -63,7 +63,7 @@
 
 // Dark mode overrides
 :host-context(.dark-mode) {
-  background: var(--surface-900, #0f172a) !important;
+  background: #141414 !important;
 }
 
 :host-context(.dark-mode) ::ng-deep .p-splitter-gutter-handle {
@@ -72,7 +72,7 @@
 
 @media (prefers-color-scheme: dark) {
   :host {
-    background: var(--surface-900, #0f172a) !important;
+    background: #141414 !important;
   }
   
   ::ng-deep .p-splitter-gutter-handle {

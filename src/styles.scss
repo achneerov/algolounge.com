@@ -6,9 +6,6 @@ html, body {
   padding: 0;
 }
 
-body.questions-page {
-  overflow: hidden;
-}
 
 /* Dark mode detection and activation */
 @media (prefers-color-scheme: dark) {
@@ -47,8 +44,20 @@ html.light-mode {
 }
 
 app-root {
-  display: block;
+  display: flex;
+  flex-direction: column;
   height: 100vh;
+}
+
+/* Ensure router outlet content takes 93vh */
+app-home,
+app-courses,
+app-course-detail,
+app-questions,
+app-not-found {
+  display: block;
+  height: 93vh;
+  overflow-y: auto;
 }
 
 /* Fix for PrimeNG splitter layout shifting bug */

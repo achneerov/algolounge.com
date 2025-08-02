@@ -1,7 +1,7 @@
 :host {
   display: block;
   background: var(--surface-ground, #ffffff);
-  min-height: 100vh;
+  height: 100%;
 }
 
 // Dark mode overrides for host
@@ -20,7 +20,8 @@
   max-width: 1200px;
   margin: 0 auto;
   background: transparent;
-  min-height: 100vh;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .courses-header {

@@ -1,15 +1,12 @@
 :host {
   display: block;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   background: var(--surface-50, #f1f3f4);
   padding: 4px;
   box-sizing: border-box;
 }
 
-.header-spacer {
-  height: 4px;
-}
 
 // Gutter styling - transparent with small indicators
 ::ng-deep .p-splitter-gutter {

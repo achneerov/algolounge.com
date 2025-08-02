@@ -504,6 +504,16 @@ public class TestRunner {
             sb.append("]");
             return sb.toString();
         }
+        if (obj instanceof List) {
+            List<?> list = (List<?>) obj;
+            StringBuilder sb = new StringBuilder("[");
+            for (int i = 0; i < list.size(); i++) {
+                if (i > 0) sb.append(",");
+                sb.append(objectToJson(list.get(i)));
+            }
+            sb.append("]");
+            return sb.toString();
+        }
         return obj.toString();
     }
 }`;

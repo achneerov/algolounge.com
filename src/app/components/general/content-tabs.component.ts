@@ -53,11 +53,11 @@ import { LocalStorageService } from '../../services/local-storage.service';
           class="tab-button">
           Solution
         </button>
-        <div class="completion-indicator" *ngIf="isCompleted">✅</div>
       </div>
       
       <!-- Tab Content -->
       <div class="tab-content-area">
+        <div class="completion-indicator" *ngIf="isCompleted">✅</div>
         <app-description 
           *ngIf="activeTab === 'description'"
           [content]="description">
@@ -148,9 +148,11 @@ import { LocalStorageService } from '../../services/local-storage.service';
     }
     
     .completion-indicator {
-      margin-left: auto;
-      margin-right: 16px;
+      position: absolute;
+      top: 16px;
+      right: 16px;
       font-size: 16px;
+      z-index: 100;
     }
     
     .tab-content-area {

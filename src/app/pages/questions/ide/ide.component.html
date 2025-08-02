@@ -19,13 +19,11 @@
         title="Reset Template"
       >🔄</button>
       <button
-        pButton
         type="button"
-        [label]="isRunning ? 'Running...' : 'Run'"
         (click)="onRun()"
         [disabled]="isRunning"
         class="run-btn"
-      ></button>
+      >{{ isRunning ? 'Running...' : 'Run' }}</button>
     </div>
   </div>
   <div #editor class="editor-container"></div>

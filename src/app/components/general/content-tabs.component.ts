@@ -50,11 +50,11 @@ import { LocalStorageService } from '../../services/local-storage.service';
           </button>
         </div>
         <div class="tab-header-right">
-          <span *ngIf="isCompleted" class="completion-check">✅</span>
         </div>
       </div>
       
       <div class="tab-content">
+        <span *ngIf="isCompleted" class="completion-check">✅</span>
         <app-description 
           *ngIf="activeTab === 'description'"
           [content]="description">
@@ -108,6 +108,8 @@ import { LocalStorageService } from '../../services/local-storage.service';
       display: flex;
       align-items: center;
       flex-shrink: 0;
+      padding-left: 0.1rem;
+      margin-right: 0.5rem;
     }
     
     .tab-header-right {
@@ -166,8 +168,11 @@ import { LocalStorageService } from '../../services/local-storage.service';
     }
     
     .completion-check {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
       font-size: 1.2rem;
-      margin-left: 0.5rem;
+      z-index: 10;
     }
     
     .tab-content {
@@ -177,6 +182,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
       width: 100%;
       min-width: 0;
       box-sizing: border-box;
+      position: relative;
     }
     
     // Dark mode overrides
@@ -203,6 +209,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
     :host-context(.dark-mode) .tab-content {
       background-color: var(--surface-card, #1f1f1f) !important;
     }
+    
     
     :host-context(.dark-mode) {
       background: var(--surface-card, #1f1f1f) !important;
@@ -233,6 +240,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
       .tab-content {
         background-color: var(--surface-card, #1f1f1f) !important;
       }
+      
       
       :host {
         background: var(--surface-card, #1f1f1f) !important;

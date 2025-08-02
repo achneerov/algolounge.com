@@ -12,12 +12,13 @@ import {
   Inject,
   PLATFORM_ID,
 } from "@angular/core";
-import { isPlatformBrowser } from "@angular/common";
+import { isPlatformBrowser, CommonModule } from "@angular/common";
 import { EditorView, basicSetup } from "codemirror";
 import { keymap } from "@codemirror/view";
 import { indentWithTab } from "@codemirror/commands";
 import { python } from "@codemirror/lang-python";
 import { javascript } from "@codemirror/lang-javascript";
+import { java } from "@codemirror/lang-java";
 import { oneDark } from "@codemirror/theme-one-dark";
 import { DropdownModule } from "primeng/dropdown";
 import { FormsModule } from "@angular/forms";
@@ -25,7 +26,7 @@ import { ButtonModule } from "primeng/button";
 
 @Component({
   selector: "app-ide",
-  imports: [DropdownModule, FormsModule, ButtonModule],
+  imports: [CommonModule, DropdownModule, FormsModule, ButtonModule],
   templateUrl: "./ide.component.html",
   styleUrl: "./ide.component.scss",
 })
@@ -38,7 +39,8 @@ export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
   languages = [
     { label: "Python", value: "python" },
     { label: "JavaScript", value: "javascript" },
-    { label: "TypeScript", value: "typescript" }
+    { label: "TypeScript", value: "typescript" },
+    { label: "Java", value: "java" }
   ];
 
   private editorView?: EditorView;
@@ -106,6 +108,9 @@ export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
       case "ts":
         languageExtension = javascript({ typescript: true });
         break;
+      case "java":
+        languageExtension = java();
+        break;
       default:
         languageExtension = python();
     }
@@ -146,6 +151,9 @@ export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
     if (this.template) {
       if (this.language === "python") {
         const match = this.template.match(/def\s+(\w+)\s*\(/);
+        return match ? match[1] : "function";
+      } else if (this.language === "java") {
+        const match = this.template.match(/public\s+(?:static\s+)?[\w<>\[\]]+\s+(\w+)\s*\(/);
         return match ? match[1] : "function";
       } else {
         const match = this.template.match(/function\s+(\w+)\s*\(/);

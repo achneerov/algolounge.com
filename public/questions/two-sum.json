@@ -19,6 +19,11 @@
       "template": "function twoSum(nums: number[], target: number): number[] {\n  \n}",
       "solution_text": "The most efficient approach uses a Map to keep track of the numbers we've seen and their indices. As we iterate through the array, for each number we calculate its complement (target - current number) and check if we've seen it before. This achieves O(n) time complexity and O(n) space complexity. Note: TypeScript type annotations are automatically stripped during execution.",
       "solution_code": "function twoSum(nums: number[], target: number): number[] {\n    const seen = new Map<number, number>();\n    \n    for (let i = 0; i < nums.length; i++) {\n        const complement = target - nums[i];\n        \n        if (seen.has(complement)) {\n            return [seen.get(complement), i];\n        }\n        \n        seen.set(nums[i], i);\n    }\n    \n    return [];\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int[] twoSum(int[] nums, int target) {\n        \n    }\n}",
+      "solution_text": "The most efficient approach uses a HashMap to keep track of the numbers we've seen and their indices. As we iterate through the array, for each number we calculate its complement (target - current number) and check if we've seen it before. This achieves O(n) time complexity and O(n) space complexity.",
+      "solution_code": "class Solution {\n    public int[] twoSum(int[] nums, int target) {\n        Map<Integer, Integer> seen = new HashMap<>();\n        \n        for (int i = 0; i < nums.length; i++) {\n            int complement = target - nums[i];\n            \n            if (seen.containsKey(complement)) {\n                return new int[]{seen.get(complement), i};\n            }\n            \n            seen.put(nums[i], i);\n        }\n        \n        return new int[]{};\n    }\n}"
     }
   },
 

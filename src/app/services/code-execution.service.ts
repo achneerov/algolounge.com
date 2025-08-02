@@ -4,6 +4,11 @@ import { TestResult, ExecutionResult } from '../pages/questions/console/console.
 declare global {
   interface Window {
     loadPyodide: any;
+    cheerpjInit: any;
+    cheerpjRunJar: any;
+    cheerpOSAddStringFile: any;
+    cjFileBlob: any;
+    JSZip: any;
   }
 }
 
@@ -17,6 +22,8 @@ interface PyodideInterface {
 export class CodeExecutionService {
   private pyodide: PyodideInterface | null = null;
   private pyodideLoading: Promise<PyodideInterface> | null = null;
+  private cheerpjInitialized = false;
+  private cheerpjInitializing: Promise<void> | null = null;
 
   constructor() {}
 
@@ -52,6 +59,45 @@ export class CodeExecutionService {
     });
   }
 
+  async initCheerpJ(): Promise<void> {
+    if (this.cheerpjInitialized) {
+      return;
+    }
+
+    if (this.cheerpjInitializing) {
+      return this.cheerpjInitializing;
+    }
+
+    this.cheerpjInitializing = this.loadCheerpJScripts();
+    await this.cheerpjInitializing;
+    this.cheerpjInitialized = true;
+  }
+
+  private async loadCheerpJScripts(): Promise<void> {
+    // Load CheerpJ loader
+    if (!window.cheerpjInit) {
+      await this.loadScript('https://cjrtnc.leaningtech.com/4.2/loader.js');
+    }
+    
+    // Load JSZip for creating JAR files
+    if (!window.JSZip) {
+      await this.loadScript('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js');
+    }
+
+    // Initialize CheerpJ
+    await window.cheerpjInit();
+  }
+
+  private async loadScript(src: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = src;
+      script.onload = () => resolve();
+      script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
+      document.head.appendChild(script);
+    });
+  }
+
   async executeCode(
     code: string, 
     language: string, 
@@ -70,6 +116,8 @@ export class CodeExecutionService {
         // For TypeScript, strip type annotations before execution
         const processedCode = language === 'typescript' ? this.stripTypeScript(code) : code;
         return await this.executeJavaScript(processedCode, testCases, functionName, startTime, output, orderMatters);
+      } else if (language === 'java') {
+        return await this.executeJava(code, testCases, functionName, startTime, output, orderMatters);
       } else {
         throw new Error(`Unsupported language: ${language}`);
       }
@@ -262,6 +310,260 @@ sys.stdout = test_output
       totalCount: testResults.length,
       output
     };
+  }
+
+  private async executeJava(
+    code: string,
+    testCases: any[],
+    functionName: string,
+    startTime: number,
+    output: string[],
+    orderMatters: boolean = true
+  ): Promise<ExecutionResult> {
+    const testResults: TestResult[] = [];
+
+    try {
+      // Initialize CheerpJ
+      await this.initCheerpJ();
+
+      // Load ECJ jar from assets and upload to virtual filesystem
+      const response = await fetch('/assets/ecj.jar');
+      if (!response.ok) {
+        throw new Error('Failed to load ECJ compiler jar');
+      }
+      const ecjData = await response.arrayBuffer();
+      await window.cheerpOSAddStringFile("/str/ecj.jar", new Uint8Array(ecjData));
+
+      // Create a wrapper class that includes the function and test execution logic
+      const javaWrapper = this.createJavaWrapper(code, functionName, testCases);
+      await window.cheerpOSAddStringFile("/str/TestRunner.java", javaWrapper);
+
+      // Compile the Java code
+      await window.cheerpjRunJar(
+        "/str/ecj.jar",
+        "-source",
+        "1.7",
+        "-target", 
+        "1.7",
+        "-d",
+        "/files",
+        "/str/TestRunner.java"
+      );
+
+      // Get the compiled class files
+      const testRunnerBlob = await window.cjFileBlob("/files/TestRunner.class");
+      if (!testRunnerBlob) {
+        throw new Error("Compilation failed - no TestRunner class file generated");
+      }
+      const testRunnerData = await testRunnerBlob.arrayBuffer();
+
+      // Create JAR file with proper structure
+      const manifest = `Manifest-Version: 1.0\r\nMain-Class: TestRunner\r\n\r\n`;
+      const zip = new window.JSZip();
+      zip.file("META-INF/MANIFEST.MF", manifest);
+      zip.file("TestRunner.class", testRunnerData);
+
+      // Check if there's a separate user class to include
+      const classMatch = code.match(/class\s+(\w+)/);
+      if (classMatch && classMatch[1] !== 'TestRunner') {
+        const userClassBlob = await window.cjFileBlob(`/files/${classMatch[1]}.class`);
+        if (userClassBlob) {
+          const userClassData = await userClassBlob.arrayBuffer();
+          zip.file(`${classMatch[1]}.class`, userClassData);
+        }
+      }
+
+      // Generate and upload JAR
+      const jarBlob = await zip.generateAsync({ type: "blob" });
+      const jarBytes = await jarBlob.arrayBuffer();
+      const timestamp = Date.now();
+      const jarPath = `/str/solution_${timestamp}.jar`;
+      await window.cheerpOSAddStringFile(jarPath, new Uint8Array(jarBytes));
+
+      // Execute the JAR and capture results
+      const originalConsoleLog = console.log;
+      const capturedOutput: string[] = [];
+      
+      console.log = (...args: any[]) => {
+        capturedOutput.push(args.map(arg => String(arg)).join(' '));
+      };
+
+      try {
+        await window.cheerpjRunJar(jarPath);
+        
+        // Parse the captured output to extract test results
+        // The Java wrapper outputs results in a specific format we can parse
+        testResults.push(...this.parseJavaTestResults(capturedOutput, testCases, orderMatters));
+        
+      } finally {
+        console.log = originalConsoleLog;
+      }
+
+    } catch (error) {
+      testResults.push({
+        id: 1,
+        input: {},
+        expectedOutput: null,
+        actualOutput: null,
+        passed: false,
+        error: error instanceof Error ? error.message : String(error),
+        output: []
+      });
+    }
+
+    const endTime = performance.now();
+    const passedCount = testResults.filter(result => result.passed).length;
+
+    return {
+      testResults,
+      executionTime: Math.round(endTime - startTime),
+      passedCount,
+      totalCount: testResults.length,
+      output
+    };
+  }
+
+  private createJavaWrapper(userCode: string, functionName: string, testCases: any[]): string {
+    // Extract the function signature and body from user code
+    const classMatch = userCode.match(/class\s+(\w+)/);
+    const className = classMatch ? classMatch[1] : 'Solution';
+    
+    // Create test execution logic
+    const testExecutionCode = testCases.map((testCase) => {
+      const args = Object.values(testCase.input);
+      const argList = args.map(arg => this.javaValueToString(arg)).join(', ');
+      
+      return `
+        try {
+            ${className} solution = new ${className}();
+            Object result = solution.${functionName}(${argList});
+            System.out.println("TEST_RESULT_START");
+            System.out.println("ID:" + ${testCase.id});
+            System.out.println("INPUT:" + "${this.escapeString(JSON.stringify(testCase.input))}");
+            System.out.println("EXPECTED:" + "${this.escapeString(JSON.stringify(testCase.output))}");
+            System.out.println("ACTUAL:" + objectToJson(result));
+            System.out.println("TEST_RESULT_END");
+        } catch (Exception e) {
+            System.out.println("TEST_RESULT_START");
+            System.out.println("ID:" + ${testCase.id});
+            System.out.println("INPUT:" + "${this.escapeString(JSON.stringify(testCase.input))}");
+            System.out.println("EXPECTED:" + "${this.escapeString(JSON.stringify(testCase.output))}");
+            System.out.println("ERROR:" + e.getMessage());
+            System.out.println("TEST_RESULT_END");
+        }`;
+    }).join('\n');
+
+    return `
+import java.util.*;
+
+${userCode}
+
+public class TestRunner {
+    public static void main(String[] args) {
+        ${testExecutionCode}
+    }
+    
+    private static String objectToJson(Object obj) {
+        if (obj == null) return "null";
+        if (obj instanceof String) return "\\"" + obj.toString() + "\\"";
+        if (obj instanceof Number || obj instanceof Boolean) return obj.toString();
+        if (obj instanceof int[]) {
+            int[] arr = (int[]) obj;
+            StringBuilder sb = new StringBuilder("[");
+            for (int i = 0; i < arr.length; i++) {
+                if (i > 0) sb.append(",");
+                sb.append(arr[i]);
+            }
+            sb.append("]");
+            return sb.toString();
+        }
+        if (obj instanceof String[]) {
+            String[] arr = (String[]) obj;
+            StringBuilder sb = new StringBuilder("[");
+            for (int i = 0; i < arr.length; i++) {
+                if (i > 0) sb.append(",");
+                sb.append("\\"").append(arr[i]).append("\\"");
+            }
+            sb.append("]");
+            return sb.toString();
+        }
+        return obj.toString();
+    }
+}`;
+  }
+
+  private javaValueToString(value: any): string {
+    if (typeof value === 'string') {
+      return `"${value.replace(/"/g, '\\"')}"`;
+    }
+    if (Array.isArray(value)) {
+      if (value.length === 0) return 'new int[0]';
+      if (typeof value[0] === 'number') {
+        return `new int[]{${value.join(', ')}}`;
+      } else if (typeof value[0] === 'string') {
+        return `new String[]{"${value.join('", "')}"}`;
+      }
+    }
+    return String(value);
+  }
+
+  private escapeString(str: string): string {
+    return str.replace(/"/g, '\\"').replace(/\n/g, '\\n');
+  }
+
+  private parseJavaTestResults(output: string[], testCases: any[], orderMatters: boolean): TestResult[] {
+    const results: TestResult[] = [];
+    let currentResult: any = {};
+    let inTestResult = false;
+
+    for (const line of output) {
+      if (line === 'TEST_RESULT_START') {
+        inTestResult = true;
+        currentResult = {};
+      } else if (line === 'TEST_RESULT_END') {
+        inTestResult = false;
+        if (currentResult.id) {
+          const testCase = testCases.find(tc => tc.id === parseInt(currentResult.id));
+          if (testCase) {
+            let actualOutput = null;
+            let passed = false;
+            let error = undefined;
+
+            if (currentResult.error) {
+              error = currentResult.error;
+            } else if (currentResult.actual) {
+              try {
+                actualOutput = JSON.parse(currentResult.actual);
+                passed = this.deepEqual(actualOutput, testCase.output, orderMatters);
+              } catch (e) {
+                actualOutput = currentResult.actual;
+                passed = false;
+              }
+            }
+
+            results.push({
+              id: parseInt(currentResult.id),
+              input: testCase.input,
+              expectedOutput: testCase.output,
+              actualOutput,
+              passed,
+              error,
+              output: []
+            });
+          }
+        }
+      } else if (inTestResult) {
+        const [key, ...valueParts] = line.split(':');
+        const value = valueParts.join(':');
+        if (key === 'ID') currentResult.id = value;
+        else if (key === 'INPUT') currentResult.input = value;
+        else if (key === 'EXPECTED') currentResult.expected = value;
+        else if (key === 'ACTUAL') currentResult.actual = value;
+        else if (key === 'ERROR') currentResult.error = value;
+      }
+    }
+
+    return results;
   }
 
   private stripTypeScript(code: string): string {

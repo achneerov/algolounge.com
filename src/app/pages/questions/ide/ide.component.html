@@ -6,9 +6,7 @@
         [value]="language" 
         (change)="onLanguageChange($event)"
       >
-        <option value="python">Python</option>
-        <option value="javascript">JavaScript</option>
-        <option value="typescript">TypeScript</option>
+        <option *ngFor="let lang of languages" [value]="lang.value">{{ lang.label }}</option>
       </select>
     </div>
     <div class="taskbar-right">

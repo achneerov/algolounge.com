@@ -4,69 +4,64 @@
       "filename": "algotime_summer_2025",
       "title": "AlgoTime Summer 2025",
       "keywords": [
-        "algorithm",
-        "data",
-        "structures",
+        "algorithms",
+        "data structures",
+        "technical interviews",
+        "coding fundamentals",
+        "problem solving",
         "bootcamp",
-        "interview",
-        "preparation",
-        "8",
-        "weeks",
-        "beginner",
-        "intermediate",
         "summer",
-        "comprehensive"
-      ]
-    },
-    {
-      "filename": "javascript_interview_prep",
-      "title": "JavaScript Interview Prep Sprint", 
-      "keywords": [
-        "javascript",
-        "interview",
-        "preparation",
-        "sprint",
-        "10",
-        "days",
-        "intermediate",
-        "advanced",
-        "frontend",
-        "fullstack",
-        "intensive"
-      ]
-    },
-    {
-      "filename": "data_structures_bootcamp",
-      "title": "Data Structures Bootcamp",
-      "keywords": [
-        "data",
-        "structures",
-        "bootcamp",
-        "fundamental",
-        "coding",
-        "exercises",
-        "beginner",
-        "advanced",
-        "6",
-        "modules",
-        "hands-on"
+        "arrays",
+        "hash tables",
+        "strings"
       ]
     },
     {
       "filename": "beginner_coding_challenge",
       "title": "30-Day Beginner Coding Challenge",
       "keywords": [
-        "30",
-        "day",
         "beginner",
-        "coding",
-        "challenge",
-        "absolute",
-        "beginner",
-        "problem",
-        "solving",
-        "computational",
-        "thinking"
+        "programming",
+        "problem solving",
+        "computational thinking",
+        "algorithms",
+        "30-day challenge",
+        "python",
+        "javascript",
+        "typescript",
+        "basic coding"
+      ]
+    },
+    {
+      "filename": "data_structures_bootcamp",
+      "title": "Data Structures Bootcamp",
+      "keywords": [
+        "data structures",
+        "bootcamp",
+        "algorithms",
+        "arrays",
+        "hash tables",
+        "strings",
+        "mathematical problems",
+        "optimization",
+        "performance",
+        "memory management"
+      ]
+    },
+    {
+      "filename": "javascript_interview_prep",
+      "title": "JavaScript Interview Prep Sprint",
+      "keywords": [
+        "javascript",
+        "interview prep",
+        "frontend",
+        "fullstack",
+        "coding challenges",
+        "tech companies",
+        "intensive",
+        "ES6",
+        "async",
+        "functional programming"
       ]
     },
     {
@@ -74,20 +69,18 @@
       "title": "Weekend Warrior Algorithms",
       "keywords": [
         "weekend",
-        "warrior",
-        "algorithms",
         "professionals",
-        "busy",
-        "coding",
-        "skills",
-        "8",
-        "weekends",
-        "intermediate",
-        "working",
-        "developers"
+        "algorithms",
+        "coding skills",
+        "real-world applications",
+        "array mastery",
+        "hash tables",
+        "string algorithms",
+        "mathematical problems",
+        "optimization"
       ]
     }
   ],
-  "lastUpdated": "2025-07-31T12:00:00.000Z",
+  "lastUpdated": "2025-08-02T18:36:19.714Z",
   "totalCourses": 5
 }

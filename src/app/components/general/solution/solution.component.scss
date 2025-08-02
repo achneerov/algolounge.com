@@ -101,7 +101,7 @@
 
 // Dark mode overrides
 :host-context(.dark-mode) .solution-container {
-  background: var(--surface-card, #1f1f1f) !important;
+  background: var(--surface-card, #2a2a2a) !important;
   color: var(--text-color, #ffffff) !important;
 }
 
@@ -139,7 +139,7 @@
 
 @media (prefers-color-scheme: dark) {
   .solution-container {
-    background: var(--surface-card, #1f1f1f) !important;
+    background: var(--surface-card, #2a2a2a) !important;
     color: var(--text-color, #ffffff) !important;
   }
   

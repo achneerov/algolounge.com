@@ -10,18 +10,21 @@ import { SolutionComponent } from './solution/solution.component';
   template: `
     <div class="content-tabs">
       <div class="tab-header">
-        <button 
-          [class.active]="activeTab === 'description'"
-          (click)="activeTab = 'description'"
-          type="button">
-          Description
-        </button>
-        <button 
-          [class.active]="activeTab === 'solution'"
-          (click)="activeTab = 'solution'"
-          type="button">
-          Solution
-        </button>
+        <div class="tab-buttons">
+          <button 
+            [class.active]="activeTab === 'description'"
+            (click)="activeTab = 'description'"
+            type="button">
+            Description
+          </button>
+          <button 
+            [class.active]="activeTab === 'solution'"
+            (click)="activeTab = 'solution'"
+            type="button">
+            Solution
+          </button>
+        </div>
+        <span *ngIf="isCompleted" class="completion-check">✅</span>
       </div>
       
       <div class="tab-content">
@@ -62,11 +65,18 @@ import { SolutionComponent } from './solution/solution.component';
     
     .tab-header {
       display: flex;
+      justify-content: space-between;
+      align-items: center;
       border-bottom: 1px solid #e1e5e9;
       background-color: #f8f9fa;
       flex-shrink: 0;
       width: 100%;
       min-width: 0;
+      padding-right: 1rem;
+    }
+    
+    .tab-buttons {
+      display: flex;
       
       button {
         background: none;
@@ -91,6 +101,11 @@ import { SolutionComponent } from './solution/solution.component';
           background-color: white;
         }
       }
+    }
+    
+    .completion-check {
+      font-size: 1.2rem;
+      margin-left: 0.5rem;
     }
     
     .tab-content {
@@ -168,6 +183,7 @@ export class ContentTabsComponent {
   @Input() description: string = '';
   @Input() solutionText: string = '';
   @Input() solutionCode: string = '';
+  @Input() isCompleted: boolean = false;
   
   activeTab: 'description' | 'solution' = 'description';
 }

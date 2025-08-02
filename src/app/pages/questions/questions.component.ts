@@ -9,6 +9,7 @@ import { CommonModule } from "@angular/common";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { NotFoundComponent } from "../not-found/not-found.component";
 import { CodeExecutionService } from "../../services/code-execution.service";
+import { LocalStorageService } from "../../services/local-storage.service";
 
 @Component({
   selector: "app-questions",
@@ -39,12 +40,15 @@ export class QuestionsComponent implements OnInit, OnDestroy {
   isRunning: boolean = false;
   horizontalPanelSizes: number[] = [40, 60];
   verticalPanelSizes: number[] = [70, 30];
+  currentQuestionFilename: string = "";
+  isCompleted: boolean = false;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private http: HttpClient,
-    private codeExecutionService: CodeExecutionService
+    private codeExecutionService: CodeExecutionService,
+    private localStorageService: LocalStorageService
   ) {}
 
   ngOnInit() {
@@ -54,6 +58,8 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     this.route.paramMap.subscribe((params) => {
       const name = params.get("name");
       if (name) {
+        this.currentQuestionFilename = name;
+        this.isCompleted = this.localStorageService.isQuestionCompleted(name);
         this.loadQuestion(name);
       }
     });
@@ -95,6 +101,14 @@ export class QuestionsComponent implements OnInit, OnDestroy {
         functionName,
         this.questionData.order_matters !== false // Default to true if not specified
       );
+
+      // Check if all tests passed and mark as completed
+      if (this.executionResult.passedCount === this.executionResult.totalCount && this.executionResult.totalCount > 0) {
+        if (!this.isCompleted) {
+          this.localStorageService.addCompletedQuestion(this.currentQuestionFilename);
+          this.isCompleted = true;
+        }
+      }
     } catch (error) {
       console.error('Execution error:', error);
       this.executionResult = {

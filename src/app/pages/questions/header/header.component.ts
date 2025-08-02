@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
   selectedQuestion: QuestionSearchResult | null = null;
   @Input() selectedLanguage: string = "python";
   @Input() isRunning: boolean = false;
+  @Input() isCompleted: boolean = false;
   @Output() go = new EventEmitter<string>();
   @Output() languageChange = new EventEmitter<string>();
   @Output() run = new EventEmitter<void>();

@@ -39,6 +39,34 @@
   }
 }
 
+.tabs-container {
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  
+  .tab-button {
+    padding: 0.5rem 1rem;
+    background: var(--surface-card, #ffffff);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    color: var(--text-color-secondary, #666666);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+    
+    &:hover {
+      background: var(--surface-100, #f8f9fa);
+      border-color: rgba(0, 0, 0, 0.18);
+    }
+    
+    &.active {
+      background: var(--primary-color, #007acc);
+      color: white;
+      border-color: var(--primary-color, #007acc);
+    }
+  }
+}
+
 .search-container {
   margin-bottom: 1rem;
   
@@ -78,6 +106,9 @@
   cursor: pointer;
   transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   
   &:hover {
     background: var(--surface-100, #f8f9fa);
@@ -86,11 +117,33 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   }
   
-  h3 {
-    color: var(--text-color, #333333);
-    margin: 0;
-    font-size: 1.1rem;
-    font-weight: 500;
+  .course-content {
+    flex: 1;
+    
+    h3 {
+      color: var(--text-color, #333333);
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+  }
+  
+  .favorite-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    color: #ccc;
+    transition: color 0.2s ease, transform 0.1s ease;
+    
+    &:hover {
+      transform: scale(1.1);
+    }
+    
+    &.favorited {
+      color: #ffd700;
+    }
   }
 }
 
@@ -116,6 +169,25 @@
     }
   }
   
+  .tabs-container {
+    .tab-button {
+      background: var(--surface-card, #2a2a2a) !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+      color: var(--text-color-secondary, #aaaaaa) !important;
+      
+      &:hover {
+        background: var(--surface-300, #444444) !important;
+        border-color: rgba(255, 255, 255, 0.2) !important;
+      }
+      
+      &.active {
+        background: var(--primary-color, #007acc) !important;
+        color: white !important;
+        border-color: var(--primary-color, #007acc) !important;
+      }
+    }
+  }
+  
   .course-item {
     background: var(--surface-card, #2a2a2a) !important;
     border-color: rgba(255, 255, 255, 0.1) !important;
@@ -124,8 +196,16 @@
       background: var(--surface-300, #444444) !important;
     }
     
-    h3 {
+    .course-content h3 {
       color: var(--text-color, #ffffff) !important;
+    }
+    
+    .favorite-button {
+      color: #ccc !important;
+      
+      &.favorited {
+        color: #ffd700 !important;
+      }
     }
   }
   

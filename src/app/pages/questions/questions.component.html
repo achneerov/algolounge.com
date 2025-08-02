@@ -2,6 +2,7 @@
   class="header" 
   [selectedLanguage]="selectedLanguage"
   [isRunning]="isRunning"
+  [isCompleted]="isCompleted"
   (go)="onGo($event)"
   (languageChange)="onLanguageChange($event)"
   (run)="onRun()"
@@ -20,7 +21,8 @@
       <app-content-tabs
         [description]="description"
         [solutionText]="solutionText"
-        [solutionCode]="solutionCode">
+        [solutionCode]="solutionCode"
+        [isCompleted]="isCompleted">
       </app-content-tabs>
     </ng-template>
     <ng-template pTemplate="panel2">

@@ -26,18 +26,42 @@
 .course-header {
   margin-bottom: 2rem;
   
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
   .back-btn {
     background: none;
     border: 1px solid rgba(0, 0, 0, 0.2);
     padding: 0.5rem 1rem;
     border-radius: 4px;
     cursor: pointer;
-    margin-bottom: 1rem;
     color: var(--text-color, #333333);
     transition: background-color 0.2s ease;
     
     &:hover {
       background: var(--surface-100, #f8f9fa);
+    }
+  }
+  
+  .favorite-button {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    color: #ccc;
+    transition: color 0.2s ease, transform 0.1s ease;
+    
+    &:hover {
+      transform: scale(1.1);
+    }
+    
+    &.favorited {
+      color: #ffd700;
     }
   }
   
@@ -98,6 +122,9 @@
   padding: 0.75rem;
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.1s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   
   &:hover {
     background: var(--surface-100, #e9ecef);
@@ -105,11 +132,24 @@
     border-color: rgba(0, 0, 0, 0.15);
   }
   
-  h3 {
-    color: var(--text-color, #333333);
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 500;
+  &.completed {
+    border-left: 4px solid #4caf50;
+  }
+  
+  .question-content {
+    flex: 1;
+    
+    h3 {
+      color: var(--text-color, #333333);
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+  }
+  
+  .completion-check {
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
   }
 }
 
@@ -146,6 +186,14 @@
       }
     }
     
+    .favorite-button {
+      color: #ccc !important;
+      
+      &.favorited {
+        color: #ffd700 !important;
+      }
+    }
+    
     h1 {
       color: var(--text-color, #ffffff) !important;
     }
@@ -178,7 +226,7 @@
       background: var(--surface-400, #555555) !important;
     }
     
-    h3 {
+    .question-content h3 {
       color: var(--text-color, #ffffff) !important;
     }
   }

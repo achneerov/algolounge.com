@@ -1,6 +1,16 @@
 <div class="course-detail-container">
   <div class="course-header">
-    <button class="back-btn" (click)="goBack()">← Back to Courses</button>
+    <div class="header-top">
+      <button class="back-btn" (click)="goBack()">← Back to Courses</button>
+      <button 
+        class="favorite-button"
+        [class.favorited]="isFavorite()"
+        (click)="toggleFavorite()"
+        *ngIf="course"
+      >
+        {{ isFavorite() ? '★' : '☆' }}
+      </button>
+    </div>
     <h1 *ngIf="course">{{ course.course_name }}</h1>
     <p *ngIf="course" class="course-description">{{ course.course_description }}</p>
   </div>
@@ -16,9 +26,13 @@
         <div 
           *ngFor="let question of section.questions" 
           class="question-item"
+          [class.completed]="isQuestionCompleted(question.filename)"
           (click)="onQuestionClick(question)"
         >
-          <h3>{{ question.title }}</h3>
+          <div class="question-content">
+            <h3>{{ question.title }}</h3>
+          </div>
+          <span *ngIf="isQuestionCompleted(question.filename)" class="completion-check">✅</span>
         </div>
       </div>
       

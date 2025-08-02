@@ -4,11 +4,28 @@
     <p>Discover programming courses and tutorials designed to level up your coding skills.</p>
   </div>
   
+  <div class="tabs-container">
+    <button 
+      class="tab-button" 
+      [class.active]="!showingFavorites"
+      (click)="showAllCourses()"
+    >
+      All Courses
+    </button>
+    <button 
+      class="tab-button" 
+      [class.active]="showingFavorites"
+      (click)="showFavorites()"
+    >
+      Favorites ({{ favoriteCourses.length }})
+    </button>
+  </div>
+  
   <div class="search-container">
     <input 
       type="text" 
       class="search-input"
-      placeholder="Search courses..."
+      [placeholder]="showingFavorites ? 'Search favorites...' : 'Search courses...'"
       [(ngModel)]="searchTerm"
       (input)="onSearchChange($event)"
     />
@@ -16,11 +33,22 @@
   
   <div class="course-list" *ngIf="displayResults.length > 0">
     <div *ngFor="let course of displayResults" class="course-item" (click)="onSelect(course)">
-      <h3>{{ course.title }}</h3>
+      <div class="course-content">
+        <h3>{{ course.title }}</h3>
+      </div>
+      <button 
+        class="favorite-button"
+        [class.favorited]="isFavorite(course)"
+        (click)="toggleFavorite(course, $event)"
+      >
+        {{ isFavorite(course) ? '★' : '☆' }}
+      </button>
     </div>
   </div>
   
   <div *ngIf="displayResults.length === 0" class="no-results">
-    <p>No courses found. Try a different search term.</p>
+    <p *ngIf="!showingFavorites">No courses found. Try a different search term.</p>
+    <p *ngIf="showingFavorites && favoriteCourses.length === 0">No favorite courses yet. Star some courses to see them here!</p>
+    <p *ngIf="showingFavorites && favoriteCourses.length > 0">No favorites match your search. Try a different term.</p>
   </div>
 </div>

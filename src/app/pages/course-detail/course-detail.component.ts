@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { LocalStorageService } from '../../services/local-storage.service';
 
 interface CourseQuestion {
   filename: string;
@@ -34,7 +35,8 @@ export class CourseDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private localStorageService: LocalStorageService
   ) {}
 
   ngOnInit() {
@@ -125,5 +127,17 @@ export class CourseDetailComponent implements OnInit {
 
   goBack() {
     this.router.navigate(['/courses']);
+  }
+
+  toggleFavorite() {
+    this.localStorageService.toggleFavoriteCourse(this.courseName);
+  }
+
+  isFavorite(): boolean {
+    return this.localStorageService.isCourseInFavorites(this.courseName);
+  }
+
+  isQuestionCompleted(questionFilename: string): boolean {
+    return this.localStorageService.isQuestionCompleted(questionFilename);
   }
 }

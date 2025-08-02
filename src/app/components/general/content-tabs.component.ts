@@ -13,32 +13,30 @@ import { LocalStorageService } from '../../services/local-storage.service';
   imports: [CommonModule, DescriptionComponent, SolutionComponent, AutoCompleteModule, FormsModule],
   template: `
     <div class="container">
-      <!-- Search Bar Section - Completely separate layer -->
-      <div class="search-section">
-        <p-autoComplete
-          [(ngModel)]="selectedQuestion"
-          [suggestions]="searchResults"
-          (completeMethod)="onSearch($event)"
-          (onSelect)="onSelect($event)"
-          (keydown)="onKeyDown($event)"
-          field="title"
-          placeholder="Search questions..."
-          [forceSelection]="false"
-          [dropdown]="true"
-          class="question-search"
-          [appendTo]="'body'"
-        >
-          <ng-template let-question pTemplate="item">
-            <div class="search-item">
-              <div class="search-title">{{ question.title }}</div>
-              <div class="completion-status" *ngIf="isQuestionCompleted(question.filename)">✅</div>
-            </div>
-          </ng-template>
-        </p-autoComplete>
-      </div>
-
-      <!-- Tab Navigation -->
+      <!-- Tab Navigation with Search -->
       <div class="tab-navigation">
+        <div class="search-section">
+          <p-autoComplete
+            [(ngModel)]="selectedQuestion"
+            [suggestions]="searchResults"
+            (completeMethod)="onSearch($event)"
+            (onSelect)="onSelect($event)"
+            (keydown)="onKeyDown($event)"
+            field="title"
+            placeholder="Search questions..."
+            [forceSelection]="false"
+            [dropdown]="true"
+            class="question-search"
+            [appendTo]="'body'"
+          >
+            <ng-template let-question pTemplate="item">
+              <div class="search-item">
+                <div class="search-title">{{ question.title }}</div>
+                <div class="completion-status" *ngIf="isQuestionCompleted(question.filename)">✅</div>
+              </div>
+            </ng-template>
+          </p-autoComplete>
+        </div>
         <button 
           [class.active]="activeTab === 'description'"
           (click)="activeTab = 'description'"
@@ -83,17 +81,15 @@ import { LocalStorageService } from '../../services/local-storage.service';
     }
     
     .search-section {
-      padding: 12px 16px;
-      border-bottom: 1px solid #e1e5e9;
-      background-color: #f8f9fa;
-      position: relative;
-      z-index: 1000;
+      padding: 8px 16px;
+      margin-right: 16px;
+      display: flex;
+      align-items: center;
       flex-shrink: 0;
     }
     
     .question-search {
-      width: 100%;
-      max-width: 400px;
+      width: 250px;
     }
     
     .search-item {
@@ -122,6 +118,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
       position: relative;
       z-index: 10;
       flex-shrink: 0;
+      padding: 0;
     }
     
     .tab-button {
@@ -170,7 +167,6 @@ import { LocalStorageService } from '../../services/local-storage.service';
         border-color: rgba(255, 255, 255, 0.1);
       }
       
-      .search-section,
       .tab-navigation {
         background-color: var(--surface-200, #2d2d2d);
         border-bottom-color: var(--surface-border, #555);
@@ -201,7 +197,6 @@ import { LocalStorageService } from '../../services/local-storage.service';
       border-color: rgba(255, 255, 255, 0.1) !important;
     }
     
-    :host-context(.dark-mode) .search-section,
     :host-context(.dark-mode) .tab-navigation {
       background-color: var(--surface-200, #2d2d2d) !important;
       border-bottom-color: var(--surface-border, #555) !important;

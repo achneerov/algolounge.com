@@ -124,23 +124,12 @@ import { LocalStorageService } from '../../services/local-storage.service';
       overflow-y: hidden;
       white-space: nowrap;
       min-width: 0;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE and Edge */
     }
     
     .tab-navigation::-webkit-scrollbar {
-      height: 4px;
-    }
-    
-    .tab-navigation::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    
-    .tab-navigation::-webkit-scrollbar-thumb {
-      background: #ccc;
-      border-radius: 2px;
-    }
-    
-    .tab-navigation::-webkit-scrollbar-thumb:hover {
-      background: #999;
+      display: none; /* Chrome, Safari and Opera */
     }
     
     .tab-button {
@@ -196,13 +185,6 @@ import { LocalStorageService } from '../../services/local-storage.service';
         border-bottom-color: var(--surface-border, #555);
       }
       
-      .tab-navigation::-webkit-scrollbar-thumb {
-        background: #555;
-      }
-      
-      .tab-navigation::-webkit-scrollbar-thumb:hover {
-        background: #777;
-      }
       
       .tab-button {
         color: var(--text-color-secondary, #cccccc);

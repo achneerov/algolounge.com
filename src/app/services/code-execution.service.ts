@@ -383,16 +383,30 @@ sys.stdout = test_output
       // Execute the JAR and capture results
       const originalConsoleLog = console.log;
       const capturedOutput: string[] = [];
+      const userOutput: string[] = [];
       
       console.log = (...args: any[]) => {
-        capturedOutput.push(args.map(arg => String(arg)).join(' '));
+        const line = args.map(arg => String(arg)).join(' ');
+        capturedOutput.push(line);
+        
+        // Check if this is a test result line or user output
+        if (!line.includes('TEST_RESULT_START') && 
+            !line.includes('TEST_RESULT_END') &&
+            !line.includes('USER_OUTPUT_START') &&
+            !line.includes('USER_OUTPUT_END') &&
+            !line.startsWith('ID:') &&
+            !line.startsWith('INPUT:') &&
+            !line.startsWith('EXPECTED:') &&
+            !line.startsWith('ACTUAL:') &&
+            !line.startsWith('ERROR:')) {
+          userOutput.push(line);
+        }
       };
 
       try {
         await window.cheerpjRunJar(jarPath);
         
         // Parse the captured output to extract test results
-        // The Java wrapper outputs results in a specific format we can parse
         testResults.push(...this.parseJavaTestResults(capturedOutput, testCases, orderMatters));
         
       } finally {
@@ -435,8 +449,10 @@ sys.stdout = test_output
       
       return `
         try {
+            System.out.println("USER_OUTPUT_START");
             ${className} solution = new ${className}();
             Object result = solution.${functionName}(${argList});
+            System.out.println("USER_OUTPUT_END");
             System.out.println("TEST_RESULT_START");
             System.out.println("ID:" + ${testCase.id});
             System.out.println("INPUT:" + "${this.escapeString(JSON.stringify(testCase.input))}");
@@ -444,6 +460,7 @@ sys.stdout = test_output
             System.out.println("ACTUAL:" + objectToJson(result));
             System.out.println("TEST_RESULT_END");
         } catch (Exception e) {
+            System.out.println("USER_OUTPUT_END");
             System.out.println("TEST_RESULT_START");
             System.out.println("ID:" + ${testCase.id});
             System.out.println("INPUT:" + "${this.escapeString(JSON.stringify(testCase.input))}");
@@ -515,11 +532,18 @@ public class TestRunner {
     const results: TestResult[] = [];
     let currentResult: any = {};
     let inTestResult = false;
+    let inUserOutput = false;
+    let currentUserOutput: string[] = [];
 
     for (const line of output) {
-      if (line === 'TEST_RESULT_START') {
+      if (line === 'USER_OUTPUT_START') {
+        inUserOutput = true;
+        currentUserOutput = [];
+      } else if (line === 'USER_OUTPUT_END') {
+        inUserOutput = false;
+      } else if (line === 'TEST_RESULT_START') {
         inTestResult = true;
-        currentResult = {};
+        currentResult = { userOutput: [...currentUserOutput] };
       } else if (line === 'TEST_RESULT_END') {
         inTestResult = false;
         if (currentResult.id) {
@@ -548,10 +572,12 @@ public class TestRunner {
               actualOutput,
               passed,
               error,
-              output: []
+              output: currentResult.userOutput || []
             });
           }
         }
+      } else if (inUserOutput) {
+        currentUserOutput.push(line);
       } else if (inTestResult) {
         const [key, ...valueParts] = line.split(':');
         const value = valueParts.join(':');

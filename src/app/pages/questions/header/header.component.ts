@@ -1,14 +1,16 @@
 import { Component, Output, EventEmitter, Input, OnInit } from "@angular/core";
+import { CommonModule } from "@angular/common";
 import { ButtonModule } from "primeng/button";
 import { FormsModule } from "@angular/forms";
 import { DropdownModule } from "primeng/dropdown";
 import { AutoCompleteModule } from "primeng/autocomplete";
 import { QuestionSearchService, QuestionSearchResult } from "../../../services/question-search.service";
+import { LocalStorageService } from "../../../services/local-storage.service";
 
 @Component({
   selector: "app-header",
   standalone: true,
-  imports: [ButtonModule, FormsModule, DropdownModule, AutoCompleteModule],
+  imports: [CommonModule, ButtonModule, FormsModule, DropdownModule, AutoCompleteModule],
   templateUrl: "./header.component.html",
   styleUrl: "./header.component.scss",
 })
@@ -29,13 +31,17 @@ export class HeaderComponent implements OnInit {
     { label: "TypeScript", value: "typescript" }
   ];
 
-  constructor(private questionSearchService: QuestionSearchService) {}
+  constructor(
+    private questionSearchService: QuestionSearchService,
+    private localStorageService: LocalStorageService
+  ) {}
 
   ngOnInit(): void {
     // Wait for questions to load before initializing
     this.questionSearchService.isIndexLoaded().subscribe(loaded => {
       if (loaded) {
-        this.searchResults = this.questionSearchService.getAllQuestions();
+        // Trigger initial search with empty string to show all questions
+        this.onSearch({ query: "" });
       }
     });
   }
@@ -73,5 +79,9 @@ export class HeaderComponent implements OnInit {
 
   onRun(): void {
     this.run.emit();
+  }
+
+  isQuestionCompleted(filename: string): boolean {
+    return this.localStorageService.isQuestionCompleted(filename);
   }
 }

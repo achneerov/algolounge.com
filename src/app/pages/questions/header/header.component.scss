@@ -37,17 +37,27 @@
 
 .search-item {
   padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   
   .search-title {
     font-weight: 500;
     font-size: 0.95rem;
     color: var(--text-color);
+    flex: 1;
   }
   
   .search-filename {
     font-size: 0.8rem;
     color: var(--text-color-secondary);
     margin-top: 0.25rem;
+  }
+  
+  .completion-status {
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    flex-shrink: 0;
   }
 }
 .run-btn {

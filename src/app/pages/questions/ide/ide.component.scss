@@ -39,6 +39,8 @@
 
 .taskbar-right {
   margin-left: 8px;
+  display: flex;
+  gap: 8px;
 }
 
 .language-dropdown {
@@ -104,6 +106,43 @@
   }
 }
 
+.run-btn {
+  ::ng-deep .p-button {
+    background: var(--primary-color, #007bff) !important;
+    background-color: var(--primary-color, #007bff) !important;
+    border: 1px solid var(--primary-color, #007bff) !important;
+    color: white !important;
+    font-size: 0.8rem !important;
+    padding: 4px 12px !important;
+    height: 24px !important;
+    border-radius: 3px !important;
+    min-width: unset !important;
+    
+    &:enabled:hover {
+      background: var(--primary-color-darker, #0056b3) !important;
+      background-color: var(--primary-color-darker, #0056b3) !important;
+      border-color: var(--primary-color-darker, #0056b3) !important;
+    }
+    
+    &:disabled {
+      opacity: 0.5 !important;
+      background: var(--surface-300, #dee2e6) !important;
+      background-color: var(--surface-300, #dee2e6) !important;
+      border-color: var(--surface-300, #dee2e6) !important;
+      color: var(--text-color-secondary, #6c757d) !important;
+    }
+    
+    &:focus {
+      box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25) !important;
+    }
+    
+    &:active {
+      background: var(--primary-color-darker, #0056b3) !important;
+      background-color: var(--primary-color-darker, #0056b3) !important;
+    }
+  }
+}
+
 .editor-container {
   flex: 1;
   width: 100%;
@@ -153,6 +192,31 @@
   }
 }
 
+:host-context(.dark-mode) .run-btn ::ng-deep .p-button {
+  background: var(--primary-300, #66ccff) !important;
+  background-color: var(--primary-300, #66ccff) !important;
+  border-color: var(--primary-300, #66ccff) !important;
+  color: var(--surface-900, #000000) !important;
+  
+  &:enabled:hover {
+    background: var(--primary-400, #4dbbff) !important;
+    background-color: var(--primary-400, #4dbbff) !important;
+    border-color: var(--primary-400, #4dbbff) !important;
+  }
+  
+  &:disabled {
+    background: var(--surface-600, #555555) !important;
+    background-color: var(--surface-600, #555555) !important;
+    border-color: var(--surface-600, #555555) !important;
+    color: var(--text-color-secondary, #cccccc) !important;
+  }
+  
+  &:active {
+    background: var(--primary-400, #4dbbff) !important;
+    background-color: var(--primary-400, #4dbbff) !important;
+  }
+}
+
 // Let CodeMirror handle its own theming - no overrides needed
 
 @media (prefers-color-scheme: dark) {
@@ -190,6 +254,31 @@
     &:active {
       background: var(--surface-400, #444444) !important;
       background-color: var(--surface-400, #444444) !important;
+    }
+  }
+  
+  .run-btn ::ng-deep .p-button {
+    background: var(--primary-300, #66ccff) !important;
+    background-color: var(--primary-300, #66ccff) !important;
+    border-color: var(--primary-300, #66ccff) !important;
+    color: var(--surface-900, #000000) !important;
+    
+    &:enabled:hover {
+      background: var(--primary-400, #4dbbff) !important;
+      background-color: var(--primary-400, #4dbbff) !important;
+      border-color: var(--primary-400, #4dbbff) !important;
+    }
+    
+    &:disabled {
+      background: var(--surface-600, #555555) !important;
+      background-color: var(--surface-600, #555555) !important;
+      border-color: var(--surface-600, #555555) !important;
+      color: var(--text-color-secondary, #cccccc) !important;
+    }
+    
+    &:active {
+      background: var(--primary-400, #4dbbff) !important;
+      background-color: var(--primary-400, #4dbbff) !important;
     }
   }
 }

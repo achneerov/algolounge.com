@@ -14,21 +14,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
   template: `
     <div class="content-tabs">
       <div class="tab-header">
-        <div class="tab-buttons">
-          <button 
-            [class.active]="activeTab === 'description'"
-            (click)="activeTab = 'description'"
-            type="button">
-            Description
-          </button>
-          <button 
-            [class.active]="activeTab === 'solution'"
-            (click)="activeTab = 'solution'"
-            type="button">
-            Solution
-          </button>
-        </div>
-        <div class="tab-header-right">
+        <div class="tab-header-left">
           <p-autoComplete
             [(ngModel)]="selectedQuestion"
             [suggestions]="searchResults"
@@ -48,6 +34,22 @@ import { LocalStorageService } from '../../services/local-storage.service';
               </div>
             </ng-template>
           </p-autoComplete>
+        </div>
+        <div class="tab-buttons">
+          <button 
+            [class.active]="activeTab === 'description'"
+            (click)="activeTab = 'description'"
+            type="button">
+            Description
+          </button>
+          <button 
+            [class.active]="activeTab === 'solution'"
+            (click)="activeTab = 'solution'"
+            type="button">
+            Solution
+          </button>
+        </div>
+        <div class="tab-header-right">
           <span *ngIf="isCompleted" class="completion-check">✅</span>
         </div>
       </div>
@@ -97,17 +99,26 @@ import { LocalStorageService } from '../../services/local-storage.service';
       flex-shrink: 0;
       width: 100%;
       min-width: 0;
-      padding-right: 1rem;
+      padding: 0 1rem;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+    
+    .tab-header-left {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
     }
     
     .tab-header-right {
       display: flex;
       align-items: center;
       gap: 1rem;
+      flex-shrink: 0;
     }
     
     .question-search {
-      width: 300px;
+      width: 200px;
     }
     
     .search-item {
@@ -127,6 +138,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
     
     .tab-buttons {
       display: flex;
+      flex-shrink: 0;
       
       button {
         background: none;

@@ -35,7 +35,9 @@ export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() language: string = "python";
   @Input() template: string = "";
   @Input() questionData: any = null;
+  @Input() isRunning: boolean = false;
   @Output() languageChange = new EventEmitter<string>();
+  @Output() run = new EventEmitter<void>();
 
   allLanguages = [
     { label: "Python", value: "python" },
@@ -197,5 +199,9 @@ export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
       this.forceTemplateReload = true;
       this.initEditor();
     }
+  }
+
+  onRun(): void {
+    this.run.emit();
   }
 }

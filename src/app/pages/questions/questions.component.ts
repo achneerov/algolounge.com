@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewChild } from "@angular/core";
 import { IdeComponent } from "./ide/ide.component";
-import { HeaderComponent } from "./header/header.component";
 import { ConsoleComponent, ExecutionResult } from "./console/console.component";
 import { ContentTabsComponent } from "../../components/general/content-tabs.component";
 import { SplitterModule } from "primeng/splitter";
@@ -18,7 +17,6 @@ import { LocalStorageService } from "../../services/local-storage.service";
     CommonModule,
     HttpClientModule,
     IdeComponent,
-    HeaderComponent,
     ConsoleComponent,
     ContentTabsComponent,
     SplitterModule,

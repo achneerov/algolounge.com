@@ -1,18 +1,7 @@
-<app-header 
-  class="header" 
-  [selectedLanguage]="selectedLanguage"
-  [isRunning]="isRunning"
-  [isCompleted]="isCompleted"
-  (go)="onGo($event)"
-  (languageChange)="onLanguageChange($event)"
-  (run)="onRun()"
-></app-header>
-
-<div class="header-spacer"></div>
 
 <ng-container *ngIf="!notFound; else notFoundTpl">
   <p-splitter
-    [style]="{ height: 'calc(100vh - 100px)' }"
+    [style]="{ height: 'calc(100vh - 60px)' }"
     [panelSizes]="horizontalPanelSizes"
     [minSizes]="[25, 10]"
     (onResizeEnd)="onHorizontalResizeEnd($event)"
@@ -33,7 +22,9 @@
             [language]="selectedLanguage"
             [template]="template"
             [questionData]="questionData"
+            [isRunning]="isRunning"
             (languageChange)="onLanguageChange($event)"
+            (run)="onRun()"
           ></app-ide>
         </ng-template>
         <ng-template pTemplate="panel2">

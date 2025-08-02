@@ -63,24 +63,8 @@
         "async",
         "functional programming"
       ]
-    },
-    {
-      "filename": "weekend_warrior_algorithms",
-      "title": "Weekend Warrior Algorithms",
-      "keywords": [
-        "weekend",
-        "professionals",
-        "algorithms",
-        "coding skills",
-        "real-world applications",
-        "array mastery",
-        "hash tables",
-        "string algorithms",
-        "mathematical problems",
-        "optimization"
-      ]
     }
   ],
-  "lastUpdated": "2025-08-02T18:36:19.714Z",
-  "totalCourses": 5
+  "lastUpdated": "2025-08-02T18:39:46.871Z",
+  "totalCourses": 4
 }

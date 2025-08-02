@@ -3,6 +3,26 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding: 0.5rem 1.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-link {
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color, #007acc);
+  transition: color 0.2s ease;
+  
+  &:hover {
+    color: var(--primary-600, #005999);
+  }
 }
 
 .nav-links {
@@ -37,6 +57,14 @@
   border-bottom-color: rgba(255, 255, 255, 0.1) !important;
 }
 
+:host-context(.dark-mode) .logo-link {
+  color: var(--primary-300, #66ccff) !important;
+  
+  &:hover {
+    color: var(--primary-200, #99ddff) !important;
+  }
+}
+
 :host-context(.dark-mode) .nav-links a {
   color: var(--text-color, #ffffff) !important;
   
@@ -51,6 +79,14 @@
   .global-header {
     background: var(--surface-card, #2a2a2a) !important;
     border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+  }
+  
+  .logo-link {
+    color: var(--primary-300, #66ccff) !important;
+    
+    &:hover {
+      color: var(--primary-200, #99ddff) !important;
+    }
   }
   
   .nav-links a {

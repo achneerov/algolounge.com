@@ -1,6 +1,22 @@
-# Alexcode2
+# AlgoLounge
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.11.
+AlgoLounge is an interactive coding practice platform where developers can sharpen their algorithmic thinking and problem-solving skills through hands-on programming challenges and structured courses.
+
+## Features
+
+- 🧩 **Interactive Coding Challenges** - Practice with real programming problems
+- 📚 **Structured Courses** - Learn through guided learning paths
+- 🌙 **Dark Mode Support** - Comfortable coding in any lighting
+- ✅ **Progress Tracking** - Keep track of completed challenges
+- 💾 **Local Storage** - Your progress is saved locally
+
+## Tech Stack
+
+- Angular 19.2
+- TypeScript
+- SCSS
+- CodeMirror for code editing
+- PrimeNG UI components
 
 ## Development server
 

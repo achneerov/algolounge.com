@@ -1,12 +1,16 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DescriptionComponent } from './description/description.component';
 import { SolutionComponent } from './solution/solution.component';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { FormsModule } from '@angular/forms';
+import { QuestionSearchService, QuestionSearchResult } from '../../services/question-search.service';
+import { LocalStorageService } from '../../services/local-storage.service';
 
 @Component({
   selector: 'app-content-tabs',
   standalone: true,
-  imports: [CommonModule, DescriptionComponent, SolutionComponent],
+  imports: [CommonModule, DescriptionComponent, SolutionComponent, AutoCompleteModule, FormsModule],
   template: `
     <div class="content-tabs">
       <div class="tab-header">
@@ -24,7 +28,28 @@ import { SolutionComponent } from './solution/solution.component';
             Solution
           </button>
         </div>
-        <span *ngIf="isCompleted" class="completion-check">✅</span>
+        <div class="tab-header-right">
+          <p-autoComplete
+            [(ngModel)]="selectedQuestion"
+            [suggestions]="searchResults"
+            (completeMethod)="onSearch($event)"
+            (onSelect)="onSelect($event)"
+            (keydown)="onKeyDown($event)"
+            field="title"
+            placeholder="Search questions..."
+            [forceSelection]="false"
+            [dropdown]="true"
+            class="question-search"
+          >
+            <ng-template let-question pTemplate="item">
+              <div class="search-item">
+                <div class="search-title">{{ question.title }}</div>
+                <div class="completion-status" *ngIf="isQuestionCompleted(question.filename)">✅</div>
+              </div>
+            </ng-template>
+          </p-autoComplete>
+          <span *ngIf="isCompleted" class="completion-check">✅</span>
+        </div>
       </div>
       
       <div class="tab-content">
@@ -73,6 +98,31 @@ import { SolutionComponent } from './solution/solution.component';
       width: 100%;
       min-width: 0;
       padding-right: 1rem;
+    }
+    
+    .tab-header-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .question-search {
+      width: 300px;
+    }
+    
+    .search-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+    
+    .search-title {
+      flex: 1;
+    }
+    
+    .completion-status {
+      margin-left: 0.5rem;
     }
     
     .tab-buttons {
@@ -179,11 +229,56 @@ import { SolutionComponent } from './solution/solution.component';
     }
   `]
 })
-export class ContentTabsComponent {
+export class ContentTabsComponent implements OnInit {
   @Input() description: string = '';
   @Input() solutionText: string = '';
   @Input() solutionCode: string = '';
   @Input() isCompleted: boolean = false;
+  @Output() go = new EventEmitter<string>();
   
   activeTab: 'description' | 'solution' = 'description';
+  searchResults: QuestionSearchResult[] = [];
+  selectedQuestion: QuestionSearchResult | null = null;
+
+  constructor(
+    private questionSearchService: QuestionSearchService,
+    private localStorageService: LocalStorageService
+  ) {}
+
+  ngOnInit(): void {
+    this.questionSearchService.isIndexLoaded().subscribe(loaded => {
+      if (loaded) {
+        this.onSearch({ query: "" });
+      }
+    });
+  }
+
+  onSearch(event: any): void {
+    const query = event.query;
+    if (query && query.length > 0) {
+      this.searchResults = this.questionSearchService.searchQuestions(query);
+    } else {
+      this.searchResults = this.questionSearchService.getAllQuestions();
+    }
+  }
+
+  onSelect(event: any): void {
+    const question = event.value as QuestionSearchResult;
+    this.selectedQuestion = null;
+    this.go.emit(question.filename);
+  }
+
+  onKeyDown(event: KeyboardEvent): void {
+    if (event.key === 'Enter') {
+      if (this.searchResults.length > 0) {
+        const topResult = this.searchResults[0];
+        this.selectedQuestion = null;
+        this.go.emit(topResult.filename);
+      }
+    }
+  }
+
+  isQuestionCompleted(filename: string): boolean {
+    return this.localStorageService.isQuestionCompleted(filename);
+  }
 }

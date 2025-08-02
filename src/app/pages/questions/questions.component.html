@@ -22,7 +22,8 @@
         [description]="description"
         [solutionText]="solutionText"
         [solutionCode]="solutionCode"
-        [isCompleted]="isCompleted">
+        [isCompleted]="isCompleted"
+        (go)="onGo($event)">
       </app-content-tabs>
     </ng-template>
     <ng-template pTemplate="panel2">

@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/alexcode",
+            "outputPath": "dist/alglounge",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "alexcode:build:production"
+              "buildTarget": "alglounge:build:production"
             },
             "development": {
-              "buildTarget": "alexcode:build:development"
+              "buildTarget": "alglounge:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "alexcode:build"
+            "buildTarget": "alglounge:build"
           }
         },
         "test": {

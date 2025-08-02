@@ -2,12 +2,13 @@
   "filename": "weekend_warrior_algorithms",
   "course_name": "Weekend Warrior Algorithms",
   "course_description": "Perfect for busy professionals who want to sharpen their coding skills on weekends. Each weekend focuses on a specific algorithmic pattern with practical, real-world applications.",
+  "keywords": ["weekend", "professionals", "algorithms", "coding skills", "real-world applications", "array mastery", "hash tables", "string algorithms", "mathematical problems", "optimization"],
   "duration": "8 weekends",
   "difficulty": "Intermediate",
   "time_commitment": "2-3 hours per weekend",
   "target_audience": "Working developers looking to level up",
-  "weekends": {
-    "weekend_1": {
+  "units": {
+    "unit_1": {
       "title": "Array Mastery Saturday & Sunday",
       "description": "Master array manipulation techniques that every developer should know",
       "saturday_focus": "Basic array operations and linear search techniques",
@@ -22,7 +23,7 @@
         "contains-duplicate"
       ]
     },
-    "weekend_2": {
+    "unit_2": {
       "title": "Hash Table Power Weekend",
       "description": "Unlock the full potential of hash-based data structures",
       "saturday_focus": "Hash table fundamentals and collision handling",
@@ -37,7 +38,7 @@
         "group-anagrams"
       ]
     },
-    "weekend_3": {
+    "unit_3": {
       "title": "String Algorithm Safari",
       "description": "Explore the wild world of string processing and manipulation",
       "saturday_focus": "Pattern matching and string comparison",
@@ -52,7 +53,7 @@
         "group-anagrams"
       ]
     },
-    "weekend_4": {
+    "unit_4": {
       "title": "Mathematical Problem Solving",
       "description": "Apply algorithmic thinking to mathematical challenges",
       "saturday_focus": "Number theory and computational mathematics",
@@ -66,7 +67,7 @@
         "multiply-and-divide"
       ]
     },
-    "weekend_5": {
+    "unit_5": {
       "title": "Integration Challenge Weekend",
       "description": "Combine multiple algorithmic concepts for complex solutions",
       "saturday_focus": "Multi-step problem decomposition",
@@ -77,7 +78,7 @@
         "group-anagrams"
       ]
     },
-    "weekend_6": {
+    "unit_6": {
       "title": "Performance Optimization Workshop",
       "description": "Focus on making your algorithms faster and more efficient",
       "saturday_focus": "Time complexity analysis and bottleneck identification",
@@ -87,7 +88,7 @@
         "multiply-and-divide"
       ]
     },
-    "weekend_7": {
+    "unit_7": {
       "title": "Interview Simulation Weekend",
       "description": "Practice real interview scenarios with time pressure",
       "saturday_focus": "Mock interviews with easy to medium problems",
@@ -98,7 +99,7 @@
         "valid-anagram"
       ]
     },
-    "weekend_8": {
+    "unit_8": {
       "title": "Capstone Challenge Weekend",
       "description": "Final challenge combining all learned techniques",
       "saturday_focus": "Complex multi-part challenges",

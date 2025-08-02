@@ -2,12 +2,13 @@
   "filename": "beginner_coding_challenge",
   "course_name": "30-Day Beginner Coding Challenge",
   "course_description": "A gentle introduction to programming problem-solving for absolute beginners. Each day builds upon the previous, creating a solid foundation in computational thinking and basic algorithms.",
+  "keywords": ["beginner", "programming", "problem solving", "computational thinking", "algorithms", "30-day challenge", "python", "javascript", "typescript", "basic coding"],
   "duration": "30 days",
   "difficulty": "Absolute Beginner",
   "time_commitment": "30-45 minutes per day",
   "languages_supported": ["Python", "JavaScript", "TypeScript"],
-  "fortnights": {
-    "fortnight_1": {
+  "units": {
+    "unit_1": {
       "title": "Getting Started with Problem Solving",
       "description": "Learn the basics of breaking down problems and thinking algorithmically",
       "days_covered": "Days 1-14",
@@ -16,7 +17,7 @@
         "two-sum"
       ]
     },
-    "fortnight_2": {
+    "unit_2": {
       "title": "Intermediate Concepts & Practice",
       "description": "Dive deeper into data manipulation and more complex problem solving",
       "days_covered": "Days 15-30",

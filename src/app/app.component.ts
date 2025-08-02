@@ -10,7 +10,7 @@ import { GlobalHeaderComponent } from './components/general/global-header/global
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
-  title = 'alglounge';
+  title = 'algolounge';
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 

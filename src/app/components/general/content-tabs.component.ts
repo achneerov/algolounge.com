@@ -86,6 +86,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
       display: flex;
       align-items: center;
       flex-shrink: 0;
+      min-width: 250px;
     }
     
     .question-search {
@@ -119,6 +120,27 @@ import { LocalStorageService } from '../../services/local-storage.service';
       z-index: 10;
       flex-shrink: 0;
       padding: 0;
+      overflow-x: auto;
+      overflow-y: hidden;
+      white-space: nowrap;
+      min-width: 0;
+    }
+    
+    .tab-navigation::-webkit-scrollbar {
+      height: 4px;
+    }
+    
+    .tab-navigation::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    
+    .tab-navigation::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 2px;
+    }
+    
+    .tab-navigation::-webkit-scrollbar-thumb:hover {
+      background: #999;
     }
     
     .tab-button {
@@ -131,6 +153,8 @@ import { LocalStorageService } from '../../services/local-storage.service';
       color: #6c757d;
       border-bottom: 3px solid transparent;
       transition: all 0.2s ease;
+      flex-shrink: 0;
+      white-space: nowrap;
       
       &:hover {
         color: #495057;
@@ -170,6 +194,14 @@ import { LocalStorageService } from '../../services/local-storage.service';
       .tab-navigation {
         background-color: var(--surface-200, #2d2d2d);
         border-bottom-color: var(--surface-border, #555);
+      }
+      
+      .tab-navigation::-webkit-scrollbar-thumb {
+        background: #555;
+      }
+      
+      .tab-navigation::-webkit-scrollbar-thumb:hover {
+        background: #777;
       }
       
       .tab-button {

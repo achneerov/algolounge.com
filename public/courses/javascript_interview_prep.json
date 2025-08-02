@@ -3,9 +3,6 @@
   "course_name": "JavaScript Interview Prep Sprint",
   "course_description": "A fast-paced 10-day intensive course focused on JavaScript-specific coding challenges and interview questions. Perfect for developers preparing for frontend/fullstack interviews at top tech companies.",
   "keywords": ["javascript", "interview prep", "frontend", "fullstack", "coding challenges", "tech companies", "intensive", "ES6", "async", "functional programming"],
-  "duration": "10 days",
-  "difficulty": "Intermediate to Advanced",
-  "target_audience": "JavaScript developers with 1+ years experience",
   "units": {
     "unit_1": {
       "title": "JavaScript Fundamentals Review",

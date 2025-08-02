@@ -3,8 +3,6 @@
   "course_name": "AlgoTime Summer 2025",
   "course_description": "A comprehensive 8-week algorithm and data structures bootcamp designed to prepare you for technical interviews. We'll cover essential patterns, problem-solving techniques, and build strong coding fundamentals through hands-on practice.",
   "keywords": ["algorithms", "data structures", "technical interviews", "coding fundamentals", "problem solving", "bootcamp", "summer", "arrays", "hash tables", "strings"],
-  "duration": "8 weeks",
-  "difficulty": "Beginner to Intermediate",
   "units": {
     "unit_1": {
       "title": "Arrays & Hash Tables Fundamentals",

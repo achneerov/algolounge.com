@@ -3,15 +3,10 @@
   "course_name": "Data Structures Bootcamp",
   "course_description": "Master fundamental data structures through hands-on coding exercises. This course focuses on understanding when and how to use different data structures to solve complex problems efficiently.",
   "keywords": ["data structures", "bootcamp", "algorithms", "arrays", "hash tables", "strings", "mathematical problems", "optimization", "performance", "memory management"],
-  "duration": "6 modules",
-  "difficulty": "Beginner to Advanced",
-  "prerequisites": "Basic programming knowledge in any language",
   "units": {
     "unit_1": {
       "title": "Arrays & Dynamic Arrays",
       "description": "Foundation of linear data structures - arrays, lists, and dynamic resizing",
-      "learning_objectives": ["Array operations", "Memory management", "Time complexity analysis"],
-      "estimated_hours": 8,
       "questions": [
         "two-sum",
         "contains-duplicate"
@@ -20,8 +15,6 @@
     "unit_2": {
       "title": "Hash Tables Deep Dive",
       "description": "Master hash tables, collision handling, and real-world applications",
-      "learning_objectives": ["Hash functions", "Collision resolution", "Load factor optimization"],
-      "estimated_hours": 10,
       "questions": [
         "contains-duplicate",
         "valid-anagram",
@@ -31,8 +24,6 @@
     "unit_3": {
       "title": "String Processing & Algorithms",
       "description": "Advanced string manipulation and pattern matching techniques",
-      "learning_objectives": ["String algorithms", "Pattern matching", "Text processing"],
-      "estimated_hours": 6,
       "questions": [
         "valid-anagram",
         "group-anagrams"
@@ -41,8 +32,6 @@
     "unit_4": {
       "title": "Mathematical Problem Solving",
       "description": "Apply data structures to solve mathematical and logical challenges",
-      "learning_objectives": ["Algorithm design", "Mathematical reasoning", "Edge case handling"],
-      "estimated_hours": 5,
       "questions": [
         "multiply-and-divide"
       ]
@@ -50,8 +39,6 @@
     "unit_5": {
       "title": "Integration & Optimization",
       "description": "Combine multiple data structures for complex problem solving",
-      "learning_objectives": ["Multi-structure solutions", "Performance optimization", "Memory efficiency"],
-      "estimated_hours": 12,
       "questions": [
         "two-sum",
         "group-anagrams",
@@ -61,8 +48,6 @@
     "unit_6": {
       "title": "Capstone Project",
       "description": "Build a comprehensive project utilizing all learned data structures",
-      "learning_objectives": ["System design", "Code architecture", "Performance testing"],
-      "estimated_hours": 15,
       "questions": [
         "two-sum",
         "contains-duplicate",

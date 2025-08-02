@@ -44,8 +44,7 @@ export class CourseService {
       'algotime_summer_2025.json',
       'javascript_interview_prep.json', 
       'data_structures_bootcamp.json',
-      'beginner_coding_challenge.json',
-      'weekend_warrior_algorithms.json'
+      'beginner_coding_challenge.json'
     ];
 
     const courses: Course[] = [];

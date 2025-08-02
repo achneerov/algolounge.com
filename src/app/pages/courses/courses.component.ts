@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CourseSearchService, CourseSearchResult } from '../../services/course-search.service';
 import { LocalStorageService } from '../../services/local-storage.service';
 
 @Component({
   selector: 'app-courses',
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.scss'
 })

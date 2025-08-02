@@ -5,7 +5,7 @@ import { ContentTabsComponent } from "../../components/general/content-tabs.comp
 import { SplitterModule } from "primeng/splitter";
 import { ActivatedRoute, Router } from "@angular/router";
 import { CommonModule } from "@angular/common";
-import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { NotFoundComponent } from "../not-found/not-found.component";
 import { CodeExecutionService } from "../../services/code-execution.service";
 import { LocalStorageService } from "../../services/local-storage.service";
@@ -15,7 +15,6 @@ import { LocalStorageService } from "../../services/local-storage.service";
   standalone: true,
   imports: [
     CommonModule,
-    HttpClientModule,
     IdeComponent,
     ConsoleComponent,
     ContentTabsComponent,

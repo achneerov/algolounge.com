@@ -19,6 +19,11 @@
       "template": "function multiplyAndDivide(num: number): number {\n  const result = num * 3;\n  // TODO: Divide result by 4\n  return result;\n}",
       "solution_text": "Simply divide the result by 4 before returning it. This completes the two-step mathematical operation. TypeScript ensures type safety with number inputs and outputs.",
       "solution_code": "function multiplyAndDivide(num: number): number {\n  const result = num * 3;\n  return result / 4;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public double multiplyAndDivide(int num) {\n        double result = num * 3;\n        // TODO: Divide result by 4\n        return result;\n    }\n}",
+      "solution_text": "Simply divide the result by 4 before returning it. This completes the two-step mathematical operation. Using double for the return type ensures precision in division.",
+      "solution_code": "class Solution {\n    public double multiplyAndDivide(int num) {\n        double result = num * 3;\n        return result / 4;\n    }\n}"
     }
   },
 

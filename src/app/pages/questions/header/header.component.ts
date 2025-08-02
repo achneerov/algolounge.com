@@ -28,7 +28,8 @@ export class HeaderComponent implements OnInit {
   languages = [
     { label: "Python", value: "python" },
     { label: "JavaScript", value: "javascript" },
-    { label: "TypeScript", value: "typescript" }
+    { label: "TypeScript", value: "typescript" },
+    { label: "Java", value: "java" }
   ];
 
   constructor(

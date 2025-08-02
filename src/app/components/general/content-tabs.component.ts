@@ -12,49 +12,52 @@ import { LocalStorageService } from '../../services/local-storage.service';
   standalone: true,
   imports: [CommonModule, DescriptionComponent, SolutionComponent, AutoCompleteModule, FormsModule],
   template: `
-    <div class="content-tabs">
-      <div class="tab-header">
-        <div class="tab-header-left">
-          <p-autoComplete
-            [(ngModel)]="selectedQuestion"
-            [suggestions]="searchResults"
-            (completeMethod)="onSearch($event)"
-            (onSelect)="onSelect($event)"
-            (keydown)="onKeyDown($event)"
-            field="title"
-            placeholder="Search questions..."
-            [forceSelection]="false"
-            [dropdown]="true"
-            class="question-search"
-          >
-            <ng-template let-question pTemplate="item">
-              <div class="search-item">
-                <div class="search-title">{{ question.title }}</div>
-                <div class="completion-status" *ngIf="isQuestionCompleted(question.filename)">✅</div>
-              </div>
-            </ng-template>
-          </p-autoComplete>
-        </div>
-        <div class="tab-buttons">
-          <button 
-            [class.active]="activeTab === 'description'"
-            (click)="activeTab = 'description'"
-            type="button">
-            Description
-          </button>
-          <button 
-            [class.active]="activeTab === 'solution'"
-            (click)="activeTab = 'solution'"
-            type="button">
-            Solution
-          </button>
-        </div>
-        <div class="tab-header-right">
-        </div>
+    <div class="container">
+      <!-- Search Bar Section - Completely separate layer -->
+      <div class="search-section">
+        <p-autoComplete
+          [(ngModel)]="selectedQuestion"
+          [suggestions]="searchResults"
+          (completeMethod)="onSearch($event)"
+          (onSelect)="onSelect($event)"
+          (keydown)="onKeyDown($event)"
+          field="title"
+          placeholder="Search questions..."
+          [forceSelection]="false"
+          [dropdown]="true"
+          class="question-search"
+          [appendTo]="'body'"
+        >
+          <ng-template let-question pTemplate="item">
+            <div class="search-item">
+              <div class="search-title">{{ question.title }}</div>
+              <div class="completion-status" *ngIf="isQuestionCompleted(question.filename)">✅</div>
+            </div>
+          </ng-template>
+        </p-autoComplete>
+      </div>
+
+      <!-- Tab Navigation -->
+      <div class="tab-navigation">
+        <button 
+          [class.active]="activeTab === 'description'"
+          (click)="activeTab = 'description'"
+          type="button"
+          class="tab-button">
+          Description
+        </button>
+        <button 
+          [class.active]="activeTab === 'solution'"
+          (click)="activeTab = 'solution'"
+          type="button"
+          class="tab-button">
+          Solution
+        </button>
+        <div class="completion-indicator" *ngIf="isCompleted">✅</div>
       </div>
       
-      <div class="tab-content">
-        <span *ngIf="isCompleted" class="completion-check">✅</span>
+      <!-- Tab Content -->
+      <div class="tab-content-area">
         <app-description 
           *ngIf="activeTab === 'description'"
           [content]="description">
@@ -68,59 +71,29 @@ import { LocalStorageService } from '../../services/local-storage.service';
     </div>
   `,
   styles: [`
-    :host {
-      display: block;
-      width: 100%;
+    .container {
+      display: flex;
+      flex-direction: column;
       height: 100%;
-      box-sizing: border-box;
-      contain: layout;
+      width: 100%;
       background: var(--surface-card, #ffffff);
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
       border: 1px solid rgba(0, 0, 0, 0.1);
-      overflow: hidden;
     }
     
-    .content-tabs {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      min-width: 0;
-      box-sizing: border-box;
-    }
-    
-    .tab-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .search-section {
+      padding: 12px 16px;
       border-bottom: 1px solid #e1e5e9;
       background-color: #f8f9fa;
-      flex-shrink: 0;
-      width: 100%;
-      min-width: 0;
-      padding: 0 1rem;
-      overflow-x: auto;
-      overflow-y: hidden;
-    }
-    
-    .tab-header-left {
-      display: flex;
-      align-items: center;
-      flex-shrink: 0;
-      padding-left: 0.1rem;
-      margin-right: 0.5rem;
-    }
-    
-    .tab-header-right {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+      position: relative;
+      z-index: 1000;
       flex-shrink: 0;
     }
     
     .question-search {
-      width: 200px;
+      width: 100%;
+      max-width: 400px;
     }
     
     .search-item {
@@ -128,124 +101,127 @@ import { LocalStorageService } from '../../services/local-storage.service';
       justify-content: space-between;
       align-items: center;
       width: 100%;
+      padding: 4px 0;
     }
     
     .search-title {
       flex: 1;
+      font-size: 14px;
     }
     
     .completion-status {
-      margin-left: 0.5rem;
+      margin-left: 8px;
+      font-size: 12px;
     }
     
-    .tab-buttons {
+    .tab-navigation {
       display: flex;
+      align-items: center;
+      background-color: #f8f9fa;
+      border-bottom: 1px solid #e1e5e9;
+      position: relative;
+      z-index: 10;
       flex-shrink: 0;
+    }
+    
+    .tab-button {
+      background: none;
+      border: none;
+      padding: 14px 20px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      color: #6c757d;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s ease;
       
-      button {
-        background: none;
-        border: none;
-        padding: 12px 24px;
-        cursor: pointer;
-        font-size: 14px;
-        font-weight: 500;
-        color: #6c757d;
-        border-bottom: 3px solid transparent;
-        transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
-        white-space: nowrap;
-        
-        &:hover {
-          color: #495057;
-          background-color: #e9ecef;
-        }
-        
-        &.active {
-          color: #007bff;
-          border-bottom-color: #007bff;
-          background-color: white;
-        }
+      &:hover {
+        color: #495057;
+        background-color: #e9ecef;
+      }
+      
+      &.active {
+        color: #007bff;
+        border-bottom-color: #007bff;
+        background-color: white;
       }
     }
     
-    .completion-check {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      font-size: 1.2rem;
-      z-index: 10;
+    .completion-indicator {
+      margin-left: auto;
+      margin-right: 16px;
+      font-size: 16px;
     }
     
-    .tab-content {
+    .tab-content-area {
       flex: 1;
-      overflow: hidden;
+      overflow: auto;
       background-color: white;
-      width: 100%;
-      min-width: 0;
-      box-sizing: border-box;
       position: relative;
+      z-index: 1;
     }
     
-    // Dark mode overrides
-    :host-context(.dark-mode) .tab-header {
+    /* Dark mode support */
+    @media (prefers-color-scheme: dark) {
+      .container {
+        background: var(--surface-card, #1f1f1f);
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+      
+      .search-section,
+      .tab-navigation {
+        background-color: var(--surface-200, #2d2d2d);
+        border-bottom-color: var(--surface-border, #555);
+      }
+      
+      .tab-button {
+        color: var(--text-color-secondary, #cccccc);
+        
+        &:hover {
+          color: var(--text-color, #ffffff);
+          background-color: var(--surface-300, #444);
+        }
+        
+        &.active {
+          color: var(--primary-300, #66ccff);
+          border-bottom-color: var(--primary-300, #66ccff);
+          background-color: var(--surface-card, #1f1f1f);
+        }
+      }
+      
+      .tab-content-area {
+        background-color: var(--surface-card, #1f1f1f);
+      }
+    }
+    
+    :host-context(.dark-mode) .container {
+      background: var(--surface-card, #1f1f1f) !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    :host-context(.dark-mode) .search-section,
+    :host-context(.dark-mode) .tab-navigation {
       background-color: var(--surface-200, #2d2d2d) !important;
       border-bottom-color: var(--surface-border, #555) !important;
     }
     
-    :host-context(.dark-mode) .tab-header button {
+    :host-context(.dark-mode) .tab-button {
       color: var(--text-color-secondary, #cccccc) !important;
     }
     
-    :host-context(.dark-mode) .tab-header button:hover {
+    :host-context(.dark-mode) .tab-button:hover {
       color: var(--text-color, #ffffff) !important;
       background-color: var(--surface-300, #444) !important;
     }
     
-    :host-context(.dark-mode) .tab-header button.active {
+    :host-context(.dark-mode) .tab-button.active {
       color: var(--primary-300, #66ccff) !important;
       border-bottom-color: var(--primary-300, #66ccff) !important;
       background-color: var(--surface-card, #1f1f1f) !important;
     }
     
-    :host-context(.dark-mode) .tab-content {
+    :host-context(.dark-mode) .tab-content-area {
       background-color: var(--surface-card, #1f1f1f) !important;
-    }
-    
-    
-    :host-context(.dark-mode) {
-      background: var(--surface-card, #1f1f1f) !important;
-      border-color: rgba(255, 255, 255, 0.1) !important;
-    }
-    
-    @media (prefers-color-scheme: dark) {
-      .tab-header {
-        background-color: var(--surface-200, #2d2d2d) !important;
-        border-bottom-color: var(--surface-border, #555) !important;
-      }
-      
-      .tab-header button {
-        color: var(--text-color-secondary, #cccccc) !important;
-      }
-      
-      .tab-header button:hover {
-        color: var(--text-color, #ffffff) !important;
-        background-color: var(--surface-300, #444) !important;
-      }
-      
-      .tab-header button.active {
-        color: var(--primary-300, #66ccff) !important;
-        border-bottom-color: var(--primary-300, #66ccff) !important;
-        background-color: var(--surface-card, #1f1f1f) !important;
-      }
-      
-      .tab-content {
-        background-color: var(--surface-card, #1f1f1f) !important;
-      }
-      
-      
-      :host {
-        background: var(--surface-card, #1f1f1f) !important;
-        border-color: rgba(255, 255, 255, 0.1) !important;
-      }
     }
   `]
 })

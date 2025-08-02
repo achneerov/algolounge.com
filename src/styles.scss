@@ -112,3 +112,18 @@ html.dark-mode {
     color: #888888 !important;
   }
 }
+
+/* Global fix for PrimeNG AutoComplete dropdown visibility */
+.p-autocomplete-panel {
+  z-index: 9999 !important;
+}
+
+/* Ensure question search dropdown appears above all other content */
+.question-search .p-autocomplete-panel {
+  z-index: 10000 !important;
+}
+
+/* Fix for AutoComplete when appended to body */
+body > .p-autocomplete-panel {
+  z-index: 10001 !important;
+}

@@ -1,0 +1,69 @@
+{
+  "filename": "course-schedule",
+  "title": "Course Schedule",
+  "keywords": [
+    "course",
+    "schedule",
+    "topological",
+    "sort",
+    "dfs",
+    "cycle",
+    "detection"
+  ],
+  "description": "<h2>Course Schedule</h2><p>There are a total of <code>numCourses</code> courses you have to take, labeled from <code>0</code> to <code>numCourses - 1</code>. You are given an array <code>prerequisites</code> where <code>prerequisites[i] = [a<sub>i</sub>, b<sub>i</sub>]</code> indicates that you <strong>must</strong> take course <code>b<sub>i</sub></code> first if you want to take course <code>a<sub>i</sub></code>.</p><ul><li>For example, the pair <code>[0, 1]</code>, indicates that to take course <code>0</code> you have to first take course <code>1</code>.</li></ul><p>Return <code>true</code> if you can finish all courses. Otherwise, return <code>false</code>.</p><h3>Examples:</h3><ul><li><strong>Example 1:</strong><br>Input: numCourses = 2, prerequisites = [[1,0]]<br>Output: true<br>Explanation: There are a total of 2 courses to take.<br>To take course 1 you should have finished course 0. So it is possible.</li><li><strong>Example 2:</strong><br>Input: numCourses = 2, prerequisites = [[1,0],[0,1]]<br>Output: false<br>Explanation: There are a total of 2 courses to take.<br>To take course 1 you should have finished course 0, and to take course 0 you should also have finished course 1. So it is impossible.</li></ul><h3>Constraints:</h3><ul><li>1 <= numCourses <= 2000</li><li>0 <= prerequisites.length <= 5000</li><li>prerequisites[i].length == 2</li><li>0 <= a<sub>i</sub>, b<sub>i</sub> < numCourses</li><li>All the pairs prerequisites[i] are <strong>unique</strong>.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def canFinish(numCourses, prerequisites):\n    ",
+      "solution_text": "Use DFS to detect cycles in directed graph. If cycle exists, impossible to finish all courses.",
+      "solution_code": "def canFinish(numCourses, prerequisites):\n    # Build adjacency list\n    graph = [[] for _ in range(numCourses)]\n    for course, prereq in prerequisites:\n        graph[course].append(prereq)\n    \n    # 0: unvisited, 1: visiting, 2: visited\n    state = [0] * numCourses\n    \n    def has_cycle(course):\n        if state[course] == 1:  # Currently visiting - cycle detected\n            return True\n        if state[course] == 2:  # Already visited\n            return False\n        \n        state[course] = 1  # Mark as visiting\n        \n        for prereq in graph[course]:\n            if has_cycle(prereq):\n                return True\n        \n        state[course] = 2  # Mark as visited\n        return False\n    \n    for course in range(numCourses):\n        if has_cycle(course):\n            return False\n    \n    return True"
+    },
+    "javascript": {
+      "template": "function canFinish(numCourses, prerequisites) {\n  \n}",
+      "solution_text": "Use DFS to detect cycles in directed graph. If cycle exists, impossible to finish all courses.",
+      "solution_code": "function canFinish(numCourses, prerequisites) {\n    // Build adjacency list\n    const graph = Array(numCourses).fill().map(() => []);\n    for (const [course, prereq] of prerequisites) {\n        graph[course].push(prereq);\n    }\n    \n    // 0: unvisited, 1: visiting, 2: visited\n    const state = new Array(numCourses).fill(0);\n    \n    function hasCycle(course) {\n        if (state[course] === 1) return true;  // Currently visiting - cycle detected\n        if (state[course] === 2) return false; // Already visited\n        \n        state[course] = 1; // Mark as visiting\n        \n        for (const prereq of graph[course]) {\n            if (hasCycle(prereq)) {\n                return true;\n            }\n        }\n        \n        state[course] = 2; // Mark as visited\n        return false;\n    }\n    \n    for (let course = 0; course < numCourses; course++) {\n        if (hasCycle(course)) {\n            return false;\n        }\n    }\n    \n    return true;\n}"
+    },
+    "typescript": {
+      "template": "function canFinish(numCourses: number, prerequisites: number[][]): boolean {\n  \n}",
+      "solution_text": "Use DFS to detect cycles in directed graph. If cycle exists, impossible to finish all courses.",
+      "solution_code": "function canFinish(numCourses: number, prerequisites: number[][]): boolean {\n    // Build adjacency list\n    const graph: number[][] = Array(numCourses).fill(null).map(() => []);\n    for (const [course, prereq] of prerequisites) {\n        graph[course].push(prereq);\n    }\n    \n    // 0: unvisited, 1: visiting, 2: visited\n    const state = new Array(numCourses).fill(0);\n    \n    function hasCycle(course: number): boolean {\n        if (state[course] === 1) return true;  // Currently visiting - cycle detected\n        if (state[course] === 2) return false; // Already visited\n        \n        state[course] = 1; // Mark as visiting\n        \n        for (const prereq of graph[course]) {\n            if (hasCycle(prereq)) {\n                return true;\n            }\n        }\n        \n        state[course] = 2; // Mark as visited\n        return false;\n    }\n    \n    for (let course = 0; course < numCourses; course++) {\n        if (hasCycle(course)) {\n            return false;\n        }\n    }\n    \n    return true;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public boolean canFinish(int numCourses, int[][] prerequisites) {\n        \n    }\n}",
+      "solution_text": "Use DFS to detect cycles in directed graph. If cycle exists, impossible to finish all courses.",
+      "solution_code": "class Solution {\n    public boolean canFinish(int numCourses, int[][] prerequisites) {\n        // Build adjacency list\n        List<List<Integer>> graph = new ArrayList<>();\n        for (int i = 0; i < numCourses; i++) {\n            graph.add(new ArrayList<>());\n        }\n        \n        for (int[] prereq : prerequisites) {\n            graph.get(prereq[0]).add(prereq[1]);\n        }\n        \n        // 0: unvisited, 1: visiting, 2: visited\n        int[] state = new int[numCourses];\n        \n        for (int course = 0; course < numCourses; course++) {\n            if (hasCycle(graph, state, course)) {\n                return false;\n            }\n        }\n        \n        return true;\n    }\n    \n    private boolean hasCycle(List<List<Integer>> graph, int[] state, int course) {\n        if (state[course] == 1) return true;  // Currently visiting - cycle detected\n        if (state[course] == 2) return false; // Already visited\n        \n        state[course] = 1; // Mark as visiting\n        \n        for (int prereq : graph.get(course)) {\n            if (hasCycle(graph, state, prereq)) {\n                return true;\n            }\n        }\n        \n        state[course] = 2; // Mark as visited\n        return false;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "numCourses": 2,
+        "prerequisites": [
+          [
+            1,
+            0
+          ]
+        ]
+      },
+      "output": true
+    },
+    {
+      "id": 2,
+      "input": {
+        "numCourses": 2,
+        "prerequisites": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "output": false
+    }
+  ]
+}

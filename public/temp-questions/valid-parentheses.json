@@ -1,0 +1,59 @@
+{
+  "filename": "valid-parentheses",
+  "title": "Valid Parentheses",
+  "keywords": [
+    "valid",
+    "parentheses",
+    "brackets",
+    "stack",
+    "string",
+    "matching"
+  ],
+  "description": "<h2>Valid Parentheses</h2><p>Given a string <code>s</code> containing just the characters <code>'('</code>, <code>')'</code>, <code>'{'</code>, <code>'}'</code>, <code>'['</code> and <code>']'</code>, determine if the input string is valid.</p><p>An input string is valid if:</p><ol><li>Open brackets must be closed by the same type of brackets.</li><li>Open brackets must be closed in the correct order.</li><li>Every close bracket has a corresponding open bracket of the same type.</li></ol><h3>Examples:</h3><ul><li><strong>Example 1:</strong><br>Input: s = \"()\"<br>Output: true</li><li><strong>Example 2:</strong><br>Input: s = \"()[]{}\"<br>Output: true</li><li><strong>Example 3:</strong><br>Input: s = \"(]\"<br>Output: false</li></ul><h3>Constraints:</h3><ul><li>1 <= s.length <= 10<sup>4</sup></li><li>s consists of parentheses only '()[]{}' .</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def isValid(s):\n    ",
+      "solution_text": "Use a stack to match opening and closing brackets.",
+      "solution_code": "def isValid(s):\n    stack = []\n    mapping = {\")\": \"(\", \"}\": \"{\", \"]\": \"[\"}\n    \n    for char in s:\n        if char in mapping:\n            if not stack or stack.pop() != mapping[char]:\n                return False\n        else:\n            stack.append(char)\n    \n    return not stack"
+    },
+    "javascript": {
+      "template": "function isValid(s) {\n  \n}",
+      "solution_text": "Use a stack to match opening and closing brackets.",
+      "solution_code": "function isValid(s) {\n    const stack = [];\n    const mapping = { \")\": \"(\", \"}\": \"{\", \"]\": \"[\" };\n    \n    for (const char of s) {\n        if (char in mapping) {\n            if (stack.length === 0 || stack.pop() !== mapping[char]) {\n                return false;\n            }\n        } else {\n            stack.push(char);\n        }\n    }\n    \n    return stack.length === 0;\n}"
+    },
+    "typescript": {
+      "template": "function isValid(s: string): boolean {\n  \n}",
+      "solution_text": "Use a stack to match opening and closing brackets.",
+      "solution_code": "function isValid(s: string): boolean {\n    const stack: string[] = [];\n    const mapping: { [key: string]: string } = { \")\": \"(\", \"}\": \"{\", \"]\": \"[\" };\n    \n    for (const char of s) {\n        if (char in mapping) {\n            if (stack.length === 0 || stack.pop() !== mapping[char]) {\n                return false;\n            }\n        } else {\n            stack.push(char);\n        }\n    }\n    \n    return stack.length === 0;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public boolean isValid(String s) {\n        \n    }\n}",
+      "solution_text": "Use a stack to match opening and closing brackets.",
+      "solution_code": "class Solution {\n    public boolean isValid(String s) {\n        Stack<Character> stack = new Stack<>();\n        Map<Character, Character> mapping = new HashMap<>();\n        mapping.put(')', '(');\n        mapping.put('}', '{');\n        mapping.put(']', '[');\n        \n        for (char c : s.toCharArray()) {\n            if (mapping.containsKey(c)) {\n                if (stack.isEmpty() || stack.pop() != mapping.get(c)) {\n                    return false;\n                }\n            } else {\n                stack.push(c);\n            }\n        }\n        \n        return stack.isEmpty();\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "s": "()"
+      },
+      "output": true
+    },
+    {
+      "id": 2,
+      "input": {
+        "s": "()[]{}"
+      },
+      "output": true
+    },
+    {
+      "id": 3,
+      "input": {
+        "s": "(]"
+      },
+      "output": false
+    }
+  ]
+}

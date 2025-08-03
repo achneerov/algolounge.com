@@ -1,0 +1,81 @@
+{
+  "filename": "contains-duplicate",
+  "title": "Contains Duplicate",
+  "keywords": [
+    "contains",
+    "duplicate",
+    "array",
+    "integer",
+    "distinct",
+    "hashset",
+    "set"
+  ],
+  "description": "<h2>Contains Duplicate</h2><p>Given an integer array <code>nums</code>, return <code>true</code> if any value appears at least twice in the array, and return <code>false</code> if every element is distinct.</p><h3>Examples:</h3><ul><li><strong>Example 1:</strong><br>Input: nums = [1,2,3,1]<br>Output: true</li><li><strong>Example 2:</strong><br>Input: nums = [1,2,3,4]<br>Output: false</li><li><strong>Example 3:</strong><br>Input: nums = [1,1,1,3,3,4,3,2,4,2]<br>Output: true</li></ul><h3>Constraints:</h3><ul><li>1 <= nums.length <= 10<sup>5</sup></li><li>-10<sup>9</sup> <= nums[i] <= 10<sup>9</sup></li></ul>",
+  "languages": {
+    "python": {
+      "template": "def containsDuplicate(nums):\n    ",
+      "solution_text": "Use a set to keep track of elements we have seen. If we encounter an element that is already in the set, return True.",
+      "solution_code": "def containsDuplicate(nums):\n    seen = set()\n    \n    for num in nums:\n        if num in seen:\n            return True\n        seen.add(num)\n    \n    return False"
+    },
+    "javascript": {
+      "template": "function containsDuplicate(nums) {\n  \n}",
+      "solution_text": "Use a Set to keep track of elements we have seen. If we encounter an element that is already in the set, return true.",
+      "solution_code": "function containsDuplicate(nums) {\n    const seen = new Set();\n    \n    for (const num of nums) {\n        if (seen.has(num)) {\n            return true;\n        }\n        seen.add(num);\n    }\n    \n    return false;\n}"
+    },
+    "typescript": {
+      "template": "function containsDuplicate(nums: number[]): boolean {\n  \n}",
+      "solution_text": "Use a Set to keep track of elements we have seen. If we encounter an element that is already in the set, return true.",
+      "solution_code": "function containsDuplicate(nums: number[]): boolean {\n    const seen = new Set<number>();\n    \n    for (const num of nums) {\n        if (seen.has(num)) {\n            return true;\n        }\n        seen.add(num);\n    }\n    \n    return false;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public boolean containsDuplicate(int[] nums) {\n        \n    }\n}",
+      "solution_text": "Use a HashSet to keep track of elements we have seen. If we encounter an element that is already in the set, return true.",
+      "solution_code": "class Solution {\n    public boolean containsDuplicate(int[] nums) {\n        Set<Integer> seen = new HashSet<>();\n        \n        for (int num : nums) {\n            if (seen.contains(num)) {\n                return true;\n            }\n            seen.add(num);\n        }\n        \n        return false;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [
+          1,
+          2,
+          3,
+          1
+        ]
+      },
+      "output": true
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "output": false
+    },
+    {
+      "id": 3,
+      "input": {
+        "nums": [
+          1,
+          1,
+          1,
+          3,
+          3,
+          4,
+          3,
+          2,
+          4,
+          2
+        ]
+      },
+      "output": true
+    }
+  ]
+}

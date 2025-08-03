@@ -1,0 +1,74 @@
+{
+  "filename": "detect-cycle-in-linked-list",
+  "title": "Linked List Cycle",
+  "keywords": [
+    "linked",
+    "list",
+    "cycle",
+    "floyd",
+    "tortoise",
+    "hare",
+    "two",
+    "pointers"
+  ],
+  "description": "<h2>Linked List Cycle</h2><p>Given <code>head</code>, the head of a linked list, determine if the linked list has a cycle in it.</p><p>There is a cycle in a linked list if there is some node in the list that can be reached again by continuously following the <code>next</code> pointer. Internally, <code>pos</code> is used to denote the index of the node that tail's <code>next</code> pointer is connected to. Note that <code>pos</code> is not passed as a parameter.</p><p>Return <code>true</code> if there is a cycle in the linked list. Otherwise, return <code>false</code>.</p><h3>Examples:</h3><ul><li><strong>Example 1:</strong><br>Input: head = [3,2,0,-4], pos = 1<br>Output: true<br>Explanation: There is a cycle in the linked list, where the tail connects to the 1st node (0-indexed).</li><li><strong>Example 2:</strong><br>Input: head = [1,2], pos = 0<br>Output: true<br>Explanation: There is a cycle in the linked list, where the tail connects to the 0th node.</li><li><strong>Example 3:</strong><br>Input: head = [1], pos = -1<br>Output: false<br>Explanation: There is no cycle in the linked list.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def hasCycle(head):\n    ",
+      "solution_text": "Use Floyd's Cycle Detection Algorithm (tortoise and hare) with two pointers at different speeds.",
+      "solution_code": "def hasCycle(head):\n    if not head or not head.next:\n        return False\n    \n    slow = head\n    fast = head.next\n    \n    while fast and fast.next:\n        if slow == fast:\n            return True\n        slow = slow.next\n        fast = fast.next.next\n    \n    return False"
+    },
+    "javascript": {
+      "template": "function hasCycle(head) {\n  \n}",
+      "solution_text": "Use Floyd's Cycle Detection Algorithm (tortoise and hare) with two pointers at different speeds.",
+      "solution_code": "function hasCycle(head) {\n    if (!head || !head.next) return false;\n    \n    let slow = head;\n    let fast = head.next;\n    \n    while (fast && fast.next) {\n        if (slow === fast) return true;\n        slow = slow.next;\n        fast = fast.next.next;\n    }\n    \n    return false;\n}"
+    },
+    "typescript": {
+      "template": "function hasCycle(head: ListNode | null): boolean {\n  \n}",
+      "solution_text": "Use Floyd's Cycle Detection Algorithm (tortoise and hare) with two pointers at different speeds.",
+      "solution_code": "function hasCycle(head: ListNode | null): boolean {\n    if (!head || !head.next) return false;\n    \n    let slow = head;\n    let fast = head.next;\n    \n    while (fast && fast.next) {\n        if (slow === fast) return true;\n        slow = slow.next;\n        fast = fast.next.next;\n    }\n    \n    return false;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public boolean hasCycle(ListNode head) {\n        \n    }\n}",
+      "solution_text": "Use Floyd's Cycle Detection Algorithm (tortoise and hare) with two pointers at different speeds.",
+      "solution_code": "class Solution {\n    public boolean hasCycle(ListNode head) {\n        if (head == null || head.next == null) return false;\n        \n        ListNode slow = head;\n        ListNode fast = head.next;\n        \n        while (fast != null && fast.next != null) {\n            if (slow == fast) return true;\n            slow = slow.next;\n            fast = fast.next.next;\n        }\n        \n        return false;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "head": [
+          3,
+          2,
+          0,
+          -4
+        ],
+        "pos": 1
+      },
+      "output": true
+    },
+    {
+      "id": 2,
+      "input": {
+        "head": [
+          1,
+          2
+        ],
+        "pos": 0
+      },
+      "output": true
+    },
+    {
+      "id": 3,
+      "input": {
+        "head": [
+          1
+        ],
+        "pos": -1
+      },
+      "output": false
+    }
+  ]
+}

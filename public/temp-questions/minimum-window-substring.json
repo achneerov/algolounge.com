@@ -1,0 +1,63 @@
+{
+  "filename": "minimum-window-substring",
+  "title": "Minimum Window Substring",
+  "keywords": [
+    "minimum",
+    "window",
+    "substring",
+    "sliding",
+    "frequency",
+    "two",
+    "pointers"
+  ],
+  "description": "<h2>Minimum Window Substring</h2><p>Given two strings <code>s</code> and <code>t</code> of lengths <code>m</code> and <code>n</code> respectively, return <em>the <strong>minimum window substring</strong> of </em><code>s</code><em> such that every character in </em><code>t</code><em> (including duplicates) is included in the window</em>. If there is no such substring, return <em>the empty string </em><code>\"\"</code>.</p><p>The testcases will be generated such that the answer is <strong>unique</strong>.</p><p>A <strong>substring</strong> is a contiguous sequence of characters within the string.</p><h3>Examples:</h3><ul><li><strong>Example 1:</strong><br>Input: s = \"ADOBECODEBANC\", t = \"ABC\"<br>Output: \"BANC\"<br>Explanation: The minimum window substring \"BANC\" includes 'A', 'B', and 'C' from string t.</li><li><strong>Example 2:</strong><br>Input: s = \"a\", t = \"a\"<br>Output: \"a\"<br>Explanation: The entire string s is the minimum window.</li><li><strong>Example 3:</strong><br>Input: s = \"a\", t = \"aa\"<br>Output: \"\"<br>Explanation: Both 'a's from t must be included in the window.<br>Since the largest window of s only has one 'a', return empty string.</li></ul><h3>Constraints:</h3><ul><li>m == s.length</li><li>n == t.length</li><li>1 <= m, n <= 10<sup>5</sup></li><li>s and t consist of uppercase and lowercase English letters.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def minWindow(s, t):\n    ",
+      "solution_text": "Use sliding window with two pointers. Expand right until valid, then contract left to minimize.",
+      "solution_code": "def minWindow(s, t):\n    if len(t) > len(s):\n        return \"\"\n    \n    t_count = {}\n    for char in t:\n        t_count[char] = t_count.get(char, 0) + 1\n    \n    required = len(t_count)\n    formed = 0\n    window_counts = {}\n    \n    left = right = 0\n    min_len = float(\"inf\")\n    min_left = 0\n    \n    while right < len(s):\n        char = s[right]\n        window_counts[char] = window_counts.get(char, 0) + 1\n        \n        if char in t_count and window_counts[char] == t_count[char]:\n            formed += 1\n        \n        while left <= right and formed == required:\n            if right - left + 1 < min_len:\n                min_len = right - left + 1\n                min_left = left\n            \n            char = s[left]\n            window_counts[char] -= 1\n            if char in t_count and window_counts[char] < t_count[char]:\n                formed -= 1\n            \n            left += 1\n        \n        right += 1\n    \n    return \"\" if min_len == float(\"inf\") else s[min_left:min_left + min_len]"
+    },
+    "javascript": {
+      "template": "function minWindow(s, t) {\n  \n}",
+      "solution_text": "Use sliding window with two pointers. Expand right until valid, then contract left to minimize.",
+      "solution_code": "function minWindow(s, t) {\n    if (t.length > s.length) return \"\";\n    \n    const tCount = {};\n    for (const char of t) {\n        tCount[char] = (tCount[char] || 0) + 1;\n    }\n    \n    const required = Object.keys(tCount).length;\n    let formed = 0;\n    const windowCounts = {};\n    \n    let left = 0, right = 0;\n    let minLen = Infinity;\n    let minLeft = 0;\n    \n    while (right < s.length) {\n        const char = s[right];\n        windowCounts[char] = (windowCounts[char] || 0) + 1;\n        \n        if (tCount[char] && windowCounts[char] === tCount[char]) {\n            formed++;\n        }\n        \n        while (left <= right && formed === required) {\n            if (right - left + 1 < minLen) {\n                minLen = right - left + 1;\n                minLeft = left;\n            }\n            \n            const char = s[left];\n            windowCounts[char]--;\n            if (tCount[char] && windowCounts[char] < tCount[char]) {\n                formed--;\n            }\n            \n            left++;\n        }\n        \n        right++;\n    }\n    \n    return minLen === Infinity ? \"\" : s.substring(minLeft, minLeft + minLen);\n}"
+    },
+    "typescript": {
+      "template": "function minWindow(s: string, t: string): string {\n  \n}",
+      "solution_text": "Use sliding window with two pointers. Expand right until valid, then contract left to minimize.",
+      "solution_code": "function minWindow(s: string, t: string): string {\n    if (t.length > s.length) return \"\";\n    \n    const tCount: { [key: string]: number } = {};\n    for (const char of t) {\n        tCount[char] = (tCount[char] || 0) + 1;\n    }\n    \n    const required = Object.keys(tCount).length;\n    let formed = 0;\n    const windowCounts: { [key: string]: number } = {};\n    \n    let left = 0, right = 0;\n    let minLen = Infinity;\n    let minLeft = 0;\n    \n    while (right < s.length) {\n        const char = s[right];\n        windowCounts[char] = (windowCounts[char] || 0) + 1;\n        \n        if (tCount[char] && windowCounts[char] === tCount[char]) {\n            formed++;\n        }\n        \n        while (left <= right && formed === required) {\n            if (right - left + 1 < minLen) {\n                minLen = right - left + 1;\n                minLeft = left;\n            }\n            \n            const char = s[left];\n            windowCounts[char]--;\n            if (tCount[char] && windowCounts[char] < tCount[char]) {\n                formed--;\n            }\n            \n            left++;\n        }\n        \n        right++;\n    }\n    \n    return minLen === Infinity ? \"\" : s.substring(minLeft, minLeft + minLen);\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public String minWindow(String s, String t) {\n        \n    }\n}",
+      "solution_text": "Use sliding window with two pointers. Expand right until valid, then contract left to minimize.",
+      "solution_code": "class Solution {\n    public String minWindow(String s, String t) {\n        if (t.length() > s.length()) return \"\";\n        \n        Map<Character, Integer> tCount = new HashMap<>();\n        for (char c : t.toCharArray()) {\n            tCount.put(c, tCount.getOrDefault(c, 0) + 1);\n        }\n        \n        int required = tCount.size();\n        int formed = 0;\n        Map<Character, Integer> windowCounts = new HashMap<>();\n        \n        int left = 0, right = 0;\n        int minLen = Integer.MAX_VALUE;\n        int minLeft = 0;\n        \n        while (right < s.length()) {\n            char c = s.charAt(right);\n            windowCounts.put(c, windowCounts.getOrDefault(c, 0) + 1);\n            \n            if (tCount.containsKey(c) && windowCounts.get(c).intValue() == tCount.get(c).intValue()) {\n                formed++;\n            }\n            \n            while (left <= right && formed == required) {\n                if (right - left + 1 < minLen) {\n                    minLen = right - left + 1;\n                    minLeft = left;\n                }\n                \n                char c2 = s.charAt(left);\n                windowCounts.put(c2, windowCounts.get(c2) - 1);\n                if (tCount.containsKey(c2) && windowCounts.get(c2).intValue() < tCount.get(c2).intValue()) {\n                    formed--;\n                }\n                \n                left++;\n            }\n            \n            right++;\n        }\n        \n        return minLen == Integer.MAX_VALUE ? \"\" : s.substring(minLeft, minLeft + minLen);\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "s": "ADOBECODEBANC",
+        "t": "ABC"
+      },
+      "output": "BANC"
+    },
+    {
+      "id": 2,
+      "input": {
+        "s": "a",
+        "t": "a"
+      },
+      "output": "a"
+    },
+    {
+      "id": 3,
+      "input": {
+        "s": "a",
+        "t": "aa"
+      },
+      "output": ""
+    }
+  ]
+}

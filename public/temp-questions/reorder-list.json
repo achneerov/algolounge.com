@@ -1,0 +1,88 @@
+{
+  "filename": "reorder-list",
+  "title": "Reorder List",
+  "keywords": [
+    "reorder",
+    "list",
+    "linked",
+    "reverse",
+    "merge",
+    "two",
+    "pointers"
+  ],
+  "description": "<h2>Reorder List</h2><p>You are given the head of a singly linked-list. The list can be represented as:</p><p>L<sub>0</sub> → L<sub>1</sub> → … → L<sub>n - 1</sub> → L<sub>n</sub></p><p><em>Reorder the list to be on the following form:</em></p><p>L<sub>0</sub> → L<sub>n</sub> → L<sub>1</sub> → L<sub>n - 1</sub> → L<sub>2</sub> → L<sub>n - 2</sub> → …</p><p>You may not modify the values in the list's nodes. Only nodes themselves may be changed.</p><h3>Examples:</h3><ul><li><strong>Example 1:</strong><br>Input: head = [1,2,3,4]<br>Output: [1,4,2,3]</li><li><strong>Example 2:</strong><br>Input: head = [1,2,3,4,5]<br>Output: [1,5,2,4,3]</li></ul><h3>Constraints:</h3><ul><li>The number of nodes in the list is in the range [1, 5 * 10^4].</li><li>1 <= Node.val <= 1000</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def reorderList(head):\n    ",
+      "solution_text": "Find middle, reverse second half, then merge alternately. Three-step approach.",
+      "solution_code": "def reorderList(head):\n    if not head or not head.next:\n        return\n    \n    # Step 1: Find the middle of the list\n    slow = fast = head\n    while fast.next and fast.next.next:\n        slow = slow.next\n        fast = fast.next.next\n    \n    # Step 2: Reverse the second half\n    second = slow.next\n    slow.next = None\n    prev = None\n    \n    while second:\n        next_temp = second.next\n        second.next = prev\n        prev = second\n        second = next_temp\n    \n    # Step 3: Merge two lists alternately\n    first = head\n    second = prev\n    \n    while second:\n        next1 = first.next\n        next2 = second.next\n        \n        first.next = second\n        second.next = next1\n        \n        first = next1\n        second = next2"
+    },
+    "javascript": {
+      "template": "function reorderList(head) {\n  \n}",
+      "solution_text": "Find middle, reverse second half, then merge alternately. Three-step approach.",
+      "solution_code": "function reorderList(head) {\n    if (!head || !head.next) return;\n    \n    // Step 1: Find the middle of the list\n    let slow = head;\n    let fast = head;\n    while (fast.next && fast.next.next) {\n        slow = slow.next;\n        fast = fast.next.next;\n    }\n    \n    // Step 2: Reverse the second half\n    let second = slow.next;\n    slow.next = null;\n    let prev = null;\n    \n    while (second) {\n        const nextTemp = second.next;\n        second.next = prev;\n        prev = second;\n        second = nextTemp;\n    }\n    \n    // Step 3: Merge two lists alternately\n    let first = head;\n    second = prev;\n    \n    while (second) {\n        const next1 = first.next;\n        const next2 = second.next;\n        \n        first.next = second;\n        second.next = next1;\n        \n        first = next1;\n        second = next2;\n    }\n}"
+    },
+    "typescript": {
+      "template": "function reorderList(head: ListNode | null): void {\n  \n}",
+      "solution_text": "Find middle, reverse second half, then merge alternately. Three-step approach.",
+      "solution_code": "function reorderList(head: ListNode | null): void {\n    if (!head || !head.next) return;\n    \n    // Step 1: Find the middle of the list\n    let slow: ListNode | null = head;\n    let fast: ListNode | null = head;\n    while (fast.next && fast.next.next) {\n        slow = slow!.next;\n        fast = fast.next.next;\n    }\n    \n    // Step 2: Reverse the second half\n    let second: ListNode | null = slow!.next;\n    slow!.next = null;\n    let prev: ListNode | null = null;\n    \n    while (second) {\n        const nextTemp = second.next;\n        second.next = prev;\n        prev = second;\n        second = nextTemp;\n    }\n    \n    // Step 3: Merge two lists alternately\n    let first: ListNode | null = head;\n    second = prev;\n    \n    while (second) {\n        const next1 = first!.next;\n        const next2 = second.next;\n        \n        first!.next = second;\n        second.next = next1;\n        \n        first = next1;\n        second = next2;\n    }\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public void reorderList(ListNode head) {\n        \n    }\n}",
+      "solution_text": "Find middle, reverse second half, then merge alternately. Three-step approach.",
+      "solution_code": "class Solution {\n    public void reorderList(ListNode head) {\n        if (head == null || head.next == null) return;\n        \n        // Step 1: Find the middle of the list\n        ListNode slow = head;\n        ListNode fast = head;\n        while (fast.next != null && fast.next.next != null) {\n            slow = slow.next;\n            fast = fast.next.next;\n        }\n        \n        // Step 2: Reverse the second half\n        ListNode second = slow.next;\n        slow.next = null;\n        ListNode prev = null;\n        \n        while (second != null) {\n            ListNode nextTemp = second.next;\n            second.next = prev;\n            prev = second;\n            second = nextTemp;\n        }\n        \n        // Step 3: Merge two lists alternately\n        ListNode first = head;\n        second = prev;\n        \n        while (second != null) {\n            ListNode next1 = first.next;\n            ListNode next2 = second.next;\n            \n            first.next = second;\n            second.next = next1;\n            \n            first = next1;\n            second = next2;\n        }\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "head": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "output": [
+        1,
+        4,
+        2,
+        3
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "head": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "output": [
+        1,
+        5,
+        2,
+        4,
+        3
+      ]
+    },
+    {
+      "id": 3,
+      "input": {
+        "head": [
+          1,
+          2
+        ]
+      },
+      "output": [
+        1,
+        2
+      ]
+    }
+  ]
+}

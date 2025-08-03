@@ -1,0 +1,82 @@
+{
+  "filename": "remove-nth-node-from-end-of-list",
+  "title": "Remove Nth Node From End of List",
+  "keywords": [
+    "remove",
+    "nth",
+    "node",
+    "end",
+    "linked",
+    "list",
+    "two",
+    "pointers"
+  ],
+  "description": "<h2>Remove Nth Node From End of List</h2><p>Given the <code>head</code> of a linked list, remove the <code>n<sup>th</sup></code> node from the end of the list and return its head.</p><h3>Examples:</h3><ul><li><strong>Example 1:</strong><br>Input: head = [1,2,3,4,5], n = 2<br>Output: [1,2,3,5]</li><li><strong>Example 2:</strong><br>Input: head = [1], n = 1<br>Output: []</li><li><strong>Example 3:</strong><br>Input: head = [1,2], n = 1<br>Output: [1]</li></ul><h3>Constraints:</h3><ul><li>The number of nodes in the list is sz.</li><li>1 <= sz <= 30</li><li>0 <= Node.val <= 100</li><li>1 <= n <= sz</li></ul><h3>Follow up:</h3><p>Could you do this in one pass?</p>",
+  "languages": {
+    "python": {
+      "template": "def removeNthFromEnd(head, n):\n    ",
+      "solution_text": "Use two pointers with n+1 gap. When fast reaches end, slow points to node before target.",
+      "solution_code": "def removeNthFromEnd(head, n):\n    dummy = ListNode(0)\n    dummy.next = head\n    \n    slow = fast = dummy\n    \n    # Move fast pointer n+1 steps ahead\n    for i in range(n + 1):\n        fast = fast.next\n    \n    # Move both pointers until fast reaches end\n    while fast:\n        slow = slow.next\n        fast = fast.next\n    \n    # Remove the nth node from end\n    slow.next = slow.next.next\n    \n    return dummy.next"
+    },
+    "javascript": {
+      "template": "function removeNthFromEnd(head, n) {\n  \n}",
+      "solution_text": "Use two pointers with n+1 gap. When fast reaches end, slow points to node before target.",
+      "solution_code": "function removeNthFromEnd(head, n) {\n    const dummy = new ListNode(0);\n    dummy.next = head;\n    \n    let slow = dummy;\n    let fast = dummy;\n    \n    // Move fast pointer n+1 steps ahead\n    for (let i = 0; i <= n; i++) {\n        fast = fast.next;\n    }\n    \n    // Move both pointers until fast reaches end\n    while (fast !== null) {\n        slow = slow.next;\n        fast = fast.next;\n    }\n    \n    // Remove the nth node from end\n    slow.next = slow.next.next;\n    \n    return dummy.next;\n}"
+    },
+    "typescript": {
+      "template": "function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {\n  \n}",
+      "solution_text": "Use two pointers with n+1 gap. When fast reaches end, slow points to node before target.",
+      "solution_code": "function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {\n    const dummy = new ListNode(0);\n    dummy.next = head;\n    \n    let slow: ListNode | null = dummy;\n    let fast: ListNode | null = dummy;\n    \n    // Move fast pointer n+1 steps ahead\n    for (let i = 0; i <= n; i++) {\n        fast = fast!.next;\n    }\n    \n    // Move both pointers until fast reaches end\n    while (fast !== null) {\n        slow = slow!.next;\n        fast = fast.next;\n    }\n    \n    // Remove the nth node from end\n    slow!.next = slow!.next!.next;\n    \n    return dummy.next;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public ListNode removeNthFromEnd(ListNode head, int n) {\n        \n    }\n}",
+      "solution_text": "Use two pointers with n+1 gap. When fast reaches end, slow points to node before target.",
+      "solution_code": "class Solution {\n    public ListNode removeNthFromEnd(ListNode head, int n) {\n        ListNode dummy = new ListNode(0);\n        dummy.next = head;\n        \n        ListNode slow = dummy;\n        ListNode fast = dummy;\n        \n        // Move fast pointer n+1 steps ahead\n        for (int i = 0; i <= n; i++) {\n            fast = fast.next;\n        }\n        \n        // Move both pointers until fast reaches end\n        while (fast != null) {\n            slow = slow.next;\n            fast = fast.next;\n        }\n        \n        // Remove the nth node from end\n        slow.next = slow.next.next;\n        \n        return dummy.next;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "head": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "n": 2
+      },
+      "output": [
+        1,
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "head": [
+          1
+        ],
+        "n": 1
+      },
+      "output": []
+    },
+    {
+      "id": 3,
+      "input": {
+        "head": [
+          1,
+          2
+        ],
+        "n": 1
+      },
+      "output": [
+        1
+      ]
+    }
+  ]
+}

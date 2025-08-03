@@ -1,0 +1,71 @@
+{
+  "filename": "alien-dictionary",
+  "title": "Alien Dictionary",
+  "keywords": [
+    "alien",
+    "dictionary",
+    "topological",
+    "sort",
+    "graph",
+    "dfs"
+  ],
+  "description": "<h2>Alien Dictionary</h2><p>There is a new alien language that uses the English alphabet. However, the order among the letters is unknown to you.</p><p>You are given a list of strings <code>words</code> from the alien language's dictionary, where the strings in <code>words</code> are <strong>sorted lexicographically</strong> by the rules of this new language.</p><p>Return <em>a string of the unique letters in the new alien language sorted in <strong>lexicographically increasing order</strong> by the new language's rules. If there is no solution, return <code>\"\"</code>. If there are multiple solutions, return <strong>any of them</strong>.</em></p><h3>Examples:</h3><ul><li><strong>Example 1:</strong><br>Input: words = [\"wrt\",\"wrf\",\"er\",\"ett\",\"rftt\"]<br>Output: \"wertf\"</li><li><strong>Example 2:</strong><br>Input: words = [\"z\",\"x\"]<br>Output: \"zx\"</li></ul><h3>Constraints:</h3><ul><li>1 <= words.length <= 100</li><li>1 <= words[i].length <= 20</li><li>words[i] consists of only lowercase English letters.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def alienOrder(words):\n    ",
+      "solution_text": "Use topological sorting with DFS to find the alien alphabet order. Build a directed graph based on character ordering from the word list.",
+      "solution_code": "def alienOrder(words):\n    from collections import defaultdict, deque\n    \n    # Create adjacency list and in-degree count\n    graph = defaultdict(set)\n    in_degree = defaultdict(int)\n    \n    # Initialize in_degree for all characters\n    for word in words:\n        for char in word:\n            in_degree[char] = 0\n    \n    # Build the graph\n    for i in range(len(words) - 1):\n        word1, word2 = words[i], words[i + 1]\n        min_len = min(len(word1), len(word2))\n        \n        # Check if word1 is longer than word2 but word2 is prefix of word1\n        if len(word1) > len(word2) and word1[:len(word2)] == word2:\n            return \"\"\n        \n        # Find the first different character\n        for j in range(min_len):\n            if word1[j] != word2[j]:\n                if word2[j] not in graph[word1[j]]:\n                    graph[word1[j]].add(word2[j])\n                    in_degree[word2[j]] += 1\n                break\n    \n    # Topological sort using Kahn's algorithm\n    queue = deque([char for char in in_degree if in_degree[char] == 0])\n    result = []\n    \n    while queue:\n        char = queue.popleft()\n        result.append(char)\n        \n        for neighbor in graph[char]:\n            in_degree[neighbor] -= 1\n            if in_degree[neighbor] == 0:\n                queue.append(neighbor)\n    \n    # Check if all characters are processed (no cycle)\n    if len(result) == len(in_degree):\n        return ''.join(result)\n    else:\n        return \"\""
+    },
+    "javascript": {
+      "template": "function alienOrder(words) {\n  \n}",
+      "solution_text": "Use topological sorting with BFS to find the alien alphabet order. Build a directed graph based on character ordering from the word list.",
+      "solution_code": "function alienOrder(words) {\n    const graph = new Map();\n    const inDegree = new Map();\n    \n    // Initialize in-degree for all characters\n    for (const word of words) {\n        for (const char of word) {\n            inDegree.set(char, 0);\n            if (!graph.has(char)) {\n                graph.set(char, new Set());\n            }\n        }\n    }\n    \n    // Build the graph\n    for (let i = 0; i < words.length - 1; i++) {\n        const word1 = words[i];\n        const word2 = words[i + 1];\n        const minLen = Math.min(word1.length, word2.length);\n        \n        // Check invalid case\n        if (word1.length > word2.length && word1.substring(0, word2.length) === word2) {\n            return \"\";\n        }\n        \n        // Find first different character\n        for (let j = 0; j < minLen; j++) {\n            if (word1[j] !== word2[j]) {\n                if (!graph.get(word1[j]).has(word2[j])) {\n                    graph.get(word1[j]).add(word2[j]);\n                    inDegree.set(word2[j], inDegree.get(word2[j]) + 1);\n                }\n                break;\n            }\n        }\n    }\n    \n    // Topological sort\n    const queue = [];\n    for (const [char, degree] of inDegree) {\n        if (degree === 0) {\n            queue.push(char);\n        }\n    }\n    \n    const result = [];\n    while (queue.length > 0) {\n        const char = queue.shift();\n        result.push(char);\n        \n        for (const neighbor of graph.get(char)) {\n            inDegree.set(neighbor, inDegree.get(neighbor) - 1);\n            if (inDegree.get(neighbor) === 0) {\n                queue.push(neighbor);\n            }\n        }\n    }\n    \n    return result.length === inDegree.size ? result.join('') : \"\";\n}"
+    },
+    "typescript": {
+      "template": "function alienOrder(words: string[]): string {\n  \n}",
+      "solution_text": "Use topological sorting with BFS to find the alien alphabet order. Build a directed graph based on character ordering from the word list.",
+      "solution_code": "function alienOrder(words: string[]): string {\n    const graph = new Map<string, Set<string>>();\n    const inDegree = new Map<string, number>();\n    \n    // Initialize in-degree for all characters\n    for (const word of words) {\n        for (const char of word) {\n            inDegree.set(char, 0);\n            if (!graph.has(char)) {\n                graph.set(char, new Set<string>());\n            }\n        }\n    }\n    \n    // Build the graph\n    for (let i = 0; i < words.length - 1; i++) {\n        const word1 = words[i];\n        const word2 = words[i + 1];\n        const minLen = Math.min(word1.length, word2.length);\n        \n        // Check invalid case\n        if (word1.length > word2.length && word1.substring(0, word2.length) === word2) {\n            return \"\";\n        }\n        \n        // Find first different character\n        for (let j = 0; j < minLen; j++) {\n            if (word1[j] !== word2[j]) {\n                if (!graph.get(word1[j])!.has(word2[j])) {\n                    graph.get(word1[j])!.add(word2[j]);\n                    inDegree.set(word2[j], inDegree.get(word2[j])! + 1);\n                }\n                break;\n            }\n        }\n    }\n    \n    // Topological sort\n    const queue: string[] = [];\n    for (const [char, degree] of inDegree) {\n        if (degree === 0) {\n            queue.push(char);\n        }\n    }\n    \n    const result: string[] = [];\n    while (queue.length > 0) {\n        const char = queue.shift()!;\n        result.push(char);\n        \n        for (const neighbor of graph.get(char)!) {\n            inDegree.set(neighbor, inDegree.get(neighbor)! - 1);\n            if (inDegree.get(neighbor) === 0) {\n                queue.push(neighbor);\n            }\n        }\n    }\n    \n    return result.length === inDegree.size ? result.join('') : \"\";\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public String alienOrder(String[] words) {\n        \n    }\n}",
+      "solution_text": "Use topological sorting with BFS to find the alien alphabet order. Build a directed graph based on character ordering from the word list.",
+      "solution_code": "class Solution {\n    public String alienOrder(String[] words) {\n        Map<Character, Set<Character>> graph = new HashMap<>();\n        Map<Character, Integer> inDegree = new HashMap<>();\n        \n        // Initialize\n        for (String word : words) {\n            for (char c : word.toCharArray()) {\n                inDegree.put(c, 0);\n                graph.put(c, new HashSet<>());\n            }\n        }\n        \n        // Build graph\n        for (int i = 0; i < words.length - 1; i++) {\n            String word1 = words[i];\n            String word2 = words[i + 1];\n            int minLen = Math.min(word1.length(), word2.length());\n            \n            // Check invalid case\n            if (word1.length() > word2.length() && word1.substring(0, word2.length()).equals(word2)) {\n                return \"\";\n            }\n            \n            // Find first different character\n            for (int j = 0; j < minLen; j++) {\n                char c1 = word1.charAt(j);\n                char c2 = word2.charAt(j);\n                if (c1 != c2) {\n                    if (!graph.get(c1).contains(c2)) {\n                        graph.get(c1).add(c2);\n                        inDegree.put(c2, inDegree.get(c2) + 1);\n                    }\n                    break;\n                }\n            }\n        }\n        \n        // Topological sort\n        Queue<Character> queue = new LinkedList<>();\n        for (char c : inDegree.keySet()) {\n            if (inDegree.get(c) == 0) {\n                queue.offer(c);\n            }\n        }\n        \n        StringBuilder result = new StringBuilder();\n        while (!queue.isEmpty()) {\n            char c = queue.poll();\n            result.append(c);\n            \n            for (char neighbor : graph.get(c)) {\n                inDegree.put(neighbor, inDegree.get(neighbor) - 1);\n                if (inDegree.get(neighbor) == 0) {\n                    queue.offer(neighbor);\n                }\n            }\n        }\n        \n        return result.length() == inDegree.size() ? result.toString() : \"\";\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "words": [
+          "wrt",
+          "wrf",
+          "er",
+          "ett",
+          "rftt"
+        ]
+      },
+      "output": "wertf"
+    },
+    {
+      "id": 2,
+      "input": {
+        "words": [
+          "z",
+          "x"
+        ]
+      },
+      "output": "zx"
+    },
+    {
+      "id": 3,
+      "input": {
+        "words": [
+          "z",
+          "z"
+        ]
+      },
+      "output": "z"
+    }
+  ]
+}

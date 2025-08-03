@@ -1,0 +1,91 @@
+{
+  "filename": "group-anagrams",
+  "title": "Group Anagrams",
+  "keywords": [
+    "group",
+    "anagrams",
+    "hashmap",
+    "sorting",
+    "frequency",
+    "strings"
+  ],
+  "description": "<h2>Group Anagrams</h2><p>Given an array of strings <code>strs</code>, group <strong>the anagrams</strong> together. You can return the answer in <strong>any order</strong>.</p><p>An <strong>Anagram</strong> is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.</p><h3>Examples:</h3><ul><li><strong>Example 1:</strong><br>Input: strs = [\"eat\",\"tea\",\"tan\",\"ate\",\"nat\",\"bat\"]<br>Output: [[\"bat\"],[\"nat\",\"tan\"],[\"ate\",\"eat\",\"tea\"]]</li><li><strong>Example 2:</strong><br>Input: strs = [\"\"]<br>Output: [[\"\"]]</li><li><strong>Example 3:</strong><br>Input: strs = [\"a\"]<br>Output: [[\"a\"]]</li></ul><h3>Constraints:</h3><ul><li>1 <= strs.length <= 10<sup>4</sup></li><li>0 <= strs[i].length <= 100</li><li>strs[i] consists of lowercase English letters only.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def groupAnagrams(strs):\n    ",
+      "solution_text": "Group strings by their sorted characters as keys. Anagrams will have the same sorted key.",
+      "solution_code": "def groupAnagrams(strs):\n    anagram_groups = {}\n    \n    for s in strs:\n        key = \"\".join(sorted(s))\n        if key not in anagram_groups:\n            anagram_groups[key] = []\n        anagram_groups[key].append(s)\n    \n    return list(anagram_groups.values())"
+    },
+    "javascript": {
+      "template": "function groupAnagrams(strs) {\n  \n}",
+      "solution_text": "Group strings by their sorted characters as keys. Anagrams will have the same sorted key.",
+      "solution_code": "function groupAnagrams(strs) {\n    const anagramGroups = {};\n    \n    for (const s of strs) {\n        const key = s.split(\"\").sort().join(\"\");\n        if (!anagramGroups[key]) {\n            anagramGroups[key] = [];\n        }\n        anagramGroups[key].push(s);\n    }\n    \n    return Object.values(anagramGroups);\n}"
+    },
+    "typescript": {
+      "template": "function groupAnagrams(strs: string[]): string[][] {\n  \n}",
+      "solution_text": "Group strings by their sorted characters as keys. Anagrams will have the same sorted key.",
+      "solution_code": "function groupAnagrams(strs: string[]): string[][] {\n    const anagramGroups: { [key: string]: string[] } = {};\n    \n    for (const s of strs) {\n        const key = s.split(\"\").sort().join(\"\");\n        if (!anagramGroups[key]) {\n            anagramGroups[key] = [];\n        }\n        anagramGroups[key].push(s);\n    }\n    \n    return Object.values(anagramGroups);\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public List<List<String>> groupAnagrams(String[] strs) {\n        \n    }\n}",
+      "solution_text": "Group strings by their sorted characters as keys. Anagrams will have the same sorted key.",
+      "solution_code": "class Solution {\n    public List<List<String>> groupAnagrams(String[] strs) {\n        Map<String, List<String>> anagramGroups = new HashMap<>();\n        \n        for (String s : strs) {\n            char[] chars = s.toCharArray();\n            Arrays.sort(chars);\n            String key = new String(chars);\n            \n            anagramGroups.computeIfAbsent(key, k -> new ArrayList<>()).add(s);\n        }\n        \n        return new ArrayList<>(anagramGroups.values());\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "strs": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ]
+      },
+      "output": [
+        [
+          "bat"
+        ],
+        [
+          "nat",
+          "tan"
+        ],
+        [
+          "ate",
+          "eat",
+          "tea"
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "strs": [
+          ""
+        ]
+      },
+      "output": [
+        [
+          ""
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "input": {
+        "strs": [
+          "a"
+        ]
+      },
+      "output": [
+        [
+          "a"
+        ]
+      ]
+    }
+  ]
+}

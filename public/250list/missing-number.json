@@ -1,0 +1,63 @@
+{
+  "filename": "missing-number",
+  "title": "Missing Number",
+  "keywords": [
+    "missing",
+    "number",
+    "leetcode",
+    "268",
+    "given",
+    "array",
+    "nums",
+    "containing",
+    "integers",
+    "range"
+  ],
+  "description": "<h2>Missing Number</h2><p>Leetcode 268. Missing Number</p><p></p><p>Given an array `nums` containing `n` integers in the range `[0, n]` without any duplicates, return the single number in the range that is missing from `nums`.</p><p></p><p>**Follow-up**: Could you implement a solution using only `O(1)` extra space complexity and `O(n)` runtime complexity?</p><h3>Examples:</h3><ul><li>Input: nums = [1,2,3]<br><br>Output: 0<br>Since there are 3 numbers, the range is [0,3]. The missing number is 0 since it does not appear in nums.</li><li>Input: nums = [0,2]<br><br>Output: 1</li></ul><h3>Constraints:</h3><ul><li> `1 <= nums.length <= 1000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def missingNumber(nums):\n    ",
+      "solution_text": "Find Missing Number using bit manipulation or math:\n\n**Algorithm:**\n1. Use XOR to find missing number (XOR all numbers and indices)\n2. Alternative: Use sum formula n*(n+1)/2\n3. Missing number = expected_sum - actual_sum\n\n**Time Complexity:** O(n) - single pass\n**Space Complexity:** O(1) - constant space\n\n**Key Insights:**\n- XOR has property: a XOR a = 0, a XOR 0 = a\n- Sum approach handles overflow in some languages\n- Both approaches are mathematically elegant",
+      "solution_code": "def O(nums):\n    n = len(nums)\n    expected_sum = n * (n + 1) // 2\n    actual_sum = sum(nums)\n    return expected_sum - actual_sum\n    \n    # Alternative XOR approach:\n    # result = n\n    # for i, num in enumerate(nums):\n    #     result ^= i ^ num\n    # return result"
+    },
+    "javascript": {
+      "template": "function missingNumber(nums) {\n  \n}",
+      "solution_text": "Find Missing Number using bit manipulation or math:\n\n**Algorithm:**\n1. Use XOR to find missing number (XOR all numbers and indices)\n2. Alternative: Use sum formula n*(n+1)/2\n3. Missing number = expected_sum - actual_sum\n\n**Time Complexity:** O(n) - single pass\n**Space Complexity:** O(1) - constant space\n\n**Key Insights:**\n- XOR has property: a XOR a = 0, a XOR 0 = a\n- Sum approach handles overflow in some languages\n- Both approaches are mathematically elegant",
+      "solution_code": "function O(nums) {\n    const n = nums.length;\n    const expectedSum = n * (n + 1) / 2;\n    const actualSum = nums.reduce((sum, num) => sum + num, 0);\n    return expectedSum - actualSum;\n}"
+    },
+    "typescript": {
+      "template": "function missingNumber(nums: number[]): number {\n  \n}",
+      "solution_text": "Find Missing Number using bit manipulation or math:\n\n**Algorithm:**\n1. Use XOR to find missing number (XOR all numbers and indices)\n2. Alternative: Use sum formula n*(n+1)/2\n3. Missing number = expected_sum - actual_sum\n\n**Time Complexity:** O(n) - single pass\n**Space Complexity:** O(1) - constant space\n\n**Key Insights:**\n- XOR has property: a XOR a = 0, a XOR 0 = a\n- Sum approach handles overflow in some languages\n- Both approaches are mathematically elegant",
+      "solution_code": "function O(nums: number[]): number {\n    const n = nums.length;\n    const expectedSum = n * (n + 1) / 2;\n    const actualSum = nums.reduce((sum, num) => sum + num, 0);\n    return expectedSum - actualSum;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int missingNumber(int[] nums) {\n        \n    }\n}",
+      "solution_text": "Find Missing Number using bit manipulation or math:\n\n**Algorithm:**\n1. Use XOR to find missing number (XOR all numbers and indices)\n2. Alternative: Use sum formula n*(n+1)/2\n3. Missing number = expected_sum - actual_sum\n\n**Time Complexity:** O(n) - single pass\n**Space Complexity:** O(1) - constant space\n\n**Key Insights:**\n- XOR has property: a XOR a = 0, a XOR 0 = a\n- Sum approach handles overflow in some languages\n- Both approaches are mathematically elegant",
+      "solution_code": "class Solution {\n    public int O(int[] nums) {\n        int n = nums.length;\n        int expectedSum = n * (n + 1) / 2;\n        int actualSum = 0;\n        for (int num : nums) {\n            actualSum += num;\n        }\n        return expectedSum - actualSum;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [
+          1,
+          2,
+          3
+        ]
+      },
+      "output": 0
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [
+          0,
+          2
+        ]
+      },
+      "output": 1
+    }
+  ]
+}

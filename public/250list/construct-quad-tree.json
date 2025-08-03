@@ -1,0 +1,122 @@
+{
+  "filename": "construct-quad-tree",
+  "title": "Construct Quad Tree",
+  "keywords": [
+    "construct",
+    "quad",
+    "tree",
+    "leetcode",
+    "427",
+    "given",
+    "binary",
+    "matrix",
+    "grid",
+    "want"
+  ],
+  "description": "<h2>Construct Quad Tree</h2><p>Leetcode 427. Construct Quad Tree</p><p></p><p>You are given a `n * n` binary matrix `grid`. We want to represent `grid` with a Quad-Tree.</p><p></p><p>Return the root of the Quad-Tree representing `grid`.</p><p></p><p>A Quad-Tree is a tree data structure in which each internal node has exactly four children. Besides, each node has two attributes:</p><p></p><p>- `isLeaf`: True if the node is a leaf node on the tree or False if the node has four children.</p><p></p><p>- `val`: True if the node represents a grid cell of `1's` or False if the node represents a grid cell of `0's`. Notice that you can assign the `val` to True or False when `isLeaf` is False, and both are accepted in the answer.</p><p></p><p>```java</p><p>class Node {</p><p>    public boolean val;</p><p>    public boolean isLeaf;</p><p>    public Node topLeft;</p><p>    public Node topRight;</p><p>    public Node bottomLeft;</p><p>    public Node bottomRight;</p><p>}</p><p>```</p><p></p><p>We can construct a Quad-Tree from a two-dimensional grid using the following steps:</p><p></p><p>1. If the current grid has the same value (i.e all `1's` or all `0's`), set `isLeaf` True and set `val` to the value of the grid and set the four children to Null and stop.</p><p></p><p>2. If the current grid has different values, set `isLeaf` to False and set `val` to any value and divide the current grid into four sub-grids representing the four childrens of the current node.</p><p></p><p>3. Recurse the steps for every children of the current node.</p><h3>Examples:</h3><ul><li>Input: grid = [[1,1],[1,1]]<br><br>Output: [[1,1]]</li><li>Input: grid = [<br>    [1,1,1,1],<br>    [0,0,0,0],<br>    [1,1,1,1],<br>    [1,1,1,1]<br>]<br><br>Output: [[0,0],[0,0],[0,0],[1,1],[1,1],[1,1],[1,1],[1,0],[1,0],[1,1],[1,1],[1,0],[1,0]]</li></ul><h3>Constraints:</h3><ul><li> `n == grid.length == grid[i].length`</li><li> `n == (2^x)` where `0 <= x <= 6`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def constructQuadTree(grid):\n    ",
+      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
+      "solution_code": "def constructQuadTree(root):\n    if not root:\n        return None  # or appropriate base case result\n    \n    # Process current node\n    result = root.val\n    \n    # Recursively process subtrees\n    left_result = constructQuadTree(root.left) if root.left else None\n    right_result = constructQuadTree(root.right) if root.right else None\n    \n    # Combine results based on operation\n    # This is a template - adjust based on specific operation\n    return result"
+    },
+    "javascript": {
+      "template": "function constructQuadTree(grid) {\n  \n}",
+      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
+      "solution_code": "function constructQuadTree(root) {\n    if (!root) return null; // or appropriate base case result\n    \n    // Process current node\n    const result = root.val;\n    \n    // Recursively process subtrees\n    const leftResult = root.left ? constructQuadTree(root.left) : null;\n    const rightResult = root.right ? constructQuadTree(root.right) : null;\n    \n    // Combine results based on operation\n    // This is a template - adjust based on specific operation\n    return result;\n}"
+    },
+    "typescript": {
+      "template": "function constructQuadTree(grid: number[]): number[] {\n  \n}",
+      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
+      "solution_code": "function constructQuadTree(root: TreeNode | null): any {\n    if (!root) return null; // or appropriate base case result\n    \n    // Process current node\n    const result = root.val;\n    \n    // Recursively process subtrees\n    const leftResult = root.left ? constructQuadTree(root.left) : null;\n    const rightResult = root.right ? constructQuadTree(root.right) : null;\n    \n    // Combine results based on operation\n    // This is a template - adjust based on specific operation\n    return result;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int[] constructQuadTree(int[] grid) {\n        \n    }\n}",
+      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
+      "solution_code": "class Solution {\n    public Object constructQuadTree(TreeNode root) {\n        if (root == null) return null; // or appropriate base case result\n        \n        // Process current node\n        int result = root.val;\n        \n        // Recursively process subtrees\n        Object leftResult = root.left != null ? constructQuadTree(root.left) : null;\n        Object rightResult = root.right != null ? constructQuadTree(root.right) : null;\n        \n        // Combine results based on operation\n        // This is a template - adjust based on specific operation\n        return result;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "grid": [
+          "[1",
+          1
+        ]
+      },
+      "output": [
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "grid": [
+          "[1",
+          1,
+          1,
+          1
+        ]
+      },
+      "output": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    }
+  ]
+}

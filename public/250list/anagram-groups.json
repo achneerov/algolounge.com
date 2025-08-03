@@ -1,0 +1,95 @@
+{
+  "filename": "anagram-groups",
+  "title": "Group Anagrams",
+  "keywords": [
+    "group",
+    "anagrams",
+    "leetcode",
+    "given",
+    "array",
+    "strings",
+    "strs",
+    "all",
+    "together",
+    "into"
+  ],
+  "description": "<h2>Group Anagrams</h2><p>Leetcode 49. Group Anagrams</p><p></p><p>Given an array of strings `strs`, group all *anagrams* together into sublists. You may return the output in **any order**.</p><p></p><p>An **anagram** is a string that contains the exact same characters as another string, but the order of the characters can be different.</p><h3>Examples:</h3><ul><li>Input: strs = [\"act\",\"pots\",\"tops\",\"cat\",\"stop\",\"hat\"]<br><br>Output: [[\"hat\"],[\"act\", \"cat\"],[\"stop\", \"pots\", \"tops\"]]</li><li>Input: strs = [\"x\"]<br><br>Output: [[\"x\"]]</li><li>Input: strs = [\"\"]<br><br>Output: [[\"\"]]</li></ul><h3>Constraints:</h3><ul><li> `1 <= strs.length <= 1000`.</li><li> `0 <= strs[i].length <= 100`</li><li> `strs[i]` is made up of lowercase English letters.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def groupAnagrams(strs):\n    ",
+      "solution_text": "Group anagrams using sorted string as key:\n\n**Algorithm:**\n1. Create a hash map with sorted string as key\n2. For each string, sort its characters to create key\n3. Group strings with the same sorted key\n4. Return all groups as result\n\n**Time Complexity:** O(N * M log M) where N = number of strings, M = max string length\n**Space Complexity:** O(N * M) for storing the groups\n\n**Key Insights:**\n- Sorted characters form unique key for anagrams\n- Hash map efficiently groups anagrams\n- All anagrams will have same sorted key",
+      "solution_code": "def groupAnagrams(strs):\n    from collections import defaultdict\n    \n    groups = defaultdict(list)\n    \n    for s in strs:\n        # Sort characters to create key\n        key = ''.join(sorted(s))\n        groups[key].append(s)\n    \n    return list(groups.values())"
+    },
+    "javascript": {
+      "template": "function groupAnagrams(strs) {\n  \n}",
+      "solution_text": "Group anagrams using sorted string as key:\n\n**Algorithm:**\n1. Create a hash map with sorted string as key\n2. For each string, sort its characters to create key\n3. Group strings with the same sorted key\n4. Return all groups as result\n\n**Time Complexity:** O(N * M log M) where N = number of strings, M = max string length\n**Space Complexity:** O(N * M) for storing the groups\n\n**Key Insights:**\n- Sorted characters form unique key for anagrams\n- Hash map efficiently groups anagrams\n- All anagrams will have same sorted key",
+      "solution_code": "function groupAnagrams(strs) {\n    const groups = new Map();\n    \n    for (const s of strs) {\n        // Sort characters to create key\n        const key = s.split('').sort().join('');\n        \n        if (!groups.has(key)) {\n            groups.set(key, []);\n        }\n        groups.get(key).push(s);\n    }\n    \n    return Array.from(groups.values());\n}"
+    },
+    "typescript": {
+      "template": "function groupAnagrams(strs: string[]): string[][] {\n  \n}",
+      "solution_text": "Group anagrams using sorted string as key:\n\n**Algorithm:**\n1. Create a hash map with sorted string as key\n2. For each string, sort its characters to create key\n3. Group strings with the same sorted key\n4. Return all groups as result\n\n**Time Complexity:** O(N * M log M) where N = number of strings, M = max string length\n**Space Complexity:** O(N * M) for storing the groups\n\n**Key Insights:**\n- Sorted characters form unique key for anagrams\n- Hash map efficiently groups anagrams\n- All anagrams will have same sorted key",
+      "solution_code": "function groupAnagrams(strs: string[]): string[][] {\n    const groups = new Map<string, string[]>();\n    \n    for (const s of strs) {\n        // Sort characters to create key\n        const key = s.split('').sort().join('');\n        \n        if (!groups.has(key)) {\n            groups.set(key, []);\n        }\n        groups.get(key)!.push(s);\n    }\n    \n    return Array.from(groups.values());\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public List<List<String>> groupAnagrams(String[] strs) {\n        \n    }\n}",
+      "solution_text": "Group anagrams using sorted string as key:\n\n**Algorithm:**\n1. Create a hash map with sorted string as key\n2. For each string, sort its characters to create key\n3. Group strings with the same sorted key\n4. Return all groups as result\n\n**Time Complexity:** O(N * M log M) where N = number of strings, M = max string length\n**Space Complexity:** O(N * M) for storing the groups\n\n**Key Insights:**\n- Sorted characters form unique key for anagrams\n- Hash map efficiently groups anagrams\n- All anagrams will have same sorted key",
+      "solution_code": "class Solution {\n    public List<List<String>> groupAnagrams(String[] strs) {\n        Map<String, List<String>> groups = new HashMap<>();\n        \n        for (String s : strs) {\n            // Sort characters to create key\n            char[] chars = s.toCharArray();\n            Arrays.sort(chars);\n            String key = new String(chars);\n            \n            groups.computeIfAbsent(key, k -> new ArrayList<>()).add(s);\n        }\n        \n        return new ArrayList<>(groups.values());\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "strs": [
+          "act",
+          "pots",
+          "tops",
+          "cat",
+          "stop",
+          "hat"
+        ]
+      },
+      "output": [
+        [
+          "hat"
+        ],
+        [
+          "act",
+          "cat"
+        ],
+        [
+          "stop",
+          "pots",
+          "tops"
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "strs": [
+          "x"
+        ]
+      },
+      "output": [
+        [
+          "x"
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "input": {
+        "strs": [
+          ""
+        ]
+      },
+      "output": [
+        [
+          ""
+        ]
+      ]
+    }
+  ]
+}

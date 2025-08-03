@@ -1,0 +1,49 @@
+{
+  "filename": "clone-graph",
+  "title": "Clone Graph",
+  "keywords": [
+    "clone",
+    "graph",
+    "leetcode",
+    "133",
+    "given",
+    "node",
+    "connected",
+    "undirected",
+    "return",
+    "deep"
+  ],
+  "description": "<h2>Clone Graph</h2><p>Leetcode 133. Clone Graph</p><p></p><p>Given a node in a connected undirected graph, return a deep copy of the graph.</p><p></p><p>Each node in the graph contains an integer value and a list of its neighbors.</p><p></p><p>```java</p><p>class Node {</p><p>    public int val;</p><p>    public List<Node> neighbors;</p><p>}</p><p>```</p><p></p><p>The graph is shown in the test cases as an adjacency list. **An adjacency list** is a mapping of nodes to lists, used to represent a finite graph. Each list describes the set of neighbors of a node in the graph.</p><p></p><p>For simplicity, nodes values are numbered from 1 to `n`, where `n` is the total number of nodes in the graph. The index of each node within the adjacency list is the same as the node's value (1-indexed).</p><p></p><p>The input node will always be the first node in the graph and have `1` as the value.</p><h3>Examples:</h3><ul><li>Input: adjList = []<br><br>Output: []<br>The graph is empty.</li></ul><h3>Constraints:</h3><ul><li> `0 <= The number of nodes in the graph <= 100`.</li><li> `1 <= Node.val <= 100`</li><li> There are no duplicate edges and no self-loops in the graph.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def cloneGraph(adjList):\n    ",
+      "solution_text": "Graph traversal using DFS/BFS approach:\n\n**Algorithm:**\n1. Build adjacency list representation of graph\n2. Use DFS or BFS to traverse nodes\n3. Track visited nodes to avoid cycles\n4. Process nodes according to problem requirements\n\n**Time Complexity:** O(V + E) - visit each vertex and edge once\n**Space Complexity:** O(V) - visited set and recursion stack\n\n**Key Insights:**\n- DFS for deep exploration, BFS for level-by-level\n- Use visited set to handle cycles\n- Adjacency list is space-efficient for sparse graphs",
+      "solution_code": "def cloneGraph(graph):\n    if not graph:\n        return []\n    \n    visited = set()\n    result = []\n    \n    def dfs(node):\n        if node in visited:\n            return\n        \n        visited.add(node)\n        result.append(node)\n        \n        # Visit neighbors\n        for neighbor in graph.get(node, []):\n            dfs(neighbor)\n    \n    # Start DFS from first node\n    for node in graph:\n        if node not in visited:\n            dfs(node)\n    \n    return result"
+    },
+    "javascript": {
+      "template": "function cloneGraph(adjList) {\n  \n}",
+      "solution_text": "Graph traversal using DFS/BFS approach:\n\n**Algorithm:**\n1. Build adjacency list representation of graph\n2. Use DFS or BFS to traverse nodes\n3. Track visited nodes to avoid cycles\n4. Process nodes according to problem requirements\n\n**Time Complexity:** O(V + E) - visit each vertex and edge once\n**Space Complexity:** O(V) - visited set and recursion stack\n\n**Key Insights:**\n- DFS for deep exploration, BFS for level-by-level\n- Use visited set to handle cycles\n- Adjacency list is space-efficient for sparse graphs",
+      "solution_code": "function cloneGraph(graph) {\n    if (!graph) return [];\n    \n    const visited = new Set();\n    const result = [];\n    \n    function dfs(node) {\n        if (visited.has(node)) return;\n        \n        visited.add(node);\n        result.push(node);\n        \n        // Visit neighbors\n        const neighbors = graph[node] || [];\n        for (const neighbor of neighbors) {\n            dfs(neighbor);\n        }\n    }\n    \n    // Start DFS from each unvisited node\n    for (const node in graph) {\n        if (!visited.has(node)) {\n            dfs(node);\n        }\n    }\n    \n    return result;\n}"
+    },
+    "typescript": {
+      "template": "function cloneGraph(adjList: number[]): number[] {\n  \n}",
+      "solution_text": "Graph traversal using DFS/BFS approach:\n\n**Algorithm:**\n1. Build adjacency list representation of graph\n2. Use DFS or BFS to traverse nodes\n3. Track visited nodes to avoid cycles\n4. Process nodes according to problem requirements\n\n**Time Complexity:** O(V + E) - visit each vertex and edge once\n**Space Complexity:** O(V) - visited set and recursion stack\n\n**Key Insights:**\n- DFS for deep exploration, BFS for level-by-level\n- Use visited set to handle cycles\n- Adjacency list is space-efficient for sparse graphs",
+      "solution_code": "function cloneGraph(graph: {[key: string]: string[]}): string[] {\n    if (!graph) return [];\n    \n    const visited = new Set<string>();\n    const result: string[] = [];\n    \n    function dfs(node: string): void {\n        if (visited.has(node)) return;\n        \n        visited.add(node);\n        result.push(node);\n        \n        // Visit neighbors\n        const neighbors = graph[node] || [];\n        for (const neighbor of neighbors) {\n            dfs(neighbor);\n        }\n    }\n    \n    // Start DFS from each unvisited node\n    for (const node in graph) {\n        if (!visited.has(node)) {\n            dfs(node);\n        }\n    }\n    \n    return result;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int[] cloneGraph(int[] adjList) {\n        \n    }\n}",
+      "solution_text": "Graph traversal using DFS/BFS approach:\n\n**Algorithm:**\n1. Build adjacency list representation of graph\n2. Use DFS or BFS to traverse nodes\n3. Track visited nodes to avoid cycles\n4. Process nodes according to problem requirements\n\n**Time Complexity:** O(V + E) - visit each vertex and edge once\n**Space Complexity:** O(V) - visited set and recursion stack\n\n**Key Insights:**\n- DFS for deep exploration, BFS for level-by-level\n- Use visited set to handle cycles\n- Adjacency list is space-efficient for sparse graphs",
+      "solution_code": "class Solution {\n    public List<String> cloneGraph(Map<String, List<String>> graph) {\n        if (graph == null || graph.isEmpty()) return new ArrayList<>();\n        \n        Set<String> visited = new HashSet<>();\n        List<String> result = new ArrayList<>();\n        \n        for (String node : graph.keySet()) {\n            if (!visited.contains(node)) {\n                dfs(node, graph, visited, result);\n            }\n        }\n        \n        return result;\n    }\n    \n    private void dfs(String node, Map<String, List<String>> graph, \n                     Set<String> visited, List<String> result) {\n        if (visited.contains(node)) return;\n        \n        visited.add(node);\n        result.add(node);\n        \n        // Visit neighbors\n        List<String> neighbors = graph.getOrDefault(node, new ArrayList<>());\n        for (String neighbor : neighbors) {\n            dfs(neighbor, graph, visited, result);\n        }\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "adjList": []
+      },
+      "output": []
+    }
+  ]
+}

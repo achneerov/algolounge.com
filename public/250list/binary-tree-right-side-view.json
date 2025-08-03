@@ -1,0 +1,41 @@
+{
+  "filename": "binary-tree-right-side-view",
+  "title": "Binary Tree Right Side View",
+  "keywords": [
+    "binary",
+    "tree",
+    "right",
+    "side",
+    "view",
+    "leetcode",
+    "199",
+    "given",
+    "root",
+    "return"
+  ],
+  "description": "<h2>Binary Tree Right Side View</h2><p>Leetcode 199. Binary Tree Right Side View</p><p></p><p>You are given the `root` of a binary tree. Return only the values of the nodes that are visible from the right side of the tree, ordered from top to bottom.</p><h3>Constraints:</h3><ul><li> `0 <= number of nodes in the tree <= 100`</li><li> `-100 <= Node.val <= 100`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def binaryTreeRightSideView(input):\n    ",
+      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
+      "solution_code": "def binaryTreeRightSideView(root):\n    if not root:\n        return None  # or appropriate base case result\n    \n    # Process current node\n    result = root.val\n    \n    # Recursively process subtrees\n    left_result = binaryTreeRightSideView(root.left) if root.left else None\n    right_result = binaryTreeRightSideView(root.right) if root.right else None\n    \n    # Combine results based on operation\n    # This is a template - adjust based on specific operation\n    return result"
+    },
+    "javascript": {
+      "template": "function binaryTreeRightSideView(input) {\n  \n}",
+      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
+      "solution_code": "function binaryTreeRightSideView(root) {\n    if (!root) return null; // or appropriate base case result\n    \n    // Process current node\n    const result = root.val;\n    \n    // Recursively process subtrees\n    const leftResult = root.left ? binaryTreeRightSideView(root.left) : null;\n    const rightResult = root.right ? binaryTreeRightSideView(root.right) : null;\n    \n    // Combine results based on operation\n    // This is a template - adjust based on specific operation\n    return result;\n}"
+    },
+    "typescript": {
+      "template": "function binaryTreeRightSideView(input: any): any {\n  \n}",
+      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
+      "solution_code": "function binaryTreeRightSideView(root: TreeNode | null): any {\n    if (!root) return null; // or appropriate base case result\n    \n    // Process current node\n    const result = root.val;\n    \n    // Recursively process subtrees\n    const leftResult = root.left ? binaryTreeRightSideView(root.left) : null;\n    const rightResult = root.right ? binaryTreeRightSideView(root.right) : null;\n    \n    // Combine results based on operation\n    // This is a template - adjust based on specific operation\n    return result;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public Object binaryTreeRightSideView(Object input) {\n        \n    }\n}",
+      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
+      "solution_code": "class Solution {\n    public Object binaryTreeRightSideView(TreeNode root) {\n        if (root == null) return null; // or appropriate base case result\n        \n        // Process current node\n        int result = root.val;\n        \n        // Recursively process subtrees\n        Object leftResult = root.left != null ? binaryTreeRightSideView(root.left) : null;\n        Object rightResult = root.right != null ? binaryTreeRightSideView(root.right) : null;\n        \n        // Combine results based on operation\n        // This is a template - adjust based on specific operation\n        return result;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": []
+}

@@ -1,0 +1,68 @@
+{
+  "filename": "maximum-sum-circular-subarray",
+  "title": "Maximum Sum Circular Subarray",
+  "keywords": [
+    "maximum",
+    "sum",
+    "circular",
+    "subarray",
+    "leetcode",
+    "918",
+    "given",
+    "integer",
+    "array",
+    "nums"
+  ],
+  "description": "<h2>Maximum Sum Circular Subarray</h2><p>Leetcode 918. Maximum Sum Circular Subarray</p><p></p><p>You are given a circular integer array `nums` of length `n`, return the maximum possible sum of a non-empty **subarray** of `nums`.</p><p></p><p>A circular array means the end of the array connects to the beginning of the array. Formally, the next element of `nums[i]` is `nums[(i + 1) % n]` and the previous element of `nums[i]` is `nums[(i - 1 + n) % n]`.</p><p></p><p>A **subarray** may only include each element of the fixed buffer `nums` at most once. Formally, for a subarray `nums[i], nums[i + 1], ..., nums[j]`, there does not exist `i <= k1, k2 <= j` with `k1 % n == k2 % n`.</p><h3>Examples:</h3><ul><li>Input: nums = [-2,4,-5,4,-5,9,4]<br><br>Output: 15<br>Subarray [-2,4,9,4] has maximum sum 15.</li><li>Input: nums = [2,3,-4]<br><br>Output: 5</li></ul><h3>Constraints:</h3><ul><li> `n == nums.length`</li><li> `1 <= n <= 3 * 10,000`</li><li> `-30,000 <= nums[i] <= 30,000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def maximumSumCircularSubarray(nums):\n    ",
+      "solution_text": "Min/Max finding algorithm:\n\n**Algorithm:**\n1. Initialize min/max with first element\n2. Iterate through remaining elements\n3. Update min/max as needed\n\n**Time Complexity:** O(n) - single pass through array\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Handle empty arrays with appropriate defaults\n- Consider both positive and negative numbers\n- Single pass optimization",
+      "solution_code": "def maximumSumCircularSubarray(nums):\n    if not nums:\n        return 0  # or appropriate default\n    \n    result = nums[0]\n    \n    for num in nums[1:]:\n        if 'max' in 'maximumSumCircularSubarray'.lower():\n            result = max(result, num)\n        else:\n            result = min(result, num)\n    \n    return result"
+    },
+    "javascript": {
+      "template": "function maximumSumCircularSubarray(nums) {\n  \n}",
+      "solution_text": "Min/Max finding algorithm:\n\n**Algorithm:**\n1. Initialize min/max with first element\n2. Iterate through remaining elements\n3. Update min/max as needed\n\n**Time Complexity:** O(n) - single pass through array\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Handle empty arrays with appropriate defaults\n- Consider both positive and negative numbers\n- Single pass optimization",
+      "solution_code": "function maximumSumCircularSubarray(nums) {\n    if (!nums || nums.length === 0) return 0;\n    \n    let result = nums[0];\n    \n    for (let i = 1; i < nums.length; i++) {\n        if ('maximumSumCircularSubarray'.toLowerCase().includes('max')) {\n            result = Math.max(result, nums[i]);\n        } else {\n            result = Math.min(result, nums[i]);\n        }\n    }\n    \n    return result;\n}"
+    },
+    "typescript": {
+      "template": "function maximumSumCircularSubarray(nums: number[]): number {\n  \n}",
+      "solution_text": "Min/Max finding algorithm:\n\n**Algorithm:**\n1. Initialize min/max with first element\n2. Iterate through remaining elements\n3. Update min/max as needed\n\n**Time Complexity:** O(n) - single pass through array\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Handle empty arrays with appropriate defaults\n- Consider both positive and negative numbers\n- Single pass optimization",
+      "solution_code": "function maximumSumCircularSubarray(nums: number[]): number {\n    if (!nums || nums.length === 0) return 0;\n    \n    let result = nums[0];\n    \n    for (let i = 1; i < nums.length; i++) {\n        if ('maximumSumCircularSubarray'.toLowerCase().includes('max')) {\n            result = Math.max(result, nums[i]);\n        } else {\n            result = Math.min(result, nums[i]);\n        }\n    }\n    \n    return result;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int maximumSumCircularSubarray(int[] nums) {\n        \n    }\n}",
+      "solution_text": "Min/Max finding algorithm:\n\n**Algorithm:**\n1. Initialize min/max with first element\n2. Iterate through remaining elements\n3. Update min/max as needed\n\n**Time Complexity:** O(n) - single pass through array\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Handle empty arrays with appropriate defaults\n- Consider both positive and negative numbers\n- Single pass optimization",
+      "solution_code": "class Solution {\n    public int maximumSumCircularSubarray(int[] nums) {\n        if (nums == null || nums.length == 0) return 0;\n        \n        int result = nums[0];\n        \n        for (int i = 1; i < nums.length; i++) {\n            if (\"maximumSumCircularSubarray\".toLowerCase().contains(\"max\")) {\n                result = Math.max(result, nums[i]);\n            } else {\n                result = Math.min(result, nums[i]);\n            }\n        }\n        \n        return result;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [
+          -2,
+          4,
+          -5,
+          4,
+          -5,
+          9,
+          4
+        ]
+      },
+      "output": 15
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [
+          2,
+          3,
+          -4
+        ]
+      },
+      "output": 5
+    }
+  ]
+}

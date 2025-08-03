@@ -1,0 +1,49 @@
+{
+  "filename": "serialize-and-deserialize-binary-tree",
+  "title": "Serialize and Deserialize Binary Tree",
+  "keywords": [
+    "serialize",
+    "deserialize",
+    "binary",
+    "tree",
+    "leetcode",
+    "297",
+    "implement",
+    "algorithm",
+    "serialization",
+    "process"
+  ],
+  "description": "<h2>Serialize and Deserialize Binary Tree</h2><p>Leetcode 297. Serialize And Deserialize Binary Tree</p><p></p><p>Implement an algorithm to serialize and deserialize a binary tree.</p><p></p><p>Serialization is the process of converting an in-memory structure into a sequence of bits so that it can be stored or sent across a network to be reconstructed later in another computer environment.</p><p></p><p>You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure. There is no additional restriction on how your serialization/deserialization algorithm should work.</p><p></p><p>**Note:** The input/output format in the examples is the same as how NeetCode serializes a binary tree. You do not necessarily need to follow this format.</p><h3>Examples:</h3><ul><li>Input: root = []<br><br>Output: []</li></ul><h3>Constraints:</h3><ul><li> `0 <= The number of nodes in the tree <= 1000`.</li><li> `-1000 <= Node.val <= 1000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def serializeAndDeserializeBinaryTree(root):\n    ",
+      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
+      "solution_code": "def serializeAndDeserializeBinaryTree(root):\n    if not root:\n        return None  # or appropriate base case result\n    \n    # Process current node\n    result = root.val\n    \n    # Recursively process subtrees\n    left_result = serializeAndDeserializeBinaryTree(root.left) if root.left else None\n    right_result = serializeAndDeserializeBinaryTree(root.right) if root.right else None\n    \n    # Combine results based on operation\n    # This is a template - adjust based on specific operation\n    return result"
+    },
+    "javascript": {
+      "template": "function serializeAndDeserializeBinaryTree(root) {\n  \n}",
+      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
+      "solution_code": "function serializeAndDeserializeBinaryTree(root) {\n    if (!root) return null; // or appropriate base case result\n    \n    // Process current node\n    const result = root.val;\n    \n    // Recursively process subtrees\n    const leftResult = root.left ? serializeAndDeserializeBinaryTree(root.left) : null;\n    const rightResult = root.right ? serializeAndDeserializeBinaryTree(root.right) : null;\n    \n    // Combine results based on operation\n    // This is a template - adjust based on specific operation\n    return result;\n}"
+    },
+    "typescript": {
+      "template": "function serializeAndDeserializeBinaryTree(root: number[]): number[] {\n  \n}",
+      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
+      "solution_code": "function serializeAndDeserializeBinaryTree(root: TreeNode | null): any {\n    if (!root) return null; // or appropriate base case result\n    \n    // Process current node\n    const result = root.val;\n    \n    // Recursively process subtrees\n    const leftResult = root.left ? serializeAndDeserializeBinaryTree(root.left) : null;\n    const rightResult = root.right ? serializeAndDeserializeBinaryTree(root.right) : null;\n    \n    // Combine results based on operation\n    // This is a template - adjust based on specific operation\n    return result;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int[] serializeAndDeserializeBinaryTree(int[] root) {\n        \n    }\n}",
+      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
+      "solution_code": "class Solution {\n    public Object serializeAndDeserializeBinaryTree(TreeNode root) {\n        if (root == null) return null; // or appropriate base case result\n        \n        // Process current node\n        int result = root.val;\n        \n        // Recursively process subtrees\n        Object leftResult = root.left != null ? serializeAndDeserializeBinaryTree(root.left) : null;\n        Object rightResult = root.right != null ? serializeAndDeserializeBinaryTree(root.right) : null;\n        \n        // Combine results based on operation\n        // This is a template - adjust based on specific operation\n        return result;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "root": []
+      },
+      "output": []
+    }
+  ]
+}

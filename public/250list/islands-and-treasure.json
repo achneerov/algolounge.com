@@ -1,0 +1,86 @@
+{
+  "filename": "islands-and-treasure",
+  "title": "Islands and Treasure",
+  "keywords": [
+    "islands",
+    "treasure",
+    "leetcode",
+    "286",
+    "walls",
+    "gates",
+    "given",
+    "times",
+    "grid",
+    "initialized"
+  ],
+  "description": "<h2>Islands and Treasure</h2><p>Leetcode 286. Walls And Gates</p><p></p><p>You are given a $m \\times n$ 2D `grid` initialized with these three possible values:</p><p></p><p>1. `-1` - A water cell that *can not* be traversed.</p><p>2. `0` - A treasure chest.</p><p>3. `INF` - A land cell that *can* be traversed. We use the integer `2^31 - 1 = 2147483647` to represent `INF`.</p><p></p><p>Fill each land cell with the distance to its nearest treasure chest. If a land cell cannot reach a treasure chest then the value should remain `INF`.</p><p></p><p>Assume the grid can only be traversed up, down, left, or right.</p><p></p><p>Modify the `grid` **in-place**.</p><h3>Examples:</h3><ul><li>Input: [<br>  [2147483647,-1,0,2147483647],<br>  [2147483647,2147483647,2147483647,-1],<br>  [2147483647,-1,2147483647,-1],<br>  [0,-1,2147483647,2147483647]<br>]<br><br>Output: [<br>  [3,-1,0,1],<br>  [2,2,1,-1],<br>  [1,-1,2,-1],<br>  [0,-1,3,4]<br>]</li><li>Input: [<br>  [0,-1],<br>  [2147483647,2147483647]<br>]<br><br>Output: [<br>  [0,-1],<br>  [1,2]<br>]</li></ul><h3>Constraints:</h3><ul><li> `m == grid.length`</li><li> `n == grid[i].length`</li><li> `1 <= m, n <= 100`</li><li> `grid[i][j]` is one of `{-1, 0, 2147483647}`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def islandsAndTreasure(0, 1, 2, 3):\n    ",
+      "solution_text": "Graph traversal using DFS/BFS approach:\n\n**Algorithm:**\n1. Build adjacency list representation of graph\n2. Use DFS or BFS to traverse nodes\n3. Track visited nodes to avoid cycles\n4. Process nodes according to problem requirements\n\n**Time Complexity:** O(V + E) - visit each vertex and edge once\n**Space Complexity:** O(V) - visited set and recursion stack\n\n**Key Insights:**\n- DFS for deep exploration, BFS for level-by-level\n- Use visited set to handle cycles\n- Adjacency list is space-efficient for sparse graphs",
+      "solution_code": "def islandsAndTreasure(graph):\n    if not graph:\n        return []\n    \n    visited = set()\n    result = []\n    \n    def dfs(node):\n        if node in visited:\n            return\n        \n        visited.add(node)\n        result.append(node)\n        \n        # Visit neighbors\n        for neighbor in graph.get(node, []):\n            dfs(neighbor)\n    \n    # Start DFS from first node\n    for node in graph:\n        if node not in visited:\n            dfs(node)\n    \n    return result"
+    },
+    "javascript": {
+      "template": "function islandsAndTreasure(0, 1, 2, 3) {\n  \n}",
+      "solution_text": "Graph traversal using DFS/BFS approach:\n\n**Algorithm:**\n1. Build adjacency list representation of graph\n2. Use DFS or BFS to traverse nodes\n3. Track visited nodes to avoid cycles\n4. Process nodes according to problem requirements\n\n**Time Complexity:** O(V + E) - visit each vertex and edge once\n**Space Complexity:** O(V) - visited set and recursion stack\n\n**Key Insights:**\n- DFS for deep exploration, BFS for level-by-level\n- Use visited set to handle cycles\n- Adjacency list is space-efficient for sparse graphs",
+      "solution_code": "function islandsAndTreasure(graph) {\n    if (!graph) return [];\n    \n    const visited = new Set();\n    const result = [];\n    \n    function dfs(node) {\n        if (visited.has(node)) return;\n        \n        visited.add(node);\n        result.push(node);\n        \n        // Visit neighbors\n        const neighbors = graph[node] || [];\n        for (const neighbor of neighbors) {\n            dfs(neighbor);\n        }\n    }\n    \n    // Start DFS from each unvisited node\n    for (const node in graph) {\n        if (!visited.has(node)) {\n            dfs(node);\n        }\n    }\n    \n    return result;\n}"
+    },
+    "typescript": {
+      "template": "function islandsAndTreasure(0: number[], 1: number[], 2: number[], 3: number[]): string {\n  \n}",
+      "solution_text": "Graph traversal using DFS/BFS approach:\n\n**Algorithm:**\n1. Build adjacency list representation of graph\n2. Use DFS or BFS to traverse nodes\n3. Track visited nodes to avoid cycles\n4. Process nodes according to problem requirements\n\n**Time Complexity:** O(V + E) - visit each vertex and edge once\n**Space Complexity:** O(V) - visited set and recursion stack\n\n**Key Insights:**\n- DFS for deep exploration, BFS for level-by-level\n- Use visited set to handle cycles\n- Adjacency list is space-efficient for sparse graphs",
+      "solution_code": "function islandsAndTreasure(graph: {[key: string]: string[]}): string[] {\n    if (!graph) return [];\n    \n    const visited = new Set<string>();\n    const result: string[] = [];\n    \n    function dfs(node: string): void {\n        if (visited.has(node)) return;\n        \n        visited.add(node);\n        result.push(node);\n        \n        // Visit neighbors\n        const neighbors = graph[node] || [];\n        for (const neighbor of neighbors) {\n            dfs(neighbor);\n        }\n    }\n    \n    // Start DFS from each unvisited node\n    for (const node in graph) {\n        if (!visited.has(node)) {\n            dfs(node);\n        }\n    }\n    \n    return result;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public String islandsAndTreasure(int[] 0, int[] 1, int[] 2, int[] 3) {\n        \n    }\n}",
+      "solution_text": "Graph traversal using DFS/BFS approach:\n\n**Algorithm:**\n1. Build adjacency list representation of graph\n2. Use DFS or BFS to traverse nodes\n3. Track visited nodes to avoid cycles\n4. Process nodes according to problem requirements\n\n**Time Complexity:** O(V + E) - visit each vertex and edge once\n**Space Complexity:** O(V) - visited set and recursion stack\n\n**Key Insights:**\n- DFS for deep exploration, BFS for level-by-level\n- Use visited set to handle cycles\n- Adjacency list is space-efficient for sparse graphs",
+      "solution_code": "class Solution {\n    public List<String> islandsAndTreasure(Map<String, List<String>> graph) {\n        if (graph == null || graph.isEmpty()) return new ArrayList<>();\n        \n        Set<String> visited = new HashSet<>();\n        List<String> result = new ArrayList<>();\n        \n        for (String node : graph.keySet()) {\n            if (!visited.contains(node)) {\n                dfs(node, graph, visited, result);\n            }\n        }\n        \n        return result;\n    }\n    \n    private void dfs(String node, Map<String, List<String>> graph, \n                     Set<String> visited, List<String> result) {\n        if (visited.contains(node)) return;\n        \n        visited.add(node);\n        result.add(node);\n        \n        // Visit neighbors\n        List<String> neighbors = graph.getOrDefault(node, new ArrayList<>());\n        for (String neighbor : neighbors) {\n            dfs(neighbor, graph, visited, result);\n        }\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": [
+        [
+          2147483647,
+          -1,
+          0,
+          2147483647
+        ],
+        [
+          2147483647,
+          2147483647,
+          2147483647,
+          -1
+        ],
+        [
+          2147483647,
+          -1,
+          2147483647,
+          -1
+        ],
+        [
+          0,
+          -1,
+          2147483647,
+          2147483647
+        ]
+      ],
+      "output": "["
+    },
+    {
+      "id": 2,
+      "input": [
+        [
+          0,
+          -1
+        ],
+        [
+          2147483647,
+          2147483647
+        ]
+      ],
+      "output": "["
+    }
+  ]
+}

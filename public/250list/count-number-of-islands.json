@@ -1,0 +1,68 @@
+{
+  "filename": "count-number-of-islands",
+  "title": "Number of Islands",
+  "keywords": [
+    "number",
+    "islands",
+    "leetcode",
+    "200",
+    "given",
+    "grid",
+    "where",
+    "represents",
+    "land",
+    "water"
+  ],
+  "description": "<h2>Number of Islands</h2><p>Leetcode 200. Number of Islands</p><p></p><p>Given a 2D grid `grid` where `'1'` represents land and `'0'` represents water, count and return the number of islands.</p><p></p><p>An **island** is formed by connecting adjacent lands horizontally or vertically and is surrounded by water. You may assume water is surrounding the grid (i.e., all the edges are water).</p><h3>Examples:</h3><ul><li>Input: grid = [<br>    [\"0\",\"1\",\"1\",\"1\",\"0\"],<br>    [\"0\",\"1\",\"0\",\"1\",\"0\"],<br>    [\"1\",\"1\",\"0\",\"0\",\"0\"],<br>    [\"0\",\"0\",\"0\",\"0\",\"0\"]<br>  ]<br>Output: 1</li><li>Input: grid = [<br>    [\"1\",\"1\",\"0\",\"0\",\"1\"],<br>    [\"1\",\"1\",\"0\",\"0\",\"1\"],<br>    [\"0\",\"0\",\"1\",\"0\",\"0\"],<br>    [\"0\",\"0\",\"0\",\"1\",\"1\"]<br>  ]<br>Output: 4</li></ul><h3>Constraints:</h3><ul><li> `1 <= grid.length, grid[i].length <= 100`</li><li> `grid[i][j]` is `'0'` or `'1'`.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def numberOfIslands(grid):\n    ",
+      "solution_text": "Graph traversal using DFS/BFS approach:\n\n**Algorithm:**\n1. Build adjacency list representation of graph\n2. Use DFS or BFS to traverse nodes\n3. Track visited nodes to avoid cycles\n4. Process nodes according to problem requirements\n\n**Time Complexity:** O(V + E) - visit each vertex and edge once\n**Space Complexity:** O(V) - visited set and recursion stack\n\n**Key Insights:**\n- DFS for deep exploration, BFS for level-by-level\n- Use visited set to handle cycles\n- Adjacency list is space-efficient for sparse graphs",
+      "solution_code": "def countNumberOfIslands(graph):\n    if not graph:\n        return []\n    \n    visited = set()\n    result = []\n    \n    def dfs(node):\n        if node in visited:\n            return\n        \n        visited.add(node)\n        result.append(node)\n        \n        # Visit neighbors\n        for neighbor in graph.get(node, []):\n            dfs(neighbor)\n    \n    # Start DFS from first node\n    for node in graph:\n        if node not in visited:\n            dfs(node)\n    \n    return result"
+    },
+    "javascript": {
+      "template": "function numberOfIslands(grid) {\n  \n}",
+      "solution_text": "Graph traversal using DFS/BFS approach:\n\n**Algorithm:**\n1. Build adjacency list representation of graph\n2. Use DFS or BFS to traverse nodes\n3. Track visited nodes to avoid cycles\n4. Process nodes according to problem requirements\n\n**Time Complexity:** O(V + E) - visit each vertex and edge once\n**Space Complexity:** O(V) - visited set and recursion stack\n\n**Key Insights:**\n- DFS for deep exploration, BFS for level-by-level\n- Use visited set to handle cycles\n- Adjacency list is space-efficient for sparse graphs",
+      "solution_code": "function countNumberOfIslands(graph) {\n    if (!graph) return [];\n    \n    const visited = new Set();\n    const result = [];\n    \n    function dfs(node) {\n        if (visited.has(node)) return;\n        \n        visited.add(node);\n        result.push(node);\n        \n        // Visit neighbors\n        const neighbors = graph[node] || [];\n        for (const neighbor of neighbors) {\n            dfs(neighbor);\n        }\n    }\n    \n    // Start DFS from each unvisited node\n    for (const node in graph) {\n        if (!visited.has(node)) {\n            dfs(node);\n        }\n    }\n    \n    return result;\n}"
+    },
+    "typescript": {
+      "template": "function numberOfIslands(grid: number[]): number {\n  \n}",
+      "solution_text": "Graph traversal using DFS/BFS approach:\n\n**Algorithm:**\n1. Build adjacency list representation of graph\n2. Use DFS or BFS to traverse nodes\n3. Track visited nodes to avoid cycles\n4. Process nodes according to problem requirements\n\n**Time Complexity:** O(V + E) - visit each vertex and edge once\n**Space Complexity:** O(V) - visited set and recursion stack\n\n**Key Insights:**\n- DFS for deep exploration, BFS for level-by-level\n- Use visited set to handle cycles\n- Adjacency list is space-efficient for sparse graphs",
+      "solution_code": "function countNumberOfIslands(graph: {[key: string]: string[]}): string[] {\n    if (!graph) return [];\n    \n    const visited = new Set<string>();\n    const result: string[] = [];\n    \n    function dfs(node: string): void {\n        if (visited.has(node)) return;\n        \n        visited.add(node);\n        result.push(node);\n        \n        // Visit neighbors\n        const neighbors = graph[node] || [];\n        for (const neighbor of neighbors) {\n            dfs(neighbor);\n        }\n    }\n    \n    // Start DFS from each unvisited node\n    for (const node in graph) {\n        if (!visited.has(node)) {\n            dfs(node);\n        }\n    }\n    \n    return result;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int numberOfIslands(int[] grid) {\n        \n    }\n}",
+      "solution_text": "Graph traversal using DFS/BFS approach:\n\n**Algorithm:**\n1. Build adjacency list representation of graph\n2. Use DFS or BFS to traverse nodes\n3. Track visited nodes to avoid cycles\n4. Process nodes according to problem requirements\n\n**Time Complexity:** O(V + E) - visit each vertex and edge once\n**Space Complexity:** O(V) - visited set and recursion stack\n\n**Key Insights:**\n- DFS for deep exploration, BFS for level-by-level\n- Use visited set to handle cycles\n- Adjacency list is space-efficient for sparse graphs",
+      "solution_code": "class Solution {\n    public List<String> countNumberOfIslands(Map<String, List<String>> graph) {\n        if (graph == null || graph.isEmpty()) return new ArrayList<>();\n        \n        Set<String> visited = new HashSet<>();\n        List<String> result = new ArrayList<>();\n        \n        for (String node : graph.keySet()) {\n            if (!visited.contains(node)) {\n                dfs(node, graph, visited, result);\n            }\n        }\n        \n        return result;\n    }\n    \n    private void dfs(String node, Map<String, List<String>> graph, \n                     Set<String> visited, List<String> result) {\n        if (visited.contains(node)) return;\n        \n        visited.add(node);\n        result.add(node);\n        \n        // Visit neighbors\n        List<String> neighbors = graph.getOrDefault(node, new ArrayList<>());\n        for (String neighbor : neighbors) {\n            dfs(neighbor, graph, visited, result);\n        }\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "grid": [
+          "[\"0\"",
+          "1",
+          "1",
+          "1",
+          "0"
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 2,
+      "input": {
+        "grid": [
+          "[\"1\"",
+          "1",
+          "0",
+          "0",
+          "1"
+        ]
+      },
+      "output": 4
+    }
+  ]
+}

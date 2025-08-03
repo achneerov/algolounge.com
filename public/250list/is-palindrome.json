@@ -1,0 +1,56 @@
+{
+  "filename": "is-palindrome",
+  "title": "Valid Palindrome",
+  "keywords": [
+    "valid",
+    "palindrome",
+    "leetcode",
+    "125",
+    "given",
+    "string",
+    "return",
+    "true",
+    "otherwise",
+    "false"
+  ],
+  "description": "<h2>Valid Palindrome</h2><p>Leetcode 125. Valid Palindrome</p><p></p><p>Given a string `s`, return `true` if it is a **palindrome**, otherwise return `false`.</p><p>    </p><p>A **palindrome** is a string that reads the same forward and backward. It is also case-insensitive and ignores all non-alphanumeric characters.</p><p></p><p>**Note:** Alphanumeric characters consist of letters `(A-Z, a-z)` and numbers `(0-9)`.</p><h3>Examples:</h3><ul><li>Input: s = \"Was it a car or a cat I saw?\"<br><br>Output: true<br>After considering only alphanumerical characters we have \"wasitacaroracatisaw\", which is a palindrome.</li><li>Input: s = \"tab a cat\"<br><br>Output: false<br>\"tabacat\" is not a palindrome.</li></ul><h3>Constraints:</h3><ul><li> `1 <= s.length <= 1000`</li><li> `s` is made up of only printable ASCII characters.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def validPalindrome(s):\n    ",
+      "solution_text": "Palindrome detection using two pointers:\n\n**Algorithm:**\n1. Use two pointers from start and end of string\n2. Compare characters while moving pointers inward\n3. Skip non-alphanumeric characters if needed\n4. Return false if any mismatch found\n\n**Time Complexity:** O(n) - single pass through string\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Two pointers technique for efficient comparison\n- Handle case sensitivity and special characters\n- Early termination on first mismatch",
+      "solution_code": "def isPalindrome(s):\n    if not s:\n        return True\n    \n    # Convert to lowercase and keep only alphanumeric\n    cleaned = ''.join(char.lower() for char in s if char.isalnum())\n    \n    left, right = 0, len(cleaned) - 1\n    \n    while left < right:\n        if cleaned[left] != cleaned[right]:\n            return False\n        left += 1\n        right -= 1\n    \n    return True"
+    },
+    "javascript": {
+      "template": "function validPalindrome(s) {\n  \n}",
+      "solution_text": "Palindrome detection using two pointers:\n\n**Algorithm:**\n1. Use two pointers from start and end of string\n2. Compare characters while moving pointers inward\n3. Skip non-alphanumeric characters if needed\n4. Return false if any mismatch found\n\n**Time Complexity:** O(n) - single pass through string\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Two pointers technique for efficient comparison\n- Handle case sensitivity and special characters\n- Early termination on first mismatch",
+      "solution_code": "function isPalindrome(s) {\n    if (!s) return true;\n    \n    // Convert to lowercase and keep only alphanumeric\n    const cleaned = s.toLowerCase().replace(/[^a-z0-9]/g, '');\n    \n    let left = 0, right = cleaned.length - 1;\n    \n    while (left < right) {\n        if (cleaned[left] !== cleaned[right]) {\n            return false;\n        }\n        left++;\n        right--;\n    }\n    \n    return true;\n}"
+    },
+    "typescript": {
+      "template": "function validPalindrome(s: string): string {\n  \n}",
+      "solution_text": "Palindrome detection using two pointers:\n\n**Algorithm:**\n1. Use two pointers from start and end of string\n2. Compare characters while moving pointers inward\n3. Skip non-alphanumeric characters if needed\n4. Return false if any mismatch found\n\n**Time Complexity:** O(n) - single pass through string\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Two pointers technique for efficient comparison\n- Handle case sensitivity and special characters\n- Early termination on first mismatch",
+      "solution_code": "function isPalindrome(s: string): boolean {\n    if (!s) return true;\n    \n    // Convert to lowercase and keep only alphanumeric\n    const cleaned = s.toLowerCase().replace(/[^a-z0-9]/g, '');\n    \n    let left = 0, right = cleaned.length - 1;\n    \n    while (left < right) {\n        if (cleaned[left] !== cleaned[right]) {\n            return false;\n        }\n        left++;\n        right--;\n    }\n    \n    return true;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public String validPalindrome(String s) {\n        \n    }\n}",
+      "solution_text": "Palindrome detection using two pointers:\n\n**Algorithm:**\n1. Use two pointers from start and end of string\n2. Compare characters while moving pointers inward\n3. Skip non-alphanumeric characters if needed\n4. Return false if any mismatch found\n\n**Time Complexity:** O(n) - single pass through string\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Two pointers technique for efficient comparison\n- Handle case sensitivity and special characters\n- Early termination on first mismatch",
+      "solution_code": "class Solution {\n    public boolean isPalindrome(String s) {\n        if (s == null || s.length() <= 1) return true;\n        \n        int left = 0, right = s.length() - 1;\n        \n        while (left < right) {\n            // Skip non-alphanumeric characters\n            while (left < right && !Character.isLetterOrDigit(s.charAt(left))) {\n                left++;\n            }\n            while (left < right && !Character.isLetterOrDigit(s.charAt(right))) {\n                right--;\n            }\n            \n            // Compare characters (case insensitive)\n            if (Character.toLowerCase(s.charAt(left)) != \n                Character.toLowerCase(s.charAt(right))) {\n                return false;\n            }\n            \n            left++;\n            right--;\n        }\n        \n        return true;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "s": "\"Was"
+      },
+      "output": "true"
+    },
+    {
+      "id": 2,
+      "input": {
+        "s": "\"tab"
+      },
+      "output": "false"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "filename": "accounts-merge",
+  "title": "Accounts Merge",
+  "keywords": [
+    "accounts",
+    "merge",
+    "leetcode",
+    "721",
+    "given",
+    "list",
+    "where",
+    "each",
+    "element",
+    "strings"
+  ],
+  "description": "<h2>Accounts Merge</h2><p>Leetcode 721. Accounts Merge</p><p></p><p>Given a list of `accounts` where each element `accounts[i]` is a list of strings, where the first element `accounts[i][0]` is a name, and the rest of the elements are emails representing emails of the account.</p><p></p><p>Now, we would like to merge these accounts. Two accounts definitely belong to the same person if there is some common email to both accounts. Note that even if two accounts have the same name, they may belong to different people as people could have the same name. A person can have any number of accounts initially, but all of their accounts definitely have the same name.</p><p></p><p>After merging the accounts, return the accounts in the following format: the first element of each account is the name, and the rest of the elements are emails in **sorted order**. The accounts themselves can be returned in **any order**.</p><h3>Examples:</h3><ul><li>Input: accounts = [<br>    [\"neet\",\"neet@gmail.com\",\"neet_dsa@gmail.com\"],<br>    [\"alice\",\"alice@gmail.com\"],<br>    [\"neet\",\"bob@gmail.com\",\"neet@gmail.com\"],<br>    [\"neet\",\"neetcode@gmail.com\"]<br>]<br><br>Output: [[\"neet\",\"bob@gmail.com\",\"neet@gmail.com\",\"neet_dsa@gmail.com\"],[\"alice\",\"alice@gmail.com\"],[\"neet\",\"neetcode@gmail.com\"]]</li><li>Input: accounts = [<br>    [\"James\",\"james@mail.com\"],<br>    [\"James\",\"james@mail.co\"]<br>]<br><br>Output: [[\"James\",\"james@mail.com\"],[\"James\",\"james@mail.co\"]]</li></ul><h3>Constraints:</h3><ul><li> `1 <= accounts.length <= 1000`</li><li> `2 <= accounts[i].length <= 10`</li><li> `1 <= accounts[i][j].length <= 30`</li><li> `accounts[i][0]` consists of English letters.</li><li> `accounts[i][j] (for j > 0)` is a valid email.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def accountsMerge(accounts):\n    ",
+      "solution_text": "Account merging using Union-Find (Disjoint Set Union):\n\n**Algorithm:**\n1. Build email-to-index mapping and Union-Find structure\n2. Union accounts that share common emails\n3. Group emails by their root representative\n4. Sort emails within each group and add account name\n\n**Time Complexity:** O(N*M*α(N)) where N=accounts, M=emails per account, α=inverse Ackermann\n**Space Complexity:** O(N*M) for email mappings and result\n\n**Key Insights:**\n- Union-Find efficiently groups connected accounts\n- Emails act as connection points between accounts\n- Final sorting ensures lexicographical order",
+      "solution_code": "def accountsMerge(accounts):\n    # Union-Find data structure\n    parent = {}\n    \n    def find(x):\n        if x not in parent:\n            parent[x] = x\n        if parent[x] != x:\n            parent[x] = find(parent[x])\n        return parent[x]\n    \n    def union(x, y):\n        px, py = find(x), find(y)\n        if px != py:\n            parent[px] = py\n    \n    # Map email to account name\n    email_to_name = {}\n    \n    # Union emails within same account and map emails to names\n    for account in accounts:\n        name = account[0]\n        first_email = account[1]\n        \n        for email in account[1:]:\n            email_to_name[email] = name\n            union(first_email, email)\n    \n    # Group emails by root parent\n    groups = {}\n    for email in email_to_name:\n        root = find(email)\n        if root not in groups:\n            groups[root] = []\n        groups[root].append(email)\n    \n    # Build result with sorted emails\n    result = []\n    for emails in groups.values():\n        emails.sort()\n        name = email_to_name[emails[0]]\n        result.append([name] + emails)\n    \n    return result"
+    },
+    "javascript": {
+      "template": "function accountsMerge(accounts) {\n  \n}",
+      "solution_text": "Account merging using Union-Find (Disjoint Set Union):\n\n**Algorithm:**\n1. Build email-to-index mapping and Union-Find structure\n2. Union accounts that share common emails\n3. Group emails by their root representative\n4. Sort emails within each group and add account name\n\n**Time Complexity:** O(N*M*α(N)) where N=accounts, M=emails per account, α=inverse Ackermann\n**Space Complexity:** O(N*M) for email mappings and result\n\n**Key Insights:**\n- Union-Find efficiently groups connected accounts\n- Emails act as connection points between accounts\n- Final sorting ensures lexicographical order",
+      "solution_code": "function accountsMerge(accounts) {\n    const parent = new Map();\n    \n    function find(x) {\n        if (!parent.has(x)) {\n            parent.set(x, x);\n        }\n        if (parent.get(x) !== x) {\n            parent.set(x, find(parent.get(x)));\n        }\n        return parent.get(x);\n    }\n    \n    function union(x, y) {\n        const px = find(x);\n        const py = find(y);\n        if (px !== py) {\n            parent.set(px, py);\n        }\n    }\n    \n    const emailToName = new Map();\n    \n    // Union emails within same account\n    for (const account of accounts) {\n        const name = account[0];\n        const firstEmail = account[1];\n        \n        for (let i = 1; i < account.length; i++) {\n            const email = account[i];\n            emailToName.set(email, name);\n            union(firstEmail, email);\n        }\n    }\n    \n    // Group emails by root parent\n    const groups = new Map();\n    for (const email of emailToName.keys()) {\n        const root = find(email);\n        if (!groups.has(root)) {\n            groups.set(root, []);\n        }\n        groups.get(root).push(email);\n    }\n    \n    // Build result\n    const result = [];\n    for (const emails of groups.values()) {\n        emails.sort();\n        const name = emailToName.get(emails[0]);\n        result.push([name, ...emails]);\n    }\n    \n    return result;\n}"
+    },
+    "typescript": {
+      "template": "function accountsMerge(accounts: string[][]): string[][] {\n  \n}",
+      "solution_text": "Account merging using Union-Find (Disjoint Set Union):\n\n**Algorithm:**\n1. Build email-to-index mapping and Union-Find structure\n2. Union accounts that share common emails\n3. Group emails by their root representative\n4. Sort emails within each group and add account name\n\n**Time Complexity:** O(N*M*α(N)) where N=accounts, M=emails per account, α=inverse Ackermann\n**Space Complexity:** O(N*M) for email mappings and result\n\n**Key Insights:**\n- Union-Find efficiently groups connected accounts\n- Emails act as connection points between accounts\n- Final sorting ensures lexicographical order",
+      "solution_code": "function accountsMerge(accounts: string[][]): string[][] {\n    const parent = new Map<string, string>();\n    \n    function find(x: string): string {\n        if (!parent.has(x)) {\n            parent.set(x, x);\n        }\n        if (parent.get(x) !== x) {\n            parent.set(x, find(parent.get(x)!));\n        }\n        return parent.get(x)!;\n    }\n    \n    function union(x: string, y: string): void {\n        const px = find(x);\n        const py = find(y);\n        if (px !== py) {\n            parent.set(px, py);\n        }\n    }\n    \n    const emailToName = new Map<string, string>();\n    \n    // Union emails within same account\n    for (const account of accounts) {\n        const name = account[0];\n        const firstEmail = account[1];\n        \n        for (let i = 1; i < account.length; i++) {\n            const email = account[i];\n            emailToName.set(email, name);\n            union(firstEmail, email);\n        }\n    }\n    \n    // Group emails by root parent\n    const groups = new Map<string, string[]>();\n    for (const email of emailToName.keys()) {\n        const root = find(email);\n        if (!groups.has(root)) {\n            groups.set(root, []);\n        }\n        groups.get(root)!.push(email);\n    }\n    \n    // Build result\n    const result: string[][] = [];\n    for (const emails of groups.values()) {\n        emails.sort();\n        const name = emailToName.get(emails[0])!;\n        result.push([name, ...emails]);\n    }\n    \n    return result;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public List<List<String>> accountsMerge(List<List<String>> accounts) {\n        \n    }\n}",
+      "solution_text": "Account merging using Union-Find (Disjoint Set Union):\n\n**Algorithm:**\n1. Build email-to-index mapping and Union-Find structure\n2. Union accounts that share common emails\n3. Group emails by their root representative\n4. Sort emails within each group and add account name\n\n**Time Complexity:** O(N*M*α(N)) where N=accounts, M=emails per account, α=inverse Ackermann\n**Space Complexity:** O(N*M) for email mappings and result\n\n**Key Insights:**\n- Union-Find efficiently groups connected accounts\n- Emails act as connection points between accounts\n- Final sorting ensures lexicographical order",
+      "solution_code": "class Solution {\n    private Map<String, String> parent = new HashMap<>();\n    \n    public List<List<String>> accountsMerge(List<List<String>> accounts) {\n        Map<String, String> emailToName = new HashMap<>();\n        \n        // Union emails within same account\n        for (List<String> account : accounts) {\n            String name = account.get(0);\n            String firstEmail = account.get(1);\n            \n            for (int i = 1; i < account.size(); i++) {\n                String email = account.get(i);\n                emailToName.put(email, name);\n                union(firstEmail, email);\n            }\n        }\n        \n        // Group emails by root parent\n        Map<String, List<String>> groups = new HashMap<>();\n        for (String email : emailToName.keySet()) {\n            String root = find(email);\n            groups.computeIfAbsent(root, k -> new ArrayList<>()).add(email);\n        }\n        \n        // Build result\n        List<List<String>> result = new ArrayList<>();\n        for (List<String> emails : groups.values()) {\n            Collections.sort(emails);\n            String name = emailToName.get(emails.get(0));\n            List<String> account = new ArrayList<>();\n            account.add(name);\n            account.addAll(emails);\n            result.add(account);\n        }\n        \n        return result;\n    }\n    \n    private String find(String x) {\n        parent.putIfAbsent(x, x);\n        if (!parent.get(x).equals(x)) {\n            parent.put(x, find(parent.get(x)));\n        }\n        return parent.get(x);\n    }\n    \n    private void union(String x, String y) {\n        String px = find(x);\n        String py = find(y);\n        if (!px.equals(py)) {\n            parent.put(px, py);\n        }\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "accounts": [
+          "[\"neet\"",
+          "neet@gmail.com",
+          "neet_dsa@gmail.com"
+        ]
+      },
+      "output": [
+        [
+          "neet",
+          "bob@gmail.com",
+          "neet@gmail.com",
+          "neet_dsa@gmail.com"
+        ],
+        [
+          "alice",
+          "alice@gmail.com"
+        ],
+        [
+          "neet",
+          "neetcode@gmail.com"
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "accounts": [
+          "[\"James\"",
+          "james@mail.com"
+        ]
+      },
+      "output": [
+        [
+          "James",
+          "james@mail.com"
+        ],
+        [
+          "James",
+          "james@mail.co"
+        ]
+      ]
+    }
+  ]
+}

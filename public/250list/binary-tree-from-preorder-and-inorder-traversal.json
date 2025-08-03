@@ -1,0 +1,56 @@
+{
+  "filename": "binary-tree-from-preorder-and-inorder-traversal",
+  "title": "Construct Binary Tree from Preorder and Inorder Traversal",
+  "keywords": [
+    "construct",
+    "binary",
+    "tree",
+    "preorder",
+    "inorder",
+    "traversal",
+    "leetcode",
+    "105",
+    "given",
+    "two"
+  ],
+  "description": "<h2>Construct Binary Tree from Preorder and Inorder Traversal</h2><p>Leetcode 105. Construct Binary Tree From Preorder And Inorder Traversal</p><p></p><p>You are given two integer arrays `preorder` and `inorder`.</p><p>        </p><p>* `preorder` is the preorder traversal of a binary tree</p><p>* `inorder` is the inorder traversal of the same tree</p><p>* Both arrays are of the same size and consist of unique values.</p><p></p><p>Rebuild the binary tree from the preorder and inorder traversals and return its root.</p><h3>Examples:</h3><ul><li>Input: preorder = [1], inorder = [1]<br><br>Output: [1]</li></ul><h3>Constraints:</h3><ul><li> `1 <= inorder.length <= 1000`.</li><li> `inorder.length == preorder.length`</li><li> `-1000 <= preorder[i], inorder[i] <= 1000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def constructBinaryTreeFromPreorderAndInorderTraversal(preorder, inorder):\n    ",
+      "solution_text": "Binary Tree Inorder Traversal implementation:\n\n**Algorithm:**\n1. Traverse left subtree recursively\n2. Process current node (add to result)\n3. Traverse right subtree recursively\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth, where h is tree height\n\n**Key Insights:**\n- Inorder: Left -> Root -> Right\n- For BST, inorder gives sorted sequence\n- Can be implemented iteratively using stack",
+      "solution_code": "def binaryTreeFromPreorderAndInorderTraversal(root):\n    result = []\n    \n    def inorder(node):\n        if not node:\n            return\n        \n        inorder(node.left)   # Traverse left subtree\n        result.append(node.val)  # Process current node\n        inorder(node.right)  # Traverse right subtree\n    \n    inorder(root)\n    return result"
+    },
+    "javascript": {
+      "template": "function constructBinaryTreeFromPreorderAndInorderTraversal(preorder, inorder) {\n  \n}",
+      "solution_text": "Binary Tree Inorder Traversal implementation:\n\n**Algorithm:**\n1. Traverse left subtree recursively\n2. Process current node (add to result)\n3. Traverse right subtree recursively\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth, where h is tree height\n\n**Key Insights:**\n- Inorder: Left -> Root -> Right\n- For BST, inorder gives sorted sequence\n- Can be implemented iteratively using stack",
+      "solution_code": "function binaryTreeFromPreorderAndInorderTraversal(root) {\n    const result = [];\n    \n    function inorder(node) {\n        if (!node) return;\n        \n        inorder(node.left);    // Traverse left subtree\n        result.push(node.val); // Process current node\n        inorder(node.right);   // Traverse right subtree\n    }\n    \n    inorder(root);\n    return result;\n}"
+    },
+    "typescript": {
+      "template": "function constructBinaryTreeFromPreorderAndInorderTraversal(preorder: number[], inorder: number[]): number[] {\n  \n}",
+      "solution_text": "Binary Tree Inorder Traversal implementation:\n\n**Algorithm:**\n1. Traverse left subtree recursively\n2. Process current node (add to result)\n3. Traverse right subtree recursively\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth, where h is tree height\n\n**Key Insights:**\n- Inorder: Left -> Root -> Right\n- For BST, inorder gives sorted sequence\n- Can be implemented iteratively using stack",
+      "solution_code": "function binaryTreeFromPreorderAndInorderTraversal(root: TreeNode | null): number[] {\n    const result: number[] = [];\n    \n    function inorder(node: TreeNode | null): void {\n        if (!node) return;\n        \n        inorder(node.left);    // Traverse left subtree\n        result.push(node.val); // Process current node\n        inorder(node.right);   // Traverse right subtree\n    }\n    \n    inorder(root);\n    return result;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int[] constructBinaryTreeFromPreorderAndInorderTraversal(int[] preorder, int[] inorder) {\n        \n    }\n}",
+      "solution_text": "Binary Tree Inorder Traversal implementation:\n\n**Algorithm:**\n1. Traverse left subtree recursively\n2. Process current node (add to result)\n3. Traverse right subtree recursively\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth, where h is tree height\n\n**Key Insights:**\n- Inorder: Left -> Root -> Right\n- For BST, inorder gives sorted sequence\n- Can be implemented iteratively using stack",
+      "solution_code": "class Solution {\n    public List<Integer> binaryTreeFromPreorderAndInorderTraversal(TreeNode root) {\n        List<Integer> result = new ArrayList<>();\n        inorder(root, result);\n        return result;\n    }\n    \n    private void inorder(TreeNode node, List<Integer> result) {\n        if (node == null) return;\n        \n        inorder(node.left, result);   // Traverse left subtree\n        result.add(node.val);         // Process current node\n        inorder(node.right, result);  // Traverse right subtree\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "preorder": [
+          1
+        ],
+        "inorder": [
+          1
+        ]
+      },
+      "output": [
+        1
+      ]
+    }
+  ]
+}

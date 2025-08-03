@@ -1,0 +1,82 @@
+{
+  "filename": "find-minimum-in-rotated-sorted-array",
+  "title": "Find Minimum in Rotated Sorted Array",
+  "keywords": [
+    "find",
+    "minimum",
+    "rotated",
+    "sorted",
+    "array",
+    "leetcode",
+    "153",
+    "given",
+    "length",
+    "which"
+  ],
+  "description": "<h2>Find Minimum in Rotated Sorted Array</h2><p>Leetcode 153. Find Minimum In Rotated Sorted Array</p><p></p><p>You are given an array of length `n` which was originally sorted in ascending order. It has now been **rotated** between `1` and `n` times. For example, the array `nums = [1,2,3,4,5,6]` might become:</p><p></p><p>* `[3,4,5,6,1,2]` if it was rotated `4` times.</p><p>* `[1,2,3,4,5,6]` if it was rotated `6` times.</p><p></p><p>Notice that rotating the array `4` times moves the last four elements of the array to the beginning. Rotating the array `6` times produces the original array.</p><p></p><p>Assuming all elements in the rotated sorted array `nums` are **unique**, return the minimum element of this array.</p><p></p><p>A solution that runs in `O(n)` time is trivial, can you write an algorithm that runs in `O(log n) time`?</p><h3>Examples:</h3><ul><li>Input: nums = [3,4,5,6,1,2]<br><br>Output: 1</li><li>Input: nums = [4,5,0,1,2,3]<br><br>Output: 0</li><li>Input: nums = [4,5,6,7]<br><br>Output: 4</li></ul><h3>Constraints:</h3><ul><li> `1 <= nums.length <= 1000`</li><li> `-1000 <= nums[i] <= 1000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def findMinimumInRotatedSortedArray(nums):\n    ",
+      "solution_text": "Classic Binary Search implementation:\n\n**Algorithm:**\n1. Initialize left and right pointers to array bounds\n2. While left <= right, calculate middle index\n3. Compare middle element with target\n4. Adjust search space based on comparison\n\n**Time Complexity:** O(log n) - halves search space each iteration\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Requires sorted input array\n- Avoids integer overflow with left + (right - left) // 2\n- Returns -1 if target not found",
+      "solution_code": "def findMinimumInRotatedSortedArray(nums, target):\n    left, right = 0, len(nums) - 1\n    \n    while left <= right:\n        # Avoid integer overflow\n        mid = left + (right - left) // 2\n        \n        if nums[mid] == target:\n            return mid\n        elif nums[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    \n    return -1"
+    },
+    "javascript": {
+      "template": "function findMinimumInRotatedSortedArray(nums) {\n  \n}",
+      "solution_text": "Classic Binary Search implementation:\n\n**Algorithm:**\n1. Initialize left and right pointers to array bounds\n2. While left <= right, calculate middle index\n3. Compare middle element with target\n4. Adjust search space based on comparison\n\n**Time Complexity:** O(log n) - halves search space each iteration\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Requires sorted input array\n- Avoids integer overflow with left + (right - left) // 2\n- Returns -1 if target not found",
+      "solution_code": "function findMinimumInRotatedSortedArray(nums, target) {\n    let left = 0, right = nums.length - 1;\n    \n    while (left <= right) {\n        // Avoid integer overflow\n        const mid = left + Math.floor((right - left) / 2);\n        \n        if (nums[mid] === target) {\n            return mid;\n        } else if (nums[mid] < target) {\n            left = mid + 1;\n        } else {\n            right = mid - 1;\n        }\n    }\n    \n    return -1;\n}"
+    },
+    "typescript": {
+      "template": "function findMinimumInRotatedSortedArray(nums: number[]): number {\n  \n}",
+      "solution_text": "Classic Binary Search implementation:\n\n**Algorithm:**\n1. Initialize left and right pointers to array bounds\n2. While left <= right, calculate middle index\n3. Compare middle element with target\n4. Adjust search space based on comparison\n\n**Time Complexity:** O(log n) - halves search space each iteration\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Requires sorted input array\n- Avoids integer overflow with left + (right - left) // 2\n- Returns -1 if target not found",
+      "solution_code": "function findMinimumInRotatedSortedArray(nums: number[], target: number): number {\n    let left = 0, right = nums.length - 1;\n    \n    while (left <= right) {\n        // Avoid integer overflow\n        const mid = left + Math.floor((right - left) / 2);\n        \n        if (nums[mid] === target) {\n            return mid;\n        } else if (nums[mid] < target) {\n            left = mid + 1;\n        } else {\n            right = mid - 1;\n        }\n    }\n    \n    return -1;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int findMinimumInRotatedSortedArray(int[] nums) {\n        \n    }\n}",
+      "solution_text": "Classic Binary Search implementation:\n\n**Algorithm:**\n1. Initialize left and right pointers to array bounds\n2. While left <= right, calculate middle index\n3. Compare middle element with target\n4. Adjust search space based on comparison\n\n**Time Complexity:** O(log n) - halves search space each iteration\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Requires sorted input array\n- Avoids integer overflow with left + (right - left) // 2\n- Returns -1 if target not found",
+      "solution_code": "class Solution {\n    public int findMinimumInRotatedSortedArray(int[] nums, int target) {\n        int left = 0, right = nums.length - 1;\n        \n        while (left <= right) {\n            // Avoid integer overflow\n            int mid = left + (right - left) / 2;\n            \n            if (nums[mid] == target) {\n                return mid;\n            } else if (nums[mid] < target) {\n                left = mid + 1;\n            } else {\n                right = mid - 1;\n            }\n        }\n        \n        return -1;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [
+          3,
+          4,
+          5,
+          6,
+          1,
+          2
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [
+          4,
+          5,
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "output": 0
+    },
+    {
+      "id": 3,
+      "input": {
+        "nums": [
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "output": 4
+    }
+  ]
+}

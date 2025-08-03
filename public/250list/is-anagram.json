@@ -1,0 +1,58 @@
+{
+  "filename": "is-anagram",
+  "title": "Valid Anagram",
+  "keywords": [
+    "valid",
+    "anagram",
+    "leetcode",
+    "242",
+    "given",
+    "two",
+    "strings",
+    "return",
+    "true",
+    "anagrams"
+  ],
+  "description": "<h2>Valid Anagram</h2><p>Leetcode 242. Valid Anagram</p><p></p><p>Given two strings `s` and `t`, return `true` if the two strings are anagrams of each other, otherwise return `false`.</p><p></p><p>An **anagram** is a string that contains the exact same characters as another string, but the order of the characters can be different.</p><h3>Examples:</h3><ul><li>Input: s = \"racecar\", t = \"carrace\"<br><br>Output: true</li><li>Input: s = \"jar\", t = \"jam\"<br><br>Output: false</li></ul><h3>Constraints:</h3><ul><li> `s` and `t` consist of lowercase English letters.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def validAnagram(s, t):\n    ",
+      "solution_text": "Anagram detection using character frequency:\n\n**Algorithm:**\n1. Check if strings have equal length\n2. Count frequency of each character\n3. Compare frequency maps for equality\n\n**Time Complexity:** O(n) - single pass through strings\n**Space Complexity:** O(1) - fixed size character map (26 letters)\n\n**Key Insights:**\n- Character frequency comparison is reliable\n- Early return for different lengths\n- Can use array instead of hash map for lowercase letters",
+      "solution_code": "def isAnagram(s, t):\n    if len(s) != len(t):\n        return False\n    \n    # Count character frequencies\n    char_count = {}\n    \n    for char in s:\n        char_count[char] = char_count.get(char, 0) + 1\n    \n    for char in t:\n        if char not in char_count:\n            return False\n        char_count[char] -= 1\n        if char_count[char] == 0:\n            del char_count[char]\n    \n    return len(char_count) == 0"
+    },
+    "javascript": {
+      "template": "function validAnagram(s, t) {\n  \n}",
+      "solution_text": "Anagram detection using character frequency:\n\n**Algorithm:**\n1. Check if strings have equal length\n2. Count frequency of each character\n3. Compare frequency maps for equality\n\n**Time Complexity:** O(n) - single pass through strings\n**Space Complexity:** O(1) - fixed size character map (26 letters)\n\n**Key Insights:**\n- Character frequency comparison is reliable\n- Early return for different lengths\n- Can use array instead of hash map for lowercase letters",
+      "solution_code": "function isAnagram(s, t) {\n    if (s.length !== t.length) return false;\n    \n    // Count character frequencies\n    const charCount = {};\n    \n    for (const char of s) {\n        charCount[char] = (charCount[char] || 0) + 1;\n    }\n    \n    for (const char of t) {\n        if (!charCount[char]) return false;\n        charCount[char]--;\n    }\n    \n    return Object.values(charCount).every(count => count === 0);\n}"
+    },
+    "typescript": {
+      "template": "function validAnagram(s: string, t: string): string {\n  \n}",
+      "solution_text": "Anagram detection using character frequency:\n\n**Algorithm:**\n1. Check if strings have equal length\n2. Count frequency of each character\n3. Compare frequency maps for equality\n\n**Time Complexity:** O(n) - single pass through strings\n**Space Complexity:** O(1) - fixed size character map (26 letters)\n\n**Key Insights:**\n- Character frequency comparison is reliable\n- Early return for different lengths\n- Can use array instead of hash map for lowercase letters",
+      "solution_code": "function isAnagram(s: string, t: string): boolean {\n    if (s.length !== t.length) return false;\n    \n    // Count character frequencies\n    const charCount: {[key: string]: number} = {};\n    \n    for (const char of s) {\n        charCount[char] = (charCount[char] || 0) + 1;\n    }\n    \n    for (const char of t) {\n        if (!charCount[char]) return false;\n        charCount[char]--;\n    }\n    \n    return Object.values(charCount).every(count => count === 0);\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public String validAnagram(String s, String t) {\n        \n    }\n}",
+      "solution_text": "Anagram detection using character frequency:\n\n**Algorithm:**\n1. Check if strings have equal length\n2. Count frequency of each character\n3. Compare frequency maps for equality\n\n**Time Complexity:** O(n) - single pass through strings\n**Space Complexity:** O(1) - fixed size character map (26 letters)\n\n**Key Insights:**\n- Character frequency comparison is reliable\n- Early return for different lengths\n- Can use array instead of hash map for lowercase letters",
+      "solution_code": "class Solution {\n    public boolean isAnagram(String s, String t) {\n        if (s.length() != t.length()) return false;\n        \n        // Count character frequencies\n        Map<Character, Integer> charCount = new HashMap<>();\n        \n        for (char c : s.toCharArray()) {\n            charCount.put(c, charCount.getOrDefault(c, 0) + 1);\n        }\n        \n        for (char c : t.toCharArray()) {\n            if (!charCount.containsKey(c)) return false;\n            charCount.put(c, charCount.get(c) - 1);\n            if (charCount.get(c) == 0) {\n                charCount.remove(c);\n            }\n        }\n        \n        return charCount.isEmpty();\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "s": "\"racecar\",",
+        "t": "carrace"
+      },
+      "output": "true"
+    },
+    {
+      "id": 2,
+      "input": {
+        "s": "\"jar\",",
+        "t": "jam"
+      },
+      "output": "false"
+    }
+  ]
+}

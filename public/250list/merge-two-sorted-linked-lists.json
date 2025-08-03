@@ -1,0 +1,64 @@
+{
+  "filename": "merge-two-sorted-linked-lists",
+  "title": "Merge Two Sorted Linked Lists",
+  "keywords": [
+    "merge",
+    "two",
+    "sorted",
+    "linked",
+    "lists",
+    "leetcode",
+    "given",
+    "heads",
+    "list1",
+    "list2"
+  ],
+  "description": "<h2>Merge Two Sorted Linked Lists</h2><p>Leetcode 21. Merge Two Sorted Lists</p><p></p><p>You are given the heads of two sorted linked lists `list1` and `list2`.</p><p></p><p>Merge the two lists into one **sorted** linked list and return the head of the new sorted linked list.</p><p></p><p>The new list should be made up of nodes from `list1` and `list2`.</p><h3>Examples:</h3><ul><li>Input: list1 = [], list2 = [1,2]<br><br>Output: [1,2]</li><li>Input: list1 = [], list2 = []<br><br>Output: []</li></ul><h3>Constraints:</h3><ul><li> `0 <= The length of the each list <= 100`.</li><li> `-100 <= Node.val <= 100`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def mergeTwoSortedLinkedLists(list1, list2):\n    ",
+      "solution_text": "Efficient sorting algorithm implementation:\n\n**Algorithm:**\n1. Choose appropriate sorting algorithm based on constraints\n2. For general case, use optimized comparison-based sort\n3. Handle edge cases like empty arrays\n4. Maintain stability if required\n\n**Time Complexity:** O(n log n) - optimal for comparison-based sorting\n**Space Complexity:** O(log n) - recursion stack for quicksort/mergesort\n\n**Key Insights:**\n- Built-in sorts are highly optimized\n- Consider counting sort for limited range integers\n- Stable sorts preserve relative order of equal elements",
+      "solution_code": "def mergeTwoSortedLinkedLists(arr):\n    if not arr or len(arr) <= 1:\n        return arr\n    \n    # Use built-in optimized sort (Timsort)\n    return sorted(arr)\n    \n    # Alternative: in-place sorting\n    # arr.sort()\n    # return arr"
+    },
+    "javascript": {
+      "template": "function mergeTwoSortedLinkedLists(list1, list2) {\n  \n}",
+      "solution_text": "Efficient sorting algorithm implementation:\n\n**Algorithm:**\n1. Choose appropriate sorting algorithm based on constraints\n2. For general case, use optimized comparison-based sort\n3. Handle edge cases like empty arrays\n4. Maintain stability if required\n\n**Time Complexity:** O(n log n) - optimal for comparison-based sorting\n**Space Complexity:** O(log n) - recursion stack for quicksort/mergesort\n\n**Key Insights:**\n- Built-in sorts are highly optimized\n- Consider counting sort for limited range integers\n- Stable sorts preserve relative order of equal elements",
+      "solution_code": "function mergeTwoSortedLinkedLists(arr) {\n    if (!arr || arr.length <= 1) return arr;\n    \n    // Use built-in optimized sort\n    return [...arr].sort((a, b) => {\n        if (typeof a === 'number' && typeof b === 'number') {\n            return a - b;\n        }\n        return String(a).localeCompare(String(b));\n    });\n}"
+    },
+    "typescript": {
+      "template": "function mergeTwoSortedLinkedLists(list1: number[], list2: number[]): number[] {\n  \n}",
+      "solution_text": "Efficient sorting algorithm implementation:\n\n**Algorithm:**\n1. Choose appropriate sorting algorithm based on constraints\n2. For general case, use optimized comparison-based sort\n3. Handle edge cases like empty arrays\n4. Maintain stability if required\n\n**Time Complexity:** O(n log n) - optimal for comparison-based sorting\n**Space Complexity:** O(log n) - recursion stack for quicksort/mergesort\n\n**Key Insights:**\n- Built-in sorts are highly optimized\n- Consider counting sort for limited range integers\n- Stable sorts preserve relative order of equal elements",
+      "solution_code": "function mergeTwoSortedLinkedLists(arr: any[]): any[] {\n    if (!arr || arr.length <= 1) return arr;\n    \n    // Use built-in optimized sort\n    return [...arr].sort((a, b) => {\n        if (typeof a === 'number' && typeof b === 'number') {\n            return a - b;\n        }\n        return String(a).localeCompare(String(b));\n    });\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int[] mergeTwoSortedLinkedLists(int[] list1, int[] list2) {\n        \n    }\n}",
+      "solution_text": "Efficient sorting algorithm implementation:\n\n**Algorithm:**\n1. Choose appropriate sorting algorithm based on constraints\n2. For general case, use optimized comparison-based sort\n3. Handle edge cases like empty arrays\n4. Maintain stability if required\n\n**Time Complexity:** O(n log n) - optimal for comparison-based sorting\n**Space Complexity:** O(log n) - recursion stack for quicksort/mergesort\n\n**Key Insights:**\n- Built-in sorts are highly optimized\n- Consider counting sort for limited range integers\n- Stable sorts preserve relative order of equal elements",
+      "solution_code": "class Solution {\n    public int[] mergeTwoSortedLinkedLists(int[] arr) {\n        if (arr == null || arr.length <= 1) return arr;\n        \n        // Create copy to avoid modifying original\n        int[] result = arr.clone();\n        \n        // Use built-in optimized sort (dual-pivot quicksort)\n        Arrays.sort(result);\n        \n        return result;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "list1": [],
+        "list2": [
+          1,
+          2
+        ]
+      },
+      "output": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "list1": [],
+        "list2": []
+      },
+      "output": []
+    }
+  ]
+}

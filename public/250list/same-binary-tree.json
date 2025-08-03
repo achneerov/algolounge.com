@@ -1,0 +1,41 @@
+{
+  "filename": "same-binary-tree",
+  "title": "Same Binary Tree",
+  "keywords": [
+    "same",
+    "binary",
+    "tree",
+    "leetcode",
+    "100",
+    "given",
+    "roots",
+    "two",
+    "trees",
+    "return"
+  ],
+  "description": "<h2>Same Binary Tree</h2><p>Leetcode 100. Same Tree</p><p></p><p>Given the roots of two binary trees `p` and `q`, return `true` if the trees are **equivalent**, otherwise return `false`.</p><p></p><p>Two binary trees are considered **equivalent** if they share the exact same structure and the nodes have the same values.</p><h3>Constraints:</h3><ul><li> `0 <= The number of nodes in both trees <= 100`.</li><li> `-100 <= Node.val <= 100`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def sameBinaryTree(input):\n    ",
+      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
+      "solution_code": "def sameBinaryTree(root):\n    if not root:\n        return None  # or appropriate base case result\n    \n    # Process current node\n    result = root.val\n    \n    # Recursively process subtrees\n    left_result = sameBinaryTree(root.left) if root.left else None\n    right_result = sameBinaryTree(root.right) if root.right else None\n    \n    # Combine results based on operation\n    # This is a template - adjust based on specific operation\n    return result"
+    },
+    "javascript": {
+      "template": "function sameBinaryTree(input) {\n  \n}",
+      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
+      "solution_code": "function sameBinaryTree(root) {\n    if (!root) return null; // or appropriate base case result\n    \n    // Process current node\n    const result = root.val;\n    \n    // Recursively process subtrees\n    const leftResult = root.left ? sameBinaryTree(root.left) : null;\n    const rightResult = root.right ? sameBinaryTree(root.right) : null;\n    \n    // Combine results based on operation\n    // This is a template - adjust based on specific operation\n    return result;\n}"
+    },
+    "typescript": {
+      "template": "function sameBinaryTree(input: any): any {\n  \n}",
+      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
+      "solution_code": "function sameBinaryTree(root: TreeNode | null): any {\n    if (!root) return null; // or appropriate base case result\n    \n    // Process current node\n    const result = root.val;\n    \n    // Recursively process subtrees\n    const leftResult = root.left ? sameBinaryTree(root.left) : null;\n    const rightResult = root.right ? sameBinaryTree(root.right) : null;\n    \n    // Combine results based on operation\n    // This is a template - adjust based on specific operation\n    return result;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public Object sameBinaryTree(Object input) {\n        \n    }\n}",
+      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
+      "solution_code": "class Solution {\n    public Object sameBinaryTree(TreeNode root) {\n        if (root == null) return null; // or appropriate base case result\n        \n        // Process current node\n        int result = root.val;\n        \n        // Recursively process subtrees\n        Object leftResult = root.left != null ? sameBinaryTree(root.left) : null;\n        Object rightResult = root.right != null ? sameBinaryTree(root.right) : null;\n        \n        // Combine results based on operation\n        // This is a template - adjust based on specific operation\n        return result;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": []
+}

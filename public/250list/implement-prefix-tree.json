@@ -1,0 +1,41 @@
+{
+  "filename": "implement-prefix-tree",
+  "title": "Implement Trie (Prefix Tree)",
+  "keywords": [
+    "implement",
+    "trie",
+    "prefix",
+    "tree",
+    "leetcode",
+    "208",
+    "also",
+    "known",
+    "data",
+    "structure"
+  ],
+  "description": "<h2>Implement Trie (Prefix Tree)</h2><p>Leetcode 208. Implement Trie Prefix Tree</p><p></p><p>A **prefix tree** (also known as a trie) is a tree data structure used to efficiently store and retrieve keys in a set of strings. Some applications of this data structure include auto-complete and spell checker systems.</p><p></p><p>Implement the PrefixTree class:</p><p>* `PrefixTree()` Initializes the prefix tree object.</p><p>* `void insert(String word)` Inserts the string `word` into the prefix tree.</p><p>* `boolean search(String word)` Returns `true` if the string `word` is in the prefix tree (i.e., was inserted before), and `false` otherwise.</p><p>* `boolean startsWith(String prefix)` Returns `true` if there is a previously inserted string `word` that has the prefix `prefix`, and `false` otherwise.</p><h3>Examples:</h3><ul><li>Input: <br>[\"Trie\", \"insert\", \"dog\", \"search\", \"dog\", \"search\", \"do\", \"startsWith\", \"do\", \"insert\", \"do\", \"search\", \"do\"]<br><br>Output:<br>[null, null, true, false, true, null, true]<br><br>Explanation:<br>PrefixTree prefixTree = new PrefixTree();<br>prefixTree.insert(\"dog\");<br>prefixTree.search(\"dog\");    // return true<br>prefixTree.search(\"do\");     // return false<br>prefixTree.startsWith(\"do\"); // return true<br>prefixTree.insert(\"do\");<br>prefixTree.search(\"do\");     // return true</li></ul><h3>Constraints:</h3><ul><li> `1 <= word.length, prefix.length <= 1000`</li><li> `word` and `prefix` are made up of lowercase English letters.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def implementTriePrefixTree))(input):\n    ",
+      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
+      "solution_code": "def implementPrefixTree(root):\n    if not root:\n        return None  # or appropriate base case result\n    \n    # Process current node\n    result = root.val\n    \n    # Recursively process subtrees\n    left_result = implementPrefixTree(root.left) if root.left else None\n    right_result = implementPrefixTree(root.right) if root.right else None\n    \n    # Combine results based on operation\n    # This is a template - adjust based on specific operation\n    return result"
+    },
+    "javascript": {
+      "template": "function implementTriePrefixTree))(input) {\n  \n}",
+      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
+      "solution_code": "function implementPrefixTree(root) {\n    if (!root) return null; // or appropriate base case result\n    \n    // Process current node\n    const result = root.val;\n    \n    // Recursively process subtrees\n    const leftResult = root.left ? implementPrefixTree(root.left) : null;\n    const rightResult = root.right ? implementPrefixTree(root.right) : null;\n    \n    // Combine results based on operation\n    // This is a template - adjust based on specific operation\n    return result;\n}"
+    },
+    "typescript": {
+      "template": "function implementTriePrefixTree))(input: any): any {\n  \n}",
+      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
+      "solution_code": "function implementPrefixTree(root: TreeNode | null): any {\n    if (!root) return null; // or appropriate base case result\n    \n    // Process current node\n    const result = root.val;\n    \n    // Recursively process subtrees\n    const leftResult = root.left ? implementPrefixTree(root.left) : null;\n    const rightResult = root.right ? implementPrefixTree(root.right) : null;\n    \n    // Combine results based on operation\n    // This is a template - adjust based on specific operation\n    return result;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public Object implementTriePrefixTree)(Object input) {\n        \n    }\n}",
+      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
+      "solution_code": "class Solution {\n    public Object implementPrefixTree(TreeNode root) {\n        if (root == null) return null; // or appropriate base case result\n        \n        // Process current node\n        int result = root.val;\n        \n        // Recursively process subtrees\n        Object leftResult = root.left != null ? implementPrefixTree(root.left) : null;\n        Object rightResult = root.right != null ? implementPrefixTree(root.right) : null;\n        \n        // Combine results based on operation\n        // This is a template - adjust based on specific operation\n        return result;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": []
+}

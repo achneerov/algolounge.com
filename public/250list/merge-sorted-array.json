@@ -1,0 +1,88 @@
+{
+  "filename": "merge-sorted-array",
+  "title": "Merge Sorted Array",
+  "keywords": [
+    "merge",
+    "sorted",
+    "array",
+    "leetcode",
+    "given",
+    "two",
+    "integer",
+    "arrays",
+    "nums1",
+    "nums2"
+  ],
+  "description": "<h2>Merge Sorted Array</h2><p>Leetcode 88. Merge Sorted Array</p><p></p><p>You are given two integer arrays `nums1` and `nums2`, both sorted in **non-decreasing order**, along with two integers `m` and `n`, where:</p><p></p><p>- `m` is the number of valid elements in `nums1`,</p><p></p><p>- `n` is the number of elements in `nums2`.</p><p></p><p>The array `nums1` has a total length of `(m+n)`, with the first `m` elements containing the values to be merged, and the last `n` elements set to `0` as placeholders.</p><p></p><p>Your task is to merge the two arrays such that the final merged array is also sorted in **non-decreasing order** and stored entirely within `nums1`.</p><p>You must modify nums1 in-place and do not return anything from the function.</p><h3>Examples:</h3><ul><li>Input: nums1 = [10,20,20,40,0,0], m = 4, nums2 = [1,2], n = 2<br><br>Output: [1,2,10,20,20,40]</li><li>Input: nums1 = [0,0], m = 0, nums2 = [1,2], n = 2<br><br>Output: [1,2]</li></ul><h3>Constraints:</h3><ul><li> `0 <= m, n <= 200`</li><li> `1 <= (m + n) <= 200`</li><li> `nums1.length == (m + n)`</li><li> `nums2.length == n`</li><li> `-1,000,000,000 <= nums1[i], nums2[i] <= 1,000,000,000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def mergeSortedArray(nums1, m, nums2, n):\n    ",
+      "solution_text": "Classic Binary Search implementation:\n\n**Algorithm:**\n1. Initialize left and right pointers to array bounds\n2. While left <= right, calculate middle index\n3. Compare middle element with target\n4. Adjust search space based on comparison\n\n**Time Complexity:** O(log n) - halves search space each iteration\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Requires sorted input array\n- Avoids integer overflow with left + (right - left) // 2\n- Returns -1 if target not found",
+      "solution_code": "def mergeSortedArray(nums, target):\n    left, right = 0, len(nums) - 1\n    \n    while left <= right:\n        # Avoid integer overflow\n        mid = left + (right - left) // 2\n        \n        if nums[mid] == target:\n            return mid\n        elif nums[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    \n    return -1"
+    },
+    "javascript": {
+      "template": "function mergeSortedArray(nums1, m, nums2, n) {\n  \n}",
+      "solution_text": "Classic Binary Search implementation:\n\n**Algorithm:**\n1. Initialize left and right pointers to array bounds\n2. While left <= right, calculate middle index\n3. Compare middle element with target\n4. Adjust search space based on comparison\n\n**Time Complexity:** O(log n) - halves search space each iteration\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Requires sorted input array\n- Avoids integer overflow with left + (right - left) // 2\n- Returns -1 if target not found",
+      "solution_code": "function mergeSortedArray(nums, target) {\n    let left = 0, right = nums.length - 1;\n    \n    while (left <= right) {\n        // Avoid integer overflow\n        const mid = left + Math.floor((right - left) / 2);\n        \n        if (nums[mid] === target) {\n            return mid;\n        } else if (nums[mid] < target) {\n            left = mid + 1;\n        } else {\n            right = mid - 1;\n        }\n    }\n    \n    return -1;\n}"
+    },
+    "typescript": {
+      "template": "function mergeSortedArray(nums1: number[], m: string, nums2: number[], n: number): number[] {\n  \n}",
+      "solution_text": "Classic Binary Search implementation:\n\n**Algorithm:**\n1. Initialize left and right pointers to array bounds\n2. While left <= right, calculate middle index\n3. Compare middle element with target\n4. Adjust search space based on comparison\n\n**Time Complexity:** O(log n) - halves search space each iteration\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Requires sorted input array\n- Avoids integer overflow with left + (right - left) // 2\n- Returns -1 if target not found",
+      "solution_code": "function mergeSortedArray(nums: number[], target: number): number {\n    let left = 0, right = nums.length - 1;\n    \n    while (left <= right) {\n        // Avoid integer overflow\n        const mid = left + Math.floor((right - left) / 2);\n        \n        if (nums[mid] === target) {\n            return mid;\n        } else if (nums[mid] < target) {\n            left = mid + 1;\n        } else {\n            right = mid - 1;\n        }\n    }\n    \n    return -1;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int[] mergeSortedArray(int[] nums1, String m, int[] nums2, int n) {\n        \n    }\n}",
+      "solution_text": "Classic Binary Search implementation:\n\n**Algorithm:**\n1. Initialize left and right pointers to array bounds\n2. While left <= right, calculate middle index\n3. Compare middle element with target\n4. Adjust search space based on comparison\n\n**Time Complexity:** O(log n) - halves search space each iteration\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Requires sorted input array\n- Avoids integer overflow with left + (right - left) // 2\n- Returns -1 if target not found",
+      "solution_code": "class Solution {\n    public int mergeSortedArray(int[] nums, int target) {\n        int left = 0, right = nums.length - 1;\n        \n        while (left <= right) {\n            // Avoid integer overflow\n            int mid = left + (right - left) / 2;\n            \n            if (nums[mid] == target) {\n                return mid;\n            } else if (nums[mid] < target) {\n                left = mid + 1;\n            } else {\n                right = mid - 1;\n            }\n        }\n        \n        return -1;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums1": [
+          10,
+          20,
+          20,
+          40,
+          0,
+          0
+        ],
+        "m": "4,",
+        "nums2": [
+          1,
+          2
+        ],
+        "n": 2
+      },
+      "output": [
+        1,
+        2,
+        10,
+        20,
+        20,
+        40
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums1": [
+          0,
+          0
+        ],
+        "m": "0,",
+        "nums2": [
+          1,
+          2
+        ],
+        "n": 2
+      },
+      "output": [
+        1,
+        2
+      ]
+    }
+  ]
+}

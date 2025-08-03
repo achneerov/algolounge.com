@@ -1,0 +1,49 @@
+{
+  "filename": "depth-of-binary-tree",
+  "title": "Maximum Depth of Binary Tree",
+  "keywords": [
+    "maximum",
+    "depth",
+    "binary",
+    "tree",
+    "leetcode",
+    "104",
+    "given",
+    "root",
+    "return",
+    "its"
+  ],
+  "description": "<h2>Maximum Depth of Binary Tree</h2><p>Leetcode 104. Maximum Depth of Binary Tree</p><p></p><p>Given the `root` of a binary tree, return its **depth**.</p><p></p><p>The **depth** of a binary tree is defined as the number of nodes along the longest path from the root node down to the farthest leaf node.</p><h3>Examples:</h3><ul><li>Input: root = []<br><br>Output: 0</li></ul><h3>Constraints:</h3><ul><li> `0 <= The number of nodes in the tree <= 100`.</li><li> `-100 <= Node.val <= 100`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def maximumDepthOfBinaryTree(root):\n    ",
+      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
+      "solution_code": "def depthOfBinaryTree(root):\n    if not root:\n        return None  # or appropriate base case result\n    \n    # Process current node\n    result = root.val\n    \n    # Recursively process subtrees\n    left_result = depthOfBinaryTree(root.left) if root.left else None\n    right_result = depthOfBinaryTree(root.right) if root.right else None\n    \n    # Combine results based on operation\n    # This is a template - adjust based on specific operation\n    return result"
+    },
+    "javascript": {
+      "template": "function maximumDepthOfBinaryTree(root) {\n  \n}",
+      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
+      "solution_code": "function depthOfBinaryTree(root) {\n    if (!root) return null; // or appropriate base case result\n    \n    // Process current node\n    const result = root.val;\n    \n    // Recursively process subtrees\n    const leftResult = root.left ? depthOfBinaryTree(root.left) : null;\n    const rightResult = root.right ? depthOfBinaryTree(root.right) : null;\n    \n    // Combine results based on operation\n    // This is a template - adjust based on specific operation\n    return result;\n}"
+    },
+    "typescript": {
+      "template": "function maximumDepthOfBinaryTree(root: number[]): number {\n  \n}",
+      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
+      "solution_code": "function depthOfBinaryTree(root: TreeNode | null): any {\n    if (!root) return null; // or appropriate base case result\n    \n    // Process current node\n    const result = root.val;\n    \n    // Recursively process subtrees\n    const leftResult = root.left ? depthOfBinaryTree(root.left) : null;\n    const rightResult = root.right ? depthOfBinaryTree(root.right) : null;\n    \n    // Combine results based on operation\n    // This is a template - adjust based on specific operation\n    return result;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int maximumDepthOfBinaryTree(int[] root) {\n        \n    }\n}",
+      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
+      "solution_code": "class Solution {\n    public Object depthOfBinaryTree(TreeNode root) {\n        if (root == null) return null; // or appropriate base case result\n        \n        // Process current node\n        int result = root.val;\n        \n        // Recursively process subtrees\n        Object leftResult = root.left != null ? depthOfBinaryTree(root.left) : null;\n        Object rightResult = root.right != null ? depthOfBinaryTree(root.right) : null;\n        \n        // Combine results based on operation\n        // This is a template - adjust based on specific operation\n        return result;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "root": []
+      },
+      "output": 0
+    }
+  ]
+}

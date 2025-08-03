@@ -1,0 +1,75 @@
+{
+  "filename": "insert-into-a-binary-search-tree",
+  "title": "Insert into a Binary Search Tree",
+  "keywords": [
+    "insert",
+    "into",
+    "binary",
+    "search",
+    "tree",
+    "leetcode",
+    "701",
+    "given",
+    "root",
+    "node"
+  ],
+  "description": "<h2>Insert into a Binary Search Tree</h2><p>Leetcode 701. Insert into a Binary Search Tree</p><p></p><p>You are given the `root` node of a binary search tree (BST) and a value `val` to insert into the tree. Return the root node of the BST after the insertion. It is **guaranteed** that the new value does not exist in the original BST.</p><p></p><p>Note: There may exist multiple valid ways for the insertion, as long as the tree remains a BST after insertion. You can return any of them.</p><h3>Examples:</h3><ul><li>Input: root = [5,3,6,null,4,null,10,null,null,7], val = 9<br><br>Output: [5,3,6,null,4,null,10,null,null,7,null,null,9]</li></ul><h3>Constraints:</h3><ul><li> `0 <= The number of nodes in the tree <= 10,000`.</li><li> `-100,000,000 <= val, Node.val <= 100,000,000`</li><li> All the values `Node.val` are unique.</li><li> It's **guaranteed** that `val` does not exist in the original BST.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def insertIntoABinarySearchTree(root, val):\n    ",
+      "solution_text": "Classic Binary Search implementation:\n\n**Algorithm:**\n1. Initialize left and right pointers to array bounds\n2. While left <= right, calculate middle index\n3. Compare middle element with target\n4. Adjust search space based on comparison\n\n**Time Complexity:** O(log n) - halves search space each iteration\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Requires sorted input array\n- Avoids integer overflow with left + (right - left) // 2\n- Returns -1 if target not found",
+      "solution_code": "def insertIntoABinarySearchTree(nums, target):\n    left, right = 0, len(nums) - 1\n    \n    while left <= right:\n        # Avoid integer overflow\n        mid = left + (right - left) // 2\n        \n        if nums[mid] == target:\n            return mid\n        elif nums[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    \n    return -1"
+    },
+    "javascript": {
+      "template": "function insertIntoABinarySearchTree(root, val) {\n  \n}",
+      "solution_text": "Classic Binary Search implementation:\n\n**Algorithm:**\n1. Initialize left and right pointers to array bounds\n2. While left <= right, calculate middle index\n3. Compare middle element with target\n4. Adjust search space based on comparison\n\n**Time Complexity:** O(log n) - halves search space each iteration\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Requires sorted input array\n- Avoids integer overflow with left + (right - left) // 2\n- Returns -1 if target not found",
+      "solution_code": "function insertIntoABinarySearchTree(nums, target) {\n    let left = 0, right = nums.length - 1;\n    \n    while (left <= right) {\n        // Avoid integer overflow\n        const mid = left + Math.floor((right - left) / 2);\n        \n        if (nums[mid] === target) {\n            return mid;\n        } else if (nums[mid] < target) {\n            left = mid + 1;\n        } else {\n            right = mid - 1;\n        }\n    }\n    \n    return -1;\n}"
+    },
+    "typescript": {
+      "template": "function insertIntoABinarySearchTree(root: number[], val: number): number[] {\n  \n}",
+      "solution_text": "Classic Binary Search implementation:\n\n**Algorithm:**\n1. Initialize left and right pointers to array bounds\n2. While left <= right, calculate middle index\n3. Compare middle element with target\n4. Adjust search space based on comparison\n\n**Time Complexity:** O(log n) - halves search space each iteration\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Requires sorted input array\n- Avoids integer overflow with left + (right - left) // 2\n- Returns -1 if target not found",
+      "solution_code": "function insertIntoABinarySearchTree(nums: number[], target: number): number {\n    let left = 0, right = nums.length - 1;\n    \n    while (left <= right) {\n        // Avoid integer overflow\n        const mid = left + Math.floor((right - left) / 2);\n        \n        if (nums[mid] === target) {\n            return mid;\n        } else if (nums[mid] < target) {\n            left = mid + 1;\n        } else {\n            right = mid - 1;\n        }\n    }\n    \n    return -1;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int[] insertIntoABinarySearchTree(int[] root, int val) {\n        \n    }\n}",
+      "solution_text": "Classic Binary Search implementation:\n\n**Algorithm:**\n1. Initialize left and right pointers to array bounds\n2. While left <= right, calculate middle index\n3. Compare middle element with target\n4. Adjust search space based on comparison\n\n**Time Complexity:** O(log n) - halves search space each iteration\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Requires sorted input array\n- Avoids integer overflow with left + (right - left) // 2\n- Returns -1 if target not found",
+      "solution_code": "class Solution {\n    public int insertIntoABinarySearchTree(int[] nums, int target) {\n        int left = 0, right = nums.length - 1;\n        \n        while (left <= right) {\n            // Avoid integer overflow\n            int mid = left + (right - left) / 2;\n            \n            if (nums[mid] == target) {\n                return mid;\n            } else if (nums[mid] < target) {\n                left = mid + 1;\n            } else {\n                right = mid - 1;\n            }\n        }\n        \n        return -1;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "root": [
+          5,
+          3,
+          6,
+          null,
+          4,
+          null,
+          10,
+          null,
+          null,
+          7
+        ],
+        "val": 9
+      },
+      "output": [
+        5,
+        3,
+        6,
+        null,
+        4,
+        null,
+        10,
+        null,
+        null,
+        7,
+        null,
+        null,
+        9
+      ]
+    }
+  ]
+}

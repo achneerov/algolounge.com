@@ -1,0 +1,66 @@
+{
+  "filename": "minimum-window-with-characters",
+  "title": "Minimum Window Substring",
+  "keywords": [
+    "minimum",
+    "window",
+    "substring",
+    "leetcode",
+    "given",
+    "two",
+    "strings",
+    "return",
+    "shortest",
+    "such"
+  ],
+  "description": "<h2>Minimum Window Substring</h2><p>Leetcode 76. Minimum Window Substring</p><p></p><p>Given two strings `s` and `t`, return the shortest **substring** of `s` such that every character in `t`, including duplicates, is present in the substring. If such a substring does not exist, return an empty string `\"\"`.</p><p></p><p>You may assume that the correct output is always unique.</p><h3>Examples:</h3><ul><li>Input: s = \"OUZODYXAZV\", t = \"XYZ\"<br><br>Output: \"YXAZ\"<br>`\"YXAZ\"` is the shortest substring that includes `\"X\"`, `\"Y\"`, and `\"Z\"` from string `t`.</li><li>Input: s = \"xyz\", t = \"xyz\"<br><br>Output: \"xyz\"</li><li>Input: s = \"x\", t = \"xy\"<br><br>Output: \"\"</li></ul><h3>Constraints:</h3><ul><li> `1 <= s.length <= 1000`</li><li> `1 <= t.length <= 1000`</li><li> `s` and `t` consist of uppercase and lowercase English letters.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def minimumWindowSubstring(s, t):\n    ",
+      "solution_text": "Sliding Window technique for subarray problems:\n\n**Algorithm:**\n1. Use two pointers (left and right) to maintain window\n2. Expand window by moving right pointer\n3. Contract window by moving left pointer when needed\n4. Track optimal result during window movements\n\n**Time Complexity:** O(n) - each element visited at most twice\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Efficient for contiguous subarray problems\n- Maintains window invariant\n- Avoids nested loops for better performance",
+      "solution_code": "def minimumWindowWithCharacters(arr, k):\n    if not arr or len(arr) < k:\n        return 0\n    \n    left = 0\n    window_sum = 0\n    max_sum = float('-inf')\n    \n    # Sliding window approach\n    for right in range(len(arr)):\n        # Expand window\n        window_sum += arr[right]\n        \n        # Contract window if size exceeds k\n        while right - left + 1 > k:\n            window_sum -= arr[left]\n            left += 1\n        \n        # Update result when window size equals k\n        if right - left + 1 == k:\n            max_sum = max(max_sum, window_sum)\n    \n    return max_sum if max_sum != float('-inf') else 0"
+    },
+    "javascript": {
+      "template": "function minimumWindowSubstring(s, t) {\n  \n}",
+      "solution_text": "Sliding Window technique for subarray problems:\n\n**Algorithm:**\n1. Use two pointers (left and right) to maintain window\n2. Expand window by moving right pointer\n3. Contract window by moving left pointer when needed\n4. Track optimal result during window movements\n\n**Time Complexity:** O(n) - each element visited at most twice\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Efficient for contiguous subarray problems\n- Maintains window invariant\n- Avoids nested loops for better performance",
+      "solution_code": "function minimumWindowWithCharacters(arr, k) {\n    if (!arr || arr.length < k) return 0;\n    \n    let left = 0;\n    let windowSum = 0;\n    let maxSum = -Infinity;\n    \n    // Sliding window approach\n    for (let right = 0; right < arr.length; right++) {\n        // Expand window\n        windowSum += arr[right];\n        \n        // Contract window if size exceeds k\n        while (right - left + 1 > k) {\n            windowSum -= arr[left];\n            left++;\n        }\n        \n        // Update result when window size equals k\n        if (right - left + 1 === k) {\n            maxSum = Math.max(maxSum, windowSum);\n        }\n    }\n    \n    return maxSum === -Infinity ? 0 : maxSum;\n}"
+    },
+    "typescript": {
+      "template": "function minimumWindowSubstring(s: string, t: string): string {\n  \n}",
+      "solution_text": "Sliding Window technique for subarray problems:\n\n**Algorithm:**\n1. Use two pointers (left and right) to maintain window\n2. Expand window by moving right pointer\n3. Contract window by moving left pointer when needed\n4. Track optimal result during window movements\n\n**Time Complexity:** O(n) - each element visited at most twice\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Efficient for contiguous subarray problems\n- Maintains window invariant\n- Avoids nested loops for better performance",
+      "solution_code": "function minimumWindowWithCharacters(arr: number[], k: number): number {\n    if (!arr || arr.length < k) return 0;\n    \n    let left = 0;\n    let windowSum = 0;\n    let maxSum = -Infinity;\n    \n    // Sliding window approach\n    for (let right = 0; right < arr.length; right++) {\n        // Expand window\n        windowSum += arr[right];\n        \n        // Contract window if size exceeds k\n        while (right - left + 1 > k) {\n            windowSum -= arr[left];\n            left++;\n        }\n        \n        // Update result when window size equals k\n        if (right - left + 1 === k) {\n            maxSum = Math.max(maxSum, windowSum);\n        }\n    }\n    \n    return maxSum === -Infinity ? 0 : maxSum;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public String minimumWindowSubstring(String s, String t) {\n        \n    }\n}",
+      "solution_text": "Sliding Window technique for subarray problems:\n\n**Algorithm:**\n1. Use two pointers (left and right) to maintain window\n2. Expand window by moving right pointer\n3. Contract window by moving left pointer when needed\n4. Track optimal result during window movements\n\n**Time Complexity:** O(n) - each element visited at most twice\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Efficient for contiguous subarray problems\n- Maintains window invariant\n- Avoids nested loops for better performance",
+      "solution_code": "class Solution {\n    public int minimumWindowWithCharacters(int[] arr, int k) {\n        if (arr == null || arr.length < k) return 0;\n        \n        int left = 0;\n        int windowSum = 0;\n        int maxSum = Integer.MIN_VALUE;\n        \n        // Sliding window approach\n        for (int right = 0; right < arr.length; right++) {\n            // Expand window\n            windowSum += arr[right];\n            \n            // Contract window if size exceeds k\n            while (right - left + 1 > k) {\n                windowSum -= arr[left];\n                left++;\n            }\n            \n            // Update result when window size equals k\n            if (right - left + 1 == k) {\n                maxSum = Math.max(maxSum, windowSum);\n            }\n        }\n        \n        return maxSum == Integer.MIN_VALUE ? 0 : maxSum;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "s": "\"OUZODYXAZV\",",
+        "t": "XYZ"
+      },
+      "output": "YXAZ"
+    },
+    {
+      "id": 2,
+      "input": {
+        "s": "\"xyz\",",
+        "t": "xyz"
+      },
+      "output": "xyz"
+    },
+    {
+      "id": 3,
+      "input": {
+        "s": "\"x\",",
+        "t": "xy"
+      },
+      "output": ""
+    }
+  ]
+}

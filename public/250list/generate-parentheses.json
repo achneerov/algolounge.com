@@ -1,0 +1,64 @@
+{
+  "filename": "generate-parentheses",
+  "title": "Generate Parentheses",
+  "keywords": [
+    "generate",
+    "parentheses",
+    "leetcode",
+    "given",
+    "integer",
+    "return",
+    "all",
+    "well",
+    "formed",
+    "strings"
+  ],
+  "description": "<h2>Generate Parentheses</h2><p>Leetcode 22. Generate Parentheses</p><p></p><p>You are given an integer `n`. Return all well-formed parentheses strings that you can generate with `n` pairs of parentheses.</p><h3>Examples:</h3><ul><li>Input: n = 1<br><br>Output: [\"()\"]</li><li>Input: n = 3<br><br>Output: [\"((()))\",\"(()())\",\"(())()\",\"()(())\",\"()()()\"]</li></ul><h3>Constraints:</h3><ul><li> `1 <= n <= 7`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def generateParentheses(n):\n    ",
+      "solution_text": "Parentheses validation using stack data structure:\n\n**Algorithm:**\n1. Use stack to track opening brackets\n2. For each character, if opening bracket, push to stack\n3. If closing bracket, check if matches top of stack\n4. String is valid if stack is empty at end\n\n**Time Complexity:** O(n) - single pass through string\n**Space Complexity:** O(n) - stack storage in worst case\n\n**Key Insights:**\n- Stack naturally handles nested structure\n- Early return false for unmatched closing brackets\n- Must check stack emptiness at end",
+      "solution_code": "def generateParentheses(s):\n    stack = []\n    mapping = {')': '(', '}': '{', ']': '['}\n    \n    for char in s:\n        if char in mapping:\n            # Closing bracket\n            if not stack or stack.pop() != mapping[char]:\n                return False\n        else:\n            # Opening bracket\n            stack.append(char)\n    \n    return len(stack) == 0"
+    },
+    "javascript": {
+      "template": "function generateParentheses(n) {\n  \n}",
+      "solution_text": "Parentheses validation using stack data structure:\n\n**Algorithm:**\n1. Use stack to track opening brackets\n2. For each character, if opening bracket, push to stack\n3. If closing bracket, check if matches top of stack\n4. String is valid if stack is empty at end\n\n**Time Complexity:** O(n) - single pass through string\n**Space Complexity:** O(n) - stack storage in worst case\n\n**Key Insights:**\n- Stack naturally handles nested structure\n- Early return false for unmatched closing brackets\n- Must check stack emptiness at end",
+      "solution_code": "function generateParentheses(s) {\n    const stack = [];\n    const mapping = {')': '(', '}': '{', ']': '['};\n    \n    for (const char of s) {\n        if (char in mapping) {\n            // Closing bracket\n            if (stack.length === 0 || stack.pop() !== mapping[char]) {\n                return false;\n            }\n        } else {\n            // Opening bracket\n            stack.push(char);\n        }\n    }\n    \n    return stack.length === 0;\n}"
+    },
+    "typescript": {
+      "template": "function generateParentheses(n: number): number[] {\n  \n}",
+      "solution_text": "Parentheses validation using stack data structure:\n\n**Algorithm:**\n1. Use stack to track opening brackets\n2. For each character, if opening bracket, push to stack\n3. If closing bracket, check if matches top of stack\n4. String is valid if stack is empty at end\n\n**Time Complexity:** O(n) - single pass through string\n**Space Complexity:** O(n) - stack storage in worst case\n\n**Key Insights:**\n- Stack naturally handles nested structure\n- Early return false for unmatched closing brackets\n- Must check stack emptiness at end",
+      "solution_code": "function generateParentheses(s: string): boolean {\n    const stack: string[] = [];\n    const mapping: {[key: string]: string} = {')': '(', '}': '{', ']': '['};\n    \n    for (const char of s) {\n        if (char in mapping) {\n            // Closing bracket\n            if (stack.length === 0 || stack.pop() !== mapping[char]) {\n                return false;\n            }\n        } else {\n            // Opening bracket\n            stack.push(char);\n        }\n    }\n    \n    return stack.length === 0;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int[] generateParentheses(int n) {\n        \n    }\n}",
+      "solution_text": "Parentheses validation using stack data structure:\n\n**Algorithm:**\n1. Use stack to track opening brackets\n2. For each character, if opening bracket, push to stack\n3. If closing bracket, check if matches top of stack\n4. String is valid if stack is empty at end\n\n**Time Complexity:** O(n) - single pass through string\n**Space Complexity:** O(n) - stack storage in worst case\n\n**Key Insights:**\n- Stack naturally handles nested structure\n- Early return false for unmatched closing brackets\n- Must check stack emptiness at end",
+      "solution_code": "class Solution {\n    public boolean generateParentheses(String s) {\n        Stack<Character> stack = new Stack<>();\n        Map<Character, Character> mapping = new HashMap<>();\n        mapping.put(')', '(');\n        mapping.put('}', '{');\n        mapping.put(']', '[');\n        \n        for (char c : s.toCharArray()) {\n            if (mapping.containsKey(c)) {\n                // Closing bracket\n                if (stack.isEmpty() || stack.pop() != mapping.get(c)) {\n                    return false;\n                }\n            } else {\n                // Opening bracket\n                stack.push(c);\n            }\n        }\n        \n        return stack.isEmpty();\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "n": 1
+      },
+      "output": [
+        "()"
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "n": 3
+      },
+      "output": [
+        "((()))",
+        "(()())",
+        "(())()",
+        "()(())",
+        "()()()"
+      ]
+    }
+  ]
+}

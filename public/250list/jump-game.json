@@ -1,0 +1,68 @@
+{
+  "filename": "jump-game",
+  "title": "Jump Game",
+  "keywords": [
+    "jump",
+    "game",
+    "leetcode",
+    "given",
+    "integer",
+    "array",
+    "nums",
+    "where",
+    "each",
+    "element"
+  ],
+  "description": "<h2>Jump Game</h2><p>Leetcode 55. Jump Game</p><p></p><p>You are given an integer array `nums` where each element `nums[i]` indicates your maximum jump length at that position.</p><p></p><p>Return `true` if you can reach the last index starting from index `0`, or `false` otherwise.</p><h3>Examples:</h3><ul><li>Input: nums = [1,2,0,1,0]<br><br>Output: true<br>First jump from index 0 to 1, then from index 1 to 3, and lastly from index 3 to 4.</li><li>Input: nums = [1,2,1,0,1]<br><br>Output: false</li></ul><h3>Constraints:</h3><ul><li> `1 <= nums.length <= 1000`</li><li> `0 <= nums[i] <= 1000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def jumpGame(nums):\n    ",
+      "solution_text": "Jump Game using Greedy approach:\n\n**Algorithm:**\n1. Track the farthest position we can reach\n2. Iterate through array, updating max reachable position\n3. If current index exceeds max reachable, return False\n4. If we can reach last index, return True\n\n**Time Complexity:** O(n) - Single pass through array\n**Space Complexity:** O(1) - Only using constant variables\n\n**Key Insights:**\n- Greedy choice: always extend reach as far as possible\n- Early termination when position becomes unreachable\n- No need to track actual jumps, just reachability",
+      "solution_code": "def jumpGame(nums):\n    max_reach = 0\n    \n    for i in range(len(nums)):\n        # If current position is beyond our reach, return False\n        if i > max_reach:\n            return False\n        \n        # Update the farthest position we can reach\n        max_reach = max(max_reach, i + nums[i])\n        \n        # If we can reach the last index, return True\n        if max_reach >= len(nums) - 1:\n            return True\n    \n    return True"
+    },
+    "javascript": {
+      "template": "function jumpGame(nums) {\n  \n}",
+      "solution_text": "Jump Game using Greedy approach:\n\n**Algorithm:**\n1. Track the farthest position we can reach\n2. Iterate through array, updating max reachable position\n3. If current index exceeds max reachable, return False\n4. If we can reach last index, return True\n\n**Time Complexity:** O(n) - Single pass through array\n**Space Complexity:** O(1) - Only using constant variables\n\n**Key Insights:**\n- Greedy choice: always extend reach as far as possible\n- Early termination when position becomes unreachable\n- No need to track actual jumps, just reachability",
+      "solution_code": "function jumpGame(nums) {\n    let maxReach = 0;\n    \n    for (let i = 0; i < nums.length; i++) {\n        // If current position is beyond our reach, return false\n        if (i > maxReach) {\n            return false;\n        }\n        \n        // Update the farthest position we can reach\n        maxReach = Math.max(maxReach, i + nums[i]);\n        \n        // If we can reach the last index, return true\n        if (maxReach >= nums.length - 1) {\n            return true;\n        }\n    }\n    \n    return true;\n}"
+    },
+    "typescript": {
+      "template": "function jumpGame(nums: number[]): boolean {\n  \n}",
+      "solution_text": "Jump Game using Greedy approach:\n\n**Algorithm:**\n1. Track the farthest position we can reach\n2. Iterate through array, updating max reachable position\n3. If current index exceeds max reachable, return False\n4. If we can reach last index, return True\n\n**Time Complexity:** O(n) - Single pass through array\n**Space Complexity:** O(1) - Only using constant variables\n\n**Key Insights:**\n- Greedy choice: always extend reach as far as possible\n- Early termination when position becomes unreachable\n- No need to track actual jumps, just reachability",
+      "solution_code": "function jumpGame(nums: number[]): boolean {\n    let maxReach = 0;\n    \n    for (let i = 0; i < nums.length; i++) {\n        // If current position is beyond our reach, return false\n        if (i > maxReach) {\n            return false;\n        }\n        \n        // Update the farthest position we can reach\n        maxReach = Math.max(maxReach, i + nums[i]);\n        \n        // If we can reach the last index, return true\n        if (maxReach >= nums.length - 1) {\n            return true;\n        }\n    }\n    \n    return true;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public boolean jumpGame(int[] nums) {\n        \n    }\n}",
+      "solution_text": "Jump Game using Greedy approach:\n\n**Algorithm:**\n1. Track the farthest position we can reach\n2. Iterate through array, updating max reachable position\n3. If current index exceeds max reachable, return False\n4. If we can reach last index, return True\n\n**Time Complexity:** O(n) - Single pass through array\n**Space Complexity:** O(1) - Only using constant variables\n\n**Key Insights:**\n- Greedy choice: always extend reach as far as possible\n- Early termination when position becomes unreachable\n- No need to track actual jumps, just reachability",
+      "solution_code": "class Solution {\n    public boolean jumpGame(int[] nums) {\n        int maxReach = 0;\n        \n        for (int i = 0; i < nums.length; i++) {\n            // If current position is beyond our reach, return false\n            if (i > maxReach) {\n                return false;\n            }\n            \n            // Update the farthest position we can reach\n            maxReach = Math.max(maxReach, i + nums[i]);\n            \n            // If we can reach the last index, return true\n            if (maxReach >= nums.length - 1) {\n                return true;\n            }\n        }\n        \n        return true;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [
+          1,
+          2,
+          0,
+          1,
+          0
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [
+          1,
+          2,
+          1,
+          0,
+          1
+        ]
+      },
+      "output": "false"
+    }
+  ]
+}

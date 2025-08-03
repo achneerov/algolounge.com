@@ -1,0 +1,41 @@
+{
+  "filename": "trapping-rain-water",
+  "title": "Trapping Rain Water",
+  "keywords": [
+    "trapping",
+    "rain",
+    "water",
+    "leetcode",
+    "given",
+    "array",
+    "non",
+    "negative",
+    "integers",
+    "height"
+  ],
+  "description": "<h2>Trapping Rain Water</h2><p>Leetcode 42. Trapping Rain Water</p><p></p><p>You are given an array of non-negative integers `height` which represent an elevation map. Each value `height[i]` represents the height of a bar, which has a width of `1`.</p><p></p><p>Return the maximum area of water that can be trapped between the bars.</p><h3>Constraints:</h3><ul><li> `1 <= height.length <= 1000`</li><li> `0 <= height[i] <= 1000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def trappingRainWater(input):\n    ",
+      "solution_text": "Trapping Rain Water using two pointers:\n\n**Algorithm:**\n1. Use two pointers from left and right\n2. Track max height seen so far from both sides\n3. Water level is min(left_max, right_max) - current_height\n4. Move pointer with smaller max height\n\n**Time Complexity:** O(n) - single pass\n**Space Complexity:** O(1) - constant space\n\n**Key Insights:**\n- Two pointers technique optimizes space\n- Water trapped depends on surrounding walls\n- Process from both ends simultaneously",
+      "solution_code": "def trappingRainWater(height):\n    if not height or len(height) < 3:\n        return 0\n    \n    left, right = 0, len(height) - 1\n    left_max = right_max = 0\n    water = 0\n    \n    while left < right:\n        if height[left] < height[right]:\n            if height[left] >= left_max:\n                left_max = height[left]\n            else:\n                water += left_max - height[left]\n            left += 1\n        else:\n            if height[right] >= right_max:\n                right_max = height[right]\n            else:\n                water += right_max - height[right]\n            right -= 1\n    \n    return water"
+    },
+    "javascript": {
+      "template": "function trappingRainWater(input) {\n  \n}",
+      "solution_text": "Trapping Rain Water using two pointers:\n\n**Algorithm:**\n1. Use two pointers from left and right\n2. Track max height seen so far from both sides\n3. Water level is min(left_max, right_max) - current_height\n4. Move pointer with smaller max height\n\n**Time Complexity:** O(n) - single pass\n**Space Complexity:** O(1) - constant space\n\n**Key Insights:**\n- Two pointers technique optimizes space\n- Water trapped depends on surrounding walls\n- Process from both ends simultaneously",
+      "solution_code": "function trappingRainWater(height) {\n    if (!height || height.length < 3) return 0;\n    \n    let left = 0, right = height.length - 1;\n    let leftMax = 0, rightMax = 0;\n    let water = 0;\n    \n    while (left < right) {\n        if (height[left] < height[right]) {\n            if (height[left] >= leftMax) {\n                leftMax = height[left];\n            } else {\n                water += leftMax - height[left];\n            }\n            left++;\n        } else {\n            if (height[right] >= rightMax) {\n                rightMax = height[right];\n            } else {\n                water += rightMax - height[right];\n            }\n            right--;\n        }\n    }\n    \n    return water;\n}"
+    },
+    "typescript": {
+      "template": "function trappingRainWater(input: any): any {\n  \n}",
+      "solution_text": "Trapping Rain Water using two pointers:\n\n**Algorithm:**\n1. Use two pointers from left and right\n2. Track max height seen so far from both sides\n3. Water level is min(left_max, right_max) - current_height\n4. Move pointer with smaller max height\n\n**Time Complexity:** O(n) - single pass\n**Space Complexity:** O(1) - constant space\n\n**Key Insights:**\n- Two pointers technique optimizes space\n- Water trapped depends on surrounding walls\n- Process from both ends simultaneously",
+      "solution_code": "function trappingRainWater(height: number[]): number {\n    if (!height || height.length < 3) return 0;\n    \n    let left = 0, right = height.length - 1;\n    let leftMax = 0, rightMax = 0;\n    let water = 0;\n    \n    while (left < right) {\n        if (height[left] < height[right]) {\n            if (height[left] >= leftMax) {\n                leftMax = height[left];\n            } else {\n                water += leftMax - height[left];\n            }\n            left++;\n        } else {\n            if (height[right] >= rightMax) {\n                rightMax = height[right];\n            } else {\n                water += rightMax - height[right];\n            }\n            right--;\n        }\n    }\n    \n    return water;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public Object trappingRainWater(Object input) {\n        \n    }\n}",
+      "solution_text": "Trapping Rain Water using two pointers:\n\n**Algorithm:**\n1. Use two pointers from left and right\n2. Track max height seen so far from both sides\n3. Water level is min(left_max, right_max) - current_height\n4. Move pointer with smaller max height\n\n**Time Complexity:** O(n) - single pass\n**Space Complexity:** O(1) - constant space\n\n**Key Insights:**\n- Two pointers technique optimizes space\n- Water trapped depends on surrounding walls\n- Process from both ends simultaneously",
+      "solution_code": "class Solution {\n    public int trappingRainWater(int[] height) {\n        if (height == null || height.length < 3) return 0;\n        \n        int left = 0, right = height.length - 1;\n        int leftMax = 0, rightMax = 0;\n        int water = 0;\n        \n        while (left < right) {\n            if (height[left] < height[right]) {\n                if (height[left] >= leftMax) {\n                    leftMax = height[left];\n                } else {\n                    water += leftMax - height[left];\n                }\n                left++;\n            } else {\n                if (height[right] >= rightMax) {\n                    rightMax = height[right];\n                } else {\n                    water += rightMax - height[right];\n                }\n                right--;\n            }\n        }\n        \n        return water;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": []
+}

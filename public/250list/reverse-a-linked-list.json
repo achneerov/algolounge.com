@@ -1,0 +1,66 @@
+{
+  "filename": "reverse-a-linked-list",
+  "title": "Reverse Linked List",
+  "keywords": [
+    "reverse",
+    "linked",
+    "list",
+    "leetcode",
+    "206",
+    "given",
+    "beginning",
+    "singly",
+    "head",
+    "return"
+  ],
+  "description": "<h2>Reverse Linked List</h2><p>Leetcode 206. Reverse Linked List</p><p></p><p>Given the beginning of a singly linked list `head`, reverse the list, and return the new beginning of the list.</p><h3>Examples:</h3><ul><li>Input: head = [0,1,2,3]<br><br>Output: [3,2,1,0]</li><li>Input: head = []<br><br>Output: []</li></ul><h3>Constraints:</h3><ul><li> `0 <= The length of the list <= 1000`.</li><li> `-1000 <= Node.val <= 1000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def reverseLinkedList(head):\n    ",
+      "solution_text": "Reverse implementation using two pointers:\n\n**Algorithm:**\n1. Use two pointers from start and end\n2. Swap elements while moving pointers toward center\n3. Continue until pointers meet in middle\n\n**Time Complexity:** O(n) - single pass through array/string\n**Space Complexity:** O(1) - in-place reversal\n\n**Key Insights:**\n- Two pointers technique for in-place operations\n- Works for arrays, strings, and linked lists\n- Handles odd and even length inputs correctly",
+      "solution_code": "def reverseALinkedList(s):\n    if not s:\n        return s\n    \n    # Convert to list for in-place modification\n    chars = list(s) if isinstance(s, str) else s\n    left, right = 0, len(chars) - 1\n    \n    while left < right:\n        chars[left], chars[right] = chars[right], chars[left]\n        left += 1\n        right -= 1\n    \n    return ''.join(chars) if isinstance(s, str) else chars"
+    },
+    "javascript": {
+      "template": "function reverseLinkedList(head) {\n  \n}",
+      "solution_text": "Reverse implementation using two pointers:\n\n**Algorithm:**\n1. Use two pointers from start and end\n2. Swap elements while moving pointers toward center\n3. Continue until pointers meet in middle\n\n**Time Complexity:** O(n) - single pass through array/string\n**Space Complexity:** O(1) - in-place reversal\n\n**Key Insights:**\n- Two pointers technique for in-place operations\n- Works for arrays, strings, and linked lists\n- Handles odd and even length inputs correctly",
+      "solution_code": "function reverseALinkedList(s) {\n    if (!s) return s;\n    \n    const chars = Array.isArray(s) ? s : s.split('');\n    let left = 0, right = chars.length - 1;\n    \n    while (left < right) {\n        [chars[left], chars[right]] = [chars[right], chars[left]];\n        left++;\n        right--;\n    }\n    \n    return Array.isArray(s) ? chars : chars.join('');\n}"
+    },
+    "typescript": {
+      "template": "function reverseLinkedList(head: number[]): number[] {\n  \n}",
+      "solution_text": "Reverse implementation using two pointers:\n\n**Algorithm:**\n1. Use two pointers from start and end\n2. Swap elements while moving pointers toward center\n3. Continue until pointers meet in middle\n\n**Time Complexity:** O(n) - single pass through array/string\n**Space Complexity:** O(1) - in-place reversal\n\n**Key Insights:**\n- Two pointers technique for in-place operations\n- Works for arrays, strings, and linked lists\n- Handles odd and even length inputs correctly",
+      "solution_code": "function reverseALinkedList(s: string | any[]): string | any[] {\n    if (!s) return s;\n    \n    const chars = Array.isArray(s) ? s : s.split('');\n    let left = 0, right = chars.length - 1;\n    \n    while (left < right) {\n        [chars[left], chars[right]] = [chars[right], chars[left]];\n        left++;\n        right--;\n    }\n    \n    return Array.isArray(s) ? chars : chars.join('');\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int[] reverseLinkedList(int[] head) {\n        \n    }\n}",
+      "solution_text": "Reverse implementation using two pointers:\n\n**Algorithm:**\n1. Use two pointers from start and end\n2. Swap elements while moving pointers toward center\n3. Continue until pointers meet in middle\n\n**Time Complexity:** O(n) - single pass through array/string\n**Space Complexity:** O(1) - in-place reversal\n\n**Key Insights:**\n- Two pointers technique for in-place operations\n- Works for arrays, strings, and linked lists\n- Handles odd and even length inputs correctly",
+      "solution_code": "class Solution {\n    public String reverseALinkedList(String s) {\n        if (s == null || s.length() <= 1) return s;\n        \n        char[] chars = s.toCharArray();\n        int left = 0, right = chars.length - 1;\n        \n        while (left < right) {\n            char temp = chars[left];\n            chars[left] = chars[right];\n            chars[right] = temp;\n            left++;\n            right--;\n        }\n        \n        return new String(chars);\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "head": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "output": [
+        3,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "head": []
+      },
+      "output": []
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "filename": "spiral-matrix",
+  "title": "Spiral Matrix",
+  "keywords": [
+    "spiral",
+    "matrix",
+    "leetcode",
+    "given",
+    "integers",
+    "return",
+    "list",
+    "all",
+    "elements",
+    "within"
+  ],
+  "description": "<h2>Spiral Matrix</h2><p>Leetcode 54. Spiral Matrix</p><p></p><p>Given an `m x n` matrix of integers `matrix`, return a list of all elements within the matrix in *spiral order*.</p><h3>Examples:</h3><ul><li>Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]<br><br>Output: [1,2,3,4,8,12,11,10,9,5,6,7]</li></ul><h3>Constraints:</h3><ul><li> `1 <= matrix.length, matrix[i].length <= 10`</li><li> `-100 <= matrix[i][j] <= 100`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def spiralMatrix(matrix):\n    ",
+      "solution_text": "Spiral Matrix traversal using boundary simulation:\n\n**Algorithm:**\n1. Define four boundaries: top, bottom, left, right\n2. Traverse in spiral order: right → down → left → up\n3. After each direction, shrink the corresponding boundary\n4. Continue until all elements are visited\n\n**Time Complexity:** O(m × n) - Visit each element once\n**Space Complexity:** O(1) - Only boundary variables (excluding result)\n\n**Key Insights:**\n- Four boundaries define the traversal area\n- Shrink boundaries after each direction to avoid revisiting\n- Handle edge cases with single row/column matrices",
+      "solution_code": "def spiralMatrix(matrix):\n    if not matrix or not matrix[0]:\n        return []\n    \n    result = []\n    top, bottom = 0, len(matrix) - 1\n    left, right = 0, len(matrix[0]) - 1\n    \n    while top <= bottom and left <= right:\n        # Traverse right along top row\n        for col in range(left, right + 1):\n            result.append(matrix[top][col])\n        top += 1\n        \n        # Traverse down along right column\n        for row in range(top, bottom + 1):\n            result.append(matrix[row][right])\n        right -= 1\n        \n        # Traverse left along bottom row (if exists)\n        if top <= bottom:\n            for col in range(right, left - 1, -1):\n                result.append(matrix[bottom][col])\n            bottom -= 1\n        \n        # Traverse up along left column (if exists)\n        if left <= right:\n            for row in range(bottom, top - 1, -1):\n                result.append(matrix[row][left])\n            left += 1\n    \n    return result"
+    },
+    "javascript": {
+      "template": "function spiralMatrix(matrix) {\n  \n}",
+      "solution_text": "Spiral Matrix traversal using boundary simulation:\n\n**Algorithm:**\n1. Define four boundaries: top, bottom, left, right\n2. Traverse in spiral order: right → down → left → up\n3. After each direction, shrink the corresponding boundary\n4. Continue until all elements are visited\n\n**Time Complexity:** O(m × n) - Visit each element once\n**Space Complexity:** O(1) - Only boundary variables (excluding result)\n\n**Key Insights:**\n- Four boundaries define the traversal area\n- Shrink boundaries after each direction to avoid revisiting\n- Handle edge cases with single row/column matrices",
+      "solution_code": "function spiralMatrix(matrix) {\n    if (!matrix || matrix.length === 0 || matrix[0].length === 0) {\n        return [];\n    }\n    \n    const result = [];\n    let top = 0, bottom = matrix.length - 1;\n    let left = 0, right = matrix[0].length - 1;\n    \n    while (top <= bottom && left <= right) {\n        // Traverse right along top row\n        for (let col = left; col <= right; col++) {\n            result.push(matrix[top][col]);\n        }\n        top++;\n        \n        // Traverse down along right column\n        for (let row = top; row <= bottom; row++) {\n            result.push(matrix[row][right]);\n        }\n        right--;\n        \n        // Traverse left along bottom row (if exists)\n        if (top <= bottom) {\n            for (let col = right; col >= left; col--) {\n                result.push(matrix[bottom][col]);\n            }\n            bottom--;\n        }\n        \n        // Traverse up along left column (if exists)\n        if (left <= right) {\n            for (let row = bottom; row >= top; row--) {\n                result.push(matrix[row][left]);\n            }\n            left++;\n        }\n    }\n    \n    return result;\n}"
+    },
+    "typescript": {
+      "template": "function spiralMatrix(matrix: number[][]): number[] {\n  \n}",
+      "solution_text": "Spiral Matrix traversal using boundary simulation:\n\n**Algorithm:**\n1. Define four boundaries: top, bottom, left, right\n2. Traverse in spiral order: right → down → left → up\n3. After each direction, shrink the corresponding boundary\n4. Continue until all elements are visited\n\n**Time Complexity:** O(m × n) - Visit each element once\n**Space Complexity:** O(1) - Only boundary variables (excluding result)\n\n**Key Insights:**\n- Four boundaries define the traversal area\n- Shrink boundaries after each direction to avoid revisiting\n- Handle edge cases with single row/column matrices",
+      "solution_code": "function spiralMatrix(matrix: number[][]): number[] {\n    if (!matrix || matrix.length === 0 || matrix[0].length === 0) {\n        return [];\n    }\n    \n    const result: number[] = [];\n    let top = 0, bottom = matrix.length - 1;\n    let left = 0, right = matrix[0].length - 1;\n    \n    while (top <= bottom && left <= right) {\n        // Traverse right along top row\n        for (let col = left; col <= right; col++) {\n            result.push(matrix[top][col]);\n        }\n        top++;\n        \n        // Traverse down along right column\n        for (let row = top; row <= bottom; row++) {\n            result.push(matrix[row][right]);\n        }\n        right--;\n        \n        // Traverse left along bottom row (if exists)\n        if (top <= bottom) {\n            for (let col = right; col >= left; col--) {\n                result.push(matrix[bottom][col]);\n            }\n            bottom--;\n        }\n        \n        // Traverse up along left column (if exists)\n        if (left <= right) {\n            for (let row = bottom; row >= top; row--) {\n                result.push(matrix[row][left]);\n            }\n            left++;\n        }\n    }\n    \n    return result;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public List<Integer> spiralMatrix(int[][] matrix) {\n        \n    }\n}",
+      "solution_text": "Spiral Matrix traversal using boundary simulation:\n\n**Algorithm:**\n1. Define four boundaries: top, bottom, left, right\n2. Traverse in spiral order: right → down → left → up\n3. After each direction, shrink the corresponding boundary\n4. Continue until all elements are visited\n\n**Time Complexity:** O(m × n) - Visit each element once\n**Space Complexity:** O(1) - Only boundary variables (excluding result)\n\n**Key Insights:**\n- Four boundaries define the traversal area\n- Shrink boundaries after each direction to avoid revisiting\n- Handle edge cases with single row/column matrices",
+      "solution_code": "class Solution {\n    public List<Integer> spiralMatrix(int[][] matrix) {\n        List<Integer> result = new ArrayList<>();\n        \n        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {\n            return result;\n        }\n        \n        int top = 0, bottom = matrix.length - 1;\n        int left = 0, right = matrix[0].length - 1;\n        \n        while (top <= bottom && left <= right) {\n            // Traverse right along top row\n            for (int col = left; col <= right; col++) {\n                result.add(matrix[top][col]);\n            }\n            top++;\n            \n            // Traverse down along right column\n            for (int row = top; row <= bottom; row++) {\n                result.add(matrix[row][right]);\n            }\n            right--;\n            \n            // Traverse left along bottom row (if exists)\n            if (top <= bottom) {\n                for (int col = right; col >= left; col--) {\n                    result.add(matrix[bottom][col]);\n                }\n                bottom--;\n            }\n            \n            // Traverse up along left column (if exists)\n            if (left <= right) {\n                for (int row = bottom; row >= top; row--) {\n                    result.add(matrix[row][left]);\n                }\n                left++;\n            }\n        }\n        \n        return result;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "matrix": [
+          "[1",
+          2,
+          3,
+          4
+        ]
+      },
+      "output": [
+        1,
+        2,
+        3,
+        4,
+        8,
+        12,
+        11,
+        10,
+        9,
+        5,
+        6,
+        7
+      ]
+    }
+  ]
+}

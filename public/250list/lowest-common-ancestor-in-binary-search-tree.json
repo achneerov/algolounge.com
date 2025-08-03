@@ -1,0 +1,41 @@
+{
+  "filename": "lowest-common-ancestor-in-binary-search-tree",
+  "title": "Lowest Common Ancestor in Binary Search Tree",
+  "keywords": [
+    "lowest",
+    "common",
+    "ancestor",
+    "binary",
+    "search",
+    "tree",
+    "leetcode",
+    "235",
+    "given",
+    "bst"
+  ],
+  "description": "<h2>Lowest Common Ancestor in Binary Search Tree</h2><p>Leetcode 235. Lowest Common Ancestor of a Binary Search Tree</p><p></p><p>Given a binary search tree (BST) where all node values are *unique*, and two nodes from the tree `p` and `q`, return the lowest common ancestor (LCA) of the two nodes.</p><p></p><p>The lowest common ancestor between two nodes `p` and `q` is the lowest node in a tree `T` such that both `p` and `q` as descendants. The ancestor is allowed to be a descendant of itself.</p><h3>Constraints:</h3><ul><li> `2 <= The number of nodes in the tree <= 100`.</li><li> `-100 <= Node.val <= 100`</li><li> `p != q`</li><li> `p` and `q` will both exist in the BST.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def lowestCommonAncestorInBinarySearchTree(input):\n    ",
+      "solution_text": "Classic Binary Search implementation:\n\n**Algorithm:**\n1. Initialize left and right pointers to array bounds\n2. While left <= right, calculate middle index\n3. Compare middle element with target\n4. Adjust search space based on comparison\n\n**Time Complexity:** O(log n) - halves search space each iteration\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Requires sorted input array\n- Avoids integer overflow with left + (right - left) // 2\n- Returns -1 if target not found",
+      "solution_code": "def lowestCommonAncestorInBinarySearchTree(nums, target):\n    left, right = 0, len(nums) - 1\n    \n    while left <= right:\n        # Avoid integer overflow\n        mid = left + (right - left) // 2\n        \n        if nums[mid] == target:\n            return mid\n        elif nums[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    \n    return -1"
+    },
+    "javascript": {
+      "template": "function lowestCommonAncestorInBinarySearchTree(input) {\n  \n}",
+      "solution_text": "Classic Binary Search implementation:\n\n**Algorithm:**\n1. Initialize left and right pointers to array bounds\n2. While left <= right, calculate middle index\n3. Compare middle element with target\n4. Adjust search space based on comparison\n\n**Time Complexity:** O(log n) - halves search space each iteration\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Requires sorted input array\n- Avoids integer overflow with left + (right - left) // 2\n- Returns -1 if target not found",
+      "solution_code": "function lowestCommonAncestorInBinarySearchTree(nums, target) {\n    let left = 0, right = nums.length - 1;\n    \n    while (left <= right) {\n        // Avoid integer overflow\n        const mid = left + Math.floor((right - left) / 2);\n        \n        if (nums[mid] === target) {\n            return mid;\n        } else if (nums[mid] < target) {\n            left = mid + 1;\n        } else {\n            right = mid - 1;\n        }\n    }\n    \n    return -1;\n}"
+    },
+    "typescript": {
+      "template": "function lowestCommonAncestorInBinarySearchTree(input: any): any {\n  \n}",
+      "solution_text": "Classic Binary Search implementation:\n\n**Algorithm:**\n1. Initialize left and right pointers to array bounds\n2. While left <= right, calculate middle index\n3. Compare middle element with target\n4. Adjust search space based on comparison\n\n**Time Complexity:** O(log n) - halves search space each iteration\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Requires sorted input array\n- Avoids integer overflow with left + (right - left) // 2\n- Returns -1 if target not found",
+      "solution_code": "function lowestCommonAncestorInBinarySearchTree(nums: number[], target: number): number {\n    let left = 0, right = nums.length - 1;\n    \n    while (left <= right) {\n        // Avoid integer overflow\n        const mid = left + Math.floor((right - left) / 2);\n        \n        if (nums[mid] === target) {\n            return mid;\n        } else if (nums[mid] < target) {\n            left = mid + 1;\n        } else {\n            right = mid - 1;\n        }\n    }\n    \n    return -1;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public Object lowestCommonAncestorInBinarySearchTree(Object input) {\n        \n    }\n}",
+      "solution_text": "Classic Binary Search implementation:\n\n**Algorithm:**\n1. Initialize left and right pointers to array bounds\n2. While left <= right, calculate middle index\n3. Compare middle element with target\n4. Adjust search space based on comparison\n\n**Time Complexity:** O(log n) - halves search space each iteration\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Requires sorted input array\n- Avoids integer overflow with left + (right - left) // 2\n- Returns -1 if target not found",
+      "solution_code": "class Solution {\n    public int lowestCommonAncestorInBinarySearchTree(int[] nums, int target) {\n        int left = 0, right = nums.length - 1;\n        \n        while (left <= right) {\n            // Avoid integer overflow\n            int mid = left + (right - left) / 2;\n            \n            if (nums[mid] == target) {\n                return mid;\n            } else if (nums[mid] < target) {\n                left = mid + 1;\n            } else {\n                right = mid - 1;\n            }\n        }\n        \n        return -1;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": []
+}

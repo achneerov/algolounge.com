@@ -1,0 +1,89 @@
+{
+  "filename": "majority-element-ii",
+  "title": "Majority Element II",
+  "keywords": [
+    "majority",
+    "element",
+    "leetcode",
+    "229",
+    "given",
+    "integer",
+    "array",
+    "nums",
+    "size",
+    "find"
+  ],
+  "description": "<h2>Majority Element II</h2><p>Leetcode 229. Majority Element II</p><p></p><p>You are given an integer array `nums` of size `n`, find all elements that appear more than `⌊ n/3 ⌋` times. You can return the result in any order.</p><h3>Examples:</h3><ul><li>Input: nums = [5,2,3,2,2,2,2,5,5,5]<br><br>Output: [2,5]</li><li>Input: nums = [4,4,4,4,4]<br><br>Output: [4]</li><li>Input: nums = [1,2,3]<br><br>Output: []</li></ul><h3>Constraints:</h3><ul><li> `1 <= nums.length <= 50,000`.</li><li> `-1,000,000,000 <= nums[i] <= 1,000,000,000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def majorityElementIi(nums):\n    ",
+      "solution_text": "Find Majority Element using Boyer-Moore Voting Algorithm:\n\n**Algorithm:**\n1. Maintain a candidate and count\n2. If count is 0, set current element as candidate\n3. Increment count if element matches candidate, decrement otherwise\n4. The majority element will remain as candidate\n\n**Time Complexity:** O(n) - single pass\n**Space Complexity:** O(1) - constant space\n\n**Key Insights:**\n- Majority element appears more than n/2 times\n- Voting algorithm elegantly finds the winner\n- No extra space needed for counting",
+      "solution_code": "def majorityElementIi(nums):\n    candidate = None\n    count = 0\n    \n    for num in nums:\n        if count == 0:\n            candidate = num\n            count = 1\n        elif num == candidate:\n            count += 1\n        else:\n            count -= 1\n    \n    return candidate"
+    },
+    "javascript": {
+      "template": "function majorityElementIi(nums) {\n  \n}",
+      "solution_text": "Find Majority Element using Boyer-Moore Voting Algorithm:\n\n**Algorithm:**\n1. Maintain a candidate and count\n2. If count is 0, set current element as candidate\n3. Increment count if element matches candidate, decrement otherwise\n4. The majority element will remain as candidate\n\n**Time Complexity:** O(n) - single pass\n**Space Complexity:** O(1) - constant space\n\n**Key Insights:**\n- Majority element appears more than n/2 times\n- Voting algorithm elegantly finds the winner\n- No extra space needed for counting",
+      "solution_code": "function majorityElementIi(nums) {\n    let candidate = null;\n    let count = 0;\n    \n    for (const num of nums) {\n        if (count === 0) {\n            candidate = num;\n            count = 1;\n        } else if (num === candidate) {\n            count++;\n        } else {\n            count--;\n        }\n    }\n    \n    return candidate;\n}"
+    },
+    "typescript": {
+      "template": "function majorityElementIi(nums: number[]): number[] {\n  \n}",
+      "solution_text": "Find Majority Element using Boyer-Moore Voting Algorithm:\n\n**Algorithm:**\n1. Maintain a candidate and count\n2. If count is 0, set current element as candidate\n3. Increment count if element matches candidate, decrement otherwise\n4. The majority element will remain as candidate\n\n**Time Complexity:** O(n) - single pass\n**Space Complexity:** O(1) - constant space\n\n**Key Insights:**\n- Majority element appears more than n/2 times\n- Voting algorithm elegantly finds the winner\n- No extra space needed for counting",
+      "solution_code": "function majorityElementIi(nums: number[]): number {\n    let candidate = 0;\n    let count = 0;\n    \n    for (const num of nums) {\n        if (count === 0) {\n            candidate = num;\n            count = 1;\n        } else if (num === candidate) {\n            count++;\n        } else {\n            count--;\n        }\n    }\n    \n    return candidate;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int[] majorityElementIi(int[] nums) {\n        \n    }\n}",
+      "solution_text": "Find Majority Element using Boyer-Moore Voting Algorithm:\n\n**Algorithm:**\n1. Maintain a candidate and count\n2. If count is 0, set current element as candidate\n3. Increment count if element matches candidate, decrement otherwise\n4. The majority element will remain as candidate\n\n**Time Complexity:** O(n) - single pass\n**Space Complexity:** O(1) - constant space\n\n**Key Insights:**\n- Majority element appears more than n/2 times\n- Voting algorithm elegantly finds the winner\n- No extra space needed for counting",
+      "solution_code": "class Solution {\n    public int majorityElementIi(int[] nums) {\n        int candidate = 0;\n        int count = 0;\n        \n        for (int num : nums) {\n            if (count == 0) {\n                candidate = num;\n                count = 1;\n            } else if (num == candidate) {\n                count++;\n            } else {\n                count--;\n            }\n        }\n        \n        return candidate;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [
+          5,
+          2,
+          3,
+          2,
+          2,
+          2,
+          2,
+          5,
+          5,
+          5
+        ]
+      },
+      "output": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "output": [
+        4
+      ]
+    },
+    {
+      "id": 3,
+      "input": {
+        "nums": [
+          1,
+          2,
+          3
+        ]
+      },
+      "output": []
+    }
+  ]
+}

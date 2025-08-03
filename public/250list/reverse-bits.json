@@ -1,0 +1,49 @@
+{
+  "filename": "reverse-bits",
+  "title": "Reverse Bits",
+  "keywords": [
+    "reverse",
+    "bits",
+    "leetcode",
+    "190",
+    "given",
+    "bit",
+    "unsigned",
+    "integer",
+    "binary",
+    "representation"
+  ],
+  "description": "<h2>Reverse Bits</h2><p>Leetcode 190. Reverse Bits</p><p></p><p>Given a 32-bit unsigned integer `n`, reverse the bits of the binary representation of `n` and return the result.</p><h3>Examples:</h3><ul><li>Input: n = 00000000000000000000000000010101<br><br>Output:    2818572288 (10101000000000000000000000000000)<br>Reversing `00000000000000000000000000010101`, which represents the unsigned integer `21`, gives us `10101000000000000000000000000000` which represents the unsigned integer `2818572288`.\n\n<br>\n<br>\n<details class=\"hint-accordion\">  \n    <summary>Recommended Time & Space Complexity</summary>\n    <p>\n    You should aim for a solution with <code>O(1)</code> time and <code>O(1)</code> space.\n    </p>\n</details>\n\n<br>\n<details class=\"hint-accordion\">  \n    <summary>Hint 1</summary>\n    <p>\n    Given a 32-bit integer, what is the position of bit <code>i</code> after reversing the bits? Maybe you should observe the bit positions before and after reversal to find a pattern.\n    </p>\n</details>\n\n<br>\n<details class=\"hint-accordion\">  \n    <summary>Hint 2</summary>\n    <p>\n    After reversing the bits, the bit at position <code>i</code> moves to position <code>31 - i</code>. Can you use this observation to construct the reversed number efficiently?\n    </p>\n</details>\n\n<br>\n<details class=\"hint-accordion\">  \n    <summary>Hint 3</summary>\n    <p>\n    We initialize <code>res</code> to <code>0</code> and iterate through the bits of the given integer <code>n</code>. We extract the bit at the <code>i</code>-th position using <code>((n >> i) & 1)</code>. If it is <code>1</code>, we set the corresponding bit in <code>res</code> at position <code>(31 - i)</code> using <code>(res |= (1 << (31 - i)))</code>.\n    </p>\n</details></li></ul>",
+  "languages": {
+    "python": {
+      "template": "def reverseBits(n):\n    ",
+      "solution_text": "Reverse implementation using two pointers:\n\n**Algorithm:**\n1. Use two pointers from start and end\n2. Swap elements while moving pointers toward center\n3. Continue until pointers meet in middle\n\n**Time Complexity:** O(n) - single pass through array/string\n**Space Complexity:** O(1) - in-place reversal\n\n**Key Insights:**\n- Two pointers technique for in-place operations\n- Works for arrays, strings, and linked lists\n- Handles odd and even length inputs correctly",
+      "solution_code": "def reverseBits(s):\n    if not s:\n        return s\n    \n    # Convert to list for in-place modification\n    chars = list(s) if isinstance(s, str) else s\n    left, right = 0, len(chars) - 1\n    \n    while left < right:\n        chars[left], chars[right] = chars[right], chars[left]\n        left += 1\n        right -= 1\n    \n    return ''.join(chars) if isinstance(s, str) else chars"
+    },
+    "javascript": {
+      "template": "function reverseBits(n) {\n  \n}",
+      "solution_text": "Reverse implementation using two pointers:\n\n**Algorithm:**\n1. Use two pointers from start and end\n2. Swap elements while moving pointers toward center\n3. Continue until pointers meet in middle\n\n**Time Complexity:** O(n) - single pass through array/string\n**Space Complexity:** O(1) - in-place reversal\n\n**Key Insights:**\n- Two pointers technique for in-place operations\n- Works for arrays, strings, and linked lists\n- Handles odd and even length inputs correctly",
+      "solution_code": "function reverseBits(s) {\n    if (!s) return s;\n    \n    const chars = Array.isArray(s) ? s : s.split('');\n    let left = 0, right = chars.length - 1;\n    \n    while (left < right) {\n        [chars[left], chars[right]] = [chars[right], chars[left]];\n        left++;\n        right--;\n    }\n    \n    return Array.isArray(s) ? chars : chars.join('');\n}"
+    },
+    "typescript": {
+      "template": "function reverseBits(n: number): string {\n  \n}",
+      "solution_text": "Reverse implementation using two pointers:\n\n**Algorithm:**\n1. Use two pointers from start and end\n2. Swap elements while moving pointers toward center\n3. Continue until pointers meet in middle\n\n**Time Complexity:** O(n) - single pass through array/string\n**Space Complexity:** O(1) - in-place reversal\n\n**Key Insights:**\n- Two pointers technique for in-place operations\n- Works for arrays, strings, and linked lists\n- Handles odd and even length inputs correctly",
+      "solution_code": "function reverseBits(s: string | any[]): string | any[] {\n    if (!s) return s;\n    \n    const chars = Array.isArray(s) ? s : s.split('');\n    let left = 0, right = chars.length - 1;\n    \n    while (left < right) {\n        [chars[left], chars[right]] = [chars[right], chars[left]];\n        left++;\n        right--;\n    }\n    \n    return Array.isArray(s) ? chars : chars.join('');\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public String reverseBits(int n) {\n        \n    }\n}",
+      "solution_text": "Reverse implementation using two pointers:\n\n**Algorithm:**\n1. Use two pointers from start and end\n2. Swap elements while moving pointers toward center\n3. Continue until pointers meet in middle\n\n**Time Complexity:** O(n) - single pass through array/string\n**Space Complexity:** O(1) - in-place reversal\n\n**Key Insights:**\n- Two pointers technique for in-place operations\n- Works for arrays, strings, and linked lists\n- Handles odd and even length inputs correctly",
+      "solution_code": "class Solution {\n    public String reverseBits(String s) {\n        if (s == null || s.length() <= 1) return s;\n        \n        char[] chars = s.toCharArray();\n        int left = 0, right = chars.length - 1;\n        \n        while (left < right) {\n            char temp = chars[left];\n            chars[left] = chars[right];\n            chars[right] = temp;\n            left++;\n            right--;\n        }\n        \n        return new String(chars);\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "n": 10101
+      },
+      "output": "2818572288 (10101000000000000000000000000000)"
+    }
+  ]
+}

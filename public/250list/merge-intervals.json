@@ -1,0 +1,76 @@
+{
+  "filename": "merge-intervals",
+  "title": "Merge Intervals",
+  "keywords": [
+    "merge",
+    "intervals",
+    "leetcode",
+    "given",
+    "array",
+    "where",
+    "start_i",
+    "end_i",
+    "all",
+    "overlapping"
+  ],
+  "description": "<h2>Merge Intervals</h2><p>Leetcode 56. Merge Intervals</p><p></p><p>Given an array of `intervals` where `intervals[i] = [start_i, end_i]`, merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.</p><p></p><p>You may return the answer in **any order**.</p><p></p><p>Note: Intervals are *non-overlapping* if they have no common point. For example, `[1, 2]` and `[3, 4]` are non-overlapping, but `[1, 2]` and `[2, 3]` are overlapping.</p><h3>Examples:</h3><ul><li>Input: intervals = [[1,3],[1,5],[6,7]]<br><br>Output: [[1,5],[6,7]]</li><li>Input: intervals = [[1,2],[2,3]]<br><br>Output: [[1,3]]</li></ul><h3>Constraints:</h3><ul><li> `1 <= intervals.length <= 1000`</li><li> `intervals[i].length == 2`</li><li> `0 <= start <= end <= 1000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def mergeIntervals(intervals):\n    ",
+      "solution_text": "Merge algorithm using two pointers:\n\n**Algorithm:**\n1. Use two pointers for both input arrays\n2. Compare elements and add smaller to result\n3. Continue until one array is exhausted\n4. Append remaining elements from other array\n\n**Time Complexity:** O(m + n) - visit each element once\n**Space Complexity:** O(m + n) - result array size\n\n**Key Insights:**\n- Two pointers technique for sorted arrays\n- Handle arrays of different lengths\n- Maintains sorted order in result",
+      "solution_code": "def mergeIntervals(arr1, arr2):\n    if not arr1:\n        return arr2\n    if not arr2:\n        return arr1\n    \n    result = []\n    i, j = 0, 0\n    \n    # Merge while both arrays have elements\n    while i < len(arr1) and j < len(arr2):\n        if arr1[i] <= arr2[j]:\n            result.append(arr1[i])\n            i += 1\n        else:\n            result.append(arr2[j])\n            j += 1\n    \n    # Add remaining elements\n    result.extend(arr1[i:])\n    result.extend(arr2[j:])\n    \n    return result"
+    },
+    "javascript": {
+      "template": "function mergeIntervals(intervals) {\n  \n}",
+      "solution_text": "Merge algorithm using two pointers:\n\n**Algorithm:**\n1. Use two pointers for both input arrays\n2. Compare elements and add smaller to result\n3. Continue until one array is exhausted\n4. Append remaining elements from other array\n\n**Time Complexity:** O(m + n) - visit each element once\n**Space Complexity:** O(m + n) - result array size\n\n**Key Insights:**\n- Two pointers technique for sorted arrays\n- Handle arrays of different lengths\n- Maintains sorted order in result",
+      "solution_code": "function mergeIntervals(arr1, arr2) {\n    if (!arr1) return arr2;\n    if (!arr2) return arr1;\n    \n    const result = [];\n    let i = 0, j = 0;\n    \n    // Merge while both arrays have elements\n    while (i < arr1.length && j < arr2.length) {\n        if (arr1[i] <= arr2[j]) {\n            result.push(arr1[i]);\n            i++;\n        } else {\n            result.push(arr2[j]);\n            j++;\n        }\n    }\n    \n    // Add remaining elements\n    while (i < arr1.length) {\n        result.push(arr1[i]);\n        i++;\n    }\n    while (j < arr2.length) {\n        result.push(arr2[j]);\n        j++;\n    }\n    \n    return result;\n}"
+    },
+    "typescript": {
+      "template": "function mergeIntervals(intervals: number[]): number[] {\n  \n}",
+      "solution_text": "Merge algorithm using two pointers:\n\n**Algorithm:**\n1. Use two pointers for both input arrays\n2. Compare elements and add smaller to result\n3. Continue until one array is exhausted\n4. Append remaining elements from other array\n\n**Time Complexity:** O(m + n) - visit each element once\n**Space Complexity:** O(m + n) - result array size\n\n**Key Insights:**\n- Two pointers technique for sorted arrays\n- Handle arrays of different lengths\n- Maintains sorted order in result",
+      "solution_code": "function mergeIntervals(arr1: number[], arr2: number[]): number[] {\n    if (!arr1) return arr2;\n    if (!arr2) return arr1;\n    \n    const result: number[] = [];\n    let i = 0, j = 0;\n    \n    // Merge while both arrays have elements\n    while (i < arr1.length && j < arr2.length) {\n        if (arr1[i] <= arr2[j]) {\n            result.push(arr1[i]);\n            i++;\n        } else {\n            result.push(arr2[j]);\n            j++;\n        }\n    }\n    \n    // Add remaining elements\n    while (i < arr1.length) {\n        result.push(arr1[i]);\n        i++;\n    }\n    while (j < arr2.length) {\n        result.push(arr2[j]);\n        j++;\n    }\n    \n    return result;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int[] mergeIntervals(int[] intervals) {\n        \n    }\n}",
+      "solution_text": "Merge algorithm using two pointers:\n\n**Algorithm:**\n1. Use two pointers for both input arrays\n2. Compare elements and add smaller to result\n3. Continue until one array is exhausted\n4. Append remaining elements from other array\n\n**Time Complexity:** O(m + n) - visit each element once\n**Space Complexity:** O(m + n) - result array size\n\n**Key Insights:**\n- Two pointers technique for sorted arrays\n- Handle arrays of different lengths\n- Maintains sorted order in result",
+      "solution_code": "class Solution {\n    public int[] mergeIntervals(int[] arr1, int[] arr2) {\n        if (arr1 == null || arr1.length == 0) return arr2;\n        if (arr2 == null || arr2.length == 0) return arr1;\n        \n        int[] result = new int[arr1.length + arr2.length];\n        int i = 0, j = 0, k = 0;\n        \n        // Merge while both arrays have elements\n        while (i < arr1.length && j < arr2.length) {\n            if (arr1[i] <= arr2[j]) {\n                result[k++] = arr1[i++];\n            } else {\n                result[k++] = arr2[j++];\n            }\n        }\n        \n        // Add remaining elements\n        while (i < arr1.length) {\n            result[k++] = arr1[i++];\n        }\n        while (j < arr2.length) {\n            result[k++] = arr2[j++];\n        }\n        \n        return result;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "intervals": [
+          "[1",
+          3
+        ]
+      },
+      "output": [
+        [
+          1,
+          5
+        ],
+        [
+          6,
+          7
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "intervals": [
+          "[1",
+          2
+        ]
+      },
+      "output": [
+        [
+          1,
+          3
+        ]
+      ]
+    }
+  ]
+}

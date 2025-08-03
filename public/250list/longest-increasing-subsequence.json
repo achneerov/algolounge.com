@@ -1,0 +1,71 @@
+{
+  "filename": "longest-increasing-subsequence",
+  "title": "Longest Increasing Subsequence",
+  "keywords": [
+    "longest",
+    "increasing",
+    "subsequence",
+    "leetcode",
+    "300",
+    "given",
+    "integer",
+    "array",
+    "nums",
+    "return"
+  ],
+  "description": "<h2>Longest Increasing Subsequence</h2><p>Leetcode 300. Longest Increasing Subsequence</p><p></p><p>Given an integer array `nums`, return the *length* of the longest strictly *increasing* subsequence.</p><p></p><p>A **subsequence** is a sequence that can be derived from the given sequence by deleting some or no elements  without changing the relative order of the remaining characters.</p><p></p><p>* For example, `\"cat\"` is a subsequence of `\"crabt\"`.</p><h3>Examples:</h3><ul><li>Input: nums = [9,1,4,2,3,3,7]<br><br>Output: 4<br>The longest increasing subsequence is [1,2,3,7], which has a length of 4.</li><li>Input: nums = [0,3,1,3,2,3]<br><br>Output: 4</li></ul><h3>Constraints:</h3><ul><li> `1 <= nums.length <= 1000`</li><li> `-1000 <= nums[i] <= 1000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def longestIncreasingSubsequence(nums):\n    ",
+      "solution_text": "Longest Increasing Subsequence using Dynamic Programming:\n\n**Algorithm:**\n1. Create DP array where dp[i] = length of LIS ending at index i\n2. For each element, check all previous elements\n3. If nums[j] < nums[i], update dp[i] = max(dp[i], dp[j] + 1)\n4. Return maximum value in DP array\n\n**Time Complexity:** O(n²) - Nested loops for DP\n**Space Complexity:** O(n) - DP array\n\n**Key Insights:**\n- DP[i] represents LIS length ending at position i\n- Each element can extend any valid previous subsequence\n- Also solvable in O(n log n) using binary search + patience sorting",
+      "solution_code": "def longestIncreasingSubsequence(nums):\n    if not nums:\n        return 0\n    \n    n = len(nums)\n    # dp[i] = length of LIS ending at index i\n    dp = [1] * n\n    \n    for i in range(1, n):\n        for j in range(i):\n            if nums[j] < nums[i]:\n                dp[i] = max(dp[i], dp[j] + 1)\n    \n    return max(dp)"
+    },
+    "javascript": {
+      "template": "function longestIncreasingSubsequence(nums) {\n  \n}",
+      "solution_text": "Longest Increasing Subsequence using Dynamic Programming:\n\n**Algorithm:**\n1. Create DP array where dp[i] = length of LIS ending at index i\n2. For each element, check all previous elements\n3. If nums[j] < nums[i], update dp[i] = max(dp[i], dp[j] + 1)\n4. Return maximum value in DP array\n\n**Time Complexity:** O(n²) - Nested loops for DP\n**Space Complexity:** O(n) - DP array\n\n**Key Insights:**\n- DP[i] represents LIS length ending at position i\n- Each element can extend any valid previous subsequence\n- Also solvable in O(n log n) using binary search + patience sorting",
+      "solution_code": "function longestIncreasingSubsequence(nums) {\n    if (nums.length === 0) return 0;\n    \n    const n = nums.length;\n    // dp[i] = length of LIS ending at index i\n    const dp = new Array(n).fill(1);\n    \n    for (let i = 1; i < n; i++) {\n        for (let j = 0; j < i; j++) {\n            if (nums[j] < nums[i]) {\n                dp[i] = Math.max(dp[i], dp[j] + 1);\n            }\n        }\n    }\n    \n    return Math.max(...dp);\n}"
+    },
+    "typescript": {
+      "template": "function longestIncreasingSubsequence(nums: number[]): number {\n  \n}",
+      "solution_text": "Longest Increasing Subsequence using Dynamic Programming:\n\n**Algorithm:**\n1. Create DP array where dp[i] = length of LIS ending at index i\n2. For each element, check all previous elements\n3. If nums[j] < nums[i], update dp[i] = max(dp[i], dp[j] + 1)\n4. Return maximum value in DP array\n\n**Time Complexity:** O(n²) - Nested loops for DP\n**Space Complexity:** O(n) - DP array\n\n**Key Insights:**\n- DP[i] represents LIS length ending at position i\n- Each element can extend any valid previous subsequence\n- Also solvable in O(n log n) using binary search + patience sorting",
+      "solution_code": "function longestIncreasingSubsequence(nums: number[]): number {\n    if (nums.length === 0) return 0;\n    \n    const n = nums.length;\n    // dp[i] = length of LIS ending at index i\n    const dp: number[] = new Array(n).fill(1);\n    \n    for (let i = 1; i < n; i++) {\n        for (let j = 0; j < i; j++) {\n            if (nums[j] < nums[i]) {\n                dp[i] = Math.max(dp[i], dp[j] + 1);\n            }\n        }\n    }\n    \n    return Math.max(...dp);\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int longestIncreasingSubsequence(int[] nums) {\n        \n    }\n}",
+      "solution_text": "Longest Increasing Subsequence using Dynamic Programming:\n\n**Algorithm:**\n1. Create DP array where dp[i] = length of LIS ending at index i\n2. For each element, check all previous elements\n3. If nums[j] < nums[i], update dp[i] = max(dp[i], dp[j] + 1)\n4. Return maximum value in DP array\n\n**Time Complexity:** O(n²) - Nested loops for DP\n**Space Complexity:** O(n) - DP array\n\n**Key Insights:**\n- DP[i] represents LIS length ending at position i\n- Each element can extend any valid previous subsequence\n- Also solvable in O(n log n) using binary search + patience sorting",
+      "solution_code": "class Solution {\n    public int longestIncreasingSubsequence(int[] nums) {\n        if (nums.length == 0) return 0;\n        \n        int n = nums.length;\n        // dp[i] = length of LIS ending at index i\n        int[] dp = new int[n];\n        Arrays.fill(dp, 1);\n        \n        for (int i = 1; i < n; i++) {\n            for (int j = 0; j < i; j++) {\n                if (nums[j] < nums[i]) {\n                    dp[i] = Math.max(dp[i], dp[j] + 1);\n                }\n            }\n        }\n        \n        int maxLength = dp[0];\n        for (int length : dp) {\n            maxLength = Math.max(maxLength, length);\n        }\n        \n        return maxLength;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [
+          9,
+          1,
+          4,
+          2,
+          3,
+          3,
+          7
+        ]
+      },
+      "output": 4
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [
+          0,
+          3,
+          1,
+          3,
+          2,
+          3
+        ]
+      },
+      "output": 4
+    }
+  ]
+}

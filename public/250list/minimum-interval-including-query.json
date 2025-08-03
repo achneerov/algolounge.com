@@ -1,0 +1,67 @@
+{
+  "filename": "minimum-interval-including-query",
+  "title": "Minimum Interval to Include Each Query",
+  "keywords": [
+    "minimum",
+    "interval",
+    "include",
+    "each",
+    "query",
+    "leetcode",
+    "1851",
+    "given",
+    "integer",
+    "array"
+  ],
+  "description": "<h2>Minimum Interval to Include Each Query</h2><p>Leetcode 1851. Minimum Interval to Include Each Query</p><p></p><p>You are given a 2D integer array `intervals`, where `intervals[i] = [left_i, right_i]` represents the `ith` interval starting at `left_i` and ending at `right_i` **(inclusive)**. </p><p></p><p>You are also given an integer array of query points `queries`. The result of `query[j]` is the **length of the shortest interval** `i` such that `left_i <= queries[j] <= right_i`. If no such interval exists, the result of this query is `-1`.</p><p></p><p>Return an array `output` where `output[j]` is the result of `query[j]`.</p><p></p><p>Note: The length of an interval is calculated as `right_i - left_i + 1`.</p><h3>Examples:</h3><ul><li>Input: intervals = [[1,3],[2,3],[3,7],[6,6]], queries = [2,3,1,7,6,8]<br><br>Output: [2,2,3,5,1,-1]<br>- Query = 2: The interval `[2,3]` is the smallest one containing 2, it's length is 2.\n- Query = 3: The interval `[2,3]` is the smallest one containing 3, it's length is 2.\n- Query = 1: The interval `[1,3]` is the smallest one containing 1, it's length is 3.\n- Query = 7: The interval `[3,7]` is the smallest one containing 7, it's length is 5.\n- Query = 6: The interval `[6,6]` is the smallest one containing 6, it's length is 1.\n- Query = 8: There is no interval containing 8.</li></ul><h3>Constraints:</h3><ul><li> `1 <= intervals.length <= 1000`</li><li> `1 <= queries.length <= 1000`</li><li> `1 <= left_i <= right_i <= 10000`</li><li> `1 <= queries[j] <= 10000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def minimumIntervalToIncludeEachQuery(intervals, queries):\n    ",
+      "solution_text": "Min/Max finding algorithm:\n\n**Algorithm:**\n1. Initialize min/max with first element\n2. Iterate through remaining elements\n3. Update min/max as needed\n\n**Time Complexity:** O(n) - single pass through array\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Handle empty arrays with appropriate defaults\n- Consider both positive and negative numbers\n- Single pass optimization",
+      "solution_code": "def minimumIntervalIncludingQuery(nums):\n    if not nums:\n        return 0  # or appropriate default\n    \n    result = nums[0]\n    \n    for num in nums[1:]:\n        if 'max' in 'minimumIntervalIncludingQuery'.lower():\n            result = max(result, num)\n        else:\n            result = min(result, num)\n    \n    return result"
+    },
+    "javascript": {
+      "template": "function minimumIntervalToIncludeEachQuery(intervals, queries) {\n  \n}",
+      "solution_text": "Min/Max finding algorithm:\n\n**Algorithm:**\n1. Initialize min/max with first element\n2. Iterate through remaining elements\n3. Update min/max as needed\n\n**Time Complexity:** O(n) - single pass through array\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Handle empty arrays with appropriate defaults\n- Consider both positive and negative numbers\n- Single pass optimization",
+      "solution_code": "function minimumIntervalIncludingQuery(nums) {\n    if (!nums || nums.length === 0) return 0;\n    \n    let result = nums[0];\n    \n    for (let i = 1; i < nums.length; i++) {\n        if ('minimumIntervalIncludingQuery'.toLowerCase().includes('max')) {\n            result = Math.max(result, nums[i]);\n        } else {\n            result = Math.min(result, nums[i]);\n        }\n    }\n    \n    return result;\n}"
+    },
+    "typescript": {
+      "template": "function minimumIntervalToIncludeEachQuery(intervals: number[], queries: number[]): number[] {\n  \n}",
+      "solution_text": "Min/Max finding algorithm:\n\n**Algorithm:**\n1. Initialize min/max with first element\n2. Iterate through remaining elements\n3. Update min/max as needed\n\n**Time Complexity:** O(n) - single pass through array\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Handle empty arrays with appropriate defaults\n- Consider both positive and negative numbers\n- Single pass optimization",
+      "solution_code": "function minimumIntervalIncludingQuery(nums: number[]): number {\n    if (!nums || nums.length === 0) return 0;\n    \n    let result = nums[0];\n    \n    for (let i = 1; i < nums.length; i++) {\n        if ('minimumIntervalIncludingQuery'.toLowerCase().includes('max')) {\n            result = Math.max(result, nums[i]);\n        } else {\n            result = Math.min(result, nums[i]);\n        }\n    }\n    \n    return result;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int[] minimumIntervalToIncludeEachQuery(int[] intervals, int[] queries) {\n        \n    }\n}",
+      "solution_text": "Min/Max finding algorithm:\n\n**Algorithm:**\n1. Initialize min/max with first element\n2. Iterate through remaining elements\n3. Update min/max as needed\n\n**Time Complexity:** O(n) - single pass through array\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Handle empty arrays with appropriate defaults\n- Consider both positive and negative numbers\n- Single pass optimization",
+      "solution_code": "class Solution {\n    public int minimumIntervalIncludingQuery(int[] nums) {\n        if (nums == null || nums.length == 0) return 0;\n        \n        int result = nums[0];\n        \n        for (int i = 1; i < nums.length; i++) {\n            if (\"minimumIntervalIncludingQuery\".toLowerCase().contains(\"max\")) {\n                result = Math.max(result, nums[i]);\n            } else {\n                result = Math.min(result, nums[i]);\n            }\n        }\n        \n        return result;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "intervals": [
+          "[1",
+          3
+        ],
+        "queries": [
+          2,
+          3,
+          1,
+          7,
+          6,
+          8
+        ]
+      },
+      "output": [
+        2,
+        2,
+        3,
+        5,
+        1,
+        -1
+      ]
+    }
+  ]
+}

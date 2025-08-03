@@ -1,0 +1,87 @@
+{
+  "filename": "two-integer-sum",
+  "title": "Two Sum",
+  "keywords": [
+    "two",
+    "sum",
+    "leetcode",
+    "given",
+    "array",
+    "integers",
+    "nums",
+    "integer",
+    "target",
+    "return"
+  ],
+  "description": "<h2>Two Sum</h2><p>Leetcode 1. Two Sum</p><p></p><p>Given an array of integers `nums` and an integer `target`, return the indices `i` and `j` such that `nums[i] + nums[j] == target` and `i != j`.</p><p>    </p><p>You may assume that *every* input has exactly one pair of indices `i` and `j` that satisfy the condition.</p><p></p><p>Return the answer with the smaller index first.</p><h3>Examples:</h3><ul><li>Input: <br>nums = [3,4,5,6], target = 7<br><br>Output: [0,1]<br>`nums[0] + nums[1] == 7`, so we return `[0, 1]`.</li><li>Input: nums = [4,5,6], target = 10<br><br>Output: [0,2]</li><li>Input: nums = [5,5], target = 10<br><br>Output: [0,1]</li></ul><h3>Constraints:</h3><ul><li> `2 <= nums.length <= 1000`</li><li> `-10,000,000 <= nums[i] <= 10,000,000`</li><li> `-10,000,000 <= target <= 10,000,000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def twoSum(nums, target):\n    ",
+      "solution_text": "Efficient Two Sum solution using hash map approach:\n\n**Algorithm:**\n1. Create a hash map to store number complements\n2. For each number, check if its complement exists in the map\n3. If found, return the indices; otherwise, store current number and index\n\n**Time Complexity:** O(n) - single pass through array\n**Space Complexity:** O(n) - hash map storage\n\n**Key Insights:**\n- Hash map allows O(1) lookup time\n- Only need to check each element once\n- Return indices in ascending order as required",
+      "solution_code": "def twoSum(nums, target):\n    # Hash map to store number -> index mapping\n    num_map = {}\n    \n    for i, num in enumerate(nums):\n        complement = target - num\n        \n        # Check if complement exists in map\n        if complement in num_map:\n            return [num_map[complement], i]\n        \n        # Store current number and its index\n        num_map[num] = i\n    \n    # Should not reach here given problem constraints\n    return []"
+    },
+    "javascript": {
+      "template": "function twoSum(nums, target) {\n  \n}",
+      "solution_text": "Efficient Two Sum solution using hash map approach:\n\n**Algorithm:**\n1. Create a hash map to store number complements\n2. For each number, check if its complement exists in the map\n3. If found, return the indices; otherwise, store current number and index\n\n**Time Complexity:** O(n) - single pass through array\n**Space Complexity:** O(n) - hash map storage\n\n**Key Insights:**\n- Hash map allows O(1) lookup time\n- Only need to check each element once\n- Return indices in ascending order as required",
+      "solution_code": "function twoSum(nums, target) {\n    // Hash map to store number -> index mapping\n    const numMap = new Map();\n    \n    for (let i = 0; i < nums.length; i++) {\n        const complement = target - nums[i];\n        \n        // Check if complement exists in map\n        if (numMap.has(complement)) {\n            return [numMap.get(complement), i];\n        }\n        \n        // Store current number and its index\n        numMap.set(nums[i], i);\n    }\n    \n    // Should not reach here given problem constraints\n    return [];\n}"
+    },
+    "typescript": {
+      "template": "function twoSum(nums: number[], target: number): number[] {\n  \n}",
+      "solution_text": "Efficient Two Sum solution using hash map approach:\n\n**Algorithm:**\n1. Create a hash map to store number complements\n2. For each number, check if its complement exists in the map\n3. If found, return the indices; otherwise, store current number and index\n\n**Time Complexity:** O(n) - single pass through array\n**Space Complexity:** O(n) - hash map storage\n\n**Key Insights:**\n- Hash map allows O(1) lookup time\n- Only need to check each element once\n- Return indices in ascending order as required",
+      "solution_code": "function twoSum(nums: number[], target: number): number[] {\n    // Hash map to store number -> index mapping\n    const numMap = new Map<number, number>();\n    \n    for (let i = 0; i < nums.length; i++) {\n        const complement = target - nums[i];\n        \n        // Check if complement exists in map\n        if (numMap.has(complement)) {\n            return [numMap.get(complement)!, i];\n        }\n        \n        // Store current number and its index\n        numMap.set(nums[i], i);\n    }\n    \n    // Should not reach here given problem constraints\n    return [];\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int[] twoSum(int[] nums, int target) {\n        \n    }\n}",
+      "solution_text": "Efficient Two Sum solution using hash map approach:\n\n**Algorithm:**\n1. Create a hash map to store number complements\n2. For each number, check if its complement exists in the map\n3. If found, return the indices; otherwise, store current number and index\n\n**Time Complexity:** O(n) - single pass through array\n**Space Complexity:** O(n) - hash map storage\n\n**Key Insights:**\n- Hash map allows O(1) lookup time\n- Only need to check each element once\n- Return indices in ascending order as required",
+      "solution_code": "class Solution {\n    public int[] twoSum(int[] nums, int target) {\n        // Hash map to store number -> index mapping\n        Map<Integer, Integer> numMap = new HashMap<>();\n        \n        for (int i = 0; i < nums.length; i++) {\n            int complement = target - nums[i];\n            \n            // Check if complement exists in map\n            if (numMap.containsKey(complement)) {\n                return new int[]{numMap.get(complement), i};\n            }\n            \n            // Store current number and its index\n            numMap.put(nums[i], i);\n        }\n        \n        // Should not reach here given problem constraints\n        return new int[0];\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "target": 7
+      },
+      "output": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [
+          4,
+          5,
+          6
+        ],
+        "target": 10
+      },
+      "output": [
+        0,
+        2
+      ]
+    },
+    {
+      "id": 3,
+      "input": {
+        "nums": [
+          5,
+          5
+        ],
+        "target": 10
+      },
+      "output": [
+        0,
+        1
+      ]
+    }
+  ]
+}

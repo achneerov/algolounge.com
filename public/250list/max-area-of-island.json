@@ -1,0 +1,41 @@
+{
+  "filename": "max-area-of-island",
+  "title": "Max Area of Island",
+  "keywords": [
+    "max",
+    "area",
+    "island",
+    "leetcode",
+    "695",
+    "given",
+    "matrix",
+    "grid",
+    "where",
+    "either"
+  ],
+  "description": "<h2>Max Area of Island</h2><p>Leetcode 695. Max Area of Island</p><p></p><p>You are given a matrix `grid` where `grid[i]` is either a `0` (representing water) or `1` (representing land).</p><p>    </p><p>An island is defined as a group of `1`'s connected horizontally or vertically. You may assume all four edges of the grid are surrounded by water.</p><p></p><p>The **area** of an island is defined as the number of cells within the island.</p><p></p><p>Return the maximum **area** of an island in `grid`. If no island exists, return `0`.</p><h3>Constraints:</h3><ul><li> `1 <= grid.length, grid[i].length <= 50`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def maxAreaOfIsland(input):\n    ",
+      "solution_text": "Graph traversal using DFS/BFS approach:\n\n**Algorithm:**\n1. Build adjacency list representation of graph\n2. Use DFS or BFS to traverse nodes\n3. Track visited nodes to avoid cycles\n4. Process nodes according to problem requirements\n\n**Time Complexity:** O(V + E) - visit each vertex and edge once\n**Space Complexity:** O(V) - visited set and recursion stack\n\n**Key Insights:**\n- DFS for deep exploration, BFS for level-by-level\n- Use visited set to handle cycles\n- Adjacency list is space-efficient for sparse graphs",
+      "solution_code": "def maxAreaOfIsland(graph):\n    if not graph:\n        return []\n    \n    visited = set()\n    result = []\n    \n    def dfs(node):\n        if node in visited:\n            return\n        \n        visited.add(node)\n        result.append(node)\n        \n        # Visit neighbors\n        for neighbor in graph.get(node, []):\n            dfs(neighbor)\n    \n    # Start DFS from first node\n    for node in graph:\n        if node not in visited:\n            dfs(node)\n    \n    return result"
+    },
+    "javascript": {
+      "template": "function maxAreaOfIsland(input) {\n  \n}",
+      "solution_text": "Graph traversal using DFS/BFS approach:\n\n**Algorithm:**\n1. Build adjacency list representation of graph\n2. Use DFS or BFS to traverse nodes\n3. Track visited nodes to avoid cycles\n4. Process nodes according to problem requirements\n\n**Time Complexity:** O(V + E) - visit each vertex and edge once\n**Space Complexity:** O(V) - visited set and recursion stack\n\n**Key Insights:**\n- DFS for deep exploration, BFS for level-by-level\n- Use visited set to handle cycles\n- Adjacency list is space-efficient for sparse graphs",
+      "solution_code": "function maxAreaOfIsland(graph) {\n    if (!graph) return [];\n    \n    const visited = new Set();\n    const result = [];\n    \n    function dfs(node) {\n        if (visited.has(node)) return;\n        \n        visited.add(node);\n        result.push(node);\n        \n        // Visit neighbors\n        const neighbors = graph[node] || [];\n        for (const neighbor of neighbors) {\n            dfs(neighbor);\n        }\n    }\n    \n    // Start DFS from each unvisited node\n    for (const node in graph) {\n        if (!visited.has(node)) {\n            dfs(node);\n        }\n    }\n    \n    return result;\n}"
+    },
+    "typescript": {
+      "template": "function maxAreaOfIsland(input: any): any {\n  \n}",
+      "solution_text": "Graph traversal using DFS/BFS approach:\n\n**Algorithm:**\n1. Build adjacency list representation of graph\n2. Use DFS or BFS to traverse nodes\n3. Track visited nodes to avoid cycles\n4. Process nodes according to problem requirements\n\n**Time Complexity:** O(V + E) - visit each vertex and edge once\n**Space Complexity:** O(V) - visited set and recursion stack\n\n**Key Insights:**\n- DFS for deep exploration, BFS for level-by-level\n- Use visited set to handle cycles\n- Adjacency list is space-efficient for sparse graphs",
+      "solution_code": "function maxAreaOfIsland(graph: {[key: string]: string[]}): string[] {\n    if (!graph) return [];\n    \n    const visited = new Set<string>();\n    const result: string[] = [];\n    \n    function dfs(node: string): void {\n        if (visited.has(node)) return;\n        \n        visited.add(node);\n        result.push(node);\n        \n        // Visit neighbors\n        const neighbors = graph[node] || [];\n        for (const neighbor of neighbors) {\n            dfs(neighbor);\n        }\n    }\n    \n    // Start DFS from each unvisited node\n    for (const node in graph) {\n        if (!visited.has(node)) {\n            dfs(node);\n        }\n    }\n    \n    return result;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public Object maxAreaOfIsland(Object input) {\n        \n    }\n}",
+      "solution_text": "Graph traversal using DFS/BFS approach:\n\n**Algorithm:**\n1. Build adjacency list representation of graph\n2. Use DFS or BFS to traverse nodes\n3. Track visited nodes to avoid cycles\n4. Process nodes according to problem requirements\n\n**Time Complexity:** O(V + E) - visit each vertex and edge once\n**Space Complexity:** O(V) - visited set and recursion stack\n\n**Key Insights:**\n- DFS for deep exploration, BFS for level-by-level\n- Use visited set to handle cycles\n- Adjacency list is space-efficient for sparse graphs",
+      "solution_code": "class Solution {\n    public List<String> maxAreaOfIsland(Map<String, List<String>> graph) {\n        if (graph == null || graph.isEmpty()) return new ArrayList<>();\n        \n        Set<String> visited = new HashSet<>();\n        List<String> result = new ArrayList<>();\n        \n        for (String node : graph.keySet()) {\n            if (!visited.contains(node)) {\n                dfs(node, graph, visited, result);\n            }\n        }\n        \n        return result;\n    }\n    \n    private void dfs(String node, Map<String, List<String>> graph, \n                     Set<String> visited, List<String> result) {\n        if (visited.contains(node)) return;\n        \n        visited.add(node);\n        result.add(node);\n        \n        // Visit neighbors\n        List<String> neighbors = graph.getOrDefault(node, new ArrayList<>());\n        for (String neighbor : neighbors) {\n            dfs(neighbor, graph, visited, result);\n        }\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": []
+}

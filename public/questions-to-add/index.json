@@ -14,8 +14,7 @@
         "return",
         "all",
         "unique"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "accounts-merge",
@@ -31,8 +30,7 @@
         "each",
         "element",
         "strings"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "add-binary",
@@ -48,8 +46,7 @@
         "their",
         "sum",
         "string"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "add-two-numbers",
@@ -65,8 +62,7 @@
         "linked",
         "lists",
         "where"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "anagram-groups",
@@ -82,8 +78,7 @@
         "all",
         "together",
         "into"
-      ],
-      "testCasesCount": 3
+      ]
     },
     {
       "filename": "asteroid-collision",
@@ -99,8 +94,7 @@
         "integers",
         "representing",
         "row"
-      ],
-      "testCasesCount": 3
+      ]
     },
     {
       "filename": "balanced-binary-tree",
@@ -116,8 +110,7 @@
         "true",
         "height",
         "false"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "baseball-game",
@@ -133,8 +126,7 @@
         "rules",
         "beginning",
         "start"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "best-time-to-buy-and-sell-stock-ii",
@@ -150,8 +142,7 @@
         "given",
         "integer",
         "array"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "binary-search",
@@ -167,8 +158,7 @@
         "integers",
         "nums",
         "sorted"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "binary-tree-diameter",
@@ -184,8 +174,7 @@
         "longest",
         "path",
         "between"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "binary-tree-from-preorder-and-inorder-traversal",
@@ -201,8 +190,7 @@
         "105",
         "given",
         "two"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "binary-tree-inorder-traversal",
@@ -218,8 +206,7 @@
         "return",
         "its",
         "nodes"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "binary-tree-maximum-path-sum",
@@ -235,8 +222,7 @@
         "given",
         "root",
         "non"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "binary-tree-postorder-traversal",
@@ -252,8 +238,7 @@
         "root",
         "return",
         "its"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "binary-tree-preorder-traversal",
@@ -269,8 +254,7 @@
         "root",
         "return",
         "its"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "binary-tree-right-side-view",
@@ -286,8 +270,7 @@
         "given",
         "root",
         "return"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "bitwise-and-of-numbers-range",
@@ -303,8 +286,7 @@
         "integers",
         "left",
         "right"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "boats-to-save-people",
@@ -320,8 +302,7 @@
         "array",
         "where",
         "weight"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "build-a-matrix-with-conditions",
@@ -337,8 +318,7 @@
         "integer",
         "also",
         "array"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "burst-balloons",
@@ -354,25 +334,7 @@
         "nums",
         "size",
         "ith"
-      ],
-      "testCasesCount": 1
-    },
-    {
-      "filename": "buy-and-sell-crypto-with-cooldown",
-      "title": "Best Time to Buy and Sell Stock with Cooldown",
-      "keywords": [
-        "best",
-        "time",
-        "buy",
-        "sell",
-        "stock",
-        "cooldown",
-        "leetcode",
-        "309",
-        "given",
-        "integer"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "buy-and-sell-crypto",
@@ -388,8 +350,23 @@
         "given",
         "integer",
         "array"
-      ],
-      "testCasesCount": 2
+      ]
+    },
+    {
+      "filename": "buy-and-sell-crypto-with-cooldown",
+      "title": "Best Time to Buy and Sell Stock with Cooldown",
+      "keywords": [
+        "best",
+        "time",
+        "buy",
+        "sell",
+        "stock",
+        "cooldown",
+        "leetcode",
+        "309",
+        "given",
+        "integer"
+      ]
     },
     {
       "filename": "candy",
@@ -405,8 +382,7 @@
         "each",
         "child",
         "assigned"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "capacity-to-ship-packages-within-d-days",
@@ -422,8 +398,7 @@
         "conveyor",
         "belt",
         "shipped"
-      ],
-      "testCasesCount": 3
+      ]
     },
     {
       "filename": "car-fleet",
@@ -439,8 +414,7 @@
         "same",
         "destination",
         "one"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "car-pooling",
@@ -456,8 +430,7 @@
         "seats",
         "vehicle",
         "only"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "cheapest-flight-path",
@@ -473,8 +446,7 @@
         "airports",
         "labeled",
         "which"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "climbing-stairs",
@@ -490,8 +462,7 @@
         "steps",
         "reach",
         "top"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "clone-graph",
@@ -507,25 +478,7 @@
         "undirected",
         "return",
         "deep"
-      ],
-      "testCasesCount": 1
-    },
-    {
-      "filename": "coin-change-ii",
-      "title": "Coin Change II",
-      "keywords": [
-        "coin",
-        "change",
-        "leetcode",
-        "518",
-        "given",
-        "integer",
-        "array",
-        "coins",
-        "representing",
-        "different"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "coin-change",
@@ -541,8 +494,23 @@
         "coins",
         "representing",
         "different"
-      ],
-      "testCasesCount": 3
+      ]
+    },
+    {
+      "filename": "coin-change-ii",
+      "title": "Coin Change II",
+      "keywords": [
+        "coin",
+        "change",
+        "leetcode",
+        "518",
+        "given",
+        "integer",
+        "array",
+        "coins",
+        "representing",
+        "different"
+      ]
     },
     {
       "filename": "combination-sum-iv",
@@ -558,25 +526,7 @@
         "integers",
         "nums",
         "target"
-      ],
-      "testCasesCount": 2
-    },
-    {
-      "filename": "combination-target-sum-ii",
-      "title": "Combination Sum II",
-      "keywords": [
-        "combination",
-        "sum",
-        "leetcode",
-        "given",
-        "array",
-        "integers",
-        "candidates",
-        "which",
-        "contain",
-        "duplicates"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "combination-target-sum",
@@ -592,25 +542,23 @@
         "nums",
         "target",
         "integer"
-      ],
-      "testCasesCount": 3
+      ]
     },
     {
-      "filename": "combinations-of-a-phone-number",
-      "title": "Letter Combinations of a Phone Number",
+      "filename": "combination-target-sum-ii",
+      "title": "Combination Sum II",
       "keywords": [
-        "letter",
-        "combinations",
-        "phone",
-        "number",
+        "combination",
+        "sum",
         "leetcode",
         "given",
-        "string",
-        "digits",
-        "made",
-        "through"
-      ],
-      "testCasesCount": 2
+        "array",
+        "integers",
+        "candidates",
+        "which",
+        "contain",
+        "duplicates"
+      ]
     },
     {
       "filename": "combinations",
@@ -626,8 +574,23 @@
         "possible",
         "numbers",
         "chosen"
-      ],
-      "testCasesCount": 2
+      ]
+    },
+    {
+      "filename": "combinations-of-a-phone-number",
+      "title": "Letter Combinations of a Phone Number",
+      "keywords": [
+        "letter",
+        "combinations",
+        "phone",
+        "number",
+        "leetcode",
+        "given",
+        "string",
+        "digits",
+        "made",
+        "through"
+      ]
     },
     {
       "filename": "concatenation-of-array",
@@ -643,8 +606,7 @@
         "length",
         "create",
         "ans"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "construct-quad-tree",
@@ -660,8 +622,7 @@
         "matrix",
         "grid",
         "want"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "contains-duplicate-ii",
@@ -677,8 +638,7 @@
         "nums",
         "return",
         "true"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "copy-linked-list-with-random-pointer",
@@ -694,8 +654,7 @@
         "given",
         "head",
         "length"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "count-connected-components",
@@ -711,8 +670,7 @@
         "there",
         "nodes",
         "also"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "count-good-nodes-in-binary-tree",
@@ -728,8 +686,7 @@
         "within",
         "node",
         "considered"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "count-number-of-islands",
@@ -745,8 +702,7 @@
         "represents",
         "land",
         "water"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "count-paths",
@@ -762,8 +718,7 @@
         "move",
         "either",
         "down"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "count-squares",
@@ -779,8 +734,7 @@
         "consisting",
         "coordinates",
         "plane"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "count-subsequences",
@@ -796,8 +750,7 @@
         "both",
         "consisting",
         "english"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "counting-bits",
@@ -813,42 +766,7 @@
         "number",
         "binary",
         "representation"
-      ],
-      "testCasesCount": 1
-    },
-    {
-      "filename": "course-schedule-ii",
-      "title": "Course Schedule II",
-      "keywords": [
-        "course",
-        "schedule",
-        "leetcode",
-        "210",
-        "given",
-        "array",
-        "prerequisites",
-        "where",
-        "indicates",
-        "take"
-      ],
-      "testCasesCount": 2
-    },
-    {
-      "filename": "course-schedule-iv",
-      "title": "Course Schedule IV",
-      "keywords": [
-        "course",
-        "schedule",
-        "leetcode",
-        "1462",
-        "there",
-        "total",
-        "numcourses",
-        "courses",
-        "take",
-        "labeled"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "course-schedule",
@@ -864,8 +782,39 @@
         "where",
         "indicates",
         "take"
-      ],
-      "testCasesCount": 2
+      ]
+    },
+    {
+      "filename": "course-schedule-ii",
+      "title": "Course Schedule II",
+      "keywords": [
+        "course",
+        "schedule",
+        "leetcode",
+        "210",
+        "given",
+        "array",
+        "prerequisites",
+        "where",
+        "indicates",
+        "take"
+      ]
+    },
+    {
+      "filename": "course-schedule-iv",
+      "title": "Course Schedule IV",
+      "keywords": [
+        "course",
+        "schedule",
+        "leetcode",
+        "1462",
+        "there",
+        "total",
+        "numcourses",
+        "courses",
+        "take",
+        "labeled"
+      ]
     },
     {
       "filename": "daily-temperatures",
@@ -881,8 +830,7 @@
         "where",
         "represents",
         "ith"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "decode-string",
@@ -898,8 +846,7 @@
         "its",
         "decoded",
         "encoding"
-      ],
-      "testCasesCount": 3
+      ]
     },
     {
       "filename": "decode-ways",
@@ -915,8 +862,7 @@
         "characters",
         "encoded",
         "number"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "delete-leaves-with-a-given-value",
@@ -932,8 +878,7 @@
         "tree",
         "root",
         "integer"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "delete-node-in-a-bst",
@@ -949,8 +894,7 @@
         "reference",
         "key",
         "present"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "depth-of-binary-tree",
@@ -966,8 +910,7 @@
         "root",
         "return",
         "its"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "design-circular-queue",
@@ -983,8 +926,7 @@
         "data",
         "structure",
         "which"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "design-hashmap",
@@ -1000,8 +942,7 @@
         "built",
         "hash",
         "table"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "design-hashset",
@@ -1017,8 +958,7 @@
         "built",
         "hash",
         "table"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "design-twitter-feed",
@@ -1034,8 +974,7 @@
         "which",
         "allows",
         "users"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "design-word-search-data-structure",
@@ -1051,8 +990,7 @@
         "211",
         "words",
         "supports"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "dota2-senate",
@@ -1068,8 +1006,7 @@
         "parties",
         "radiant",
         "dire"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "duplicate-integer",
@@ -1085,8 +1022,7 @@
         "nums",
         "return",
         "true"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "eating-bananas",
@@ -1102,8 +1038,7 @@
         "array",
         "piles",
         "where"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "edit-distance",
@@ -1119,8 +1054,7 @@
         "word2",
         "each",
         "consisting"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "evaluate-division",
@@ -1136,8 +1070,7 @@
         "pairs",
         "equations",
         "real"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "evaluate-reverse-polish-notation",
@@ -1153,8 +1086,7 @@
         "array",
         "strings",
         "tokens"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "excel-sheet-column-title",
@@ -1170,8 +1102,7 @@
         "integer",
         "columnnumber",
         "return"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "extra-characters-in-a-string",
@@ -1187,8 +1118,7 @@
         "into",
         "one",
         "more"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree",
@@ -1204,8 +1134,7 @@
         "leetcode",
         "1489",
         "given"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "find-duplicate-integer",
@@ -1221,8 +1150,7 @@
         "integers",
         "nums",
         "containing"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "find-in-mountain-array",
@@ -1238,8 +1166,7 @@
         "arr",
         "called",
         "only"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "find-k-closest-elements",
@@ -1255,8 +1182,7 @@
         "integer",
         "array",
         "arr"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "find-median-in-a-data-stream",
@@ -1272,8 +1198,7 @@
         "wikipedia",
         "org",
         "wiki"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "find-minimum-in-rotated-sorted-array",
@@ -1289,8 +1214,7 @@
         "given",
         "length",
         "which"
-      ],
-      "testCasesCount": 3
+      ]
     },
     {
       "filename": "find-target-in-rotated-sorted-array",
@@ -1306,8 +1230,7 @@
         "which",
         "originally",
         "ascending"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "find-the-town-judge",
@@ -1323,8 +1246,7 @@
         "labeled",
         "rumor",
         "one"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "first-missing-positive",
@@ -1340,8 +1262,7 @@
         "array",
         "nums",
         "return"
-      ],
-      "testCasesCount": 3
+      ]
     },
     {
       "filename": "foreign-dictionary",
@@ -1357,8 +1278,7 @@
         "which",
         "uses",
         "latin"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "gas-station",
@@ -1374,8 +1294,7 @@
         "circular",
         "route",
         "given"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "generate-parentheses",
@@ -1391,8 +1310,7 @@
         "well",
         "formed",
         "strings"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "greatest-common-divisor-of-strings",
@@ -1408,8 +1326,7 @@
         "say",
         "divides",
         "only"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "greatest-common-divisor-traversal",
@@ -1425,8 +1342,7 @@
         "indexed",
         "integer",
         "array"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "guess-number-higher-or-lower",
@@ -1442,8 +1358,7 @@
         "game",
         "follows",
         "pick"
-      ],
-      "testCasesCount": 3
+      ]
     },
     {
       "filename": "hand-of-straights",
@@ -1459,42 +1374,7 @@
         "where",
         "value",
         "written"
-      ],
-      "testCasesCount": 2
-    },
-    {
-      "filename": "house-robber-ii",
-      "title": "House Robber II",
-      "keywords": [
-        "house",
-        "robber",
-        "leetcode",
-        "213",
-        "given",
-        "integer",
-        "array",
-        "nums",
-        "where",
-        "represents"
-      ],
-      "testCasesCount": 2
-    },
-    {
-      "filename": "house-robber-iii",
-      "title": "House Robber III",
-      "keywords": [
-        "house",
-        "robber",
-        "iii",
-        "leetcode",
-        "337",
-        "thief",
-        "found",
-        "himself",
-        "new",
-        "place"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "house-robber",
@@ -1510,8 +1390,39 @@
         "nums",
         "where",
         "represents"
-      ],
-      "testCasesCount": 2
+      ]
+    },
+    {
+      "filename": "house-robber-ii",
+      "title": "House Robber II",
+      "keywords": [
+        "house",
+        "robber",
+        "leetcode",
+        "213",
+        "given",
+        "integer",
+        "array",
+        "nums",
+        "where",
+        "represents"
+      ]
+    },
+    {
+      "filename": "house-robber-iii",
+      "title": "House Robber III",
+      "keywords": [
+        "house",
+        "robber",
+        "iii",
+        "leetcode",
+        "337",
+        "thief",
+        "found",
+        "himself",
+        "new",
+        "place"
+      ]
     },
     {
       "filename": "implement-prefix-tree",
@@ -1527,8 +1438,7 @@
         "known",
         "data",
         "structure"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "implement-queue-using-stacks",
@@ -1544,8 +1454,7 @@
         "out",
         "fifo",
         "only"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "implement-stack-using-queues",
@@ -1561,8 +1470,7 @@
         "first",
         "out",
         "lifo"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "insert-greatest-common-divisors-in-linked-list",
@@ -1578,8 +1486,7 @@
         "2807",
         "given",
         "head"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "insert-into-a-binary-search-tree",
@@ -1595,8 +1502,7 @@
         "given",
         "root",
         "node"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "insert-new-interval",
@@ -1612,8 +1518,7 @@
         "intervals",
         "where",
         "start_i"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "integer-break",
@@ -1629,8 +1534,7 @@
         "positive",
         "integers",
         "where"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "interleaving-string",
@@ -1646,8 +1550,7 @@
         "true",
         "formed",
         "together"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "invert-a-binary-tree",
@@ -1663,8 +1566,7 @@
         "return",
         "its",
         "example"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "ipo",
@@ -1680,8 +1582,7 @@
         "finish",
         "most",
         "distinct"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "is-anagram",
@@ -1697,8 +1598,7 @@
         "return",
         "true",
         "anagrams"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "is-palindrome",
@@ -1714,8 +1614,7 @@
         "true",
         "otherwise",
         "false"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "island-perimeter",
@@ -1731,8 +1630,7 @@
         "grid",
         "representing",
         "map"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "islands-and-treasure",
@@ -1748,42 +1646,7 @@
         "times",
         "grid",
         "initialized"
-      ],
-      "testCasesCount": 2
-    },
-    {
-      "filename": "jump-game-ii",
-      "title": "Jump Game II",
-      "keywords": [
-        "jump",
-        "game",
-        "leetcode",
-        "given",
-        "array",
-        "integers",
-        "nums",
-        "where",
-        "represents",
-        "maximum"
-      ],
-      "testCasesCount": 2
-    },
-    {
-      "filename": "jump-game-vii",
-      "title": "Jump Game VII",
-      "keywords": [
-        "jump",
-        "game",
-        "vii",
-        "leetcode",
-        "1871",
-        "given",
-        "indexed",
-        "binary",
-        "string",
-        "two"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "jump-game",
@@ -1799,8 +1662,39 @@
         "where",
         "each",
         "element"
-      ],
-      "testCasesCount": 2
+      ]
+    },
+    {
+      "filename": "jump-game-ii",
+      "title": "Jump Game II",
+      "keywords": [
+        "jump",
+        "game",
+        "leetcode",
+        "given",
+        "array",
+        "integers",
+        "nums",
+        "where",
+        "represents",
+        "maximum"
+      ]
+    },
+    {
+      "filename": "jump-game-vii",
+      "title": "Jump Game VII",
+      "keywords": [
+        "jump",
+        "game",
+        "vii",
+        "leetcode",
+        "1871",
+        "given",
+        "indexed",
+        "binary",
+        "string",
+        "two"
+      ]
     },
     {
       "filename": "k-closest-points-to-origin",
@@ -1816,8 +1710,7 @@
         "where",
         "represents",
         "coordinates"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "kth-largest-element-in-an-array",
@@ -1833,8 +1726,7 @@
         "unsorted",
         "integers",
         "nums"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "kth-largest-integer-in-a-stream",
@@ -1850,8 +1742,7 @@
         "class",
         "find",
         "integer"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "kth-smallest-integer-in-bst",
@@ -1867,8 +1758,7 @@
         "given",
         "root",
         "binary"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "largest-rectangle-in-histogram",
@@ -1884,25 +1774,7 @@
         "heights",
         "where",
         "represents"
-      ],
-      "testCasesCount": 2
-    },
-    {
-      "filename": "last-stone-weight-ii",
-      "title": "Last Stone Weight II",
-      "keywords": [
-        "last",
-        "stone",
-        "weight",
-        "leetcode",
-        "1049",
-        "given",
-        "array",
-        "integers",
-        "stones",
-        "where"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "last-stone-weight",
@@ -1918,8 +1790,23 @@
         "integers",
         "stones",
         "where"
-      ],
-      "testCasesCount": 2
+      ]
+    },
+    {
+      "filename": "last-stone-weight-ii",
+      "title": "Last Stone Weight II",
+      "keywords": [
+        "last",
+        "stone",
+        "weight",
+        "leetcode",
+        "1049",
+        "given",
+        "array",
+        "integers",
+        "stones",
+        "where"
+      ]
     },
     {
       "filename": "lemonade-change",
@@ -1935,8 +1822,7 @@
         "customers",
         "standing",
         "queue"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "level-order-traversal-of-binary-tree",
@@ -1952,8 +1838,7 @@
         "given",
         "root",
         "return"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "lfu-cache",
@@ -1969,8 +1854,7 @@
         "structure",
         "least",
         "frequently"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "linked-list-cycle-detection",
@@ -1986,8 +1870,7 @@
         "beginning",
         "head",
         "return"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "longest-common-prefix",
@@ -2003,8 +1886,7 @@
         "strs",
         "return",
         "all"
-      ],
-      "testCasesCount": 3
+      ]
     },
     {
       "filename": "longest-common-subsequence",
@@ -2020,8 +1902,7 @@
         "strings",
         "text1",
         "text2"
-      ],
-      "testCasesCount": 3
+      ]
     },
     {
       "filename": "longest-consecutive-sequence",
@@ -2037,8 +1918,7 @@
         "integers",
         "nums",
         "return"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "longest-happy-string",
@@ -2054,8 +1934,7 @@
         "following",
         "conditions",
         "only"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "longest-increasing-path-in-matrix",
@@ -2071,8 +1950,7 @@
         "grid",
         "integers",
         "where"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "longest-increasing-subsequence",
@@ -2088,8 +1966,7 @@
         "array",
         "nums",
         "return"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "longest-palindromic-substring",
@@ -2105,8 +1982,7 @@
         "palindrome",
         "reads",
         "same"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "longest-repeating-substring-with-replacement",
@@ -2122,8 +1998,7 @@
         "string",
         "consisting",
         "only"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "longest-substring-without-duplicates",
@@ -2139,8 +2014,7 @@
         "string",
         "find",
         "length"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "longest-turbulent-subarray",
@@ -2156,8 +2030,7 @@
         "array",
         "arr",
         "return"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "lowest-common-ancestor-in-binary-search-tree",
@@ -2173,8 +2046,7 @@
         "235",
         "given",
         "bst"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "lru-cache",
@@ -2190,25 +2062,7 @@
         "used",
         "https",
         "wikipedia"
-      ],
-      "testCasesCount": 0
-    },
-    {
-      "filename": "majority-element-ii",
-      "title": "Majority Element II",
-      "keywords": [
-        "majority",
-        "element",
-        "leetcode",
-        "229",
-        "given",
-        "integer",
-        "array",
-        "nums",
-        "size",
-        "find"
-      ],
-      "testCasesCount": 3
+      ]
     },
     {
       "filename": "majority-element",
@@ -2224,8 +2078,23 @@
         "size",
         "return",
         "appears"
-      ],
-      "testCasesCount": 2
+      ]
+    },
+    {
+      "filename": "majority-element-ii",
+      "title": "Majority Element II",
+      "keywords": [
+        "majority",
+        "element",
+        "leetcode",
+        "229",
+        "given",
+        "integer",
+        "array",
+        "nums",
+        "size",
+        "find"
+      ]
     },
     {
       "filename": "matchsticks-to-square",
@@ -2241,8 +2110,7 @@
         "where",
         "length",
         "ith"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "max-area-of-island",
@@ -2258,8 +2126,7 @@
         "grid",
         "where",
         "either"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "max-water-container",
@@ -2275,8 +2142,7 @@
         "heights",
         "where",
         "represents"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "maximum-frequency-stack",
@@ -2292,8 +2158,7 @@
         "data",
         "structure",
         "push"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "maximum-product-subarray",
@@ -2309,8 +2174,7 @@
         "array",
         "nums",
         "find"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "maximum-subarray",
@@ -2326,8 +2190,7 @@
         "find",
         "largest",
         "sum"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "maximum-sum-circular-subarray",
@@ -2343,8 +2206,7 @@
         "integer",
         "array",
         "nums"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "median-of-two-sorted-arrays",
@@ -2360,8 +2222,7 @@
         "nums1",
         "nums2",
         "size"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "meeting-rooms-iii",
@@ -2377,25 +2238,7 @@
         "given",
         "integer",
         "array"
-      ],
-      "testCasesCount": 2
-    },
-    {
-      "filename": "meeting-schedule-ii",
-      "title": "Meeting Rooms II",
-      "keywords": [
-        "meeting",
-        "rooms",
-        "leetcode",
-        "253",
-        "given",
-        "array",
-        "time",
-        "interval",
-        "objects",
-        "consisting"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "meeting-schedule",
@@ -2411,8 +2254,23 @@
         "interval",
         "objects",
         "consisting"
-      ],
-      "testCasesCount": 2
+      ]
+    },
+    {
+      "filename": "meeting-schedule-ii",
+      "title": "Meeting Rooms II",
+      "keywords": [
+        "meeting",
+        "rooms",
+        "leetcode",
+        "253",
+        "given",
+        "array",
+        "time",
+        "interval",
+        "objects",
+        "consisting"
+      ]
     },
     {
       "filename": "merge-intervals",
@@ -2428,8 +2286,7 @@
         "end_i",
         "all",
         "overlapping"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "merge-k-sorted-linked-lists",
@@ -2445,8 +2302,7 @@
         "where",
         "each",
         "list"
-      ],
-      "testCasesCount": 3
+      ]
     },
     {
       "filename": "merge-sorted-array",
@@ -2462,8 +2318,7 @@
         "arrays",
         "nums1",
         "nums2"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "merge-strings-alternately",
@@ -2479,8 +2334,7 @@
         "word1",
         "word2",
         "construct"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "merge-triplets-to-form-target",
@@ -2496,8 +2350,7 @@
         "given",
         "array",
         "integers"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "merge-two-sorted-linked-lists",
@@ -2513,8 +2366,7 @@
         "heads",
         "list1",
         "list2"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "min-cost-climbing-stairs",
@@ -2530,8 +2382,7 @@
         "array",
         "integers",
         "where"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "min-cost-to-connect-points",
@@ -2547,8 +2398,7 @@
         "given",
         "integer",
         "array"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "minimum-array-end",
@@ -2564,8 +2414,7 @@
         "integers",
         "construct",
         "positive"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "minimum-height-trees",
@@ -2581,8 +2430,7 @@
         "graph",
         "which",
         "any"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "minimum-interval-including-query",
@@ -2598,8 +2446,7 @@
         "given",
         "integer",
         "array"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "minimum-path-sum",
@@ -2615,8 +2462,7 @@
         "non",
         "negative",
         "numbers"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "minimum-size-subarray-sum",
@@ -2632,8 +2478,7 @@
         "array",
         "positive",
         "integers"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "minimum-stack",
@@ -2649,8 +2494,7 @@
         "supports",
         "push",
         "pop"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "minimum-window-with-characters",
@@ -2666,8 +2510,7 @@
         "return",
         "shortest",
         "such"
-      ],
-      "testCasesCount": 3
+      ]
     },
     {
       "filename": "missing-number",
@@ -2683,8 +2526,7 @@
         "containing",
         "integers",
         "range"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "multiply-strings",
@@ -2700,25 +2542,7 @@
         "represent",
         "non",
         "negative"
-      ],
-      "testCasesCount": 2
-    },
-    {
-      "filename": "n-queens-ii",
-      "title": "N-Queens II",
-      "keywords": [
-        "queens",
-        "leetcode",
-        "puzzle",
-        "problem",
-        "placing",
-        "chessboard",
-        "such",
-        "two",
-        "attack",
-        "each"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "n-queens",
@@ -2734,8 +2558,23 @@
         "attack",
         "each",
         "other"
-      ],
-      "testCasesCount": 1
+      ]
+    },
+    {
+      "filename": "n-queens-ii",
+      "title": "N-Queens II",
+      "keywords": [
+        "queens",
+        "leetcode",
+        "puzzle",
+        "problem",
+        "placing",
+        "chessboard",
+        "such",
+        "two",
+        "attack",
+        "each"
+      ]
     },
     {
       "filename": "n-th-tribonacci-number",
@@ -2751,8 +2590,7 @@
         "given",
         "return",
         "value"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "network-delay-time",
@@ -2768,8 +2606,7 @@
         "nodes",
         "labeled",
         "also"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "non-cyclical-number",
@@ -2785,8 +2622,7 @@
         "defined",
         "following",
         "algorithm"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "non-overlapping-intervals",
@@ -2802,8 +2638,7 @@
         "where",
         "start_i",
         "end_i"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "number-of-one-bits",
@@ -2819,8 +2654,7 @@
         "integer",
         "return",
         "its"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "online-stock-span",
@@ -2836,8 +2670,7 @@
         "collects",
         "daily",
         "price"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "open-the-lock",
@@ -2853,8 +2686,7 @@
         "wheel",
         "slots",
         "rotate"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "pacific-atlantic-water-flow",
@@ -2870,8 +2702,7 @@
         "rectangular",
         "island",
         "heights"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "palindrome-partitioning",
@@ -2887,8 +2718,7 @@
         "into",
         "substrings",
         "where"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "palindromic-substrings",
@@ -2904,8 +2734,7 @@
         "number",
         "within",
         "palindromes"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "partition-equal-subset-sum",
@@ -2921,8 +2750,7 @@
         "array",
         "positive",
         "integers"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "partition-labels",
@@ -2938,8 +2766,7 @@
         "lowercase",
         "english",
         "letters"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "partition-to-k-equal-sum-subsets",
@@ -2955,8 +2782,7 @@
         "integer",
         "array",
         "nums"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "path-with-minimum-effort",
@@ -2972,8 +2798,7 @@
         "array",
         "size",
         "rows"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "perfect-squares",
@@ -2989,8 +2814,7 @@
         "square",
         "numbers",
         "sum"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "permutation-string",
@@ -3006,25 +2830,7 @@
         "return",
         "true",
         "contains"
-      ],
-      "testCasesCount": 2
-    },
-    {
-      "filename": "permutations-ii",
-      "title": "Permutations II",
-      "keywords": [
-        "permutations",
-        "leetcode",
-        "given",
-        "array",
-        "nums",
-        "contain",
-        "duplicates",
-        "return",
-        "all",
-        "possible"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "permutations",
@@ -3040,8 +2846,23 @@
         "return",
         "all",
         "possible"
-      ],
-      "testCasesCount": 2
+      ]
+    },
+    {
+      "filename": "permutations-ii",
+      "title": "Permutations II",
+      "keywords": [
+        "permutations",
+        "leetcode",
+        "given",
+        "array",
+        "nums",
+        "contain",
+        "duplicates",
+        "return",
+        "all",
+        "possible"
+      ]
     },
     {
       "filename": "plus-one",
@@ -3057,8 +2878,7 @@
         "where",
         "each",
         "ith"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "pow-x-n",
@@ -3074,8 +2894,7 @@
         "power",
         "given",
         "floating"
-      ],
-      "testCasesCount": 3
+      ]
     },
     {
       "filename": "products-of-array-discluding-self",
@@ -3091,8 +2910,7 @@
         "given",
         "integer",
         "nums"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "range-sum-query-2d-immutable",
@@ -3108,8 +2926,7 @@
         "matrix",
         "handle",
         "multiple"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "reconstruct-flight-path",
@@ -3125,8 +2942,7 @@
         "list",
         "tickets",
         "where"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "redundant-connection",
@@ -3142,8 +2958,7 @@
         "graph",
         "nodes",
         "labeled"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "regular-expression-matching",
@@ -3159,8 +2974,7 @@
         "consisting",
         "lowercase",
         "english"
-      ],
-      "testCasesCount": 3
+      ]
     },
     {
       "filename": "remove-duplicates-from-sorted-array",
@@ -3176,8 +2990,7 @@
         "nums",
         "non",
         "decreasing"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "remove-element",
@@ -3193,8 +3006,7 @@
         "val",
         "your",
         "task"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "remove-node-from-end-of-linked-list",
@@ -3210,8 +3022,7 @@
         "given",
         "beginning",
         "head"
-      ],
-      "testCasesCount": 3
+      ]
     },
     {
       "filename": "reorder-linked-list",
@@ -3227,8 +3038,7 @@
         "singly",
         "positions",
         "length"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "reorganize-string",
@@ -3244,8 +3054,7 @@
         "any",
         "two",
         "adjacent"
-      ],
-      "testCasesCount": 3
+      ]
     },
     {
       "filename": "reverse-a-linked-list",
@@ -3261,8 +3070,7 @@
         "singly",
         "head",
         "return"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "reverse-bits",
@@ -3278,8 +3086,7 @@
         "integer",
         "binary",
         "representation"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "reverse-integer",
@@ -3295,8 +3102,7 @@
         "after",
         "reversing",
         "each"
-      ],
-      "testCasesCount": 3
+      ]
     },
     {
       "filename": "reverse-linked-list-ii",
@@ -3312,8 +3118,7 @@
         "two",
         "integers",
         "left"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "reverse-nodes-in-k-group",
@@ -3329,8 +3134,7 @@
         "linked",
         "list",
         "positive"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "reverse-string",
@@ -3346,8 +3150,7 @@
         "which",
         "represents",
         "write"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "roman-to-integer",
@@ -3363,8 +3166,7 @@
         "symbols",
         "java",
         "symbol"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "rotate-array",
@@ -3380,8 +3182,7 @@
         "right",
         "steps",
         "where"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "rotate-matrix",
@@ -3397,8 +3198,7 @@
         "degrees",
         "clockwise",
         "place"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "rotting-fruit",
@@ -3414,8 +3214,7 @@
         "grid",
         "each",
         "cell"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "same-binary-tree",
@@ -3431,8 +3230,7 @@
         "two",
         "trees",
         "return"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "search-2d-matrix",
@@ -3448,25 +3246,7 @@
         "each",
         "row",
         "sorted"
-      ],
-      "testCasesCount": 0
-    },
-    {
-      "filename": "search-for-word-ii",
-      "title": "Word Search II",
-      "keywords": [
-        "word",
-        "search",
-        "leetcode",
-        "212",
-        "given",
-        "grid",
-        "characters",
-        "board",
-        "list",
-        "strings"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "search-for-word",
@@ -3482,8 +3262,23 @@
         "string",
         "return",
         "true"
-      ],
-      "testCasesCount": 0
+      ]
+    },
+    {
+      "filename": "search-for-word-ii",
+      "title": "Word Search II",
+      "keywords": [
+        "word",
+        "search",
+        "leetcode",
+        "212",
+        "given",
+        "grid",
+        "characters",
+        "board",
+        "list",
+        "strings"
+      ]
     },
     {
       "filename": "search-in-rotated-sorted-array-ii",
@@ -3499,8 +3294,7 @@
         "which",
         "originally",
         "non"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "search-insert-position",
@@ -3516,8 +3310,7 @@
         "distinct",
         "integers",
         "target"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "serialize-and-deserialize-binary-tree",
@@ -3533,8 +3326,7 @@
         "algorithm",
         "serialization",
         "process"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "set-zeroes-in-matrix",
@@ -3550,8 +3342,7 @@
         "its",
         "entire",
         "row"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "simplify-path",
@@ -3567,8 +3358,7 @@
         "file",
         "system",
         "which"
-      ],
-      "testCasesCount": 3
+      ]
     },
     {
       "filename": "single-number",
@@ -3584,8 +3374,7 @@
         "array",
         "integers",
         "nums"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "single-threaded-cpu",
@@ -3601,8 +3390,7 @@
         "labeled",
         "represented",
         "integer"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "sliding-window-maximum",
@@ -3618,8 +3406,7 @@
         "integers",
         "nums",
         "integer"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "sort-an-array",
@@ -3635,8 +3422,7 @@
         "ascending",
         "order",
         "return"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "sort-colors",
@@ -3652,8 +3438,7 @@
         "elements",
         "where",
         "each"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "spiral-matrix",
@@ -3669,8 +3454,7 @@
         "all",
         "elements",
         "within"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "split-array-largest-sum",
@@ -3686,8 +3470,7 @@
         "integer",
         "nums",
         "into"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "sqrtx",
@@ -3703,42 +3486,7 @@
         "square",
         "root",
         "rounded"
-      ],
-      "testCasesCount": 2
-    },
-    {
-      "filename": "stone-game-ii",
-      "title": "Stone Game II",
-      "keywords": [
-        "stone",
-        "game",
-        "leetcode",
-        "1140",
-        "alice",
-        "bob",
-        "continue",
-        "their",
-        "games",
-        "piles"
-      ],
-      "testCasesCount": 2
-    },
-    {
-      "filename": "stone-game-iii",
-      "title": "Stone Game III",
-      "keywords": [
-        "stone",
-        "game",
-        "iii",
-        "leetcode",
-        "1406",
-        "alice",
-        "bob",
-        "playing",
-        "piles",
-        "stones"
-      ],
-      "testCasesCount": 3
+      ]
     },
     {
       "filename": "stone-game",
@@ -3754,8 +3502,39 @@
         "there",
         "even",
         "number"
-      ],
-      "testCasesCount": 2
+      ]
+    },
+    {
+      "filename": "stone-game-ii",
+      "title": "Stone Game II",
+      "keywords": [
+        "stone",
+        "game",
+        "leetcode",
+        "1140",
+        "alice",
+        "bob",
+        "continue",
+        "their",
+        "games",
+        "piles"
+      ]
+    },
+    {
+      "filename": "stone-game-iii",
+      "title": "Stone Game III",
+      "keywords": [
+        "stone",
+        "game",
+        "iii",
+        "leetcode",
+        "1406",
+        "alice",
+        "bob",
+        "playing",
+        "piles",
+        "stones"
+      ]
     },
     {
       "filename": "string-encode-and-decode",
@@ -3771,8 +3550,7 @@
         "list",
         "single",
         "string"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "subarray-sum-equals-k",
@@ -3788,25 +3566,7 @@
         "integers",
         "nums",
         "integer"
-      ],
-      "testCasesCount": 2
-    },
-    {
-      "filename": "subsets-ii",
-      "title": "Subsets II",
-      "keywords": [
-        "subsets",
-        "leetcode",
-        "given",
-        "array",
-        "nums",
-        "integers",
-        "which",
-        "contain",
-        "duplicates",
-        "return"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "subsets",
@@ -3822,8 +3582,23 @@
         "return",
         "all",
         "possible"
-      ],
-      "testCasesCount": 2
+      ]
+    },
+    {
+      "filename": "subsets-ii",
+      "title": "Subsets II",
+      "keywords": [
+        "subsets",
+        "leetcode",
+        "given",
+        "array",
+        "nums",
+        "integers",
+        "which",
+        "contain",
+        "duplicates",
+        "return"
+      ]
     },
     {
       "filename": "subtree-of-a-binary-tree",
@@ -3839,8 +3614,7 @@
         "two",
         "binary",
         "trees"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "sum-of-all-subset-xor-totals",
@@ -3856,8 +3630,7 @@
         "array",
         "defined",
         "bitwise"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "sum-of-two-integers",
@@ -3873,8 +3646,7 @@
         "without",
         "using",
         "operators"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "surrounded-regions",
@@ -3890,8 +3662,7 @@
         "containing",
         "characters",
         "continous"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "swim-in-rising-water",
@@ -3907,8 +3678,7 @@
         "matrix",
         "distinct",
         "integers"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "target-sum",
@@ -3924,8 +3694,7 @@
         "nums",
         "integer",
         "each"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "task-scheduling",
@@ -3941,8 +3710,7 @@
         "tasks",
         "where",
         "uppercase"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "three-integer-sum",
@@ -3958,8 +3726,7 @@
         "all",
         "triplets",
         "where"
-      ],
-      "testCasesCount": 3
+      ]
     },
     {
       "filename": "time-based-key-value-store",
@@ -3975,8 +3742,7 @@
         "implement",
         "data",
         "structure"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "top-k-elements-in-list",
@@ -3992,8 +3758,7 @@
         "array",
         "nums",
         "return"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "transpose-matrix",
@@ -4009,8 +3774,7 @@
         "return",
         "flipped",
         "over"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "trapping-rain-water",
@@ -4026,25 +3790,7 @@
         "negative",
         "integers",
         "height"
-      ],
-      "testCasesCount": 0
-    },
-    {
-      "filename": "two-integer-sum-ii",
-      "title": "Two Integer Sum II",
-      "keywords": [
-        "two",
-        "integer",
-        "sum",
-        "leetcode",
-        "167",
-        "input",
-        "array",
-        "sorted",
-        "given",
-        "integers"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "two-integer-sum",
@@ -4060,8 +3806,23 @@
         "integer",
         "target",
         "return"
-      ],
-      "testCasesCount": 3
+      ]
+    },
+    {
+      "filename": "two-integer-sum-ii",
+      "title": "Two Integer Sum II",
+      "keywords": [
+        "two",
+        "integer",
+        "sum",
+        "leetcode",
+        "167",
+        "input",
+        "array",
+        "sorted",
+        "given",
+        "integers"
+      ]
     },
     {
       "filename": "unique-paths-ii",
@@ -4077,8 +3838,7 @@
         "there",
         "robot",
         "initially"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "valid-binary-search-tree",
@@ -4094,8 +3854,7 @@
         "root",
         "return",
         "true"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "valid-palindrome-ii",
@@ -4111,8 +3870,7 @@
         "true",
         "after",
         "deleting"
-      ],
-      "testCasesCount": 3
+      ]
     },
     {
       "filename": "valid-parenthesis-string",
@@ -4128,8 +3886,7 @@
         "contains",
         "only",
         "three"
-      ],
-      "testCasesCount": 2
+      ]
     },
     {
       "filename": "valid-sudoku",
@@ -4145,8 +3902,7 @@
         "followed",
         "each",
         "row"
-      ],
-      "testCasesCount": 1
+      ]
     },
     {
       "filename": "valid-tree",
@@ -4162,8 +3918,7 @@
         "labeled",
         "list",
         "undirected"
-      ],
-      "testCasesCount": 0
+      ]
     },
     {
       "filename": "validate-parentheses",
@@ -4179,8 +3934,7 @@
         "characters",
         "input",
         "only"
-      ],
-      "testCasesCount": 3
+      ]
     },
     {
       "filename": "verifying-an-alien-dictionary",
@@ -4196,25 +3950,7 @@
         "also",
         "use",
         "english"
-      ],
-      "testCasesCount": 2
-    },
-    {
-      "filename": "word-break-ii",
-      "title": "Word Break II",
-      "keywords": [
-        "word",
-        "break",
-        "leetcode",
-        "140",
-        "given",
-        "string",
-        "dictionary",
-        "strings",
-        "worddict",
-        "add"
-      ],
-      "testCasesCount": 3
+      ]
     },
     {
       "filename": "word-break",
@@ -4230,8 +3966,23 @@
         "strings",
         "worddict",
         "return"
-      ],
-      "testCasesCount": 3
+      ]
+    },
+    {
+      "filename": "word-break-ii",
+      "title": "Word Break II",
+      "keywords": [
+        "word",
+        "break",
+        "leetcode",
+        "140",
+        "given",
+        "string",
+        "dictionary",
+        "strings",
+        "worddict",
+        "add"
+      ]
     },
     {
       "filename": "word-ladder",
@@ -4247,10 +3998,9 @@
         "beginword",
         "endword",
         "also"
-      ],
-      "testCasesCount": 2
+      ]
     }
   ],
-  "count": 250,
-  "lastUpdated": "2025-08-03T18:59:27.199Z"
+  "lastUpdated": "2025-08-03T19:42:18.092Z",
+  "totalQuestions": 250
 }

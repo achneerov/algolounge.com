@@ -338,22 +338,63 @@ sys.stdout = test_output
       const javaWrapper = this.createJavaWrapper(code, functionName, testCases);
       await window.cheerpOSAddStringFile("/str/TestRunner.java", javaWrapper);
 
-      // Compile the Java code
-      await window.cheerpjRunJar(
-        "/str/ecj.jar",
-        "-source",
-        "1.7",
-        "-target", 
-        "1.7",
-        "-d",
-        "/files",
-        "/str/TestRunner.java"
-      );
+      // Compile the Java code and capture compilation output
+      const originalConsoleError = console.error;
+      const originalConsoleLog = console.log;
+      const compilationOutput: string[] = [];
+      
+      // Capture both console.log and console.error during compilation
+      console.log = (...args: any[]) => {
+        const line = args.map(arg => String(arg)).join(' ');
+        compilationOutput.push(line);
+        originalConsoleLog(...args);
+      };
+      
+      console.error = (...args: any[]) => {
+        const line = args.map(arg => String(arg)).join(' ');
+        compilationOutput.push(line);
+        originalConsoleError(...args);
+      };
 
-      // Get the compiled class files
+      try {
+        await window.cheerpjRunJar(
+          "/str/ecj.jar",
+          "-source",
+          "1.7",
+          "-target", 
+          "1.7",
+          "-d",
+          "/files",
+          "/str/TestRunner.java"
+        );
+      } finally {
+        // Restore original console methods
+        console.log = originalConsoleLog;
+        console.error = originalConsoleError;
+      }
+
+      // Check for compilation errors FIRST, before checking for class files
+      // This prevents using old successful class files when current compilation failed
+      const errorLines = compilationOutput.filter(line => 
+        line.includes('ERROR') || 
+        line.includes('error') ||
+        line.includes('cannot find symbol') ||
+        line.includes('cannot resolve') ||
+        line.includes('incompatible types') ||
+        line.includes('method') && line.includes('cannot be applied') ||
+        line.includes('problems (') && line.includes('errors')
+      );
+      
+      if (errorLines.length > 0) {
+        throw new Error(this.formatCompilationError(errorLines));
+      } else if (compilationOutput.length > 0 && compilationOutput.some(line => line.includes('problems (') && line.includes('errors'))) {
+        throw new Error(this.formatCompilationError(compilationOutput));
+      }
+
+      // Only after confirming no compilation errors, check for class files
       const testRunnerBlob = await window.cjFileBlob("/files/TestRunner.class");
       if (!testRunnerBlob) {
-        throw new Error("Compilation failed - no TestRunner class file generated");
+        throw new Error("Compilation failed - no class file generated");
       }
       const testRunnerData = await testRunnerBlob.arrayBuffer();
 
@@ -370,18 +411,32 @@ sys.stdout = test_output
         if (userClassBlob) {
           const userClassData = await userClassBlob.arrayBuffer();
           zip.file(`${classMatch[1]}.class`, userClassData);
+        } else {
+          // Check if there were compilation errors for the user class
+          const errorLines = compilationOutput.filter(line => 
+            line.includes(classMatch[1]) && (
+              line.includes('ERROR') || 
+              line.includes('error') ||
+              line.includes('cannot find symbol') ||
+              line.includes('cannot resolve') ||
+              line.includes('incompatible types')
+            )
+          );
+          
+          if (errorLines.length > 0) {
+            throw new Error(this.formatCompilationError(errorLines));
+          }
         }
       }
 
       // Generate and upload JAR
       const jarBlob = await zip.generateAsync({ type: "blob" });
       const jarBytes = await jarBlob.arrayBuffer();
-      const timestamp = Date.now();
-      const jarPath = `/str/solution_${timestamp}.jar`;
+      const jarPath = `/str/solution.jar`;
       await window.cheerpOSAddStringFile(jarPath, new Uint8Array(jarBytes));
 
       // Execute the JAR and capture results
-      const originalConsoleLog = console.log;
+      const executionConsoleLog = console.log;
       const capturedOutput: string[] = [];
       const userOutput: string[] = [];
       
@@ -410,7 +465,7 @@ sys.stdout = test_output
         testResults.push(...this.parseJavaTestResults(capturedOutput, testCases, orderMatters));
         
       } finally {
-        console.log = originalConsoleLog;
+        console.log = executionConsoleLog;
       }
 
     } catch (error) {
@@ -679,4 +734,29 @@ public class TestRunner {
     // For primitive types and final comparison
     return normalizedA === normalizedB;
   }
+
+  private formatCompilationError(errorLines: string[]): string {
+    // Clean up and format compilation errors for better readability
+    const cleanedErrors = errorLines
+      .filter(line => line.trim().length > 0)
+      .map(line => {
+        // Remove common prefixes and make more readable
+        return line
+          .replace(/^.*?TestRunner\.java:(\d+):\s*/, 'Line $1: ')
+          .replace(/^.*?\.java:(\d+):\s*/, 'Line $1: ')
+          .replace(/\s+/g, ' ')
+          .trim();
+      })
+      .filter(line => !line.includes('Note:') && !line.includes('warning:'));
+
+    if (cleanedErrors.length === 0) {
+      return 'Compilation failed';
+    }
+
+    // Group similar errors and provide a clean summary
+    const uniqueErrors = [...new Set(cleanedErrors)];
+    
+    return `Compilation Error:\n${uniqueErrors.slice(0, 5).join('\n')}${uniqueErrors.length > 5 ? '\n... and more errors' : ''}`;
+  }
+
 }

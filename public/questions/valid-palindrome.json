@@ -1,0 +1,59 @@
+{
+  "filename": "valid-palindrome",
+  "title": "Valid Palindrome",
+  "keywords": [
+    "valid",
+    "palindrome",
+    "string",
+    "alphanumeric",
+    "two",
+    "pointers"
+  ],
+  "description": "<h2>Valid Palindrome</h2><p>A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.</p><p>Given a string <code>s</code>, return <code>true</code> if it is a palindrome, or <code>false</code> otherwise.</p><h3>Examples:</h3><ul><li><strong>Example 1:</strong><br>Input: s = \"A man, a plan, a canal: Panama\"<br>Output: true<br>Explanation: \"amanaplanacanalpanama\" is a palindrome.</li><li><strong>Example 2:</strong><br>Input: s = \"race a car\"<br>Output: false<br>Explanation: \"raceacar\" is not a palindrome.</li><li><strong>Example 3:</strong><br>Input: s = \" \"<br>Output: true<br>Explanation: s is an empty string \"\" after removing non-alphanumeric characters.</li></ul><h3>Constraints:</h3><ul><li>1 <= s.length <= 2 * 10<sup>5</sup></li><li>s consists only of printable ASCII characters.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def isPalindrome(s):\n    ",
+      "solution_text": "Use two pointers from both ends, skipping non-alphanumeric characters.",
+      "solution_code": "def isPalindrome(s):\n    left, right = 0, len(s) - 1\n    \n    while left < right:\n        while left < right and not s[left].isalnum():\n            left += 1\n        while left < right and not s[right].isalnum():\n            right -= 1\n        \n        if s[left].lower() != s[right].lower():\n            return False\n        \n        left += 1\n        right -= 1\n    \n    return True"
+    },
+    "javascript": {
+      "template": "function isPalindrome(s) {\n  \n}",
+      "solution_text": "Use two pointers from both ends, skipping non-alphanumeric characters.",
+      "solution_code": "function isPalindrome(s) {\n    let left = 0;\n    let right = s.length - 1;\n    \n    while (left < right) {\n        while (left < right && !isAlphanumeric(s[left])) {\n            left++;\n        }\n        while (left < right && !isAlphanumeric(s[right])) {\n            right--;\n        }\n        \n        if (s[left].toLowerCase() !== s[right].toLowerCase()) {\n            return false;\n        }\n        \n        left++;\n        right--;\n    }\n    \n    return true;\n}\n\nfunction isAlphanumeric(char) {\n    return /[a-zA-Z0-9]/.test(char);\n}"
+    },
+    "typescript": {
+      "template": "function isPalindrome(s: string): boolean {\n  \n}",
+      "solution_text": "Use two pointers from both ends, skipping non-alphanumeric characters.",
+      "solution_code": "function isPalindrome(s: string): boolean {\n    let left = 0;\n    let right = s.length - 1;\n    \n    while (left < right) {\n        while (left < right && !isAlphanumeric(s[left])) {\n            left++;\n        }\n        while (left < right && !isAlphanumeric(s[right])) {\n            right--;\n        }\n        \n        if (s[left].toLowerCase() !== s[right].toLowerCase()) {\n            return false;\n        }\n        \n        left++;\n        right--;\n    }\n    \n    return true;\n}\n\nfunction isAlphanumeric(char: string): boolean {\n    return /[a-zA-Z0-9]/.test(char);\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public boolean isPalindrome(String s) {\n        \n    }\n}",
+      "solution_text": "Use two pointers from both ends, skipping non-alphanumeric characters.",
+      "solution_code": "class Solution {\n    public boolean isPalindrome(String s) {\n        int left = 0;\n        int right = s.length() - 1;\n        \n        while (left < right) {\n            while (left < right && !Character.isLetterOrDigit(s.charAt(left))) {\n                left++;\n            }\n            while (left < right && !Character.isLetterOrDigit(s.charAt(right))) {\n                right--;\n            }\n            \n            if (Character.toLowerCase(s.charAt(left)) != Character.toLowerCase(s.charAt(right))) {\n                return false;\n            }\n            \n            left++;\n            right--;\n        }\n        \n        return true;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "s": "A man, a plan, a canal: Panama"
+      },
+      "output": true
+    },
+    {
+      "id": 2,
+      "input": {
+        "s": "race a car"
+      },
+      "output": false
+    },
+    {
+      "id": 3,
+      "input": {
+        "s": " "
+      },
+      "output": true
+    }
+  ]
+}

@@ -63,56 +63,8 @@
         "async",
         "functional programming"
       ]
-    },
-    {
-      "filename": "python_mastery_course",
-      "title": "Python Mastery Course",
-      "keywords": [
-        "python",
-        "programming",
-        "object-oriented",
-        "data science",
-        "machine learning",
-        "backend development",
-        "automation",
-        "scripting",
-        "libraries",
-        "frameworks"
-      ]
-    },
-    {
-      "filename": "system_design_fundamentals",
-      "title": "System Design Fundamentals",
-      "keywords": [
-        "system design",
-        "architecture",
-        "scalability",
-        "microservices",
-        "databases",
-        "distributed systems",
-        "load balancing",
-        "caching",
-        "engineering",
-        "senior level"
-      ]
-    },
-    {
-      "filename": "react_advanced_patterns",
-      "title": "Advanced React Patterns & Performance",
-      "keywords": [
-        "react",
-        "frontend",
-        "performance",
-        "hooks",
-        "state management",
-        "component patterns",
-        "optimization",
-        "advanced",
-        "typescript",
-        "modern react"
-      ]
     }
   ],
-  "lastUpdated": "2025-08-02T18:39:46.871Z",
-  "totalCourses": 7
+  "lastUpdated": "2025-08-03T03:43:06.401Z",
+  "totalCourses": 4
 }

@@ -1,0 +1,55 @@
+{
+  "filename": "longest-repeating-character-replacement",
+  "title": "Longest Repeating Character Replacement",
+  "keywords": [
+    "longest",
+    "repeating",
+    "character",
+    "replacement",
+    "sliding",
+    "window",
+    "frequency"
+  ],
+  "description": "<h2>Longest Repeating Character Replacement</h2><p>You are given a string <code>s</code> and an integer <code>k</code>. You can choose any character of the string and change it to any other uppercase English character. You can perform this operation at most <code>k</code> times.</p><p>Return <em>the length of the longest substring containing the same letter you can get after performing the above operations</em>.</p><h3>Examples:</h3><ul><li><strong>Example 1:</strong><br>Input: s = \"ABAB\", k = 2<br>Output: 4<br>Explanation: Replace the two 'A's with two 'B's or vice versa.</li><li><strong>Example 2:</strong><br>Input: s = \"AABABBA\", k = 1<br>Output: 4<br>Explanation: Replace the one 'A' in the middle with 'B' and form \"AABBBBA\".<br>The substring \"BBBB\" has the longest repeating letters, which is 4.</li></ul><h3>Constraints:</h3><ul><li>1 <= s.length <= 10<sup>5</sup></li><li>s consists of only uppercase English letters.</li><li>0 <= k <= s.length</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def characterReplacement(s, k):\n    ",
+      "solution_text": "Use sliding window. Track character frequencies and maintain window where replacements needed <= k.",
+      "solution_code": "def characterReplacement(s, k):\n    count = {}\n    left = 0\n    max_freq = 0\n    max_length = 0\n    \n    for right in range(len(s)):\n        count[s[right]] = count.get(s[right], 0) + 1\n        max_freq = max(max_freq, count[s[right]])\n        \n        window_size = right - left + 1\n        if window_size - max_freq > k:\n            count[s[left]] -= 1\n            left += 1\n        \n        max_length = max(max_length, right - left + 1)\n    \n    return max_length"
+    },
+    "javascript": {
+      "template": "function characterReplacement(s, k) {\n  \n}",
+      "solution_text": "Use sliding window. Track character frequencies and maintain window where replacements needed <= k.",
+      "solution_code": "function characterReplacement(s, k) {\n    const count = {};\n    let left = 0;\n    let maxFreq = 0;\n    let maxLength = 0;\n    \n    for (let right = 0; right < s.length; right++) {\n        count[s[right]] = (count[s[right]] || 0) + 1;\n        maxFreq = Math.max(maxFreq, count[s[right]]);\n        \n        const windowSize = right - left + 1;\n        if (windowSize - maxFreq > k) {\n            count[s[left]]--;\n            left++;\n        }\n        \n        maxLength = Math.max(maxLength, right - left + 1);\n    }\n    \n    return maxLength;\n}"
+    },
+    "typescript": {
+      "template": "function characterReplacement(s: string, k: number): number {\n  \n}",
+      "solution_text": "Use sliding window. Track character frequencies and maintain window where replacements needed <= k.",
+      "solution_code": "function characterReplacement(s: string, k: number): number {\n    const count: { [key: string]: number } = {};\n    let left = 0;\n    let maxFreq = 0;\n    let maxLength = 0;\n    \n    for (let right = 0; right < s.length; right++) {\n        count[s[right]] = (count[s[right]] || 0) + 1;\n        maxFreq = Math.max(maxFreq, count[s[right]]);\n        \n        const windowSize = right - left + 1;\n        if (windowSize - maxFreq > k) {\n            count[s[left]]--;\n            left++;\n        }\n        \n        maxLength = Math.max(maxLength, right - left + 1);\n    }\n    \n    return maxLength;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int characterReplacement(String s, int k) {\n        \n    }\n}",
+      "solution_text": "Use sliding window. Track character frequencies and maintain window where replacements needed <= k.",
+      "solution_code": "class Solution {\n    public int characterReplacement(String s, int k) {\n        int[] count = new int[26];\n        int left = 0;\n        int maxFreq = 0;\n        int maxLength = 0;\n        \n        for (int right = 0; right < s.length(); right++) {\n            count[s.charAt(right) - 'A']++;\n            maxFreq = Math.max(maxFreq, count[s.charAt(right) - 'A']);\n            \n            int windowSize = right - left + 1;\n            if (windowSize - maxFreq > k) {\n                count[s.charAt(left) - 'A']--;\n                left++;\n            }\n            \n            maxLength = Math.max(maxLength, right - left + 1);\n        }\n        \n        return maxLength;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "s": "ABAB",
+        "k": 2
+      },
+      "output": 4
+    },
+    {
+      "id": 2,
+      "input": {
+        "s": "AABABBA",
+        "k": 1
+      },
+      "output": 4
+    }
+  ]
+}

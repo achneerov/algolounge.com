@@ -1,0 +1,62 @@
+{
+  "filename": "sum-of-two-integers",
+  "title": "Sum of Two Integers",
+  "keywords": [
+    "sum",
+    "integers",
+    "bit",
+    "manipulation",
+    "xor",
+    "carry"
+  ],
+  "description": "<h2>Sum of Two Integers</h2><p>Given two integers <code>a</code> and <code>b</code>, return the sum of the two integers without using the operators <code>+</code> and <code>-</code>.</p><h3>Examples:</h3><ul><li><strong>Example 1:</strong><br>Input: a = 1, b = 2<br>Output: 3</li><li><strong>Example 2:</strong><br>Input: a = 2, b = 3<br>Output: 5</li></ul><h3>Constraints:</h3><ul><li>-1000 <= a, b <= 1000</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def getSum(a, b):\n    ",
+      "solution_text": "Use bit manipulation: XOR for sum without carry, AND shifted left for carry.",
+      "solution_code": "def getSum(a, b):\n    # 32-bit integer limit\n    MAX = 0x7FFFFFFF\n    mask = 0xFFFFFFFF\n    \n    while b != 0:\n        a, b = (a ^ b) & mask, ((a & b) << 1) & mask\n    \n    return a if a <= MAX else ~(a ^ mask)"
+    },
+    "javascript": {
+      "template": "function getSum(a, b) {\n  \n}",
+      "solution_text": "Use bit manipulation: XOR for sum without carry, AND shifted left for carry.",
+      "solution_code": "function getSum(a, b) {\n    while (b !== 0) {\n        const carry = a & b;\n        a = a ^ b;\n        b = carry << 1;\n    }\n    return a;\n}"
+    },
+    "typescript": {
+      "template": "function getSum(a: number, b: number): number {\n  \n}",
+      "solution_text": "Use bit manipulation: XOR for sum without carry, AND shifted left for carry.",
+      "solution_code": "function getSum(a: number, b: number): number {\n    while (b !== 0) {\n        const carry = a & b;\n        a = a ^ b;\n        b = carry << 1;\n    }\n    return a;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int getSum(int a, int b) {\n        \n    }\n}",
+      "solution_text": "Use bit manipulation: XOR for sum without carry, AND shifted left for carry.",
+      "solution_code": "class Solution {\n    public int getSum(int a, int b) {\n        while (b != 0) {\n            int carry = a & b;\n            a = a ^ b;\n            b = carry << 1;\n        }\n        return a;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "a": 1,
+        "b": 2
+      },
+      "output": 3
+    },
+    {
+      "id": 2,
+      "input": {
+        "a": 2,
+        "b": 3
+      },
+      "output": 5
+    },
+    {
+      "id": 3,
+      "input": {
+        "a": -2,
+        "b": 3
+      },
+      "output": 1
+    }
+  ]
+}

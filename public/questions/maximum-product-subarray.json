@@ -1,0 +1,72 @@
+{
+  "filename": "maximum-product-subarray",
+  "title": "Maximum Product Subarray",
+  "keywords": [
+    "maximum",
+    "product",
+    "subarray",
+    "contiguous",
+    "negative",
+    "zero"
+  ],
+  "description": "<h2>Maximum Product Subarray</h2><p>Given an integer array <code>nums</code>, find a contiguous non-empty subarray within the array that has the largest product, and return the product.</p><p>The test cases are generated so that the answer will fit in a 32-bit integer.</p><p>A subarray is a contiguous subsequence of the array.</p><h3>Examples:</h3><ul><li><strong>Example 1:</strong><br>Input: nums = [2,3,-2,4]<br>Output: 6<br>Explanation: [2,3] has the largest product 6.</li><li><strong>Example 2:</strong><br>Input: nums = [-2,0,-1]<br>Output: 0<br>Explanation: The result cannot be 2, because [-2,-1] is not a subarray.</li></ul><h3>Constraints:</h3><ul><li>1 <= nums.length <= 2 * 10<sup>4</sup></li><li>-10 <= nums[i] <= 10</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def maxProduct(nums):\n    ",
+      "solution_text": "Track both maximum and minimum products since negative numbers can flip the result.",
+      "solution_code": "def maxProduct(nums):\n    if not nums:\n        return 0\n    \n    max_prod = min_prod = result = nums[0]\n    \n    for i in range(1, len(nums)):\n        if nums[i] < 0:\n            max_prod, min_prod = min_prod, max_prod\n        \n        max_prod = max(nums[i], max_prod * nums[i])\n        min_prod = min(nums[i], min_prod * nums[i])\n        \n        result = max(result, max_prod)\n    \n    return result"
+    },
+    "javascript": {
+      "template": "function maxProduct(nums) {\n  \n}",
+      "solution_text": "Track both maximum and minimum products since negative numbers can flip the result.",
+      "solution_code": "function maxProduct(nums) {\n    if (nums.length === 0) return 0;\n    \n    let maxProd = nums[0];\n    let minProd = nums[0];\n    let result = nums[0];\n    \n    for (let i = 1; i < nums.length; i++) {\n        if (nums[i] < 0) {\n            [maxProd, minProd] = [minProd, maxProd];\n        }\n        \n        maxProd = Math.max(nums[i], maxProd * nums[i]);\n        minProd = Math.min(nums[i], minProd * nums[i]);\n        \n        result = Math.max(result, maxProd);\n    }\n    \n    return result;\n}"
+    },
+    "typescript": {
+      "template": "function maxProduct(nums: number[]): number {\n  \n}",
+      "solution_text": "Track both maximum and minimum products since negative numbers can flip the result.",
+      "solution_code": "function maxProduct(nums: number[]): number {\n    if (nums.length === 0) return 0;\n    \n    let maxProd = nums[0];\n    let minProd = nums[0];\n    let result = nums[0];\n    \n    for (let i = 1; i < nums.length; i++) {\n        if (nums[i] < 0) {\n            [maxProd, minProd] = [minProd, maxProd];\n        }\n        \n        maxProd = Math.max(nums[i], maxProd * nums[i]);\n        minProd = Math.min(nums[i], minProd * nums[i]);\n        \n        result = Math.max(result, maxProd);\n    }\n    \n    return result;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int maxProduct(int[] nums) {\n        \n    }\n}",
+      "solution_text": "Track both maximum and minimum products since negative numbers can flip the result.",
+      "solution_code": "class Solution {\n    public int maxProduct(int[] nums) {\n        if (nums.length == 0) return 0;\n        \n        int maxProd = nums[0];\n        int minProd = nums[0];\n        int result = nums[0];\n        \n        for (int i = 1; i < nums.length; i++) {\n            if (nums[i] < 0) {\n                int temp = maxProd;\n                maxProd = minProd;\n                minProd = temp;\n            }\n            \n            maxProd = Math.max(nums[i], maxProd * nums[i]);\n            minProd = Math.min(nums[i], minProd * nums[i]);\n            \n            result = Math.max(result, maxProd);\n        }\n        \n        return result;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [
+          2,
+          3,
+          -2,
+          4
+        ]
+      },
+      "output": 6
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [
+          -2,
+          0,
+          -1
+        ]
+      },
+      "output": 0
+    },
+    {
+      "id": 3,
+      "input": {
+        "nums": [
+          -2,
+          3,
+          -4
+        ]
+      },
+      "output": 24
+    }
+  ]
+}

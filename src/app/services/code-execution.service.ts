@@ -20,6 +20,7 @@ interface PyodideInterface {
   providedIn: 'root'
 })
 export class CodeExecutionService {
+  private readonly JAVA_LINE_OFFSET = 3; // Lines added before user code in Java wrapper
   private pyodide: PyodideInterface | null = null;
   private pyodideLoading: Promise<PyodideInterface> | null = null;
   private cheerpjInitialized = false;
@@ -740,10 +741,21 @@ public class TestRunner {
     const cleanedErrors = errorLines
       .filter(line => line.trim().length > 0)
       .map(line => {
-        // Remove common prefixes and make more readable
+        // Adjust line numbers to match user's IDE - handle ECJ format "(at line X)"
         return line
-          .replace(/^.*?TestRunner\.java:(\d+):\s*/, 'Line $1: ')
-          .replace(/^.*?\.java:(\d+):\s*/, 'Line $1: ')
+          .replace(/\(at line (\d+)\)/g, (match, lineNum) => {
+            const adjustedLine = Math.max(1, parseInt(lineNum) - this.JAVA_LINE_OFFSET);
+            return `(at line ${adjustedLine})`;
+          })
+          // Also handle other formats like "TestRunner.java:X:"
+          .replace(/^.*?TestRunner\.java:(\d+):\s*/, (match, lineNum) => {
+            const adjustedLine = Math.max(1, parseInt(lineNum) - this.JAVA_LINE_OFFSET);
+            return `Line ${adjustedLine}: `;
+          })
+          .replace(/^.*?\.java:(\d+):\s*/, (match, lineNum) => {
+            const adjustedLine = Math.max(1, parseInt(lineNum) - this.JAVA_LINE_OFFSET);
+            return `Line ${adjustedLine}: `;
+          })
           .replace(/\s+/g, ' ')
           .trim();
       })

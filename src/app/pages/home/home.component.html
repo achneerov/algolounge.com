@@ -1,9 +1,138 @@
 <div class="landing-container">
-  <div class="hero-section">
-    <h1 class="hero-title">Welcome to AlgoLounge</h1>
-    <p class="hero-subtitle">Test your coding skills with interactive programming challenges</p>
-    <button class="cta-button" (click)="navigateToQuestions()">
-      Start Coding Challenges
+  <!-- Hero Section -->
+  <section class="hero-section">
+
+    <div class="hero-content">
+  <h1 class="hero-title">
+    Master Algorithms & 
+    <span class="gradient-text">Data Structures</span>
+  </h1>
+
+  <p class="hero-subtitle">
+    Practice coding interviews with interactive challenges, real-time execution, 
+    and detailed solutions. Join thousands of developers improving their skills.
+  </p>
+
+  <div class="hero-buttons">
+    <button class="hero-cta-primary" (click)="navigateToRandomQuestion()">
+      <span class="button-icon">💻</span>
+      Random Question
+    </button>
+    <button class="hero-cta-secondary" (click)="navigateToRandomCourse()">
+      <span class="button-icon">📚</span>
+      Random Course
     </button>
   </div>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-number">500+</div>
+      <div class="stat-label">Challenges</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-number">10K+</div>
+      <div class="stat-label">Solutions</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-number">4</div>
+      <div class="stat-label">Languages</div>
+    </div>
+  </div>
+</div>
+    <div class="hero-visual">
+      <div class="code-preview">
+        <div class="code-header">
+          <div class="code-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <span class="code-title">two_sum.py</span>
+        </div>
+        <div class="code-content">
+          <div class="code-line">
+            <span class="line-number">1</span>
+            <span class="code-text"><span class="keyword">def</span>&nbsp;<span class="function">twoSum</span>(<span class="param">nums, target</span>):</span>
+          </div>
+          <div class="code-line">
+            <span class="line-number">2</span>
+            <span class="code-text">&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">seen</span>&nbsp;=&nbsp;{{ '{' }}{{ '}' }}</span>
+          </div>
+          <div class="code-line">
+            <span class="line-number">3</span>
+            <span class="code-text">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span>&nbsp;<span class="variable">i</span>,&nbsp;<span class="variable">num</span>&nbsp;<span class="keyword">in</span>&nbsp;<span class="function">enumerate</span>(<span class="param">nums</span>):</span>
+          </div>
+          <div class="code-line">
+            <span class="line-number">4</span>
+            <span class="code-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">diff</span>&nbsp;=&nbsp;<span class="param">target</span>&nbsp;-&nbsp;<span class="variable">num</span></span>
+          </div>
+          <div class="code-line">
+            <span class="line-number">5</span>
+            <span class="code-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span>&nbsp;<span class="variable">diff</span>&nbsp;<span class="keyword">in</span>&nbsp;<span class="variable">seen</span>:</span>
+          </div>
+          <div class="code-line">
+            <span class="line-number">6</span>
+            <span class="code-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;&#91;<span class="variable">seen</span>&#91;<span class="variable">diff</span>&#93;,&nbsp;<span class="variable">i</span>&#93;</span>
+          </div>
+          <div class="code-line">
+            <span class="line-number">7</span>
+            <span class="code-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">seen</span>&#91;<span class="variable">num</span>&#93;&nbsp;=&nbsp;<span class="variable">i</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section">
+    <div class="section-header">
+      <h2 class="section-title">Why Choose AlgoLounge?</h2>
+      <p class="section-subtitle">Everything you need to ace your coding interviews</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3 class="feature-title">Real-time Execution</h3>
+        <p class="feature-description">Test your solutions instantly with our integrated code editor and execution environment.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3 class="feature-title">Interview-focused</h3>
+        <p class="feature-description">Practice problems commonly asked at top tech companies like Google, Amazon, and Microsoft.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📈</div>
+        <h3 class="feature-title">Track Progress</h3>
+        <p class="feature-description">Monitor your improvement with detailed analytics and completion tracking.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔧</div>
+        <h3 class="feature-title">Multiple Languages</h3>
+        <p class="feature-description">Code in Python, JavaScript, TypeScript, and Java with full syntax highlighting.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💡</div>
+        <h3 class="feature-title">Detailed Solutions</h3>
+        <p class="feature-description">Learn from comprehensive explanations and optimized solutions for every problem.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🚀</div>
+        <h3 class="feature-title">Structured Learning</h3>
+        <p class="feature-description">Follow curated courses that build your skills from basics to advanced concepts.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2 class="cta-title">Ready to Level Up Your Coding Skills?</h2>
+      <p class="cta-subtitle">Join thousands of developers who've improved their problem-solving abilities</p>
+      <button class="cta-final" (click)="navigateToCourses()">
+        Discover Courses
+      </button>
+    </div>
+  </section>
 </div>

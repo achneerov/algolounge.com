@@ -17,23 +17,23 @@
   "languages": {
     "python": {
       "template": "def islandPerimeter(grid):\n    ",
-      "solution_text": "Graph traversal using DFS/BFS approach:\n\n**Algorithm:**\n1. Build adjacency list representation of graph\n2. Use DFS or BFS to traverse nodes\n3. Track visited nodes to avoid cycles\n4. Process nodes according to problem requirements\n\n**Time Complexity:** O(V + E) - visit each vertex and edge once\n**Space Complexity:** O(V) - visited set and recursion stack\n\n**Key Insights:**\n- DFS for deep exploration, BFS for level-by-level\n- Use visited set to handle cycles\n- Adjacency list is space-efficient for sparse graphs",
-      "solution_code": "def islandPerimeter(graph):\n    if not graph:\n        return []\n    \n    visited = set()\n    result = []\n    \n    def dfs(node):\n        if node in visited:\n            return\n        \n        visited.add(node)\n        result.append(node)\n        \n        # Visit neighbors\n        for neighbor in graph.get(node, []):\n            dfs(neighbor)\n    \n    # Start DFS from first node\n    for node in graph:\n        if node not in visited:\n            dfs(node)\n    \n    return result"
+      "solution_text": "<p><strong>Island Perimeter Calculation:</strong></p><p>Count exposed edges of land cells in a 2D grid.</p><p><strong>Algorithm:</strong></p><ol><li>Iterate through each cell in the grid</li><li>For each land cell (value 1), start with 4 sides</li><li>Check 4 adjacent neighbors (up, down, left, right)</li><li>Subtract 1 from perimeter for each adjacent land cell</li><li>Sum total perimeter from all land cells</li></ol><p><strong>Time Complexity:</strong> O(m × n) - visit each cell once</p><p><strong>Space Complexity:</strong> O(1) - constant extra space</p>",
+      "solution_code": "def islandPerimeter(grid):\n    if not grid:\n        return 0\n    \n    rows, cols = len(grid), len(grid[0])\n    perimeter = 0\n    \n    for i in range(rows):\n        for j in range(cols):\n            if grid[i][j] == 1:  # Land cell\n                # Start with 4 sides\n                sides = 4\n                \n                # Check 4 neighbors and subtract shared edges\n                # Up\n                if i > 0 and grid[i-1][j] == 1:\n                    sides -= 1\n                # Down  \n                if i < rows - 1 and grid[i+1][j] == 1:\n                    sides -= 1\n                # Left\n                if j > 0 and grid[i][j-1] == 1:\n                    sides -= 1\n                # Right\n                if j < cols - 1 and grid[i][j+1] == 1:\n                    sides -= 1\n                \n                perimeter += sides\n    \n    return perimeter"
     },
     "javascript": {
       "template": "function islandPerimeter(grid) {\n  \n}",
-      "solution_text": "Graph traversal using DFS/BFS approach:\n\n**Algorithm:**\n1. Build adjacency list representation of graph\n2. Use DFS or BFS to traverse nodes\n3. Track visited nodes to avoid cycles\n4. Process nodes according to problem requirements\n\n**Time Complexity:** O(V + E) - visit each vertex and edge once\n**Space Complexity:** O(V) - visited set and recursion stack\n\n**Key Insights:**\n- DFS for deep exploration, BFS for level-by-level\n- Use visited set to handle cycles\n- Adjacency list is space-efficient for sparse graphs",
-      "solution_code": "function islandPerimeter(graph) {\n    if (!graph) return [];\n    \n    const visited = new Set();\n    const result = [];\n    \n    function dfs(node) {\n        if (visited.has(node)) return;\n        \n        visited.add(node);\n        result.push(node);\n        \n        // Visit neighbors\n        const neighbors = graph[node] || [];\n        for (const neighbor of neighbors) {\n            dfs(neighbor);\n        }\n    }\n    \n    // Start DFS from each unvisited node\n    for (const node in graph) {\n        if (!visited.has(node)) {\n            dfs(node);\n        }\n    }\n    \n    return result;\n}"
+      "solution_text": "<p><strong>Island Perimeter Calculation:</strong></p><p>Count exposed edges of land cells in a 2D grid.</p><p><strong>Algorithm:</strong></p><ol><li>Iterate through each cell in the grid</li><li>For each land cell (value 1), start with 4 sides</li><li>Check 4 adjacent neighbors (up, down, left, right)</li><li>Subtract 1 from perimeter for each adjacent land cell</li><li>Sum total perimeter from all land cells</li></ol><p><strong>Time Complexity:</strong> O(m × n) - visit each cell once</p><p><strong>Space Complexity:</strong> O(1) - constant extra space</p>",
+      "solution_code": "function islandPerimeter(grid) {\n    if (!grid || grid.length === 0) {\n        return 0;\n    }\n    \n    const rows = grid.length;\n    const cols = grid[0].length;\n    let perimeter = 0;\n    \n    for (let i = 0; i < rows; i++) {\n        for (let j = 0; j < cols; j++) {\n            if (grid[i][j] === 1) {  // Land cell\n                // Start with 4 sides\n                let sides = 4;\n                \n                // Check 4 neighbors and subtract shared edges\n                // Up\n                if (i > 0 && grid[i-1][j] === 1) {\n                    sides--;\n                }\n                // Down\n                if (i < rows - 1 && grid[i+1][j] === 1) {\n                    sides--;\n                }\n                // Left\n                if (j > 0 && grid[i][j-1] === 1) {\n                    sides--;\n                }\n                // Right\n                if (j < cols - 1 && grid[i][j+1] === 1) {\n                    sides--;\n                }\n                \n                perimeter += sides;\n            }\n        }\n    }\n    \n    return perimeter;\n}"
     },
     "typescript": {
-      "template": "function islandPerimeter(grid: number[]): number {\n  \n}",
-      "solution_text": "Graph traversal using DFS/BFS approach:\n\n**Algorithm:**\n1. Build adjacency list representation of graph\n2. Use DFS or BFS to traverse nodes\n3. Track visited nodes to avoid cycles\n4. Process nodes according to problem requirements\n\n**Time Complexity:** O(V + E) - visit each vertex and edge once\n**Space Complexity:** O(V) - visited set and recursion stack\n\n**Key Insights:**\n- DFS for deep exploration, BFS for level-by-level\n- Use visited set to handle cycles\n- Adjacency list is space-efficient for sparse graphs",
-      "solution_code": "function islandPerimeter(graph: {[key: string]: string[]}): string[] {\n    if (!graph) return [];\n    \n    const visited = new Set<string>();\n    const result: string[] = [];\n    \n    function dfs(node: string): void {\n        if (visited.has(node)) return;\n        \n        visited.add(node);\n        result.push(node);\n        \n        // Visit neighbors\n        const neighbors = graph[node] || [];\n        for (const neighbor of neighbors) {\n            dfs(neighbor);\n        }\n    }\n    \n    // Start DFS from each unvisited node\n    for (const node in graph) {\n        if (!visited.has(node)) {\n            dfs(node);\n        }\n    }\n    \n    return result;\n}"
+      "template": "function islandPerimeter(grid: number[][]): number {\n  \n}",
+      "solution_text": "<p><strong>Island Perimeter Calculation:</strong></p><p>Count exposed edges of land cells in a 2D grid.</p><p><strong>Algorithm:</strong></p><ol><li>Iterate through each cell in the grid</li><li>For each land cell (value 1), start with 4 sides</li><li>Check 4 adjacent neighbors (up, down, left, right)</li><li>Subtract 1 from perimeter for each adjacent land cell</li><li>Sum total perimeter from all land cells</li></ol><p><strong>Time Complexity:</strong> O(m × n) - visit each cell once</p><p><strong>Space Complexity:</strong> O(1) - constant extra space</p>",
+      "solution_code": "function islandPerimeter(grid: number[][]): number {\n    if (!grid || grid.length === 0) {\n        return 0;\n    }\n    \n    const rows: number = grid.length;\n    const cols: number = grid[0].length;\n    let perimeter: number = 0;\n    \n    for (let i = 0; i < rows; i++) {\n        for (let j = 0; j < cols; j++) {\n            if (grid[i][j] === 1) {  // Land cell\n                // Start with 4 sides\n                let sides: number = 4;\n                \n                // Check 4 neighbors and subtract shared edges\n                // Up\n                if (i > 0 && grid[i-1][j] === 1) {\n                    sides--;\n                }\n                // Down\n                if (i < rows - 1 && grid[i+1][j] === 1) {\n                    sides--;\n                }\n                // Left\n                if (j > 0 && grid[i][j-1] === 1) {\n                    sides--;\n                }\n                // Right\n                if (j < cols - 1 && grid[i][j+1] === 1) {\n                    sides--;\n                }\n                \n                perimeter += sides;\n            }\n        }\n    }\n    \n    return perimeter;\n}"
     },
     "java": {
-      "template": "class Solution {\n    public int islandPerimeter(int[] grid) {\n        \n    }\n}",
-      "solution_text": "Graph traversal using DFS/BFS approach:\n\n**Algorithm:**\n1. Build adjacency list representation of graph\n2. Use DFS or BFS to traverse nodes\n3. Track visited nodes to avoid cycles\n4. Process nodes according to problem requirements\n\n**Time Complexity:** O(V + E) - visit each vertex and edge once\n**Space Complexity:** O(V) - visited set and recursion stack\n\n**Key Insights:**\n- DFS for deep exploration, BFS for level-by-level\n- Use visited set to handle cycles\n- Adjacency list is space-efficient for sparse graphs",
-      "solution_code": "class Solution {\n    public List<String> islandPerimeter(Map<String, List<String>> graph) {\n        if (graph == null || graph.isEmpty()) return new ArrayList<>();\n        \n        Set<String> visited = new HashSet<>();\n        List<String> result = new ArrayList<>();\n        \n        for (String node : graph.keySet()) {\n            if (!visited.contains(node)) {\n                dfs(node, graph, visited, result);\n            }\n        }\n        \n        return result;\n    }\n    \n    private void dfs(String node, Map<String, List<String>> graph, \n                     Set<String> visited, List<String> result) {\n        if (visited.contains(node)) return;\n        \n        visited.add(node);\n        result.add(node);\n        \n        // Visit neighbors\n        List<String> neighbors = graph.getOrDefault(node, new ArrayList<>());\n        for (String neighbor : neighbors) {\n            dfs(neighbor, graph, visited, result);\n        }\n    }\n}"
+      "template": "class Solution {\n    public int islandPerimeter(int[][] grid) {\n        \n    }\n}",
+      "solution_text": "<p><strong>Island Perimeter Calculation:</strong></p><p>Count exposed edges of land cells in a 2D grid.</p><p><strong>Algorithm:</strong></p><ol><li>Iterate through each cell in the grid</li><li>For each land cell (value 1), start with 4 sides</li><li>Check 4 adjacent neighbors (up, down, left, right)</li><li>Subtract 1 from perimeter for each adjacent land cell</li><li>Sum total perimeter from all land cells</li></ol><p><strong>Time Complexity:</strong> O(m × n) - visit each cell once</p><p><strong>Space Complexity:</strong> O(1) - constant extra space</p>",
+      "solution_code": "class Solution {\n    public int islandPerimeter(int[][] grid) {\n        if (grid == null || grid.length == 0) {\n            return 0;\n        }\n        \n        int rows = grid.length;\n        int cols = grid[0].length;\n        int perimeter = 0;\n        \n        for (int i = 0; i < rows; i++) {\n            for (int j = 0; j < cols; j++) {\n                if (grid[i][j] == 1) {  // Land cell\n                    // Start with 4 sides\n                    int sides = 4;\n                    \n                    // Check 4 neighbors and subtract shared edges\n                    // Up\n                    if (i > 0 && grid[i-1][j] == 1) {\n                        sides--;\n                    }\n                    // Down\n                    if (i < rows - 1 && grid[i+1][j] == 1) {\n                        sides--;\n                    }\n                    // Left\n                    if (j > 0 && grid[i][j-1] == 1) {\n                        sides--;\n                    }\n                    // Right\n                    if (j < cols - 1 && grid[i][j+1] == 1) {\n                        sides--;\n                    }\n                    \n                    perimeter += sides;\n                }\n            }\n        }\n        \n        return perimeter;\n    }\n}"
     }
   },
   "order_matters": false,
@@ -41,10 +41,70 @@
     {
       "id": 1,
       "input": {
-        "grid": [
-          "[1",
-          0
-        ]
+        "grid": [[1, 0]]
+      },
+      "output": 4
+    },
+    {
+      "id": 2,
+      "input": {
+        "grid": [[0, 1, 0, 0], [1, 1, 1, 0], [0, 1, 0, 0], [1, 1, 0, 0]]
+      },
+      "output": 16
+    },
+    {
+      "id": 3,
+      "input": {
+        "grid": [[1]]
+      },
+      "output": 4
+    },
+    {
+      "id": 4,
+      "input": {
+        "grid": [[1, 1], [1, 1]]
+      },
+      "output": 8
+    },
+    {
+      "id": 5,
+      "input": {
+        "grid": [[0]]
+      },
+      "output": 0
+    },
+    {
+      "id": 6,
+      "input": {
+        "grid": [[1, 1, 1], [1, 0, 1], [1, 1, 1]]
+      },
+      "output": 12
+    },
+    {
+      "id": 7,
+      "input": {
+        "grid": [[1, 0, 1], [0, 1, 0], [1, 0, 1]]
+      },
+      "output": 16
+    },
+    {
+      "id": 8,
+      "input": {
+        "grid": [[1, 1, 1, 1]]
+      },
+      "output": 10
+    },
+    {
+      "id": 9,
+      "input": {
+        "grid": [[1], [1], [1], [1]]
+      },
+      "output": 10
+    },
+    {
+      "id": 10,
+      "input": {
+        "grid": [[0, 0, 0], [0, 1, 0], [0, 0, 0]]
       },
       "output": 4
     }

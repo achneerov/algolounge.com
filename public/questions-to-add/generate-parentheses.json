@@ -17,23 +17,23 @@
   "languages": {
     "python": {
       "template": "def generateParentheses(n):\n    ",
-      "solution_text": "Parentheses validation using stack data structure:\n\n**Algorithm:**\n1. Use stack to track opening brackets\n2. For each character, if opening bracket, push to stack\n3. If closing bracket, check if matches top of stack\n4. String is valid if stack is empty at end\n\n**Time Complexity:** O(n) - single pass through string\n**Space Complexity:** O(n) - stack storage in worst case\n\n**Key Insights:**\n- Stack naturally handles nested structure\n- Early return false for unmatched closing brackets\n- Must check stack emptiness at end",
-      "solution_code": "def generateParentheses(s):\n    stack = []\n    mapping = {')': '(', '}': '{', ']': '['}\n    \n    for char in s:\n        if char in mapping:\n            # Closing bracket\n            if not stack or stack.pop() != mapping[char]:\n                return False\n        else:\n            # Opening bracket\n            stack.append(char)\n    \n    return len(stack) == 0"
+      "solution_text": "<p><strong>Backtracking Solution for Generate Parentheses:</strong></p><p>Generate all valid parentheses combinations using recursive backtracking.</p><p><strong>Algorithm:</strong></p><ol><li>Start with empty string and track open/close parentheses count</li><li>At each step: add '(' if open count < n, add ')' if close count < open count</li><li>Base case: when string length equals 2*n, add to result</li><li>Backtrack by trying both options at each valid position</li></ol><p><strong>Time Complexity:</strong> O(4^n / √n) - Catalan number combinations</p><p><strong>Space Complexity:</strong> O(4^n / √n) - for storing all valid combinations</p>",
+      "solution_code": "def generateParentheses(n):\n    result = []\n    \n    def backtrack(current, open_count, close_count):\n        # Base case: complete valid combination\n        if len(current) == 2 * n:\n            result.append(current)\n            return\n        \n        # Add opening parenthesis if we haven't used all\n        if open_count < n:\n            backtrack(current + '(', open_count + 1, close_count)\n        \n        # Add closing parenthesis if it would be valid\n        if close_count < open_count:\n            backtrack(current + ')', open_count, close_count + 1)\n    \n    backtrack('', 0, 0)\n    return result"
     },
     "javascript": {
       "template": "function generateParentheses(n) {\n  \n}",
-      "solution_text": "Parentheses validation using stack data structure:\n\n**Algorithm:**\n1. Use stack to track opening brackets\n2. For each character, if opening bracket, push to stack\n3. If closing bracket, check if matches top of stack\n4. String is valid if stack is empty at end\n\n**Time Complexity:** O(n) - single pass through string\n**Space Complexity:** O(n) - stack storage in worst case\n\n**Key Insights:**\n- Stack naturally handles nested structure\n- Early return false for unmatched closing brackets\n- Must check stack emptiness at end",
-      "solution_code": "function generateParentheses(s) {\n    const stack = [];\n    const mapping = {')': '(', '}': '{', ']': '['};\n    \n    for (const char of s) {\n        if (char in mapping) {\n            // Closing bracket\n            if (stack.length === 0 || stack.pop() !== mapping[char]) {\n                return false;\n            }\n        } else {\n            // Opening bracket\n            stack.push(char);\n        }\n    }\n    \n    return stack.length === 0;\n}"
+      "solution_text": "<p><strong>Backtracking Solution for Generate Parentheses:</strong></p><p>Generate all valid parentheses combinations using recursive backtracking.</p><p><strong>Algorithm:</strong></p><ol><li>Start with empty string and track open/close parentheses count</li><li>At each step: add '(' if open count < n, add ')' if close count < open count</li><li>Base case: when string length equals 2*n, add to result</li><li>Backtrack by trying both options at each valid position</li></ol><p><strong>Time Complexity:</strong> O(4^n / √n) - Catalan number combinations</p><p><strong>Space Complexity:</strong> O(4^n / √n) - for storing all valid combinations</p>",
+      "solution_code": "function generateParentheses(n) {\n    const result = [];\n    \n    function backtrack(current, openCount, closeCount) {\n        // Base case: complete valid combination\n        if (current.length === 2 * n) {\n            result.push(current);\n            return;\n        }\n        \n        // Add opening parenthesis if we haven't used all\n        if (openCount < n) {\n            backtrack(current + '(', openCount + 1, closeCount);\n        }\n        \n        // Add closing parenthesis if it would be valid\n        if (closeCount < openCount) {\n            backtrack(current + ')', openCount, closeCount + 1);\n        }\n    }\n    \n    backtrack('', 0, 0);\n    return result;\n}"
     },
     "typescript": {
-      "template": "function generateParentheses(n: number): number[] {\n  \n}",
-      "solution_text": "Parentheses validation using stack data structure:\n\n**Algorithm:**\n1. Use stack to track opening brackets\n2. For each character, if opening bracket, push to stack\n3. If closing bracket, check if matches top of stack\n4. String is valid if stack is empty at end\n\n**Time Complexity:** O(n) - single pass through string\n**Space Complexity:** O(n) - stack storage in worst case\n\n**Key Insights:**\n- Stack naturally handles nested structure\n- Early return false for unmatched closing brackets\n- Must check stack emptiness at end",
-      "solution_code": "function generateParentheses(s: string): boolean {\n    const stack: string[] = [];\n    const mapping: {[key: string]: string} = {')': '(', '}': '{', ']': '['};\n    \n    for (const char of s) {\n        if (char in mapping) {\n            // Closing bracket\n            if (stack.length === 0 || stack.pop() !== mapping[char]) {\n                return false;\n            }\n        } else {\n            // Opening bracket\n            stack.push(char);\n        }\n    }\n    \n    return stack.length === 0;\n}"
+      "template": "function generateParentheses(n: number): string[] {\n  \n}",
+      "solution_text": "<p><strong>Backtracking Solution for Generate Parentheses:</strong></p><p>Generate all valid parentheses combinations using recursive backtracking.</p><p><strong>Algorithm:</strong></p><ol><li>Start with empty string and track open/close parentheses count</li><li>At each step: add '(' if open count < n, add ')' if close count < open count</li><li>Base case: when string length equals 2*n, add to result</li><li>Backtrack by trying both options at each valid position</li></ol><p><strong>Time Complexity:</strong> O(4^n / √n) - Catalan number combinations</p><p><strong>Space Complexity:</strong> O(4^n / √n) - for storing all valid combinations</p>",
+      "solution_code": "function generateParentheses(n: number): string[] {\n    const result: string[] = [];\n    \n    function backtrack(current: string, openCount: number, closeCount: number): void {\n        // Base case: complete valid combination\n        if (current.length === 2 * n) {\n            result.push(current);\n            return;\n        }\n        \n        // Add opening parenthesis if we haven't used all\n        if (openCount < n) {\n            backtrack(current + '(', openCount + 1, closeCount);\n        }\n        \n        // Add closing parenthesis if it would be valid\n        if (closeCount < openCount) {\n            backtrack(current + ')', openCount, closeCount + 1);\n        }\n    }\n    \n    backtrack('', 0, 0);\n    return result;\n}"
     },
     "java": {
-      "template": "class Solution {\n    public int[] generateParentheses(int n) {\n        \n    }\n}",
-      "solution_text": "Parentheses validation using stack data structure:\n\n**Algorithm:**\n1. Use stack to track opening brackets\n2. For each character, if opening bracket, push to stack\n3. If closing bracket, check if matches top of stack\n4. String is valid if stack is empty at end\n\n**Time Complexity:** O(n) - single pass through string\n**Space Complexity:** O(n) - stack storage in worst case\n\n**Key Insights:**\n- Stack naturally handles nested structure\n- Early return false for unmatched closing brackets\n- Must check stack emptiness at end",
-      "solution_code": "class Solution {\n    public boolean generateParentheses(String s) {\n        Stack<Character> stack = new Stack<>();\n        Map<Character, Character> mapping = new HashMap<>();\n        mapping.put(')', '(');\n        mapping.put('}', '{');\n        mapping.put(']', '[');\n        \n        for (char c : s.toCharArray()) {\n            if (mapping.containsKey(c)) {\n                // Closing bracket\n                if (stack.isEmpty() || stack.pop() != mapping.get(c)) {\n                    return false;\n                }\n            } else {\n                // Opening bracket\n                stack.push(c);\n            }\n        }\n        \n        return stack.isEmpty();\n    }\n}"
+      "template": "class Solution {\n    public List<String> generateParentheses(int n) {\n        \n    }\n}",
+      "solution_text": "<p><strong>Backtracking Solution for Generate Parentheses:</strong></p><p>Generate all valid parentheses combinations using recursive backtracking.</p><p><strong>Algorithm:</strong></p><ol><li>Start with empty string and track open/close parentheses count</li><li>At each step: add '(' if open count < n, add ')' if close count < open count</li><li>Base case: when string length equals 2*n, add to result</li><li>Backtrack by trying both options at each valid position</li></ol><p><strong>Time Complexity:</strong> O(4^n / √n) - Catalan number combinations</p><p><strong>Space Complexity:</strong> O(4^n / √n) - for storing all valid combinations</p>",
+      "solution_code": "class Solution {\n    public List<String> generateParentheses(int n) {\n        List<String> result = new ArrayList<>();\n        backtrack(result, \"\", 0, 0, n);\n        return result;\n    }\n    \n    private void backtrack(List<String> result, String current, int openCount, int closeCount, int n) {\n        // Base case: complete valid combination\n        if (current.length() == 2 * n) {\n            result.add(current);\n            return;\n        }\n        \n        // Add opening parenthesis if we haven't used all\n        if (openCount < n) {\n            backtrack(result, current + \"(\", openCount + 1, closeCount, n);\n        }\n        \n        // Add closing parenthesis if it would be valid\n        if (closeCount < openCount) {\n            backtrack(result, current + \")\", openCount, closeCount + 1, n);\n        }\n    }\n}"
     }
   },
   "order_matters": false,
@@ -58,6 +58,146 @@
         "(())()",
         "()(())",
         "()()()"
+      ]
+    },
+    {
+      "id": 3,
+      "input": {
+        "n": 2
+      },
+      "output": [
+        "(())",
+        "()()"
+      ]
+    },
+    {
+      "id": 4,
+      "input": {
+        "n": 0
+      },
+      "output": [
+        ""
+      ]
+    },
+    {
+      "id": 5,
+      "input": {
+        "n": 4
+      },
+      "output": [
+        "(((())))",
+        "((()()))",
+        "((())())",
+        "((()))()",
+        "(()(()))",
+        "(()()())",
+        "(()())()",
+        "(())(())",
+        "(())()()",
+        "()((()))",
+        "()(()())",
+        "()(())()",
+        "()()(())",
+        "()()()()"
+      ]
+    },
+    {
+      "id": 6,
+      "input": {
+        "n": 5
+      },
+      "output": [
+        "((((())))",
+        "(((()())))",
+        "(((())()))",
+        "(((()))())",
+        "(((())))()",
+        "((()(())))",
+        "((()()()))",
+        "((()())())",
+        "((()()))()",
+        "((())(()))",
+        "((())()())",
+        "((())())()",
+        "((()))(())",
+        "((()))()()",
+        "(()((())))",
+        "(()()()())",
+        "(()()())()",
+        "(()())(())",
+        "(()())()()",
+        "(())(((())))",
+        "(())(()())",
+        "(())(())()",
+        "(())()(())",
+        "(())()()()",
+        "()(((()))))",
+        "()((()()))",
+        "()((())())",
+        "()((()))()",
+        "()(()(()))",
+        "()(()()())",
+        "()(()())()",
+        "()(())(())",
+        "()(())()()",
+        "()()((()))",
+        "()()(()())",
+        "()()(())()",
+        "()()()(())",
+        "()()()()()"
+      ]
+    },
+    {
+      "id": 7,
+      "input": {
+        "n": 6
+      },
+      "output": [
+        "(((((())))))",
+        "((((()())))",
+        "((((())()))",
+        "((((()))())",
+        "((((())))()",
+        "(((()(())))",
+        "(((()()()))",
+        "(((()())())",
+        "(((()()))()",
+        "(((())(()))",
+        "(((())()())",
+        "(((())())()",
+        "(((()))(())",
+        "(((()))()()"
+      ]
+    },
+    {
+      "id": 8,
+      "input": {
+        "n": 7
+      },
+      "output": [
+        "((((((()))))))",
+        "(((((()()))))))",
+        "(((((())()))))))",
+        "(((((()))()))))))"
+      ]
+    },
+    {
+      "id": 9,
+      "input": {
+        "n": 1
+      },
+      "output": [
+        "()"
+      ]
+    },
+    {
+      "id": 10,
+      "input": {
+        "n": 2
+      },
+      "output": [
+        "(())",
+        "()()"
       ]
     }
   ]

@@ -17,23 +17,23 @@
   "languages": {
     "python": {
       "template": "def houseRobber(nums):\n    ",
-      "solution_text": "Dynamic Programming solution with memoization:\n\n**Algorithm:**\n1. Identify overlapping subproblems\n2. Define state and recurrence relation\n3. Use memoization to avoid recomputation\n4. Build solution bottom-up or top-down\n\n**Time Complexity:** O(n) with memoization\n**Space Complexity:** O(n) for memoization table\n\n**Key Insights:**\n- Break problem into smaller subproblems\n- Optimal substructure property\n- Memoization prevents redundant calculations",
-      "solution_code": "def houseRobber(n):\n    if n <= 0:\n        return 0\n    if n == 1:\n        return 1\n    \n    # Memoization table\n    dp = [-1] * (n + 1)\n    dp[0] = 0\n    dp[1] = 1\n    \n    def solve(i):\n        if dp[i] != -1:\n            return dp[i]\n        \n        # Recurrence relation (adjust based on problem)\n        dp[i] = solve(i - 1) + solve(i - 2)\n        return dp[i]\n    \n    return solve(n)"
+      "solution_text": "<p><strong>Dynamic Programming Solution for House Robber:</strong></p><p>Find maximum money that can be robbed without robbing adjacent houses.</p><p><strong>Algorithm:</strong></p><ol><li>For each house, decide: rob current house + max from 2 houses back, or skip current house</li><li>dp[i] = max(nums[i] + dp[i-2], dp[i-1])</li><li>Base cases: dp[0] = nums[0], dp[1] = max(nums[0], nums[1])</li><li>Return dp[n-1] for maximum possible money</li></ol><p><strong>Time Complexity:</strong> O(n) - single pass through houses</p><p><strong>Space Complexity:</strong> O(1) - can optimize to use two variables</p>",
+      "solution_code": "def houseRobber(nums):\n    if not nums:\n        return 0\n    if len(nums) == 1:\n        return nums[0]\n    \n    # dp[i] represents max money we can rob up to house i\n    prev2 = nums[0]  # dp[i-2]\n    prev1 = max(nums[0], nums[1])  # dp[i-1]\n    \n    for i in range(2, len(nums)):\n        current = max(nums[i] + prev2, prev1)\n        prev2 = prev1\n        prev1 = current\n    \n    return prev1"
     },
     "javascript": {
       "template": "function houseRobber(nums) {\n  \n}",
-      "solution_text": "Dynamic Programming solution with memoization:\n\n**Algorithm:**\n1. Identify overlapping subproblems\n2. Define state and recurrence relation\n3. Use memoization to avoid recomputation\n4. Build solution bottom-up or top-down\n\n**Time Complexity:** O(n) with memoization\n**Space Complexity:** O(n) for memoization table\n\n**Key Insights:**\n- Break problem into smaller subproblems\n- Optimal substructure property\n- Memoization prevents redundant calculations",
-      "solution_code": "function houseRobber(n) {\n    if (n <= 0) return 0;\n    if (n === 1) return 1;\n    \n    // Memoization table\n    const dp = new Array(n + 1).fill(-1);\n    dp[0] = 0;\n    dp[1] = 1;\n    \n    function solve(i) {\n        if (dp[i] !== -1) return dp[i];\n        \n        // Recurrence relation (adjust based on problem)\n        dp[i] = solve(i - 1) + solve(i - 2);\n        return dp[i];\n    }\n    \n    return solve(n);\n}"
+      "solution_text": "<p><strong>Dynamic Programming Solution for House Robber:</strong></p><p>Find maximum money that can be robbed without robbing adjacent houses.</p><p><strong>Algorithm:</strong></p><ol><li>For each house, decide: rob current house + max from 2 houses back, or skip current house</li><li>dp[i] = max(nums[i] + dp[i-2], dp[i-1])</li><li>Base cases: dp[0] = nums[0], dp[1] = max(nums[0], nums[1])</li><li>Return dp[n-1] for maximum possible money</li></ol><p><strong>Time Complexity:</strong> O(n) - single pass through houses</p><p><strong>Space Complexity:</strong> O(1) - can optimize to use two variables</p>",
+      "solution_code": "function houseRobber(nums) {\n    if (nums.length === 0) return 0;\n    if (nums.length === 1) return nums[0];\n    \n    // dp[i] represents max money we can rob up to house i\n    let prev2 = nums[0];  // dp[i-2]\n    let prev1 = Math.max(nums[0], nums[1]);  // dp[i-1]\n    \n    for (let i = 2; i < nums.length; i++) {\n        const current = Math.max(nums[i] + prev2, prev1);\n        prev2 = prev1;\n        prev1 = current;\n    }\n    \n    return prev1;\n}"
     },
     "typescript": {
       "template": "function houseRobber(nums: number[]): number {\n  \n}",
-      "solution_text": "Dynamic Programming solution with memoization:\n\n**Algorithm:**\n1. Identify overlapping subproblems\n2. Define state and recurrence relation\n3. Use memoization to avoid recomputation\n4. Build solution bottom-up or top-down\n\n**Time Complexity:** O(n) with memoization\n**Space Complexity:** O(n) for memoization table\n\n**Key Insights:**\n- Break problem into smaller subproblems\n- Optimal substructure property\n- Memoization prevents redundant calculations",
-      "solution_code": "function houseRobber(n: number): number {\n    if (n <= 0) return 0;\n    if (n === 1) return 1;\n    \n    // Memoization table\n    const dp: number[] = new Array(n + 1).fill(-1);\n    dp[0] = 0;\n    dp[1] = 1;\n    \n    function solve(i: number): number {\n        if (dp[i] !== -1) return dp[i];\n        \n        // Recurrence relation (adjust based on problem)\n        dp[i] = solve(i - 1) + solve(i - 2);\n        return dp[i];\n    }\n    \n    return solve(n);\n}"
+      "solution_text": "<p><strong>Dynamic Programming Solution for House Robber:</strong></p><p>Find maximum money that can be robbed without robbing adjacent houses.</p><p><strong>Algorithm:</strong></p><ol><li>For each house, decide: rob current house + max from 2 houses back, or skip current house</li><li>dp[i] = max(nums[i] + dp[i-2], dp[i-1])</li><li>Base cases: dp[0] = nums[0], dp[1] = max(nums[0], nums[1])</li><li>Return dp[n-1] for maximum possible money</li></ol><p><strong>Time Complexity:</strong> O(n) - single pass through houses</p><p><strong>Space Complexity:</strong> O(1) - can optimize to use two variables</p>",
+      "solution_code": "function houseRobber(nums: number[]): number {\n    if (nums.length === 0) return 0;\n    if (nums.length === 1) return nums[0];\n    \n    // dp[i] represents max money we can rob up to house i\n    let prev2: number = nums[0];  // dp[i-2]\n    let prev1: number = Math.max(nums[0], nums[1]);  // dp[i-1]\n    \n    for (let i = 2; i < nums.length; i++) {\n        const current: number = Math.max(nums[i] + prev2, prev1);\n        prev2 = prev1;\n        prev1 = current;\n    }\n    \n    return prev1;\n}"
     },
     "java": {
       "template": "class Solution {\n    public int houseRobber(int[] nums) {\n        \n    }\n}",
-      "solution_text": "Dynamic Programming solution with memoization:\n\n**Algorithm:**\n1. Identify overlapping subproblems\n2. Define state and recurrence relation\n3. Use memoization to avoid recomputation\n4. Build solution bottom-up or top-down\n\n**Time Complexity:** O(n) with memoization\n**Space Complexity:** O(n) for memoization table\n\n**Key Insights:**\n- Break problem into smaller subproblems\n- Optimal substructure property\n- Memoization prevents redundant calculations",
-      "solution_code": "class Solution {\n    public int houseRobber(int n) {\n        if (n <= 0) return 0;\n        if (n == 1) return 1;\n        \n        // Memoization table\n        int[] dp = new int[n + 1];\n        Arrays.fill(dp, -1);\n        dp[0] = 0;\n        dp[1] = 1;\n        \n        return solve(n, dp);\n    }\n    \n    private int solve(int i, int[] dp) {\n        if (dp[i] != -1) return dp[i];\n        \n        // Recurrence relation (adjust based on problem)\n        dp[i] = solve(i - 1, dp) + solve(i - 2, dp);\n        return dp[i];\n    }\n}"
+      "solution_text": "<p><strong>Dynamic Programming Solution for House Robber:</strong></p><p>Find maximum money that can be robbed without robbing adjacent houses.</p><p><strong>Algorithm:</strong></p><ol><li>For each house, decide: rob current house + max from 2 houses back, or skip current house</li><li>dp[i] = max(nums[i] + dp[i-2], dp[i-1])</li><li>Base cases: dp[0] = nums[0], dp[1] = max(nums[0], nums[1])</li><li>Return dp[n-1] for maximum possible money</li></ol><p><strong>Time Complexity:</strong> O(n) - single pass through houses</p><p><strong>Space Complexity:</strong> O(1) - can optimize to use two variables</p>",
+      "solution_code": "class Solution {\n    public int houseRobber(int[] nums) {\n        if (nums.length == 0) return 0;\n        if (nums.length == 1) return nums[0];\n        \n        // dp[i] represents max money we can rob up to house i\n        int prev2 = nums[0];  // dp[i-2]\n        int prev1 = Math.max(nums[0], nums[1]);  // dp[i-1]\n        \n        for (int i = 2; i < nums.length; i++) {\n            int current = Math.max(nums[i] + prev2, prev1);\n            prev2 = prev1;\n            prev1 = current;\n        }\n        \n        return prev1;\n    }\n}"
     }
   },
   "order_matters": false,
@@ -62,6 +62,62 @@
         ]
       },
       "output": 16
+    },
+    {
+      "id": 3,
+      "input": {
+        "nums": [1]
+      },
+      "output": 1
+    },
+    {
+      "id": 4,
+      "input": {
+        "nums": [2, 1]
+      },
+      "output": 2
+    },
+    {
+      "id": 5,
+      "input": {
+        "nums": [5, 1, 3, 9]
+      },
+      "output": 14
+    },
+    {
+      "id": 6,
+      "input": {
+        "nums": [2, 7, 9, 3, 1]
+      },
+      "output": 12
+    },
+    {
+      "id": 7,
+      "input": {
+        "nums": [100, 1, 1, 100]
+      },
+      "output": 200
+    },
+    {
+      "id": 8,
+      "input": {
+        "nums": [5, 5, 10, 100, 10, 5]
+      },
+      "output": 110
+    },
+    {
+      "id": 9,
+      "input": {
+        "nums": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      },
+      "output": 30
+    },
+    {
+      "id": 10,
+      "input": {
+        "nums": [50, 1, 1, 50, 1, 1, 50]
+      },
+      "output": 150
     }
   ]
 }

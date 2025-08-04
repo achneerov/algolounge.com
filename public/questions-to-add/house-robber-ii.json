@@ -17,23 +17,23 @@
   "languages": {
     "python": {
       "template": "def houseRobberIi(nums):\n    ",
-      "solution_text": "Dynamic Programming solution with memoization:\n\n**Algorithm:**\n1. Identify overlapping subproblems\n2. Define state and recurrence relation\n3. Use memoization to avoid recomputation\n4. Build solution bottom-up or top-down\n\n**Time Complexity:** O(n) with memoization\n**Space Complexity:** O(n) for memoization table\n\n**Key Insights:**\n- Break problem into smaller subproblems\n- Optimal substructure property\n- Memoization prevents redundant calculations",
-      "solution_code": "def houseRobberIi(n):\n    if n <= 0:\n        return 0\n    if n == 1:\n        return 1\n    \n    # Memoization table\n    dp = [-1] * (n + 1)\n    dp[0] = 0\n    dp[1] = 1\n    \n    def solve(i):\n        if dp[i] != -1:\n            return dp[i]\n        \n        # Recurrence relation (adjust based on problem)\n        dp[i] = solve(i - 1) + solve(i - 2)\n        return dp[i]\n    \n    return solve(n)"
+      "solution_text": "<p><strong>Circular House Robber Solution:</strong></p><p>Handle circular arrangement by solving two linear house robber problems.</p><p><strong>Algorithm:</strong></p><ol><li>Since houses form a circle, first and last house are adjacent</li><li>Solve two separate linear problems: rob houses [0 to n-2] OR [1 to n-1]</li><li>Return maximum of the two solutions</li><li>Use same DP logic as House Robber I for each linear subproblem</li></ol><p><strong>Time Complexity:</strong> O(n) - two linear passes</p><p><strong>Space Complexity:</strong> O(1) - optimized with two variables</p>",
+      "solution_code": "def houseRobberIi(nums):\n    if not nums:\n        return 0\n    if len(nums) == 1:\n        return nums[0]\n    if len(nums) == 2:\n        return max(nums[0], nums[1])\n    \n    def robLinear(houses):\n        if not houses:\n            return 0\n        if len(houses) == 1:\n            return houses[0]\n        \n        prev2 = houses[0]\n        prev1 = max(houses[0], houses[1])\n        \n        for i in range(2, len(houses)):\n            current = max(houses[i] + prev2, prev1)\n            prev2 = prev1\n            prev1 = current\n        \n        return prev1\n    \n    # Two cases: rob houses [0 to n-2] OR [1 to n-1]\n    case1 = robLinear(nums[:-1])  # Exclude last house\n    case2 = robLinear(nums[1:])   # Exclude first house\n    \n    return max(case1, case2)"
     },
     "javascript": {
       "template": "function houseRobberIi(nums) {\n  \n}",
-      "solution_text": "Dynamic Programming solution with memoization:\n\n**Algorithm:**\n1. Identify overlapping subproblems\n2. Define state and recurrence relation\n3. Use memoization to avoid recomputation\n4. Build solution bottom-up or top-down\n\n**Time Complexity:** O(n) with memoization\n**Space Complexity:** O(n) for memoization table\n\n**Key Insights:**\n- Break problem into smaller subproblems\n- Optimal substructure property\n- Memoization prevents redundant calculations",
-      "solution_code": "function houseRobberIi(n) {\n    if (n <= 0) return 0;\n    if (n === 1) return 1;\n    \n    // Memoization table\n    const dp = new Array(n + 1).fill(-1);\n    dp[0] = 0;\n    dp[1] = 1;\n    \n    function solve(i) {\n        if (dp[i] !== -1) return dp[i];\n        \n        // Recurrence relation (adjust based on problem)\n        dp[i] = solve(i - 1) + solve(i - 2);\n        return dp[i];\n    }\n    \n    return solve(n);\n}"
+      "solution_text": "<p><strong>Circular House Robber Solution:</strong></p><p>Handle circular arrangement by solving two linear house robber problems.</p><p><strong>Algorithm:</strong></p><ol><li>Since houses form a circle, first and last house are adjacent</li><li>Solve two separate linear problems: rob houses [0 to n-2] OR [1 to n-1]</li><li>Return maximum of the two solutions</li><li>Use same DP logic as House Robber I for each linear subproblem</li></ol><p><strong>Time Complexity:</strong> O(n) - two linear passes</p><p><strong>Space Complexity:</strong> O(1) - optimized with two variables</p>",
+      "solution_code": "function houseRobberIi(nums) {\n    if (nums.length === 0) return 0;\n    if (nums.length === 1) return nums[0];\n    if (nums.length === 2) return Math.max(nums[0], nums[1]);\n    \n    function robLinear(houses) {\n        if (houses.length === 0) return 0;\n        if (houses.length === 1) return houses[0];\n        \n        let prev2 = houses[0];\n        let prev1 = Math.max(houses[0], houses[1]);\n        \n        for (let i = 2; i < houses.length; i++) {\n            const current = Math.max(houses[i] + prev2, prev1);\n            prev2 = prev1;\n            prev1 = current;\n        }\n        \n        return prev1;\n    }\n    \n    // Two cases: rob houses [0 to n-2] OR [1 to n-1]\n    const case1 = robLinear(nums.slice(0, -1));  // Exclude last house\n    const case2 = robLinear(nums.slice(1));      // Exclude first house\n    \n    return Math.max(case1, case2);\n}"
     },
     "typescript": {
       "template": "function houseRobberIi(nums: number[]): number {\n  \n}",
-      "solution_text": "Dynamic Programming solution with memoization:\n\n**Algorithm:**\n1. Identify overlapping subproblems\n2. Define state and recurrence relation\n3. Use memoization to avoid recomputation\n4. Build solution bottom-up or top-down\n\n**Time Complexity:** O(n) with memoization\n**Space Complexity:** O(n) for memoization table\n\n**Key Insights:**\n- Break problem into smaller subproblems\n- Optimal substructure property\n- Memoization prevents redundant calculations",
-      "solution_code": "function houseRobberIi(n: number): number {\n    if (n <= 0) return 0;\n    if (n === 1) return 1;\n    \n    // Memoization table\n    const dp: number[] = new Array(n + 1).fill(-1);\n    dp[0] = 0;\n    dp[1] = 1;\n    \n    function solve(i: number): number {\n        if (dp[i] !== -1) return dp[i];\n        \n        // Recurrence relation (adjust based on problem)\n        dp[i] = solve(i - 1) + solve(i - 2);\n        return dp[i];\n    }\n    \n    return solve(n);\n}"
+      "solution_text": "<p><strong>Circular House Robber Solution:</strong></p><p>Handle circular arrangement by solving two linear house robber problems.</p><p><strong>Algorithm:</strong></p><ol><li>Since houses form a circle, first and last house are adjacent</li><li>Solve two separate linear problems: rob houses [0 to n-2] OR [1 to n-1]</li><li>Return maximum of the two solutions</li><li>Use same DP logic as House Robber I for each linear subproblem</li></ol><p><strong>Time Complexity:</strong> O(n) - two linear passes</p><p><strong>Space Complexity:</strong> O(1) - optimized with two variables</p>",
+      "solution_code": "function houseRobberIi(nums: number[]): number {\n    if (nums.length === 0) return 0;\n    if (nums.length === 1) return nums[0];\n    if (nums.length === 2) return Math.max(nums[0], nums[1]);\n    \n    function robLinear(houses: number[]): number {\n        if (houses.length === 0) return 0;\n        if (houses.length === 1) return houses[0];\n        \n        let prev2: number = houses[0];\n        let prev1: number = Math.max(houses[0], houses[1]);\n        \n        for (let i = 2; i < houses.length; i++) {\n            const current: number = Math.max(houses[i] + prev2, prev1);\n            prev2 = prev1;\n            prev1 = current;\n        }\n        \n        return prev1;\n    }\n    \n    // Two cases: rob houses [0 to n-2] OR [1 to n-1]\n    const case1: number = robLinear(nums.slice(0, -1));  // Exclude last house\n    const case2: number = robLinear(nums.slice(1));      // Exclude first house\n    \n    return Math.max(case1, case2);\n}"
     },
     "java": {
       "template": "class Solution {\n    public int houseRobberIi(int[] nums) {\n        \n    }\n}",
-      "solution_text": "Dynamic Programming solution with memoization:\n\n**Algorithm:**\n1. Identify overlapping subproblems\n2. Define state and recurrence relation\n3. Use memoization to avoid recomputation\n4. Build solution bottom-up or top-down\n\n**Time Complexity:** O(n) with memoization\n**Space Complexity:** O(n) for memoization table\n\n**Key Insights:**\n- Break problem into smaller subproblems\n- Optimal substructure property\n- Memoization prevents redundant calculations",
-      "solution_code": "class Solution {\n    public int houseRobberIi(int n) {\n        if (n <= 0) return 0;\n        if (n == 1) return 1;\n        \n        // Memoization table\n        int[] dp = new int[n + 1];\n        Arrays.fill(dp, -1);\n        dp[0] = 0;\n        dp[1] = 1;\n        \n        return solve(n, dp);\n    }\n    \n    private int solve(int i, int[] dp) {\n        if (dp[i] != -1) return dp[i];\n        \n        // Recurrence relation (adjust based on problem)\n        dp[i] = solve(i - 1, dp) + solve(i - 2, dp);\n        return dp[i];\n    }\n}"
+      "solution_text": "<p><strong>Circular House Robber Solution:</strong></p><p>Handle circular arrangement by solving two linear house robber problems.</p><p><strong>Algorithm:</strong></p><ol><li>Since houses form a circle, first and last house are adjacent</li><li>Solve two separate linear problems: rob houses [0 to n-2] OR [1 to n-1]</li><li>Return maximum of the two solutions</li><li>Use same DP logic as House Robber I for each linear subproblem</li></ol><p><strong>Time Complexity:</strong> O(n) - two linear passes</p><p><strong>Space Complexity:</strong> O(1) - optimized with two variables</p>",
+      "solution_code": "class Solution {\n    public int houseRobberIi(int[] nums) {\n        if (nums.length == 0) return 0;\n        if (nums.length == 1) return nums[0];\n        if (nums.length == 2) return Math.max(nums[0], nums[1]);\n        \n        // Two cases: rob houses [0 to n-2] OR [1 to n-1]\n        int case1 = robLinear(Arrays.copyOfRange(nums, 0, nums.length - 1));\n        int case2 = robLinear(Arrays.copyOfRange(nums, 1, nums.length));\n        \n        return Math.max(case1, case2);\n    }\n    \n    private int robLinear(int[] houses) {\n        if (houses.length == 0) return 0;\n        if (houses.length == 1) return houses[0];\n        \n        int prev2 = houses[0];\n        int prev1 = Math.max(houses[0], houses[1]);\n        \n        for (int i = 2; i < houses.length; i++) {\n            int current = Math.max(houses[i] + prev2, prev1);\n            prev2 = prev1;\n            prev1 = current;\n        }\n        \n        return prev1;\n    }\n}"
     }
   },
   "order_matters": false,
@@ -61,6 +61,62 @@
         ]
       },
       "output": 15
+    },
+    {
+      "id": 3,
+      "input": {
+        "nums": [1]
+      },
+      "output": 1
+    },
+    {
+      "id": 4,
+      "input": {
+        "nums": [2, 3]
+      },
+      "output": 3
+    },
+    {
+      "id": 5,
+      "input": {
+        "nums": [1, 2, 3]
+      },
+      "output": 3
+    },
+    {
+      "id": 6,
+      "input": {
+        "nums": [5, 1, 3, 9]
+      },
+      "output": 10
+    },
+    {
+      "id": 7,
+      "input": {
+        "nums": [1, 2, 1, 1]
+      },
+      "output": 3
+    },
+    {
+      "id": 8,
+      "input": {
+        "nums": [100, 2, 3, 100]
+      },
+      "output": 103
+    },
+    {
+      "id": 9,
+      "input": {
+        "nums": [2, 1, 1, 2]
+      },
+      "output": 3
+    },
+    {
+      "id": 10,
+      "input": {
+        "nums": [5, 5, 10, 15, 10, 5, 5]
+      },
+      "output": 25
     }
   ]
 }

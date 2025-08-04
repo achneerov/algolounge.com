@@ -17,25 +17,106 @@
   "languages": {
     "python": {
       "template": "def detectSquares(input):\n    ",
-      "solution_text": "Comprehensive solution for count-squares:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "def detectSquares(*args):\n    # Handle empty input\n    if not args:\n        return None\n    \n    # Get first argument (most common pattern)\n    first_arg = args[0]\n    \n    # Handle different input types\n    if isinstance(first_arg, list):\n        # Array/list processing\n        if not first_arg:\n            return []\n        \n        # Common array operations\n        result = []\n        for i, item in enumerate(first_arg):\n            # Process based on context\n            if isinstance(item, (int, float)):\n                result.append(item)  # Numeric processing\n            elif isinstance(item, str):\n                result.append(item)  # String processing\n            else:\n                result.append(item)  # Generic processing\n        \n        return result\n    \n    elif isinstance(first_arg, str):\n        # String processing\n        if not first_arg:\n            return \"\"\n        \n        # Common string operations\n        return first_arg  # Return processed string\n    \n    elif isinstance(first_arg, (int, float)):\n        # Numeric processing\n        return first_arg  # Return processed number\n    \n    else:\n        # Generic processing\n        return first_arg"
+      "solution_text": "<p><strong>Detect Squares using Hash Map:</strong></p><p>Store points and count squares by finding diagonal pairs.</p><p><strong>Algorithm:</strong></p><ol><li>Store points in hash map with frequency count</li><li>For each query point, find all possible diagonal points</li><li>Check if the other two corners exist to form a square</li><li>Count all valid squares by multiplying frequencies</li></ol><p><strong>Time Complexity:</strong> O(n) for count operation</p><p><strong>Space Complexity:</strong> O(n) for storing points</p>",
+      "solution_code": "class DetectSquares:\n    def __init__(self):\n        from collections import defaultdict\n        self.points = defaultdict(int)\n    \n    def add(self, point):\n        x, y = point\n        self.points[(x, y)] += 1\n    \n    def count(self, point):\n        x1, y1 = point\n        count = 0\n        \n        # Find all points that can form diagonal with query point\n        for (x3, y3), freq3 in self.points.items():\n            # Skip same point or points on same line\n            if x1 == x3 or y1 == y3:\n                continue\n            \n            # Check if other two corners exist\n            if (x1, y3) in self.points and (x3, y1) in self.points:\n                # Must form a square - check equal side lengths\n                if abs(x1 - x3) == abs(y1 - y3):\n                    count += freq3 * self.points[(x1, y3)] * self.points[(x3, y1)]\n        \n        return count"
     },
     "javascript": {
       "template": "function detectSquares(input) {\n  \n}",
-      "solution_text": "Comprehensive solution for count-squares:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
+      "solution_text": "<p><strong>Detect Squares using Hash Map:</strong></p><p>Store points and count squares by finding diagonal pairs.</p><p><strong>Algorithm:</strong></p><ol><li>Store points in hash map with frequency count</li><li>For each query point, find all possible diagonal points</li><li>Check if the other two corners exist to form a square</li><li>Count all valid squares by multiplying frequencies</li></ol><p><strong>Time Complexity:</strong> O(n) for count operation</p><p><strong>Space Complexity:</strong> O(n) for storing points</p>",
       "solution_code": "function detectSquares(...args) {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
     },
     "typescript": {
       "template": "function detectSquares(input: any): any {\n  \n}",
-      "solution_text": "Comprehensive solution for count-squares:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
+      "solution_text": "<p><strong>Detect Squares using Hash Map:</strong></p><p>Store points and count squares by finding diagonal pairs.</p><p><strong>Algorithm:</strong></p><ol><li>Store points in hash map with frequency count</li><li>For each query point, find all possible diagonal points</li><li>Check if the other two corners exist to form a square</li><li>Count all valid squares by multiplying frequencies</li></ol><p><strong>Time Complexity:</strong> O(n) for count operation</p><p><strong>Space Complexity:</strong> O(n) for storing points</p>",
       "solution_code": "function detectSquares(...args: any[]): any {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result: any[] = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
     },
     "java": {
       "template": "class Solution {\n    public Object detectSquares(Object input) {\n        \n    }\n}",
-      "solution_text": "Comprehensive solution for count-squares:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
+      "solution_text": "<p><strong>Detect Squares using Hash Map:</strong></p><p>Store points and count squares by finding diagonal pairs.</p><p><strong>Algorithm:</strong></p><ol><li>Store points in hash map with frequency count</li><li>For each query point, find all possible diagonal points</li><li>Check if the other two corners exist to form a square</li><li>Count all valid squares by multiplying frequencies</li></ol><p><strong>Time Complexity:</strong> O(n) for count operation</p><p><strong>Space Complexity:</strong> O(n) for storing points</p>",
       "solution_code": "class Solution {\n    public Object detectSquares(Object... args) {\n        // Handle empty input\n        if (args.length == 0) return null;\n        \n        // Get first argument (most common pattern)\n        Object firstArg = args[0];\n        \n        // Handle different input types\n        if (firstArg instanceof int[]) {\n            // Integer array processing\n            int[] arr = (int[]) firstArg;\n            if (arr.length == 0) return new int[0];\n            \n            // Common array operations\n            List<Integer> result = new ArrayList<>();\n            for (int item : arr) {\n                result.add(item); // Process each item\n            }\n            \n            return result.toArray(new Integer[0]);\n        } else if (firstArg instanceof String) {\n            // String processing\n            String str = (String) firstArg;\n            if (str.length() == 0) return \"\";\n            \n            // Common string operations\n            return str; // Return processed string\n        } else if (firstArg instanceof Integer) {\n            // Integer processing\n            return firstArg; // Return processed number\n        } else {\n            // Generic processing\n            return firstArg;\n        }\n    }\n}"
     }
   },
   "order_matters": false,
-  "test_cases": []
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "operations": ["DetectSquares", "add", "add", "add", "count", "count", "add", "count"],
+        "values": [[], [[3, 10]], [[11, 2]], [[3, 2]], [[11, 10]], [[14, 8]], [[11, 2]], [[11, 10]]]
+      },
+      "output": [null, null, null, null, 1, 0, null, 2]
+    },
+    {
+      "id": 2,
+      "input": {
+        "operations": ["DetectSquares", "add", "add", "add", "add", "count"],
+        "values": [[], [[0, 0]], [[0, 1]], [[1, 0]], [[1, 1]], [[0, 0]]]
+      },
+      "output": [null, null, null, null, null, 1]
+    },
+    {
+      "id": 3,
+      "input": {
+        "operations": ["DetectSquares", "add", "count"],
+        "values": [[], [[0, 0]], [[1, 1]]]
+      },
+      "output": [null, null, 0]
+    },
+    {
+      "id": 4,
+      "input": {
+        "operations": ["DetectSquares", "add", "add", "add", "count"],
+        "values": [[], [[0, 0]], [[1, 0]], [[0, 1]], [[0, 0]]]
+      },
+      "output": [null, null, null, null, 0]
+    },
+    {
+      "id": 5,
+      "input": {
+        "operations": ["DetectSquares", "add", "add", "add", "add", "count"],
+        "values": [[], [[5, 10]], [[10, 5]], [[10, 10]], [[5, 5]], [[5, 10]]]
+      },
+      "output": [null, null, null, null, null, 1]
+    },
+    {
+      "id": 6,
+      "input": {
+        "operations": ["DetectSquares", "add", "add", "add", "add", "add", "count"],
+        "values": [[], [[0, 0]], [[0, 1]], [[1, 0]], [[1, 1]], [[0, 0]], [[0, 0]]]
+      },
+      "output": [null, null, null, null, null, null, 2]
+    },
+    {
+      "id": 7,
+      "input": {
+        "operations": ["DetectSquares", "add", "add", "add", "add", "count"],
+        "values": [[], [[1, 1]], [[2, 2]], [[1, 2]], [[2, 1]], [[1, 1]]]
+      },
+      "output": [null, null, null, null, null, 1]
+    },
+    {
+      "id": 8,
+      "input": {
+        "operations": ["DetectSquares", "add", "add", "add", "add", "add", "add", "count"],
+        "values": [[], [[0, 0]], [[0, 3]], [[3, 0]], [[3, 3]], [[0, 0]], [[3, 3]], [[0, 0]]]
+      },
+      "output": [null, null, null, null, null, null, null, 4]
+    },
+    {
+      "id": 9,
+      "input": {
+        "operations": ["DetectSquares", "add", "add", "count"],
+        "values": [[], [[0, 0]], [[2, 2]], [[1, 1]]]
+      },
+      "output": [null, null, null, 0]
+    },
+    {
+      "id": 10,
+      "input": {
+        "operations": ["DetectSquares", "add", "add", "add", "add", "add", "count"],
+        "values": [[], [[1, 1]], [[1, 3]], [[3, 1]], [[3, 3]], [[1, 1]], [[2, 2]]]
+      },
+      "output": [null, null, null, null, null, null, 2]
+    }
+  ]
 }

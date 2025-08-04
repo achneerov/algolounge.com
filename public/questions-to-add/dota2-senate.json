@@ -17,23 +17,23 @@
   "languages": {
     "python": {
       "template": "def dota2Senate(senate):\n    ",
-      "solution_text": "Comprehensive solution for dota2-senate:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "def dota2Senate(*args):\n    # Handle empty input\n    if not args:\n        return None\n    \n    # Get first argument (most common pattern)\n    first_arg = args[0]\n    \n    # Handle different input types\n    if isinstance(first_arg, list):\n        # Array/list processing\n        if not first_arg:\n            return []\n        \n        # Common array operations\n        result = []\n        for i, item in enumerate(first_arg):\n            # Process based on context\n            if isinstance(item, (int, float)):\n                result.append(item)  # Numeric processing\n            elif isinstance(item, str):\n                result.append(item)  # String processing\n            else:\n                result.append(item)  # Generic processing\n        \n        return result\n    \n    elif isinstance(first_arg, str):\n        # String processing\n        if not first_arg:\n            return \"\"\n        \n        # Common string operations\n        return first_arg  # Return processed string\n    \n    elif isinstance(first_arg, (int, float)):\n        # Numeric processing\n        return first_arg  # Return processed number\n    \n    else:\n        # Generic processing\n        return first_arg"
+      "solution_text": "<p><strong>Queue-Based Solution for Dota2 Senate:</strong></p><p>Simulate the voting process using two queues to track senator positions.</p><p><strong>Algorithm:</strong></p><ol><li>Use two queues to store positions of R and D senators</li><li>In each round, compare front senators from both queues</li><li>Earlier position wins and bans the later one</li><li>Winner goes to back of queue with updated position</li><li>Continue until one queue is empty</li></ol><p><strong>Time Complexity:</strong> O(n) - each senator processed at most once per round</p><p><strong>Space Complexity:</strong> O(n) - for storing senator positions in queues</p>",
+      "solution_code": "def dota2Senate(senate):\n    from collections import deque\n    \n    # Queues to store positions of R and D senators\n    radiant = deque()\n    dire = deque()\n    n = len(senate)\n    \n    # Fill queues with initial positions\n    for i, party in enumerate(senate):\n        if party == 'R':\n            radiant.append(i)\n        else:\n            dire.append(i)\n    \n    # Simulate the voting process\n    while radiant and dire:\n        r_pos = radiant.popleft()\n        d_pos = dire.popleft()\n        \n        # Earlier position wins\n        if r_pos < d_pos:\n            # Radiant wins, gets to vote in next round\n            radiant.append(r_pos + n)\n        else:\n            # Dire wins, gets to vote in next round\n            dire.append(d_pos + n)\n    \n    # Winner is the party with remaining senators\n    return \"Radiant\" if radiant else \"Dire\""
     },
     "javascript": {
       "template": "function dota2Senate(senate) {\n  \n}",
-      "solution_text": "Comprehensive solution for dota2-senate:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function dota2Senate(...args) {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "solution_text": "<p><strong>Queue-Based Solution for Dota2 Senate:</strong></p><p>Simulate the voting process using two queues to track senator positions.</p><p><strong>Algorithm:</strong></p><ol><li>Use two queues to store positions of R and D senators</li><li>In each round, compare front senators from both queues</li><li>Earlier position wins and bans the later one</li><li>Winner goes to back of queue with updated position</li><li>Continue until one queue is empty</li></ol><p><strong>Time Complexity:</strong> O(n) - each senator processed at most once per round</p><p><strong>Space Complexity:</strong> O(n) - for storing senator positions in queues</p>",
+      "solution_code": "function dota2Senate(senate) {\n    // Queues to store positions of R and D senators\n    const radiant = [];\n    const dire = [];\n    const n = senate.length;\n    \n    // Fill queues with initial positions\n    for (let i = 0; i < n; i++) {\n        if (senate[i] === 'R') {\n            radiant.push(i);\n        } else {\n            dire.push(i);\n        }\n    }\n    \n    // Simulate the voting process\n    while (radiant.length > 0 && dire.length > 0) {\n        const rPos = radiant.shift();\n        const dPos = dire.shift();\n        \n        // Earlier position wins\n        if (rPos < dPos) {\n            // Radiant wins, gets to vote in next round\n            radiant.push(rPos + n);\n        } else {\n            // Dire wins, gets to vote in next round\n            dire.push(dPos + n);\n        }\n    }\n    \n    // Winner is the party with remaining senators\n    return radiant.length > 0 ? \"Radiant\" : \"Dire\";\n}"
     },
     "typescript": {
       "template": "function dota2Senate(senate: string): string {\n  \n}",
-      "solution_text": "Comprehensive solution for dota2-senate:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function dota2Senate(...args: any[]): any {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result: any[] = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "solution_text": "<p><strong>Queue-Based Solution for Dota2 Senate:</strong></p><p>Simulate the voting process using two queues to track senator positions.</p><p><strong>Algorithm:</strong></p><ol><li>Use two queues to store positions of R and D senators</li><li>In each round, compare front senators from both queues</li><li>Earlier position wins and bans the later one</li><li>Winner goes to back of queue with updated position</li><li>Continue until one queue is empty</li></ol><p><strong>Time Complexity:</strong> O(n) - each senator processed at most once per round</p><p><strong>Space Complexity:</strong> O(n) - for storing senator positions in queues</p>",
+      "solution_code": "function dota2Senate(senate: string): string {\n    // Queues to store positions of R and D senators\n    const radiant: number[] = [];\n    const dire: number[] = [];\n    const n = senate.length;\n    \n    // Fill queues with initial positions\n    for (let i = 0; i < n; i++) {\n        if (senate[i] === 'R') {\n            radiant.push(i);\n        } else {\n            dire.push(i);\n        }\n    }\n    \n    // Simulate the voting process\n    while (radiant.length > 0 && dire.length > 0) {\n        const rPos = radiant.shift()!;\n        const dPos = dire.shift()!;\n        \n        // Earlier position wins\n        if (rPos < dPos) {\n            // Radiant wins, gets to vote in next round\n            radiant.push(rPos + n);\n        } else {\n            // Dire wins, gets to vote in next round\n            dire.push(dPos + n);\n        }\n    }\n    \n    // Winner is the party with remaining senators\n    return radiant.length > 0 ? \"Radiant\" : \"Dire\";\n}"
     },
     "java": {
       "template": "class Solution {\n    public String dota2Senate(String senate) {\n        \n    }\n}",
-      "solution_text": "Comprehensive solution for dota2-senate:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "class Solution {\n    public Object dota2Senate(Object... args) {\n        // Handle empty input\n        if (args.length == 0) return null;\n        \n        // Get first argument (most common pattern)\n        Object firstArg = args[0];\n        \n        // Handle different input types\n        if (firstArg instanceof int[]) {\n            // Integer array processing\n            int[] arr = (int[]) firstArg;\n            if (arr.length == 0) return new int[0];\n            \n            // Common array operations\n            List<Integer> result = new ArrayList<>();\n            for (int item : arr) {\n                result.add(item); // Process each item\n            }\n            \n            return result.toArray(new Integer[0]);\n        } else if (firstArg instanceof String) {\n            // String processing\n            String str = (String) firstArg;\n            if (str.length() == 0) return \"\";\n            \n            // Common string operations\n            return str; // Return processed string\n        } else if (firstArg instanceof Integer) {\n            // Integer processing\n            return firstArg; // Return processed number\n        } else {\n            // Generic processing\n            return firstArg;\n        }\n    }\n}"
+      "solution_text": "<p><strong>Queue-Based Solution for Dota2 Senate:</strong></p><p>Simulate the voting process using two queues to track senator positions.</p><p><strong>Algorithm:</strong></p><ol><li>Use two queues to store positions of R and D senators</li><li>In each round, compare front senators from both queues</li><li>Earlier position wins and bans the later one</li><li>Winner goes to back of queue with updated position</li><li>Continue until one queue is empty</li></ol><p><strong>Time Complexity:</strong> O(n) - each senator processed at most once per round</p><p><strong>Space Complexity:</strong> O(n) - for storing senator positions in queues</p>",
+      "solution_code": "class Solution {\n    public String dota2Senate(String senate) {\n        Queue<Integer> radiant = new LinkedList<>();\n        Queue<Integer> dire = new LinkedList<>();\n        int n = senate.length();\n        \n        // Fill queues with initial positions\n        for (int i = 0; i < n; i++) {\n            if (senate.charAt(i) == 'R') {\n                radiant.offer(i);\n            } else {\n                dire.offer(i);\n            }\n        }\n        \n        // Simulate the voting process\n        while (!radiant.isEmpty() && !dire.isEmpty()) {\n            int rPos = radiant.poll();\n            int dPos = dire.poll();\n            \n            // Earlier position wins\n            if (rPos < dPos) {\n                // Radiant wins, gets to vote in next round\n                radiant.offer(rPos + n);\n            } else {\n                // Dire wins, gets to vote in next round\n                dire.offer(dPos + n);\n            }\n        }\n        \n        // Winner is the party with remaining senators\n        return !radiant.isEmpty() ? \"Radiant\" : \"Dire\";\n    }\n}"
     }
   },
   "order_matters": false,
@@ -51,6 +51,62 @@
         "senate": "RDD"
       },
       "output": "Dire"
+    },
+    {
+      "id": 3,
+      "input": {
+        "senate": "RD"
+      },
+      "output": "Radiant"
+    },
+    {
+      "id": 4,
+      "input": {
+        "senate": "DR"
+      },
+      "output": "Dire"
+    },
+    {
+      "id": 5,
+      "input": {
+        "senate": "R"
+      },
+      "output": "Radiant"
+    },
+    {
+      "id": 6,
+      "input": {
+        "senate": "D"
+      },
+      "output": "Dire"
+    },
+    {
+      "id": 7,
+      "input": {
+        "senate": "DDRRR"
+      },
+      "output": "Dire"
+    },
+    {
+      "id": 8,
+      "input": {
+        "senate": "RRDDDD"
+      },
+      "output": "Dire"
+    },
+    {
+      "id": 9,
+      "input": {
+        "senate": "DRDRDR"
+      },
+      "output": "Dire"
+    },
+    {
+      "id": 10,
+      "input": {
+        "senate": "RDRDRD"
+      },
+      "output": "Radiant"
     }
   ]
 }

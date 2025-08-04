@@ -17,23 +17,23 @@
   "languages": {
     "python": {
       "template": "def constructBinaryTreeFromPreorderAndInorderTraversal(preorder, inorder):\n    ",
-      "solution_text": "Binary Tree Inorder Traversal implementation:\n\n**Algorithm:**\n1. Traverse left subtree recursively\n2. Process current node (add to result)\n3. Traverse right subtree recursively\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth, where h is tree height\n\n**Key Insights:**\n- Inorder: Left -> Root -> Right\n- For BST, inorder gives sorted sequence\n- Can be implemented iteratively using stack",
-      "solution_code": "def binaryTreeFromPreorderAndInorderTraversal(root):\n    result = []\n    \n    def inorder(node):\n        if not node:\n            return\n        \n        inorder(node.left)   # Traverse left subtree\n        result.append(node.val)  # Process current node\n        inorder(node.right)  # Traverse right subtree\n    \n    inorder(root)\n    return result"
+      "solution_text": "<h3>Construct Binary Tree from Preorder and Inorder Traversal</h3><p><strong>Algorithm:</strong></p><ol><li>The first element in preorder is always the root</li><li>Find root position in inorder array to determine left/right subtrees</li><li>Recursively build left subtree using left portion of both arrays</li><li>Recursively build right subtree using right portion of both arrays</li></ol><p><strong>Time Complexity:</strong> O(n) - process each node once</p><p><strong>Space Complexity:</strong> O(n) - for hashmap and recursion stack</p><p><strong>Key Insights:</strong></p><ul><li>Preorder: Root -> Left -> Right</li><li>Inorder: Left -> Root -> Right</li><li>Use hashmap for O(1) root lookups in inorder array</li></ul>",
+      "solution_code": "def constructBinaryTreeFromPreorderAndInorderTraversal(preorder, inorder):\n    if not preorder or not inorder:\n        return None\n    \n    # Create hashmap for O(1) lookups in inorder array\n    inorder_map = {val: i for i, val in enumerate(inorder)}\n    \n    def build(pre_start, pre_end, in_start, in_end):\n        if pre_start > pre_end:\n            return None\n        \n        # Root is always first element in preorder range\n        root_val = preorder[pre_start]\n        root = TreeNode(root_val)\n        \n        # Find root position in inorder array\n        root_idx = inorder_map[root_val]\n        left_size = root_idx - in_start\n        \n        # Build left and right subtrees\n        root.left = build(pre_start + 1, pre_start + left_size, in_start, root_idx - 1)\n        root.right = build(pre_start + left_size + 1, pre_end, root_idx + 1, in_end)\n        \n        return root\n    \n    return build(0, len(preorder) - 1, 0, len(inorder) - 1)"
     },
     "javascript": {
       "template": "function constructBinaryTreeFromPreorderAndInorderTraversal(preorder, inorder) {\n  \n}",
-      "solution_text": "Binary Tree Inorder Traversal implementation:\n\n**Algorithm:**\n1. Traverse left subtree recursively\n2. Process current node (add to result)\n3. Traverse right subtree recursively\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth, where h is tree height\n\n**Key Insights:**\n- Inorder: Left -> Root -> Right\n- For BST, inorder gives sorted sequence\n- Can be implemented iteratively using stack",
-      "solution_code": "function binaryTreeFromPreorderAndInorderTraversal(root) {\n    const result = [];\n    \n    function inorder(node) {\n        if (!node) return;\n        \n        inorder(node.left);    // Traverse left subtree\n        result.push(node.val); // Process current node\n        inorder(node.right);   // Traverse right subtree\n    }\n    \n    inorder(root);\n    return result;\n}"
+      "solution_text": "<h3>Construct Binary Tree from Preorder and Inorder Traversal</h3><p><strong>Algorithm:</strong></p><ol><li>The first element in preorder is always the root</li><li>Find root position in inorder array to determine left/right subtrees</li><li>Recursively build left subtree using left portion of both arrays</li><li>Recursively build right subtree using right portion of both arrays</li></ol><p><strong>Time Complexity:</strong> O(n) - process each node once</p><p><strong>Space Complexity:</strong> O(n) - for hashmap and recursion stack</p><p><strong>Key Insights:</strong></p><ul><li>Preorder: Root -> Left -> Right</li><li>Inorder: Left -> Root -> Right</li><li>Use hashmap for O(1) root lookups in inorder array</li></ul>",
+      "solution_code": "function constructBinaryTreeFromPreorderAndInorderTraversal(preorder, inorder) {\n    if (!preorder.length || !inorder.length) {\n        return null;\n    }\n    \n    // Create hashmap for O(1) lookups in inorder array\n    const inorderMap = new Map();\n    for (let i = 0; i < inorder.length; i++) {\n        inorderMap.set(inorder[i], i);\n    }\n    \n    function build(preStart, preEnd, inStart, inEnd) {\n        if (preStart > preEnd) {\n            return null;\n        }\n        \n        // Root is always first element in preorder range\n        const rootVal = preorder[preStart];\n        const root = new TreeNode(rootVal);\n        \n        // Find root position in inorder array\n        const rootIdx = inorderMap.get(rootVal);\n        const leftSize = rootIdx - inStart;\n        \n        // Build left and right subtrees\n        root.left = build(preStart + 1, preStart + leftSize, inStart, rootIdx - 1);\n        root.right = build(preStart + leftSize + 1, preEnd, rootIdx + 1, inEnd);\n        \n        return root;\n    }\n    \n    return build(0, preorder.length - 1, 0, inorder.length - 1);\n}"
     },
     "typescript": {
-      "template": "function constructBinaryTreeFromPreorderAndInorderTraversal(preorder: number[], inorder: number[]): number[] {\n  \n}",
-      "solution_text": "Binary Tree Inorder Traversal implementation:\n\n**Algorithm:**\n1. Traverse left subtree recursively\n2. Process current node (add to result)\n3. Traverse right subtree recursively\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth, where h is tree height\n\n**Key Insights:**\n- Inorder: Left -> Root -> Right\n- For BST, inorder gives sorted sequence\n- Can be implemented iteratively using stack",
-      "solution_code": "function binaryTreeFromPreorderAndInorderTraversal(root: TreeNode | null): number[] {\n    const result: number[] = [];\n    \n    function inorder(node: TreeNode | null): void {\n        if (!node) return;\n        \n        inorder(node.left);    // Traverse left subtree\n        result.push(node.val); // Process current node\n        inorder(node.right);   // Traverse right subtree\n    }\n    \n    inorder(root);\n    return result;\n}"
+      "template": "function constructBinaryTreeFromPreorderAndInorderTraversal(preorder: number[], inorder: number[]): TreeNode | null {\n  \n}",
+      "solution_text": "<h3>Construct Binary Tree from Preorder and Inorder Traversal</h3><p><strong>Algorithm:</strong></p><ol><li>The first element in preorder is always the root</li><li>Find root position in inorder array to determine left/right subtrees</li><li>Recursively build left subtree using left portion of both arrays</li><li>Recursively build right subtree using right portion of both arrays</li></ol><p><strong>Time Complexity:</strong> O(n) - process each node once</p><p><strong>Space Complexity:</strong> O(n) - for hashmap and recursion stack</p><p><strong>Key Insights:</strong></p><ul><li>Preorder: Root -> Left -> Right</li><li>Inorder: Left -> Root -> Right</li><li>Use hashmap for O(1) root lookups in inorder array</li></ul>",
+      "solution_code": "function constructBinaryTreeFromPreorderAndInorderTraversal(preorder: number[], inorder: number[]): TreeNode | null {\n    if (!preorder.length || !inorder.length) {\n        return null;\n    }\n    \n    // Create hashmap for O(1) lookups in inorder array\n    const inorderMap = new Map<number, number>();\n    for (let i = 0; i < inorder.length; i++) {\n        inorderMap.set(inorder[i], i);\n    }\n    \n    function build(preStart: number, preEnd: number, inStart: number, inEnd: number): TreeNode | null {\n        if (preStart > preEnd) {\n            return null;\n        }\n        \n        // Root is always first element in preorder range\n        const rootVal = preorder[preStart];\n        const root = new TreeNode(rootVal);\n        \n        // Find root position in inorder array\n        const rootIdx = inorderMap.get(rootVal)!;\n        const leftSize = rootIdx - inStart;\n        \n        // Build left and right subtrees\n        root.left = build(preStart + 1, preStart + leftSize, inStart, rootIdx - 1);\n        root.right = build(preStart + leftSize + 1, preEnd, rootIdx + 1, inEnd);\n        \n        return root;\n    }\n    \n    return build(0, preorder.length - 1, 0, inorder.length - 1);\n}"
     },
     "java": {
-      "template": "class Solution {\n    public int[] constructBinaryTreeFromPreorderAndInorderTraversal(int[] preorder, int[] inorder) {\n        \n    }\n}",
-      "solution_text": "Binary Tree Inorder Traversal implementation:\n\n**Algorithm:**\n1. Traverse left subtree recursively\n2. Process current node (add to result)\n3. Traverse right subtree recursively\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth, where h is tree height\n\n**Key Insights:**\n- Inorder: Left -> Root -> Right\n- For BST, inorder gives sorted sequence\n- Can be implemented iteratively using stack",
-      "solution_code": "class Solution {\n    public List<Integer> binaryTreeFromPreorderAndInorderTraversal(TreeNode root) {\n        List<Integer> result = new ArrayList<>();\n        inorder(root, result);\n        return result;\n    }\n    \n    private void inorder(TreeNode node, List<Integer> result) {\n        if (node == null) return;\n        \n        inorder(node.left, result);   // Traverse left subtree\n        result.add(node.val);         // Process current node\n        inorder(node.right, result);  // Traverse right subtree\n    }\n}"
+      "template": "class Solution {\n    public TreeNode constructBinaryTreeFromPreorderAndInorderTraversal(int[] preorder, int[] inorder) {\n        \n    }\n}",
+      "solution_text": "<h3>Construct Binary Tree from Preorder and Inorder Traversal</h3><p><strong>Algorithm:</strong></p><ol><li>The first element in preorder is always the root</li><li>Find root position in inorder array to determine left/right subtrees</li><li>Recursively build left subtree using left portion of both arrays</li><li>Recursively build right subtree using right portion of both arrays</li></ol><p><strong>Time Complexity:</strong> O(n) - process each node once</p><p><strong>Space Complexity:</strong> O(n) - for hashmap and recursion stack</p><p><strong>Key Insights:</strong></p><ul><li>Preorder: Root -> Left -> Right</li><li>Inorder: Left -> Root -> Right</li><li>Use hashmap for O(1) root lookups in inorder array</li></ul>",
+      "solution_code": "class Solution {\n    private Map<Integer, Integer> inorderMap;\n    \n    public TreeNode constructBinaryTreeFromPreorderAndInorderTraversal(int[] preorder, int[] inorder) {\n        if (preorder.length == 0 || inorder.length == 0) {\n            return null;\n        }\n        \n        // Create hashmap for O(1) lookups in inorder array\n        inorderMap = new HashMap<>();\n        for (int i = 0; i < inorder.length; i++) {\n            inorderMap.put(inorder[i], i);\n        }\n        \n        return build(preorder, 0, preorder.length - 1, 0, inorder.length - 1);\n    }\n    \n    private TreeNode build(int[] preorder, int preStart, int preEnd, int inStart, int inEnd) {\n        if (preStart > preEnd) {\n            return null;\n        }\n        \n        // Root is always first element in preorder range\n        int rootVal = preorder[preStart];\n        TreeNode root = new TreeNode(rootVal);\n        \n        // Find root position in inorder array\n        int rootIdx = inorderMap.get(rootVal);\n        int leftSize = rootIdx - inStart;\n        \n        // Build left and right subtrees\n        root.left = build(preorder, preStart + 1, preStart + leftSize, inStart, rootIdx - 1);\n        root.right = build(preorder, preStart + leftSize + 1, preEnd, rootIdx + 1, inEnd);\n        \n        return root;\n    }\n}"
     }
   },
   "order_matters": false,
@@ -41,16 +41,26 @@
     {
       "id": 1,
       "input": {
-        "preorder": [
-          1
-        ],
-        "inorder": [
-          1
-        ]
+        "preorder": [1],
+        "inorder": [1]
       },
-      "output": [
-        1
-      ]
+      "output": [1]
+    },
+    {
+      "id": 2,
+      "input": {
+        "preorder": [3, 9, 20, 15, 7],
+        "inorder": [9, 3, 15, 20, 7]
+      },
+      "output": [3, 9, null, null, 20, 15, 7]
+    },
+    {
+      "id": 3,
+      "input": {
+        "preorder": [1, 2],
+        "inorder": [2, 1]
+      },
+      "output": [1, 2]
     }
   ]
 }

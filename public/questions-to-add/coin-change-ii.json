@@ -17,23 +17,23 @@
   "languages": {
     "python": {
       "template": "def coinChangeIi(amount, coins):\n    ",
-      "solution_text": "Dynamic Programming solution with memoization:\n\n**Algorithm:**\n1. Identify overlapping subproblems\n2. Define state and recurrence relation\n3. Use memoization to avoid recomputation\n4. Build solution bottom-up or top-down\n\n**Time Complexity:** O(n) with memoization\n**Space Complexity:** O(n) for memoization table\n\n**Key Insights:**\n- Break problem into smaller subproblems\n- Optimal substructure property\n- Memoization prevents redundant calculations",
-      "solution_code": "def coinChangeIi(n):\n    if n <= 0:\n        return 0\n    if n == 1:\n        return 1\n    \n    # Memoization table\n    dp = [-1] * (n + 1)\n    dp[0] = 0\n    dp[1] = 1\n    \n    def solve(i):\n        if dp[i] != -1:\n            return dp[i]\n        \n        # Recurrence relation (adjust based on problem)\n        dp[i] = solve(i - 1) + solve(i - 2)\n        return dp[i]\n    \n    return solve(n)"
+      "solution_text": "<h3>Coin Change II</h3><p><strong>Algorithm:</strong></p><ol><li>Use 2D DP where dp[i][j] = ways to make amount j using first i coins</li><li>For each coin, we can either include it or exclude it</li><li>If we include coin, subtract its value and add ways from previous amount</li><li>If we exclude coin, take ways from previous coin index</li><li>Optimize to 1D DP by processing coins in order</li></ol><p><strong>Time Complexity:</strong> O(amount × coins.length) - fill DP table</p><p><strong>Space Complexity:</strong> O(amount) - 1D DP array optimization</p><p><strong>Key Insights:</strong></p><ul><li>This is a combination problem, not permutation (order doesn't matter)</li><li>Process coins in order to avoid duplicate combinations</li><li>Base case: dp[0] = 1 (one way to make amount 0 - use no coins)</li></ul>",
+      "solution_code": "def coinChangeIi(amount, coins):\n    # dp[i] = number of ways to make amount i\n    dp = [0] * (amount + 1)\n    dp[0] = 1  # One way to make amount 0: use no coins\n    \n    # Process each coin\n    for coin in coins:\n        # Update dp array for this coin\n        for i in range(coin, amount + 1):\n            dp[i] += dp[i - coin]\n    \n    return dp[amount]"
     },
     "javascript": {
       "template": "function coinChangeIi(amount, coins) {\n  \n}",
-      "solution_text": "Dynamic Programming solution with memoization:\n\n**Algorithm:**\n1. Identify overlapping subproblems\n2. Define state and recurrence relation\n3. Use memoization to avoid recomputation\n4. Build solution bottom-up or top-down\n\n**Time Complexity:** O(n) with memoization\n**Space Complexity:** O(n) for memoization table\n\n**Key Insights:**\n- Break problem into smaller subproblems\n- Optimal substructure property\n- Memoization prevents redundant calculations",
-      "solution_code": "function coinChangeIi(n) {\n    if (n <= 0) return 0;\n    if (n === 1) return 1;\n    \n    // Memoization table\n    const dp = new Array(n + 1).fill(-1);\n    dp[0] = 0;\n    dp[1] = 1;\n    \n    function solve(i) {\n        if (dp[i] !== -1) return dp[i];\n        \n        // Recurrence relation (adjust based on problem)\n        dp[i] = solve(i - 1) + solve(i - 2);\n        return dp[i];\n    }\n    \n    return solve(n);\n}"
+      "solution_text": "<h3>Coin Change II</h3><p><strong>Algorithm:</strong></p><ol><li>Use 2D DP where dp[i][j] = ways to make amount j using first i coins</li><li>For each coin, we can either include it or exclude it</li><li>If we include coin, subtract its value and add ways from previous amount</li><li>If we exclude coin, take ways from previous coin index</li><li>Optimize to 1D DP by processing coins in order</li></ol><p><strong>Time Complexity:</strong> O(amount × coins.length) - fill DP table</p><p><strong>Space Complexity:</strong> O(amount) - 1D DP array optimization</p><p><strong>Key Insights:</strong></p><ul><li>This is a combination problem, not permutation (order doesn't matter)</li><li>Process coins in order to avoid duplicate combinations</li><li>Base case: dp[0] = 1 (one way to make amount 0 - use no coins)</li></ul>",
+      "solution_code": "function coinChangeIi(amount, coins) {\n    // dp[i] = number of ways to make amount i\n    const dp = new Array(amount + 1).fill(0);\n    dp[0] = 1; // One way to make amount 0: use no coins\n    \n    // Process each coin\n    for (const coin of coins) {\n        // Update dp array for this coin\n        for (let i = coin; i <= amount; i++) {\n            dp[i] += dp[i - coin];\n        }\n    }\n    \n    return dp[amount];\n}"
     },
     "typescript": {
-      "template": "function coinChangeIi(amount: string, coins: number[]): number {\n  \n}",
-      "solution_text": "Dynamic Programming solution with memoization:\n\n**Algorithm:**\n1. Identify overlapping subproblems\n2. Define state and recurrence relation\n3. Use memoization to avoid recomputation\n4. Build solution bottom-up or top-down\n\n**Time Complexity:** O(n) with memoization\n**Space Complexity:** O(n) for memoization table\n\n**Key Insights:**\n- Break problem into smaller subproblems\n- Optimal substructure property\n- Memoization prevents redundant calculations",
-      "solution_code": "function coinChangeIi(n: number): number {\n    if (n <= 0) return 0;\n    if (n === 1) return 1;\n    \n    // Memoization table\n    const dp: number[] = new Array(n + 1).fill(-1);\n    dp[0] = 0;\n    dp[1] = 1;\n    \n    function solve(i: number): number {\n        if (dp[i] !== -1) return dp[i];\n        \n        // Recurrence relation (adjust based on problem)\n        dp[i] = solve(i - 1) + solve(i - 2);\n        return dp[i];\n    }\n    \n    return solve(n);\n}"
+      "template": "function coinChangeIi(amount: number, coins: number[]): number {\n  \n}",
+      "solution_text": "<h3>Coin Change II</h3><p><strong>Algorithm:</strong></p><ol><li>Use 2D DP where dp[i][j] = ways to make amount j using first i coins</li><li>For each coin, we can either include it or exclude it</li><li>If we include coin, subtract its value and add ways from previous amount</li><li>If we exclude coin, take ways from previous coin index</li><li>Optimize to 1D DP by processing coins in order</li></ol><p><strong>Time Complexity:</strong> O(amount × coins.length) - fill DP table</p><p><strong>Space Complexity:</strong> O(amount) - 1D DP array optimization</p><p><strong>Key Insights:</strong></p><ul><li>This is a combination problem, not permutation (order doesn't matter)</li><li>Process coins in order to avoid duplicate combinations</li><li>Base case: dp[0] = 1 (one way to make amount 0 - use no coins)</li></ul>",
+      "solution_code": "function coinChangeIi(amount: number, coins: number[]): number {\n    // dp[i] = number of ways to make amount i\n    const dp: number[] = new Array(amount + 1).fill(0);\n    dp[0] = 1; // One way to make amount 0: use no coins\n    \n    // Process each coin\n    for (const coin of coins) {\n        // Update dp array for this coin\n        for (let i = coin; i <= amount; i++) {\n            dp[i] += dp[i - coin];\n        }\n    }\n    \n    return dp[amount];\n}"
     },
     "java": {
-      "template": "class Solution {\n    public int coinChangeIi(String amount, int[] coins) {\n        \n    }\n}",
-      "solution_text": "Dynamic Programming solution with memoization:\n\n**Algorithm:**\n1. Identify overlapping subproblems\n2. Define state and recurrence relation\n3. Use memoization to avoid recomputation\n4. Build solution bottom-up or top-down\n\n**Time Complexity:** O(n) with memoization\n**Space Complexity:** O(n) for memoization table\n\n**Key Insights:**\n- Break problem into smaller subproblems\n- Optimal substructure property\n- Memoization prevents redundant calculations",
-      "solution_code": "class Solution {\n    public int coinChangeIi(int n) {\n        if (n <= 0) return 0;\n        if (n == 1) return 1;\n        \n        // Memoization table\n        int[] dp = new int[n + 1];\n        Arrays.fill(dp, -1);\n        dp[0] = 0;\n        dp[1] = 1;\n        \n        return solve(n, dp);\n    }\n    \n    private int solve(int i, int[] dp) {\n        if (dp[i] != -1) return dp[i];\n        \n        // Recurrence relation (adjust based on problem)\n        dp[i] = solve(i - 1, dp) + solve(i - 2, dp);\n        return dp[i];\n    }\n}"
+      "template": "class Solution {\n    public int coinChangeIi(int amount, int[] coins) {\n        \n    }\n}",
+      "solution_text": "<h3>Coin Change II</h3><p><strong>Algorithm:</strong></p><ol><li>Use 2D DP where dp[i][j] = ways to make amount j using first i coins</li><li>For each coin, we can either include it or exclude it</li><li>If we include coin, subtract its value and add ways from previous amount</li><li>If we exclude coin, take ways from previous coin index</li><li>Optimize to 1D DP by processing coins in order</li></ol><p><strong>Time Complexity:</strong> O(amount × coins.length) - fill DP table</p><p><strong>Space Complexity:</strong> O(amount) - 1D DP array optimization</p><p><strong>Key Insights:</strong></p><ul><li>This is a combination problem, not permutation (order doesn't matter)</li><li>Process coins in order to avoid duplicate combinations</li><li>Base case: dp[0] = 1 (one way to make amount 0 - use no coins)</li></ul>",
+      "solution_code": "class Solution {\n    public int coinChangeIi(int amount, int[] coins) {\n        // dp[i] = number of ways to make amount i\n        int[] dp = new int[amount + 1];\n        dp[0] = 1; // One way to make amount 0: use no coins\n        \n        // Process each coin\n        for (int coin : coins) {\n            // Update dp array for this coin\n            for (int i = coin; i <= amount; i++) {\n                dp[i] += dp[i - coin];\n            }\n        }\n        \n        return dp[amount];\n    }\n}"
     }
   },
   "order_matters": false,
@@ -41,7 +41,7 @@
     {
       "id": 1,
       "input": {
-        "amount": "4,",
+        "amount": 4,
         "coins": [
           1,
           2,
@@ -53,7 +53,7 @@
     {
       "id": 2,
       "input": {
-        "amount": "7,",
+        "amount": 7,
         "coins": [
           2,
           4

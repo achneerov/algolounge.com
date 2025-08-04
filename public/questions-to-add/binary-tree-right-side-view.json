@@ -16,26 +16,55 @@
   "description": "<h2>Binary Tree Right Side View</h2><p>Leetcode 199. Binary Tree Right Side View</p><p></p><p>You are given the `root` of a binary tree. Return only the values of the nodes that are visible from the right side of the tree, ordered from top to bottom.</p><h3>Constraints:</h3><ul><li> `0 <= number of nodes in the tree <= 100`</li><li> `-100 <= Node.val <= 100`</li></ul>",
   "languages": {
     "python": {
-      "template": "def binaryTreeRightSideView(input):\n    ",
-      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
-      "solution_code": "def binaryTreeRightSideView(root):\n    if not root:\n        return None  # or appropriate base case result\n    \n    # Process current node\n    result = root.val\n    \n    # Recursively process subtrees\n    left_result = binaryTreeRightSideView(root.left) if root.left else None\n    right_result = binaryTreeRightSideView(root.right) if root.right else None\n    \n    # Combine results based on operation\n    # This is a template - adjust based on specific operation\n    return result"
+      "template": "def binaryTreeRightSideView(root):\n    ",
+      "solution_text": "<h3>Binary Tree Right Side View</h3><p><strong>Algorithm:</strong></p><ol><li>Use level-order traversal (BFS) to process nodes level by level</li><li>For each level, only keep the rightmost node value</li><li>Alternative: Use DFS with depth tracking, prioritize right subtree</li></ol><p><strong>Time Complexity:</strong> O(n) - visit each node once</p><p><strong>Space Complexity:</strong> O(h) - queue size for BFS or recursion depth for DFS</p><p><strong>Key Insights:</strong></p><ul><li>Right side view means rightmost node at each level</li><li>BFS naturally processes nodes level by level</li><li>DFS approach: visit right subtree first, track depth</li></ul>",
+      "solution_code": "def binaryTreeRightSideView(root):\n    if not root:\n        return []\n    \n    result = []\n    queue = [root]\n    \n    while queue:\n        level_size = len(queue)\n        \n        for i in range(level_size):\n            node = queue.pop(0)\n            \n            # If this is the rightmost node in current level\n            if i == level_size - 1:\n                result.append(node.val)\n            \n            # Add children to queue\n            if node.left:\n                queue.append(node.left)\n            if node.right:\n                queue.append(node.right)\n    \n    return result"
     },
     "javascript": {
-      "template": "function binaryTreeRightSideView(input) {\n  \n}",
-      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
-      "solution_code": "function binaryTreeRightSideView(root) {\n    if (!root) return null; // or appropriate base case result\n    \n    // Process current node\n    const result = root.val;\n    \n    // Recursively process subtrees\n    const leftResult = root.left ? binaryTreeRightSideView(root.left) : null;\n    const rightResult = root.right ? binaryTreeRightSideView(root.right) : null;\n    \n    // Combine results based on operation\n    // This is a template - adjust based on specific operation\n    return result;\n}"
+      "template": "function binaryTreeRightSideView(root) {\n  \n}",
+      "solution_text": "<h3>Binary Tree Right Side View</h3><p><strong>Algorithm:</strong></p><ol><li>Use level-order traversal (BFS) to process nodes level by level</li><li>For each level, only keep the rightmost node value</li><li>Alternative: Use DFS with depth tracking, prioritize right subtree</li></ol><p><strong>Time Complexity:</strong> O(n) - visit each node once</p><p><strong>Space Complexity:</strong> O(h) - queue size for BFS or recursion depth for DFS</p><p><strong>Key Insights:</strong></p><ul><li>Right side view means rightmost node at each level</li><li>BFS naturally processes nodes level by level</li><li>DFS approach: visit right subtree first, track depth</li></ul>",
+      "solution_code": "function binaryTreeRightSideView(root) {\n    if (!root) return [];\n    \n    const result = [];\n    const queue = [root];\n    \n    while (queue.length > 0) {\n        const levelSize = queue.length;\n        \n        for (let i = 0; i < levelSize; i++) {\n            const node = queue.shift();\n            \n            // If this is the rightmost node in current level\n            if (i === levelSize - 1) {\n                result.push(node.val);\n            }\n            \n            // Add children to queue\n            if (node.left) queue.push(node.left);\n            if (node.right) queue.push(node.right);\n        }\n    }\n    \n    return result;\n}"
     },
     "typescript": {
-      "template": "function binaryTreeRightSideView(input: any): any {\n  \n}",
-      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
-      "solution_code": "function binaryTreeRightSideView(root: TreeNode | null): any {\n    if (!root) return null; // or appropriate base case result\n    \n    // Process current node\n    const result = root.val;\n    \n    // Recursively process subtrees\n    const leftResult = root.left ? binaryTreeRightSideView(root.left) : null;\n    const rightResult = root.right ? binaryTreeRightSideView(root.right) : null;\n    \n    // Combine results based on operation\n    // This is a template - adjust based on specific operation\n    return result;\n}"
+      "template": "function binaryTreeRightSideView(root: TreeNode | null): number[] {\n  \n}",
+      "solution_text": "<h3>Binary Tree Right Side View</h3><p><strong>Algorithm:</strong></p><ol><li>Use level-order traversal (BFS) to process nodes level by level</li><li>For each level, only keep the rightmost node value</li><li>Alternative: Use DFS with depth tracking, prioritize right subtree</li></ol><p><strong>Time Complexity:</strong> O(n) - visit each node once</p><p><strong>Space Complexity:</strong> O(h) - queue size for BFS or recursion depth for DFS</p><p><strong>Key Insights:</strong></p><ul><li>Right side view means rightmost node at each level</li><li>BFS naturally processes nodes level by level</li><li>DFS approach: visit right subtree first, track depth</li></ul>",
+      "solution_code": "function binaryTreeRightSideView(root: TreeNode | null): number[] {\n    if (!root) return [];\n    \n    const result: number[] = [];\n    const queue: TreeNode[] = [root];\n    \n    while (queue.length > 0) {\n        const levelSize = queue.length;\n        \n        for (let i = 0; i < levelSize; i++) {\n            const node = queue.shift()!;\n            \n            // If this is the rightmost node in current level\n            if (i === levelSize - 1) {\n                result.push(node.val);\n            }\n            \n            // Add children to queue\n            if (node.left) queue.push(node.left);\n            if (node.right) queue.push(node.right);\n        }\n    }\n    \n    return result;\n}"
     },
     "java": {
-      "template": "class Solution {\n    public Object binaryTreeRightSideView(Object input) {\n        \n    }\n}",
-      "solution_text": "Binary tree operation implementation:\n\n**Algorithm:**\n1. Handle base case (null/empty tree)\n2. Process current node based on operation\n3. Recursively handle left and right subtrees\n4. Combine results as needed\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(h) - recursion stack depth\n\n**Key Insights:**\n- Recursive nature matches tree structure\n- Base case prevents infinite recursion\n- Consider iterative approach for space optimization",
-      "solution_code": "class Solution {\n    public Object binaryTreeRightSideView(TreeNode root) {\n        if (root == null) return null; // or appropriate base case result\n        \n        // Process current node\n        int result = root.val;\n        \n        // Recursively process subtrees\n        Object leftResult = root.left != null ? binaryTreeRightSideView(root.left) : null;\n        Object rightResult = root.right != null ? binaryTreeRightSideView(root.right) : null;\n        \n        // Combine results based on operation\n        // This is a template - adjust based on specific operation\n        return result;\n    }\n}"
+      "template": "class Solution {\n    public List<Integer> binaryTreeRightSideView(TreeNode root) {\n        \n    }\n}",
+      "solution_text": "<h3>Binary Tree Right Side View</h3><p><strong>Algorithm:</strong></p><ol><li>Use level-order traversal (BFS) to process nodes level by level</li><li>For each level, only keep the rightmost node value</li><li>Alternative: Use DFS with depth tracking, prioritize right subtree</li></ol><p><strong>Time Complexity:</strong> O(n) - visit each node once</p><p><strong>Space Complexity:</strong> O(h) - queue size for BFS or recursion depth for DFS</p><p><strong>Key Insights:</strong></p><ul><li>Right side view means rightmost node at each level</li><li>BFS naturally processes nodes level by level</li><li>DFS approach: visit right subtree first, track depth</li></ul>",
+      "solution_code": "class Solution {\n    public List<Integer> binaryTreeRightSideView(TreeNode root) {\n        if (root == null) return new ArrayList<>();\n        \n        List<Integer> result = new ArrayList<>();\n        Queue<TreeNode> queue = new LinkedList<>();\n        queue.offer(root);\n        \n        while (!queue.isEmpty()) {\n            int levelSize = queue.size();\n            \n            for (int i = 0; i < levelSize; i++) {\n                TreeNode node = queue.poll();\n                \n                // If this is the rightmost node in current level\n                if (i == levelSize - 1) {\n                    result.add(node.val);\n                }\n                \n                // Add children to queue\n                if (node.left != null) queue.offer(node.left);\n                if (node.right != null) queue.offer(node.right);\n            }\n        }\n        \n        return result;\n    }\n}"
     }
   },
   "order_matters": false,
-  "test_cases": []
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "root": [1, 2, 3, null, 5, null, 4]
+      },
+      "output": [1, 3, 4]
+    },
+    {
+      "id": 2,
+      "input": {
+        "root": [1, null, 3]
+      },
+      "output": [1, 3]
+    },
+    {
+      "id": 3,
+      "input": {
+        "root": []
+      },
+      "output": []
+    },
+    {
+      "id": 4,
+      "input": {
+        "root": [1, 2, 3, 4]
+      },
+      "output": [1, 3, 4]
+    }
+  ]
 }

@@ -13,27 +13,30 @@
     "indicates",
     "take"
   ],
-  "description": "<h2>Course Schedule</h2><p>Leetcode 207. Course Schedule</p><p></p><p>You are given an array `prerequisites` where `prerequisites[i] = [a, b]` indicates that you **must** take course `b` first if you want to take course `a`.</p><p></p><p>The pair `[0, 1]`, indicates that must take course `1` before taking course `0`.</p><p></p><p>There are a total of `numCourses` courses you are required to take, labeled from `0` to `numCourses - 1`. </p><p></p><p>Return `true` if it is possible to finish all courses, otherwise return `false`.</p><h3>Examples:</h3><ul><li>Input: numCourses = 2, prerequisites = [[0,1]]<br><br>Output: true<br>First take course 1 (no prerequisites) and then take course 0.</li><li>Input: numCourses = 2, prerequisites = [[0,1],[1,0]]<br><br>Output: false<br>In order to take course 1 you must take course 0, and to take course 0 you must take course 1. So it is impossible.</li></ul><h3>Constraints:</h3><ul><li> `1 <= numCourses <= 1000`</li><li> `0 <= prerequisites.length <= 1000`</li><li> All `prerequisite` pairs are **unique**.</li></ul>",
+  "description": "<h2>Course Schedule</h2><p>Leetcode 207. Course Schedule</p><p></p><p>You are given an array `prerequisites` where `prerequisites[i] = [a, b]` indicates that you **must** take course `b` first if you want to take course `a`.</p><p></p><p>The pair `[0, 1]`, indicates that must take course `1` before taking course `0`.</p><p></p><p>There are a total of `numCourses` courses you are required to take, labeled from `0` to `numCourses - 1`. </p><p></p><p>Return `true` if it is possible to finish all courses, otherwise return `false`.</p><h3>Examples:</h3><ul><li>Input: numCourses = 2, prerequisites = [[0,1]]<br><br>Output: true<br>First take course 1 (no prerequisites) and then take course 0.</li><li>Input: numCourses = 2, prerequisites = [[0,1],[1,0]]<br><br>Output: false<br>In order to take course 1 you must take course 0, and to take course 0 you must take course 1. So it is impossible.</li></ul><h3>Constraints:</h3><ul><li> `1 <= numCourses <= 2000`</li><li> `0 <= prerequisites.length <= 5000`</li><li> `prerequisites[i].length == 2`</li><li> `0 <= ai, bi < numCourses`</li><li> All `prerequisite` pairs are **unique**.</li></ul>",
   "languages": {
     "python": {
       "template": "def courseSchedule(numCourses, prerequisites):\n    ",
-      "solution_text": "Comprehensive solution for course-schedule:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "def courseSchedule(*args):\n    # Handle empty input\n    if not args:\n        return None\n    \n    # Get first argument (most common pattern)\n    first_arg = args[0]\n    \n    # Handle different input types\n    if isinstance(first_arg, list):\n        # Array/list processing\n        if not first_arg:\n            return []\n        \n        # Common array operations\n        result = []\n        for i, item in enumerate(first_arg):\n            # Process based on context\n            if isinstance(item, (int, float)):\n                result.append(item)  # Numeric processing\n            elif isinstance(item, str):\n                result.append(item)  # String processing\n            else:\n                result.append(item)  # Generic processing\n        \n        return result\n    \n    elif isinstance(first_arg, str):\n        # String processing\n        if not first_arg:\n            return \"\"\n        \n        # Common string operations\n        return first_arg  # Return processed string\n    \n    elif isinstance(first_arg, (int, float)):\n        # Numeric processing\n        return first_arg  # Return processed number\n    \n    else:\n        # Generic processing\n        return first_arg"
+      "solution_text": "<p><strong>Cycle Detection in a Directed Graph (Topological Sort):</strong></p><p>This problem is fundamentally about detecting if a cycle exists in a directed graph. The courses represent the graph's nodes, and the prerequisites represent the directed edges. If a cycle exists, it's impossible to complete all courses.</p><p><strong>Algorithm (using Kahn's Algorithm for Topological Sort):</strong></p><ol><li><strong>Graph Representation:</strong> We build a graph using an adjacency list (`adj`) and an array to store the in-degree of each node (`in_degree`). The in-degree of a node is the number of incoming edges.</li><li><strong>Initialization:</strong> For each prerequisite `[a, b]` (meaning `b` -> `a`), we add an edge from `b` to `a` in our adjacency list and increment the in-degree of `a`.</li><li><strong>Queue of Sources:</strong> We initialize a queue with all courses that have an in-degree of 0. These are the courses with no prerequisites, so we can take them first.</li><li><strong>Process Courses:</strong> We then process the courses in the queue. For each course `u` we dequeue: <ol><li>We increment a counter for the number of courses we've successfully ordered (`courses_taken`).</li><li>For each neighbor `v` of `u` (i.e., for each course that has `u` as a prerequisite), we decrement its in-degree.</li><li>If a neighbor's in-degree becomes 0, it means all its prerequisites have been met, so we add it to the queue.</li></ol></li><li><strong>Result:</strong> After the loop, if `courses_taken` is equal to `numCourses`, it means we were able to order all courses, implying no cycle exists. We return `True`. Otherwise, a cycle was present, and we return `False`.</li></ol><p><strong>Time Complexity:</strong> O(V + E), where V is the number of courses and E is the number of prerequisites. This is because we visit each node and edge once.</p><p><strong>Space Complexity:</strong> O(V + E) for the adjacency list, in-degree array, and the queue.",
+      "solution_code": "from collections import deque\n\ndef courseSchedule(numCourses, prerequisites):\n    adj = {i: [] for i in range(numCourses)}\n    in_degree = [0] * numCourses\n\n    for course, prereq in prerequisites:\n        adj[prereq].append(course)\n        in_degree[course] += 1\n\n    queue = deque([i for i in range(numCourses) if in_degree[i] == 0])\n    courses_taken = 0\n\n    while queue:\n        u = queue.popleft()\n        courses_taken += 1\n        for v in adj[u]:\n            in_degree[v] -= 1\n            if in_degree[v] == 0:\n                queue.append(v)\n\n    return courses_taken == numCourses"
     },
     "javascript": {
       "template": "function courseSchedule(numCourses, prerequisites) {\n  \n}",
-      "solution_text": "Comprehensive solution for course-schedule:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function courseSchedule(...args) {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "solution_text": "<p><strong>Cycle Detection in a Directed Graph (Topological Sort):</strong></p><p>This problem is fundamentally about detecting if a cycle exists in a directed graph. The courses represent the graph's nodes, and the prerequisites represent the directed edges. If a cycle exists, it's impossible to complete all courses.</p><p><strong>Algorithm (using Kahn's Algorithm for Topological Sort):</strong></p><ol><li><strong>Graph Representation:</strong> We build a graph using an adjacency list (`adj`) and an array to store the in-degree of each node (`inDegree`). The in-degree of a node is the number of incoming edges.</li><li><strong>Initialization:</strong> For each prerequisite `[a, b]` (meaning `b` -> `a`), we add an edge from `b` to `a` in our adjacency list and increment the in-degree of `a`.</li><li><strong>Queue of Sources:</strong> We initialize a queue with all courses that have an in-degree of 0. These are the courses with no prerequisites, so we can take them first.</li><li><strong>Process Courses:</strong> We then process the courses in the queue. For each course `u` we dequeue: <ol><li>We increment a counter for the number of courses we've successfully ordered (`coursesTaken`).</li><li>For each neighbor `v` of `u` (i.e., for each course that has `u` as a prerequisite), we decrement its in-degree.</li><li>If a neighbor's in-degree becomes 0, it means all its prerequisites have been met, so we add it to the queue.</li></ol></li><li><strong>Result:</strong> After the loop, if `coursesTaken` is equal to `numCourses`, it means we were able to order all courses, implying no cycle exists. We return `true`. Otherwise, a cycle was present, and we return `false`.</li></ol><p><strong>Time Complexity:</strong> O(V + E), where V is the number of courses and E is the number of prerequisites. This is because we visit each node and edge once.</p><p><strong>Space Complexity:</strong> O(V + E) for the adjacency list, in-degree array, and the queue.",
+      "solution_code": "function courseSchedule(numCourses, prerequisites) {\n    const adj = new Array(numCourses).fill(0).map(() => []);\n    const inDegree = new Array(numCourses).fill(0);\n\n    for (const [course, prereq] of prerequisites) {\n        adj[prereq].push(course);\n        inDegree[course]++;\n    }\n\n    const queue = [];\n    for (let i = 0; i < numCourses; i++) {\n        if (inDegree[i] === 0) {\n            queue.push(i);\n        }\n    }\n\n    let coursesTaken = 0;\n    while (queue.length > 0) {\n        const u = queue.shift();\n        coursesTaken++;\n        for (const v of adj[u]) {\n            inDegree[v]--;\n            if (inDegree[v] === 0) {\n                queue.push(v);\n            }\n        }\n    }\n\n    return coursesTaken === numCourses;\n}"
     },
     "typescript": {
-      "template": "function courseSchedule(numCourses: string, prerequisites: number[]): string {\n  \n}",
-      "solution_text": "Comprehensive solution for course-schedule:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function courseSchedule(...args: any[]): any {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result: any[] = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "template": "function courseSchedule(numCourses: number, prerequisites: number[][]): boolean {\n  \n}",
+      "solution_text": "<p><strong>Cycle Detection in a Directed Graph (Topological Sort):</strong></p><p>This problem is fundamentally about detecting if a cycle exists in a directed graph. The courses represent the graph's nodes, and the prerequisites represent the directed edges. If a cycle exists, it's impossible to complete all courses.</p><p><strong>Algorithm (using Kahn's Algorithm for Topological Sort):</strong></p><ol><li><strong>Graph Representation:</strong> We build a graph using an adjacency list (`adj`) and an array to store the in-degree of each node (`inDegree`). The in-degree of a node is the number of incoming edges.</li><li><strong>Initialization:</strong> For each prerequisite `[a, b]` (meaning `b` -> `a`), we add an edge from `b` to `a` in our adjacency list and increment the in-degree of `a`.</li><li><strong>Queue of Sources:</strong> We initialize a queue with all courses that have an in-degree of 0. These are the courses with no prerequisites, so we can take them first.</li><li><strong>Process Courses:</strong> We then process the courses in the queue. For each course `u` we dequeue: <ol><li>We increment a counter for the number of courses we've successfully ordered (`coursesTaken`).</li><li>For each neighbor `v` of `u` (i.e., for each course that has `u` as a prerequisite), we decrement its in-degree.</li><li>If a neighbor's in-degree becomes 0, it means all its prerequisites have been met, so we add it to the queue.</li></ol></li><li><strong>Result:</strong> After the loop, if `coursesTaken` is equal to `numCourses`, it means we were able to order all courses, implying no cycle exists. We return `true`. Otherwise, a cycle was present, and we return `false`.</li></ol><p><strong>Time Complexity:</strong> O(V + E), where V is the number of courses and E is the number of prerequisites. This is because we visit each node and edge once.</p><p><strong>Space Complexity:</strong> O(V + E) for the adjacency list, in-degree array, and the queue.",
+      "solution_code": "function courseSchedule(numCourses: number, prerequisites: number[][]): boolean {\n    const adj: number[][] = new Array(numCourses).fill(0).map(() => []);\n    const inDegree: number[] = new Array(numCourses).fill(0);\n\n    for (const [course, prereq] of prerequisites) {\n        adj[prereq].push(course);\n        inDegree[course]++;\n    }\n\n    const queue: number[] = [];\n    for (let i = 0; i < numCourses; i++) {\n        if (inDegree[i] === 0) {\n            queue.push(i);\n        }\n    }\n\n    let coursesTaken = 0;\n    while (queue.length > 0) {\n        const u = queue.shift()!\n        coursesTaken++;\n        for (const v of adj[u]) {\n            inDegree[v]--;\n            if (inDegree[v] === 0) {\n                queue.push(v);\n            }\n        }\n    }\n\n    return coursesTaken === numCourses;\n}"
     },
     "java": {
-      "template": "class Solution {\n    public String courseSchedule(String numCourses, int[] prerequisites) {\n        \n    }\n}",
-      "solution_text": "Comprehensive solution for course-schedule:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "class Solution {\n    public Object courseSchedule(Object... args) {\n        // Handle empty input\n        if (args.length == 0) return null;\n        \n        // Get first argument (most common pattern)\n        Object firstArg = args[0];\n        \n        // Handle different input types\n        if (firstArg instanceof int[]) {\n            // Integer array processing\n            int[] arr = (int[]) firstArg;\n            if (arr.length == 0) return new int[0];\n            \n            // Common array operations\n            List<Integer> result = new ArrayList<>();\n            for (int item : arr) {\n                result.add(item); // Process each item\n            }\n            \n            return result.toArray(new Integer[0]);\n        } else if (firstArg instanceof String) {\n            // String processing\n            String str = (String) firstArg;\n            if (str.length() == 0) return \"\";\n            \n            // Common string operations\n            return str; // Return processed string\n        } else if (firstArg instanceof Integer) {\n            // Integer processing\n            return firstArg; // Return processed number\n        } else {\n            // Generic processing\n            return firstArg;\n        }\n    }\n}"
+      "template": "class Solution {\n    public boolean courseSchedule(int numCourses, int[][] prerequisites) {\n        \n    }\n}",
+      "solution_text": "<p><strong>Cycle Detection in a Directed Graph (Topological Sort):</strong></p><p>This problem is fundamentally about detecting if a cycle exists in a directed graph. The courses represent the graph's nodes, and the prerequisites represent the directed edges. If a cycle exists, it's impossible to complete all courses.</p><p><strong>Algorithm (using Kahn's Algorithm for Topological Sort):</strong></p><ol><li><strong>Graph Representation:</strong> We build a graph using an adjacency list (`adj`) and an array to store the in-degree of each node (`inDegree`). The in-degree of a node is the number of incoming edges.</li><li><strong>Initialization:</strong> For each prerequisite `[a, b]` (meaning `b` -> `a`), we add an edge from `b` to `a` in our adjacency list and increment the in-degree of `a`.</li><li><strong>Queue of Sources:</strong> We initialize a queue with all courses that have an in-degree of 0. These are the courses with no prerequisites, so we can take them first.</li><li><strong>Process Courses:</strong> We then process the courses in the queue. For each course `u` we dequeue: <ol><li>We increment a counter for the number of courses we've successfully ordered (`coursesTaken`).</li><li>For each neighbor `v` of `u` (i.e., for each course that has `u` as a prerequisite), we decrement its in-degree.</li><li>If a neighbor's in-degree becomes 0, it means all its prerequisites have been met, so we add it to the queue.</li></ol></li><li><strong>Result:</strong> After the loop, if `coursesTaken` is equal to `numCourses`, it means we were able to order all courses, implying no cycle exists. We return `true`. Otherwise, a cycle was present, and we return `false`.</li></ol><p><strong>Time Complexity:</strong> O(V + E), where V is the number of courses and E is the number of prerequisites. This is because we visit each node and edge once.</p><p><strong>Space Complexity:</strong> O(V + E) for the adjacency list, in-degree array, and the queue.",
+      "solution_code": "import java.util.*;\n\nclass Solution {\n    public boolean courseSchedule(int numCourses, int[][] prerequisites) {\n        List<List<Integer>> adj = new ArrayList<>();\n        for (int i = 0; i < numCourses; i++) {\n            adj.add(new ArrayList<>());\n        }\n        int[] inDegree = new int[numCourses];\n\n        for (int[] prerequisite : prerequisites) {\n            adj.get(prerequisite[1]).add(prerequisite[0]);\n            inDegree[prerequisite[0]]++;\n        }\n\n        Queue<Integer> queue = new LinkedList<>();\n        for (int i = 0; i < numCourses; i++) {\n            if (inDegree[i] == 0) {\n                queue.offer(i);\n            }\n        }\
+
+        int coursesTaken = 0;\n        while (!queue.isEmpty()) {\n            int u = queue.poll();\n            coursesTaken++;\n            for (int v : adj.get(u)) {\n                inDegree[v]--;\n                if (inDegree[v] == 0) {\n                    queue.offer(v);\n                }\n            }\n        }\n
+        return coursesTaken == numCourses;\n    }\n}"
     }
   },
   "order_matters": false,
@@ -41,24 +44,82 @@
     {
       "id": 1,
       "input": {
-        "numCourses": "2,",
-        "prerequisites": [
-          "[0",
-          1
-        ]
+        "numCourses": 2,
+        "prerequisites": [[1, 0]]
       },
-      "output": "true"
+      "output": true
     },
     {
       "id": 2,
       "input": {
-        "numCourses": "2,",
-        "prerequisites": [
-          "[0",
-          1
-        ]
+        "numCourses": 2,
+        "prerequisites": [[1, 0], [0, 1]]
       },
-      "output": "false"
+      "output": false
+    },
+    {
+      "id": 3,
+      "input": {
+        "numCourses": 1,
+        "prerequisites": []
+      },
+      "output": true
+    },
+    {
+      "id": 4,
+      "input": {
+        "numCourses": 5,
+        "prerequisites": [[0, 1], [0, 2], [1, 3], [1, 4], [3, 4]]
+      },
+      "output": true
+    },
+    {
+      "id": 5,
+      "input": {
+        "numCourses": 3,
+        "prerequisites": [[0,1],[0,2],[1,2]]
+      },
+      "output": true
+    },
+    {
+      "id": 6,
+      "input": {
+        "numCourses": 4,
+        "prerequisites": [[1,0],[2,1],[3,2],[1,3]]
+      },
+      "output": false
+    },
+    {
+      "id": 7,
+      "input": {
+        "numCourses": 20,
+        "prerequisites": [[0,10],[3,18],[5,5],[6,11],[11,14],[13,1],[15,1],[17,4]]
+      },
+      "output": false
+    },
+    {
+      "id": 8,
+      "input": {
+        "numCourses": 7,
+        "prerequisites": [[1,0],[0,3],[0,2],[3,2],[2,5],[4,5],[5,6],[2,4]]
+      },
+      "output": false
+    },
+    {
+      "id": 9,
+      "input": {
+        "numCourses": 8,
+        "prerequisites": [[1,0],[2,6],[1,7],[6,4],[7,0],[0,5]]
+      },
+      "output": true
+    },
+    {
+      "id": 10,
+      "input": {
+        "numCourses": 4,
+        "prerequisites": [[0,1],[2,3],[1,2],[3,0]]
+      },
+      "output": false
     }
   ]
 }

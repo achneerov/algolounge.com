@@ -13,66 +13,110 @@
     "structure",
     "which"
   ],
-  "description": "<h2>Design Circular Queue</h2><p>Leetcode 622. Design Circular Queue</p><p></p><p>Design and implement circular queue. The circular queue is a linear data structure in which the operations are performed based on **FIFO** (First In First Out) principle, and the last position is connected back to the first position to make a circle. It is also called \"Ring Buffer\".</p><p></p><p>One of the benefits of the circular queue is that we can make use of the spaces in front of the queue. In a normal queue, once the queue becomes full, we cannot insert the next element even if there is a space in front of the queue. But using the circular queue, we can use the space to store new values.</p><p></p><p>Implement the `MyCircularQueue` class:</p><p></p><p>- `MyCircularQueue(k)` Initializes the object with the size of the queue to be `k`.</p><p>- `int Front()` Gets the front item from the queue. If the queue is empty, return `-1`.</p><p>- `int Rear()` Gets the last item from the queue. If the queue is empty, return `-1`.</p><p>- `boolean enQueue(int value)` Inserts an element into the circular queue. Return `true` if the operation is successful.</p><p>- `boolean deQueue()` Deletes an element from the circular queue. Return `true` if the operation is successful.</p><p>- `boolean isEmpty()` Checks whether the circular queue is empty or not.</p><p>- `boolean isFull()` Checks whether the circular queue is full or not.</p><p>- You must solve the problem without using the built-in queue data structure in your programming language.</p><h3>Examples:</h3><ul><li>Input: [\"MyCircularQueue\", \"enQueue\", \"enQueue\", \"enQueue\", \"enQueue\", \"Rear\", \"isFull\", \"deQueue\", \"enQueue\", \"Rear\"]<br>[[3], [1], [2], [3], [4], [], [], [], [4], []]<br><br>Output: [null, true, true, true, false, 3, true, true, true, 4]<br>MyCircularQueue myCircularQueue = new MyCircularQueue(3);\nmyCircularQueue.enQueue(1); // return True\nmyCircularQueue.enQueue(2); // return True\nmyCircularQueue.enQueue(3); // return True\nmyCircularQueue.enQueue(4); // return False\nmyCircularQueue.Rear();     // return 3\nmyCircularQueue.isFull();   // return True\nmyCircularQueue.deQueue();  // return True\nmyCircularQueue.enQueue(4); // return True\nmyCircularQueue.Rear();     // return 4</li></ul><h3>Constraints:</h3><ul><li> `1 <= k <= 1000`.</li><li> `0 <= value <= 1000`</li><li> At most `3000` calls will be made to `enQueue`, `deQueue`, `Front`, `Rear`, `isEmpty`, and `isFull`.</li></ul>",
+  "description": "<h2>Design Circular Queue</h2><p>Leetcode 622. Design Circular Queue</p><p></p><p>Design and implement circular queue. The circular queue is a linear data structure in which the operations are performed based on **FIFO** (First In First Out) principle, and the last position is connected back to the first position to make a circle. It is also called \"Ring Buffer\".</p><p></p><p>One of the benefits of the circular queue is that we can make use of the spaces in front of the queue. In a normal queue, once the queue becomes full, we cannot insert the next element even if there is a space in front of the queue. But using the circular queue, we can use the space to store new values.</p><p></p><p>Implement the `MyCircularQueue` class:</p><p></p><p>- `MyCircularQueue(k)` Initializes the object with the size of the queue to be `k`.</p><p>- `int Front()` Gets the front item from the queue. If the queue is empty, return `-1`.</p><p>- `int Rear()` Gets the last item from the queue. If the queue is empty, return `-1`.</p><p>- `boolean enQueue(int value)` Inserts an element into the circular queue. Return `true` if the operation is successful.</p><p>- `boolean deQueue()` Deletes an element from the circular queue. Return `true` if the operation is successful.</p><p>- `boolean isEmpty()` Checks whether the circular queue is empty or not.</p><p>- `boolean isFull()` Checks whether the circular queue is full or not.</p><p>- You must solve the problem without using the built-in queue data structure in your programming language.</p><h3>Examples:</h3><ul><li>Input: [\"MyCircularQueue\", \"enQueue\", \"enQueue\", \"enQueue\", \"enQueue\", \"Rear\", \"isFull\", \"deQueue\", \"enQueue\", \"Rear\"]<br>[[3], [1], [2], [3], [4], [], [], [], [4], []]<br><br>Output: [null, true, true, true, false, 3, true, true, true, 4]<br>MyCircularQueue myCircularQueue = new MyCircularQueue(3);\nmyCircularQueue.enQueue(1); // return True\nmyCircularQueue.enQueue(2); // return True\nmyCircularQueue.enQueue(3); // return True\nmyCircularQueue.enQueue(4); // return False\nmyCircularQueue.Rear();     // return 3\nmyCircularQueue.isFull();   // return True\nmyCircularQueue.deQueue();  // return True\nmyCircularQueue.enQueue(4); // return True\nmyCircularQueue.Rear();     // return 4</li></ul><h3>Constraints:</h3><ul><li>`1 <= k <= 1000`</li><li>`0 <= value <= 1000`</li><li>At most `3000` calls will be made to `enQueue`, `deQueue`, `Front`, `Rear`, `isEmpty`, and `isFull`.</li></ul>",
   "languages": {
     "python": {
-      "template": "def designCircularQueue(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18):\n    ",
-      "solution_text": "Comprehensive solution for design-circular-queue:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "def designCircularQueue(*args):\n    # Handle empty input\n    if not args:\n        return None\n    \n    # Get first argument (most common pattern)\n    first_arg = args[0]\n    \n    # Handle different input types\n    if isinstance(first_arg, list):\n        # Array/list processing\n        if not first_arg:\n            return []\n        \n        # Common array operations\n        result = []\n        for i, item in enumerate(first_arg):\n            # Process based on context\n            if isinstance(item, (int, float)):\n                result.append(item)  # Numeric processing\n            elif isinstance(item, str):\n                result.append(item)  # String processing\n            else:\n                result.append(item)  # Generic processing\n        \n        return result\n    \n    elif isinstance(first_arg, str):\n        # String processing\n        if not first_arg:\n            return \"\"\n        \n        # Common string operations\n        return first_arg  # Return processed string\n    \n    elif isinstance(first_arg, (int, float)):\n        # Numeric processing\n        return first_arg  # Return processed number\n    \n    else:\n        # Generic processing\n        return first_arg"
+      "template": "class MyCircularQueue:\n\n    def __init__(self, k: int):\n        \n\n    def enQueue(self, value: int) -> bool:\n        \n\n    def deQueue(self) -> bool:\n        \n\n    def Front(self) -> int:\n        \n\n    def Rear(self) -> int:\n        \n\n    def isEmpty(self) -> bool:\n        \n\n    def isFull(self) -> bool:\n        \n",
+      "solution_text": "<p><strong>Array-based Implementation of a Circular Queue:</strong></p><p>This solution uses a fixed-size array and two pointers, `head` and `tail`, to implement the circular queue logic.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Initialization:</strong><br>   - Create an array `queue` of size `k`.<br>   - Initialize `head` pointer to -1, indicating an empty queue.<br>   - Initialize `tail` pointer to -1.<br>   - Store the maximum size `k`.</li><li><strong>`enQueue(value)`:</strong><br>   - Check if the queue is full. If so, return `false`.<br>   - If the queue is empty (`head == -1`), set `head` to 0.<br>   - Move the `tail` pointer one step forward in a circular manner: `tail = (tail + 1) % k`.<br>   - Add the `value` at the new `tail` position in the array.<br>   - Return `true`.</li><li><strong>`deQueue()`:</strong><br>   - Check if the queue is empty. If so, return `false`.<br>   - If the `head` and `tail` are at the same position (only one element in the queue), reset `head` and `tail` to -1 to mark the queue as empty after dequeuing.<br>   - Otherwise, move the `head` pointer one step forward in a circular manner: `head = (head + 1) % k`.<br>   - Return `true`.</li><li><strong>`Front()`:</strong><br>   - If the queue is empty, return -1.<br>   - Otherwise, return the element at the `head` index: `queue[head]`.</li><li><strong>`Rear()`:</strong><br>   - If the queue is empty, return -1.<br>   - Otherwise, return the element at the `tail` index: `queue[tail]`.</li><li><strong>`isEmpty()`:</strong><br>   - The queue is empty if `head` is -1.</li><li><strong>`isFull()`:</strong><br>   - The queue is full if the next position after `tail` is the `head`: `(tail + 1) % k == head`.</li></ol><p><strong>Time Complexity:</strong> O(1) for all operations.</p><p><strong>Space Complexity:</strong> O(k), where k is the size of the queue.</p>",
+      "solution_code": "class MyCircularQueue:\n\n    def __init__(self, k: int):\n        self.queue = [0] * k\n        self.head = -1\n        self.tail = -1\n        self.size = k\n\n    def enQueue(self, value: int) -> bool:\n        if self.isFull():\n            return False\n        if self.isEmpty():\n            self.head = 0\n        self.tail = (self.tail + 1) % self.size\n        self.queue[self.tail] = value\n        return True\n\n    def deQueue(self) -> bool:\n        if self.isEmpty():\n            return False\n        if self.head == self.tail:\n            self.head = -1\n            self.tail = -1\n            return True\n        self.head = (self.head + 1) % self.size\n        return True\n\n    def Front(self) -> int:\n        if self.isEmpty():\n            return -1\n        return self.queue[self.head]\n\n    def Rear(self) -> int:\n        if self.isEmpty():\n            return -1\n        return self.queue[self.tail]\n\n    def isEmpty(self) -> bool:\n        return self.head == -1\n\n    def isFull(self) -> bool:\n        return (self.tail + 1) % self.size == self.head"
     },
     "javascript": {
-      "template": "function designCircularQueue(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18) {\n  \n}",
-      "solution_text": "Comprehensive solution for design-circular-queue:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function designCircularQueue(...args) {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "template": "var MyCircularQueue = function(k) {\n    \n};\n\nMyCircularQueue.prototype.enQueue = function(value) {\n    \n};\n\nMyCircularQueue.prototype.deQueue = function() {\n    \n};\n\nMyCircularQueue.prototype.Front = function() {\n    \n};\n\nMyCircularQueue.prototype.Rear = function() {\n    \n};\n\nMyCircularQueue.prototype.isEmpty = function() {\n    \n};\n\nMyCircularQueue.prototype.isFull = function() {\n    \n};",
+      "solution_text": "<p><strong>Array-based Implementation of a Circular Queue:</strong></p><p>This solution uses a fixed-size array and two pointers, `head` and `tail`, to implement the circular queue logic.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Initialization:</strong><br>   - Create an array `queue` of size `k`.<br>   - Initialize `head` pointer to -1, indicating an empty queue.<br>   - Initialize `tail` pointer to -1.<br>   - Store the maximum size `k`.</li><li><strong>`enQueue(value)`:</strong><br>   - Check if the queue is full. If so, return `false`.<br>   - If the queue is empty (`head == -1`), set `head` to 0.<br>   - Move the `tail` pointer one step forward in a circular manner: `tail = (tail + 1) % k`.<br>   - Add the `value` at the new `tail` position in the array.<br>   - Return `true`.</li><li><strong>`deQueue()`:</strong><br>   - Check if the queue is empty. If so, return `false`.<br>   - If the `head` and `tail` are at the same position (only one element in the queue), reset `head` and `tail` to -1 to mark the queue as empty after dequeuing.<br>   - Otherwise, move the `head` pointer one step forward in a circular manner: `head = (head + 1) % k`.<br>   - Return `true`.</li><li><strong>`Front()`:</strong><br>   - If the queue is empty, return -1.<br>   - Otherwise, return the element at the `head` index: `queue[head]`.</li><li><strong>`Rear()`:</strong><br>   - If the queue is empty, return -1.<br>   - Otherwise, return the element at the `tail` index: `queue[tail]`.</li><li><strong>`isEmpty()`:</strong><br>   - The queue is empty if `head` is -1.</li><li><strong>`isFull()`:</strong><br>   - The queue is full if the next position after `tail` is the `head`: `(tail + 1) % k == head`.</li></ol><p><strong>Time Complexity:</strong> O(1) for all operations.</p><p><strong>Space Complexity:</strong> O(k), where k is the size of the queue.</p>",
+      "solution_code": "var MyCircularQueue = function(k) {\n    this.queue = new Array(k);\n    this.head = -1;\n    this.tail = -1;\n    this.size = k;\n};\n\nMyCircularQueue.prototype.enQueue = function(value) {\n    if (this.isFull()) {\n        return false;\n    }\n    if (this.isEmpty()) {\n        this.head = 0;\n    }\n    this.tail = (this.tail + 1) % this.size;\n    this.queue[this.tail] = value;\n    return true;\n};\n\nMyCircularQueue.prototype.deQueue = function() {\n    if (this.isEmpty()) {\n        return false;\n    }\n    if (this.head === this.tail) {\n        this.head = -1;\n        this.tail = -1;\n        return true;\n    }\n    this.head = (this.head + 1) % this.size;\n    return true;\n};\n\nMyCircularQueue.prototype.Front = function() {\n    if (this.isEmpty()) {\n        return -1;\n    }\n    return this.queue[this.head];\n};\n\nMyCircularQueue.prototype.Rear = function() {\n    if (this.isEmpty()) {\n        return -1;\n    }\n    return this.queue[this.tail];\n};\n\nMyCircularQueue.prototype.isEmpty = function() {\n    return this.head === -1;\n};\n\nMyCircularQueue.prototype.isFull = function() {\n    return (this.tail + 1) % this.size === this.head;\n};"
     },
     "typescript": {
-      "template": "function designCircularQueue(0: string, 1: string, 2: string, 3: string, 4: string, 5: string, 6: string, 7: string, 8: string, 9: string, 10: string, 11: string, 12: string, 13: string, 14: string, 15: string, 16: string, 17: string, 18: string): number[] {\n  \n}",
-      "solution_text": "Comprehensive solution for design-circular-queue:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function designCircularQueue(...args: any[]): any {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result: any[] = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "template": "class MyCircularQueue {\n    constructor(k: number) {\n\n    }\n\n    enQueue(value: number): boolean {\n\n    }\n\n    deQueue(): boolean {\n\n    }\n\n    Front(): number {\n\n    }\n\n    Rear(): number {\n\n    }\n\n    isEmpty(): boolean {\n\n    }\n\n    isFull(): boolean {\n\n    }\n}",
+      "solution_text": "<p><strong>Array-based Implementation of a Circular Queue:</strong></p><p>This solution uses a fixed-size array and two pointers, `head` and `tail`, to implement the circular queue logic.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Initialization:</strong><br>   - Create an array `queue` of size `k`.<br>   - Initialize `head` pointer to -1, indicating an empty queue.<br>   - Initialize `tail` pointer to -1.<br>   - Store the maximum size `k`.</li><li><strong>`enQueue(value)`:</strong><br>   - Check if the queue is full. If so, return `false`.<br>   - If the queue is empty (`head == -1`), set `head` to 0.<br>   - Move the `tail` pointer one step forward in a circular manner: `tail = (tail + 1) % k`.<br>   - Add the `value` at the new `tail` position in the array.<br>   - Return `true`.</li><li><strong>`deQueue()`:</strong><br>   - Check if the queue is empty. If so, return `false`.<br>   - If the `head` and `tail` are at the same position (only one element in the queue), reset `head` and `tail` to -1 to mark the queue as empty after dequeuing.<br>   - Otherwise, move the `head` pointer one step forward in a circular manner: `head = (head + 1) % k`.<br>   - Return `true`.</li><li><strong>`Front()`:</strong><br>   - If the queue is empty, return -1.<br>   - Otherwise, return the element at the `head` index: `queue[head]`.</li><li><strong>`Rear()`:</strong><br>   - If the queue is empty, return -1.<br>   - Otherwise, return the element at the `tail` index: `queue[tail]`.</li><li><strong>`isEmpty()`:</strong><br>   - The queue is empty if `head` is -1.</li><li><strong>`isFull()`:</strong><br>   - The queue is full if the next position after `tail` is the `head`: `(tail + 1) % k == head`.</li></ol><p><strong>Time Complexity:</strong> O(1) for all operations.</p><p><strong>Space Complexity:</strong> O(k), where k is the size of the queue.</p>",
+      "solution_code": "class MyCircularQueue {\n    private queue: number[];\n    private head: number = -1;\n    private tail: number = -1;\n    private readonly size: number;\n\n    constructor(k: number) {\n        this.queue = new Array(k);\n        this.size = k;\n    }\n\n    enQueue(value: number): boolean {\n        if (this.isFull()) {\n            return false;\n        }\n        if (this.isEmpty()) {\n            this.head = 0;\n        }\n        this.tail = (this.tail + 1) % this.size;\n        this.queue[this.tail] = value;\n        return true;\n    }\n\n    deQueue(): boolean {\n        if (this.isEmpty()) {\n            return false;\n        }\n        if (this.head === this.tail) {\n            this.head = -1;\n            this.tail = -1;\n            return true;\n        }\n        this.head = (this.head + 1) % this.size;\n        return true;\n    }\n\n    Front(): number {\n        if (this.isEmpty()) {\n            return -1;\n        }\n        return this.queue[this.head];\n    }\n\n    Rear(): number {\n        if (this.isEmpty()) {\n            return -1;\n        }\n        return this.queue[this.tail];\n    }\n\n    isEmpty(): boolean {\n        return this.head === -1;\n    }\n\n    isFull(): boolean {\n        return (this.tail + 1) % this.size === this.head;\n    }\n}"
     },
     "java": {
-      "template": "class Solution {\n    public int[] designCircularQueue(String 0, String 1, String 2, String 3, String 4, String 5, String 6, String 7, String 8, String 9, String 10, String 11, String 12, String 13, String 14, String 15, String 16, String 17, String 18) {\n        \n    }\n}",
-      "solution_text": "Comprehensive solution for design-circular-queue:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "class Solution {\n    public Object designCircularQueue(Object... args) {\n        // Handle empty input\n        if (args.length == 0) return null;\n        \n        // Get first argument (most common pattern)\n        Object firstArg = args[0];\n        \n        // Handle different input types\n        if (firstArg instanceof int[]) {\n            // Integer array processing\n            int[] arr = (int[]) firstArg;\n            if (arr.length == 0) return new int[0];\n            \n            // Common array operations\n            List<Integer> result = new ArrayList<>();\n            for (int item : arr) {\n                result.add(item); // Process each item\n            }\n            \n            return result.toArray(new Integer[0]);\n        } else if (firstArg instanceof String) {\n            // String processing\n            String str = (String) firstArg;\n            if (str.length() == 0) return \"\";\n            \n            // Common string operations\n            return str; // Return processed string\n        } else if (firstArg instanceof Integer) {\n            // Integer processing\n            return firstArg; // Return processed number\n        } else {\n            // Generic processing\n            return firstArg;\n        }\n    }\n}"
+      "template": "class MyCircularQueue {\n\n    public MyCircularQueue(int k) {\n        \n    }\n    \n    public boolean enQueue(int value) {\n        \n    }\n    \n    public boolean deQueue() {\n        \n    }\n    \n    public int Front() {\n        \n    }\n    \n    public int Rear() {\n        \n    }\n    \n    public boolean isEmpty() {\n        \n    }\n    \n    public boolean isFull() {\n        \n    }\n}",
+      "solution_text": "<p><strong>Array-based Implementation of a Circular Queue:</strong></p><p>This solution uses a fixed-size array and two pointers, `head` and `tail`, to implement the circular queue logic.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Initialization:</strong><br>   - Create an array `queue` of size `k`.<br>   - Initialize `head` pointer to -1, indicating an empty queue.<br>   - Initialize `tail` pointer to -1.<br>   - Store the maximum size `k`.</li><li><strong>`enQueue(value)`:</strong><br>   - Check if the queue is full. If so, return `false`.<br>   - If the queue is empty (`head == -1`), set `head` to 0.<br>   - Move the `tail` pointer one step forward in a circular manner: `tail = (tail + 1) % k`.<br>   - Add the `value` at the new `tail` position in the array.<br>   - Return `true`.</li><li><strong>`deQueue()`:</strong><br>   - Check if the queue is empty. If so, return `false`.<br>   - If the `head` and `tail` are at the same position (only one element in the queue), reset `head` and `tail` to -1 to mark the queue as empty after dequeuing.<br>   - Otherwise, move the `head` pointer one step forward in a circular manner: `head = (head + 1) % k`.<br>   - Return `true`.</li><li><strong>`Front()`:</strong><br>   - If the queue is empty, return -1.<br>   - Otherwise, return the element at the `head` index: `queue[head]`.</li><li><strong>`Rear()`:</strong><br>   - If the queue is empty, return -1.<br>   - Otherwise, return the element at the `tail` index: `queue[tail]`.</li><li><strong>`isEmpty()`:</strong><br>   - The queue is empty if `head` is -1.</li><li><strong>`isFull()`:</strong><br>   - The queue is full if the next position after `tail` is the `head`: `(tail + 1) % k == head`.</li></ol><p><strong>Time Complexity:</strong> O(1) for all operations.</p><p><strong>Space Complexity:</strong> O(k), where k is the size of the queue.</p>",
+      "solution_code": "class MyCircularQueue {\n    private int[] queue;\n    private int head = -1;\n    private int tail = -1;\n    private int size;\n\n    public MyCircularQueue(int k) {\n        this.queue = new int[k];\n        this.size = k;\n    }\n    \n    public boolean enQueue(int value) {\n        if (isFull()) {\n            return false;\n        }\n        if (isEmpty()) {\n            head = 0;\n        }\n        tail = (tail + 1) % size;\n        queue[tail] = value;\n        return true;\n    }\n    \n    public boolean deQueue() {\n        if (isEmpty()) {\n            return false;\n        }\n        if (head == tail) {\n            head = -1;\n            tail = -1;\n            return true;\n        }\n        head = (head + 1) % size;\n        return true;\n    }\n    \n    public int Front() {\n        if (isEmpty()) {\n            return -1;\n        }\n        return queue[head];\n    }\n    \n    public int Rear() {\n        if (isEmpty()) {\n            return -1;\n        }\n        return queue[tail];\n    }\n    \n    public boolean isEmpty() {\n        return head == -1;\n    }\n    \n    public boolean isFull() {\n        return (tail + 1) % size == head;\n    }\n}"
     }
   },
-  "order_matters": false,
+  "order_matters": true,
   "test_cases": [
     {
       "id": 1,
-      "input": [
-        "MyCircularQueue",
-        "enQueue",
-        "enQueue",
-        "enQueue",
-        "enQueue",
-        "Rear",
-        "isFull",
-        "deQueue",
-        "enQueue",
-        "\"Rear\"] [[3]",
-        "[1]",
-        "[2]",
-        "[3]",
-        "[4]",
-        "[]",
-        "[]",
-        "[]",
-        "[4]",
-        "[]"
-      ],
-      "output": [
-        null,
-        true,
-        true,
-        true,
-        false,
-        3,
-        true,
-        true,
-        true,
-        4
-      ]
+      "input": {
+        "commands": ["MyCircularQueue", "enQueue", "enQueue", "enQueue", "enQueue", "Rear", "isFull", "deQueue", "enQueue", "Rear"],
+        "args": [[3], [1], [2], [3], [4], [], [], [], [4], []]
+      },
+      "output": [null, true, true, true, false, 3, true, true, true, 4]
+    },
+    {
+      "id": 2,
+      "input": {
+        "commands": ["MyCircularQueue", "enQueue", "Rear", "Front", "deQueue", "Front", "deQueue", "Front", "enQueue", "enQueue", "enQueue", "Front"],
+        "args": [[3], [2], [], [], [], [], [], [], [4], [5], [6], []]
+      },
+      "output": [null, true, 2, 2, true, -1, false, -1, true, true, true, 4]
+    },
+    {
+      "id": 3,
+      "input": {
+        "commands": ["MyCircularQueue", "isEmpty", "enQueue", "isFull", "enQueue", "deQueue", "enQueue", "Rear", "Front", "isEmpty"],
+        "args": [[2], [], [1], [], [2], [], [3], [], [], []]
+      },
+      "output": [null, true, true, false, true, true, true, 3, 2, false]
+    },
+    {
+      "id": 4,
+      "input": {
+        "commands": ["MyCircularQueue", "enQueue", "deQueue", "enQueue", "deQueue", "enQueue", "deQueue", "Front"],
+        "args": [[1], [1], [], [2], [], [3], [], []]
+      },
+      "output": [null, true, true, true, true, true, true, 3]
+    },
+    {
+      "id": 5,
+      "input": {
+        "commands": ["MyCircularQueue", "enQueue", "enQueue", "isFull", "deQueue", "deQueue", "isEmpty"],
+        "args": [[2], [1], [2], [], [], [], []]
+      },
+      "output": [null, true, true, true, true, true, true]
+    },
+    {
+      "id": 6,
+      "input": {
+        "commands": ["MyCircularQueue", "deQueue", "Rear", "Front", "isEmpty"],
+        "args": [[3], [], [], [], []]
+      },
+      "output": [null, false, -1, -1, true]
+    },
+    {
+      "id": 7,
+      "input": {
+        "commands": ["MyCircularQueue", "enQueue", "enQueue", "enQueue", "deQueue", "deQueue", "deQueue", "deQueue"],
+        "args": [[3], [1], [2], [3], [], [], [], []]
+      },
+      "output": [null, true, true, true, true, true, true, false]
+    },
+    {
+      "id": 8,
+      "input": {
+        "commands": ["MyCircularQueue", "enQueue", "Rear", "enQueue", "Rear", "deQueue", "Front", "enQueue", "Front"],
+        "args": [[2], [1], [], [2], [], [], [], [3], []]
+      },
+      "output": [null, true, 1, true, 2, true, 2, true, 2]
+    },
+    {
+      "id": 9,
+      "input": {
+        "commands": ["MyCircularQueue", "enQueue", "enQueue", "enQueue", "enQueue"],
+        "args": [[3], [1], [2], [3], [4]]
+      },
+      "output": [null, true, true, true, false]
+    },
+    {
+      "id": 10,
+      "input": {
+        "commands": ["MyCircularQueue", "enQueue", "Front", "Rear", "enQueue", "Front", "Rear", "enQueue", "Front", "Rear"],
+        "args": [[3], [1], [], [], [2], [], [], [3], [], []]
+      },
+      "output": [null, true, 1, 1, true, 1, 2, true, 1, 3]
     }
   ]
 }

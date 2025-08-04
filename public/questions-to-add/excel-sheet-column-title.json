@@ -17,40 +17,97 @@
   "languages": {
     "python": {
       "template": "def excelSheetColumnTitle(columnNumber):\n    ",
-      "solution_text": "Comprehensive solution for excel-sheet-column-title:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "def excelSheetColumnTitle(*args):\n    # Handle empty input\n    if not args:\n        return None\n    \n    # Get first argument (most common pattern)\n    first_arg = args[0]\n    \n    # Handle different input types\n    if isinstance(first_arg, list):\n        # Array/list processing\n        if not first_arg:\n            return []\n        \n        # Common array operations\n        result = []\n        for i, item in enumerate(first_arg):\n            # Process based on context\n            if isinstance(item, (int, float)):\n                result.append(item)  # Numeric processing\n            elif isinstance(item, str):\n                result.append(item)  # String processing\n            else:\n                result.append(item)  # Generic processing\n        \n        return result\n    \n    elif isinstance(first_arg, str):\n        # String processing\n        if not first_arg:\n            return \"\"\n        \n        # Common string operations\n        return first_arg  # Return processed string\n    \n    elif isinstance(first_arg, (int, float)):\n        # Numeric processing\n        return first_arg  # Return processed number\n    \n    else:\n        # Generic processing\n        return first_arg"
+      "solution_text": "<p><strong>Base-26 Conversion Solution:</strong></p><p>This problem can be thought of as converting a base-10 number to a base-26 number, with a slight twist. The digits in this base-26 system are A-Z, corresponding to 1-26.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Iterative Conversion:</strong> We can iteratively find the characters of the Excel title from right to left.</li><li><strong>Modulo Operation:</strong> In each step, we take the `columnNumber - 1` modulo 26. The `-1` is crucial because our number system is 1-indexed (A=1, B=2, ...), while modulo arithmetic is 0-indexed. This gives us the value (0-25) of the rightmost character.</li><li><strong>Character Mapping:</strong> We convert this value to its corresponding character (A-Z). For example, 0 maps to 'A', 1 to 'B', and so on. This can be done using ASCII values (`ord('A') + value`).</li><li><strong>Update `columnNumber`:</strong> We then update `columnNumber` for the next iteration by integer dividing `(columnNumber - 1)` by 26. This effectively shifts to the next character position to the left.</li><li><strong>Repeat:</strong> We continue this process until `columnNumber` becomes 0.</li><li><strong>Reverse:</strong> Since we generated the characters from right to left, the final step is to reverse the result to get the correct column title.</li></ol><p><strong>Time Complexity:</strong> O(log26(N)), where N is the `columnNumber`. The number of iterations is proportional to the number of digits in the base-26 representation.</p><p><strong>Space Complexity:</strong> O(log26(N)) to store the resulting string.</p>",
+      "solution_code": "def excelSheetColumnTitle(columnNumber):\n    result = []\n    while columnNumber > 0:\n        # Adjust to be 0-indexed for modulo\n        columnNumber, remainder = divmod(columnNumber - 1, 26)\n        result.append(chr(ord('A') + remainder))\n    # The result is built backwards, so reverse it\n    return ''.join(reversed(result))"
     },
     "javascript": {
       "template": "function excelSheetColumnTitle(columnNumber) {\n  \n}",
-      "solution_text": "Comprehensive solution for excel-sheet-column-title:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function excelSheetColumnTitle(...args) {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "solution_text": "<p><strong>Base-26 Conversion Solution:</strong></p><p>This problem can be thought of as converting a base-10 number to a base-26 number, with a slight twist. The digits in this base-26 system are A-Z, corresponding to 1-26.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Iterative Conversion:</strong> We can iteratively find the characters of the Excel title from right to left.</li><li><strong>Modulo Operation:</strong> In each step, we take the `columnNumber - 1` modulo 26. The `-1` is crucial because our number system is 1-indexed (A=1, B=2, ...), while modulo arithmetic is 0-indexed. This gives us the value (0-25) of the rightmost character.</li><li><strong>Character Mapping:</strong> We convert this value to its corresponding character (A-Z). For example, 0 maps to 'A', 1 to 'B', and so on. This can be done using character codes (`'A'.charCodeAt(0) + remainder`).</li><li><strong>Update `columnNumber`:</strong> We then update `columnNumber` for the next iteration by integer dividing `(columnNumber - 1)` by 26. This effectively shifts to the next character position to the left.</li><li><strong>Repeat:</strong> We continue this process until `columnNumber` becomes 0.</li><li><strong>Reverse:</strong> Since we generated the characters from right to left, the final step is to reverse the result to get the correct column title.</li></ol><p><strong>Time Complexity:</strong> O(log26(N)), where N is the `columnNumber`. The number of iterations is proportional to the number of digits in the base-26 representation.</p><p><strong>Space Complexity:</strong> O(log26(N)) to store the resulting string.</p>",
+      "solution_code": "function excelSheetColumnTitle(columnNumber) {\n    let result = '';\n    while (columnNumber > 0) {\n        const remainder = (columnNumber - 1) % 26;\n        result = String.fromCharCode('A'.charCodeAt(0) + remainder) + result;\n        columnNumber = Math.floor((columnNumber - 1) / 26);\n    }\n    return result;\n}"
     },
     "typescript": {
       "template": "function excelSheetColumnTitle(columnNumber: number): string {\n  \n}",
-      "solution_text": "Comprehensive solution for excel-sheet-column-title:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function excelSheetColumnTitle(...args: any[]): any {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result: any[] = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "solution_text": "<p><strong>Base-26 Conversion Solution:</strong></p><p>This problem can be thought of as converting a base-10 number to a base-26 number, with a slight twist. The digits in this base-26 system are A-Z, corresponding to 1-26.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Iterative Conversion:</strong> We can iteratively find the characters of the Excel title from right to left.</li><li><strong>Modulo Operation:</strong> In each step, we take the `columnNumber - 1` modulo 26. The `-1` is crucial because our number system is 1-indexed (A=1, B=2, ...), while modulo arithmetic is 0-indexed. This gives us the value (0-25) of the rightmost character.</li><li><strong>Character Mapping:</strong> We convert this value to its corresponding character (A-Z). For example, 0 maps to 'A', 1 to 'B', and so on. This can be done using character codes (`'A'.charCodeAt(0) + remainder`).</li><li><strong>Update `columnNumber`:</strong> We then update `columnNumber` for the next iteration by integer dividing `(columnNumber - 1)` by 26. This effectively shifts to the next character position to the left.</li><li><strong>Repeat:</strong> We continue this process until `columnNumber` becomes 0.</li><li><strong>Reverse:</strong> Since we generated the characters from right to left, the final step is to reverse the result to get the correct column title.</li></ol><p><strong>Time Complexity:</strong> O(log26(N)), where N is the `columnNumber`. The number of iterations is proportional to the number of digits in the base-26 representation.</p><p><strong>Space Complexity:</strong> O(log26(N)) to store the resulting string.</p>",
+      "solution_code": "function excelSheetColumnTitle(columnNumber: number): string {\n    let result = '';\n    while (columnNumber > 0) {\n        const remainder = (columnNumber - 1) % 26;\n        result = String.fromCharCode('A'.charCodeAt(0) + remainder) + result;\n        columnNumber = Math.floor((columnNumber - 1) / 26);\n    }\n    return result;\n}"
     },
     "java": {
       "template": "class Solution {\n    public String excelSheetColumnTitle(int columnNumber) {\n        \n    }\n}",
-      "solution_text": "Comprehensive solution for excel-sheet-column-title:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "class Solution {\n    public Object excelSheetColumnTitle(Object... args) {\n        // Handle empty input\n        if (args.length == 0) return null;\n        \n        // Get first argument (most common pattern)\n        Object firstArg = args[0];\n        \n        // Handle different input types\n        if (firstArg instanceof int[]) {\n            // Integer array processing\n            int[] arr = (int[]) firstArg;\n            if (arr.length == 0) return new int[0];\n            \n            // Common array operations\n            List<Integer> result = new ArrayList<>();\n            for (int item : arr) {\n                result.add(item); // Process each item\n            }\n            \n            return result.toArray(new Integer[0]);\n        } else if (firstArg instanceof String) {\n            // String processing\n            String str = (String) firstArg;\n            if (str.length() == 0) return \"\";\n            \n            // Common string operations\n            return str; // Return processed string\n        } else if (firstArg instanceof Integer) {\n            // Integer processing\n            return firstArg; // Return processed number\n        } else {\n            // Generic processing\n            return firstArg;\n        }\n    }\n}"
+      "solution_text": "<p><strong>Base-26 Conversion Solution:</strong></p><p>This problem can be thought of as converting a base-10 number to a base-26 number, with a slight twist. The digits in this base-26 system are A-Z, corresponding to 1-26.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Iterative Conversion:</strong> We can iteratively find the characters of the Excel title from right to left.</li><li><strong>Modulo Operation:</strong> In each step, we take the `columnNumber - 1` modulo 26. The `-1` is crucial because our number system is 1-indexed (A=1, B=2, ...), while modulo arithmetic is 0-indexed. This gives us the value (0-25) of the rightmost character.</li><li><strong>Character Mapping:</strong> We convert this value to its corresponding character (A-Z). For example, 0 maps to 'A', 1 to 'B', and so on. This can be done using character arithmetic (`'A' + remainder`).</li><li><strong>Update `columnNumber`:</strong> We then update `columnNumber` for the next iteration by integer dividing `(columnNumber - 1)` by 26. This effectively shifts to the next character position to the left.</li><li><strong>Repeat:</strong> We continue this process until `columnNumber` becomes 0.</li><li><strong>Reverse:</strong> Since we generated the characters from right to left, we build the string in reverse and then return it.</li></ol><p><strong>Time Complexity:</strong> O(log26(N)), where N is the `columnNumber`. The number of iterations is proportional to the number of digits in the base-26 representation.</p><p><strong>Space Complexity:</strong> O(log26(N)) to store the resulting string.</p>",
+      "solution_code": "class Solution {\n    public String excelSheetColumnTitle(int columnNumber) {\n        StringBuilder result = new StringBuilder();\n        while (columnNumber > 0) {\n            columnNumber--; // Adjust to be 0-indexed\n            result.insert(0, (char) ('A' + columnNumber % 26));\n            columnNumber /= 26;\n        }\n        return result.toString();\n    }
+}"
     }
   },
-  "order_matters": false,
+  "order_matters": true,
   "test_cases": [
     {
       "id": 1,
       "input": {
-        "columnNumber": 32
+        "columnNumber": 1
       },
-      "output": "AF"
+      "output": "A"
     },
     {
       "id": 2,
       "input": {
+        "columnNumber": 26
+      },
+      "output": "Z"
+    },
+    {
+      "id": 3,
+      "input": {
+        "columnNumber": 27
+      },
+      "output": "AA"
+    },
+    {
+      "id": 4,
+      "input": {
+        "columnNumber": 28
+      },
+      "output": "AB"
+    },
+    {
+      "id": 5,
+      "input": {
+        "columnNumber": 52
+      },
+      "output": "AZ"
+    },
+    {
+      "id": 6,
+      "input": {
         "columnNumber": 53
       },
       "output": "BA"
+    },
+    {
+      "id": 7,
+      "input": {
+        "columnNumber": 701
+      },
+      "output": "ZY"
+    },
+    {
+      "id": 8,
+      "input": {
+        "columnNumber": 702
+      },
+      "output": "ZZ"
+    },
+    {
+      "id": 9,
+      "input": {
+        "columnNumber": 703
+      },
+      "output": "AAA"
+    },
+    {
+      "id": 10,
+      "input": {
+        "columnNumber": 2147483647
+      },
+      "output": "FXSHRXW"
     }
   ]
 }

@@ -66,23 +66,47 @@ combinations.json - Combinations
 concatenation-of-array.json - Concatenation of Array
 transpose-matrix.json - Transpose Matrix
 is-anagram.json - Valid Anagram
+count-subsequences.json - Distinct Subsequences
+counting-bits.json - Counting Bits
+course-schedule-ii.json - Course Schedule II
+course-schedule-iv.json - Course Schedule IV
+course-schedule.json - Course Schedule
+daily-temperatures.json - Daily Temperatures
+decode-string.json - Decode String
+decode-ways.json - Decode Ways
+delete-leaves-with-a-given-value.json - Delete Leaves With a Given Value
+delete-node-in-a-bst.json - Delete Node in a BST
+design-circular-queue.json - Design Circular Queue
+design-hashmap.json - Design HashMap
+design-hashset.json - Design HashSet
+design-twitter-feed.json - Design Twitter
+design-word-search-data-structure.json - Design Add and Search Word Data Structure
+dota2-senate.json - Dota2 Senate
 is-palindrome.json - Valid Palindrome
 plus-one.json - Plus One
 roman-to-integer.json - Roman to Integer
 single-number.json - Single Number
-count-connected-components.json - Number of Connected Components in an Undirected Graph
-daily-temperatures.json - Daily Temperatures
-decode-string.json - Decode String
-decode-ways.json - Decode Ways
 eating-bananas.json - Koko Eating Bananas
 edit-distance.json - Edit Distance
+evaluate-division.json - Evaluate Division
+excel-sheet-column-title.json - Excel Sheet Column Title
 duplicate-integer.json - Contains Duplicate
+eating-bananas.json - Koko Eating Bananas
 dota2-senate.json - Dota2 Senate
+extra-characters-in-a-string.json - Extra Characters in a String
+find-target-in-rotated-sorted-array.json - Search in Rotated Sorted Array
+first-missing-positive.json - First Missing Positive
+foreign-dictionary.json - Alien Dictionary
+gas-station.json - Gas Station
 generate-parentheses.json - Generate Parentheses
+greatest-common-divisor-of-strings.json - Greatest Common Divisor of Strings
+greatest-common-divisor-traversal.json - Greatest Common Divisor Traversal
+guess-number-higher-or-lower.json - Guess Number Higher Or Lower
+hand-of-straights.json - Hand of Straights
 house-robber.json - House Robber
 house-robber-ii.json - House Robber II
 house-robber-iii.json - House Robber III
 implement-prefix-tree.json - Implement Trie (Prefix Tree)
 insert-into-a-binary-search-tree.json - Insert into a Binary Search Tree
 invert-a-binary-tree.json - Invert Binary Tree
-island-perimeter.json - Island Perimeter
+islands-and-treasure.json - Island Perimeter

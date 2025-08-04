@@ -17,61 +17,116 @@
   "languages": {
     "python": {
       "template": "def courseScheduleIv(numCourses, prerequisites, queries):\n    ",
-      "solution_text": "Comprehensive solution for course-schedule-iv:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "def courseScheduleIv(*args):\n    # Handle empty input\n    if not args:\n        return None\n    \n    # Get first argument (most common pattern)\n    first_arg = args[0]\n    \n    # Handle different input types\n    if isinstance(first_arg, list):\n        # Array/list processing\n        if not first_arg:\n            return []\n        \n        # Common array operations\n        result = []\n        for i, item in enumerate(first_arg):\n            # Process based on context\n            if isinstance(item, (int, float)):\n                result.append(item)  # Numeric processing\n            elif isinstance(item, str):\n                result.append(item)  # String processing\n            else:\n                result.append(item)  # Generic processing\n        \n        return result\n    \n    elif isinstance(first_arg, str):\n        # String processing\n        if not first_arg:\n            return \"\"\n        \n        # Common string operations\n        return first_arg  # Return processed string\n    \n    elif isinstance(first_arg, (int, float)):\n        # Numeric processing\n        return first_arg  # Return processed number\n    \n    else:\n        # Generic processing\n        return first_arg"
+      "solution_text": "<p><strong>Floyd-Warshall Algorithm for Transitive Closure:</strong></p><p>The problem asks to check for indirect prerequisites between courses for multiple queries. This can be efficiently solved by pre-calculating the transitive closure of the prerequisite graph. The Floyd-Warshall algorithm is a perfect fit for this, as it computes all-pairs reachability.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Initialization:</strong> Create a 2D boolean matrix, `is_prereq`, of size `numCourses x numCourses`. Initialize all entries to `False`. This matrix will store whether course `i` is a prerequisite for course `j`.</li><li><strong>Direct Prerequisites:</strong> Populate the matrix with direct prerequisites. For each pair `[u, v]` in the `prerequisites` list, set `is_prereq[u][v] = True`.</li><li><strong>Transitive Closure (Floyd-Warshall):</strong> Iterate through all possible intermediate courses `k`. For every pair of courses `(i, j)`, if `i` is a prerequisite for `k` AND `k` is a prerequisite for `j`, then `i` is also an indirect prerequisite for `j`. Update the matrix accordingly: `is_prereq[i][j] = is_prereq[i][j] or (is_prereq[i][k] and is_prereq[k][j])`.</li><li><strong>Process Queries:</strong> After the Floyd-Warshall loops complete, the `is_prereq` matrix contains all direct and indirect prerequisite relationships. For each query `[u, v]`, the answer is simply `is_prereq[u][v]`.</li></ol><p><strong>Time Complexity:</strong> O(numCourses^3 + Q), where Q is the number of queries. The dominant part is the Floyd-Warshall algorithm with its three nested loops.</p><p><strong>Space Complexity:</strong> O(numCourses^2) for the `is_prereq` matrix.</p>",
+      "solution_code": "def courseScheduleIv(numCourses, prerequisites, queries):\n    is_prereq = [[False] * numCourses for _ in range(numCourses)]\n\n    for u, v in prerequisites:\n        is_prereq[u][v] = True\n\n    for k in range(numCourses):\n        for i in range(numCourses):\n            for j in range(numCourses):\n                is_prereq[i][j] = is_prereq[i][j] or (is_prereq[i][k] and is_prereq[k][j])\n\n    result = []\n    for u, v in queries:\n        result.append(is_prereq[u][v])\n\n    return result"
     },
     "javascript": {
       "template": "function courseScheduleIv(numCourses, prerequisites, queries) {\n  \n}",
-      "solution_text": "Comprehensive solution for course-schedule-iv:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function courseScheduleIv(...args) {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "solution_text": "<p><strong>Floyd-Warshall Algorithm for Transitive Closure:</strong></p><p>The problem asks to check for indirect prerequisites between courses for multiple queries. This can be efficiently solved by pre-calculating the transitive closure of the prerequisite graph. The Floyd-Warshall algorithm is a perfect fit for this, as it computes all-pairs reachability.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Initialization:</strong> Create a 2D boolean matrix, `isPrereq`, of size `numCourses x numCourses`. Initialize all entries to `false`. This matrix will store whether course `i` is a prerequisite for course `j`.</li><li><strong>Direct Prerequisites:</strong> Populate the matrix with direct prerequisites. For each pair `[u, v]` in the `prerequisites` list, set `isPrereq[u][v] = true`.</li><li><strong>Transitive Closure (Floyd-Warshall):</strong> Iterate through all possible intermediate courses `k`. For every pair of courses `(i, j)`, if `i` is a prerequisite for `k` AND `k` is a prerequisite for `j`, then `i` is also an indirect prerequisite for `j`. Update the matrix accordingly: `isPrereq[i][j] = isPrereq[i][j] || (isPrereq[i][k] && isPrereq[k][j])`.</li><li><strong>Process Queries:</strong> After the Floyd-Warshall loops complete, the `isPrereq` matrix contains all direct and indirect prerequisite relationships. For each query `[u, v]`, the answer is simply `isPrereq[u][v]`.</li></ol><p><strong>Time Complexity:</strong> O(numCourses^3 + Q), where Q is the number of queries. The dominant part is the Floyd-Warshall algorithm with its three nested loops.</p><p><strong>Space Complexity:</strong> O(numCourses^2) for the `isPrereq` matrix.</p>",
+      "solution_code": "function courseScheduleIv(numCourses, prerequisites, queries) {\n    const isPrereq = Array(numCourses).fill(0).map(() => Array(numCourses).fill(false));\n\n    for (const [u, v] of prerequisites) {\n        isPrereq[u][v] = true;\n    }\n\n    for (let k = 0; k < numCourses; k++) {\n        for (let i = 0; i < numCourses; i++) {\n            for (let j = 0; j < numCourses; j++) {\n                isPrereq[i][j] = isPrereq[i][j] || (isPrereq[i][k] && isPrereq[k][j]);\n            }\n        }\n    }\n\n    const result = [];\n    for (const [u, v] of queries) {\n        result.push(isPrereq[u][v]);\n    }\n\n    return result;\n}"
     },
     "typescript": {
-      "template": "function courseScheduleIv(numCourses: string, prerequisites: number[], queries: number[]): number[] {\n  \n}",
-      "solution_text": "Comprehensive solution for course-schedule-iv:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function courseScheduleIv(...args: any[]): any {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result: any[] = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "template": "function courseScheduleIv(numCourses: number, prerequisites: number[][], queries: number[][]): boolean[] {\n  \n}",
+      "solution_text": "<p><strong>Floyd-Warshall Algorithm for Transitive Closure:</strong></p><p>The problem asks to check for indirect prerequisites between courses for multiple queries. This can be efficiently solved by pre-calculating the transitive closure of the prerequisite graph. The Floyd-Warshall algorithm is a perfect fit for this, as it computes all-pairs reachability.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Initialization:</strong> Create a 2D boolean matrix, `isPrereq`, of size `numCourses x numCourses`. Initialize all entries to `false`. This matrix will store whether course `i` is a prerequisite for course `j`.</li><li><strong>Direct Prerequisites:</strong> Populate the matrix with direct prerequisites. For each pair `[u, v]` in the `prerequisites` list, set `isPrereq[u][v] = true`.</li><li><strong>Transitive Closure (Floyd-Warshall):</strong> Iterate through all possible intermediate courses `k`. For every pair of courses `(i, j)`, if `i` is a prerequisite for `k` AND `k` is a prerequisite for `j`, then `i` is also an indirect prerequisite for `j`. Update the matrix accordingly: `isPrereq[i][j] = isPrereq[i][j] || (isPrereq[i][k] && isPrereq[k][j])`.</li><li><strong>Process Queries:</strong> After the Floyd-Warshall loops complete, the `isPrereq` matrix contains all direct and indirect prerequisite relationships. For each query `[u, v]`, the answer is simply `isPrereq[u][v]`.</li></ol><p><strong>Time Complexity:</strong> O(numCourses^3 + Q), where Q is the number of queries. The dominant part is the Floyd-Warshall algorithm with its three nested loops.</p><p><strong>Space Complexity:</strong> O(numCourses^2) for the `isPrereq` matrix.</p>",
+      "solution_code": "function courseScheduleIv(numCourses: number, prerequisites: number[][], queries: number[][]): boolean[] {\n    const isPrereq: boolean[][] = Array(numCourses).fill(0).map(() => Array(numCourses).fill(false));\n\n    for (const [u, v] of prerequisites) {\n        isPrereq[u][v] = true;\n    }\n\n    for (let k = 0; k < numCourses; k++) {\n        for (let i = 0; i < numCourses; i++) {\n            for (let j = 0; j < numCourses; j++) {\n                isPrereq[i][j] = isPrereq[i][j] || (isPrereq[i][k] && isPrereq[k][j]);\n            }\n        }\n    }\n\n    const result: boolean[] = [];\n    for (const [u, v] of queries) {\n        result.push(isPrereq[u][v]);\n    }\n\n    return result;\n}"
     },
     "java": {
-      "template": "class Solution {\n    public int[] courseScheduleIv(String numCourses, int[] prerequisites, int[] queries) {\n        \n    }\n}",
-      "solution_text": "Comprehensive solution for course-schedule-iv:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "class Solution {\n    public Object courseScheduleIv(Object... args) {\n        // Handle empty input\n        if (args.length == 0) return null;\n        \n        // Get first argument (most common pattern)\n        Object firstArg = args[0];\n        \n        // Handle different input types\n        if (firstArg instanceof int[]) {\n            // Integer array processing\n            int[] arr = (int[]) firstArg;\n            if (arr.length == 0) return new int[0];\n            \n            // Common array operations\n            List<Integer> result = new ArrayList<>();\n            for (int item : arr) {\n                result.add(item); // Process each item\n            }\n            \n            return result.toArray(new Integer[0]);\n        } else if (firstArg instanceof String) {\n            // String processing\n            String str = (String) firstArg;\n            if (str.length() == 0) return \"\";\n            \n            // Common string operations\n            return str; // Return processed string\n        } else if (firstArg instanceof Integer) {\n            // Integer processing\n            return firstArg; // Return processed number\n        } else {\n            // Generic processing\n            return firstArg;\n        }\n    }\n}"
+      "template": "class Solution {\n    public List<Boolean> courseScheduleIv(int numCourses, int[][] prerequisites, int[][] queries) {\n        \n    }\n}",
+      "solution_text": "<p><strong>Floyd-Warshall Algorithm for Transitive Closure:</strong></p><p>The problem asks to check for indirect prerequisites between courses for multiple queries. This can be efficiently solved by pre-calculating the transitive closure of the prerequisite graph. The Floyd-Warshall algorithm is a perfect fit for this, as it computes all-pairs reachability.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Initialization:</strong> Create a 2D boolean matrix, `isPrereq`, of size `numCourses x numCourses`. Initialize all entries to `false`. This matrix will store whether course `i` is a prerequisite for course `j`.</li><li><strong>Direct Prerequisites:</strong> Populate the matrix with direct prerequisites. For each pair `[u, v]` in the `prerequisites` list, set `isPrereq[u][v] = true`.</li><li><strong>Transitive Closure (Floyd-Warshall):</strong> Iterate through all possible intermediate courses `k`. For every pair of courses `(i, j)`, if `i` is a prerequisite for `k` AND `k` is a prerequisite for `j`, then `i` is also an indirect prerequisite for `j`. Update the matrix accordingly: `isPrereq[i][j] = isPrereq[i][j] || (isPrereq[i][k] && isPrereq[k][j])`.</li><li><strong>Process Queries:</strong> After the Floyd-Warshall loops complete, the `isPrereq` matrix contains all direct and indirect prerequisite relationships. For each query `[u, v]`, the answer is simply `isPrereq[u][v]`.</li></ol><p><strong>Time Complexity:</strong> O(numCourses^3 + Q), where Q is the number of queries. The dominant part is the Floyd-Warshall algorithm with its three nested loops.</p><p><strong>Space Complexity:</strong> O(numCourses^2) for the `isPrereq` matrix.</p>",
+      "solution_code": "import java.util.ArrayList;\nimport java.util.List;\n\nclass Solution {\n    public List<Boolean> courseScheduleIv(int numCourses, int[][] prerequisites, int[][] queries) {\n        boolean[][] isPrereq = new boolean[numCourses][numCourses];\n\n        for (int[] p : prerequisites) {\n            isPrereq[p[0]][p[1]] = true;\n        }\n\n        for (int k = 0; k < numCourses; k++) {\n            for (int i = 0; i < numCourses; i++) {\n                for (int j = 0; j < numCourses; j++) {\n                    isPrereq[i][j] = isPrereq[i][j] || (isPrereq[i][k] && isPrereq[k][j]);\n                }\n            }\n        }\n\n        List<Boolean> result = new ArrayList<>();\n        for (int[] q : queries) {\n            result.add(isPrereq[q[0]][q[1]]);\n        }\n\n        return result;\n    }\n}"
     }
   },
-  "order_matters": false,
+  "order_matters": true,
   "test_cases": [
     {
       "id": 1,
       "input": {
-        "numCourses": "4,",
-        "prerequisites": [
-          "[1",
-          0
-        ],
-        "queries": [
-          "[0",
-          1
-        ]
+        "numCourses": 2,
+        "prerequisites": [[1, 0]],
+        "queries": [[0, 1], [1, 0]]
       },
-      "output": [
-        false,
-        true
-      ]
+      "output": [false, true]
     },
     {
       "id": 2,
       "input": {
-        "numCourses": "2,",
-        "prerequisites": [
-          "[1",
-          0
-        ],
-        "queries": [
-          "[0",
-          1
-        ]
+        "numCourses": 2,
+        "prerequisites": [],
+        "queries": [[0, 1], [1, 0]]
       },
-      "output": [
-        false
-      ]
+      "output": [false, false]
+    },
+    {
+      "id": 3,
+      "input": {
+        "numCourses": 3,
+        "prerequisites": [[1, 2], [1, 0], [2, 0]],
+        "queries": [[1, 0], [1, 2]]
+      },
+      "output": [true, true]
+    },
+    {
+      "id": 4,
+      "input": {
+        "numCourses": 5,
+        "prerequisites": [[0, 1], [1, 2], [2, 3], [3, 4]],
+        "queries": [[0, 4], [4, 0], [1, 3], [1, 0]]
+      },
+      "output": [true, false, true, false]
+    },
+    {
+      "id": 5,
+      "input": {
+        "numCourses": 3,
+        "prerequisites": [[0, 1]],
+        "queries": [[0, 1], [1, 0], [0, 2], [2, 0]]
+      },
+      "output": [true, false, false, false]
+    },
+    {
+      "id": 6,
+      "input": {
+        "numCourses": 4,
+        "prerequisites": [[1, 0], [2, 1], [3, 2]],
+        "queries": [[0, 3], [3, 0], [1, 3], [3, 1]]
+      },
+      "output": [false, true, false, true]
+    },
+    {
+      "id": 7,
+      "input": {
+        "numCourses": 5,
+        "prerequisites": [[1,0],[2,0],[3,0],[4,0]],
+        "queries": [[1,2],[2,3],[3,4],[4,1]]
+      },
+      "output": [false, false, false, false]
+    },
+    {
+      "id": 8,
+      "input": {
+        "numCourses": 5,
+        "prerequisites": [[0,1],[0,2],[0,3],[0,4]],
+        "queries": [[0,1],[0,2],[0,3],[0,4]]
+      },
+      "output": [true, true, true, true]
+    },
+    {
+      "id": 9,
+      "input": {
+        "numCourses": 6,
+        "prerequisites": [[1,0],[2,1],[3,2],[4,3],[5,4]],
+        "queries": [[0,5],[5,0]]
+      },
+      "output": [false, true]
+    },
+    {
+      "id": 10,
+      "input": {
+        "numCourses": 4,
+        "prerequisites": [[2,3],[2,1],[2,0],[3,1],[3,0],[1,0]],
+        "queries": [[2,0],[2,1],[2,3],[3,0],[3,1],[1,0]]
+      },
+      "output": [true, true, true, true, true, true]
     }
   ]
 }

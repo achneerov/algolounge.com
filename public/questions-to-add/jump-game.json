@@ -41,28 +41,72 @@
     {
       "id": 1,
       "input": {
-        "nums": [
-          1,
-          2,
-          0,
-          1,
-          0
-        ]
+        "nums": [1, 2, 0, 1, 0]
       },
-      "output": "true"
+      "output": true
     },
     {
       "id": 2,
       "input": {
-        "nums": [
-          1,
-          2,
-          1,
-          0,
-          1
-        ]
+        "nums": [1, 2, 1, 0, 1]
       },
-      "output": "false"
+      "output": false
+    },
+    {
+      "id": 3,
+      "input": {
+        "nums": [2, 3, 1, 1, 4]
+      },
+      "output": true
+    },
+    {
+      "id": 4,
+      "input": {
+        "nums": [3, 2, 1, 0, 4]
+      },
+      "output": false
+    },
+    {
+      "id": 5,
+      "input": {
+        "nums": [1]
+      },
+      "output": true
+    },
+    {
+      "id": 6,
+      "input": {
+        "nums": [0]
+      },
+      "output": true
+    },
+    {
+      "id": 7,
+      "input": {
+        "nums": [2, 0, 0]
+      },
+      "output": true
+    },
+    {
+      "id": 8,
+      "input": {
+        "nums": [1, 0, 2]
+      },
+      "output": false
+    },
+    {
+      "id": 9,
+      "input": {
+        "nums": [5, 4, 3, 2, 1, 0, 0]
+      },
+      "output": true
+    },
+    {
+      "id": 10,
+      "input": {
+        "nums": [0, 1]
+      },
+      "output": false
     }
   ]
 }

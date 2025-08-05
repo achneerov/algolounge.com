@@ -16,26 +16,97 @@
   "description": "<h2>Max Area of Island</h2><p>Leetcode 695. Max Area of Island</p><p></p><p>You are given a matrix `grid` where `grid[i]` is either a `0` (representing water) or `1` (representing land).</p><p>    </p><p>An island is defined as a group of `1`'s connected horizontally or vertically. You may assume all four edges of the grid are surrounded by water.</p><p></p><p>The **area** of an island is defined as the number of cells within the island.</p><p></p><p>Return the maximum **area** of an island in `grid`. If no island exists, return `0`.</p><h3>Constraints:</h3><ul><li> `1 <= grid.length, grid[i].length <= 50`</li></ul>",
   "languages": {
     "python": {
-      "template": "def maxAreaOfIsland(input):\n    ",
-      "solution_text": "Graph traversal using DFS/BFS approach:\n\n**Algorithm:**\n1. Build adjacency list representation of graph\n2. Use DFS or BFS to traverse nodes\n3. Track visited nodes to avoid cycles\n4. Process nodes according to problem requirements\n\n**Time Complexity:** O(V + E) - visit each vertex and edge once\n**Space Complexity:** O(V) - visited set and recursion stack\n\n**Key Insights:**\n- DFS for deep exploration, BFS for level-by-level\n- Use visited set to handle cycles\n- Adjacency list is space-efficient for sparse graphs",
-      "solution_code": "def maxAreaOfIsland(graph):\n    if not graph:\n        return []\n    \n    visited = set()\n    result = []\n    \n    def dfs(node):\n        if node in visited:\n            return\n        \n        visited.add(node)\n        result.append(node)\n        \n        # Visit neighbors\n        for neighbor in graph.get(node, []):\n            dfs(neighbor)\n    \n    # Start DFS from first node\n    for node in graph:\n        if node not in visited:\n            dfs(node)\n    \n    return result"
+      "template": "def maxAreaOfIsland(grid):\n    ",
+      "solution_text": "<h3>DFS Island Area Calculation</h3><p>Find the maximum area of connected land cells (1s) in a 2D grid using depth-first search.</p><h4>Algorithm:</h4><ol><li>Iterate through each cell in the grid</li><li>When finding unvisited land (1), start DFS to calculate island area</li><li>Mark visited cells to avoid double counting</li><li>Track maximum area found across all islands</li></ol><h4>Time Complexity:</h4><p>O(m × n) - visit each cell at most once</p><h4>Space Complexity:</h4><p>O(m × n) - recursion stack in worst case</p><h4>Key Insights:</h4><ul><li>DFS explores all connected land cells from starting point</li><li>Each cell contributes exactly 1 to island area</li><li>Grid modification avoids need for separate visited array</li></ul>",
+      "solution_code": "def maxAreaOfIsland(grid):\n    if not grid or not grid[0]:\n        return 0\n    \n    rows, cols = len(grid), len(grid[0])\n    max_area = 0\n    \n    def dfs(r, c):\n        if (r < 0 or r >= rows or c < 0 or c >= cols or \n            grid[r][c] != 1):\n            return 0\n        \n        grid[r][c] = 0  # Mark as visited\n        area = 1\n        \n        # Explore 4 directions\n        area += dfs(r + 1, c)\n        area += dfs(r - 1, c)\n        area += dfs(r, c + 1)\n        area += dfs(r, c - 1)\n        \n        return area\n    \n    for i in range(rows):\n        for j in range(cols):\n            if grid[i][j] == 1:\n                max_area = max(max_area, dfs(i, j))\n    \n    return max_area"
     },
     "javascript": {
-      "template": "function maxAreaOfIsland(input) {\n  \n}",
-      "solution_text": "Graph traversal using DFS/BFS approach:\n\n**Algorithm:**\n1. Build adjacency list representation of graph\n2. Use DFS or BFS to traverse nodes\n3. Track visited nodes to avoid cycles\n4. Process nodes according to problem requirements\n\n**Time Complexity:** O(V + E) - visit each vertex and edge once\n**Space Complexity:** O(V) - visited set and recursion stack\n\n**Key Insights:**\n- DFS for deep exploration, BFS for level-by-level\n- Use visited set to handle cycles\n- Adjacency list is space-efficient for sparse graphs",
-      "solution_code": "function maxAreaOfIsland(graph) {\n    if (!graph) return [];\n    \n    const visited = new Set();\n    const result = [];\n    \n    function dfs(node) {\n        if (visited.has(node)) return;\n        \n        visited.add(node);\n        result.push(node);\n        \n        // Visit neighbors\n        const neighbors = graph[node] || [];\n        for (const neighbor of neighbors) {\n            dfs(neighbor);\n        }\n    }\n    \n    // Start DFS from each unvisited node\n    for (const node in graph) {\n        if (!visited.has(node)) {\n            dfs(node);\n        }\n    }\n    \n    return result;\n}"
+      "template": "function maxAreaOfIsland(grid) {\n  \n}",
+      "solution_text": "<h3>DFS Island Area Calculation</h3><p>Find the maximum area of connected land cells (1s) in a 2D grid using depth-first search.</p><h4>Algorithm:</h4><ol><li>Iterate through each cell in the grid</li><li>When finding unvisited land (1), start DFS to calculate island area</li><li>Mark visited cells to avoid double counting</li><li>Track maximum area found across all islands</li></ol><h4>Time Complexity:</h4><p>O(m × n) - visit each cell at most once</p><h4>Space Complexity:</h4><p>O(m × n) - recursion stack in worst case</p><h4>Key Insights:</h4><ul><li>DFS explores all connected land cells from starting point</li><li>Each cell contributes exactly 1 to island area</li><li>Grid modification avoids need for separate visited array</li></ul>",
+      "solution_code": "function maxAreaOfIsland(grid) {\n    if (!grid || !grid.length || !grid[0].length) {\n        return 0;\n    }\n    \n    const rows = grid.length;\n    const cols = grid[0].length;\n    let maxArea = 0;\n    \n    function dfs(r, c) {\n        if (r < 0 || r >= rows || c < 0 || c >= cols || \n            grid[r][c] !== 1) {\n            return 0;\n        }\n        \n        grid[r][c] = 0; // Mark as visited\n        let area = 1;\n        \n        // Explore 4 directions\n        area += dfs(r + 1, c);\n        area += dfs(r - 1, c);\n        area += dfs(r, c + 1);\n        area += dfs(r, c - 1);\n        \n        return area;\n    }\n    \n    for (let i = 0; i < rows; i++) {\n        for (let j = 0; j < cols; j++) {\n            if (grid[i][j] === 1) {\n                maxArea = Math.max(maxArea, dfs(i, j));\n            }\n        }\n    }\n    \n    return maxArea;\n}"
     },
     "typescript": {
-      "template": "function maxAreaOfIsland(input: any): any {\n  \n}",
-      "solution_text": "Graph traversal using DFS/BFS approach:\n\n**Algorithm:**\n1. Build adjacency list representation of graph\n2. Use DFS or BFS to traverse nodes\n3. Track visited nodes to avoid cycles\n4. Process nodes according to problem requirements\n\n**Time Complexity:** O(V + E) - visit each vertex and edge once\n**Space Complexity:** O(V) - visited set and recursion stack\n\n**Key Insights:**\n- DFS for deep exploration, BFS for level-by-level\n- Use visited set to handle cycles\n- Adjacency list is space-efficient for sparse graphs",
-      "solution_code": "function maxAreaOfIsland(graph: {[key: string]: string[]}): string[] {\n    if (!graph) return [];\n    \n    const visited = new Set<string>();\n    const result: string[] = [];\n    \n    function dfs(node: string): void {\n        if (visited.has(node)) return;\n        \n        visited.add(node);\n        result.push(node);\n        \n        // Visit neighbors\n        const neighbors = graph[node] || [];\n        for (const neighbor of neighbors) {\n            dfs(neighbor);\n        }\n    }\n    \n    // Start DFS from each unvisited node\n    for (const node in graph) {\n        if (!visited.has(node)) {\n            dfs(node);\n        }\n    }\n    \n    return result;\n}"
+      "template": "function maxAreaOfIsland(grid: number[][]): number {\n  \n}",
+      "solution_text": "<h3>DFS Island Area Calculation</h3><p>Find the maximum area of connected land cells (1s) in a 2D grid using depth-first search.</p><h4>Algorithm:</h4><ol><li>Iterate through each cell in the grid</li><li>When finding unvisited land (1), start DFS to calculate island area</li><li>Mark visited cells to avoid double counting</li><li>Track maximum area found across all islands</li></ol><h4>Time Complexity:</h4><p>O(m × n) - visit each cell at most once</p><h4>Space Complexity:</h4><p>O(m × n) - recursion stack in worst case</p><h4>Key Insights:</h4><ul><li>DFS explores all connected land cells from starting point</li><li>Each cell contributes exactly 1 to island area</li><li>Grid modification avoids need for separate visited array</li></ul>",
+      "solution_code": "function maxAreaOfIsland(grid: number[][]): number {\n    if (!grid || !grid.length || !grid[0].length) {\n        return 0;\n    }\n    \n    const rows = grid.length;\n    const cols = grid[0].length;\n    let maxArea = 0;\n    \n    function dfs(r: number, c: number): number {\n        if (r < 0 || r >= rows || c < 0 || c >= cols || \n            grid[r][c] !== 1) {\n            return 0;\n        }\n        \n        grid[r][c] = 0; // Mark as visited\n        let area = 1;\n        \n        // Explore 4 directions\n        area += dfs(r + 1, c);\n        area += dfs(r - 1, c);\n        area += dfs(r, c + 1);\n        area += dfs(r, c - 1);\n        \n        return area;\n    }\n    \n    for (let i = 0; i < rows; i++) {\n        for (let j = 0; j < cols; j++) {\n            if (grid[i][j] === 1) {\n                maxArea = Math.max(maxArea, dfs(i, j));\n            }\n        }\n    }\n    \n    return maxArea;\n}"
     },
     "java": {
-      "template": "class Solution {\n    public Object maxAreaOfIsland(Object input) {\n        \n    }\n}",
-      "solution_text": "Graph traversal using DFS/BFS approach:\n\n**Algorithm:**\n1. Build adjacency list representation of graph\n2. Use DFS or BFS to traverse nodes\n3. Track visited nodes to avoid cycles\n4. Process nodes according to problem requirements\n\n**Time Complexity:** O(V + E) - visit each vertex and edge once\n**Space Complexity:** O(V) - visited set and recursion stack\n\n**Key Insights:**\n- DFS for deep exploration, BFS for level-by-level\n- Use visited set to handle cycles\n- Adjacency list is space-efficient for sparse graphs",
-      "solution_code": "class Solution {\n    public List<String> maxAreaOfIsland(Map<String, List<String>> graph) {\n        if (graph == null || graph.isEmpty()) return new ArrayList<>();\n        \n        Set<String> visited = new HashSet<>();\n        List<String> result = new ArrayList<>();\n        \n        for (String node : graph.keySet()) {\n            if (!visited.contains(node)) {\n                dfs(node, graph, visited, result);\n            }\n        }\n        \n        return result;\n    }\n    \n    private void dfs(String node, Map<String, List<String>> graph, \n                     Set<String> visited, List<String> result) {\n        if (visited.contains(node)) return;\n        \n        visited.add(node);\n        result.add(node);\n        \n        // Visit neighbors\n        List<String> neighbors = graph.getOrDefault(node, new ArrayList<>());\n        for (String neighbor : neighbors) {\n            dfs(neighbor, graph, visited, result);\n        }\n    }\n}"
+      "template": "class Solution {\n    public int maxAreaOfIsland(int[][] grid) {\n        \n    }\n}",
+      "solution_text": "<h3>DFS Island Area Calculation</h3><p>Find the maximum area of connected land cells (1s) in a 2D grid using depth-first search.</p><h4>Algorithm:</h4><ol><li>Iterate through each cell in the grid</li><li>When finding unvisited land (1), start DFS to calculate island area</li><li>Mark visited cells to avoid double counting</li><li>Track maximum area found across all islands</li></ol><h4>Time Complexity:</h4><p>O(m × n) - visit each cell at most once</p><h4>Space Complexity:</h4><p>O(m × n) - recursion stack in worst case</p><h4>Key Insights:</h4><ul><li>DFS explores all connected land cells from starting point</li><li>Each cell contributes exactly 1 to island area</li><li>Grid modification avoids need for separate visited array</li></ul>",
+      "solution_code": "class Solution {\n    public int maxAreaOfIsland(int[][] grid) {\n        if (grid == null || grid.length == 0 || grid[0].length == 0) {\n            return 0;\n        }\n        \n        int rows = grid.length;\n        int cols = grid[0].length;\n        int maxArea = 0;\n        \n        for (int i = 0; i < rows; i++) {\n            for (int j = 0; j < cols; j++) {\n                if (grid[i][j] == 1) {\n                    maxArea = Math.max(maxArea, dfs(grid, i, j));\n                }\n            }\n        }\n        \n        return maxArea;\n    }\n    \n    private int dfs(int[][] grid, int r, int c) {\n        if (r < 0 || r >= grid.length || c < 0 || c >= grid[0].length || \n            grid[r][c] != 1) {\n            return 0;\n        }\n        \n        grid[r][c] = 0; // Mark as visited\n        int area = 1;\n        \n        // Explore 4 directions\n        area += dfs(grid, r + 1, c);\n        area += dfs(grid, r - 1, c);\n        area += dfs(grid, r, c + 1);\n        area += dfs(grid, r, c - 1);\n        \n        return area;\n    }\n}"
     }
   },
   "order_matters": false,
-  "test_cases": []
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "grid": [[1,1,0,0,0],[1,1,0,0,0],[0,0,0,1,1],[0,0,0,1,1]]
+      },
+      "output": 4
+    },
+    {
+      "id": 2,
+      "input": {
+        "grid": [[0,0,1,0,0,0,0,1,0,0,0,0,0],[0,0,0,0,0,0,0,1,1,1,0,0,0],[0,1,1,0,1,0,0,0,0,0,0,0,0],[0,1,0,0,1,1,0,0,1,0,1,0,0],[0,1,0,0,1,1,0,0,1,1,1,0,0],[0,0,0,0,0,0,0,0,0,0,1,0,0],[0,0,0,0,0,0,0,1,1,1,0,0,0],[0,0,0,0,0,0,0,1,1,0,0,0,0]]
+      },
+      "output": 6
+    },
+    {
+      "id": 3,
+      "input": {
+        "grid": [[0,0,0,0,0,0,0,0]]
+      },
+      "output": 0
+    },
+    {
+      "id": 4,
+      "input": {
+        "grid": [[1]]
+      },
+      "output": 1
+    },
+    {
+      "id": 5,
+      "input": {
+        "grid": [[1,1,1],[1,0,1],[1,1,1]]
+      },
+      "output": 8
+    },
+    {
+      "id": 6,
+      "input": {
+        "grid": [[1,0,1],[0,1,0],[1,0,1]]
+      },
+      "output": 1
+    },
+    {
+      "id": 7,
+      "input": {
+        "grid": [[1,1,1,1,1],[1,0,0,0,1],[1,0,1,0,1],[1,0,0,0,1],[1,1,1,1,1]]
+      },
+      "output": 16
+    },
+    {
+      "id": 8,
+      "input": {
+        "grid": [[0,1,0],[1,1,1],[0,1,0]]
+      },
+      "output": 5
+    },
+    {
+      "id": 9,
+      "input": {
+        "grid": [[1,0,0,1,1],[0,0,1,1,0],[0,1,0,0,1]]
+      },
+      "output": 3
+    },
+    {
+      "id": 10,
+      "input": {
+        "grid": [[0,0,0],[0,0,0],[0,0,0]]
+      },
+      "output": 0
+    }
+  ]
 }

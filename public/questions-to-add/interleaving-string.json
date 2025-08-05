@@ -17,44 +17,76 @@
   "languages": {
     "python": {
       "template": "def interleavingString(s1, s2, s3):\n    ",
-      "solution_text": "Comprehensive solution for interleaving-string:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "def interleavingString(*args):\n    # Handle empty input\n    if not args:\n        return None\n    \n    # Get first argument (most common pattern)\n    first_arg = args[0]\n    \n    # Handle different input types\n    if isinstance(first_arg, list):\n        # Array/list processing\n        if not first_arg:\n            return []\n        \n        # Common array operations\n        result = []\n        for i, item in enumerate(first_arg):\n            # Process based on context\n            if isinstance(item, (int, float)):\n                result.append(item)  # Numeric processing\n            elif isinstance(item, str):\n                result.append(item)  # String processing\n            else:\n                result.append(item)  # Generic processing\n        \n        return result\n    \n    elif isinstance(first_arg, str):\n        # String processing\n        if not first_arg:\n            return \"\"\n        \n        # Common string operations\n        return first_arg  # Return processed string\n    \n    elif isinstance(first_arg, (int, float)):\n        # Numeric processing\n        return first_arg  # Return processed number\n    \n    else:\n        # Generic processing\n        return first_arg"
+      "solution_text": "<h3>Solution Approach</h3><p><strong>Algorithm:</strong><br/>We use dynamic programming to solve this problem. The key insight is that at each position in s3, we can either take a character from s1 or s2, and we need to check all valid combinations.</p><p><strong>Strategy:</strong><br/>1. First check if lengths match: len(s1) + len(s2) == len(s3)<br/>2. Use 2D DP where dp[i][j] represents if s3[0:i+j] can be formed by s1[0:i] and s2[0:j]<br/>3. Base case: dp[0][0] = True (empty strings)<br/>4. Fill DP table by checking character matches</p><p><strong>Time Complexity:</strong> O(m × n) where m and n are lengths of s1 and s2</p><p><strong>Space Complexity:</strong> O(m × n) for the DP table</p><p><strong>Key Insights:</strong><br/>- Each position in s3 must come from either s1 or s2<br/>- We track positions in both s1 and s2 simultaneously<br/>- DP ensures we explore all valid interleaving paths</p>",
+      "solution_code": "def interleavingString(s1, s2, s3):\n    m, n, l = len(s1), len(s2), len(s3)\n    \n    # Length check\n    if m + n != l:\n        return False\n    \n    # DP table: dp[i][j] = True if s1[0:i] and s2[0:j] can form s3[0:i+j]\n    dp = [[False] * (n + 1) for _ in range(m + 1)]\n    dp[0][0] = True\n    \n    # Fill first row (only s2 characters)\n    for j in range(1, n + 1):\n        dp[0][j] = dp[0][j-1] and s2[j-1] == s3[j-1]\n    \n    # Fill first column (only s1 characters)\n    for i in range(1, m + 1):\n        dp[i][0] = dp[i-1][0] and s1[i-1] == s3[i-1]\n    \n    # Fill rest of the table\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            # Take character from s1\n            take_s1 = dp[i-1][j] and s1[i-1] == s3[i+j-1]\n            # Take character from s2\n            take_s2 = dp[i][j-1] and s2[j-1] == s3[i+j-1]\n            dp[i][j] = take_s1 or take_s2\n    \n    return dp[m][n]"
     },
     "javascript": {
       "template": "function interleavingString(s1, s2, s3) {\n  \n}",
-      "solution_text": "Comprehensive solution for interleaving-string:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function interleavingString(...args) {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "solution_text": "<h3>Solution Approach</h3><p><strong>Algorithm:</strong><br/>We use dynamic programming to solve this problem. The key insight is that at each position in s3, we can either take a character from s1 or s2, and we need to check all valid combinations.</p><p><strong>Strategy:</strong><br/>1. First check if lengths match: len(s1) + len(s2) == len(s3)<br/>2. Use 2D DP where dp[i][j] represents if s3[0:i+j] can be formed by s1[0:i] and s2[0:j]<br/>3. Base case: dp[0][0] = True (empty strings)<br/>4. Fill DP table by checking character matches</p><p><strong>Time Complexity:</strong> O(m × n) where m and n are lengths of s1 and s2</p><p><strong>Space Complexity:</strong> O(m × n) for the DP table</p><p><strong>Key Insights:</strong><br/>- Each position in s3 must come from either s1 or s2<br/>- We track positions in both s1 and s2 simultaneously<br/>- DP ensures we explore all valid interleaving paths</p>",
+      "solution_code": "function interleavingString(s1, s2, s3) {\n    const m = s1.length, n = s2.length, l = s3.length;\n    \n    // Length check\n    if (m + n !== l) {\n        return false;\n    }\n    \n    // DP table: dp[i][j] = true if s1[0:i] and s2[0:j] can form s3[0:i+j]\n    const dp = Array(m + 1).fill().map(() => Array(n + 1).fill(false));\n    dp[0][0] = true;\n    \n    // Fill first row (only s2 characters)\n    for (let j = 1; j <= n; j++) {\n        dp[0][j] = dp[0][j-1] && s2[j-1] === s3[j-1];\n    }\n    \n    // Fill first column (only s1 characters)\n    for (let i = 1; i <= m; i++) {\n        dp[i][0] = dp[i-1][0] && s1[i-1] === s3[i-1];\n    }\n    \n    // Fill rest of the table\n    for (let i = 1; i <= m; i++) {\n        for (let j = 1; j <= n; j++) {\n            // Take character from s1\n            const takeS1 = dp[i-1][j] && s1[i-1] === s3[i+j-1];\n            // Take character from s2\n            const takeS2 = dp[i][j-1] && s2[j-1] === s3[i+j-1];\n            dp[i][j] = takeS1 || takeS2;\n        }\n    }\n    \n    return dp[m][n];\n}"
     },
     "typescript": {
-      "template": "function interleavingString(s1: string, s2: string, s3: string): string {\n  \n}",
-      "solution_text": "Comprehensive solution for interleaving-string:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function interleavingString(...args: any[]): any {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result: any[] = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "template": "function interleavingString(s1: string, s2: string, s3: string): boolean {\n  \n}",
+      "solution_text": "<h3>Solution Approach</h3><p><strong>Algorithm:</strong><br/>We use dynamic programming to solve this problem. The key insight is that at each position in s3, we can either take a character from s1 or s2, and we need to check all valid combinations.</p><p><strong>Strategy:</strong><br/>1. First check if lengths match: len(s1) + len(s2) == len(s3)<br/>2. Use 2D DP where dp[i][j] represents if s3[0:i+j] can be formed by s1[0:i] and s2[0:j]<br/>3. Base case: dp[0][0] = True (empty strings)<br/>4. Fill DP table by checking character matches</p><p><strong>Time Complexity:</strong> O(m × n) where m and n are lengths of s1 and s2</p><p><strong>Space Complexity:</strong> O(m × n) for the DP table</p><p><strong>Key Insights:</strong><br/>- Each position in s3 must come from either s1 or s2<br/>- We track positions in both s1 and s2 simultaneously<br/>- DP ensures we explore all valid interleaving paths</p>",
+      "solution_code": "function interleavingString(s1: string, s2: string, s3: string): boolean {\n    const m = s1.length, n = s2.length, l = s3.length;\n    \n    // Length check\n    if (m + n !== l) {\n        return false;\n    }\n    \n    // DP table: dp[i][j] = true if s1[0:i] and s2[0:j] can form s3[0:i+j]\n    const dp: boolean[][] = Array(m + 1).fill(null).map(() => Array(n + 1).fill(false));\n    dp[0][0] = true;\n    \n    // Fill first row (only s2 characters)\n    for (let j = 1; j <= n; j++) {\n        dp[0][j] = dp[0][j-1] && s2[j-1] === s3[j-1];\n    }\n    \n    // Fill first column (only s1 characters)\n    for (let i = 1; i <= m; i++) {\n        dp[i][0] = dp[i-1][0] && s1[i-1] === s3[i-1];\n    }\n    \n    // Fill rest of the table\n    for (let i = 1; i <= m; i++) {\n        for (let j = 1; j <= n; j++) {\n            // Take character from s1\n            const takeS1 = dp[i-1][j] && s1[i-1] === s3[i+j-1];\n            // Take character from s2\n            const takeS2 = dp[i][j-1] && s2[j-1] === s3[i+j-1];\n            dp[i][j] = takeS1 || takeS2;\n        }\n    }\n    \n    return dp[m][n];\n}"
     },
     "java": {
-      "template": "class Solution {\n    public String interleavingString(String s1, String s2, String s3) {\n        \n    }\n}",
-      "solution_text": "Comprehensive solution for interleaving-string:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "class Solution {\n    public Object interleavingString(Object... args) {\n        // Handle empty input\n        if (args.length == 0) return null;\n        \n        // Get first argument (most common pattern)\n        Object firstArg = args[0];\n        \n        // Handle different input types\n        if (firstArg instanceof int[]) {\n            // Integer array processing\n            int[] arr = (int[]) firstArg;\n            if (arr.length == 0) return new int[0];\n            \n            // Common array operations\n            List<Integer> result = new ArrayList<>();\n            for (int item : arr) {\n                result.add(item); // Process each item\n            }\n            \n            return result.toArray(new Integer[0]);\n        } else if (firstArg instanceof String) {\n            // String processing\n            String str = (String) firstArg;\n            if (str.length() == 0) return \"\";\n            \n            // Common string operations\n            return str; // Return processed string\n        } else if (firstArg instanceof Integer) {\n            // Integer processing\n            return firstArg; // Return processed number\n        } else {\n            // Generic processing\n            return firstArg;\n        }\n    }\n}"
+      "template": "class Solution {\n    public boolean interleavingString(String s1, String s2, String s3) {\n        \n    }\n}",
+      "solution_text": "<h3>Solution Approach</h3><p><strong>Algorithm:</strong><br/>We use dynamic programming to solve this problem. The key insight is that at each position in s3, we can either take a character from s1 or s2, and we need to check all valid combinations.</p><p><strong>Strategy:</strong><br/>1. First check if lengths match: len(s1) + len(s2) == len(s3)<br/>2. Use 2D DP where dp[i][j] represents if s3[0:i+j] can be formed by s1[0:i] and s2[0:j]<br/>3. Base case: dp[0][0] = True (empty strings)<br/>4. Fill DP table by checking character matches</p><p><strong>Time Complexity:</strong> O(m × n) where m and n are lengths of s1 and s2</p><p><strong>Space Complexity:</strong> O(m × n) for the DP table</p><p><strong>Key Insights:</strong><br/>- Each position in s3 must come from either s1 or s2<br/>- We track positions in both s1 and s2 simultaneously<br/>- DP ensures we explore all valid interleaving paths</p>",
+      "solution_code": "class Solution {\n    public boolean interleavingString(String s1, String s2, String s3) {\n        int m = s1.length(), n = s2.length(), l = s3.length();\n        \n        // Length check\n        if (m + n != l) {\n            return false;\n        }\n        \n        // DP table: dp[i][j] = true if s1[0:i] and s2[0:j] can form s3[0:i+j]\n        boolean[][] dp = new boolean[m + 1][n + 1];\n        dp[0][0] = true;\n        \n        // Fill first row (only s2 characters)\n        for (int j = 1; j <= n; j++) {\n            dp[0][j] = dp[0][j-1] && s2.charAt(j-1) == s3.charAt(j-1);\n        }\n        \n        // Fill first column (only s1 characters)\n        for (int i = 1; i <= m; i++) {\n            dp[i][0] = dp[i-1][0] && s1.charAt(i-1) == s3.charAt(i-1);\n        }\n        \n        // Fill rest of the table\n        for (int i = 1; i <= m; i++) {\n            for (int j = 1; j <= n; j++) {\n                // Take character from s1\n                boolean takeS1 = dp[i-1][j] && s1.charAt(i-1) == s3.charAt(i+j-1);\n                // Take character from s2\n                boolean takeS2 = dp[i][j-1] && s2.charAt(j-1) == s3.charAt(i+j-1);\n                dp[i][j] = takeS1 || takeS2;\n            }\n        }\n        \n        return dp[m][n];\n    }\n}"
     }
   },
   "order_matters": false,
   "test_cases": [
     {
       "id": 1,
-      "input": {
-        "s1": "\"\",",
-        "s2": "\"\",",
-        "s3": ""
-      },
-      "output": "true"
+      "input": ["aabcc", "dbbca", "aadbbcbcac"],
+      "output": true
     },
     {
       "id": 2,
-      "input": {
-        "s1": "\"abc\",",
-        "s2": "\"xyz\",",
-        "s3": "abxzcy"
-      },
-      "output": "false"
+      "input": ["aabcc", "dbbca", "aadbbbaccc"],
+      "output": false
+    },
+    {
+      "id": 3,
+      "input": ["", "", ""],
+      "output": true
+    },
+    {
+      "id": 4,
+      "input": ["a", "", "a"],
+      "output": true
+    },
+    {
+      "id": 5,
+      "input": ["", "b", "b"],
+      "output": true
+    },
+    {
+      "id": 6,
+      "input": ["a", "b", "ab"],
+      "output": true
+    },
+    {
+      "id": 7,
+      "input": ["a", "b", "ba"],
+      "output": true
+    },
+    {
+      "id": 8,
+      "input": ["a", "b", "c"],
+      "output": false
+    },
+    {
+      "id": 9,
+      "input": ["abc", "def", "adbecf"],
+      "output": true
+    },
+    {
+      "id": 10,
+      "input": ["abc", "def", "abcdef"],
+      "output": true
     }
   ]
 }

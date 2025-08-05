@@ -17,23 +17,23 @@
   "languages": {
     "python": {
       "template": "def jumpGameVii(s, minJump, maxJump):\n    ",
-      "solution_text": "Solution implementation for jump-game-vii:\n\n**Algorithm:**\nBased on the problem requirements and test cases, this solution implements the optimal approach.\n\n**Time Complexity:** O(n) - Linear time complexity\n**Space Complexity:** O(1) - Constant extra space\n\n**Key Insights:**\n- Analyze the input constraints and examples\n- Choose appropriate data structures and algorithms\n- Handle edge cases carefully",
-      "solution_code": "def jumpGameVii(*args):\n    # Implementation based on problem requirements\n    # Analyze test cases to determine the logic\n    \n    # TODO: Implement based on test cases\n    # Example test case analysis needed\n    return None  # Replace with actual implementation"
+      "solution_text": "<p><strong>Jump Game VII - BFS with Sliding Window:</strong></p><p>Determine if we can reach the last index using BFS with optimization.</p><p><strong>Algorithm:</strong></p><ol><li>Use BFS to explore all reachable positions</li><li>For each position, check valid jump range [i+minJump, i+maxJump]</li><li>Only visit positions with '0' (not obstacles)</li><li>Use sliding window technique to avoid redundant checks</li></ol><p><strong>Time Complexity:</strong> O(n) - each position visited once</p><p><strong>Space Complexity:</strong> O(n) - BFS queue and visited array</p>",
+      "solution_code": "def jumpGameVii(s, minJump, maxJump):\n    from collections import deque\n    \n    n = len(s)\n    if s[n-1] == '1':\n        return False\n    \n    # BFS approach with visited tracking\n    queue = deque([0])\n    visited = [False] * n\n    visited[0] = True\n    farthest = 0\n    \n    while queue:\n        i = queue.popleft()\n        \n        # Check if we reached the end\n        if i == n - 1:\n            return True\n        \n        # Calculate jump range [start, end]\n        start = max(i + minJump, farthest + 1)\n        end = min(i + maxJump, n - 1)\n        \n        # Add all valid positions in range to queue\n        for j in range(start, end + 1):\n            if s[j] == '0' and not visited[j]:\n                visited[j] = True\n                queue.append(j)\n        \n        # Update farthest to avoid redundant checks\n        farthest = max(farthest, end)\n    \n    return False"
     },
     "javascript": {
       "template": "function jumpGameVii(s, minJump, maxJump) {\n  \n}",
-      "solution_text": "Solution implementation for jump-game-vii:\n\n**Algorithm:**\nBased on the problem requirements and test cases, this solution implements the optimal approach.\n\n**Time Complexity:** O(n) - Linear time complexity\n**Space Complexity:** O(1) - Constant extra space\n\n**Key Insights:**\n- Analyze the input constraints and examples\n- Choose appropriate data structures and algorithms\n- Handle edge cases carefully",
-      "solution_code": "function jumpGameVii(...args) {\n    // Implementation based on problem requirements\n    // Analyze test cases to determine the logic\n    \n    // TODO: Implement based on test cases\n    // Example test case analysis needed\n    return null; // Replace with actual implementation\n}"
+      "solution_text": "<p><strong>Jump Game VII - BFS with Sliding Window:</strong></p><p>Determine if we can reach the last index using BFS with optimization.</p><p><strong>Algorithm:</strong></p><ol><li>Use BFS to explore all reachable positions</li><li>For each position, check valid jump range [i+minJump, i+maxJump]</li><li>Only visit positions with '0' (not obstacles)</li><li>Use sliding window technique to avoid redundant checks</li></ol><p><strong>Time Complexity:</strong> O(n) - each position visited once</p><p><strong>Space Complexity:</strong> O(n) - BFS queue and visited array</p>",
+      "solution_code": "function jumpGameVii(s, minJump, maxJump) {\n    const n = s.length;\n    if (s[n-1] === '1') {\n        return false;\n    }\n    \n    // BFS approach with visited tracking\n    const queue = [0];\n    const visited = new Array(n).fill(false);\n    visited[0] = true;\n    let farthest = 0;\n    \n    while (queue.length > 0) {\n        const i = queue.shift();\n        \n        // Check if we reached the end\n        if (i === n - 1) {\n            return true;\n        }\n        \n        // Calculate jump range [start, end]\n        const start = Math.max(i + minJump, farthest + 1);\n        const end = Math.min(i + maxJump, n - 1);\n        \n        // Add all valid positions in range to queue\n        for (let j = start; j <= end; j++) {\n            if (s[j] === '0' && !visited[j]) {\n                visited[j] = true;\n                queue.push(j);\n            }\n        }\n        \n        // Update farthest to avoid redundant checks\n        farthest = Math.max(farthest, end);\n    }\n    \n    return false;\n}"
     },
     "typescript": {
-      "template": "function jumpGameVii(s: string, minJump: string, maxJump: number): string {\n  \n}",
-      "solution_text": "Solution implementation for jump-game-vii:\n\n**Algorithm:**\nBased on the problem requirements and test cases, this solution implements the optimal approach.\n\n**Time Complexity:** O(n) - Linear time complexity\n**Space Complexity:** O(1) - Constant extra space\n\n**Key Insights:**\n- Analyze the input constraints and examples\n- Choose appropriate data structures and algorithms\n- Handle edge cases carefully",
-      "solution_code": "function jumpGameVii(...args: any[]): any {\n    // Implementation based on problem requirements\n    // Analyze test cases to determine the logic\n    \n    // TODO: Implement based on test cases\n    // Example test case analysis needed\n    return null; // Replace with actual implementation\n}"
+      "template": "function jumpGameVii(s: string, minJump: number, maxJump: number): boolean {\n  \n}",
+      "solution_text": "<p><strong>Jump Game VII - BFS with Sliding Window:</strong></p><p>Determine if we can reach the last index using BFS with optimization.</p><p><strong>Algorithm:</strong></p><ol><li>Use BFS to explore all reachable positions</li><li>For each position, check valid jump range [i+minJump, i+maxJump]</li><li>Only visit positions with '0' (not obstacles)</li><li>Use sliding window technique to avoid redundant checks</li></ol><p><strong>Time Complexity:</strong> O(n) - each position visited once</p><p><strong>Space Complexity:</strong> O(n) - BFS queue and visited array</p>",
+      "solution_code": "function jumpGameVii(s: string, minJump: number, maxJump: number): boolean {\n    const n: number = s.length;\n    if (s[n-1] === '1') {\n        return false;\n    }\n    \n    // BFS approach with visited tracking\n    const queue: number[] = [0];\n    const visited: boolean[] = new Array(n).fill(false);\n    visited[0] = true;\n    let farthest: number = 0;\n    \n    while (queue.length > 0) {\n        const i: number = queue.shift()!;\n        \n        // Check if we reached the end\n        if (i === n - 1) {\n            return true;\n        }\n        \n        // Calculate jump range [start, end]\n        const start: number = Math.max(i + minJump, farthest + 1);\n        const end: number = Math.min(i + maxJump, n - 1);\n        \n        // Add all valid positions in range to queue\n        for (let j = start; j <= end; j++) {\n            if (s[j] === '0' && !visited[j]) {\n                visited[j] = true;\n                queue.push(j);\n            }\n        }\n        \n        // Update farthest to avoid redundant checks\n        farthest = Math.max(farthest, end);\n    }\n    \n    return false;\n}"
     },
     "java": {
-      "template": "class Solution {\n    public String jumpGameVii(String s, String minJump, int maxJump) {\n        \n    }\n}",
-      "solution_text": "Solution implementation for jump-game-vii:\n\n**Algorithm:**\nBased on the problem requirements and test cases, this solution implements the optimal approach.\n\n**Time Complexity:** O(n) - Linear time complexity\n**Space Complexity:** O(1) - Constant extra space\n\n**Key Insights:**\n- Analyze the input constraints and examples\n- Choose appropriate data structures and algorithms\n- Handle edge cases carefully",
-      "solution_code": "class Solution {\n    public Object jumpGameVii(Object... args) {\n        // Implementation based on problem requirements\n        // Analyze test cases to determine the logic\n        \n        // TODO: Implement based on test cases\n        // Example test case analysis needed\n        return null; // Replace with actual implementation\n    }\n}"
+      "template": "class Solution {\n    public boolean jumpGameVii(String s, int minJump, int maxJump) {\n        \n    }\n}",
+      "solution_text": "<p><strong>Jump Game VII - BFS with Sliding Window:</strong></p><p>Determine if we can reach the last index using BFS with optimization.</p><p><strong>Algorithm:</strong></p><ol><li>Use BFS to explore all reachable positions</li><li>For each position, check valid jump range [i+minJump, i+maxJump]</li><li>Only visit positions with '0' (not obstacles)</li><li>Use sliding window technique to avoid redundant checks</li></ol><p><strong>Time Complexity:</strong> O(n) - each position visited once</p><p><strong>Space Complexity:</strong> O(n) - BFS queue and visited array</p>",
+      "solution_code": "class Solution {\n    public boolean jumpGameVii(String s, int minJump, int maxJump) {\n        int n = s.length();\n        if (s.charAt(n-1) == '1') {\n            return false;\n        }\n        \n        // BFS approach with visited tracking\n        Queue<Integer> queue = new LinkedList<>();\n        boolean[] visited = new boolean[n];\n        queue.offer(0);\n        visited[0] = true;\n        int farthest = 0;\n        \n        while (!queue.isEmpty()) {\n            int i = queue.poll();\n            \n            // Check if we reached the end\n            if (i == n - 1) {\n                return true;\n            }\n            \n            // Calculate jump range [start, end]\n            int start = Math.max(i + minJump, farthest + 1);\n            int end = Math.min(i + maxJump, n - 1);\n            \n            // Add all valid positions in range to queue\n            for (int j = start; j <= end; j++) {\n                if (s.charAt(j) == '0' && !visited[j]) {\n                    visited[j] = true;\n                    queue.offer(j);\n                }\n            }\n            \n            // Update farthest to avoid redundant checks\n            farthest = Math.max(farthest, end);\n        }\n        \n        return false;\n    }\n}"
     }
   },
   "order_matters": false,
@@ -41,20 +41,92 @@
     {
       "id": 1,
       "input": {
-        "s": "\"00110010\",",
-        "minJump": "2,",
+        "s": "00110010",
+        "minJump": 2,
         "maxJump": 4
       },
-      "output": "true"
+      "output": true
     },
     {
       "id": 2,
       "input": {
-        "s": "\"0010\",",
-        "minJump": "1,",
+        "s": "0010",
+        "minJump": 1,
         "maxJump": 1
       },
-      "output": "false"
+      "output": false
+    },
+    {
+      "id": 3,
+      "input": {
+        "s": "01101110",
+        "minJump": 2,
+        "maxJump": 3
+      },
+      "output": false
+    },
+    {
+      "id": 4,
+      "input": {
+        "s": "0000000000",
+        "minJump": 2,
+        "maxJump": 5
+      },
+      "output": true
+    },
+    {
+      "id": 5,
+      "input": {
+        "s": "01",
+        "minJump": 1,
+        "maxJump": 1
+      },
+      "output": false
+    },
+    {
+      "id": 6,
+      "input": {
+        "s": "00",
+        "minJump": 1,
+        "maxJump": 1
+      },
+      "output": true
+    },
+    {
+      "id": 7,
+      "input": {
+        "s": "000010",
+        "minJump": 2,
+        "maxJump": 3
+      },
+      "output": true
+    },
+    {
+      "id": 8,
+      "input": {
+        "s": "01010101",
+        "minJump": 1,
+        "maxJump": 1
+      },
+      "output": false
+    },
+    {
+      "id": 9,
+      "input": {
+        "s": "000000",
+        "minJump": 1,
+        "maxJump": 3
+      },
+      "output": true
+    },
+    {
+      "id": 10,
+      "input": {
+        "s": "0111",
+        "minJump": 2,
+        "maxJump": 3
+      },
+      "output": false
     }
   ]
 }

@@ -16,26 +16,107 @@
   "description": "<h2>Kth Smallest Integer in BST</h2><p>Leetcode 230. Kth Smallest Element In a Bst</p><p></p><p>Given the `root` of a binary search tree, and an integer `k`, return the `kth` smallest value (**1-indexed**) in the tree.</p><p></p><p>A **binary search tree** satisfies the following constraints:    </p><p>* The left subtree of every node contains only nodes with keys **less than** the node's key.</p><p>* The right subtree of every node contains only nodes with keys **greater than** the node's key.</p><p>* Both the left and right subtrees are also binary search trees.</p><h3>Constraints:</h3><ul><li> `1 <= k <= The number of nodes in the tree <= 1000`.</li><li> `0 <= Node.val <= 1000`</li></ul>",
   "languages": {
     "python": {
-      "template": "def kthSmallestIntegerInBst(input):\n    ",
-      "solution_text": "Comprehensive solution for kth-smallest-integer-in-bst:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "def kthSmallestIntegerInBst(*args):\n    # Handle empty input\n    if not args:\n        return None\n    \n    # Get first argument (most common pattern)\n    first_arg = args[0]\n    \n    # Handle different input types\n    if isinstance(first_arg, list):\n        # Array/list processing\n        if not first_arg:\n            return []\n        \n        # Common array operations\n        result = []\n        for i, item in enumerate(first_arg):\n            # Process based on context\n            if isinstance(item, (int, float)):\n                result.append(item)  # Numeric processing\n            elif isinstance(item, str):\n                result.append(item)  # String processing\n            else:\n                result.append(item)  # Generic processing\n        \n        return result\n    \n    elif isinstance(first_arg, str):\n        # String processing\n        if not first_arg:\n            return \"\"\n        \n        # Common string operations\n        return first_arg  # Return processed string\n    \n    elif isinstance(first_arg, (int, float)):\n        # Numeric processing\n        return first_arg  # Return processed number\n    \n    else:\n        # Generic processing\n        return first_arg"
+      "template": "def kthSmallestIntegerInBst(root, k):\n    ",
+      "solution_text": "<h3>Kth Smallest Element in BST - Inorder Traversal Solution</h3>\n\n<p><strong>Algorithm:</strong></p>\n<ol>\n<li>Perform inorder traversal of BST (left → root → right)</li>\n<li>Count nodes during traversal</li>\n<li>Return the kth element encountered</li>\n</ol>\n\n<p><strong>Time Complexity:</strong> O(H + k) where H is tree height - may need to traverse to kth element</p>\n<p><strong>Space Complexity:</strong> O(H) - recursion stack space</p>\n\n<p><strong>Key Insights:</strong></p>\n<ul>\n<li>Inorder traversal of BST gives sorted sequence</li>\n<li>Can stop early after finding kth element</li>\n<li>More efficient than full traversal for small k</li>\n</ul>",
+      "solution_code": "def kthSmallestIntegerInBst(root, k):\n    # Counter to track position in inorder traversal\n    def inorder(node):\n        if not node:\n            return None\n        \n        # Search left subtree first\n        left_result = inorder(node.left)\n        if left_result is not None:\n            return left_result\n        \n        # Process current node\n        nonlocal count\n        count += 1\n        if count == k:\n            return node.val\n        \n        # Search right subtree\n        return inorder(node.right)\n    \n    count = 0\n    return inorder(root)"
     },
     "javascript": {
-      "template": "function kthSmallestIntegerInBst(input) {\n  \n}",
-      "solution_text": "Comprehensive solution for kth-smallest-integer-in-bst:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function kthSmallestIntegerInBst(...args) {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "template": "function kthSmallestIntegerInBst(root, k) {\n  \n}",
+      "solution_text": "<h3>Kth Smallest Element in BST - Inorder Traversal Solution</h3>\n\n<p><strong>Algorithm:</strong></p>\n<ol>\n<li>Perform inorder traversal of BST (left → root → right)</li>\n<li>Count nodes during traversal</li>\n<li>Return the kth element encountered</li>\n</ol>\n\n<p><strong>Time Complexity:</strong> O(H + k) where H is tree height - may need to traverse to kth element</p>\n<p><strong>Space Complexity:</strong> O(H) - recursion stack space</p>\n\n<p><strong>Key Insights:</strong></p>\n<ul>\n<li>Inorder traversal of BST gives sorted sequence</li>\n<li>Can stop early after finding kth element</li>\n<li>More efficient than full traversal for small k</li>\n</ul>",
+      "solution_code": "function kthSmallestIntegerInBst(root, k) {\n    let count = 0;\n    \n    function inorder(node) {\n        if (!node) return null;\n        \n        // Search left subtree first\n        const leftResult = inorder(node.left);\n        if (leftResult !== null) {\n            return leftResult;\n        }\n        \n        // Process current node\n        count++;\n        if (count === k) {\n            return node.val;\n        }\n        \n        // Search right subtree\n        return inorder(node.right);\n    }\n    \n    return inorder(root);\n}"
     },
     "typescript": {
-      "template": "function kthSmallestIntegerInBst(input: any): any {\n  \n}",
-      "solution_text": "Comprehensive solution for kth-smallest-integer-in-bst:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function kthSmallestIntegerInBst(...args: any[]): any {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result: any[] = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "template": "function kthSmallestIntegerInBst(root: TreeNode | null, k: number): number {\n  \n}",
+      "solution_text": "<h3>Kth Smallest Element in BST - Inorder Traversal Solution</h3>\n\n<p><strong>Algorithm:</strong></p>\n<ol>\n<li>Perform inorder traversal of BST (left → root → right)</li>\n<li>Count nodes during traversal</li>\n<li>Return the kth element encountered</li>\n</ol>\n\n<p><strong>Time Complexity:</strong> O(H + k) where H is tree height - may need to traverse to kth element</p>\n<p><strong>Space Complexity:</strong> O(H) - recursion stack space</p>\n\n<p><strong>Key Insights:</strong></p>\n<ul>\n<li>Inorder traversal of BST gives sorted sequence</li>\n<li>Can stop early after finding kth element</li>\n<li>More efficient than full traversal for small k</li>\n</ul>",
+      "solution_code": "interface TreeNode {\n    val: number;\n    left: TreeNode | null;\n    right: TreeNode | null;\n}\n\nfunction kthSmallestIntegerInBst(root: TreeNode | null, k: number): number {\n    let count = 0;\n    \n    function inorder(node: TreeNode | null): number | null {\n        if (!node) return null;\n        \n        // Search left subtree first\n        const leftResult = inorder(node.left);\n        if (leftResult !== null) {\n            return leftResult;\n        }\n        \n        // Process current node\n        count++;\n        if (count === k) {\n            return node.val;\n        }\n        \n        // Search right subtree\n        return inorder(node.right);\n    }\n    \n    return inorder(root) as number;\n}"
     },
     "java": {
-      "template": "class Solution {\n    public Object kthSmallestIntegerInBst(Object input) {\n        \n    }\n}",
-      "solution_text": "Comprehensive solution for kth-smallest-integer-in-bst:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "class Solution {\n    public Object kthSmallestIntegerInBst(Object... args) {\n        // Handle empty input\n        if (args.length == 0) return null;\n        \n        // Get first argument (most common pattern)\n        Object firstArg = args[0];\n        \n        // Handle different input types\n        if (firstArg instanceof int[]) {\n            // Integer array processing\n            int[] arr = (int[]) firstArg;\n            if (arr.length == 0) return new int[0];\n            \n            // Common array operations\n            List<Integer> result = new ArrayList<>();\n            for (int item : arr) {\n                result.add(item); // Process each item\n            }\n            \n            return result.toArray(new Integer[0]);\n        } else if (firstArg instanceof String) {\n            // String processing\n            String str = (String) firstArg;\n            if (str.length() == 0) return \"\";\n            \n            // Common string operations\n            return str; // Return processed string\n        } else if (firstArg instanceof Integer) {\n            // Integer processing\n            return firstArg; // Return processed number\n        } else {\n            // Generic processing\n            return firstArg;\n        }\n    }\n}"
+      "template": "class Solution {\n    public int kthSmallestIntegerInBst(TreeNode root, int k) {\n        \n    }\n}",
+      "solution_text": "<h3>Kth Smallest Element in BST - Inorder Traversal Solution</h3>\n\n<p><strong>Algorithm:</strong></p>\n<ol>\n<li>Perform inorder traversal of BST (left → root → right)</li>\n<li>Count nodes during traversal</li>\n<li>Return the kth element encountered</li>\n</ol>\n\n<p><strong>Time Complexity:</strong> O(H + k) where H is tree height - may need to traverse to kth element</p>\n<p><strong>Space Complexity:</strong> O(H) - recursion stack space</p>\n\n<p><strong>Key Insights:</strong></p>\n<ul>\n<li>Inorder traversal of BST gives sorted sequence</li>\n<li>Can stop early after finding kth element</li>\n<li>More efficient than full traversal for small k</li>\n</ul>",
+      "solution_code": "class TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n    TreeNode() {}\n    TreeNode(int val) { this.val = val; }\n    TreeNode(int val, TreeNode left, TreeNode right) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\nclass Solution {\n    private int count = 0;\n    \n    public int kthSmallestIntegerInBst(TreeNode root, int k) {\n        count = 0;\n        return inorder(root, k);\n    }\n    \n    private Integer inorder(TreeNode node, int k) {\n        if (node == null) return null;\n        \n        // Search left subtree first\n        Integer leftResult = inorder(node.left, k);\n        if (leftResult != null) {\n            return leftResult;\n        }\n        \n        // Process current node\n        count++;\n        if (count == k) {\n            return node.val;\n        }\n        \n        // Search right subtree\n        return inorder(node.right, k);\n    }\n}"
     }
   },
   "order_matters": false,
-  "test_cases": []
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "root": [3, 1, 4, null, 2],
+        "k": 1
+      },
+      "output": 1
+    },
+    {
+      "id": 2,
+      "input": {
+        "root": [5, 3, 6, 2, 4, null, null, 1],
+        "k": 3
+      },
+      "output": 3
+    },
+    {
+      "id": 3,
+      "input": {
+        "root": [1],
+        "k": 1
+      },
+      "output": 1
+    },
+    {
+      "id": 4,
+      "input": {
+        "root": [2, 1, 3],
+        "k": 2
+      },
+      "output": 2
+    },
+    {
+      "id": 5,
+      "input": {
+        "root": [10, 5, 15, 3, 7, 12, 20],
+        "k": 4
+      },
+      "output": 7
+    },
+    {
+      "id": 6,
+      "input": {
+        "root": [4, 2, 6, 1, 3, 5, 7],
+        "k": 5
+      },
+      "output": 5
+    },
+    {
+      "id": 7,
+      "input": {
+        "root": [8, 4, 12, 2, 6, 10, 14],
+        "k": 7
+      },
+      "output": 12
+    },
+    {
+      "id": 8,
+      "input": {
+        "root": [20, 10, 30, 5, 15, 25, 35],
+        "k": 2
+      },
+      "output": 10
+    },
+    {
+      "id": 9,
+      "input": {
+        "root": [6, 3, 8, 1, 5, 7, 9],
+        "k": 6
+      },
+      "output": 7
+    },
+    {
+      "id": 10,
+      "input": {
+        "root": [100, 50, 150, 25, 75, 125, 200],
+        "k": 1
+      },
+      "output": 25
+    }
+  ]
 }

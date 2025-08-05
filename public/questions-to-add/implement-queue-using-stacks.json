@@ -16,51 +16,107 @@
   "description": "<h2>Implement Queue using Stacks</h2><p>Leetcode 232. Implement Queue using Stacks</p><p></p><p>Implement a first in first out (FIFO) queue using only two stacks. The implemented queue should support all the functions of a normal queue (`push`, `peek`, `pop`, and `empty`).</p><p></p><p>Implement the `MyQueue` class:</p><p></p><p>- `void push(int x)` Pushes element `x` to the back of the queue.</p><p>- `int pop()` Removes the element from the front of the queue and returns it.</p><p>- `int peek()` Returns the element at the front of the queue.</p><p>- `boolean empty()` Returns `true` if the queue is empty, `false` otherwise.</p><p></p><p>**Notes:**</p><p></p><p>- You must use **only** standard operations of a stack, which means only `push` to `top`, `peek/pop` from `top`, `size`, and `is empty` operations are valid.</p><p>- Depending on your language, the stack may not be supported natively. You may simulate a stack using a list or deque (double-ended queue) as long as you use only a stack's standard operations.</p><h3>Examples:</h3><ul><li>Input: [\"MyQueue\", \"push\", \"push\", \"peek\", \"pop\", \"empty\"]<br>[[], [1], [2], [], [], []]<br><br>Output: [null, null, null, 1, 1, false]<br>MyQueue myQueue = new MyQueue();\nmyQueue.push(1); // queue is: [1]\nmyQueue.push(2); // queue is: [1, 2] (leftmost is front of the queue)\nmyQueue.peek(); // return 1\nmyQueue.pop(); // return 1, queue is [2]\nmyQueue.empty(); // return false</li></ul><h3>Constraints:</h3><ul><li> `1 <= x <= 9`</li><li> At most `100` calls will be made to `push`, `pop`, `peek`, and `empty`.</li><li> All the calls to `pop` and `peek` are valid.</li></ul>",
   "languages": {
     "python": {
-      "template": "def implementQueueUsingStacks(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10):\n    ",
-      "solution_text": "Comprehensive solution for implement-queue-using-stacks:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "def implementQueueUsingStacks(*args):\n    # Handle empty input\n    if not args:\n        return None\n    \n    # Get first argument (most common pattern)\n    first_arg = args[0]\n    \n    # Handle different input types\n    if isinstance(first_arg, list):\n        # Array/list processing\n        if not first_arg:\n            return []\n        \n        # Common array operations\n        result = []\n        for i, item in enumerate(first_arg):\n            # Process based on context\n            if isinstance(item, (int, float)):\n                result.append(item)  # Numeric processing\n            elif isinstance(item, str):\n                result.append(item)  # String processing\n            else:\n                result.append(item)  # Generic processing\n        \n        return result\n    \n    elif isinstance(first_arg, str):\n        # String processing\n        if not first_arg:\n            return \"\"\n        \n        # Common string operations\n        return first_arg  # Return processed string\n    \n    elif isinstance(first_arg, (int, float)):\n        # Numeric processing\n        return first_arg  # Return processed number\n    \n    else:\n        # Generic processing\n        return first_arg"
+      "template": "def implementQueueUsingStacks(operations, values):\n    ",
+      "solution_text": "<h3>Solution Approach</h3><p><strong>Algorithm:</strong><br/>We implement a queue using two stacks to achieve FIFO behavior. The key insight is using one stack for pushing elements and another for popping/peeking elements.</p><p><strong>Strategy:</strong><br/>- <code>stack1</code>: Used for push operations (input stack)<br/>- <code>stack2</code>: Used for pop/peek operations (output stack)<br/>- When we need to pop/peek and stack2 is empty, transfer all elements from stack1 to stack2</p><p><strong>Time Complexity:</strong><br/>- Push: O(1)<br/>- Pop/Peek: Amortized O(1) - each element is moved at most twice<br/>- Empty: O(1)</p><p><strong>Space Complexity:</strong> O(n) where n is the number of elements in the queue</p><p><strong>Key Insights:</strong><br/>- The two-stack approach maintains FIFO order by reversing elements when transferring<br/>- Amortized analysis shows that despite occasional O(n) operations, the average time is O(1)<br/>- Elements are transferred from input to output stack only when needed</p>",
+      "solution_code": "def implementQueueUsingStacks(operations, values):\n    class MyQueue:\n        def __init__(self):\n            self.stack1 = []  # For push operations\n            self.stack2 = []  # For pop/peek operations\n        \n        def push(self, x):\n            self.stack1.append(x)\n        \n        def pop(self):\n            if not self.stack2:\n                while self.stack1:\n                    self.stack2.append(self.stack1.pop())\n            return self.stack2.pop()\n        \n        def peek(self):\n            if not self.stack2:\n                while self.stack1:\n                    self.stack2.append(self.stack1.pop())\n            return self.stack2[-1]\n        \n        def empty(self):\n            return not self.stack1 and not self.stack2\n    \n    queue = None\n    results = []\n    \n    for i, operation in enumerate(operations):\n        if operation == \"MyQueue\":\n            queue = MyQueue()\n            results.append(None)\n        elif operation == \"push\":\n            queue.push(values[i][0])\n            results.append(None)\n        elif operation == \"pop\":\n            results.append(queue.pop())\n        elif operation == \"peek\":\n            results.append(queue.peek())\n        elif operation == \"empty\":\n            results.append(queue.empty())\n    \n    return results"
     },
     "javascript": {
-      "template": "function implementQueueUsingStacks(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10) {\n  \n}",
-      "solution_text": "Comprehensive solution for implement-queue-using-stacks:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function implementQueueUsingStacks(...args) {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "template": "function implementQueueUsingStacks(operations, values) {\n  \n}",
+      "solution_text": "<h3>Solution Approach</h3><p><strong>Algorithm:</strong><br/>We implement a queue using two stacks to achieve FIFO behavior. The key insight is using one stack for pushing elements and another for popping/peeking elements.</p><p><strong>Strategy:</strong><br/>- <code>stack1</code>: Used for push operations (input stack)<br/>- <code>stack2</code>: Used for pop/peek operations (output stack)<br/>- When we need to pop/peek and stack2 is empty, transfer all elements from stack1 to stack2</p><p><strong>Time Complexity:</strong><br/>- Push: O(1)<br/>- Pop/Peek: Amortized O(1) - each element is moved at most twice<br/>- Empty: O(1)</p><p><strong>Space Complexity:</strong> O(n) where n is the number of elements in the queue</p><p><strong>Key Insights:</strong><br/>- The two-stack approach maintains FIFO order by reversing elements when transferring<br/>- Amortized analysis shows that despite occasional O(n) operations, the average time is O(1)<br/>- Elements are transferred from input to output stack only when needed</p>",
+      "solution_code": "function implementQueueUsingStacks(operations, values) {\n    class MyQueue {\n        constructor() {\n            this.stack1 = []; // For push operations\n            this.stack2 = []; // For pop/peek operations\n        }\n        \n        push(x) {\n            this.stack1.push(x);\n        }\n        \n        pop() {\n            if (this.stack2.length === 0) {\n                while (this.stack1.length > 0) {\n                    this.stack2.push(this.stack1.pop());\n                }\n            }\n            return this.stack2.pop();\n        }\n        \n        peek() {\n            if (this.stack2.length === 0) {\n                while (this.stack1.length > 0) {\n                    this.stack2.push(this.stack1.pop());\n                }\n            }\n            return this.stack2[this.stack2.length - 1];\n        }\n        \n        empty() {\n            return this.stack1.length === 0 && this.stack2.length === 0;\n        }\n    }\n    \n    let queue = null;\n    const results = [];\n    \n    for (let i = 0; i < operations.length; i++) {\n        const operation = operations[i];\n        \n        if (operation === \"MyQueue\") {\n            queue = new MyQueue();\n            results.push(null);\n        } else if (operation === \"push\") {\n            queue.push(values[i][0]);\n            results.push(null);\n        } else if (operation === \"pop\") {\n            results.push(queue.pop());\n        } else if (operation === \"peek\") {\n            results.push(queue.peek());\n        } else if (operation === \"empty\") {\n            results.push(queue.empty());\n        }\n    }\n    \n    return results;\n}"
     },
     "typescript": {
-      "template": "function implementQueueUsingStacks(0: string, 1: string, 2: string, 3: string, 4: string, 5: string, 6: string, 7: string, 8: string, 9: string, 10: string): number[] {\n  \n}",
-      "solution_text": "Comprehensive solution for implement-queue-using-stacks:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function implementQueueUsingStacks(...args: any[]): any {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result: any[] = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "template": "function implementQueueUsingStacks(operations: string[], values: number[][]): (number | null | boolean)[] {\n  \n}",
+      "solution_text": "<h3>Solution Approach</h3><p><strong>Algorithm:</strong><br/>We implement a queue using two stacks to achieve FIFO behavior. The key insight is using one stack for pushing elements and another for popping/peeking elements.</p><p><strong>Strategy:</strong><br/>- <code>stack1</code>: Used for push operations (input stack)<br/>- <code>stack2</code>: Used for pop/peek operations (output stack)<br/>- When we need to pop/peek and stack2 is empty, transfer all elements from stack1 to stack2</p><p><strong>Time Complexity:</strong><br/>- Push: O(1)<br/>- Pop/Peek: Amortized O(1) - each element is moved at most twice<br/>- Empty: O(1)</p><p><strong>Space Complexity:</strong> O(n) where n is the number of elements in the queue</p><p><strong>Key Insights:</strong><br/>- The two-stack approach maintains FIFO order by reversing elements when transferring<br/>- Amortized analysis shows that despite occasional O(n) operations, the average time is O(1)<br/>- Elements are transferred from input to output stack only when needed</p>",
+      "solution_code": "function implementQueueUsingStacks(operations: string[], values: number[][]): (number | null | boolean)[] {\n    class MyQueue {\n        private stack1: number[]; // For push operations\n        private stack2: number[]; // For pop/peek operations\n        \n        constructor() {\n            this.stack1 = [];\n            this.stack2 = [];\n        }\n        \n        push(x: number): void {\n            this.stack1.push(x);\n        }\n        \n        pop(): number {\n            if (this.stack2.length === 0) {\n                while (this.stack1.length > 0) {\n                    this.stack2.push(this.stack1.pop()!);\n                }\n            }\n            return this.stack2.pop()!;\n        }\n        \n        peek(): number {\n            if (this.stack2.length === 0) {\n                while (this.stack1.length > 0) {\n                    this.stack2.push(this.stack1.pop()!);\n                }\n            }\n            return this.stack2[this.stack2.length - 1];\n        }\n        \n        empty(): boolean {\n            return this.stack1.length === 0 && this.stack2.length === 0;\n        }\n    }\n    \n    let queue: MyQueue | null = null;\n    const results: (number | null | boolean)[] = [];\n    \n    for (let i = 0; i < operations.length; i++) {\n        const operation = operations[i];\n        \n        if (operation === \"MyQueue\") {\n            queue = new MyQueue();\n            results.push(null);\n        } else if (operation === \"push\") {\n            queue!.push(values[i][0]);\n            results.push(null);\n        } else if (operation === \"pop\") {\n            results.push(queue!.pop());\n        } else if (operation === \"peek\") {\n            results.push(queue!.peek());\n        } else if (operation === \"empty\") {\n            results.push(queue!.empty());\n        }\n    }\n    \n    return results;\n}"
     },
     "java": {
-      "template": "class Solution {\n    public int[] implementQueueUsingStacks(String 0, String 1, String 2, String 3, String 4, String 5, String 6, String 7, String 8, String 9, String 10) {\n        \n    }\n}",
-      "solution_text": "Comprehensive solution for implement-queue-using-stacks:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "class Solution {\n    public Object implementQueueUsingStacks(Object... args) {\n        // Handle empty input\n        if (args.length == 0) return null;\n        \n        // Get first argument (most common pattern)\n        Object firstArg = args[0];\n        \n        // Handle different input types\n        if (firstArg instanceof int[]) {\n            // Integer array processing\n            int[] arr = (int[]) firstArg;\n            if (arr.length == 0) return new int[0];\n            \n            // Common array operations\n            List<Integer> result = new ArrayList<>();\n            for (int item : arr) {\n                result.add(item); // Process each item\n            }\n            \n            return result.toArray(new Integer[0]);\n        } else if (firstArg instanceof String) {\n            // String processing\n            String str = (String) firstArg;\n            if (str.length() == 0) return \"\";\n            \n            // Common string operations\n            return str; // Return processed string\n        } else if (firstArg instanceof Integer) {\n            // Integer processing\n            return firstArg; // Return processed number\n        } else {\n            // Generic processing\n            return firstArg;\n        }\n    }\n}"
+      "template": "import java.util.*;\n\nclass Solution {\n    public Object[] implementQueueUsingStacks(String[] operations, int[][] values) {\n        \n    }\n}",
+      "solution_text": "<h3>Solution Approach</h3><p><strong>Algorithm:</strong><br/>We implement a queue using two stacks to achieve FIFO behavior. The key insight is using one stack for pushing elements and another for popping/peeking elements.</p><p><strong>Strategy:</strong><br/>- <code>stack1</code>: Used for push operations (input stack)<br/>- <code>stack2</code>: Used for pop/peek operations (output stack)<br/>- When we need to pop/peek and stack2 is empty, transfer all elements from stack1 to stack2</p><p><strong>Time Complexity:</strong><br/>- Push: O(1)<br/>- Pop/Peek: Amortized O(1) - each element is moved at most twice<br/>- Empty: O(1)</p><p><strong>Space Complexity:</strong> O(n) where n is the number of elements in the queue</p><p><strong>Key Insights:</strong><br/>- The two-stack approach maintains FIFO order by reversing elements when transferring<br/>- Amortized analysis shows that despite occasional O(n) operations, the average time is O(1)<br/>- Elements are transferred from input to output stack only when needed</p>",
+      "solution_code": "import java.util.*;\n\nclass Solution {\n    public Object[] implementQueueUsingStacks(String[] operations, int[][] values) {\n        class MyQueue {\n            private Stack<Integer> stack1; // For push operations\n            private Stack<Integer> stack2; // For pop/peek operations\n            \n            public MyQueue() {\n                stack1 = new Stack<>();\n                stack2 = new Stack<>();\n            }\n            \n            public void push(int x) {\n                stack1.push(x);\n            }\n            \n            public int pop() {\n                if (stack2.isEmpty()) {\n                    while (!stack1.isEmpty()) {\n                        stack2.push(stack1.pop());\n                    }\n                }\n                return stack2.pop();\n            }\n            \n            public int peek() {\n                if (stack2.isEmpty()) {\n                    while (!stack1.isEmpty()) {\n                        stack2.push(stack1.pop());\n                    }\n                }\n                return stack2.peek();\n            }\n            \n            public boolean empty() {\n                return stack1.isEmpty() && stack2.isEmpty();\n            }\n        }\n        \n        MyQueue queue = null;\n        List<Object> results = new ArrayList<>();\n        \n        for (int i = 0; i < operations.length; i++) {\n            String operation = operations[i];\n            \n            if (operation.equals(\"MyQueue\")) {\n                queue = new MyQueue();\n                results.add(null);\n            } else if (operation.equals(\"push\")) {\n                queue.push(values[i][0]);\n                results.add(null);\n            } else if (operation.equals(\"pop\")) {\n                results.add(queue.pop());\n            } else if (operation.equals(\"peek\")) {\n                results.add(queue.peek());\n            } else if (operation.equals(\"empty\")) {\n                results.add(queue.empty());\n            }\n        }\n        \n        return results.toArray();\n    }\n}"
     }
   },
-  "order_matters": false,
+  "order_matters": true,
   "test_cases": [
     {
       "id": 1,
       "input": [
-        "MyQueue",
-        "push",
-        "push",
-        "peek",
-        "pop",
-        "\"empty\"] [[]",
-        "[1]",
-        "[2]",
-        "[]",
-        "[]",
-        "[]"
+        ["MyQueue", "push", "push", "peek", "pop", "empty"],
+        [[], [1], [2], [], [], []]
       ],
-      "output": [
-        null,
-        null,
-        null,
-        1,
-        1,
-        false
-      ]
+      "output": [null, null, null, 1, 1, false]
+    },
+    {
+      "id": 2,
+      "input": [
+        ["MyQueue", "push", "push", "push", "pop", "pop", "empty"],
+        [[], [1], [2], [3], [], [], []]
+      ],
+      "output": [null, null, null, null, 1, 2, false]
+    },
+    {
+      "id": 3,
+      "input": [
+        ["MyQueue", "push", "peek", "push", "peek", "pop", "pop", "empty"],
+        [[], [1], [], [2], [], [], [], []]
+      ],
+      "output": [null, null, 1, null, 1, 1, 2, true]
+    },
+    {
+      "id": 4,
+      "input": [
+        ["MyQueue", "empty", "push", "empty", "pop", "empty"],
+        [[], [], [1], [], [], []]
+      ],
+      "output": [null, true, null, false, 1, true]
+    },
+    {
+      "id": 5,
+      "input": [
+        ["MyQueue", "push", "push", "push", "push", "pop", "pop", "pop", "pop", "empty"],
+        [[], [1], [2], [3], [4], [], [], [], [], []]
+      ],
+      "output": [null, null, null, null, null, 1, 2, 3, 4, true]
+    },
+    {
+      "id": 6,
+      "input": [
+        ["MyQueue", "push", "peek", "peek", "pop", "empty"],
+        [[], [5], [], [], [], []]
+      ],
+      "output": [null, null, 5, 5, 5, true]
+    },
+    {
+      "id": 7,
+      "input": [
+        ["MyQueue", "push", "push", "pop", "push", "pop", "pop", "empty"],
+        [[], [1], [2], [], [3], [], [], []]
+      ],
+      "output": [null, null, null, 1, null, 2, 3, true]
+    },
+    {
+      "id": 8,
+      "input": [
+        ["MyQueue", "push", "push", "push", "peek", "pop", "peek", "pop", "peek", "pop"],
+        [[], [1], [2], [3], [], [], [], [], [], []]
+      ],
+      "output": [null, null, null, null, 1, 1, 2, 2, 3, 3]
+    },
+    {
+      "id": 9,
+      "input": [
+        ["MyQueue", "push", "push", "push", "push", "push", "pop", "pop", "pop", "pop", "pop"],
+        [[], [9], [8], [7], [6], [5], [], [], [], [], []]
+      ],
+      "output": [null, null, null, null, null, null, 9, 8, 7, 6, 5]
+    },
+    {
+      "id": 10,
+      "input": [
+        ["MyQueue", "push", "peek", "push", "peek", "push", "peek", "pop", "peek", "pop", "peek"],
+        [[], [1], [], [2], [], [3], [], [], [], [], []]
+      ],
+      "output": [null, null, 1, null, 1, null, 1, 1, 2, 2, 3]
     }
   ]
 }

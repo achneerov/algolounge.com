@@ -17,23 +17,23 @@
   "languages": {
     "python": {
       "template": "def kClosestPointsToOrigin(points, k):\n    ",
-      "solution_text": "Comprehensive solution for k-closest-points-to-origin:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "def kClosestPointsToOrigin(*args):\n    # Handle empty input\n    if not args:\n        return None\n    \n    # Get first argument (most common pattern)\n    first_arg = args[0]\n    \n    # Handle different input types\n    if isinstance(first_arg, list):\n        # Array/list processing\n        if not first_arg:\n            return []\n        \n        # Common array operations\n        result = []\n        for i, item in enumerate(first_arg):\n            # Process based on context\n            if isinstance(item, (int, float)):\n                result.append(item)  # Numeric processing\n            elif isinstance(item, str):\n                result.append(item)  # String processing\n            else:\n                result.append(item)  # Generic processing\n        \n        return result\n    \n    elif isinstance(first_arg, str):\n        # String processing\n        if not first_arg:\n            return \"\"\n        \n        # Common string operations\n        return first_arg  # Return processed string\n    \n    elif isinstance(first_arg, (int, float)):\n        # Numeric processing\n        return first_arg  # Return processed number\n    \n    else:\n        # Generic processing\n        return first_arg"
+      "solution_text": "<p><strong>K Closest Points to Origin - Min Heap:</strong></p><p>Find k closest points using efficient heap-based approach.</p><p><strong>Algorithm:</strong></p><ol><li>Calculate squared distance for each point (avoid sqrt for efficiency)</li><li>Use min heap to store points with their distances</li><li>Extract k smallest elements from heap</li><li>Return the k closest points</li></ol><p><strong>Time Complexity:</strong> O(n log n) - heap operations</p><p><strong>Space Complexity:</strong> O(n) - heap storage</p>",
+      "solution_code": "def kClosestPointsToOrigin(points, k):\n    import heapq\n    \n    # Calculate squared distance to avoid sqrt\n    def distance_squared(point):\n        return point[0] ** 2 + point[1] ** 2\n    \n    # Create heap of (distance, point) tuples\n    heap = []\n    for point in points:\n        dist = distance_squared(point)\n        heapq.heappush(heap, (dist, point))\n    \n    # Extract k closest points\n    result = []\n    for _ in range(k):\n        _, point = heapq.heappop(heap)\n        result.append(point)\n    \n    return result"
     },
     "javascript": {
       "template": "function kClosestPointsToOrigin(points, k) {\n  \n}",
-      "solution_text": "Comprehensive solution for k-closest-points-to-origin:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function kClosestPointsToOrigin(...args) {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "solution_text": "<p><strong>K Closest Points to Origin - Min Heap:</strong></p><p>Find k closest points using efficient heap-based approach.</p><p><strong>Algorithm:</strong></p><ol><li>Calculate squared distance for each point (avoid sqrt for efficiency)</li><li>Use min heap to store points with their distances</li><li>Extract k smallest elements from heap</li><li>Return the k closest points</li></ol><p><strong>Time Complexity:</strong> O(n log n) - heap operations</p><p><strong>Space Complexity:</strong> O(n) - heap storage</p>",
+      "solution_code": "function kClosestPointsToOrigin(points, k) {\n    // Calculate squared distance to avoid sqrt\n    const distanceSquared = (point) => {\n        return point[0] * point[0] + point[1] * point[1];\n    };\n    \n    // Create array of [distance, point] pairs and sort\n    const pointsWithDistance = points.map(point => [distanceSquared(point), point]);\n    pointsWithDistance.sort((a, b) => a[0] - b[0]);\n    \n    // Extract k closest points\n    const result = [];\n    for (let i = 0; i < k; i++) {\n        result.push(pointsWithDistance[i][1]);\n    }\n    \n    return result;\n}"
     },
     "typescript": {
-      "template": "function kClosestPointsToOrigin(points: number[], k: number): number[] {\n  \n}",
-      "solution_text": "Comprehensive solution for k-closest-points-to-origin:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function kClosestPointsToOrigin(...args: any[]): any {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result: any[] = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "template": "function kClosestPointsToOrigin(points: number[][], k: number): number[][] {\n  \n}",
+      "solution_text": "<p><strong>K Closest Points to Origin - Min Heap:</strong></p><p>Find k closest points using efficient heap-based approach.</p><p><strong>Algorithm:</strong></p><ol><li>Calculate squared distance for each point (avoid sqrt for efficiency)</li><li>Use min heap to store points with their distances</li><li>Extract k smallest elements from heap</li><li>Return the k closest points</li></ol><p><strong>Time Complexity:</strong> O(n log n) - heap operations</p><p><strong>Space Complexity:</strong> O(n) - heap storage</p>",
+      "solution_code": "function kClosestPointsToOrigin(points: number[][], k: number): number[][] {\n    // Calculate squared distance to avoid sqrt\n    const distanceSquared = (point: number[]): number => {\n        return point[0] * point[0] + point[1] * point[1];\n    };\n    \n    // Create array of [distance, point] pairs and sort\n    const pointsWithDistance: [number, number[]][] = points.map(point => [distanceSquared(point), point]);\n    pointsWithDistance.sort((a, b) => a[0] - b[0]);\n    \n    // Extract k closest points\n    const result: number[][] = [];\n    for (let i = 0; i < k; i++) {\n        result.push(pointsWithDistance[i][1]);\n    }\n    \n    return result;\n}"
     },
     "java": {
-      "template": "class Solution {\n    public int[] kClosestPointsToOrigin(int[] points, int k) {\n        \n    }\n}",
-      "solution_text": "Comprehensive solution for k-closest-points-to-origin:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "class Solution {\n    public Object kClosestPointsToOrigin(Object... args) {\n        // Handle empty input\n        if (args.length == 0) return null;\n        \n        // Get first argument (most common pattern)\n        Object firstArg = args[0];\n        \n        // Handle different input types\n        if (firstArg instanceof int[]) {\n            // Integer array processing\n            int[] arr = (int[]) firstArg;\n            if (arr.length == 0) return new int[0];\n            \n            // Common array operations\n            List<Integer> result = new ArrayList<>();\n            for (int item : arr) {\n                result.add(item); // Process each item\n            }\n            \n            return result.toArray(new Integer[0]);\n        } else if (firstArg instanceof String) {\n            // String processing\n            String str = (String) firstArg;\n            if (str.length() == 0) return \"\";\n            \n            // Common string operations\n            return str; // Return processed string\n        } else if (firstArg instanceof Integer) {\n            // Integer processing\n            return firstArg; // Return processed number\n        } else {\n            // Generic processing\n            return firstArg;\n        }\n    }\n}"
+      "template": "class Solution {\n    public int[][] kClosestPointsToOrigin(int[][] points, int k) {\n        \n    }\n}",
+      "solution_text": "<p><strong>K Closest Points to Origin - Min Heap:</strong></p><p>Find k closest points using efficient heap-based approach.</p><p><strong>Algorithm:</strong></p><ol><li>Calculate squared distance for each point (avoid sqrt for efficiency)</li><li>Use min heap to store points with their distances</li><li>Extract k smallest elements from heap</li><li>Return the k closest points</li></ol><p><strong>Time Complexity:</strong> O(n log n) - heap operations</p><p><strong>Space Complexity:</strong> O(n) - heap storage</p>",
+      "solution_code": "class Solution {\n    public int[][] kClosestPointsToOrigin(int[][] points, int k) {\n        // Calculate squared distance to avoid sqrt\n        PriorityQueue<int[]> heap = new PriorityQueue<>((a, b) -> \n            Integer.compare(a[0] * a[0] + a[1] * a[1], b[0] * b[0] + b[1] * b[1])\n        );\n        \n        // Add all points to min heap\n        for (int[] point : points) {\n            heap.offer(point);\n        }\n        \n        // Extract k closest points\n        int[][] result = new int[k][];\n        for (int i = 0; i < k; i++) {\n            result[i] = heap.poll();\n        }\n        \n        return result;\n    }\n}"
     }
   },
   "order_matters": false,
@@ -41,22 +41,82 @@
     {
       "id": 1,
       "input": {
-        "points": [
-          "[0",
-          2
-        ],
+        "points": [[0, 2], [2, 0], [2, 2]],
         "k": 2
       },
-      "output": [
-        [
-          0,
-          2
-        ],
-        [
-          2,
-          0
-        ]
-      ]
+      "output": [[0, 2], [2, 0]]
+    },
+    {
+      "id": 2,
+      "input": {
+        "points": [[1, 1], [3, 3], [2, 2]],
+        "k": 2
+      },
+      "output": [[1, 1], [2, 2]]
+    },
+    {
+      "id": 3,
+      "input": {
+        "points": [[0, 0]],
+        "k": 1
+      },
+      "output": [[0, 0]]
+    },
+    {
+      "id": 4,
+      "input": {
+        "points": [[1, 0], [2, 0], [0, 1], [0, 2]],
+        "k": 2
+      },
+      "output": [[1, 0], [0, 1]]
+    },
+    {
+      "id": 5,
+      "input": {
+        "points": [[3, 4], [5, 0], [0, 0]],
+        "k": 1
+      },
+      "output": [[0, 0]]
+    },
+    {
+      "id": 6,
+      "input": {
+        "points": [[1, 1], [1, -1], [-1, 1], [-1, -1]],
+        "k": 2
+      },
+      "output": [[1, 1], [1, -1]]
+    },
+    {
+      "id": 7,
+      "input": {
+        "points": [[10, 10], [1, 1], [5, 5], [2, 2]],
+        "k": 3
+      },
+      "output": [[1, 1], [2, 2], [5, 5]]
+    },
+    {
+      "id": 8,
+      "input": {
+        "points": [[-5, 4], [4, 6], [-1, -1], [1, -1]],
+        "k": 2
+      },
+      "output": [[-1, -1], [1, -1]]
+    },
+    {
+      "id": 9,
+      "input": {
+        "points": [[6, 10], [-3, 2], [0, 0], [2, 2]],
+        "k": 3
+      },
+      "output": [[0, 0], [2, 2], [-3, 2]]
+    },
+    {
+      "id": 10,
+      "input": {
+        "points": [[1, 3], [-2, 2], [5, 8], [0, 1]],
+        "k": 4
+      },
+      "output": [[0, 1], [-2, 2], [1, 3], [5, 8]]
     }
   ]
 }

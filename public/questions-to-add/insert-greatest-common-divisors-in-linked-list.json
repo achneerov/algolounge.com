@@ -17,60 +17,76 @@
   "languages": {
     "python": {
       "template": "def insertGreatestCommonDivisorsInLinkedList(head):\n    ",
-      "solution_text": "Comprehensive solution for insert-greatest-common-divisors-in-linked-list:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "def insertGreatestCommonDivisorsInLinkedList(*args):\n    # Handle empty input\n    if not args:\n        return None\n    \n    # Get first argument (most common pattern)\n    first_arg = args[0]\n    \n    # Handle different input types\n    if isinstance(first_arg, list):\n        # Array/list processing\n        if not first_arg:\n            return []\n        \n        # Common array operations\n        result = []\n        for i, item in enumerate(first_arg):\n            # Process based on context\n            if isinstance(item, (int, float)):\n                result.append(item)  # Numeric processing\n            elif isinstance(item, str):\n                result.append(item)  # String processing\n            else:\n                result.append(item)  # Generic processing\n        \n        return result\n    \n    elif isinstance(first_arg, str):\n        # String processing\n        if not first_arg:\n            return \"\"\n        \n        # Common string operations\n        return first_arg  # Return processed string\n    \n    elif isinstance(first_arg, (int, float)):\n        # Numeric processing\n        return first_arg  # Return processed number\n    \n    else:\n        # Generic processing\n        return first_arg"
+      "solution_text": "<h3>Solution Approach</h3><p><strong>Algorithm:</strong><br/>We traverse the linked list and insert GCD nodes between every pair of adjacent nodes. Since we're working with arrays representing linked lists, we build the result by inserting GCD values between consecutive elements.</p><p><strong>Strategy:</strong><br/>1. Handle edge case: single node (return as-is)<br/>2. For each pair of adjacent nodes, calculate their GCD<br/>3. Insert the GCD value between them in the result<br/>4. Use Euclidean algorithm for efficient GCD calculation</p><p><strong>Time Complexity:</strong> O(n * log(min(a,b))) where n is the number of nodes and log(min(a,b)) is for GCD calculation</p><p><strong>Space Complexity:</strong> O(n) for the result array (in-place modification would be O(1) for actual linked list)</p><p><strong>Key Insights:</strong><br/>- GCD can be computed efficiently using the Euclidean algorithm<br/>- We need to maintain the order of original nodes while inserting GCD values<br/>- The result will have 2n-1 nodes where n is the original list length</p>",
+      "solution_code": "def insertGreatestCommonDivisorsInLinkedList(head):\n    import math\n    \n    if not head or len(head) <= 1:\n        return head\n    \n    result = [head[0]]\n    \n    for i in range(1, len(head)):\n        # Calculate GCD of current and previous elements\n        gcd_value = math.gcd(head[i-1], head[i])\n        # Insert GCD value\n        result.append(gcd_value)\n        # Insert current element\n        result.append(head[i])\n    \n    return result"
     },
     "javascript": {
       "template": "function insertGreatestCommonDivisorsInLinkedList(head) {\n  \n}",
-      "solution_text": "Comprehensive solution for insert-greatest-common-divisors-in-linked-list:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function insertGreatestCommonDivisorsInLinkedList(...args) {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "solution_text": "<h3>Solution Approach</h3><p><strong>Algorithm:</strong><br/>We traverse the linked list and insert GCD nodes between every pair of adjacent nodes. Since we're working with arrays representing linked lists, we build the result by inserting GCD values between consecutive elements.</p><p><strong>Strategy:</strong><br/>1. Handle edge case: single node (return as-is)<br/>2. For each pair of adjacent nodes, calculate their GCD<br/>3. Insert the GCD value between them in the result<br/>4. Use Euclidean algorithm for efficient GCD calculation</p><p><strong>Time Complexity:</strong> O(n * log(min(a,b))) where n is the number of nodes and log(min(a,b)) is for GCD calculation</p><p><strong>Space Complexity:</strong> O(n) for the result array (in-place modification would be O(1) for actual linked list)</p><p><strong>Key Insights:</strong><br/>- GCD can be computed efficiently using the Euclidean algorithm<br/>- We need to maintain the order of original nodes while inserting GCD values<br/>- The result will have 2n-1 nodes where n is the original list length</p>",
+      "solution_code": "function insertGreatestCommonDivisorsInLinkedList(head) {\n    function gcd(a, b) {\n        while (b !== 0) {\n            let temp = b;\n            b = a % b;\n            a = temp;\n        }\n        return a;\n    }\n    \n    if (!head || head.length <= 1) {\n        return head;\n    }\n    \n    const result = [head[0]];\n    \n    for (let i = 1; i < head.length; i++) {\n        // Calculate GCD of current and previous elements\n        const gcdValue = gcd(head[i-1], head[i]);\n        // Insert GCD value\n        result.push(gcdValue);\n        // Insert current element\n        result.push(head[i]);\n    }\n    \n    return result;\n}"
     },
     "typescript": {
       "template": "function insertGreatestCommonDivisorsInLinkedList(head: number[]): number[] {\n  \n}",
-      "solution_text": "Comprehensive solution for insert-greatest-common-divisors-in-linked-list:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function insertGreatestCommonDivisorsInLinkedList(...args: any[]): any {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result: any[] = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "solution_text": "<h3>Solution Approach</h3><p><strong>Algorithm:</strong><br/>We traverse the linked list and insert GCD nodes between every pair of adjacent nodes. Since we're working with arrays representing linked lists, we build the result by inserting GCD values between consecutive elements.</p><p><strong>Strategy:</strong><br/>1. Handle edge case: single node (return as-is)<br/>2. For each pair of adjacent nodes, calculate their GCD<br/>3. Insert the GCD value between them in the result<br/>4. Use Euclidean algorithm for efficient GCD calculation</p><p><strong>Time Complexity:</strong> O(n * log(min(a,b))) where n is the number of nodes and log(min(a,b)) is for GCD calculation</p><p><strong>Space Complexity:</strong> O(n) for the result array (in-place modification would be O(1) for actual linked list)</p><p><strong>Key Insights:</strong><br/>- GCD can be computed efficiently using the Euclidean algorithm<br/>- We need to maintain the order of original nodes while inserting GCD values<br/>- The result will have 2n-1 nodes where n is the original list length</p>",
+      "solution_code": "function insertGreatestCommonDivisorsInLinkedList(head: number[]): number[] {\n    function gcd(a: number, b: number): number {\n        while (b !== 0) {\n            const temp = b;\n            b = a % b;\n            a = temp;\n        }\n        return a;\n    }\n    \n    if (!head || head.length <= 1) {\n        return head;\n    }\n    \n    const result: number[] = [head[0]];\n    \n    for (let i = 1; i < head.length; i++) {\n        // Calculate GCD of current and previous elements\n        const gcdValue = gcd(head[i-1], head[i]);\n        // Insert GCD value\n        result.push(gcdValue);\n        // Insert current element\n        result.push(head[i]);\n    }\n    \n    return result;\n}"
     },
     "java": {
-      "template": "class Solution {\n    public int[] insertGreatestCommonDivisorsInLinkedList(int[] head) {\n        \n    }\n}",
-      "solution_text": "Comprehensive solution for insert-greatest-common-divisors-in-linked-list:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "class Solution {\n    public Object insertGreatestCommonDivisorsInLinkedList(Object... args) {\n        // Handle empty input\n        if (args.length == 0) return null;\n        \n        // Get first argument (most common pattern)\n        Object firstArg = args[0];\n        \n        // Handle different input types\n        if (firstArg instanceof int[]) {\n            // Integer array processing\n            int[] arr = (int[]) firstArg;\n            if (arr.length == 0) return new int[0];\n            \n            // Common array operations\n            List<Integer> result = new ArrayList<>();\n            for (int item : arr) {\n                result.add(item); // Process each item\n            }\n            \n            return result.toArray(new Integer[0]);\n        } else if (firstArg instanceof String) {\n            // String processing\n            String str = (String) firstArg;\n            if (str.length() == 0) return \"\";\n            \n            // Common string operations\n            return str; // Return processed string\n        } else if (firstArg instanceof Integer) {\n            // Integer processing\n            return firstArg; // Return processed number\n        } else {\n            // Generic processing\n            return firstArg;\n        }\n    }\n}"
+      "template": "import java.util.*;\n\nclass Solution {\n    public int[] insertGreatestCommonDivisorsInLinkedList(int[] head) {\n        \n    }\n}",
+      "solution_text": "<h3>Solution Approach</h3><p><strong>Algorithm:</strong><br/>We traverse the linked list and insert GCD nodes between every pair of adjacent nodes. Since we're working with arrays representing linked lists, we build the result by inserting GCD values between consecutive elements.</p><p><strong>Strategy:</strong><br/>1. Handle edge case: single node (return as-is)<br/>2. For each pair of adjacent nodes, calculate their GCD<br/>3. Insert the GCD value between them in the result<br/>4. Use Euclidean algorithm for efficient GCD calculation</p><p><strong>Time Complexity:</strong> O(n * log(min(a,b))) where n is the number of nodes and log(min(a,b)) is for GCD calculation</p><p><strong>Space Complexity:</strong> O(n) for the result array (in-place modification would be O(1) for actual linked list)</p><p><strong>Key Insights:</strong><br/>- GCD can be computed efficiently using the Euclidean algorithm<br/>- We need to maintain the order of original nodes while inserting GCD values<br/>- The result will have 2n-1 nodes where n is the original list length</p>",
+      "solution_code": "import java.util.*;\n\nclass Solution {\n    public int[] insertGreatestCommonDivisorsInLinkedList(int[] head) {\n        if (head == null || head.length <= 1) {\n            return head;\n        }\n        \n        List<Integer> result = new ArrayList<>();\n        result.add(head[0]);\n        \n        for (int i = 1; i < head.length; i++) {\n            // Calculate GCD of current and previous elements\n            int gcdValue = gcd(head[i-1], head[i]);\n            // Insert GCD value\n            result.add(gcdValue);\n            // Insert current element\n            result.add(head[i]);\n        }\n        \n        return result.stream().mapToInt(Integer::intValue).toArray();\n    }\n    \n    private int gcd(int a, int b) {\n        while (b != 0) {\n            int temp = b;\n            b = a % b;\n            a = temp;\n        }\n        return a;\n    }\n}"
     }
   },
-  "order_matters": false,
+  "order_matters": true,
   "test_cases": [
     {
       "id": 1,
-      "input": {
-        "head": [
-          12,
-          3,
-          4,
-          6
-        ]
-      },
-      "output": [
-        12,
-        3,
-        3,
-        1,
-        4,
-        2,
-        6
-      ]
+      "input": [12, 3, 4, 6],
+      "output": [12, 3, 3, 1, 4, 2, 6]
     },
     {
       "id": 2,
-      "input": {
-        "head": [
-          2,
-          1
-        ]
-      },
-      "output": [
-        2,
-        1,
-        1
-      ]
+      "input": [2, 1],
+      "output": [2, 1, 1]
+    },
+    {
+      "id": 3,
+      "input": [18, 6, 10, 3],
+      "output": [18, 6, 6, 2, 10, 1, 3]
+    },
+    {
+      "id": 4,
+      "input": [7],
+      "output": [7]
+    },
+    {
+      "id": 5,
+      "input": [5, 15, 20, 100],
+      "output": [5, 5, 15, 5, 20, 20, 100]
+    },
+    {
+      "id": 6,
+      "input": [8, 12, 16],
+      "output": [8, 4, 12, 4, 16]
+    },
+    {
+      "id": 7,
+      "input": [9, 27, 81],
+      "output": [9, 9, 27, 27, 81]
+    },
+    {
+      "id": 8,
+      "input": [11, 13, 17, 19],
+      "output": [11, 1, 13, 1, 17, 1, 19]
+    },
+    {
+      "id": 9,
+      "input": [24, 48, 72, 96],
+      "output": [24, 24, 48, 24, 72, 24, 96]
+    },
+    {
+      "id": 10,
+      "input": [14, 21, 35, 70],
+      "output": [14, 7, 21, 7, 35, 35, 70]
     }
   ]
 }

@@ -31,9 +31,9 @@
       "solution_code": "function groupAnagrams(strs: string[]): string[][] {\n    const groups = new Map<string, string[]>();\n    \n    for (const s of strs) {\n        // Sort characters to create key\n        const key = s.split('').sort().join('');\n        \n        if (!groups.has(key)) {\n            groups.set(key, []);\n        }\n        groups.get(key)!.push(s);\n    }\n    \n    return Array.from(groups.values());\n}"
     },
     "java": {
-      "template": "class Solution {\n    public List<List<String>> groupAnagrams(String[] strs) {\n        \n    }\n}",
+      "template": "import java.util.*;\n\nclass Solution {\n    public List<List<String>> groupAnagrams(String[] strs) {\n        \n    }\n}",
       "solution_text": "Group anagrams using sorted string as key:\n\n**Algorithm:**\n1. Create a hash map with sorted string as key\n2. For each string, sort its characters to create key\n3. Group strings with the same sorted key\n4. Return all groups as result\n\n**Time Complexity:** O(N * M log M) where N = number of strings, M = max string length\n**Space Complexity:** O(N * M) for storing the groups\n\n**Key Insights:**\n- Sorted characters form unique key for anagrams\n- Hash map efficiently groups anagrams\n- All anagrams will have same sorted key",
-      "solution_code": "class Solution {\n    public List<List<String>> groupAnagrams(String[] strs) {\n        Map<String, List<String>> groups = new HashMap<>();\n        \n        for (String s : strs) {\n            // Sort characters to create key\n            char[] chars = s.toCharArray();\n            Arrays.sort(chars);\n            String key = new String(chars);\n            \n            groups.computeIfAbsent(key, k -> new ArrayList<>()).add(s);\n        }\n        \n        return new ArrayList<>(groups.values());\n    }\n}"
+      "solution_code": "import java.util.*;\n\nclass Solution {\n    public List<List<String>> groupAnagrams(String[] strs) {\n        Map<String, List<String>> groups = new HashMap<>();\n        \n        for (String s : strs) {\n            // Sort characters to create key\n            char[] chars = s.toCharArray();\n            Arrays.sort(chars);\n            String key = new String(chars);\n            \n            groups.computeIfAbsent(key, k -> new ArrayList<>()).add(s);\n        }\n        \n        return new ArrayList<>(groups.values());\n    }\n}"
     }
   },
   "order_matters": false,
@@ -88,6 +88,195 @@
       "output": [
         [
           ""
+        ]
+      ]
+    },
+    {
+      "id": 4,
+      "input": {
+        "strs": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ]
+      },
+      "output": [
+        [
+          "bat"
+        ],
+        [
+          "nat",
+          "tan"
+        ],
+        [
+          "ate",
+          "eat",
+          "tea"
+        ]
+      ]
+    },
+    {
+      "id": 5,
+      "input": {
+        "strs": [
+          "a"
+        ]
+      },
+      "output": [
+        [
+          "a"
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "input": {
+        "strs": [
+          "ab",
+          "ba"
+        ]
+      },
+      "output": [
+        [
+          "ab",
+          "ba"
+        ]
+      ]
+    },
+    {
+      "id": 7,
+      "input": {
+        "strs": [
+          "abc",
+          "def",
+          "ghi"
+        ]
+      },
+      "output": [
+        [
+          "abc"
+        ],
+        [
+          "def"
+        ],
+        [
+          "ghi"
+        ]
+      ]
+    },
+    {
+      "id": 8,
+      "input": {
+        "strs": [
+          "listen",
+          "silent",
+          "elbow",
+          "below"
+        ]
+      },
+      "output": [
+        [
+          "listen",
+          "silent"
+        ],
+        [
+          "elbow",
+          "below"
+        ]
+      ]
+    },
+    {
+      "id": 9,
+      "input": {
+        "strs": [
+          "aab",
+          "aba",
+          "baa",
+          "abc",
+          "acb",
+          "bac",
+          "bca",
+          "cab",
+          "cba"
+        ]
+      },
+      "output": [
+        [
+          "aab",
+          "aba",
+          "baa"
+        ],
+        [
+          "abc",
+          "acb",
+          "bac",
+          "bca",
+          "cab",
+          "cba"
+        ]
+      ]
+    },
+    {
+      "id": 10,
+      "input": {
+        "strs": [
+          "race",
+          "care",
+          "acre",
+          "god",
+          "dog"
+        ]
+      },
+      "output": [
+        [
+          "race",
+          "care",
+          "acre"
+        ],
+        [
+          "god",
+          "dog"
+        ]
+      ]
+    },
+    {
+      "id": 11,
+      "input": {
+        "strs": [
+          "abcdefghijklmnopqrstuvwxyz"
+        ]
+      },
+      "output": [
+        [
+          "abcdefghijklmnopqrstuvwxyz"
+        ]
+      ]
+    },
+    {
+      "id": 12,
+      "input": {
+        "strs": [
+          "aa",
+          "bb",
+          "cc",
+          "dd"
+        ]
+      },
+      "output": [
+        [
+          "aa"
+        ],
+        [
+          "bb"
+        ],
+        [
+          "cc"
+        ],
+        [
+          "dd"
         ]
       ]
     }

@@ -13,7 +13,7 @@
     "representing",
     "row"
   ],
-  "description": "<h2>Asteroid Collision</h2><p>Leetcode 735. Asteroid Collision</p><p></p><p>You are given an array `asteroids` of integers representing asteroids in a row. The indices of the asteriod in the array represent their relative position in space.</p><p></p><p>For each asteroid, the absolute value represents its size, and the sign represents its direction (positive meaning right, negative meaning left). Each asteroid moves at the same speed.</p><p></p><p>Find out the state of the asteroids after all collisions. If two asteroids meet, the smaller one will explode. If both are the same size, both will explode. Two asteroids moving in the same direction will never meet.</p><h3>Examples:</h3><ul><li>Input: asteroids = [2,4,-4,-1]<br><br>Output: [2]</li><li>Input: asteroids = [5,5]<br><br>Output: [5,5]</li><li>Input: asteroids = [7,-3,9]<br><br>Output: [7,9]</li></ul><h3>Constraints:</h3><ul><li> `2 <= asteroids.length <= 10,000`.</li><li> `-1000 <= asteroids[i] <= 1000`</li><li> `asteroids[i] != 0`</li></ul>",
+  "description": "<h2>Asteroid Collision</h2><p>Leetcode 735. Asteroid Collision</p><p>You are given an array <code>asteroids</code> of integers representing asteroids in a row. The indices of the asteroid in the array represent their relative position in space.</p><p>For each asteroid, the absolute value represents its size, and the sign represents its direction (positive meaning right, negative meaning left). Each asteroid moves at the same speed.</p><p>Find out the state of the asteroids after all collisions. If two asteroids meet, the smaller one will explode. If both are the same size, both will explode. Two asteroids moving in the same direction will never meet.</p><h3>Examples:</h3><ul><li>Input: <code>asteroids = [2,4,-4,-1]</code><br>Output: <code>[2]</code></li><li>Input: <code>asteroids = [5,5]</code><br>Output: <code>[5,5]</code></li><li>Input: <code>asteroids = [7,-3,9]</code><br>Output: <code>[7,9]</code></li></ul><h3>Constraints:</h3><ul><li><code>2 <= asteroids.length <= 10,000</code></li><li><code>-1000 <= asteroids[i] <= 1000</code></li><li><code>asteroids[i] != 0</code></li></ul>",
   "languages": {
     "python": {
       "template": "def asteroidCollision(asteroids):\n    ",
@@ -23,17 +23,17 @@
     "javascript": {
       "template": "function asteroidCollision(asteroids) {\n  \n}",
       "solution_text": "Asteroid Collision using Stack simulation:\n\n**Algorithm:**\n1. Use stack to track surviving asteroids\n2. For each asteroid, check collision conditions\n3. Right-moving (positive) asteroids are added to stack\n4. Left-moving (negative) asteroids may collide with stack top\n5. Handle collision outcomes: smaller explodes, equal both explode\n\n**Time Complexity:** O(n) - Each asteroid processed once\n**Space Complexity:** O(n) - Stack storage in worst case\n\n**Key Insights:**\n- Only right-moving vs left-moving asteroids collide\n- Stack naturally handles the collision sequence\n- Continue collisions until no more conflicts",
-      "solution_code": "function asteroidCollision(asteroids) {\n    const stack = [];\n    \n    for (const asteroid of asteroids) {\n        // Process current asteroid\n        while (stack.length && asteroid < 0 && stack[stack.length - 1] > 0) {\n            // Collision occurs: right-moving vs left-moving\n            if (stack[stack.length - 1] < -asteroid) {\n                // Right-moving asteroid explodes\n                stack.pop();\n                continue;\n            } else if (stack[stack.length - 1] === -asteroid) {\n                // Both asteroids explode\n                stack.pop();\n            }\n            // Left-moving asteroid explodes (asteroid >= 0 or no collision)\n            break;\n        }\n        \n        // If we didn't break, add the asteroid\n        if (!stack.length || asteroid > 0 || stack[stack.length - 1] < 0) {\n            stack.push(asteroid);\n        }\n    }\n    \n    return stack;\n}"
+      "solution_code": "function asteroidCollision(asteroids) {\n    const stack = [];\n    \n    for (const asteroid of asteroids) {\n        // Process current asteroid\n        while (stack.length && asteroid < 0 && stack[stack.length - 1] > 0) {\n            // Collision occurs: right-moving vs left-moving\n            if (stack[stack.length - 1] < -asteroid) {\n                // Right-moving asteroid explodes\n                stack.pop();\n                continue;\n            } else if (stack[stack.length - 1] === -asteroid) {\n                // Both asteroids explode\n                stack.pop();\n            }\n            // Left-moving asteroid explodes (asteroid >= 0 or no collision)\n            break;\n        } else {\n            // No collision or asteroid survives\n            stack.push(asteroid);\n        }\n    }\n    \n    return stack;\n}"
     },
     "typescript": {
       "template": "function asteroidCollision(asteroids: number[]): number[] {\n  \n}",
       "solution_text": "Asteroid Collision using Stack simulation:\n\n**Algorithm:**\n1. Use stack to track surviving asteroids\n2. For each asteroid, check collision conditions\n3. Right-moving (positive) asteroids are added to stack\n4. Left-moving (negative) asteroids may collide with stack top\n5. Handle collision outcomes: smaller explodes, equal both explode\n\n**Time Complexity:** O(n) - Each asteroid processed once\n**Space Complexity:** O(n) - Stack storage in worst case\n\n**Key Insights:**\n- Only right-moving vs left-moving asteroids collide\n- Stack naturally handles the collision sequence\n- Continue collisions until no more conflicts",
-      "solution_code": "function asteroidCollision(asteroids: number[]): number[] {\n    const stack: number[] = [];\n    \n    for (const asteroid of asteroids) {\n        // Process current asteroid\n        while (stack.length && asteroid < 0 && stack[stack.length - 1] > 0) {\n            // Collision occurs: right-moving vs left-moving\n            if (stack[stack.length - 1] < -asteroid) {\n                // Right-moving asteroid explodes\n                stack.pop();\n                continue;\n            } else if (stack[stack.length - 1] === -asteroid) {\n                // Both asteroids explode\n                stack.pop();\n            }\n            // Left-moving asteroid explodes (asteroid >= 0 or no collision)\n            break;\n        }\n        \n        // If we didn't break, add the asteroid\n        if (!stack.length || asteroid > 0 || stack[stack.length - 1] < 0) {\n            stack.push(asteroid);\n        }\n    }\n    \n    return stack;\n}"
+      "solution_code": "function asteroidCollision(asteroids: number[]): number[] {\n    const stack: number[] = [];\n    \n    for (const asteroid of asteroids) {\n        // Process current asteroid\n        while (stack.length && asteroid < 0 && stack[stack.length - 1] > 0) {\n            // Collision occurs: right-moving vs left-moving\n            if (stack[stack.length - 1] < -asteroid) {\n                // Right-moving asteroid explodes\n                stack.pop();\n                continue;\n            } else if (stack[stack.length - 1] === -asteroid) {\n                // Both asteroids explode\n                stack.pop();\n            }\n            // Left-moving asteroid explodes (asteroid >= 0 or no collision)\n            break;\n        } else {\n            // No collision or asteroid survives\n            stack.push(asteroid);\n        }\n    }\n    \n    return stack;\n}"
     },
     "java": {
       "template": "class Solution {\n    public int[] asteroidCollision(int[] asteroids) {\n        \n    }\n}",
       "solution_text": "Asteroid Collision using Stack simulation:\n\n**Algorithm:**\n1. Use stack to track surviving asteroids\n2. For each asteroid, check collision conditions\n3. Right-moving (positive) asteroids are added to stack\n4. Left-moving (negative) asteroids may collide with stack top\n5. Handle collision outcomes: smaller explodes, equal both explode\n\n**Time Complexity:** O(n) - Each asteroid processed once\n**Space Complexity:** O(n) - Stack storage in worst case\n\n**Key Insights:**\n- Only right-moving vs left-moving asteroids collide\n- Stack naturally handles the collision sequence\n- Continue collisions until no more conflicts",
-      "solution_code": "class Solution {\n    public int[] asteroidCollision(int[] asteroids) {\n        Stack<Integer> stack = new Stack<>();\n        \n        for (int asteroid : asteroids) {\n            // Process current asteroid\n            while (!stack.isEmpty() && asteroid < 0 && stack.peek() > 0) {\n                // Collision occurs: right-moving vs left-moving\n                if (stack.peek() < -asteroid) {\n                    // Right-moving asteroid explodes\n                    stack.pop();\n                    continue;\n                } else if (stack.peek() == -asteroid) {\n                    // Both asteroids explode\n                    stack.pop();\n                }\n                // Left-moving asteroid explodes (asteroid >= 0 or no collision)\n                break;\n            }\n            \n            // If we didn't break, add the asteroid\n            if (stack.isEmpty() || asteroid > 0 || stack.peek() < 0) {\n                stack.push(asteroid);\n            }\n        }\n        \n        // Convert stack to array\n        int[] result = new int[stack.size()];\n        for (int i = stack.size() - 1; i >= 0; i--) {\n            result[i] = stack.pop();\n        }\n        \n        return result;\n    }\n}"
+      "solution_code": "import java.util.Stack;\n\nclass Solution {\n    public int[] asteroidCollision(int[] asteroids) {\n        Stack<Integer> stack = new Stack<>();\n        \n        for (int asteroid : asteroids) {\n            boolean exploded = false;\n            // Process current asteroid\n            while (!stack.isEmpty() && asteroid < 0 && stack.peek() > 0) {\n                // Collision occurs: right-moving vs left-moving\n                if (stack.peek() < -asteroid) {\n                    // Right-moving asteroid explodes\n                    stack.pop();\n                    continue;\n                } else if (stack.peek() == -asteroid) {\n                    // Both asteroids explode\n                    stack.pop();\n                }\n                // Left-moving asteroid explodes\n                exploded = true;\n                break;\n            }\n            \n            // If asteroid didn't explode, add it\n            if (!exploded) {\n                stack.push(asteroid);\n            }\n        }\n        \n        // Convert stack to array\n        int[] result = new int[stack.size()];\n        for (int i = stack.size() - 1; i >= 0; i--) {\n            result[i] = stack.pop();\n        }\n        \n        return result;\n    }\n}"
     }
   },
   "order_matters": false,
@@ -77,6 +77,144 @@
       "output": [
         7,
         9
+      ]
+    },
+    {
+      "id": 4,
+      "input": {
+        "asteroids": [
+          -2,
+          -1,
+          1,
+          2
+        ]
+      },
+      "output": [
+        -2,
+        -1,
+        1,
+        2
+      ]
+    },
+    {
+      "id": 5,
+      "input": {
+        "asteroids": [
+          10,
+          2,
+          -5
+        ]
+      },
+      "output": [
+        10
+      ]
+    },
+    {
+      "id": 6,
+      "input": {
+        "asteroids": [
+          8,
+          -8
+        ]
+      },
+      "output": []
+    },
+    {
+      "id": 7,
+      "input": {
+        "asteroids": [
+          -2,
+          -2,
+          1,
+          -2
+        ]
+      },
+      "output": [
+        -2,
+        -2,
+        -2
+      ]
+    },
+    {
+      "id": 8,
+      "input": {
+        "asteroids": [
+          1,
+          -1,
+          -2,
+          -2
+        ]
+      },
+      "output": [
+        -2,
+        -2
+      ]
+    },
+    {
+      "id": 9,
+      "input": {
+        "asteroids": [
+          3,
+          5,
+          -3,
+          -5,
+          -6
+        ]
+      },
+      "output": [
+        -6
+      ]
+    },
+    {
+      "id": 10,
+      "input": {
+        "asteroids": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "output": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "id": 11,
+      "input": {
+        "asteroids": [
+          -5,
+          -4,
+          -3,
+          -2,
+          -1
+        ]
+      },
+      "output": [
+        -5,
+        -4,
+        -3,
+        -2,
+        -1
+      ]
+    },
+    {
+      "id": 12,
+      "input": {
+        "asteroids": [
+          -1000,
+          1000,
+          -1000
+        ]
+      },
+      "output": [
+        -1000,
+        -1000
       ]
     }
   ]

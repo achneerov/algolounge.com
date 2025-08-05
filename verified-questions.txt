@@ -130,3 +130,5 @@ last-stone-weight.json - Last Stone Weight
 lemonade-change.json - Lemonade Change
 linked-list-cycle-detection.json - Linked List Cycle Detection
 longest-common-prefix.json - Longest Common Prefix
+find-the-town-judge.json - Find the Town Judge
+accounts-merge.json - Accounts Merge

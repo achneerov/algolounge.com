@@ -13,27 +13,27 @@
     "text1",
     "text2"
   ],
-  "description": "<h2>Longest Common Subsequence</h2><p>Leetcode 1143. Longest Common Subsequence</p><p></p><p>Given two strings `text1` and `text2`, return the length of the *longest common subsequence* between the two strings if one exists, otherwise return `0`.</p><p></p><p>A **subsequence** is a sequence that can be derived from the given sequence by deleting some or no elements  without changing the relative order of the remaining characters.</p><p></p><p>* For example, `\"cat\"` is a subsequence of `\"crabt\"`.</p><p></p><p>A **common subsequence** of two strings is a subsequence that exists in both strings.</p><h3>Examples:</h3><ul><li>Input: text1 = \"cat\", text2 = \"crabt\" <br><br>Output: 3<br>The longest common subsequence is \"cat\" which has a length of 3.</li><li>Input: text1 = \"abcd\", text2 = \"abcd\"<br><br>Output: 4</li><li>Input: text1 = \"abcd\", text2 = \"efgh\"<br><br>Output: 0</li></ul><h3>Constraints:</h3><ul><li> `1 <= text1.length, text2.length <= 1000`</li><li> `text1` and `text2` consist of only lowercase English characters.</li></ul>",
+  "description": "<h2>Longest Common Subsequence</h2><p>Leetcode 1143. Longest Common Subsequence</p><p>Given two strings <code>text1</code> and <code>text2</code>, return the length of the <em>longest common subsequence</em> between the two strings if one exists, otherwise return <code>0</code>.</p><p>A <strong>subsequence</strong> is a sequence that can be derived from the given sequence by deleting some or no elements without changing the relative order of the remaining characters.</p><p>For example, <code>\"cat\"</code> is a subsequence of <code>\"crabt\"</code>.</p><p>A <strong>common subsequence</strong> of two strings is a subsequence that exists in both strings.</p><h3>Examples</h3><ul><li>Input: text1 = \"cat\", text2 = \"crabt\"<br>Output: 3<br>The longest common subsequence is \"cat\" which has a length of 3.</li><li>Input: text1 = \"abcd\", text2 = \"abcd\"<br>Output: 4</li><li>Input: text1 = \"abcd\", text2 = \"efgh\"<br>Output: 0</li></ul><h3>Constraints</h3><ul><li><code>1 <= text1.length, text2.length <= 1000</code></li><li><code>text1</code> and <code>text2</code> consist of only lowercase English characters.</li></ul>",
   "languages": {
     "python": {
       "template": "def longestCommonSubsequence(text1, text2):\n    ",
-      "solution_text": "Comprehensive solution for longest-common-subsequence:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "def longestCommonSubsequence(*args):\n    # Handle empty input\n    if not args:\n        return None\n    \n    # Get first argument (most common pattern)\n    first_arg = args[0]\n    \n    # Handle different input types\n    if isinstance(first_arg, list):\n        # Array/list processing\n        if not first_arg:\n            return []\n        \n        # Common array operations\n        result = []\n        for i, item in enumerate(first_arg):\n            # Process based on context\n            if isinstance(item, (int, float)):\n                result.append(item)  # Numeric processing\n            elif isinstance(item, str):\n                result.append(item)  # String processing\n            else:\n                result.append(item)  # Generic processing\n        \n        return result\n    \n    elif isinstance(first_arg, str):\n        # String processing\n        if not first_arg:\n            return \"\"\n        \n        # Common string operations\n        return first_arg  # Return processed string\n    \n    elif isinstance(first_arg, (int, float)):\n        # Numeric processing\n        return first_arg  # Return processed number\n    \n    else:\n        # Generic processing\n        return first_arg"
+      "solution_text": "Dynamic Programming solution for Longest Common Subsequence:\n\n**Algorithm:**\nUse a 2D DP table where dp[i][j] represents the length of LCS for the first i characters of text1 and first j characters of text2.\n\n**Recurrence Relation:**\n- If text1[i-1] == text2[j-1]: dp[i][j] = dp[i-1][j-1] + 1\n- Otherwise: dp[i][j] = max(dp[i-1][j], dp[i][j-1])\n\n**Time Complexity:** O(m * n) where m and n are lengths of the two strings\n**Space Complexity:** O(m * n) for the DP table\n\n**Key Insights:**\n- Bottom-up DP approach builds solution incrementally\n- Each cell represents optimal solution for subproblem\n- Final answer is in dp[m][n]",
+      "solution_code": "def longestCommonSubsequence(text1, text2):\n    m, n = len(text1), len(text2)\n    \n    # Create a 2D DP table\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n    \n    # Fill the DP table\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            if text1[i - 1] == text2[j - 1]:\n                # Characters match, extend previous LCS\n                dp[i][j] = dp[i - 1][j - 1] + 1\n            else:\n                # Characters don't match, take maximum from left or top\n                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])\n    \n    return dp[m][n]"
     },
     "javascript": {
       "template": "function longestCommonSubsequence(text1, text2) {\n  \n}",
-      "solution_text": "Comprehensive solution for longest-common-subsequence:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function longestCommonSubsequence(...args) {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "solution_text": "Dynamic Programming solution for Longest Common Subsequence:\n\n**Algorithm:**\nUse a 2D DP table where dp[i][j] represents the length of LCS for the first i characters of text1 and first j characters of text2.\n\n**Recurrence Relation:**\n- If text1[i-1] == text2[j-1]: dp[i][j] = dp[i-1][j-1] + 1\n- Otherwise: dp[i][j] = max(dp[i-1][j], dp[i][j-1])\n\n**Time Complexity:** O(m * n) where m and n are lengths of the two strings\n**Space Complexity:** O(m * n) for the DP table\n\n**Key Insights:**\n- Bottom-up DP approach builds solution incrementally\n- Each cell represents optimal solution for subproblem\n- Final answer is in dp[m][n]",
+      "solution_code": "function longestCommonSubsequence(text1, text2) {\n    const m = text1.length;\n    const n = text2.length;\n    \n    // Create a 2D DP table\n    const dp = Array(m + 1).fill(null).map(() => Array(n + 1).fill(0));\n    \n    // Fill the DP table\n    for (let i = 1; i <= m; i++) {\n        for (let j = 1; j <= n; j++) {\n            if (text1[i - 1] === text2[j - 1]) {\n                // Characters match, extend previous LCS\n                dp[i][j] = dp[i - 1][j - 1] + 1;\n            } else {\n                // Characters don't match, take maximum from left or top\n                dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);\n            }\n        }\n    }\n    \n    return dp[m][n];\n}"
     },
     "typescript": {
       "template": "function longestCommonSubsequence(text1: string, text2: string): number {\n  \n}",
-      "solution_text": "Comprehensive solution for longest-common-subsequence:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function longestCommonSubsequence(...args: any[]): any {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result: any[] = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "solution_text": "Dynamic Programming solution for Longest Common Subsequence:\n\n**Algorithm:**\nUse a 2D DP table where dp[i][j] represents the length of LCS for the first i characters of text1 and first j characters of text2.\n\n**Recurrence Relation:**\n- If text1[i-1] == text2[j-1]: dp[i][j] = dp[i-1][j-1] + 1\n- Otherwise: dp[i][j] = max(dp[i-1][j], dp[i][j-1])\n\n**Time Complexity:** O(m * n) where m and n are lengths of the two strings\n**Space Complexity:** O(m * n) for the DP table\n\n**Key Insights:**\n- Bottom-up DP approach builds solution incrementally\n- Each cell represents optimal solution for subproblem\n- Final answer is in dp[m][n]",
+      "solution_code": "function longestCommonSubsequence(text1: string, text2: string): number {\n    const m: number = text1.length;\n    const n: number = text2.length;\n    \n    // Create a 2D DP table\n    const dp: number[][] = Array(m + 1).fill(null).map(() => Array(n + 1).fill(0));\n    \n    // Fill the DP table\n    for (let i = 1; i <= m; i++) {\n        for (let j = 1; j <= n; j++) {\n            if (text1[i - 1] === text2[j - 1]) {\n                // Characters match, extend previous LCS\n                dp[i][j] = dp[i - 1][j - 1] + 1;\n            } else {\n                // Characters don't match, take maximum from left or top\n                dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);\n            }\n        }\n    }\n    \n    return dp[m][n];\n}"
     },
     "java": {
       "template": "class Solution {\n    public int longestCommonSubsequence(String text1, String text2) {\n        \n    }\n}",
-      "solution_text": "Comprehensive solution for longest-common-subsequence:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "class Solution {\n    public Object longestCommonSubsequence(Object... args) {\n        // Handle empty input\n        if (args.length == 0) return null;\n        \n        // Get first argument (most common pattern)\n        Object firstArg = args[0];\n        \n        // Handle different input types\n        if (firstArg instanceof int[]) {\n            // Integer array processing\n            int[] arr = (int[]) firstArg;\n            if (arr.length == 0) return new int[0];\n            \n            // Common array operations\n            List<Integer> result = new ArrayList<>();\n            for (int item : arr) {\n                result.add(item); // Process each item\n            }\n            \n            return result.toArray(new Integer[0]);\n        } else if (firstArg instanceof String) {\n            // String processing\n            String str = (String) firstArg;\n            if (str.length() == 0) return \"\";\n            \n            // Common string operations\n            return str; // Return processed string\n        } else if (firstArg instanceof Integer) {\n            // Integer processing\n            return firstArg; // Return processed number\n        } else {\n            // Generic processing\n            return firstArg;\n        }\n    }\n}"
+      "solution_text": "Dynamic Programming solution for Longest Common Subsequence:\n\n**Algorithm:**\nUse a 2D DP table where dp[i][j] represents the length of LCS for the first i characters of text1 and first j characters of text2.\n\n**Recurrence Relation:**\n- If text1[i-1] == text2[j-1]: dp[i][j] = dp[i-1][j-1] + 1\n- Otherwise: dp[i][j] = max(dp[i-1][j], dp[i][j-1])\n\n**Time Complexity:** O(m * n) where m and n are lengths of the two strings\n**Space Complexity:** O(m * n) for the DP table\n\n**Key Insights:**\n- Bottom-up DP approach builds solution incrementally\n- Each cell represents optimal solution for subproblem\n- Final answer is in dp[m][n]",
+      "solution_code": "class Solution {\n    public int longestCommonSubsequence(String text1, String text2) {\n        int m = text1.length();\n        int n = text2.length();\n        \n        // Create a 2D DP table\n        int[][] dp = new int[m + 1][n + 1];\n        \n        // Fill the DP table\n        for (int i = 1; i <= m; i++) {\n            for (int j = 1; j <= n; j++) {\n                if (text1.charAt(i - 1) == text2.charAt(j - 1)) {\n                    // Characters match, extend previous LCS\n                    dp[i][j] = dp[i - 1][j - 1] + 1;\n                } else {\n                    // Characters don't match, take maximum from left or top\n                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);\n                }\n            }\n        }\n        \n        return dp[m][n];\n    }\n}"
     }
   },
   "order_matters": false,
@@ -41,7 +41,7 @@
     {
       "id": 1,
       "input": {
-        "text1": "\"cat\",",
+        "text1": "cat",
         "text2": "crabt"
       },
       "output": 3
@@ -49,7 +49,7 @@
     {
       "id": 2,
       "input": {
-        "text1": "\"abcd\",",
+        "text1": "abcd",
         "text2": "abcd"
       },
       "output": 4
@@ -57,8 +57,80 @@
     {
       "id": 3,
       "input": {
-        "text1": "\"abcd\",",
+        "text1": "abcd",
         "text2": "efgh"
+      },
+      "output": 0
+    },
+    {
+      "id": 4,
+      "input": {
+        "text1": "",
+        "text2": "abc"
+      },
+      "output": 0
+    },
+    {
+      "id": 5,
+      "input": {
+        "text1": "abc",
+        "text2": ""
+      },
+      "output": 0
+    },
+    {
+      "id": 6,
+      "input": {
+        "text1": "a",
+        "text2": "a"
+      },
+      "output": 1
+    },
+    {
+      "id": 7,
+      "input": {
+        "text1": "ace",
+        "text2": "aec"
+      },
+      "output": 2
+    },
+    {
+      "id": 8,
+      "input": {
+        "text1": "abcdef",
+        "text2": "ace"
+      },
+      "output": 3
+    },
+    {
+      "id": 9,
+      "input": {
+        "text1": "programming",
+        "text2": "algorithm"
+      },
+      "output": 4
+    },
+    {
+      "id": 10,
+      "input": {
+        "text1": "longestcommonsubsequence",
+        "text2": "dynamicprogramming"
+      },
+      "output": 8
+    },
+    {
+      "id": 11,
+      "input": {
+        "text1": "abcdefghijklmnop",
+        "text2": "acegikmoqsuwy"
+      },
+      "output": 8
+    },
+    {
+      "id": 12,
+      "input": {
+        "text1": "xyz",
+        "text2": "abc"
       },
       "output": 0
     }

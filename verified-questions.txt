@@ -131,4 +131,9 @@ lemonade-change.json - Lemonade Change
 linked-list-cycle-detection.json - Linked List Cycle Detection
 longest-common-prefix.json - Longest Common Prefix
 find-the-town-judge.json - Find the Town Judge
+longest-consecutive-sequence.json - Longest Consecutive Sequence
 accounts-merge.json - Accounts Merge
+level-order-traversal-of-binary-tree.json - Binary Tree Level Order Traversal
+lfu-cache.json - LFU Cache
+longest-common-subsequence.json - Longest Common Subsequence
+last-stone-weight-ii.json - Last Stone Weight II

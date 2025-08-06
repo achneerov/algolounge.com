@@ -13,27 +13,27 @@
     "find",
     "length"
   ],
-  "description": "<h2>Longest Substring Without Repeating Characters</h2><p>Leetcode 3. Longest Substring Without Repeating Characters</p><p></p><p>Given a string `s`, find the *length of the longest substring* without duplicate characters.</p><p></p><p>A **substring** is a contiguous sequence of characters within a string.</p><h3>Examples:</h3><ul><li>Input: s = \"zxyzxyz\"<br><br>Output: 3<br>The string \"xyz\" is the longest without duplicate characters.</li><li>Input: s = \"xxxx\"<br><br>Output: 1</li></ul><h3>Constraints:</h3><ul><li> `0 <= s.length <= 1000`</li><li> `s` may consist of printable ASCII characters.</li></ul>",
+  "description": "<h2>Longest Substring Without Repeating Characters</h2><p>Given a string <code>s</code>, find the length of the longest substring without duplicate characters.</p><p>A substring is a contiguous sequence of characters within a string.</p><h3>Examples</h3><ul><li><strong>Input:</strong> <code>s = \"abcabcbb\"</code><br><strong>Output:</strong> <code>3</code><br><strong>Explanation:</strong> The answer is \"abc\", with the length of 3.</li><li><strong>Input:</strong> <code>s = \"bbbbb\"</code><br><strong>Output:</strong> <code>1</code><br><strong>Explanation:</strong> The answer is \"b\", with the length of 1.</li><li><strong>Input:</strong> <code>s = \"pwwkew\"</code><br><strong>Output:</strong> <code>3</code><br><strong>Explanation:</strong> The answer is \"wke\", with the length of 3. Note that the answer must be a substring, \"pwke\" is a subsequence and not a substring.</li></ul><h3>Constraints</h3><ul><li><code>0 <= s.length <= 5 * 10^4</code></li><li><code>s</code> consists of English letters, digits, symbols and spaces.</li></ul>",
   "languages": {
     "python": {
-      "template": "def longestSubstringWithoutRepeatingCharacters(s):\n    ",
-      "solution_text": "Comprehensive solution for longest-substring-without-duplicates:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "def longestSubstringWithoutRepeatingCharacters(*args):\n    # Handle empty input\n    if not args:\n        return None\n    \n    # Get first argument (most common pattern)\n    first_arg = args[0]\n    \n    # Handle different input types\n    if isinstance(first_arg, list):\n        # Array/list processing\n        if not first_arg:\n            return []\n        \n        # Common array operations\n        result = []\n        for i, item in enumerate(first_arg):\n            # Process based on context\n            if isinstance(item, (int, float)):\n                result.append(item)  # Numeric processing\n            elif isinstance(item, str):\n                result.append(item)  # String processing\n            else:\n                result.append(item)  # Generic processing\n        \n        return result\n    \n    elif isinstance(first_arg, str):\n        # String processing\n        if not first_arg:\n            return \"\"\n        \n        # Common string operations\n        return first_arg  # Return processed string\n    \n    elif isinstance(first_arg, (int, float)):\n        # Numeric processing\n        return first_arg  # Return processed number\n    \n    else:\n        # Generic processing\n        return first_arg"
+      "template": "def lengthOfLongestSubstring(s):\n    ",
+      "solution_text": "**Algorithm: Sliding Window with Hash Map**\n\nWe use the sliding window technique with two pointers (left and right) and a hash map to track character positions.\n\n**Steps:**\n1. Use a hash map to store the most recent index of each character\n2. Expand the right pointer to include new characters\n3. When a duplicate is found, move the left pointer to skip the duplicate\n4. Keep track of the maximum window size seen so far\n\n**Time Complexity:** O(n) - we visit each character at most twice\n**Space Complexity:** O(min(m,n)) - where m is the character set size\n\n**Key Insights:**\n- Sliding window avoids recalculating from scratch\n- Hash map provides O(1) lookup for character positions\n- Handle edge cases like empty strings gracefully",
+      "solution_code": "def lengthOfLongestSubstring(s):\n    if not s:\n        return 0\n    \n    char_map = {}\n    left = 0\n    max_length = 0\n    \n    for right in range(len(s)):\n        # If character is seen and is within current window\n        if s[right] in char_map and char_map[s[right]] >= left:\n            # Move left pointer to skip the duplicate\n            left = char_map[s[right]] + 1\n        \n        # Update character's latest position\n        char_map[s[right]] = right\n        \n        # Update max length if current window is larger\n        max_length = max(max_length, right - left + 1)\n    \n    return max_length"
     },
     "javascript": {
-      "template": "function longestSubstringWithoutRepeatingCharacters(s) {\n  \n}",
-      "solution_text": "Comprehensive solution for longest-substring-without-duplicates:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function longestSubstringWithoutRepeatingCharacters(...args) {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "template": "function lengthOfLongestSubstring(s) {\n  \n}",
+      "solution_text": "**Algorithm: Sliding Window with Map**\n\nWe use the sliding window technique with two pointers (left and right) and a Map to track character positions.\n\n**Steps:**\n1. Use a Map to store the most recent index of each character\n2. Expand the right pointer to include new characters\n3. When a duplicate is found, move the left pointer to skip the duplicate\n4. Keep track of the maximum window size seen so far\n\n**Time Complexity:** O(n) - we visit each character at most twice\n**Space Complexity:** O(min(m,n)) - where m is the character set size\n\n**Key Insights:**\n- Sliding window avoids recalculating from scratch\n- Map provides O(1) lookup for character positions\n- Handle edge cases like empty strings gracefully",
+      "solution_code": "function lengthOfLongestSubstring(s) {\n    if (!s || s.length === 0) {\n        return 0;\n    }\n    \n    const charMap = new Map();\n    let left = 0;\n    let maxLength = 0;\n    \n    for (let right = 0; right < s.length; right++) {\n        // If character is seen and is within current window\n        if (charMap.has(s[right]) && charMap.get(s[right]) >= left) {\n            // Move left pointer to skip the duplicate\n            left = charMap.get(s[right]) + 1;\n        }\n        \n        // Update character's latest position\n        charMap.set(s[right], right);\n        \n        // Update max length if current window is larger\n        maxLength = Math.max(maxLength, right - left + 1);\n    }\n    \n    return maxLength;\n}"
     },
     "typescript": {
-      "template": "function longestSubstringWithoutRepeatingCharacters(s: string): number {\n  \n}",
-      "solution_text": "Comprehensive solution for longest-substring-without-duplicates:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function longestSubstringWithoutRepeatingCharacters(...args: any[]): any {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result: any[] = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "template": "function lengthOfLongestSubstring(s: string): number {\n  \n}",
+      "solution_text": "**Algorithm: Sliding Window with Map**\n\nWe use the sliding window technique with two pointers (left and right) and a Map to track character positions.\n\n**Steps:**\n1. Use a Map to store the most recent index of each character\n2. Expand the right pointer to include new characters\n3. When a duplicate is found, move the left pointer to skip the duplicate\n4. Keep track of the maximum window size seen so far\n\n**Time Complexity:** O(n) - we visit each character at most twice\n**Space Complexity:** O(min(m,n)) - where m is the character set size\n\n**Key Insights:**\n- Sliding window avoids recalculating from scratch\n- Map provides O(1) lookup for character positions\n- Handle edge cases like empty strings gracefully",
+      "solution_code": "function lengthOfLongestSubstring(s: string): number {\n    if (!s || s.length === 0) {\n        return 0;\n    }\n    \n    const charMap = new Map<string, number>();\n    let left = 0;\n    let maxLength = 0;\n    \n    for (let right = 0; right < s.length; right++) {\n        // If character is seen and is within current window\n        if (charMap.has(s[right]) && charMap.get(s[right])! >= left) {\n            // Move left pointer to skip the duplicate\n            left = charMap.get(s[right])! + 1;\n        }\n        \n        // Update character's latest position\n        charMap.set(s[right], right);\n        \n        // Update max length if current window is larger\n        maxLength = Math.max(maxLength, right - left + 1);\n    }\n    \n    return maxLength;\n}"
     },
     "java": {
-      "template": "class Solution {\n    public int longestSubstringWithoutRepeatingCharacters(String s) {\n        \n    }\n}",
-      "solution_text": "Comprehensive solution for longest-substring-without-duplicates:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "class Solution {\n    public Object longestSubstringWithoutRepeatingCharacters(Object... args) {\n        // Handle empty input\n        if (args.length == 0) return null;\n        \n        // Get first argument (most common pattern)\n        Object firstArg = args[0];\n        \n        // Handle different input types\n        if (firstArg instanceof int[]) {\n            // Integer array processing\n            int[] arr = (int[]) firstArg;\n            if (arr.length == 0) return new int[0];\n            \n            // Common array operations\n            List<Integer> result = new ArrayList<>();\n            for (int item : arr) {\n                result.add(item); // Process each item\n            }\n            \n            return result.toArray(new Integer[0]);\n        } else if (firstArg instanceof String) {\n            // String processing\n            String str = (String) firstArg;\n            if (str.length() == 0) return \"\";\n            \n            // Common string operations\n            return str; // Return processed string\n        } else if (firstArg instanceof Integer) {\n            // Integer processing\n            return firstArg; // Return processed number\n        } else {\n            // Generic processing\n            return firstArg;\n        }\n    }\n}"
+      "template": "class Solution {\n    public int lengthOfLongestSubstring(String s) {\n        \n    }\n}",
+      "solution_text": "**Algorithm: Sliding Window with HashMap**\n\nWe use the sliding window technique with two pointers (left and right) and a HashMap to track character positions.\n\n**Steps:**\n1. Use a HashMap to store the most recent index of each character\n2. Expand the right pointer to include new characters\n3. When a duplicate is found, move the left pointer to skip the duplicate\n4. Keep track of the maximum window size seen so far\n\n**Time Complexity:** O(n) - we visit each character at most twice\n**Space Complexity:** O(min(m,n)) - where m is the character set size\n\n**Key Insights:**\n- Sliding window avoids recalculating from scratch\n- HashMap provides O(1) lookup for character positions\n- Handle edge cases like empty strings gracefully",
+      "solution_code": "import java.util.HashMap;\n\nclass Solution {\n    public int lengthOfLongestSubstring(String s) {\n        if (s == null || s.length() == 0) {\n            return 0;\n        }\n        \n        HashMap<Character, Integer> charMap = new HashMap<>();\n        int left = 0;\n        int maxLength = 0;\n        \n        for (int right = 0; right < s.length(); right++) {\n            char currentChar = s.charAt(right);\n            \n            // If character is seen and is within current window\n            if (charMap.containsKey(currentChar) && charMap.get(currentChar) >= left) {\n                // Move left pointer to skip the duplicate\n                left = charMap.get(currentChar) + 1;\n            }\n            \n            // Update character's latest position\n            charMap.put(currentChar, right);\n            \n            // Update max length if current window is larger\n            maxLength = Math.max(maxLength, right - left + 1);\n        }\n        \n        return maxLength;\n    }\n}"
     }
   },
   "order_matters": false,
@@ -41,16 +41,100 @@
     {
       "id": 1,
       "input": {
-        "s": "zxyzxyz"
+        "s": "abcabcbb"
       },
       "output": 3
     },
     {
       "id": 2,
       "input": {
-        "s": "xxxx"
+        "s": "bbbbb"
       },
       "output": 1
+    },
+    {
+      "id": 3,
+      "input": {
+        "s": "pwwkew"
+      },
+      "output": 3
+    },
+    {
+      "id": 4,
+      "input": {
+        "s": ""
+      },
+      "output": 0
+    },
+    {
+      "id": 5,
+      "input": {
+        "s": "a"
+      },
+      "output": 1
+    },
+    {
+      "id": 6,
+      "input": {
+        "s": "au"
+      },
+      "output": 2
+    },
+    {
+      "id": 7,
+      "input": {
+        "s": "dvdf"
+      },
+      "output": 3
+    },
+    {
+      "id": 8,
+      "input": {
+        "s": "anviaj"
+      },
+      "output": 5
+    },
+    {
+      "id": 9,
+      "input": {
+        "s": "abba"
+      },
+      "output": 2
+    },
+    {
+      "id": 10,
+      "input": {
+        "s": "tmmzuxt"
+      },
+      "output": 5
+    },
+    {
+      "id": 11,
+      "input": {
+        "s": "abcdef"
+      },
+      "output": 6
+    },
+    {
+      "id": 12,
+      "input": {
+        "s": " "
+      },
+      "output": 1
+    },
+    {
+      "id": 13,
+      "input": {
+        "s": "abcabcdefg"
+      },
+      "output": 7
+    },
+    {
+      "id": 14,
+      "input": {
+        "s": "aabaab!bb"
+      },
+      "output": 3
     }
   ]
 }

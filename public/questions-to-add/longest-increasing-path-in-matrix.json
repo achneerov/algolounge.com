@@ -13,29 +13,90 @@
     "integers",
     "where"
   ],
-  "description": "<h2>Longest Increasing Path in Matrix</h2><p>Leetcode 329. Longest Increasing Path In a Matrix</p><p></p><p>You are given a 2-D grid of integers `matrix`, where each integer is greater than or equal to `0`. </p><p>    </p><p>Return the length of the longest strictly increasing path within `matrix`.</p><p></p><p>From each cell within the path, you can move either horizontally or vertically. You **may not** move **diagonally**.</p><h3>Constraints:</h3><ul><li> `1 <= matrix.length, matrix[i].length <= 100`</li></ul>",
+  "description": "<h2>Longest Increasing Path in Matrix</h2><p>Given an <code>m x n</code> integers matrix, return the length of the longest increasing path.</p><p>From each cell, you can either move in four directions: left, right, up, or down. You may not move diagonally or move outside the boundary (i.e., wrap-around is not allowed).</p><h3>Examples</h3><ul><li><strong>Example 1:</strong><br>Input: <code>matrix = [[9,9,4],[6,6,8],[2,1,1]]</code><br>Output: <code>4</code><br>Explanation: The longest increasing path is <code>[1, 2, 6, 9]</code>.</li><li><strong>Example 2:</strong><br>Input: <code>matrix = [[3,4,5],[3,2,6],[2,2,1]]</code><br>Output: <code>4</code><br>Explanation: The longest increasing path is <code>[3, 4, 5, 6]</code>. Moving diagonally is not allowed.</li><li><strong>Example 3:</strong><br>Input: <code>matrix = [[1]]</code><br>Output: <code>1</code></li></ul><h3>Constraints</h3><ul><li><code>m == matrix.length</code></li><li><code>n == matrix[i].length</code></li><li><code>1 <= m, n <= 200</code></li><li><code>0 <= matrix[i][j] <= 2^31 - 1</code></li></ul>",
   "languages": {
     "python": {
-      "template": "def longestIncreasingPathInMatrix(input):\n    ",
-      "solution_text": "Solution implementation for longest-increasing-path-in-matrix:\n\n**Algorithm:**\nBased on the problem requirements and test cases, this solution implements the optimal approach.\n\n**Time Complexity:** O(n) - Linear time complexity\n**Space Complexity:** O(1) - Constant extra space\n\n**Key Insights:**\n- Analyze the input constraints and examples\n- Choose appropriate data structures and algorithms\n- Handle edge cases carefully",
-      "solution_code": "def longestIncreasingPathInMatrix(*args):\n    # Implementation based on problem requirements\n    # Analyze test cases to determine the logic\n    \n    # TODO: Implement based on test cases\n    # Example test case analysis needed\n    return None  # Replace with actual implementation"
+      "template": "def longestIncreasingPathInMatrix(matrix):\n    ",
+      "solution_text": "**Algorithm: DFS with Memoization**\n\nThis problem asks for the longest increasing path in a matrix. We can solve this using Depth-First Search (DFS) with memoization to avoid recomputing paths from the same cell.\n\n**Approach:**\n1. For each cell in the matrix, perform DFS to find the longest increasing path starting from that cell\n2. Use memoization to cache results for each cell to avoid redundant calculations\n3. For each cell, explore all four directions (up, down, left, right)\n4. Only move to adjacent cells with strictly greater values\n5. Return the maximum path length found\n\n**Time Complexity:** O(m * n) - Each cell is visited at most once due to memoization\n**Space Complexity:** O(m * n) - For the memoization cache and recursion stack",
+      "solution_code": "def longestIncreasingPathInMatrix(matrix):\n    if not matrix or not matrix[0]:\n        return 0\n    \n    m, n = len(matrix), len(matrix[0])\n    memo = {}\n    \n    def dfs(i, j):\n        if (i, j) in memo:\n            return memo[(i, j)]\n        \n        # Start with path length of 1 (current cell)\n        max_length = 1\n        \n        # Explore all four directions\n        directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]\n        for di, dj in directions:\n            ni, nj = i + di, j + dj\n            # Check bounds and increasing condition\n            if 0 <= ni < m and 0 <= nj < n and matrix[ni][nj] > matrix[i][j]:\n                max_length = max(max_length, 1 + dfs(ni, nj))\n        \n        memo[(i, j)] = max_length\n        return max_length\n    \n    result = 0\n    for i in range(m):\n        for j in range(n):\n            result = max(result, dfs(i, j))\n    \n    return result"
     },
     "javascript": {
-      "template": "function longestIncreasingPathInMatrix(input) {\n  \n}",
-      "solution_text": "Solution implementation for longest-increasing-path-in-matrix:\n\n**Algorithm:**\nBased on the problem requirements and test cases, this solution implements the optimal approach.\n\n**Time Complexity:** O(n) - Linear time complexity\n**Space Complexity:** O(1) - Constant extra space\n\n**Key Insights:**\n- Analyze the input constraints and examples\n- Choose appropriate data structures and algorithms\n- Handle edge cases carefully",
-      "solution_code": "function longestIncreasingPathInMatrix(...args) {\n    // Implementation based on problem requirements\n    // Analyze test cases to determine the logic\n    \n    // TODO: Implement based on test cases\n    // Example test case analysis needed\n    return null; // Replace with actual implementation\n}"
+      "template": "function longestIncreasingPathInMatrix(matrix) {\n  \n}",
+      "solution_text": "**Algorithm: DFS with Memoization**\n\nThis problem asks for the longest increasing path in a matrix. We can solve this using Depth-First Search (DFS) with memoization to avoid recomputing paths from the same cell.\n\n**Approach:**\n1. For each cell in the matrix, perform DFS to find the longest increasing path starting from that cell\n2. Use memoization to cache results for each cell to avoid redundant calculations\n3. For each cell, explore all four directions (up, down, left, right)\n4. Only move to adjacent cells with strictly greater values\n5. Return the maximum path length found\n\n**Time Complexity:** O(m * n) - Each cell is visited at most once due to memoization\n**Space Complexity:** O(m * n) - For the memoization cache and recursion stack",
+      "solution_code": "function longestIncreasingPathInMatrix(matrix) {\n    if (!matrix || !matrix.length || !matrix[0].length) {\n        return 0;\n    }\n    \n    const m = matrix.length;\n    const n = matrix[0].length;\n    const memo = new Map();\n    \n    function dfs(i, j) {\n        const key = `${i},${j}`;\n        if (memo.has(key)) {\n            return memo.get(key);\n        }\n        \n        // Start with path length of 1 (current cell)\n        let maxLength = 1;\n        \n        // Explore all four directions\n        const directions = [[0, 1], [0, -1], [1, 0], [-1, 0]];\n        for (const [di, dj] of directions) {\n            const ni = i + di;\n            const nj = j + dj;\n            // Check bounds and increasing condition\n            if (ni >= 0 && ni < m && nj >= 0 && nj < n && matrix[ni][nj] > matrix[i][j]) {\n                maxLength = Math.max(maxLength, 1 + dfs(ni, nj));\n            }\n        }\n        \n        memo.set(key, maxLength);\n        return maxLength;\n    }\n    \n    let result = 0;\n    for (let i = 0; i < m; i++) {\n        for (let j = 0; j < n; j++) {\n            result = Math.max(result, dfs(i, j));\n        }\n    }\n    \n    return result;\n}"
     },
     "typescript": {
-      "template": "function longestIncreasingPathInMatrix(input: any): any {\n  \n}",
-      "solution_text": "Solution implementation for longest-increasing-path-in-matrix:\n\n**Algorithm:**\nBased on the problem requirements and test cases, this solution implements the optimal approach.\n\n**Time Complexity:** O(n) - Linear time complexity\n**Space Complexity:** O(1) - Constant extra space\n\n**Key Insights:**\n- Analyze the input constraints and examples\n- Choose appropriate data structures and algorithms\n- Handle edge cases carefully",
-      "solution_code": "function longestIncreasingPathInMatrix(...args: any[]): any {\n    // Implementation based on problem requirements\n    // Analyze test cases to determine the logic\n    \n    // TODO: Implement based on test cases\n    // Example test case analysis needed\n    return null; // Replace with actual implementation\n}"
+      "template": "function longestIncreasingPathInMatrix(matrix: number[][]): number {\n  \n}",
+      "solution_text": "**Algorithm: DFS with Memoization**\n\nThis problem asks for the longest increasing path in a matrix. We can solve this using Depth-First Search (DFS) with memoization to avoid recomputing paths from the same cell.\n\n**Approach:**\n1. For each cell in the matrix, perform DFS to find the longest increasing path starting from that cell\n2. Use memoization to cache results for each cell to avoid redundant calculations\n3. For each cell, explore all four directions (up, down, left, right)\n4. Only move to adjacent cells with strictly greater values\n5. Return the maximum path length found\n\n**Time Complexity:** O(m * n) - Each cell is visited at most once due to memoization\n**Space Complexity:** O(m * n) - For the memoization cache and recursion stack",
+      "solution_code": "function longestIncreasingPathInMatrix(matrix: number[][]): number {\n    if (!matrix || !matrix.length || !matrix[0].length) {\n        return 0;\n    }\n    \n    const m: number = matrix.length;\n    const n: number = matrix[0].length;\n    const memo = new Map<string, number>();\n    \n    function dfs(i: number, j: number): number {\n        const key: string = `${i},${j}`;\n        if (memo.has(key)) {\n            return memo.get(key)!;\n        }\n        \n        // Start with path length of 1 (current cell)\n        let maxLength: number = 1;\n        \n        // Explore all four directions\n        const directions: number[][] = [[0, 1], [0, -1], [1, 0], [-1, 0]];\n        for (const [di, dj] of directions) {\n            const ni: number = i + di;\n            const nj: number = j + dj;\n            // Check bounds and increasing condition\n            if (ni >= 0 && ni < m && nj >= 0 && nj < n && matrix[ni][nj] > matrix[i][j]) {\n                maxLength = Math.max(maxLength, 1 + dfs(ni, nj));\n            }\n        }\n        \n        memo.set(key, maxLength);\n        return maxLength;\n    }\n    \n    let result: number = 0;\n    for (let i = 0; i < m; i++) {\n        for (let j = 0; j < n; j++) {\n            result = Math.max(result, dfs(i, j));\n        }\n    }\n    \n    return result;\n}"
     },
     "java": {
-      "template": "class Solution {\n    public Object longestIncreasingPathInMatrix(Object input) {\n        \n    }\n}",
-      "solution_text": "Solution implementation for longest-increasing-path-in-matrix:\n\n**Algorithm:**\nBased on the problem requirements and test cases, this solution implements the optimal approach.\n\n**Time Complexity:** O(n) - Linear time complexity\n**Space Complexity:** O(1) - Constant extra space\n\n**Key Insights:**\n- Analyze the input constraints and examples\n- Choose appropriate data structures and algorithms\n- Handle edge cases carefully",
-      "solution_code": "class Solution {\n    public Object longestIncreasingPathInMatrix(Object... args) {\n        // Implementation based on problem requirements\n        // Analyze test cases to determine the logic\n        \n        // TODO: Implement based on test cases\n        // Example test case analysis needed\n        return null; // Replace with actual implementation\n    }\n}"
+      "template": "class Solution {\n    public int longestIncreasingPathInMatrix(int[][] matrix) {\n        \n    }\n}",
+      "solution_text": "**Algorithm: DFS with Memoization**\n\nThis problem asks for the longest increasing path in a matrix. We can solve this using Depth-First Search (DFS) with memoization to avoid recomputing paths from the same cell.\n\n**Approach:**\n1. For each cell in the matrix, perform DFS to find the longest increasing path starting from that cell\n2. Use memoization to cache results for each cell to avoid redundant calculations\n3. For each cell, explore all four directions (up, down, left, right)\n4. Only move to adjacent cells with strictly greater values\n5. Return the maximum path length found\n\n**Time Complexity:** O(m * n) - Each cell is visited at most once due to memoization\n**Space Complexity:** O(m * n) - For the memoization cache and recursion stack",
+      "solution_code": "import java.util.HashMap;\nimport java.util.Map;\n\nclass Solution {\n    private Map<String, Integer> memo;\n    private int[][] directions = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};\n    \n    public int longestIncreasingPathInMatrix(int[][] matrix) {\n        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {\n            return 0;\n        }\n        \n        int m = matrix.length;\n        int n = matrix[0].length;\n        memo = new HashMap<>();\n        \n        int result = 0;\n        for (int i = 0; i < m; i++) {\n            for (int j = 0; j < n; j++) {\n                result = Math.max(result, dfs(matrix, i, j, m, n));\n            }\n        }\n        \n        return result;\n    }\n    \n    private int dfs(int[][] matrix, int i, int j, int m, int n) {\n        String key = i + \",\" + j;\n        if (memo.containsKey(key)) {\n            return memo.get(key);\n        }\n        \n        // Start with path length of 1 (current cell)\n        int maxLength = 1;\n        \n        // Explore all four directions\n        for (int[] dir : directions) {\n            int ni = i + dir[0];\n            int nj = j + dir[1];\n            // Check bounds and increasing condition\n            if (ni >= 0 && ni < m && nj >= 0 && nj < n && matrix[ni][nj] > matrix[i][j]) {\n                maxLength = Math.max(maxLength, 1 + dfs(matrix, ni, nj, m, n));\n            }\n        }\n        \n        memo.put(key, maxLength);\n        return maxLength;\n    }\n}"
     }
   },
   "order_matters": false,
-  "test_cases": []
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {"matrix": [[9,9,4],[6,6,8],[2,1,1]]},
+      "output": 4
+    },
+    {
+      "id": 2,
+      "input": {"matrix": [[3,4,5],[3,2,6],[2,2,1]]},
+      "output": 4
+    },
+    {
+      "id": 3,
+      "input": {"matrix": [[1]]},
+      "output": 1
+    },
+    {
+      "id": 4,
+      "input": {"matrix": [[1,2,3,4,5]]},
+      "output": 5
+    },
+    {
+      "id": 5,
+      "input": {"matrix": [[1],[2],[3],[4],[5]]},
+      "output": 5
+    },
+    {
+      "id": 6,
+      "input": {"matrix": [[5,4,3],[2,1,0]]},
+      "output": 6
+    },
+    {
+      "id": 7,
+      "input": {"matrix": [[1,2],[4,3]]},
+      "output": 3
+    },
+    {
+      "id": 8,
+      "input": {"matrix": [[7,8,9],[9,7,6],[7,2,3]]},
+      "output": 6
+    },
+    {
+      "id": 9,
+      "input": {"matrix": [[0,1,2,3,4,5,6,7,8,9]]},
+      "output": 10
+    },
+    {
+      "id": 10,
+      "input": {"matrix": [[1,1,1],[1,1,1],[1,1,1]]},
+      "output": 1
+    },
+    {
+      "id": 11,
+      "input": {"matrix": [[15,13,5],[16,3,3],[12,6,1]]},
+      "output": 7
+    },
+    {
+      "id": 12,
+      "input": {"matrix": [[0,1],[2,3]]},
+      "output": 4
+    }
+  ]
 }

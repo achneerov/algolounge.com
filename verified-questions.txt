@@ -136,4 +136,9 @@ accounts-merge.json - Accounts Merge
 level-order-traversal-of-binary-tree.json - Binary Tree Level Order Traversal
 lfu-cache.json - LFU Cache
 longest-common-subsequence.json - Longest Common Subsequence
+longest-happy-string.json - Longest Happy String
+longest-increasing-subsequence.json - Longest Increasing Subsequence
 last-stone-weight-ii.json - Last Stone Weight II
+longest-repeating-substring-with-replacement.json - Longest Repeating Character Replacement
+longest-increasing-path-in-matrix.json - Longest Increasing Path in Matrix
+longest-palindromic-substring.json - Longest Palindromic Substring

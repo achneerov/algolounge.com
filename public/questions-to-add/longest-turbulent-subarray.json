@@ -13,27 +13,27 @@
     "arr",
     "return"
   ],
-  "description": "<h2>Longest Turbulent Subarray</h2><p>Leetcode 978. Longest Turbulent Subarray</p><p></p><p>You are given an integer array `arr`, return the length of a maximum size turbulent subarray of `arr`.</p><p></p><p>A subarray is **turbulent** if the comparison sign flips between each adjacent pair of elements in the subarray.</p><p></p><p>More formally, a subarray `[arr[i], arr[i + 1], ..., arr[j]]` of `arr` is said to be turbulent if and only if:</p><p></p><p>- For `i <= k < j`:</p><p>    - `arr[k] > arr[k + 1]` when `k` is odd, and</p><p>    - `arr[k] < arr[k + 1]` when `k` is even.</p><p></p><p>- Or, for `i <= k < j`:</p><p>    - `arr[k] > arr[k + 1]` when `k` is even, and</p><p>    - `arr[k] < arr[k + 1]` when `k` is odd.</p><h3>Examples:</h3><ul><li>Input: arr = [2,4,3,2,2,5,1,4]<br><br>Output: 4<br>The longest turbulent subarray is [2,5,1,4].</li><li>Input: arr = [1,1,2]<br><br>Output: 2</li></ul><h3>Constraints:</h3><ul><li> `1 <= arr.length <= 40,000`</li><li> `0 <= arr[i] <= 1,000,000,000`</li></ul>",
+  "description": "<h2>Longest Turbulent Subarray</h2><p>Leetcode 978. Longest Turbulent Subarray</p><p>You are given an integer array <code>arr</code>, return the length of a maximum size turbulent subarray of <code>arr</code>.</p><p>A subarray is <strong>turbulent</strong> if the comparison sign flips between each adjacent pair of elements in the subarray.</p><p>More formally, a subarray <code>[arr[i], arr[i + 1], ..., arr[j]]</code> of <code>arr</code> is said to be turbulent if and only if:</p><ul><li>For <code>i <= k < j</code>:<ul><li><code>arr[k] > arr[k + 1]</code> when <code>k</code> is odd, and</li><li><code>arr[k] < arr[k + 1]</code> when <code>k</code> is even.</li></ul></li><li>Or, for <code>i <= k < j</code>:<ul><li><code>arr[k] > arr[k + 1]</code> when <code>k</code> is even, and</li><li><code>arr[k] < arr[k + 1]</code> when <code>k</code> is odd.</li></ul></li></ul><h3>Examples</h3><ul><li><strong>Input:</strong> <code>arr = [9,4,2,10,7,8,8,1,9]</code><br><strong>Output:</strong> <code>5</code><br><strong>Explanation:</strong> The turbulent subarray <code>[4,2,10,7,8]</code> has length 5.</li><li><strong>Input:</strong> <code>arr = [4,8,12,16]</code><br><strong>Output:</strong> <code>2</code><br><strong>Explanation:</strong> No turbulent subarray longer than 2.</li><li><strong>Input:</strong> <code>arr = [100]</code><br><strong>Output:</strong> <code>1</code></li></ul><h3>Constraints</h3><ul><li><code>1 <= arr.length <= 40,000</code></li><li><code>0 <= arr[i] <= 1,000,000,000</code></li></ul>",
   "languages": {
     "python": {
       "template": "def longestTurbulentSubarray(arr):\n    ",
-      "solution_text": "Comprehensive solution for longest-turbulent-subarray:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "def longestTurbulentSubarray(*args):\n    # Handle empty input\n    if not args:\n        return None\n    \n    # Get first argument (most common pattern)\n    first_arg = args[0]\n    \n    # Handle different input types\n    if isinstance(first_arg, list):\n        # Array/list processing\n        if not first_arg:\n            return []\n        \n        # Common array operations\n        result = []\n        for i, item in enumerate(first_arg):\n            # Process based on context\n            if isinstance(item, (int, float)):\n                result.append(item)  # Numeric processing\n            elif isinstance(item, str):\n                result.append(item)  # String processing\n            else:\n                result.append(item)  # Generic processing\n        \n        return result\n    \n    elif isinstance(first_arg, str):\n        # String processing\n        if not first_arg:\n            return \"\"\n        \n        # Common string operations\n        return first_arg  # Return processed string\n    \n    elif isinstance(first_arg, (int, float)):\n        # Numeric processing\n        return first_arg  # Return processed number\n    \n    else:\n        # Generic processing\n        return first_arg"
+      "solution_text": "**Algorithm: Two-Pointer Approach**\n\nWe use a two-pointer approach to track the length of turbulent subarrays. The key insight is that a turbulent subarray alternates between increasing and decreasing comparisons.\n\n**Approach:**\n1. Use two variables to track lengths: `inc` (ending with increasing) and `dec` (ending with decreasing)\n2. For each adjacent pair, update the counters based on the comparison\n3. Keep track of the maximum length seen so far\n\n**Time Complexity:** O(n) - single pass through the array\n**Space Complexity:** O(1) - only using constant extra space\n\n**Key Insights:**\n- A turbulent subarray must have alternating > and < comparisons\n- We can track both increasing and decreasing endings simultaneously\n- Handle edge cases: single element (length 1), equal elements break turbulence",
+      "solution_code": "def longestTurbulentSubarray(arr):\n    if len(arr) <= 1:\n        return len(arr)\n    \n    # inc: length of turbulent subarray ending with arr[i-1] < arr[i]\n    # dec: length of turbulent subarray ending with arr[i-1] > arr[i]\n    inc = dec = 1\n    max_length = 1\n    \n    for i in range(1, len(arr)):\n        if arr[i - 1] < arr[i]:\n            # Current comparison is increasing\n            inc = dec + 1  # Extend decreasing sequence\n            dec = 1        # Reset decreasing counter\n        elif arr[i - 1] > arr[i]:\n            # Current comparison is decreasing\n            dec = inc + 1  # Extend increasing sequence\n            inc = 1        # Reset increasing counter\n        else:\n            # Elements are equal, reset both counters\n            inc = dec = 1\n        \n        max_length = max(max_length, max(inc, dec))\n    \n    return max_length"
     },
     "javascript": {
       "template": "function longestTurbulentSubarray(arr) {\n  \n}",
-      "solution_text": "Comprehensive solution for longest-turbulent-subarray:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function longestTurbulentSubarray(...args) {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "solution_text": "**Algorithm: Two-Pointer Approach**\n\nWe use a two-pointer approach to track the length of turbulent subarrays. The key insight is that a turbulent subarray alternates between increasing and decreasing comparisons.\n\n**Approach:**\n1. Use two variables to track lengths: `inc` (ending with increasing) and `dec` (ending with decreasing)\n2. For each adjacent pair, update the counters based on the comparison\n3. Keep track of the maximum length seen so far\n\n**Time Complexity:** O(n) - single pass through the array\n**Space Complexity:** O(1) - only using constant extra space\n\n**Key Insights:**\n- A turbulent subarray must have alternating > and < comparisons\n- We can track both increasing and decreasing endings simultaneously\n- Handle edge cases: single element (length 1), equal elements break turbulence",
+      "solution_code": "function longestTurbulentSubarray(arr) {\n    if (arr.length <= 1) {\n        return arr.length;\n    }\n    \n    // inc: length of turbulent subarray ending with arr[i-1] < arr[i]\n    // dec: length of turbulent subarray ending with arr[i-1] > arr[i]\n    let inc = 1, dec = 1;\n    let maxLength = 1;\n    \n    for (let i = 1; i < arr.length; i++) {\n        if (arr[i - 1] < arr[i]) {\n            // Current comparison is increasing\n            inc = dec + 1;  // Extend decreasing sequence\n            dec = 1;        // Reset decreasing counter\n        } else if (arr[i - 1] > arr[i]) {\n            // Current comparison is decreasing\n            dec = inc + 1;  // Extend increasing sequence\n            inc = 1;        // Reset increasing counter\n        } else {\n            // Elements are equal, reset both counters\n            inc = dec = 1;\n        }\n        \n        maxLength = Math.max(maxLength, Math.max(inc, dec));\n    }\n    \n    return maxLength;\n}"
     },
     "typescript": {
       "template": "function longestTurbulentSubarray(arr: number[]): number {\n  \n}",
-      "solution_text": "Comprehensive solution for longest-turbulent-subarray:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function longestTurbulentSubarray(...args: any[]): any {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result: any[] = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "solution_text": "**Algorithm: Two-Pointer Approach**\n\nWe use a two-pointer approach to track the length of turbulent subarrays. The key insight is that a turbulent subarray alternates between increasing and decreasing comparisons.\n\n**Approach:**\n1. Use two variables to track lengths: `inc` (ending with increasing) and `dec` (ending with decreasing)\n2. For each adjacent pair, update the counters based on the comparison\n3. Keep track of the maximum length seen so far\n\n**Time Complexity:** O(n) - single pass through the array\n**Space Complexity:** O(1) - only using constant extra space\n\n**Key Insights:**\n- A turbulent subarray must have alternating > and < comparisons\n- We can track both increasing and decreasing endings simultaneously\n- Handle edge cases: single element (length 1), equal elements break turbulence",
+      "solution_code": "function longestTurbulentSubarray(arr: number[]): number {\n    if (arr.length <= 1) {\n        return arr.length;\n    }\n    \n    // inc: length of turbulent subarray ending with arr[i-1] < arr[i]\n    // dec: length of turbulent subarray ending with arr[i-1] > arr[i]\n    let inc: number = 1, dec: number = 1;\n    let maxLength: number = 1;\n    \n    for (let i = 1; i < arr.length; i++) {\n        if (arr[i - 1] < arr[i]) {\n            // Current comparison is increasing\n            inc = dec + 1;  // Extend decreasing sequence\n            dec = 1;        // Reset decreasing counter\n        } else if (arr[i - 1] > arr[i]) {\n            // Current comparison is decreasing\n            dec = inc + 1;  // Extend increasing sequence\n            inc = 1;        // Reset increasing counter\n        } else {\n            // Elements are equal, reset both counters\n            inc = dec = 1;\n        }\n        \n        maxLength = Math.max(maxLength, Math.max(inc, dec));\n    }\n    \n    return maxLength;\n}"
     },
     "java": {
       "template": "class Solution {\n    public int longestTurbulentSubarray(int[] arr) {\n        \n    }\n}",
-      "solution_text": "Comprehensive solution for longest-turbulent-subarray:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "class Solution {\n    public Object longestTurbulentSubarray(Object... args) {\n        // Handle empty input\n        if (args.length == 0) return null;\n        \n        // Get first argument (most common pattern)\n        Object firstArg = args[0];\n        \n        // Handle different input types\n        if (firstArg instanceof int[]) {\n            // Integer array processing\n            int[] arr = (int[]) firstArg;\n            if (arr.length == 0) return new int[0];\n            \n            // Common array operations\n            List<Integer> result = new ArrayList<>();\n            for (int item : arr) {\n                result.add(item); // Process each item\n            }\n            \n            return result.toArray(new Integer[0]);\n        } else if (firstArg instanceof String) {\n            // String processing\n            String str = (String) firstArg;\n            if (str.length() == 0) return \"\";\n            \n            // Common string operations\n            return str; // Return processed string\n        } else if (firstArg instanceof Integer) {\n            // Integer processing\n            return firstArg; // Return processed number\n        } else {\n            // Generic processing\n            return firstArg;\n        }\n    }\n}"
+      "solution_text": "**Algorithm: Two-Pointer Approach**\n\nWe use a two-pointer approach to track the length of turbulent subarrays. The key insight is that a turbulent subarray alternates between increasing and decreasing comparisons.\n\n**Approach:**\n1. Use two variables to track lengths: `inc` (ending with increasing) and `dec` (ending with decreasing)\n2. For each adjacent pair, update the counters based on the comparison\n3. Keep track of the maximum length seen so far\n\n**Time Complexity:** O(n) - single pass through the array\n**Space Complexity:** O(1) - only using constant extra space\n\n**Key Insights:**\n- A turbulent subarray must have alternating > and < comparisons\n- We can track both increasing and decreasing endings simultaneously\n- Handle edge cases: single element (length 1), equal elements break turbulence",
+      "solution_code": "class Solution {\n    public int longestTurbulentSubarray(int[] arr) {\n        if (arr.length <= 1) {\n            return arr.length;\n        }\n        \n        // inc: length of turbulent subarray ending with arr[i-1] < arr[i]\n        // dec: length of turbulent subarray ending with arr[i-1] > arr[i]\n        int inc = 1, dec = 1;\n        int maxLength = 1;\n        \n        for (int i = 1; i < arr.length; i++) {\n            if (arr[i - 1] < arr[i]) {\n                // Current comparison is increasing\n                inc = dec + 1;  // Extend decreasing sequence\n                dec = 1;        // Reset decreasing counter\n            } else if (arr[i - 1] > arr[i]) {\n                // Current comparison is decreasing\n                dec = inc + 1;  // Extend increasing sequence\n                inc = 1;        // Reset increasing counter\n            } else {\n                // Elements are equal, reset both counters\n                inc = dec = 1;\n            }\n            \n            maxLength = Math.max(maxLength, Math.max(inc, dec));\n        }\n        \n        return maxLength;\n    }\n}"
     }
   },
   "order_matters": false,
@@ -41,29 +41,86 @@
     {
       "id": 1,
       "input": {
-        "arr": [
-          2,
-          4,
-          3,
-          2,
-          2,
-          5,
-          1,
-          4
-        ]
+        "arr": [9, 4, 2, 10, 7, 8, 8, 1, 9]
       },
-      "output": 4
+      "output": 5
     },
     {
       "id": 2,
       "input": {
-        "arr": [
-          1,
-          1,
-          2
-        ]
+        "arr": [4, 8, 12, 16]
       },
       "output": 2
+    },
+    {
+      "id": 3,
+      "input": {
+        "arr": [100]
+      },
+      "output": 1
+    },
+    {
+      "id": 4,
+      "input": {
+        "arr": [1, 2, 1, 0, 1, 2, 1]
+      },
+      "output": 7
+    },
+    {
+      "id": 5,
+      "input": {
+        "arr": [1, 1, 1, 1, 1]
+      },
+      "output": 1
+    },
+    {
+      "id": 6,
+      "input": {
+        "arr": [1, 2]
+      },
+      "output": 2
+    },
+    {
+      "id": 7,
+      "input": {
+        "arr": [2, 1]
+      },
+      "output": 2
+    },
+    {
+      "id": 8,
+      "input": {
+        "arr": [1, 3, 2, 4, 1, 5, 0, 6]
+      },
+      "output": 8
+    },
+    {
+      "id": 9,
+      "input": {
+        "arr": [5, 5, 7, 6, 8, 7, 9, 8]
+      },
+      "output": 6
+    },
+    {
+      "id": 10,
+      "input": {
+        "arr": [0, 1, 0, 1, 0, 1, 0]
+      },
+      "output": 7
+    },
+    {
+      "id": 11,
+      "input": {
+        "arr": [10, 5, 15, 3, 20, 1]
+      },
+      "output": 6
+    },
+    {
+      "id": 12,
+      "input": {
+        "arr": [100, 200, 100, 200]
+      },
+      "output": 4
     }
   ]
 }

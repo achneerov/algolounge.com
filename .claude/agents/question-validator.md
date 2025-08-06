@@ -49,6 +49,13 @@ Process a given question in `public/questions-to-add/` and ensure it meets ALL v
    - `keywords` array
    - `order_matters` boolean
 
+7. **Valid HTML Solution Text**: The `solution_text` field must contain well-formed HTML with:
+   - Proper heading structure (`<h2>`, `<h3>`)
+   - Clear explanation of the approach and algorithm
+   - Use `<code>` tags for inline code references
+   - Use `<ul><li>` for step-by-step explanations
+   - Proper paragraph structure with `<p>` tags
+
 ## Validation Process
 
 When given a question filename:

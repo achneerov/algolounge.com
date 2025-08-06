@@ -31,7 +31,7 @@
       "solution_code": "function majorityElementIi(nums: number[]): number {\n    let candidate = 0;\n    let count = 0;\n    \n    for (const num of nums) {\n        if (count === 0) {\n            candidate = num;\n            count = 1;\n        } else if (num === candidate) {\n            count++;\n        } else {\n            count--;\n        }\n    }\n    \n    return candidate;\n}"
     },
     "java": {
-      "template": "class Solution {\n    public int[] majorityElementIi(int[] nums) {\n        \n    }\n}",
+      "template": "class Solution {\n    public List<Integer> majorityElementIi(int[] nums) {\n        \n    }\n}",
       "solution_text": "Find Majority Element using Boyer-Moore Voting Algorithm:\n\n**Algorithm:**\n1. Maintain a candidate and count\n2. If count is 0, set current element as candidate\n3. Increment count if element matches candidate, decrement otherwise\n4. The majority element will remain as candidate\n\n**Time Complexity:** O(n) - single pass\n**Space Complexity:** O(1) - constant space\n\n**Key Insights:**\n- Majority element appears more than n/2 times\n- Voting algorithm elegantly finds the winner\n- No extra space needed for counting",
       "solution_code": "class Solution {\n    public int majorityElementIi(int[] nums) {\n        int candidate = 0;\n        int count = 0;\n        \n        for (int num : nums) {\n            if (count == 0) {\n                candidate = num;\n                count = 1;\n            } else if (num == candidate) {\n                count++;\n            } else {\n                count--;\n            }\n        }\n        \n        return candidate;\n    }\n}"
     }

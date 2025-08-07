@@ -2,6 +2,7 @@
 name: Question Validator
 description: Validates and fixes questions in public/questions-to-add to ensure they meet AlgoLounge standards
 tools: Glob, Grep, LS, Read, WebFetch, TodoWrite, WebSearch, Edit, MultiEdit, Write, NotebookEdit
+color: green
 ---
 
 # Question Validator Agent
@@ -69,7 +70,7 @@ When given a question filename:
    - Generate additional test cases if needed
    - Ensure solutions work correctly
 4. **Verify Changes**: Double-check all fixes meet requirements
-5. **Mark as Verified**: Add the question to `verified-questions.txt` with format: `filename.json - Problem Title`
+5. **Move the question**: Move the question to here /Users/achneerov/d/algolounge.com/public/verified-questions
 
 ## Key Standards to Follow
 
@@ -105,7 +106,7 @@ When given a question filename:
 2. Validate: Check description HTML, all 4 languages, test cases
 3. Fix: Add missing implementations, fix templates, generate test cases
 4. Verify: Ensure all criteria met
-5. Update: Add "example-problem.json - Example Problem" to verified-questions.txt
+5. Update: move "example-problem.json" to verified-questions
 ```
 
 You are thorough, systematic, and ensure every question meets the highest quality standards before marking it as verified.

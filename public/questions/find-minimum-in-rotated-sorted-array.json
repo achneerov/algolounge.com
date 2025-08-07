@@ -14,22 +14,22 @@
   "languages": {
     "python": {
       "template": "def findMin(nums):\n    ",
-      "solution_text": "Use binary search. The minimum is where the rotation happened.",
+      "solution_text": "<h3>Approach</h3><p>This problem uses <strong>modified binary search</strong> to find the minimum element in O(log n) time. The key insight is that in a rotated sorted array, one half is always sorted while the other contains the rotation point.</p><h3>Algorithm</h3><ul><li>Initialize two pointers: <code>left = 0</code>, <code>right = n-1</code></li><li>While <code>left < right</code>:</li><ul><li>Calculate <code>mid = (left + right) / 2</code></li><li>If <code>nums[mid] > nums[right]</code>: minimum is in right half, set <code>left = mid + 1</code></li><li>Else: minimum is in left half (including mid), set <code>right = mid</code></li></ul><li>When loop ends, <code>left == right</code> and points to minimum</li></ul><h3>Key Insight</h3><p>Compare <code>nums[mid]</code> with <code>nums[right]</code> (not left) to determine which half contains the rotation point and thus the minimum.</p><h3>Time Complexity</h3><p>O(log n) - binary search</p><h3>Space Complexity</h3><p>O(1) - only using constant extra space</p>",
       "solution_code": "def findMin(nums):\n    left, right = 0, len(nums) - 1\n    \n    while left < right:\n        mid = (left + right) // 2\n        \n        if nums[mid] > nums[right]:\n            left = mid + 1\n        else:\n            right = mid\n    \n    return nums[left]"
     },
     "javascript": {
       "template": "function findMin(nums) {\n  \n}",
-      "solution_text": "Use binary search. The minimum is where the rotation happened.",
+      "solution_text": "<h3>Approach</h3><p>This problem uses <strong>modified binary search</strong> to find the minimum element in O(log n) time. The key insight is that in a rotated sorted array, one half is always sorted while the other contains the rotation point.</p><h3>Algorithm</h3><ul><li>Initialize two pointers: <code>left = 0</code>, <code>right = n-1</code></li><li>While <code>left < right</code>:</li><ul><li>Calculate <code>mid = (left + right) / 2</code></li><li>If <code>nums[mid] > nums[right]</code>: minimum is in right half, set <code>left = mid + 1</code></li><li>Else: minimum is in left half (including mid), set <code>right = mid</code></li></ul><li>When loop ends, <code>left == right</code> and points to minimum</li></ul><h3>Key Insight</h3><p>Compare <code>nums[mid]</code> with <code>nums[right]</code> (not left) to determine which half contains the rotation point and thus the minimum.</p><h3>Time Complexity</h3><p>O(log n) - binary search</p><h3>Space Complexity</h3><p>O(1) - only using constant extra space</p>",
       "solution_code": "function findMin(nums) {\n    let left = 0;\n    let right = nums.length - 1;\n    \n    while (left < right) {\n        const mid = Math.floor((left + right) / 2);\n        \n        if (nums[mid] > nums[right]) {\n            left = mid + 1;\n        } else {\n            right = mid;\n        }\n    }\n    \n    return nums[left];\n}"
     },
     "typescript": {
       "template": "function findMin(nums: number[]): number {\n  \n}",
-      "solution_text": "Use binary search. The minimum is where the rotation happened.",
+      "solution_text": "<h3>Approach</h3><p>This problem uses <strong>modified binary search</strong> to find the minimum element in O(log n) time. The key insight is that in a rotated sorted array, one half is always sorted while the other contains the rotation point.</p><h3>Algorithm</h3><ul><li>Initialize two pointers: <code>left = 0</code>, <code>right = n-1</code></li><li>While <code>left < right</code>:</li><ul><li>Calculate <code>mid = (left + right) / 2</code></li><li>If <code>nums[mid] > nums[right]</code>: minimum is in right half, set <code>left = mid + 1</code></li><li>Else: minimum is in left half (including mid), set <code>right = mid</code></li></ul><li>When loop ends, <code>left == right</code> and points to minimum</li></ul><h3>Key Insight</h3><p>Compare <code>nums[mid]</code> with <code>nums[right]</code> (not left) to determine which half contains the rotation point and thus the minimum.</p><h3>Time Complexity</h3><p>O(log n) - binary search</p><h3>Space Complexity</h3><p>O(1) - only using constant extra space</p>",
       "solution_code": "function findMin(nums: number[]): number {\n    let left = 0;\n    let right = nums.length - 1;\n    \n    while (left < right) {\n        const mid = Math.floor((left + right) / 2);\n        \n        if (nums[mid] > nums[right]) {\n            left = mid + 1;\n        } else {\n            right = mid;\n        }\n    }\n    \n    return nums[left];\n}"
     },
     "java": {
       "template": "class Solution {\n    public int findMin(int[] nums) {\n        \n    }\n}",
-      "solution_text": "Use binary search. The minimum is where the rotation happened.",
+      "solution_text": "<h3>Approach</h3><p>This problem uses <strong>modified binary search</strong> to find the minimum element in O(log n) time. The key insight is that in a rotated sorted array, one half is always sorted while the other contains the rotation point.</p><h3>Algorithm</h3><ul><li>Initialize two pointers: <code>left = 0</code>, <code>right = n-1</code></li><li>While <code>left < right</code>:</li><ul><li>Calculate <code>mid = (left + right) / 2</code></li><li>If <code>nums[mid] > nums[right]</code>: minimum is in right half, set <code>left = mid + 1</code></li><li>Else: minimum is in left half (including mid), set <code>right = mid</code></li></ul><li>When loop ends, <code>left == right</code> and points to minimum</li></ul><h3>Key Insight</h3><p>Compare <code>nums[mid]</code> with <code>nums[right]</code> (not left) to determine which half contains the rotation point and thus the minimum.</p><h3>Time Complexity</h3><p>O(log n) - binary search</p><h3>Space Complexity</h3><p>O(1) - only using constant extra space</p>",
       "solution_code": "class Solution {\n    public int findMin(int[] nums) {\n        int left = 0;\n        int right = nums.length - 1;\n        \n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            \n            if (nums[mid] > nums[right]) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        \n        return nums[left];\n    }\n}"
     }
   },
@@ -74,6 +74,115 @@
         ]
       },
       "output": 11
+    },
+    {
+      "id": 4,
+      "input": {
+        "nums": [
+          1
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 5,
+      "input": {
+        "nums": [
+          2,
+          1
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 6,
+      "input": {
+        "nums": [
+          1,
+          2
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 7,
+      "input": {
+        "nums": [
+          5,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 8,
+      "input": {
+        "nums": [
+          2,
+          3,
+          4,
+          5,
+          1
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 9,
+      "input": {
+        "nums": [
+          3,
+          1,
+          2
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 10,
+      "input": {
+        "nums": [
+          10,
+          1,
+          10,
+          10,
+          10
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 11,
+      "input": {
+        "nums": [
+          -1,
+          0,
+          1,
+          2
+        ]
+      },
+      "output": -1
+    },
+    {
+      "id": 12,
+      "input": {
+        "nums": [
+          7,
+          8,
+          9,
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "output": 0
     }
   ]
 }

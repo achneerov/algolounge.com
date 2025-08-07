@@ -14,22 +14,22 @@
   "languages": {
     "python": {
       "template": "def maxArea(height):\n    ",
-      "solution_text": "Use two pointers from both ends. Move the pointer with smaller height inward.",
+      "solution_text": "<h3>Approach</h3><p>This problem uses the <strong>two-pointer technique</strong> to find the maximum area efficiently. The key insight is that the area is determined by the shorter of the two lines.</p><h3>Algorithm</h3><ul><li>Initialize two pointers: <code>left</code> at start, <code>right</code> at end</li><li>Calculate current area: <code>width × min(height[left], height[right])</code></li><li>Move the pointer with the smaller height inward</li><li>Keep track of the maximum area seen so far</li><li>Continue until pointers meet</li></ul><h3>Key Insight</h3><p>Moving the pointer with the larger height won't increase the area since the area is limited by the shorter line. Moving the shorter pointer might lead to a taller line and potentially larger area.</p><h3>Time Complexity</h3><p>O(n) - single pass with two pointers</p><h3>Space Complexity</h3><p>O(1) - only using constant extra space</p>",
       "solution_code": "def maxArea(height):\n    left, right = 0, len(height) - 1\n    max_area = 0\n    \n    while left < right:\n        width = right - left\n        current_area = width * min(height[left], height[right])\n        max_area = max(max_area, current_area)\n        \n        if height[left] < height[right]:\n            left += 1\n        else:\n            right -= 1\n    \n    return max_area"
     },
     "javascript": {
       "template": "function maxArea(height) {\n  \n}",
-      "solution_text": "Use two pointers from both ends. Move the pointer with smaller height inward.",
+      "solution_text": "<h3>Approach</h3><p>This problem uses the <strong>two-pointer technique</strong> to find the maximum area efficiently. The key insight is that the area is determined by the shorter of the two lines.</p><h3>Algorithm</h3><ul><li>Initialize two pointers: <code>left</code> at start, <code>right</code> at end</li><li>Calculate current area: <code>width × min(height[left], height[right])</code></li><li>Move the pointer with the smaller height inward</li><li>Keep track of the maximum area seen so far</li><li>Continue until pointers meet</li></ul><h3>Key Insight</h3><p>Moving the pointer with the larger height won't increase the area since the area is limited by the shorter line. Moving the shorter pointer might lead to a taller line and potentially larger area.</p><h3>Time Complexity</h3><p>O(n) - single pass with two pointers</p><h3>Space Complexity</h3><p>O(1) - only using constant extra space</p>",
       "solution_code": "function maxArea(height) {\n    let left = 0;\n    let right = height.length - 1;\n    let maxArea = 0;\n    \n    while (left < right) {\n        const width = right - left;\n        const currentArea = width * Math.min(height[left], height[right]);\n        maxArea = Math.max(maxArea, currentArea);\n        \n        if (height[left] < height[right]) {\n            left++;\n        } else {\n            right--;\n        }\n    }\n    \n    return maxArea;\n}"
     },
     "typescript": {
       "template": "function maxArea(height: number[]): number {\n  \n}",
-      "solution_text": "Use two pointers from both ends. Move the pointer with smaller height inward.",
+      "solution_text": "<h3>Approach</h3><p>This problem uses the <strong>two-pointer technique</strong> to find the maximum area efficiently. The key insight is that the area is determined by the shorter of the two lines.</p><h3>Algorithm</h3><ul><li>Initialize two pointers: <code>left</code> at start, <code>right</code> at end</li><li>Calculate current area: <code>width × min(height[left], height[right])</code></li><li>Move the pointer with the smaller height inward</li><li>Keep track of the maximum area seen so far</li><li>Continue until pointers meet</li></ul><h3>Key Insight</h3><p>Moving the pointer with the larger height won't increase the area since the area is limited by the shorter line. Moving the shorter pointer might lead to a taller line and potentially larger area.</p><h3>Time Complexity</h3><p>O(n) - single pass with two pointers</p><h3>Space Complexity</h3><p>O(1) - only using constant extra space</p>",
       "solution_code": "function maxArea(height: number[]): number {\n    let left = 0;\n    let right = height.length - 1;\n    let maxArea = 0;\n    \n    while (left < right) {\n        const width = right - left;\n        const currentArea = width * Math.min(height[left], height[right]);\n        maxArea = Math.max(maxArea, currentArea);\n        \n        if (height[left] < height[right]) {\n            left++;\n        } else {\n            right--;\n        }\n    }\n    \n    return maxArea;\n}"
     },
     "java": {
       "template": "class Solution {\n    public int maxArea(int[] height) {\n        \n    }\n}",
-      "solution_text": "Use two pointers from both ends. Move the pointer with smaller height inward.",
+      "solution_text": "<h3>Approach</h3><p>This problem uses the <strong>two-pointer technique</strong> to find the maximum area efficiently. The key insight is that the area is determined by the shorter of the two lines.</p><h3>Algorithm</h3><ul><li>Initialize two pointers: <code>left</code> at start, <code>right</code> at end</li><li>Calculate current area: <code>width × min(height[left], height[right])</code></li><li>Move the pointer with the smaller height inward</li><li>Keep track of the maximum area seen so far</li><li>Continue until pointers meet</li></ul><h3>Key Insight</h3><p>Moving the pointer with the larger height won't increase the area since the area is limited by the shorter line. Moving the shorter pointer might lead to a taller line and potentially larger area.</p><h3>Time Complexity</h3><p>O(n) - single pass with two pointers</p><h3>Space Complexity</h3><p>O(1) - only using constant extra space</p>",
       "solution_code": "class Solution {\n    public int maxArea(int[] height) {\n        int left = 0;\n        int right = height.length - 1;\n        int maxArea = 0;\n        \n        while (left < right) {\n            int width = right - left;\n            int currentArea = width * Math.min(height[left], height[right]);\n            maxArea = Math.max(maxArea, currentArea);\n            \n            if (height[left] < height[right]) {\n                left++;\n            } else {\n                right--;\n            }\n        }\n        \n        return maxArea;\n    }\n}"
     }
   },
@@ -72,6 +72,131 @@
         ]
       },
       "output": 2
+    },
+    {
+      "id": 4,
+      "input": {
+        "height": [
+          2,
+          1
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 5,
+      "input": {
+        "height": [
+          1,
+          2,
+          4,
+          3
+        ]
+      },
+      "output": 4
+    },
+    {
+      "id": 6,
+      "input": {
+        "height": [
+          2,
+          3,
+          4,
+          5,
+          18,
+          17,
+          6
+        ]
+      },
+      "output": 17
+    },
+    {
+      "id": 7,
+      "input": {
+        "height": [
+          1,
+          3,
+          2,
+          5,
+          25,
+          24,
+          5
+        ]
+      },
+      "output": 24
+    },
+    {
+      "id": 8,
+      "input": {
+        "height": [
+          5,
+          5,
+          5,
+          5
+        ]
+      },
+      "output": 15
+    },
+    {
+      "id": 9,
+      "input": {
+        "height": [
+          1,
+          8,
+          100,
+          2,
+          100,
+          4,
+          8,
+          3,
+          7
+        ]
+      },
+      "output": 200
+    },
+    {
+      "id": 10,
+      "input": {
+        "height": [
+          10,
+          9,
+          8,
+          7,
+          6,
+          5,
+          4,
+          3,
+          2,
+          1
+        ]
+      },
+      "output": 25
+    },
+    {
+      "id": 11,
+      "input": {
+        "height": [
+          0,
+          2
+        ]
+      },
+      "output": 0
+    },
+    {
+      "id": 12,
+      "input": {
+        "height": [
+          3,
+          9,
+          3,
+          4,
+          7,
+          2,
+          12,
+          6
+        ]
+      },
+      "output": 45
     }
   ]
 }

@@ -13,22 +13,22 @@
   "languages": {
     "python": {
       "template": "def numDecodings(s):\n    ",
-      "solution_text": "Use DP similar to climbing stairs. For each position, we can decode single digit or two digits if valid.",
+      "solution_text": "<h3>Approach</h3><p>This is a <strong>dynamic programming</strong> problem similar to the <strong>Fibonacci sequence</strong> or climbing stairs. At each position, we can decode either a single digit or two digits (if valid).</p><h3>Algorithm</h3><ul><li>Initialize DP array where <code>dp[i]</code> represents number of ways to decode string up to position i</li><li>Base cases: <code>dp[0] = 1</code> (empty string), <code>dp[1] = 1</code> (if first char is not '0')</li><li>For each position, consider:</li><ul><li>Single digit decode: if current digit is not '0', add <code>dp[i-1]</code></li><li>Two digit decode: if valid (10-26), add <code>dp[i-2]</code></li></ul><li>Handle edge cases: leading zeros, invalid two-digit combinations</li></ul><h3>Key Insight</h3><p>This follows the recurrence: <code>dp[i] = dp[i-1] + dp[i-2]</code> when both single and two-digit decoding are valid.</p><h3>Time Complexity</h3><p>O(n) - single pass through the string</p><h3>Space Complexity</h3><p>O(n) - DP array storage</p>",
       "solution_code": "def numDecodings(s):\n    if not s or s[0] == '0':\n        return 0\n    \n    n = len(s)\n    dp = [0] * (n + 1)\n    dp[0] = 1  # Empty string\n    dp[1] = 1  # First character is not '0'\n    \n    for i in range(2, n + 1):\n        # Single digit decode\n        if s[i-1] != '0':\n            dp[i] += dp[i-1]\n        \n        # Two digit decode\n        two_digit = int(s[i-2:i])\n        if 10 <= two_digit <= 26:\n            dp[i] += dp[i-2]\n    \n    return dp[n]"
     },
     "javascript": {
       "template": "function numDecodings(s) {\n  \n}",
-      "solution_text": "Use DP similar to climbing stairs. For each position, we can decode single digit or two digits if valid.",
+      "solution_text": "<h3>Approach</h3><p>This is a <strong>dynamic programming</strong> problem similar to the <strong>Fibonacci sequence</strong> or climbing stairs. At each position, we can decode either a single digit or two digits (if valid).</p><h3>Algorithm</h3><ul><li>Initialize DP array where <code>dp[i]</code> represents number of ways to decode string up to position i</li><li>Base cases: <code>dp[0] = 1</code> (empty string), <code>dp[1] = 1</code> (if first char is not '0')</li><li>For each position, consider:</li><ul><li>Single digit decode: if current digit is not '0', add <code>dp[i-1]</code></li><li>Two digit decode: if valid (10-26), add <code>dp[i-2]</code></li></ul><li>Handle edge cases: leading zeros, invalid two-digit combinations</li></ul><h3>Key Insight</h3><p>This follows the recurrence: <code>dp[i] = dp[i-1] + dp[i-2]</code> when both single and two-digit decoding are valid.</p><h3>Time Complexity</h3><p>O(n) - single pass through the string</p><h3>Space Complexity</h3><p>O(n) - DP array storage</p>",
       "solution_code": "function numDecodings(s) {\n    if (!s || s[0] === '0') return 0;\n    \n    const n = s.length;\n    const dp = new Array(n + 1).fill(0);\n    dp[0] = 1; // Empty string\n    dp[1] = 1; // First character is not '0'\n    \n    for (let i = 2; i <= n; i++) {\n        // Single digit decode\n        if (s[i-1] !== '0') {\n            dp[i] += dp[i-1];\n        }\n        \n        // Two digit decode\n        const twoDigit = parseInt(s.substring(i-2, i));\n        if (twoDigit >= 10 && twoDigit <= 26) {\n            dp[i] += dp[i-2];\n        }\n    }\n    \n    return dp[n];\n}"
     },
     "typescript": {
       "template": "function numDecodings(s: string): number {\n  \n}",
-      "solution_text": "Use DP similar to climbing stairs. For each position, we can decode single digit or two digits if valid.",
+      "solution_text": "<h3>Approach</h3><p>This is a <strong>dynamic programming</strong> problem similar to the <strong>Fibonacci sequence</strong> or climbing stairs. At each position, we can decode either a single digit or two digits (if valid).</p><h3>Algorithm</h3><ul><li>Initialize DP array where <code>dp[i]</code> represents number of ways to decode string up to position i</li><li>Base cases: <code>dp[0] = 1</code> (empty string), <code>dp[1] = 1</code> (if first char is not '0')</li><li>For each position, consider:</li><ul><li>Single digit decode: if current digit is not '0', add <code>dp[i-1]</code></li><li>Two digit decode: if valid (10-26), add <code>dp[i-2]</code></li></ul><li>Handle edge cases: leading zeros, invalid two-digit combinations</li></ul><h3>Key Insight</h3><p>This follows the recurrence: <code>dp[i] = dp[i-1] + dp[i-2]</code> when both single and two-digit decoding are valid.</p><h3>Time Complexity</h3><p>O(n) - single pass through the string</p><h3>Space Complexity</h3><p>O(n) - DP array storage</p>",
       "solution_code": "function numDecodings(s: string): number {\n    if (!s || s[0] === '0') return 0;\n    \n    const n = s.length;\n    const dp = new Array(n + 1).fill(0);\n    dp[0] = 1; // Empty string\n    dp[1] = 1; // First character is not '0'\n    \n    for (let i = 2; i <= n; i++) {\n        // Single digit decode\n        if (s[i-1] !== '0') {\n            dp[i] += dp[i-1];\n        }\n        \n        // Two digit decode\n        const twoDigit = parseInt(s.substring(i-2, i));\n        if (twoDigit >= 10 && twoDigit <= 26) {\n            dp[i] += dp[i-2];\n        }\n    }\n    \n    return dp[n];\n}"
     },
     "java": {
       "template": "class Solution {\n    public int numDecodings(String s) {\n        \n    }\n}",
-      "solution_text": "Use DP similar to climbing stairs. For each position, we can decode single digit or two digits if valid.",
+      "solution_text": "<h3>Approach</h3><p>This is a <strong>dynamic programming</strong> problem similar to the <strong>Fibonacci sequence</strong> or climbing stairs. At each position, we can decode either a single digit or two digits (if valid).</p><h3>Algorithm</h3><ul><li>Initialize DP array where <code>dp[i]</code> represents number of ways to decode string up to position i</li><li>Base cases: <code>dp[0] = 1</code> (empty string), <code>dp[1] = 1</code> (if first char is not '0')</li><li>For each position, consider:</li><ul><li>Single digit decode: if current digit is not '0', add <code>dp[i-1]</code></li><li>Two digit decode: if valid (10-26), add <code>dp[i-2]</code></li></ul><li>Handle edge cases: leading zeros, invalid two-digit combinations</li></ul><h3>Key Insight</h3><p>This follows the recurrence: <code>dp[i] = dp[i-1] + dp[i-2]</code> when both single and two-digit decoding are valid.</p><h3>Time Complexity</h3><p>O(n) - single pass through the string</p><h3>Space Complexity</h3><p>O(n) - DP array storage</p>",
       "solution_code": "class Solution {\n    public int numDecodings(String s) {\n        if (s == null || s.length() == 0 || s.charAt(0) == '0') {\n            return 0;\n        }\n        \n        int n = s.length();\n        int[] dp = new int[n + 1];\n        dp[0] = 1; // Empty string\n        dp[1] = 1; // First character is not '0'\n        \n        for (int i = 2; i <= n; i++) {\n            // Single digit decode\n            if (s.charAt(i-1) != '0') {\n                dp[i] += dp[i-1];\n            }\n            \n            // Two digit decode\n            int twoDigit = Integer.parseInt(s.substring(i-2, i));\n            if (twoDigit >= 10 && twoDigit <= 26) {\n                dp[i] += dp[i-2];\n            }\n        }\n        \n        return dp[n];\n    }\n}"
     }
   },
@@ -54,6 +54,69 @@
         "s": "06"
       },
       "output": 0
+    },
+    {
+      "id": 4,
+      "input": {
+        "s": "0"
+      },
+      "output": 0
+    },
+    {
+      "id": 5,
+      "input": {
+        "s": "1"
+      },
+      "output": 1
+    },
+    {
+      "id": 6,
+      "input": {
+        "s": "10"
+      },
+      "output": 1
+    },
+    {
+      "id": 7,
+      "input": {
+        "s": "27"
+      },
+      "output": 1
+    },
+    {
+      "id": 8,
+      "input": {
+        "s": "123"
+      },
+      "output": 3
+    },
+    {
+      "id": 9,
+      "input": {
+        "s": "111"
+      },
+      "output": 3
+    },
+    {
+      "id": 10,
+      "input": {
+        "s": "1111"
+      },
+      "output": 5
+    },
+    {
+      "id": 11,
+      "input": {
+        "s": "101"
+      },
+      "output": 1
+    },
+    {
+      "id": 12,
+      "input": {
+        "s": "2101"
+      },
+      "output": 1
     }
   ]
 }

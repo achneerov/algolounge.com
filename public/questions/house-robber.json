@@ -13,22 +13,22 @@
   "languages": {
     "python": {
       "template": "def rob(nums):\n    ",
-      "solution_text": "Use dynamic programming. For each house, decide whether to rob it or not based on maximum profit.",
+      "solution_text": "<h3>Approach</h3><p>This is a classic <strong>dynamic programming</strong> problem where we make optimal decisions at each house. The constraint is that we cannot rob adjacent houses.</p><h3>Algorithm</h3><ul><li>For each house, we have two choices: rob it or skip it</li><li>If we rob house i: <code>profit = nums[i] + maxProfit(i-2)</code></li><li>If we skip house i: <code>profit = maxProfit(i-1)</code></li><li>Take the maximum of both choices</li><li>Use space-optimized approach with two variables instead of array</li></ul><h3>Recurrence Relation</h3><p><code>dp[i] = max(dp[i-1], dp[i-2] + nums[i])</code></p><h3>Key Insight</h3><p>The maximum money we can rob up to house i is either: rob house i plus max money from i-2, or skip house i and take max money from i-1.</p><h3>Time Complexity</h3><p>O(n) - single pass through houses</p><h3>Space Complexity</h3><p>O(1) - only using two variables</p>",
       "solution_code": "def rob(nums):\n    if not nums:\n        return 0\n    if len(nums) == 1:\n        return nums[0]\n    \n    prev2 = nums[0]\n    prev1 = max(nums[0], nums[1])\n    \n    for i in range(2, len(nums)):\n        current = max(prev1, prev2 + nums[i])\n        prev2 = prev1\n        prev1 = current\n    \n    return prev1"
     },
     "javascript": {
       "template": "function rob(nums) {\n  \n}",
-      "solution_text": "Use dynamic programming. For each house, decide whether to rob it or not based on maximum profit.",
+      "solution_text": "<h3>Approach</h3><p>This is a classic <strong>dynamic programming</strong> problem where we make optimal decisions at each house. The constraint is that we cannot rob adjacent houses.</p><h3>Algorithm</h3><ul><li>For each house, we have two choices: rob it or skip it</li><li>If we rob house i: <code>profit = nums[i] + maxProfit(i-2)</code></li><li>If we skip house i: <code>profit = maxProfit(i-1)</code></li><li>Take the maximum of both choices</li><li>Use space-optimized approach with two variables instead of array</li></ul><h3>Recurrence Relation</h3><p><code>dp[i] = max(dp[i-1], dp[i-2] + nums[i])</code></p><h3>Key Insight</h3><p>The maximum money we can rob up to house i is either: rob house i plus max money from i-2, or skip house i and take max money from i-1.</p><h3>Time Complexity</h3><p>O(n) - single pass through houses</p><h3>Space Complexity</h3><p>O(1) - only using two variables</p>",
       "solution_code": "function rob(nums) {\n    if (nums.length === 0) return 0;\n    if (nums.length === 1) return nums[0];\n    \n    let prev2 = nums[0];\n    let prev1 = Math.max(nums[0], nums[1]);\n    \n    for (let i = 2; i < nums.length; i++) {\n        const current = Math.max(prev1, prev2 + nums[i]);\n        prev2 = prev1;\n        prev1 = current;\n    }\n    \n    return prev1;\n}"
     },
     "typescript": {
       "template": "function rob(nums: number[]): number {\n  \n}",
-      "solution_text": "Use dynamic programming. For each house, decide whether to rob it or not based on maximum profit.",
+      "solution_text": "<h3>Approach</h3><p>This is a classic <strong>dynamic programming</strong> problem where we make optimal decisions at each house. The constraint is that we cannot rob adjacent houses.</p><h3>Algorithm</h3><ul><li>For each house, we have two choices: rob it or skip it</li><li>If we rob house i: <code>profit = nums[i] + maxProfit(i-2)</code></li><li>If we skip house i: <code>profit = maxProfit(i-1)</code></li><li>Take the maximum of both choices</li><li>Use space-optimized approach with two variables instead of array</li></ul><h3>Recurrence Relation</h3><p><code>dp[i] = max(dp[i-1], dp[i-2] + nums[i])</code></p><h3>Key Insight</h3><p>The maximum money we can rob up to house i is either: rob house i plus max money from i-2, or skip house i and take max money from i-1.</p><h3>Time Complexity</h3><p>O(n) - single pass through houses</p><h3>Space Complexity</h3><p>O(1) - only using two variables</p>",
       "solution_code": "function rob(nums: number[]): number {\n    if (nums.length === 0) return 0;\n    if (nums.length === 1) return nums[0];\n    \n    let prev2 = nums[0];\n    let prev1 = Math.max(nums[0], nums[1]);\n    \n    for (let i = 2; i < nums.length; i++) {\n        const current = Math.max(prev1, prev2 + nums[i]);\n        prev2 = prev1;\n        prev1 = current;\n    }\n    \n    return prev1;\n}"
     },
     "java": {
       "template": "class Solution {\n    public int rob(int[] nums) {\n        \n    }\n}",
-      "solution_text": "Use dynamic programming. For each house, decide whether to rob it or not based on maximum profit.",
+      "solution_text": "<h3>Approach</h3><p>This is a classic <strong>dynamic programming</strong> problem where we make optimal decisions at each house. The constraint is that we cannot rob adjacent houses.</p><h3>Algorithm</h3><ul><li>For each house, we have two choices: rob it or skip it</li><li>If we rob house i: <code>profit = nums[i] + maxProfit(i-2)</code></li><li>If we skip house i: <code>profit = maxProfit(i-1)</code></li><li>Take the maximum of both choices</li><li>Use space-optimized approach with two variables instead of array</li></ul><h3>Recurrence Relation</h3><p><code>dp[i] = max(dp[i-1], dp[i-2] + nums[i])</code></p><h3>Key Insight</h3><p>The maximum money we can rob up to house i is either: rob house i plus max money from i-2, or skip house i and take max money from i-1.</p><h3>Time Complexity</h3><p>O(n) - single pass through houses</p><h3>Space Complexity</h3><p>O(1) - only using two variables</p>",
       "solution_code": "class Solution {\n    public int rob(int[] nums) {\n        if (nums.length == 0) return 0;\n        if (nums.length == 1) return nums[0];\n        \n        int prev2 = nums[0];\n        int prev1 = Math.max(nums[0], nums[1]);\n        \n        for (int i = 2; i < nums.length; i++) {\n            int current = Math.max(prev1, prev2 + nums[i]);\n            prev2 = prev1;\n            prev1 = current;\n        }\n        \n        return prev1;\n    }\n}"
     }
   },
@@ -58,6 +58,130 @@
         ]
       },
       "output": 12
+    },
+    {
+      "id": 3,
+      "input": {
+        "nums": [
+          1
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 4,
+      "input": {
+        "nums": [
+          2,
+          1
+        ]
+      },
+      "output": 2
+    },
+    {
+      "id": 5,
+      "input": {
+        "nums": [
+          5,
+          1,
+          3,
+          9
+        ]
+      },
+      "output": 14
+    },
+    {
+      "id": 6,
+      "input": {
+        "nums": [
+          2,
+          1,
+          1,
+          2
+        ]
+      },
+      "output": 4
+    },
+    {
+      "id": 7,
+      "input": {
+        "nums": [
+          5,
+          5,
+          10,
+          100,
+          10,
+          5
+        ]
+      },
+      "output": 110
+    },
+    {
+      "id": 8,
+      "input": {
+        "nums": [
+          1,
+          2,
+          1,
+          1
+        ]
+      },
+      "output": 3
+    },
+    {
+      "id": 9,
+      "input": {
+        "nums": [
+          0,
+          0,
+          0
+        ]
+      },
+      "output": 0
+    },
+    {
+      "id": 10,
+      "input": {
+        "nums": [
+          400,
+          1,
+          1,
+          400
+        ]
+      },
+      "output": 800
+    },
+    {
+      "id": 11,
+      "input": {
+        "nums": [
+          100,
+          50,
+          400,
+          200,
+          100
+        ]
+      },
+      "output": 600
+    },
+    {
+      "id": 12,
+      "input": {
+        "nums": [
+          6,
+          3,
+          10,
+          8,
+          2,
+          10,
+          3,
+          5,
+          10,
+          5,
+          3
+        ]
+      },
+      "output": 39
     }
   ]
 }

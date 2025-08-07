@@ -13,22 +13,22 @@
   "languages": {
     "python": {
       "template": "def canJump(nums):\n    ",
-      "solution_text": "Use greedy approach. Keep track of the maximum reachable index and check if we can reach the end.",
+      "solution_text": "<h3>Approach</h3><p>This problem uses a <strong>greedy algorithm</strong> to determine if we can reach the last index. The key insight is to track the farthest position we can reach at any point.</p><h3>Algorithm</h3><ul><li>Maintain <code>maxReach</code> variable to track farthest reachable position</li><li>For each position <code>i</code>:</li><ul><li>If <code>i > maxReach</code>, we can't reach position i, return false</li><li>Update <code>maxReach = max(maxReach, i + nums[i])</code></li><li>If <code>maxReach >= n-1</code>, we can reach the end</li></ul></ul><h3>Key Insight</h3><p>At each position, we can jump anywhere from 1 to <code>nums[i]</code> steps. So from position i, the farthest we can reach is <code>i + nums[i]</code>.</p><h3>Time Complexity</h3><p>O(n) - single pass through the array</p><h3>Space Complexity</h3><p>O(1) - only using constant extra space</p>",
       "solution_code": "def canJump(nums):\n    max_reach = 0\n    \n    for i in range(len(nums)):\n        if i > max_reach:\n            return False\n        \n        max_reach = max(max_reach, i + nums[i])\n        \n        if max_reach >= len(nums) - 1:\n            return True\n    \n    return True"
     },
     "javascript": {
       "template": "function canJump(nums) {\n  \n}",
-      "solution_text": "Use greedy approach. Keep track of the maximum reachable index and check if we can reach the end.",
+      "solution_text": "<h3>Approach</h3><p>This problem uses a <strong>greedy algorithm</strong> to determine if we can reach the last index. The key insight is to track the farthest position we can reach at any point.</p><h3>Algorithm</h3><ul><li>Maintain <code>maxReach</code> variable to track farthest reachable position</li><li>For each position <code>i</code>:</li><ul><li>If <code>i > maxReach</code>, we can't reach position i, return false</li><li>Update <code>maxReach = max(maxReach, i + nums[i])</code></li><li>If <code>maxReach >= n-1</code>, we can reach the end</li></ul></ul><h3>Key Insight</h3><p>At each position, we can jump anywhere from 1 to <code>nums[i]</code> steps. So from position i, the farthest we can reach is <code>i + nums[i]</code>.</p><h3>Time Complexity</h3><p>O(n) - single pass through the array</p><h3>Space Complexity</h3><p>O(1) - only using constant extra space</p>",
       "solution_code": "function canJump(nums) {\n    let maxReach = 0;\n    \n    for (let i = 0; i < nums.length; i++) {\n        if (i > maxReach) {\n            return false;\n        }\n        \n        maxReach = Math.max(maxReach, i + nums[i]);\n        \n        if (maxReach >= nums.length - 1) {\n            return true;\n        }\n    }\n    \n    return true;\n}"
     },
     "typescript": {
       "template": "function canJump(nums: number[]): boolean {\n  \n}",
-      "solution_text": "Use greedy approach. Keep track of the maximum reachable index and check if we can reach the end.",
+      "solution_text": "<h3>Approach</h3><p>This problem uses a <strong>greedy algorithm</strong> to determine if we can reach the last index. The key insight is to track the farthest position we can reach at any point.</p><h3>Algorithm</h3><ul><li>Maintain <code>maxReach</code> variable to track farthest reachable position</li><li>For each position <code>i</code>:</li><ul><li>If <code>i > maxReach</code>, we can't reach position i, return false</li><li>Update <code>maxReach = max(maxReach, i + nums[i])</code></li><li>If <code>maxReach >= n-1</code>, we can reach the end</li></ul></ul><h3>Key Insight</h3><p>At each position, we can jump anywhere from 1 to <code>nums[i]</code> steps. So from position i, the farthest we can reach is <code>i + nums[i]</code>.</p><h3>Time Complexity</h3><p>O(n) - single pass through the array</p><h3>Space Complexity</h3><p>O(1) - only using constant extra space</p>",
       "solution_code": "function canJump(nums: number[]): boolean {\n    let maxReach = 0;\n    \n    for (let i = 0; i < nums.length; i++) {\n        if (i > maxReach) {\n            return false;\n        }\n        \n        maxReach = Math.max(maxReach, i + nums[i]);\n        \n        if (maxReach >= nums.length - 1) {\n            return true;\n        }\n    }\n    \n    return true;\n}"
     },
     "java": {
       "template": "class Solution {\n    public boolean canJump(int[] nums) {\n        \n    }\n}",
-      "solution_text": "Use greedy approach. Keep track of the maximum reachable index and check if we can reach the end.",
+      "solution_text": "<h3>Approach</h3><p>This problem uses a <strong>greedy algorithm</strong> to determine if we can reach the last index. The key insight is to track the farthest position we can reach at any point.</p><h3>Algorithm</h3><ul><li>Maintain <code>maxReach</code> variable to track farthest reachable position</li><li>For each position <code>i</code>:</li><ul><li>If <code>i > maxReach</code>, we can't reach position i, return false</li><li>Update <code>maxReach = max(maxReach, i + nums[i])</code></li><li>If <code>maxReach >= n-1</code>, we can reach the end</li></ul></ul><h3>Key Insight</h3><p>At each position, we can jump anywhere from 1 to <code>nums[i]</code> steps. So from position i, the farthest we can reach is <code>i + nums[i]</code>.</p><h3>Time Complexity</h3><p>O(n) - single pass through the array</p><h3>Space Complexity</h3><p>O(1) - only using constant extra space</p>",
       "solution_code": "class Solution {\n    public boolean canJump(int[] nums) {\n        int maxReach = 0;\n        \n        for (int i = 0; i < nums.length; i++) {\n            if (i > maxReach) {\n                return false;\n            }\n            \n            maxReach = Math.max(maxReach, i + nums[i]);\n            \n            if (maxReach >= nums.length - 1) {\n                return true;\n            }\n        }\n        \n        return true;\n    }\n}"
     }
   },
@@ -68,6 +68,113 @@
         ]
       },
       "output": true
+    },
+    {
+      "id": 4,
+      "input": {
+        "nums": [
+          1
+        ]
+      },
+      "output": true
+    },
+    {
+      "id": 5,
+      "input": {
+        "nums": [
+          1,
+          0
+        ]
+      },
+      "output": true
+    },
+    {
+      "id": 6,
+      "input": {
+        "nums": [
+          0,
+          1
+        ]
+      },
+      "output": false
+    },
+    {
+      "id": 7,
+      "input": {
+        "nums": [
+          1,
+          1,
+          1,
+          0
+        ]
+      },
+      "output": true
+    },
+    {
+      "id": 8,
+      "input": {
+        "nums": [
+          1,
+          0,
+          1,
+          0
+        ]
+      },
+      "output": false
+    },
+    {
+      "id": 9,
+      "input": {
+        "nums": [
+          2,
+          0,
+          0
+        ]
+      },
+      "output": true
+    },
+    {
+      "id": 10,
+      "input": {
+        "nums": [
+          1,
+          2,
+          3
+        ]
+      },
+      "output": true
+    },
+    {
+      "id": 11,
+      "input": {
+        "nums": [
+          5,
+          9,
+          3,
+          2,
+          1,
+          0,
+          2,
+          3,
+          3,
+          1,
+          0,
+          0
+        ]
+      },
+      "output": true
+    },
+    {
+      "id": 12,
+      "input": {
+        "nums": [
+          1,
+          1,
+          0,
+          1
+        ]
+      },
+      "output": false
     }
   ]
 }

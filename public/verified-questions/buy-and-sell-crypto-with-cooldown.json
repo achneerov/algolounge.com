@@ -13,7 +13,7 @@
     "given",
     "integer"
   ],
-  "description": "<h2>Best Time to Buy and Sell Stock with Cooldown</h2><p>Leetcode 309. Best Time to Buy And Sell Stock With Cooldown</p><p></p><p>You are given an integer array `prices` where `prices[i]` is the price of NeetCoin on the `ith` day.</p><p></p><p>You may buy and sell one NeetCoin multiple times with the following restrictions:</p><p>* After you sell your NeetCoin, you cannot buy another one on the next day (i.e., there is a cooldown period of one day).</p><p>* You may only own at most one NeetCoin at a time.</p><p></p><p>You may complete as many transactions as you like.</p><p></p><p>Return the **maximum profit** you can achieve.</p><h3>Examples:</h3><ul><li>Input: prices = [1,3,4,0,4]<br><br>Output: 6<br>Buy on day 0 (price = 1) and sell on day 1 (price = 3), profit = 3-1 = 2. Then buy on day 3 (price = 0) and sell on day 4 (price = 4), profit = 4-0 = 4. Total profit is 2 + 4 = 6.</li><li>Input: prices = [1]<br><br>Output: 0</li></ul><h3>Constraints:</h3><ul><li> `1 <= prices.length <= 5000`</li><li> `0 <= prices[i] <= 1000`</li></ul>",
+  "description": "<h2>Best Time to Buy and Sell Stock with Cooldown</h2><p>You are given an array <code>prices</code> where <code>prices[i]</code> is the price of a given stock on the <code>i-th</code> day.</p><p>Find the maximum profit you can achieve. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times) with the following restrictions:</p><ul><li>After you sell your stock, you cannot buy stock on the next day (i.e., cooldown one day).</li><li>You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).</li></ul><h3>Examples</h3><p><strong>Example 1:</strong></p><ul><li><strong>Input:</strong> prices = [1,5,3,6,4]</li><li><strong>Output:</strong> 7</li><li><strong>Explanation:</strong> Buy on day 0 (price = 1) and sell on day 1 (price = 5), profit = 4. Then buy on day 2 (price = 3) and sell on day 3 (price = 6), profit = 3. Total profit is 4 + 3 = 7.</li></ul><p><strong>Example 2:</strong></p><ul><li><strong>Input:</strong> prices = [1]</li><li><strong>Output:</strong> 0</li><li><strong>Explanation:</strong> There is only one day, so no transactions can be made.</li></ul><h3>Constraints</h3><ul><li><code>1 <= prices.length <= 5000</code></li><li><code>0 <= prices[i] <= 1000</code></li></ul>",
   "languages": {
     "python": {
       "template": "def bestTimeToBuyAndSellStockWithCooldown(prices):\n    ",
@@ -41,24 +41,86 @@
     {
       "id": 1,
       "input": {
-        "prices": [
-          1,
-          3,
-          4,
-          0,
-          4
-        ]
+        "prices": [1, 5, 3, 6, 4]
       },
-      "output": 6
+      "output": 7
     },
     {
       "id": 2,
       "input": {
-        "prices": [
-          1
-        ]
+        "prices": [1]
       },
       "output": 0
+    },
+    {
+      "id": 3,
+      "input": {
+        "prices": [2, 1, 4]
+      },
+      "output": 3
+    },
+    {
+      "id": 4,
+      "input": {
+        "prices": [1, 2, 3, 0, 2]
+      },
+      "output": 3
+    },
+    {
+      "id": 5,
+      "input": {
+        "prices": [3, 2, 6, 5, 0, 3]
+      },
+      "output": 7
+    },
+    {
+      "id": 6,
+      "input": {
+        "prices": [7, 1, 5, 3, 6, 4]
+      },
+      "output": 7
+    },
+    {
+      "id": 7,
+      "input": {
+        "prices": [1, 2, 4, 2, 5, 7, 2, 4, 9, 0]
+      },
+      "output": 13
+    },
+    {
+      "id": 8,
+      "input": {
+        "prices": [5, 4, 3, 2, 1]
+      },
+      "output": 0
+    },
+    {
+      "id": 9,
+      "input": {
+        "prices": [1, 2, 3, 4, 5]
+      },
+      "output": 4
+    },
+    {
+      "id": 10,
+      "input": {
+        "prices": [2, 6, 1, 8, 3, 7]
+      },
+      "output": 10
+    },
+    {
+      "id": 11,
+      "input": {
+        "prices": [10, 5, 20, 1, 15, 3, 12]
+      },
+      "output": 29
+    },
+    {
+      "id": 12,
+      "input": {
+        "prices": [100, 180, 260, 310, 40, 535, 695]
+      },
+      "output": 865
     }
   ]
 }

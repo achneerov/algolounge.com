@@ -17,22 +17,22 @@
   "languages": {
     "python": {
       "template": "def maxProfit(prices):\n    ",
-      "solution_text": "Use a two-pointer approach to track the minimum buy price and maximum profit. Keep track of the minimum price seen so far and calculate profit at each step.",
+      "solution_text": "<h3>Approach</h3><p>This is a classic <strong>dynamic programming</strong> problem that can be solved efficiently using a <strong>single-pass approach</strong>. The key insight is to track the minimum price seen so far and calculate the maximum profit at each step.</p><h3>Algorithm</h3><ul><li>Initialize <code>minPrice</code> to the first element and <code>maxProfit</code> to 0</li><li>Iterate through the prices array starting from the second element</li><li>For each price, calculate the potential profit: <code>currentPrice - minPrice</code></li><li>Update <code>maxProfit</code> if the current profit is greater</li><li>Update <code>minPrice</code> if the current price is lower</li></ul><h3>Time Complexity</h3><p>O(n) - single pass through the array</p><h3>Space Complexity</h3><p>O(1) - only using constant extra space</p>",
       "solution_code": "def maxProfit(prices):\n    if not prices:\n        return 0\n    \n    min_price = prices[0]\n    max_profit = 0\n    \n    for price in prices[1:]:\n        max_profit = max(max_profit, price - min_price)\n        min_price = min(min_price, price)\n    \n    return max_profit"
     },
     "javascript": {
       "template": "function maxProfit(prices) {\n  \n}",
-      "solution_text": "Use a two-pointer approach to track the minimum buy price and maximum profit. Keep track of the minimum price seen so far and calculate profit at each step.",
+      "solution_text": "<h3>Approach</h3><p>This is a classic <strong>dynamic programming</strong> problem that can be solved efficiently using a <strong>single-pass approach</strong>. The key insight is to track the minimum price seen so far and calculate the maximum profit at each step.</p><h3>Algorithm</h3><ul><li>Initialize <code>minPrice</code> to the first element and <code>maxProfit</code> to 0</li><li>Iterate through the prices array starting from the second element</li><li>For each price, calculate the potential profit: <code>currentPrice - minPrice</code></li><li>Update <code>maxProfit</code> if the current profit is greater</li><li>Update <code>minPrice</code> if the current price is lower</li></ul><h3>Time Complexity</h3><p>O(n) - single pass through the array</p><h3>Space Complexity</h3><p>O(1) - only using constant extra space</p>",
       "solution_code": "function maxProfit(prices) {\n    if (prices.length === 0) return 0;\n    \n    let minPrice = prices[0];\n    let maxProfit = 0;\n    \n    for (let i = 1; i < prices.length; i++) {\n        maxProfit = Math.max(maxProfit, prices[i] - minPrice);\n        minPrice = Math.min(minPrice, prices[i]);\n    }\n    \n    return maxProfit;\n}"
     },
     "typescript": {
       "template": "function maxProfit(prices: number[]): number {\n  \n}",
-      "solution_text": "Use a two-pointer approach to track the minimum buy price and maximum profit. Keep track of the minimum price seen so far and calculate profit at each step.",
+      "solution_text": "<h3>Approach</h3><p>This is a classic <strong>dynamic programming</strong> problem that can be solved efficiently using a <strong>single-pass approach</strong>. The key insight is to track the minimum price seen so far and calculate the maximum profit at each step.</p><h3>Algorithm</h3><ul><li>Initialize <code>minPrice</code> to the first element and <code>maxProfit</code> to 0</li><li>Iterate through the prices array starting from the second element</li><li>For each price, calculate the potential profit: <code>currentPrice - minPrice</code></li><li>Update <code>maxProfit</code> if the current profit is greater</li><li>Update <code>minPrice</code> if the current price is lower</li></ul><h3>Time Complexity</h3><p>O(n) - single pass through the array</p><h3>Space Complexity</h3><p>O(1) - only using constant extra space</p>",
       "solution_code": "function maxProfit(prices: number[]): number {\n    if (prices.length === 0) return 0;\n    \n    let minPrice = prices[0];\n    let maxProfit = 0;\n    \n    for (let i = 1; i < prices.length; i++) {\n        maxProfit = Math.max(maxProfit, prices[i] - minPrice);\n        minPrice = Math.min(minPrice, prices[i]);\n    }\n    \n    return maxProfit;\n}"
     },
     "java": {
       "template": "class Solution {\n    public int maxProfit(int[] prices) {\n        \n    }\n}",
-      "solution_text": "Use a two-pointer approach to track the minimum buy price and maximum profit. Keep track of the minimum price seen so far and calculate profit at each step.",
+      "solution_text": "<h3>Approach</h3><p>This is a classic <strong>dynamic programming</strong> problem that can be solved efficiently using a <strong>single-pass approach</strong>. The key insight is to track the minimum price seen so far and calculate the maximum profit at each step.</p><h3>Algorithm</h3><ul><li>Initialize <code>minPrice</code> to the first element and <code>maxProfit</code> to 0</li><li>Iterate through the prices array starting from the second element</li><li>For each price, calculate the potential profit: <code>currentPrice - minPrice</code></li><li>Update <code>maxProfit</code> if the current profit is greater</li><li>Update <code>minPrice</code> if the current price is lower</li></ul><h3>Time Complexity</h3><p>O(n) - single pass through the array</p><h3>Space Complexity</h3><p>O(1) - only using constant extra space</p>",
       "solution_code": "class Solution {\n    public int maxProfit(int[] prices) {\n        if (prices.length == 0) return 0;\n        \n        int minPrice = prices[0];\n        int maxProfit = 0;\n        \n        for (int i = 1; i < prices.length; i++) {\n            maxProfit = Math.max(maxProfit, prices[i] - minPrice);\n            minPrice = Math.min(minPrice, prices[i]);\n        }\n        \n        return maxProfit;\n    }\n}"
     }
   },
@@ -88,6 +88,107 @@
         ]
       },
       "output": 2
+    },
+    {
+      "id": 5,
+      "input": {
+        "prices": [
+          1
+        ]
+      },
+      "output": 0
+    },
+    {
+      "id": 6,
+      "input": {
+        "prices": [
+          3,
+          2,
+          6,
+          5,
+          0,
+          3
+        ]
+      },
+      "output": 4
+    },
+    {
+      "id": 7,
+      "input": {
+        "prices": [
+          2,
+          1,
+          2,
+          1,
+          0,
+          1,
+          2
+        ]
+      },
+      "output": 2
+    },
+    {
+      "id": 8,
+      "input": {
+        "prices": [
+          5,
+          4,
+          3,
+          2,
+          1
+        ]
+      },
+      "output": 0
+    },
+    {
+      "id": 9,
+      "input": {
+        "prices": [
+          1,
+          2
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 10,
+      "input": {
+        "prices": [
+          6,
+          1,
+          3,
+          2,
+          4,
+          7
+        ]
+      },
+      "output": 6
+    },
+    {
+      "id": 11,
+      "input": {
+        "prices": [
+          10000,
+          9999,
+          9998,
+          1,
+          2,
+          3
+        ]
+      },
+      "output": 2
+    },
+    {
+      "id": 12,
+      "input": {
+        "prices": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "output": 0
     }
   ]
 }

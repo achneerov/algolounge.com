@@ -13,7 +13,7 @@
     "also",
     "array"
   ],
-  "description": "<h2>Build a Matrix With Conditions</h2><p>Leetcode 2392. Build a Matrix With Conditions</p><p></p><p>You are given a positive integer `k`. You are also given:</p><p></p><p>- a `2D` integer array `rowConditions` of size `n` where `rowConditions[i] = [above[i], below[i]]`, and</p><p>- a `2D` integer array `colConditions` of size `m` where `colConditions[i] = [left[i], right[i]]`.</p><p></p><p>The two arrays contain integers from `1` to `k`.</p><p></p><p>You have to build a `k x k` matrix that contains each of the numbers from `1` to `k` **exactly once**. The remaining cells should have the value `0`.</p><p></p><p>The matrix should also satisfy the following conditions:</p><p></p><p>- The number `above[i]` should appear in a **row** that is strictly **above** the row at which the number `below[i]` appears for all `i` from `0` to `n - 1`.</p><p></p><p>- The number `left[i]` should appear in a **column** that is strictly **left** of the column at which the number `right[i]` appears for all `i` from `0` to `m - 1`.</p><p></p><p>Return **any** matrix that satisfies the conditions. If no answer exists, return an empty matrix.</p><h3>Examples:</h3><ul><li>Input: k = 3, rowConditions = [[2,1],[1,3]], colConditions = [[3,1],[2,3]]<br><br>Output: [[2,0,0],[0,0,1],[0,3,0]]</li><li>Input: k = 3, rowConditions = [[1,2],[2,3],[3,1],[2,3]], colConditions = [[2,1]]<br><br>Output: []</li></ul><h3>Constraints:</h3><ul><li> `2 <= k <= 400`</li><li> `1 <= rowConditions.length, colConditions.length <= 10,000`</li><li> `rowConditions[i].length == colConditions[i].length == 2`</li><li> `1 <= above[i], below[i], left[i], right[i] <= k`</li><li> `above[i] != below[i]`</li><li> `left[i] != right[i]`</li></ul>",
+  "description": "<h2>Build a Matrix With Conditions</h2><p>You are given a positive integer <code>k</code>. You are also given:</p><ul><li>A 2D integer array <code>rowConditions</code> of size <code>n</code> where <code>rowConditions[i] = [above[i], below[i]]</code></li><li>A 2D integer array <code>colConditions</code> of size <code>m</code> where <code>colConditions[i] = [left[i], right[i]]</code></li></ul><p>The two arrays contain integers from <code>1</code> to <code>k</code>.</p><p>You have to build a <code>k x k</code> matrix that contains each of the numbers from <code>1</code> to <code>k</code> exactly once. The remaining cells should have the value <code>0</code>.</p><p>The matrix should also satisfy the following conditions:</p><ul><li>The number <code>above[i]</code> should appear in a row that is strictly above the row at which the number <code>below[i]</code> appears for all <code>i</code> from <code>0</code> to <code>n - 1</code>.</li><li>The number <code>left[i]</code> should appear in a column that is strictly left of the column at which the number <code>right[i]</code> appears for all <code>i</code> from <code>0</code> to <code>m - 1</code>.</li></ul><p>Return any matrix that satisfies the conditions. If no answer exists, return an empty matrix.</p><h3>Examples</h3><p><strong>Example 1:</strong></p><ul><li><strong>Input:</strong> k = 3, rowConditions = [[1,2],[3,2]], colConditions = [[2,1],[3,2]]</li><li><strong>Output:</strong> [[3,0,0],[0,0,0],[0,2,1]]</li><li><strong>Explanation:</strong> The 3x3 matrix contains numbers 1, 2, 3 exactly once. Number 3 appears above number 2, and number 1 appears above number 2. Number 2 appears left of number 1, and number 3 appears left of number 2.</li></ul><p><strong>Example 2:</strong></p><ul><li><strong>Input:</strong> k = 3, rowConditions = [[1,2],[2,3],[3,1]], colConditions = [[2,1]]</li><li><strong>Output:</strong> []</li><li><strong>Explanation:</strong> The row conditions form a cycle: 1→2→3→1, making it impossible to satisfy all conditions.</li></ul><h3>Constraints</h3><ul><li><code>2 <= k <= 400</code></li><li><code>1 <= rowConditions.length, colConditions.length <= 10^4</code></li><li><code>rowConditions[i].length == colConditions[i].length == 2</code></li><li><code>1 <= above[i], below[i], left[i], right[i] <= k</code></li><li><code>above[i] != below[i]</code></li><li><code>left[i] != right[i]</code></li></ul>",
   "languages": {
     "python": {
       "template": "def buildAMatrixWithConditions(k, rowConditions, colConditions):\n    ",
@@ -42,19 +42,109 @@
       "id": 1,
       "input": {
         "k": 3,
-        "rowConditions": [[2, 1], [1, 3]],
-        "colConditions": [[3, 1], [2, 3]]
+        "rowConditions": [[1, 2], [3, 2]],
+        "colConditions": [[2, 1], [3, 2]]
       },
-      "output": [[2, 0, 0], [0, 0, 1], [0, 3, 0]]
+      "output": [[3, 0, 0], [0, 0, 0], [0, 2, 1]]
     },
     {
       "id": 2,
       "input": {
         "k": 3,
-        "rowConditions": [[1, 2], [2, 3], [3, 1], [2, 3]],
+        "rowConditions": [[1, 2], [2, 3], [3, 1]],
         "colConditions": [[2, 1]]
       },
       "output": []
+    },
+    {
+      "id": 3,
+      "input": {
+        "k": 2,
+        "rowConditions": [[1, 2]],
+        "colConditions": [[2, 1]]
+      },
+      "output": [[0, 1], [2, 0]]
+    },
+    {
+      "id": 4,
+      "input": {
+        "k": 4,
+        "rowConditions": [[1, 2], [3, 4]],
+        "colConditions": [[2, 3], [4, 1]]
+      },
+      "output": [[0, 0, 0, 1], [0, 2, 3, 0], [0, 0, 0, 0], [4, 0, 0, 0]]
+    },
+    {
+      "id": 5,
+      "input": {
+        "k": 2,
+        "rowConditions": [],
+        "colConditions": []
+      },
+      "output": [[1, 0], [0, 2]]
+    },
+    {
+      "id": 6,
+      "input": {
+        "k": 3,
+        "rowConditions": [[1, 3]],
+        "colConditions": [[3, 1]]
+      },
+      "output": [[0, 0, 1], [0, 0, 0], [3, 0, 0]]
+    },
+    {
+      "id": 7,
+      "input": {
+        "k": 4,
+        "rowConditions": [[1, 2], [1, 3], [1, 4]],
+        "colConditions": [[4, 3], [3, 2], [2, 1]]
+      },
+      "output": [[0, 0, 0, 1], [0, 0, 2, 0], [0, 3, 0, 0], [4, 0, 0, 0]]
+    },
+    {
+      "id": 8,
+      "input": {
+        "k": 3,
+        "rowConditions": [[2, 3], [1, 2]],
+        "colConditions": [[1, 3], [2, 1]]
+      },
+      "output": [[0, 2, 0], [1, 0, 3], [0, 0, 0]]
+    },
+    {
+      "id": 9,
+      "input": {
+        "k": 5,
+        "rowConditions": [[1, 5], [2, 4], [3, 2]],
+        "colConditions": [[5, 1], [4, 3], [1, 2]]
+      },
+      "output": [[0, 0, 0, 0, 1], [0, 0, 0, 0, 0], [0, 0, 2, 4, 0], [0, 0, 0, 0, 0], [5, 0, 0, 0, 0]]
+    },
+    {
+      "id": 10,
+      "input": {
+        "k": 2,
+        "rowConditions": [[1, 2], [2, 1]],
+        "colConditions": []
+      },
+      "output": []
+    },
+    {
+      "id": 11,
+      "input": {
+        "k": 4,
+        "rowConditions": [[4, 3], [3, 2], [2, 1]],
+        "colConditions": [[1, 2], [2, 3], [3, 4]]
+      },
+      "output": [[1, 2, 3, 4], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+    },
+    {
+      "id": 12,
+      "input": {
+        "k": 3,
+        "rowConditions": [[1, 3], [2, 1]],
+        "colConditions": [[3, 2], [1, 3]]
+      },
+      "output": [[0, 0, 0], [2, 0, 1], [0, 3, 0]]
     }
   ]
 }

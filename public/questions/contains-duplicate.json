@@ -23,7 +23,7 @@
     "java": {
       "template": "class Solution {\n    public boolean containsDuplicate(int[] nums) {\n        \n    }\n}",
       "solution_text": "The most efficient approach uses a HashSet to keep track of elements we've seen. This algorithm has O(n) time complexity and O(n) space complexity in the worst case.",
-      "solution_code": "class Solution {\n    public boolean containsDuplicate(int[] nums) {\n        // Create a set to track seen numbers\n        Set<Integer> seen = new HashSet<>();\n        \n        // Iterate through the array\n        for (int num : nums) {\n            // If we've already seen this number, return true\n            if (seen.contains(num)) {\n                return true;\n            }\n            // Add the number to our set of seen numbers\n            seen.add(num);\n        }\n        // If we get through the entire array without finding a duplicate\n        return false;\n    }\n}"
+      "solution_code": "import java.util.Set;\nimport java.util.HashSet;\n\nclass Solution {\n    public boolean containsDuplicate(int[] nums) {\n        // Create a set to track seen numbers\n        Set<Integer> seen = new HashSet<>();\n        \n        // Iterate through the array\n        for (int num : nums) {\n            // If we've already seen this number, return true\n            if (seen.contains(num)) {\n                return true;\n            }\n            // Add the number to our set of seen numbers\n            seen.add(num);\n        }\n        // If we get through the entire array without finding a duplicate\n        return false;\n    }\n}"
     }
   },
 

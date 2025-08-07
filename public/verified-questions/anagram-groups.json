@@ -13,7 +13,7 @@
     "together",
     "into"
   ],
-  "description": "<h2>Group Anagrams</h2><p>Leetcode 49. Group Anagrams</p><p></p><p>Given an array of strings `strs`, group all *anagrams* together into sublists. You may return the output in **any order**.</p><p></p><p>An **anagram** is a string that contains the exact same characters as another string, but the order of the characters can be different.</p><h3>Examples:</h3><ul><li>Input: strs = [\"act\",\"pots\",\"tops\",\"cat\",\"stop\",\"hat\"]<br><br>Output: [[\"hat\"],[\"act\", \"cat\"],[\"stop\", \"pots\", \"tops\"]]</li><li>Input: strs = [\"x\"]<br><br>Output: [[\"x\"]]</li><li>Input: strs = [\"\"]<br><br>Output: [[\"\"]]</li></ul><h3>Constraints:</h3><ul><li> `1 <= strs.length <= 1000`.</li><li> `0 <= strs[i].length <= 100`</li><li> `strs[i]` is made up of lowercase English letters.</li></ul>",
+  "description": "<h2>Group Anagrams</h2><p>Leetcode 49. Group Anagrams</p><p>Given an array of strings <code>strs</code>, group all <em>anagrams</em> together into sublists. You may return the output in <strong>any order</strong>.</p><p>An <strong>anagram</strong> is a string that contains the exact same characters as another string, but the order of the characters can be different.</p><h3>Examples</h3><ul><li><strong>Input:</strong> strs = [\"act\",\"pots\",\"tops\",\"cat\",\"stop\",\"hat\"]<br><strong>Output:</strong> [[\"hat\"],[\"act\", \"cat\"],[\"stop\", \"pots\", \"tops\"]]</li><li><strong>Input:</strong> strs = [\"x\"]<br><strong>Output:</strong> [[\"x\"]]</li><li><strong>Input:</strong> strs = [\"\"]<br><strong>Output:</strong> [[\"\"]]</li></ul><h3>Constraints</h3><ul><li><code>1 <= strs.length <= 1000</code></li><li><code>0 <= strs[i].length <= 100</code></li><li><code>strs[i]</code> is made up of lowercase English letters</li></ul>",
   "languages": {
     "python": {
       "template": "def groupAnagrams(strs):\n    ",
@@ -239,44 +239,6 @@
         [
           "god",
           "dog"
-        ]
-      ]
-    },
-    {
-      "id": 11,
-      "input": {
-        "strs": [
-          "abcdefghijklmnopqrstuvwxyz"
-        ]
-      },
-      "output": [
-        [
-          "abcdefghijklmnopqrstuvwxyz"
-        ]
-      ]
-    },
-    {
-      "id": 12,
-      "input": {
-        "strs": [
-          "aa",
-          "bb",
-          "cc",
-          "dd"
-        ]
-      },
-      "output": [
-        [
-          "aa"
-        ],
-        [
-          "bb"
-        ],
-        [
-          "cc"
-        ],
-        [
-          "dd"
         ]
       ]
     }

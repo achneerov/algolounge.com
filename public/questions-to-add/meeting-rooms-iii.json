@@ -17,23 +17,23 @@
   "languages": {
     "python": {
       "template": "def meetingRoomsIii(n, meetings):\n    ",
-      "solution_text": "Comprehensive solution for meeting-rooms-iii:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "def meetingRoomsIii(*args):\n    # Handle empty input\n    if not args:\n        return None\n    \n    # Get first argument (most common pattern)\n    first_arg = args[0]\n    \n    # Handle different input types\n    if isinstance(first_arg, list):\n        # Array/list processing\n        if not first_arg:\n            return []\n        \n        # Common array operations\n        result = []\n        for i, item in enumerate(first_arg):\n            # Process based on context\n            if isinstance(item, (int, float)):\n                result.append(item)  # Numeric processing\n            elif isinstance(item, str):\n                result.append(item)  # String processing\n            else:\n                result.append(item)  # Generic processing\n        \n        return result\n    \n    elif isinstance(first_arg, str):\n        # String processing\n        if not first_arg:\n            return \"\"\n        \n        # Common string operations\n        return first_arg  # Return processed string\n    \n    elif isinstance(first_arg, (int, float)):\n        # Numeric processing\n        return first_arg  # Return processed number\n    \n    else:\n        # Generic processing\n        return first_arg"
+      "solution_text": "<h2>Meeting Rooms III - Priority Queue Solution</h2><p>This problem requires simulating the meeting allocation process using priority queues to track available rooms and ongoing meetings.</p><h3>Algorithm:</h3><ul><li>Sort meetings by start time</li><li>Use a min-heap for available rooms (by room number)</li><li>Use a min-heap for busy rooms (by end time, then room number)</li><li>For each meeting: free up rooms that have finished, allocate to lowest numbered available room</li><li>Track meeting counts per room and return the room with most meetings</li></ul><h3>Time & Space Complexity:</h3><ul><li><strong>Time Complexity:</strong> O(M log N) where M is meetings and N is rooms</li><li><strong>Space Complexity:</strong> O(N) for priority queues</li></ul><h3>Key Insights:</h3><ul><li>Delayed meetings maintain original duration</li><li>Always choose lowest numbered available room</li><li>Priority queues efficiently manage room allocation</li></ul>",
+      "solution_code": "import heapq\n\ndef meetingRoomsIii(n, meetings):\n    if not meetings:\n        return 0\n    \n    # Sort meetings by start time\n    meetings.sort()\n    \n    # Available rooms (min-heap by room number)\n    available_rooms = list(range(n))\n    heapq.heapify(available_rooms)\n    \n    # Busy rooms (min-heap by end time, then room number)\n    busy_rooms = []\n    \n    # Count meetings per room\n    meeting_count = [0] * n\n    \n    for start, end in meetings:\n        # Free up rooms that have finished\n        while busy_rooms and busy_rooms[0][0] <= start:\n            _, room = heapq.heappop(busy_rooms)\n            heapq.heappush(available_rooms, room)\n        \n        if available_rooms:\n            # Assign to available room with lowest number\n            room = heapq.heappop(available_rooms)\n            meeting_count[room] += 1\n            heapq.heappush(busy_rooms, (end, room))\n        else:\n            # All rooms busy, delay meeting\n            earliest_end, room = heapq.heappop(busy_rooms)\n            meeting_count[room] += 1\n            # Delayed meeting keeps same duration\n            new_end = earliest_end + (end - start)\n            heapq.heappush(busy_rooms, (new_end, room))\n    \n    # Find room with maximum meetings (lowest number in case of tie)\n    max_meetings = max(meeting_count)\n    for i in range(n):\n        if meeting_count[i] == max_meetings:\n            return i\n    \n    return 0"
     },
     "javascript": {
       "template": "function meetingRoomsIii(n, meetings) {\n  \n}",
-      "solution_text": "Comprehensive solution for meeting-rooms-iii:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function meetingRoomsIii(...args) {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "solution_text": "<h2>Meeting Rooms III - Priority Queue Solution</h2><p>This problem requires simulating the meeting allocation process using priority queues to track available rooms and ongoing meetings.</p><h3>Algorithm:</h3><ul><li>Sort meetings by start time</li><li>Use a min-heap for available rooms (by room number)</li><li>Use a min-heap for busy rooms (by end time, then room number)</li><li>For each meeting: free up rooms that have finished, allocate to lowest numbered available room</li><li>Track meeting counts per room and return the room with most meetings</li></ul><h3>Time & Space Complexity:</h3><ul><li><strong>Time Complexity:</strong> O(M log N) where M is meetings and N is rooms</li><li><strong>Space Complexity:</strong> O(N) for priority queues</li></ul><h3>Key Insights:</h3><ul><li>Delayed meetings maintain original duration</li><li>Always choose lowest numbered available room</li><li>Priority queues efficiently manage room allocation</li></ul>",
+      "solution_code": "function meetingRoomsIii(n, meetings) {\n    if (!meetings || meetings.length === 0) return 0;\n    \n    // Sort meetings by start time\n    meetings.sort((a, b) => a[0] - b[0]);\n    \n    // Available rooms (min-heap by room number)\n    const availableRooms = [];\n    for (let i = 0; i < n; i++) {\n        availableRooms.push(i);\n    }\n    \n    // Busy rooms (min-heap by end time, then room number)\n    const busyRooms = [];\n    \n    // Count meetings per room\n    const meetingCount = new Array(n).fill(0);\n    \n    // Helper functions for min-heap operations\n    const heapify = (arr, cmp) => {\n        for (let i = Math.floor(arr.length / 2) - 1; i >= 0; i--) {\n            heapifyDown(arr, i, cmp);\n        }\n    };\n    \n    const heapifyDown = (arr, idx, cmp) => {\n        const left = 2 * idx + 1;\n        const right = 2 * idx + 2;\n        let smallest = idx;\n        \n        if (left < arr.length && cmp(arr[left], arr[smallest])) {\n            smallest = left;\n        }\n        if (right < arr.length && cmp(arr[right], arr[smallest])) {\n            smallest = right;\n        }\n        \n        if (smallest !== idx) {\n            [arr[idx], arr[smallest]] = [arr[smallest], arr[idx]];\n            heapifyDown(arr, smallest, cmp);\n        }\n    };\n    \n    const heapPush = (arr, val, cmp) => {\n        arr.push(val);\n        let idx = arr.length - 1;\n        while (idx > 0) {\n            const parent = Math.floor((idx - 1) / 2);\n            if (!cmp(arr[idx], arr[parent])) break;\n            [arr[idx], arr[parent]] = [arr[parent], arr[idx]];\n            idx = parent;\n        }\n    };\n    \n    const heapPop = (arr, cmp) => {\n        if (arr.length === 0) return null;\n        const result = arr[0];\n        arr[0] = arr[arr.length - 1];\n        arr.pop();\n        if (arr.length > 0) {\n            heapifyDown(arr, 0, cmp);\n        }\n        return result;\n    };\n    \n    for (const [start, end] of meetings) {\n        // Free up rooms that have finished\n        while (busyRooms.length > 0 && busyRooms[0][0] <= start) {\n            const [, room] = heapPop(busyRooms, (a, b) => a[0] < b[0] || (a[0] === b[0] && a[1] < b[1]));\n            heapPush(availableRooms, room, (a, b) => a < b);\n        }\n        \n        if (availableRooms.length > 0) {\n            // Assign to available room with lowest number\n            const room = heapPop(availableRooms, (a, b) => a < b);\n            meetingCount[room]++;\n            heapPush(busyRooms, [end, room], (a, b) => a[0] < b[0] || (a[0] === b[0] && a[1] < b[1]));\n        } else {\n            // All rooms busy, delay meeting\n            const [earliestEnd, room] = heapPop(busyRooms, (a, b) => a[0] < b[0] || (a[0] === b[0] && a[1] < b[1]));\n            meetingCount[room]++;\n            // Delayed meeting keeps same duration\n            const newEnd = earliestEnd + (end - start);\n            heapPush(busyRooms, [newEnd, room], (a, b) => a[0] < b[0] || (a[0] === b[0] && a[1] < b[1]));\n        }\n    }\n    \n    // Find room with maximum meetings (lowest number in case of tie)\n    const maxMeetings = Math.max(...meetingCount);\n    for (let i = 0; i < n; i++) {\n        if (meetingCount[i] === maxMeetings) {\n            return i;\n        }\n    }\n    \n    return 0;\n}"
     },
     "typescript": {
-      "template": "function meetingRoomsIii(n: string, meetings: number[]): number {\n  \n}",
-      "solution_text": "Comprehensive solution for meeting-rooms-iii:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function meetingRoomsIii(...args: any[]): any {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result: any[] = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "template": "function meetingRoomsIii(n: number, meetings: number[][]): number {\n  \n}",
+      "solution_text": "<h2>Meeting Rooms III - Priority Queue Solution</h2><p>This problem requires simulating the meeting allocation process using priority queues to track available rooms and ongoing meetings.</p><h3>Algorithm:</h3><ul><li>Sort meetings by start time</li><li>Use a min-heap for available rooms (by room number)</li><li>Use a min-heap for busy rooms (by end time, then room number)</li><li>For each meeting: free up rooms that have finished, allocate to lowest numbered available room</li><li>Track meeting counts per room and return the room with most meetings</li></ul><h3>Time & Space Complexity:</h3><ul><li><strong>Time Complexity:</strong> O(M log N) where M is meetings and N is rooms</li><li><strong>Space Complexity:</strong> O(N) for priority queues</li></ul><h3>Key Insights:</h3><ul><li>Delayed meetings maintain original duration</li><li>Always choose lowest numbered available room</li><li>Priority queues efficiently manage room allocation</li></ul>",
+      "solution_code": "function meetingRoomsIii(n: number, meetings: number[][]): number {\n    if (!meetings || meetings.length === 0) return 0;\n    \n    // Sort meetings by start time\n    meetings.sort((a, b) => a[0] - b[0]);\n    \n    // Available rooms (min-heap by room number)\n    const availableRooms: number[] = [];\n    for (let i = 0; i < n; i++) {\n        availableRooms.push(i);\n    }\n    \n    // Busy rooms (min-heap by end time, then room number)\n    const busyRooms: [number, number][] = [];\n    \n    // Count meetings per room\n    const meetingCount: number[] = new Array(n).fill(0);\n    \n    // Helper functions for min-heap operations\n    const heapify = <T>(arr: T[], cmp: (a: T, b: T) => boolean) => {\n        for (let i = Math.floor(arr.length / 2) - 1; i >= 0; i--) {\n            heapifyDown(arr, i, cmp);\n        }\n    };\n    \n    const heapifyDown = <T>(arr: T[], idx: number, cmp: (a: T, b: T) => boolean) => {\n        const left = 2 * idx + 1;\n        const right = 2 * idx + 2;\n        let smallest = idx;\n        \n        if (left < arr.length && cmp(arr[left], arr[smallest])) {\n            smallest = left;\n        }\n        if (right < arr.length && cmp(arr[right], arr[smallest])) {\n            smallest = right;\n        }\n        \n        if (smallest !== idx) {\n            [arr[idx], arr[smallest]] = [arr[smallest], arr[idx]];\n            heapifyDown(arr, smallest, cmp);\n        }\n    };\n    \n    const heapPush = <T>(arr: T[], val: T, cmp: (a: T, b: T) => boolean) => {\n        arr.push(val);\n        let idx = arr.length - 1;\n        while (idx > 0) {\n            const parent = Math.floor((idx - 1) / 2);\n            if (!cmp(arr[idx], arr[parent])) break;\n            [arr[idx], arr[parent]] = [arr[parent], arr[idx]];\n            idx = parent;\n        }\n    };\n    \n    const heapPop = <T>(arr: T[], cmp: (a: T, b: T) => boolean): T | null => {\n        if (arr.length === 0) return null;\n        const result = arr[0];\n        arr[0] = arr[arr.length - 1];\n        arr.pop();\n        if (arr.length > 0) {\n            heapifyDown(arr, 0, cmp);\n        }\n        return result;\n    };\n    \n    for (const [start, end] of meetings) {\n        // Free up rooms that have finished\n        while (busyRooms.length > 0 && busyRooms[0][0] <= start) {\n            const room = heapPop(busyRooms, (a, b) => a[0] < b[0] || (a[0] === b[0] && a[1] < b[1]))![1];\n            heapPush(availableRooms, room, (a, b) => a < b);\n        }\n        \n        if (availableRooms.length > 0) {\n            // Assign to available room with lowest number\n            const room = heapPop(availableRooms, (a, b) => a < b)!;\n            meetingCount[room]++;\n            heapPush(busyRooms, [end, room], (a, b) => a[0] < b[0] || (a[0] === b[0] && a[1] < b[1]));\n        } else {\n            // All rooms busy, delay meeting\n            const [earliestEnd, room] = heapPop(busyRooms, (a, b) => a[0] < b[0] || (a[0] === b[0] && a[1] < b[1]))!;\n            meetingCount[room]++;\n            // Delayed meeting keeps same duration\n            const newEnd = earliestEnd + (end - start);\n            heapPush(busyRooms, [newEnd, room], (a, b) => a[0] < b[0] || (a[0] === b[0] && a[1] < b[1]));\n        }\n    }\n    \n    // Find room with maximum meetings (lowest number in case of tie)\n    const maxMeetings = Math.max(...meetingCount);\n    for (let i = 0; i < n; i++) {\n        if (meetingCount[i] === maxMeetings) {\n            return i;\n        }\n    }\n    \n    return 0;\n}"
     },
     "java": {
-      "template": "class Solution {\n    public int meetingRoomsIii(String n, int[] meetings) {\n        \n    }\n}",
-      "solution_text": "Comprehensive solution for meeting-rooms-iii:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "class Solution {\n    public Object meetingRoomsIii(Object... args) {\n        // Handle empty input\n        if (args.length == 0) return null;\n        \n        // Get first argument (most common pattern)\n        Object firstArg = args[0];\n        \n        // Handle different input types\n        if (firstArg instanceof int[]) {\n            // Integer array processing\n            int[] arr = (int[]) firstArg;\n            if (arr.length == 0) return new int[0];\n            \n            // Common array operations\n            List<Integer> result = new ArrayList<>();\n            for (int item : arr) {\n                result.add(item); // Process each item\n            }\n            \n            return result.toArray(new Integer[0]);\n        } else if (firstArg instanceof String) {\n            // String processing\n            String str = (String) firstArg;\n            if (str.length() == 0) return \"\";\n            \n            // Common string operations\n            return str; // Return processed string\n        } else if (firstArg instanceof Integer) {\n            // Integer processing\n            return firstArg; // Return processed number\n        } else {\n            // Generic processing\n            return firstArg;\n        }\n    }\n}"
+      "template": "class Solution {\n    public int meetingRoomsIii(int n, int[][] meetings) {\n        \n    }\n}",
+      "solution_text": "<h2>Meeting Rooms III - Priority Queue Solution</h2><p>This problem requires simulating the meeting allocation process using priority queues to track available rooms and ongoing meetings.</p><h3>Algorithm:</h3><ul><li>Sort meetings by start time</li><li>Use a min-heap for available rooms (by room number)</li><li>Use a min-heap for busy rooms (by end time, then room number)</li><li>For each meeting: free up rooms that have finished, allocate to lowest numbered available room</li><li>Track meeting counts per room and return the room with most meetings</li></ul><h3>Time & Space Complexity:</h3><ul><li><strong>Time Complexity:</strong> O(M log N) where M is meetings and N is rooms</li><li><strong>Space Complexity:</strong> O(N) for priority queues</li></ul><h3>Key Insights:</h3><ul><li>Delayed meetings maintain original duration</li><li>Always choose lowest numbered available room</li><li>Priority queues efficiently manage room allocation</li></ul>",
+      "solution_code": "import java.util.*;\n\nclass Solution {\n    public int meetingRoomsIii(int n, int[][] meetings) {\n        if (meetings == null || meetings.length == 0) return 0;\n        \n        // Sort meetings by start time\n        Arrays.sort(meetings, (a, b) -> Integer.compare(a[0], b[0]));\n        \n        // Available rooms (min-heap by room number)\n        PriorityQueue<Integer> availableRooms = new PriorityQueue<>();\n        for (int i = 0; i < n; i++) {\n            availableRooms.offer(i);\n        }\n        \n        // Busy rooms (min-heap by end time, then room number)\n        PriorityQueue<int[]> busyRooms = new PriorityQueue<>((a, b) -> {\n            if (a[0] != b[0]) return Integer.compare(a[0], b[0]);\n            return Integer.compare(a[1], b[1]);\n        });\n        \n        // Count meetings per room\n        int[] meetingCount = new int[n];\n        \n        for (int[] meeting : meetings) {\n            int start = meeting[0], end = meeting[1];\n            \n            // Free up rooms that have finished\n            while (!busyRooms.isEmpty() && busyRooms.peek()[0] <= start) {\n                int room = busyRooms.poll()[1];\n                availableRooms.offer(room);\n            }\n            \n            if (!availableRooms.isEmpty()) {\n                // Assign to available room with lowest number\n                int room = availableRooms.poll();\n                meetingCount[room]++;\n                busyRooms.offer(new int[]{end, room});\n            } else {\n                // All rooms busy, delay meeting\n                int[] earliest = busyRooms.poll();\n                int earliestEnd = earliest[0], room = earliest[1];\n                meetingCount[room]++;\n                // Delayed meeting keeps same duration\n                int newEnd = earliestEnd + (end - start);\n                busyRooms.offer(new int[]{newEnd, room});\n            }\n        }\n        \n        // Find room with maximum meetings (lowest number in case of tie)\n        int maxMeetings = Arrays.stream(meetingCount).max().getAsInt();\n        for (int i = 0; i < n; i++) {\n            if (meetingCount[i] == maxMeetings) {\n                return i;\n            }\n        }\n        \n        return 0;\n    }\n}"
     }
   },
   "order_matters": false,
@@ -41,24 +41,82 @@
     {
       "id": 1,
       "input": {
-        "n": "2,",
-        "meetings": [
-          "[1",
-          10
-        ]
+        "n": 2,
+        "meetings": [[1, 10], [2, 10], [3, 10], [4, 10]]
       },
       "output": 0
     },
     {
       "id": 2,
       "input": {
-        "n": "3,",
-        "meetings": [
-          "[1",
-          20
-        ]
+        "n": 3,
+        "meetings": [[1, 20], [2, 10], [3, 5], [6, 8], [4, 9]]
       },
       "output": 1
+    },
+    {
+      "id": 3,
+      "input": {
+        "n": 1,
+        "meetings": [[1, 5], [2, 7], [3, 6]]
+      },
+      "output": 0
+    },
+    {
+      "id": 4,
+      "input": {
+        "n": 4,
+        "meetings": [[18, 19], [3, 12], [17, 19], [2, 13], [7, 10]]
+      },
+      "output": 0
+    },
+    {
+      "id": 5,
+      "input": {
+        "n": 2,
+        "meetings": [[0, 10], [1, 5], [2, 7], [3, 4]]
+      },
+      "output": 1
+    },
+    {
+      "id": 6,
+      "input": {
+        "n": 3,
+        "meetings": [[1, 5], [2, 3], [3, 4], [4, 6], [5, 7]]
+      },
+      "output": 0
+    },
+    {
+      "id": 7,
+      "input": {
+        "n": 1,
+        "meetings": [[0, 1]]
+      },
+      "output": 0
+    },
+    {
+      "id": 8,
+      "input": {
+        "n": 5,
+        "meetings": [[1, 3], [2, 4], [3, 6], [4, 7], [5, 8], [6, 10]]
+      },
+      "output": 1
+    },
+    {
+      "id": 9,
+      "input": {
+        "n": 2,
+        "meetings": [[19, 20], [14, 15], [13, 14], [11, 20]]
+      },
+      "output": 1
+    },
+    {
+      "id": 10,
+      "input": {
+        "n": 3,
+        "meetings": [[0, 10], [1, 2], [12, 14], [13, 15]]
+      },
+      "output": 0
     }
   ]
 }

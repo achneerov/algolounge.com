@@ -17,22 +17,22 @@
   "languages": {
     "python": {
       "template": "def maximumSubarray(nums):\n    ",
-      "solution_text": "Kadane's Algorithm for Maximum Subarray problem:\n\n**Algorithm:**\n1. Initialize max_sum to first element and current_sum to 0\n2. For each element, add it to current_sum\n3. Update max_sum if current_sum is greater\n4. If current_sum becomes negative, reset to 0\n\n**Time Complexity:** O(n) - single pass through array\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Dynamic programming approach\n- Negative prefixes are discarded\n- Handles all negative arrays correctly",
+      "solution_text": "<h2>Kadane's Algorithm for Maximum Subarray</h2><p>This problem can be solved efficiently using Kadane's algorithm, a classic dynamic programming approach.</p><h3>Algorithm Steps:</h3><ul><li>Initialize <code>max_sum</code> to the first element</li><li>Initialize <code>current_sum</code> to 0</li><li>For each element, take the maximum of the element itself or <code>current_sum + element</code></li><li>Update <code>max_sum</code> if <code>current_sum</code> is greater</li></ul><h3>Time & Space Complexity:</h3><ul><li><strong>Time Complexity:</strong> O(n) - single pass through array</li><li><strong>Space Complexity:</strong> O(1) - constant extra space</li></ul><h3>Key Insights:</h3><ul><li>Dynamic programming approach that builds optimal solution incrementally</li><li>Negative prefixes are discarded as they don't contribute to maximum sum</li><li>Handles arrays with all negative numbers correctly</li></ul>",
       "solution_code": "def maximumSubarray(nums):\n    if not nums:\n        return 0\n    \n    max_sum = nums[0]\n    current_sum = 0\n    \n    for num in nums:\n        current_sum = max(num, current_sum + num)\n        max_sum = max(max_sum, current_sum)\n    \n    return max_sum"
     },
     "javascript": {
       "template": "function maximumSubarray(nums) {\n  \n}",
-      "solution_text": "Kadane's Algorithm for Maximum Subarray problem:\n\n**Algorithm:**\n1. Initialize max_sum to first element and current_sum to 0\n2. For each element, add it to current_sum\n3. Update max_sum if current_sum is greater\n4. If current_sum becomes negative, reset to 0\n\n**Time Complexity:** O(n) - single pass through array\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Dynamic programming approach\n- Negative prefixes are discarded\n- Handles all negative arrays correctly",
+      "solution_text": "<h2>Kadane's Algorithm for Maximum Subarray</h2><p>This problem can be solved efficiently using Kadane's algorithm, a classic dynamic programming approach.</p><h3>Algorithm Steps:</h3><ul><li>Initialize <code>max_sum</code> to the first element</li><li>Initialize <code>current_sum</code> to 0</li><li>For each element, take the maximum of the element itself or <code>current_sum + element</code></li><li>Update <code>max_sum</code> if <code>current_sum</code> is greater</li></ul><h3>Time & Space Complexity:</h3><ul><li><strong>Time Complexity:</strong> O(n) - single pass through array</li><li><strong>Space Complexity:</strong> O(1) - constant extra space</li></ul><h3>Key Insights:</h3><ul><li>Dynamic programming approach that builds optimal solution incrementally</li><li>Negative prefixes are discarded as they don't contribute to maximum sum</li><li>Handles arrays with all negative numbers correctly</li></ul>",
       "solution_code": "function maximumSubarray(nums) {\n    if (!nums || nums.length === 0) return 0;\n    \n    let maxSum = nums[0];\n    let currentSum = 0;\n    \n    for (const num of nums) {\n        currentSum = Math.max(num, currentSum + num);\n        maxSum = Math.max(maxSum, currentSum);\n    }\n    \n    return maxSum;\n}"
     },
     "typescript": {
       "template": "function maximumSubarray(nums: number[]): number {\n  \n}",
-      "solution_text": "Kadane's Algorithm for Maximum Subarray problem:\n\n**Algorithm:**\n1. Initialize max_sum to first element and current_sum to 0\n2. For each element, add it to current_sum\n3. Update max_sum if current_sum is greater\n4. If current_sum becomes negative, reset to 0\n\n**Time Complexity:** O(n) - single pass through array\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Dynamic programming approach\n- Negative prefixes are discarded\n- Handles all negative arrays correctly",
+      "solution_text": "<h2>Kadane's Algorithm for Maximum Subarray</h2><p>This problem can be solved efficiently using Kadane's algorithm, a classic dynamic programming approach.</p><h3>Algorithm Steps:</h3><ul><li>Initialize <code>max_sum</code> to the first element</li><li>Initialize <code>current_sum</code> to 0</li><li>For each element, take the maximum of the element itself or <code>current_sum + element</code></li><li>Update <code>max_sum</code> if <code>current_sum</code> is greater</li></ul><h3>Time & Space Complexity:</h3><ul><li><strong>Time Complexity:</strong> O(n) - single pass through array</li><li><strong>Space Complexity:</strong> O(1) - constant extra space</li></ul><h3>Key Insights:</h3><ul><li>Dynamic programming approach that builds optimal solution incrementally</li><li>Negative prefixes are discarded as they don't contribute to maximum sum</li><li>Handles arrays with all negative numbers correctly</li></ul>",
       "solution_code": "function maximumSubarray(nums: number[]): number {\n    if (!nums || nums.length === 0) return 0;\n    \n    let maxSum = nums[0];\n    let currentSum = 0;\n    \n    for (const num of nums) {\n        currentSum = Math.max(num, currentSum + num);\n        maxSum = Math.max(maxSum, currentSum);\n    }\n    \n    return maxSum;\n}"
     },
     "java": {
       "template": "class Solution {\n    public int maximumSubarray(int[] nums) {\n        \n    }\n}",
-      "solution_text": "Kadane's Algorithm for Maximum Subarray problem:\n\n**Algorithm:**\n1. Initialize max_sum to first element and current_sum to 0\n2. For each element, add it to current_sum\n3. Update max_sum if current_sum is greater\n4. If current_sum becomes negative, reset to 0\n\n**Time Complexity:** O(n) - single pass through array\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Dynamic programming approach\n- Negative prefixes are discarded\n- Handles all negative arrays correctly",
+      "solution_text": "<h2>Kadane's Algorithm for Maximum Subarray</h2><p>This problem can be solved efficiently using Kadane's algorithm, a classic dynamic programming approach.</p><h3>Algorithm Steps:</h3><ul><li>Initialize <code>max_sum</code> to the first element</li><li>Initialize <code>current_sum</code> to 0</li><li>For each element, take the maximum of the element itself or <code>current_sum + element</code></li><li>Update <code>max_sum</code> if <code>current_sum</code> is greater</li></ul><h3>Time & Space Complexity:</h3><ul><li><strong>Time Complexity:</strong> O(n) - single pass through array</li><li><strong>Space Complexity:</strong> O(1) - constant extra space</li></ul><h3>Key Insights:</h3><ul><li>Dynamic programming approach that builds optimal solution incrementally</li><li>Negative prefixes are discarded as they don't contribute to maximum sum</li><li>Handles arrays with all negative numbers correctly</li></ul>",
       "solution_code": "class Solution {\n    public int maximumSubarray(int[] nums) {\n        if (nums == null || nums.length == 0) return 0;\n        \n        int maxSum = nums[0];\n        int currentSum = 0;\n        \n        for (int num : nums) {\n            currentSum = Math.max(num, currentSum + num);\n            maxSum = Math.max(maxSum, currentSum);\n        }\n        \n        return maxSum;\n    }\n}"
     }
   },
@@ -41,27 +41,72 @@
     {
       "id": 1,
       "input": {
-        "nums": [
-          2,
-          -3,
-          4,
-          -2,
-          2,
-          1,
-          -1,
-          4
-        ]
+        "nums": [2, -3, 4, -2, 2, 1, -1, 4]
       },
       "output": 8
     },
     {
       "id": 2,
       "input": {
-        "nums": [
-          -1
-        ]
+        "nums": [-1]
       },
       "output": -1
+    },
+    {
+      "id": 3,
+      "input": {
+        "nums": [1, 2, 3, 4, 5]
+      },
+      "output": 15
+    },
+    {
+      "id": 4,
+      "input": {
+        "nums": [-2, -3, -1, -5]
+      },
+      "output": -1
+    },
+    {
+      "id": 5,
+      "input": {
+        "nums": [5]
+      },
+      "output": 5
+    },
+    {
+      "id": 6,
+      "input": {
+        "nums": [-5, 4, -1, 7, -8]
+      },
+      "output": 10
+    },
+    {
+      "id": 7,
+      "input": {
+        "nums": [1, -3, 2, 1, -1]
+      },
+      "output": 3
+    },
+    {
+      "id": 8,
+      "input": {
+        "nums": [-1, 0, -2]
+      },
+      "output": 0
+    },
+    {
+      "id": 9,
+      "input": {
+        "nums": [0, -1, 2, -3, 4]
+      },
+      "output": 4
+    },
+    {
+      "id": 10,
+      "input": {
+        "nums": [5, 4, -1, 7, 8]
+      },
+      "output": 23
     }
   ]
 }

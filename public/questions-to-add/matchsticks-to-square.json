@@ -6,34 +6,32 @@
     "square",
     "leetcode",
     "473",
-    "given",
-    "integer",
-    "array",
-    "where",
-    "length",
-    "ith"
+    "backtracking",
+    "dfs",
+    "recursion",
+    "partition"
   ],
-  "description": "<h2>Matchsticks to Square</h2><p>Leetcode 473. Matchsticks to Square</p><p></p><p>You are given an integer array `matchsticks` where `matchsticks[i]` is the length of the `ith` matchstick. You need to use all the matchsticks to make one square. You should **not break** any stick, but you can link them up, and each matchstick must be used exactly one time.</p><p></p><p>Return `true` if you can make this square and `false` otherwise.</p><h3>Examples:</h3><ul><li>Input: matchsticks = [1,3,4,2,2,4]<br><br>Output: true</li><li>Input: matchsticks = [1,5,6,3]<br><br>Output: false</li></ul><h3>Constraints:</h3><ul><li> `1 <= matchsticks.length <= 15`.</li><li> `1 <= matchsticks[i] <= 100,000,000`</li></ul>",
+  "description": "<h2>Matchsticks to Square</h2><p>Leetcode 473. Matchsticks to Square</p><p>You are given an integer array <code>matchsticks</code> where <code>matchsticks[i]</code> is the length of the <code>ith</code> matchstick. You need to use all the matchsticks to make one square. You should <strong>not break</strong> any stick, but you can link them up, and each matchstick must be used exactly one time.</p><p>Return <code>true</code> if you can make this square and <code>false</code> otherwise.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> matchsticks = [1,3,4,2,2,4]<br><strong>Output:</strong> true<br><strong>Explanation:</strong> You can form a square with side length 4.</li><li><strong>Input:</strong> matchsticks = [1,5,6,3]<br><strong>Output:</strong> false<br><strong>Explanation:</strong> You cannot form a square with these matchsticks.</li></ul><h3>Constraints:</h3><ul><li><code>1 <= matchsticks.length <= 15</code></li><li><code>1 <= matchsticks[i] <= 100,000,000</code></li></ul>",
   "languages": {
     "python": {
       "template": "def matchsticksToSquare(matchsticks):\n    ",
-      "solution_text": "Comprehensive solution for matchsticks-to-square:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "def matchsticksToSquare(*args):\n    # Handle empty input\n    if not args:\n        return None\n    \n    # Get first argument (most common pattern)\n    first_arg = args[0]\n    \n    # Handle different input types\n    if isinstance(first_arg, list):\n        # Array/list processing\n        if not first_arg:\n            return []\n        \n        # Common array operations\n        result = []\n        for i, item in enumerate(first_arg):\n            # Process based on context\n            if isinstance(item, (int, float)):\n                result.append(item)  # Numeric processing\n            elif isinstance(item, str):\n                result.append(item)  # String processing\n            else:\n                result.append(item)  # Generic processing\n        \n        return result\n    \n    elif isinstance(first_arg, str):\n        # String processing\n        if not first_arg:\n            return \"\"\n        \n        # Common string operations\n        return first_arg  # Return processed string\n    \n    elif isinstance(first_arg, (int, float)):\n        # Numeric processing\n        return first_arg  # Return processed number\n    \n    else:\n        # Generic processing\n        return first_arg"
+      "solution_text": "<h3>Backtracking Solution for Matchsticks to Square</h3><p>Use backtracking to try placing each matchstick into one of four sides of the square.</p><h4>Algorithm:</h4><ol><li>Calculate required side length (sum / 4)</li><li>Sort matchsticks in descending order for pruning</li><li>Use backtracking to assign each matchstick to a side</li><li>Prune when any side exceeds target length</li></ol><h4>Time Complexity:</h4><p>O(4^n) in worst case, but pruning significantly reduces search space</p><h4>Space Complexity:</h4><p>O(n) for recursion stack</p><h4>Key Insights:</h4><ul><li>Early termination when sum is not divisible by 4</li><li>Sorting helps with pruning larger matchsticks first</li><li>Track current length of each of the 4 sides</li></ul>",
+      "solution_code": "def matchsticksToSquare(matchsticks):\n    if not matchsticks:\n        return False\n    \n    total = sum(matchsticks)\n    if total % 4 != 0:\n        return False\n    \n    side_length = total // 4\n    # Sort in descending order for better pruning\n    matchsticks.sort(reverse=True)\n    \n    # If any matchstick is longer than side, impossible\n    if matchsticks[0] > side_length:\n        return False\n    \n    # Track current length of each side\n    sides = [0, 0, 0, 0]\n    \n    def backtrack(index):\n        if index == len(matchsticks):\n            return all(side == side_length for side in sides)\n        \n        for i in range(4):\n            if sides[i] + matchsticks[index] <= side_length:\n                sides[i] += matchsticks[index]\n                if backtrack(index + 1):\n                    return True\n                sides[i] -= matchsticks[index]\n                \n                # Optimization: if current side is empty, no point trying other empty sides\n                if sides[i] == 0:\n                    break\n        \n        return False\n    \n    return backtrack(0)"
     },
     "javascript": {
       "template": "function matchsticksToSquare(matchsticks) {\n  \n}",
-      "solution_text": "Comprehensive solution for matchsticks-to-square:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function matchsticksToSquare(...args) {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "solution_text": "<h3>Backtracking Solution for Matchsticks to Square</h3><p>Use backtracking to try placing each matchstick into one of four sides of the square.</p><h4>Algorithm:</h4><ol><li>Calculate required side length (sum / 4)</li><li>Sort matchsticks in descending order for pruning</li><li>Use backtracking to assign each matchstick to a side</li><li>Prune when any side exceeds target length</li></ol><h4>Time Complexity:</h4><p>O(4^n) in worst case, but pruning significantly reduces search space</p><h4>Space Complexity:</h4><p>O(n) for recursion stack</p><h4>Key Insights:</h4><ul><li>Early termination when sum is not divisible by 4</li><li>Sorting helps with pruning larger matchsticks first</li><li>Track current length of each of the 4 sides</li></ul>",
+      "solution_code": "function matchsticksToSquare(matchsticks) {\n    if (!matchsticks || matchsticks.length === 0) {\n        return false;\n    }\n    \n    const total = matchsticks.reduce((sum, stick) => sum + stick, 0);\n    if (total % 4 !== 0) {\n        return false;\n    }\n    \n    const sideLength = total / 4;\n    // Sort in descending order for better pruning\n    matchsticks.sort((a, b) => b - a);\n    \n    // If any matchstick is longer than side, impossible\n    if (matchsticks[0] > sideLength) {\n        return false;\n    }\n    \n    // Track current length of each side\n    const sides = [0, 0, 0, 0];\n    \n    function backtrack(index) {\n        if (index === matchsticks.length) {\n            return sides.every(side => side === sideLength);\n        }\n        \n        for (let i = 0; i < 4; i++) {\n            if (sides[i] + matchsticks[index] <= sideLength) {\n                sides[i] += matchsticks[index];\n                if (backtrack(index + 1)) {\n                    return true;\n                }\n                sides[i] -= matchsticks[index];\n                \n                // Optimization: if current side is empty, no point trying other empty sides\n                if (sides[i] === 0) {\n                    break;\n                }\n            }\n        }\n        \n        return false;\n    }\n    \n    return backtrack(0);\n}"
     },
     "typescript": {
-      "template": "function matchsticksToSquare(matchsticks: number[]): string {\n  \n}",
-      "solution_text": "Comprehensive solution for matchsticks-to-square:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "function matchsticksToSquare(...args: any[]): any {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result: any[] = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+      "template": "function matchsticksToSquare(matchsticks: number[]): boolean {\n  \n}",
+      "solution_text": "<h3>Backtracking Solution for Matchsticks to Square</h3><p>Use backtracking to try placing each matchstick into one of four sides of the square.</p><h4>Algorithm:</h4><ol><li>Calculate required side length (sum / 4)</li><li>Sort matchsticks in descending order for pruning</li><li>Use backtracking to assign each matchstick to a side</li><li>Prune when any side exceeds target length</li></ol><h4>Time Complexity:</h4><p>O(4^n) in worst case, but pruning significantly reduces search space</p><h4>Space Complexity:</h4><p>O(n) for recursion stack</p><h4>Key Insights:</h4><ul><li>Early termination when sum is not divisible by 4</li><li>Sorting helps with pruning larger matchsticks first</li><li>Track current length of each of the 4 sides</li></ul>",
+      "solution_code": "function matchsticksToSquare(matchsticks: number[]): boolean {\n    if (!matchsticks || matchsticks.length === 0) {\n        return false;\n    }\n    \n    const total = matchsticks.reduce((sum, stick) => sum + stick, 0);\n    if (total % 4 !== 0) {\n        return false;\n    }\n    \n    const sideLength = total / 4;\n    // Sort in descending order for better pruning\n    matchsticks.sort((a, b) => b - a);\n    \n    // If any matchstick is longer than side, impossible\n    if (matchsticks[0] > sideLength) {\n        return false;\n    }\n    \n    // Track current length of each side\n    const sides = [0, 0, 0, 0];\n    \n    function backtrack(index: number): boolean {\n        if (index === matchsticks.length) {\n            return sides.every(side => side === sideLength);\n        }\n        \n        for (let i = 0; i < 4; i++) {\n            if (sides[i] + matchsticks[index] <= sideLength) {\n                sides[i] += matchsticks[index];\n                if (backtrack(index + 1)) {\n                    return true;\n                }\n                sides[i] -= matchsticks[index];\n                \n                // Optimization: if current side is empty, no point trying other empty sides\n                if (sides[i] === 0) {\n                    break;\n                }\n            }\n        }\n        \n        return false;\n    }\n    \n    return backtrack(0);\n}"
     },
     "java": {
-      "template": "class Solution {\n    public String matchsticksToSquare(int[] matchsticks) {\n        \n    }\n}",
-      "solution_text": "Comprehensive solution for matchsticks-to-square:\n\n**Algorithm:**\nThis implements a robust solution that handles the problem requirements efficiently.\nThe approach analyzes input patterns and provides appropriate processing.\n\n**Time Complexity:** O(n) or O(n log n) - depends on the algorithm used\n**Space Complexity:** O(1) to O(n) - optimized for space when possible\n\n**Key Insights:**\n- Handles edge cases robustly\n- Uses efficient data structures\n- Optimizes for both time and space complexity",
-      "solution_code": "class Solution {\n    public Object matchsticksToSquare(Object... args) {\n        // Handle empty input\n        if (args.length == 0) return null;\n        \n        // Get first argument (most common pattern)\n        Object firstArg = args[0];\n        \n        // Handle different input types\n        if (firstArg instanceof int[]) {\n            // Integer array processing\n            int[] arr = (int[]) firstArg;\n            if (arr.length == 0) return new int[0];\n            \n            // Common array operations\n            List<Integer> result = new ArrayList<>();\n            for (int item : arr) {\n                result.add(item); // Process each item\n            }\n            \n            return result.toArray(new Integer[0]);\n        } else if (firstArg instanceof String) {\n            // String processing\n            String str = (String) firstArg;\n            if (str.length() == 0) return \"\";\n            \n            // Common string operations\n            return str; // Return processed string\n        } else if (firstArg instanceof Integer) {\n            // Integer processing\n            return firstArg; // Return processed number\n        } else {\n            // Generic processing\n            return firstArg;\n        }\n    }\n}"
+      "template": "class Solution {\n    public boolean matchsticksToSquare(int[] matchsticks) {\n        \n    }\n}",
+      "solution_text": "<h3>Backtracking Solution for Matchsticks to Square</h3><p>Use backtracking to try placing each matchstick into one of four sides of the square.</p><h4>Algorithm:</h4><ol><li>Calculate required side length (sum / 4)</li><li>Sort matchsticks in descending order for pruning</li><li>Use backtracking to assign each matchstick to a side</li><li>Prune when any side exceeds target length</li></ol><h4>Time Complexity:</h4><p>O(4^n) in worst case, but pruning significantly reduces search space</p><h4>Space Complexity:</h4><p>O(n) for recursion stack</p><h4>Key Insights:</h4><ul><li>Early termination when sum is not divisible by 4</li><li>Sorting helps with pruning larger matchsticks first</li><li>Track current length of each of the 4 sides</li></ul>",
+      "solution_code": "import java.util.Arrays;\n\nclass Solution {\n    public boolean matchsticksToSquare(int[] matchsticks) {\n        if (matchsticks == null || matchsticks.length == 0) {\n            return false;\n        }\n        \n        int total = 0;\n        for (int stick : matchsticks) {\n            total += stick;\n        }\n        \n        if (total % 4 != 0) {\n            return false;\n        }\n        \n        int sideLength = total / 4;\n        \n        // Sort in descending order for better pruning\n        Arrays.sort(matchsticks);\n        for (int i = 0; i < matchsticks.length / 2; i++) {\n            int temp = matchsticks[i];\n            matchsticks[i] = matchsticks[matchsticks.length - 1 - i];\n            matchsticks[matchsticks.length - 1 - i] = temp;\n        }\n        \n        // If any matchstick is longer than side, impossible\n        if (matchsticks[0] > sideLength) {\n            return false;\n        }\n        \n        // Track current length of each side\n        int[] sides = new int[4];\n        \n        return backtrack(matchsticks, sides, 0, sideLength);\n    }\n    \n    private boolean backtrack(int[] matchsticks, int[] sides, int index, int sideLength) {\n        if (index == matchsticks.length) {\n            return sides[0] == sideLength && sides[1] == sideLength && \n                   sides[2] == sideLength && sides[3] == sideLength;\n        }\n        \n        for (int i = 0; i < 4; i++) {\n            if (sides[i] + matchsticks[index] <= sideLength) {\n                sides[i] += matchsticks[index];\n                if (backtrack(matchsticks, sides, index + 1, sideLength)) {\n                    return true;\n                }\n                sides[i] -= matchsticks[index];\n                \n                // Optimization: if current side is empty, no point trying other empty sides\n                if (sides[i] == 0) {\n                    break;\n                }\n            }\n        }\n        \n        return false;\n    }\n}"
     }
   },
   "order_matters": false,
@@ -41,28 +39,72 @@
     {
       "id": 1,
       "input": {
-        "matchsticks": [
-          1,
-          3,
-          4,
-          2,
-          2,
-          4
-        ]
+        "matchsticks": [1,3,4,2,2,4]
       },
-      "output": "true"
+      "output": true
     },
     {
       "id": 2,
       "input": {
-        "matchsticks": [
-          1,
-          5,
-          6,
-          3
-        ]
+        "matchsticks": [1,5,6,3]
       },
-      "output": "false"
+      "output": false
+    },
+    {
+      "id": 3,
+      "input": {
+        "matchsticks": [1,1,1,1]
+      },
+      "output": true
+    },
+    {
+      "id": 4,
+      "input": {
+        "matchsticks": [3,3,3,3,4]
+      },
+      "output": false
+    },
+    {
+      "id": 5,
+      "input": {
+        "matchsticks": [1]
+      },
+      "output": false
+    },
+    {
+      "id": 6,
+      "input": {
+        "matchsticks": [5,5,5,5,4,4,4,4,3,3,3,3]
+      },
+      "output": true
+    },
+    {
+      "id": 7,
+      "input": {
+        "matchsticks": [2,2,2,2,2,6]
+      },
+      "output": false
+    },
+    {
+      "id": 8,
+      "input": {
+        "matchsticks": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+      },
+      "output": false
+    },
+    {
+      "id": 9,
+      "input": {
+        "matchsticks": [4,4,4,4]
+      },
+      "output": true
+    },
+    {
+      "id": 10,
+      "input": {
+        "matchsticks": [1,2,3,6]
+      },
+      "output": true
     }
   ]
 }

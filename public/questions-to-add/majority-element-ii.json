@@ -13,27 +13,27 @@
     "size",
     "find"
   ],
-  "description": "<h2>Majority Element II</h2><p>Leetcode 229. Majority Element II</p><p></p><p>You are given an integer array `nums` of size `n`, find all elements that appear more than `⌊ n/3 ⌋` times. You can return the result in any order.</p><h3>Examples:</h3><ul><li>Input: nums = [5,2,3,2,2,2,2,5,5,5]<br><br>Output: [2,5]</li><li>Input: nums = [4,4,4,4,4]<br><br>Output: [4]</li><li>Input: nums = [1,2,3]<br><br>Output: []</li></ul><h3>Constraints:</h3><ul><li> `1 <= nums.length <= 50,000`.</li><li> `-1,000,000,000 <= nums[i] <= 1,000,000,000`</li></ul>",
+  "description": "<h2>Majority Element II</h2><p>Leetcode 229. Majority Element II</p><p>You are given an integer array <code>nums</code> of size <code>n</code>, find all elements that appear more than <code>⌊ n/3 ⌋</code> times. You can return the result in any order.</p><h3>Examples</h3><ul><li><strong>Input:</strong> <code>nums = [3,2,3]</code><br><strong>Output:</strong> <code>[3]</code></li><li><strong>Input:</strong> <code>nums = [1]</code><br><strong>Output:</strong> <code>[1]</code></li><li><strong>Input:</strong> <code>nums = [1,2]</code><br><strong>Output:</strong> <code>[]</code></li></ul><h3>Constraints</h3><ul><li><code>1 <= nums.length <= 5 * 10^4</code></li><li><code>-10^9 <= nums[i] <= 10^9</code></li></ul>",
   "languages": {
     "python": {
       "template": "def majorityElementIi(nums):\n    ",
-      "solution_text": "Find Majority Element using Boyer-Moore Voting Algorithm:\n\n**Algorithm:**\n1. Maintain a candidate and count\n2. If count is 0, set current element as candidate\n3. Increment count if element matches candidate, decrement otherwise\n4. The majority element will remain as candidate\n\n**Time Complexity:** O(n) - single pass\n**Space Complexity:** O(1) - constant space\n\n**Key Insights:**\n- Majority element appears more than n/2 times\n- Voting algorithm elegantly finds the winner\n- No extra space needed for counting",
-      "solution_code": "def majorityElementIi(nums):\n    candidate = None\n    count = 0\n    \n    for num in nums:\n        if count == 0:\n            candidate = num\n            count = 1\n        elif num == candidate:\n            count += 1\n        else:\n            count -= 1\n    \n    return candidate"
+      "solution_text": "<h2>Boyer-Moore Voting Algorithm for Multiple Candidates</h2><p>This problem uses a generalized Boyer-Moore voting algorithm to find elements appearing more than <code>n/3</code> times.</p><h3>Algorithm</h3><ul><li>Use two candidates and two counters since at most 2 elements can appear more than <code>n/3</code> times</li><li>First pass: Find potential candidates using voting</li><li>Second pass: Verify candidates actually appear more than <code>n/3</code> times</li></ul><h3>Time Complexity</h3><p>O(n) - two passes through the array</p><h3>Space Complexity</h3><p>O(1) - constant space for candidates and counters</p><h3>Key Insights</h3><ul><li>At most 2 elements can appear more than <code>n/3</code> times</li><li>Voting algorithm finds potential candidates efficiently</li><li>Verification step is crucial to ensure candidates meet threshold</li></ul>",
+      "solution_code": "def majorityElementIi(nums):\n    if not nums:\n        return []\n    \n    # Phase 1: Find potential candidates\n    candidate1, candidate2 = None, None\n    count1, count2 = 0, 0\n    \n    for num in nums:\n        if candidate1 is not None and num == candidate1:\n            count1 += 1\n        elif candidate2 is not None and num == candidate2:\n            count2 += 1\n        elif count1 == 0:\n            candidate1 = num\n            count1 = 1\n        elif count2 == 0:\n            candidate2 = num\n            count2 = 1\n        else:\n            count1 -= 1\n            count2 -= 1\n    \n    # Phase 2: Verify candidates\n    result = []\n    threshold = len(nums) // 3\n    \n    if candidate1 is not None and nums.count(candidate1) > threshold:\n        result.append(candidate1)\n    if candidate2 is not None and nums.count(candidate2) > threshold:\n        result.append(candidate2)\n    \n    return result"
     },
     "javascript": {
       "template": "function majorityElementIi(nums) {\n  \n}",
-      "solution_text": "Find Majority Element using Boyer-Moore Voting Algorithm:\n\n**Algorithm:**\n1. Maintain a candidate and count\n2. If count is 0, set current element as candidate\n3. Increment count if element matches candidate, decrement otherwise\n4. The majority element will remain as candidate\n\n**Time Complexity:** O(n) - single pass\n**Space Complexity:** O(1) - constant space\n\n**Key Insights:**\n- Majority element appears more than n/2 times\n- Voting algorithm elegantly finds the winner\n- No extra space needed for counting",
-      "solution_code": "function majorityElementIi(nums) {\n    let candidate = null;\n    let count = 0;\n    \n    for (const num of nums) {\n        if (count === 0) {\n            candidate = num;\n            count = 1;\n        } else if (num === candidate) {\n            count++;\n        } else {\n            count--;\n        }\n    }\n    \n    return candidate;\n}"
+      "solution_text": "<h2>Boyer-Moore Voting Algorithm for Multiple Candidates</h2><p>This problem uses a generalized Boyer-Moore voting algorithm to find elements appearing more than <code>n/3</code> times.</p><h3>Algorithm</h3><ul><li>Use two candidates and two counters since at most 2 elements can appear more than <code>n/3</code> times</li><li>First pass: Find potential candidates using voting</li><li>Second pass: Verify candidates actually appear more than <code>n/3</code> times</li></ul><h3>Time Complexity</h3><p>O(n) - two passes through the array</p><h3>Space Complexity</h3><p>O(1) - constant space for candidates and counters</p><h3>Key Insights</h3><ul><li>At most 2 elements can appear more than <code>n/3</code> times</li><li>Voting algorithm finds potential candidates efficiently</li><li>Verification step is crucial to ensure candidates meet threshold</li></ul>",
+      "solution_code": "function majorityElementIi(nums) {\n    if (!nums || nums.length === 0) {\n        return [];\n    }\n    \n    // Phase 1: Find potential candidates\n    let candidate1 = null, candidate2 = null;\n    let count1 = 0, count2 = 0;\n    \n    for (const num of nums) {\n        if (candidate1 !== null && num === candidate1) {\n            count1++;\n        } else if (candidate2 !== null && num === candidate2) {\n            count2++;\n        } else if (count1 === 0) {\n            candidate1 = num;\n            count1 = 1;\n        } else if (count2 === 0) {\n            candidate2 = num;\n            count2 = 1;\n        } else {\n            count1--;\n            count2--;\n        }\n    }\n    \n    // Phase 2: Verify candidates\n    const result = [];\n    const threshold = Math.floor(nums.length / 3);\n    \n    if (candidate1 !== null && nums.filter(n => n === candidate1).length > threshold) {\n        result.push(candidate1);\n    }\n    if (candidate2 !== null && nums.filter(n => n === candidate2).length > threshold) {\n        result.push(candidate2);\n    }\n    \n    return result;\n}"
     },
     "typescript": {
       "template": "function majorityElementIi(nums: number[]): number[] {\n  \n}",
-      "solution_text": "Find Majority Element using Boyer-Moore Voting Algorithm:\n\n**Algorithm:**\n1. Maintain a candidate and count\n2. If count is 0, set current element as candidate\n3. Increment count if element matches candidate, decrement otherwise\n4. The majority element will remain as candidate\n\n**Time Complexity:** O(n) - single pass\n**Space Complexity:** O(1) - constant space\n\n**Key Insights:**\n- Majority element appears more than n/2 times\n- Voting algorithm elegantly finds the winner\n- No extra space needed for counting",
-      "solution_code": "function majorityElementIi(nums: number[]): number {\n    let candidate = 0;\n    let count = 0;\n    \n    for (const num of nums) {\n        if (count === 0) {\n            candidate = num;\n            count = 1;\n        } else if (num === candidate) {\n            count++;\n        } else {\n            count--;\n        }\n    }\n    \n    return candidate;\n}"
+      "solution_text": "<h2>Boyer-Moore Voting Algorithm for Multiple Candidates</h2><p>This problem uses a generalized Boyer-Moore voting algorithm to find elements appearing more than <code>n/3</code> times.</p><h3>Algorithm</h3><ul><li>Use two candidates and two counters since at most 2 elements can appear more than <code>n/3</code> times</li><li>First pass: Find potential candidates using voting</li><li>Second pass: Verify candidates actually appear more than <code>n/3</code> times</li></ul><h3>Time Complexity</h3><p>O(n) - two passes through the array</p><h3>Space Complexity</h3><p>O(1) - constant space for candidates and counters</p><h3>Key Insights</h3><ul><li>At most 2 elements can appear more than <code>n/3</code> times</li><li>Voting algorithm finds potential candidates efficiently</li><li>Verification step is crucial to ensure candidates meet threshold</li></ul>",
+      "solution_code": "function majorityElementIi(nums: number[]): number[] {\n    if (!nums || nums.length === 0) {\n        return [];\n    }\n    \n    // Phase 1: Find potential candidates\n    let candidate1: number | null = null, candidate2: number | null = null;\n    let count1: number = 0, count2: number = 0;\n    \n    for (const num of nums) {\n        if (candidate1 !== null && num === candidate1) {\n            count1++;\n        } else if (candidate2 !== null && num === candidate2) {\n            count2++;\n        } else if (count1 === 0) {\n            candidate1 = num;\n            count1 = 1;\n        } else if (count2 === 0) {\n            candidate2 = num;\n            count2 = 1;\n        } else {\n            count1--;\n            count2--;\n        }\n    }\n    \n    // Phase 2: Verify candidates\n    const result: number[] = [];\n    const threshold: number = Math.floor(nums.length / 3);\n    \n    if (candidate1 !== null && nums.filter(n => n === candidate1).length > threshold) {\n        result.push(candidate1);\n    }\n    if (candidate2 !== null && nums.filter(n => n === candidate2).length > threshold) {\n        result.push(candidate2);\n    }\n    \n    return result;\n}"
     },
     "java": {
       "template": "class Solution {\n    public List<Integer> majorityElementIi(int[] nums) {\n        \n    }\n}",
-      "solution_text": "Find Majority Element using Boyer-Moore Voting Algorithm:\n\n**Algorithm:**\n1. Maintain a candidate and count\n2. If count is 0, set current element as candidate\n3. Increment count if element matches candidate, decrement otherwise\n4. The majority element will remain as candidate\n\n**Time Complexity:** O(n) - single pass\n**Space Complexity:** O(1) - constant space\n\n**Key Insights:**\n- Majority element appears more than n/2 times\n- Voting algorithm elegantly finds the winner\n- No extra space needed for counting",
-      "solution_code": "class Solution {\n    public int majorityElementIi(int[] nums) {\n        int candidate = 0;\n        int count = 0;\n        \n        for (int num : nums) {\n            if (count == 0) {\n                candidate = num;\n                count = 1;\n            } else if (num == candidate) {\n                count++;\n            } else {\n                count--;\n            }\n        }\n        \n        return candidate;\n    }\n}"
+      "solution_text": "<h2>Boyer-Moore Voting Algorithm for Multiple Candidates</h2><p>This problem uses a generalized Boyer-Moore voting algorithm to find elements appearing more than <code>n/3</code> times.</p><h3>Algorithm</h3><ul><li>Use two candidates and two counters since at most 2 elements can appear more than <code>n/3</code> times</li><li>First pass: Find potential candidates using voting</li><li>Second pass: Verify candidates actually appear more than <code>n/3</code> times</li></ul><h3>Time Complexity</h3><p>O(n) - two passes through the array</p><h3>Space Complexity</h3><p>O(1) - constant space for candidates and counters</p><h3>Key Insights</h3><ul><li>At most 2 elements can appear more than <code>n/3</code> times</li><li>Voting algorithm finds potential candidates efficiently</li><li>Verification step is crucial to ensure candidates meet threshold</li></ul>",
+      "solution_code": "import java.util.*;\n\nclass Solution {\n    public List<Integer> majorityElementIi(int[] nums) {\n        if (nums == null || nums.length == 0) {\n            return new ArrayList<>();\n        }\n        \n        // Phase 1: Find potential candidates\n        Integer candidate1 = null, candidate2 = null;\n        int count1 = 0, count2 = 0;\n        \n        for (int num : nums) {\n            if (candidate1 != null && num == candidate1) {\n                count1++;\n            } else if (candidate2 != null && num == candidate2) {\n                count2++;\n            } else if (count1 == 0) {\n                candidate1 = num;\n                count1 = 1;\n            } else if (count2 == 0) {\n                candidate2 = num;\n                count2 = 1;\n            } else {\n                count1--;\n                count2--;\n            }\n        }\n        \n        // Phase 2: Verify candidates\n        List<Integer> result = new ArrayList<>();\n        int threshold = nums.length / 3;\n        \n        if (candidate1 != null && countOccurrences(nums, candidate1) > threshold) {\n            result.add(candidate1);\n        }\n        if (candidate2 != null && countOccurrences(nums, candidate2) > threshold) {\n            result.add(candidate2);\n        }\n        \n        return result;\n    }\n    \n    private int countOccurrences(int[] nums, int target) {\n        int count = 0;\n        for (int num : nums) {\n            if (num == target) {\n                count++;\n            }\n        }\n        return count;\n    }\n}"
     }
   },
   "order_matters": false,
@@ -41,49 +41,86 @@
     {
       "id": 1,
       "input": {
-        "nums": [
-          5,
-          2,
-          3,
-          2,
-          2,
-          2,
-          2,
-          5,
-          5,
-          5
-        ]
+        "nums": [3, 2, 3]
       },
-      "output": [
-        2,
-        5
-      ]
+      "output": [3]
     },
     {
       "id": 2,
       "input": {
-        "nums": [
-          4,
-          4,
-          4,
-          4,
-          4
-        ]
+        "nums": [1]
       },
-      "output": [
-        4
-      ]
+      "output": [1]
     },
     {
       "id": 3,
       "input": {
-        "nums": [
-          1,
-          2,
-          3
-        ]
+        "nums": [1, 2]
       },
       "output": []
+    },
+    {
+      "id": 4,
+      "input": {
+        "nums": [1, 1, 1, 3, 3, 2, 2, 2]
+      },
+      "output": [1, 2]
+    },
+    {
+      "id": 5,
+      "input": {
+        "nums": [1, 2, 3, 1, 2, 3, 1, 2, 3]
+      },
+      "output": [1, 2, 3]
+    },
+    {
+      "id": 6,
+      "input": {
+        "nums": [2, 2]
+      },
+      "output": [2]
+    },
+    {
+      "id": 7,
+      "input": {
+        "nums": [1, 1, 1, 2, 2, 2]
+      },
+      "output": [1, 2]
+    },
+    {
+      "id": 8,
+      "input": {
+        "nums": [4, 4, 4, 1, 1, 2, 2, 3, 3]
+      },
+      "output": [4]
+    },
+    {
+      "id": 9,
+      "input": {
+        "nums": [0, 0, 0]
+      },
+      "output": [0]
+    },
+    {
+      "id": 10,
+      "input": {
+        "nums": [1, 2, 3, 4, 5, 6]
+      },
+      "output": []
+    },
+    {
+      "id": 11,
+      "input": {
+        "nums": [-1, -1, -1, 0, 0, 1]
+      },
+      "output": [-1]
+    },
+    {
+      "id": 12,
+      "input": {
+        "nums": [7, 7, 5, 7, 5, 1, 5, 7]
+      },
+      "output": [5, 7]
     }
   ]
 }

@@ -17,23 +17,23 @@
   "languages": {
     "python": {
       "template": "def mergeIntervals(intervals):\n    ",
-      "solution_text": "Merge algorithm using two pointers:\n\n**Algorithm:**\n1. Use two pointers for both input arrays\n2. Compare elements and add smaller to result\n3. Continue until one array is exhausted\n4. Append remaining elements from other array\n\n**Time Complexity:** O(m + n) - visit each element once\n**Space Complexity:** O(m + n) - result array size\n\n**Key Insights:**\n- Two pointers technique for sorted arrays\n- Handle arrays of different lengths\n- Maintains sorted order in result",
-      "solution_code": "def mergeIntervals(arr1, arr2):\n    if not arr1:\n        return arr2\n    if not arr2:\n        return arr1\n    \n    result = []\n    i, j = 0, 0\n    \n    # Merge while both arrays have elements\n    while i < len(arr1) and j < len(arr2):\n        if arr1[i] <= arr2[j]:\n            result.append(arr1[i])\n            i += 1\n        else:\n            result.append(arr2[j])\n            j += 1\n    \n    # Add remaining elements\n    result.extend(arr1[i:])\n    result.extend(arr2[j:])\n    \n    return result"
+      "solution_text": "<h2>Solution: Sort and Merge Overlapping Intervals</h2>\n\n<h3>Algorithm:</h3>\n<ul>\n<li>Sort intervals by start time</li>\n<li>Iterate through sorted intervals</li>\n<li>If current interval overlaps with the last merged interval, merge them</li>\n<li>Otherwise, add current interval to result</li>\n</ul>\n\n<h3>Time Complexity:</h3>\n<p>O(n log n) - dominated by sorting step</p>\n\n<h3>Space Complexity:</h3>\n<p>O(n) - result array in worst case</p>\n\n<h3>Key Insights:</h3>\n<ul>\n<li>Two intervals [a,b] and [c,d] overlap if b >= c</li>\n<li>Sorting enables linear scan for merging</li>\n<li>Merged interval: [min(start1,start2), max(end1,end2)]</li>\n</ul>",
+      "solution_code": "def mergeIntervals(intervals):\n    if not intervals:\n        return []\n    \n    # Sort intervals by start time\n    intervals.sort(key=lambda x: x[0])\n    \n    merged = [intervals[0]]\n    \n    for current in intervals[1:]:\n        last_merged = merged[-1]\n        \n        # Check if current interval overlaps with the last merged interval\n        if current[0] <= last_merged[1]:\n            # Merge intervals by extending the end time\n            merged[-1] = [last_merged[0], max(last_merged[1], current[1])]\n        else:\n            # No overlap, add current interval to result\n            merged.append(current)\n    \n    return merged"
     },
     "javascript": {
       "template": "function mergeIntervals(intervals) {\n  \n}",
-      "solution_text": "Merge algorithm using two pointers:\n\n**Algorithm:**\n1. Use two pointers for both input arrays\n2. Compare elements and add smaller to result\n3. Continue until one array is exhausted\n4. Append remaining elements from other array\n\n**Time Complexity:** O(m + n) - visit each element once\n**Space Complexity:** O(m + n) - result array size\n\n**Key Insights:**\n- Two pointers technique for sorted arrays\n- Handle arrays of different lengths\n- Maintains sorted order in result",
-      "solution_code": "function mergeIntervals(arr1, arr2) {\n    if (!arr1) return arr2;\n    if (!arr2) return arr1;\n    \n    const result = [];\n    let i = 0, j = 0;\n    \n    // Merge while both arrays have elements\n    while (i < arr1.length && j < arr2.length) {\n        if (arr1[i] <= arr2[j]) {\n            result.push(arr1[i]);\n            i++;\n        } else {\n            result.push(arr2[j]);\n            j++;\n        }\n    }\n    \n    // Add remaining elements\n    while (i < arr1.length) {\n        result.push(arr1[i]);\n        i++;\n    }\n    while (j < arr2.length) {\n        result.push(arr2[j]);\n        j++;\n    }\n    \n    return result;\n}"
+      "solution_text": "<h2>Solution: Sort and Merge Overlapping Intervals</h2>\n\n<h3>Algorithm:</h3>\n<ul>\n<li>Sort intervals by start time</li>\n<li>Iterate through sorted intervals</li>\n<li>If current interval overlaps with the last merged interval, merge them</li>\n<li>Otherwise, add current interval to result</li>\n</ul>\n\n<h3>Time Complexity:</h3>\n<p>O(n log n) - dominated by sorting step</p>\n\n<h3>Space Complexity:</h3>\n<p>O(n) - result array in worst case</p>\n\n<h3>Key Insights:</h3>\n<ul>\n<li>Two intervals [a,b] and [c,d] overlap if b >= c</li>\n<li>Sorting enables linear scan for merging</li>\n<li>Merged interval: [min(start1,start2), max(end1,end2)]</li>\n</ul>",
+      "solution_code": "function mergeIntervals(intervals) {\n    if (!intervals || intervals.length === 0) {\n        return [];\n    }\n    \n    // Sort intervals by start time\n    intervals.sort((a, b) => a[0] - b[0]);\n    \n    const merged = [intervals[0]];\n    \n    for (let i = 1; i < intervals.length; i++) {\n        const current = intervals[i];\n        const lastMerged = merged[merged.length - 1];\n        \n        // Check if current interval overlaps with the last merged interval\n        if (current[0] <= lastMerged[1]) {\n            // Merge intervals by extending the end time\n            merged[merged.length - 1] = [lastMerged[0], Math.max(lastMerged[1], current[1])];\n        } else {\n            // No overlap, add current interval to result\n            merged.push(current);\n        }\n    }\n    \n    return merged;\n}"
     },
     "typescript": {
-      "template": "function mergeIntervals(intervals: number[]): number[] {\n  \n}",
-      "solution_text": "Merge algorithm using two pointers:\n\n**Algorithm:**\n1. Use two pointers for both input arrays\n2. Compare elements and add smaller to result\n3. Continue until one array is exhausted\n4. Append remaining elements from other array\n\n**Time Complexity:** O(m + n) - visit each element once\n**Space Complexity:** O(m + n) - result array size\n\n**Key Insights:**\n- Two pointers technique for sorted arrays\n- Handle arrays of different lengths\n- Maintains sorted order in result",
-      "solution_code": "function mergeIntervals(arr1: number[], arr2: number[]): number[] {\n    if (!arr1) return arr2;\n    if (!arr2) return arr1;\n    \n    const result: number[] = [];\n    let i = 0, j = 0;\n    \n    // Merge while both arrays have elements\n    while (i < arr1.length && j < arr2.length) {\n        if (arr1[i] <= arr2[j]) {\n            result.push(arr1[i]);\n            i++;\n        } else {\n            result.push(arr2[j]);\n            j++;\n        }\n    }\n    \n    // Add remaining elements\n    while (i < arr1.length) {\n        result.push(arr1[i]);\n        i++;\n    }\n    while (j < arr2.length) {\n        result.push(arr2[j]);\n        j++;\n    }\n    \n    return result;\n}"
+      "template": "function mergeIntervals(intervals: number[][]): number[][] {\n  \n}",
+      "solution_text": "<h2>Solution: Sort and Merge Overlapping Intervals</h2>\n\n<h3>Algorithm:</h3>\n<ul>\n<li>Sort intervals by start time</li>\n<li>Iterate through sorted intervals</li>\n<li>If current interval overlaps with the last merged interval, merge them</li>\n<li>Otherwise, add current interval to result</li>\n</ul>\n\n<h3>Time Complexity:</h3>\n<p>O(n log n) - dominated by sorting step</p>\n\n<h3>Space Complexity:</h3>\n<p>O(n) - result array in worst case</p>\n\n<h3>Key Insights:</h3>\n<ul>\n<li>Two intervals [a,b] and [c,d] overlap if b >= c</li>\n<li>Sorting enables linear scan for merging</li>\n<li>Merged interval: [min(start1,start2), max(end1,end2)]</li>\n</ul>",
+      "solution_code": "function mergeIntervals(intervals: number[][]): number[][] {\n    if (!intervals || intervals.length === 0) {\n        return [];\n    }\n    \n    // Sort intervals by start time\n    intervals.sort((a, b) => a[0] - b[0]);\n    \n    const merged: number[][] = [intervals[0]];\n    \n    for (let i = 1; i < intervals.length; i++) {\n        const current = intervals[i];\n        const lastMerged = merged[merged.length - 1];\n        \n        // Check if current interval overlaps with the last merged interval\n        if (current[0] <= lastMerged[1]) {\n            // Merge intervals by extending the end time\n            merged[merged.length - 1] = [lastMerged[0], Math.max(lastMerged[1], current[1])];\n        } else {\n            // No overlap, add current interval to result\n            merged.push(current);\n        }\n    }\n    \n    return merged;\n}"
     },
     "java": {
-      "template": "class Solution {\n    public int[] mergeIntervals(int[] intervals) {\n        \n    }\n}",
-      "solution_text": "Merge algorithm using two pointers:\n\n**Algorithm:**\n1. Use two pointers for both input arrays\n2. Compare elements and add smaller to result\n3. Continue until one array is exhausted\n4. Append remaining elements from other array\n\n**Time Complexity:** O(m + n) - visit each element once\n**Space Complexity:** O(m + n) - result array size\n\n**Key Insights:**\n- Two pointers technique for sorted arrays\n- Handle arrays of different lengths\n- Maintains sorted order in result",
-      "solution_code": "class Solution {\n    public int[] mergeIntervals(int[] arr1, int[] arr2) {\n        if (arr1 == null || arr1.length == 0) return arr2;\n        if (arr2 == null || arr2.length == 0) return arr1;\n        \n        int[] result = new int[arr1.length + arr2.length];\n        int i = 0, j = 0, k = 0;\n        \n        // Merge while both arrays have elements\n        while (i < arr1.length && j < arr2.length) {\n            if (arr1[i] <= arr2[j]) {\n                result[k++] = arr1[i++];\n            } else {\n                result[k++] = arr2[j++];\n            }\n        }\n        \n        // Add remaining elements\n        while (i < arr1.length) {\n            result[k++] = arr1[i++];\n        }\n        while (j < arr2.length) {\n            result[k++] = arr2[j++];\n        }\n        \n        return result;\n    }\n}"
+      "template": "class Solution {\n    public int[][] mergeIntervals(int[][] intervals) {\n        \n    }\n}",
+      "solution_text": "<h2>Solution: Sort and Merge Overlapping Intervals</h2>\n\n<h3>Algorithm:</h3>\n<ul>\n<li>Sort intervals by start time</li>\n<li>Iterate through sorted intervals</li>\n<li>If current interval overlaps with the last merged interval, merge them</li>\n<li>Otherwise, add current interval to result</li>\n</ul>\n\n<h3>Time Complexity:</h3>\n<p>O(n log n) - dominated by sorting step</p>\n\n<h3>Space Complexity:</h3>\n<p>O(n) - result array in worst case</p>\n\n<h3>Key Insights:</h3>\n<ul>\n<li>Two intervals [a,b] and [c,d] overlap if b >= c</li>\n<li>Sorting enables linear scan for merging</li>\n<li>Merged interval: [min(start1,start2), max(end1,end2)]</li>\n</ul>",
+      "solution_code": "import java.util.*;\n\nclass Solution {\n    public int[][] mergeIntervals(int[][] intervals) {\n        if (intervals == null || intervals.length == 0) {\n            return new int[0][];\n        }\n        \n        // Sort intervals by start time\n        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));\n        \n        List<int[]> merged = new ArrayList<>();\n        merged.add(intervals[0]);\n        \n        for (int i = 1; i < intervals.length; i++) {\n            int[] current = intervals[i];\n            int[] lastMerged = merged.get(merged.size() - 1);\n            \n            // Check if current interval overlaps with the last merged interval\n            if (current[0] <= lastMerged[1]) {\n                // Merge intervals by extending the end time\n                lastMerged[1] = Math.max(lastMerged[1], current[1]);\n            } else {\n                // No overlap, add current interval to result\n                merged.add(current);\n            }\n        }\n        \n        return merged.toArray(new int[merged.size()][]);\n    }\n}"
     }
   },
   "order_matters": false,
@@ -41,36 +41,72 @@
     {
       "id": 1,
       "input": {
-        "intervals": [
-          "[1",
-          3
-        ]
+        "intervals": [[1, 3], [2, 6], [8, 10], [15, 18]]
       },
-      "output": [
-        [
-          1,
-          5
-        ],
-        [
-          6,
-          7
-        ]
-      ]
+      "output": [[1, 6], [8, 10], [15, 18]]
     },
     {
       "id": 2,
       "input": {
-        "intervals": [
-          "[1",
-          2
-        ]
+        "intervals": [[1, 4], [4, 5]]
       },
-      "output": [
-        [
-          1,
-          3
-        ]
-      ]
+      "output": [[1, 5]]
+    },
+    {
+      "id": 3,
+      "input": {
+        "intervals": [[1, 3], [2, 6], [8, 10], [9, 12], [15, 18]]
+      },
+      "output": [[1, 6], [8, 12], [15, 18]]
+    },
+    {
+      "id": 4,
+      "input": {
+        "intervals": [[1, 2], [3, 4], [5, 6]]
+      },
+      "output": [[1, 2], [3, 4], [5, 6]]
+    },
+    {
+      "id": 5,
+      "input": {
+        "intervals": [[1, 10]]
+      },
+      "output": [[1, 10]]
+    },
+    {
+      "id": 6,
+      "input": {
+        "intervals": []
+      },
+      "output": []
+    },
+    {
+      "id": 7,
+      "input": {
+        "intervals": [[1, 3], [0, 2], [4, 6]]
+      },
+      "output": [[0, 3], [4, 6]]
+    },
+    {
+      "id": 8,
+      "input": {
+        "intervals": [[1, 4], [2, 3]]
+      },
+      "output": [[1, 4]]
+    },
+    {
+      "id": 9,
+      "input": {
+        "intervals": [[0, 0], [1, 2], [1, 4]]
+      },
+      "output": [[0, 0], [1, 4]]
+    },
+    {
+      "id": 10,
+      "input": {
+        "intervals": [[1, 1000], [2, 3], [500, 600]]
+      },
+      "output": [[1, 1000]]
     }
   ]
 }

@@ -142,3 +142,21 @@ last-stone-weight-ii.json - Last Stone Weight II
 longest-repeating-substring-with-replacement.json - Longest Repeating Character Replacement
 longest-increasing-path-in-matrix.json - Longest Increasing Path in Matrix
 longest-palindromic-substring.json - Longest Palindromic Substring
+longest-substring-without-duplicates.json - Longest Substring Without Repeating Characters
+longest-turbulent-subarray.json - Longest Turbulent Subarray
+lowest-common-ancestor-in-binary-search-tree.json - Lowest Common Ancestor in Binary Search Tree
+lru-cache.json - LRU Cache
+majority-element-ii.json - Majority Element II
+matchsticks-to-square.json - Matchsticks to Square
+max-area-of-island.json - Max Area of Island
+max-water-container.json - Container With Most Water
+maximum-frequency-stack.json - Maximum Frequency Stack
+maximum-product-subarray.json - Maximum Product Subarray
+maximum-subarray.json - Maximum Subarray
+maximum-sum-circular-subarray.json - Maximum Sum Circular Subarray
+median-of-two-sorted-arrays.json - Median of Two Sorted Arrays
+meeting-rooms-iii.json - Meeting Rooms III
+meeting-schedule-ii.json - Meeting Rooms II
+meeting-schedule.json - Meeting Rooms
+merge-intervals.json - Merge Intervals
+merge-k-sorted-linked-lists.json - Merge K Sorted Linked Lists

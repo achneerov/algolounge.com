@@ -8,74 +8,115 @@
     "leetcode",
     "895",
     "design",
-    "like",
     "data",
     "structure",
-    "push"
+    "hash",
+    "map"
   ],
-  "description": "<h2>Maximum Frequency Stack</h2><p>Leetcode 895. Maximum Frequency Stack</p><p></p><p>Design a stack-like data structure to push elements to the stack and pop the most frequent element from the stack.</p><p></p><p>Implement the `FreqStack` class:</p><p></p><p>- `FreqStack()` constructs an empty frequency stack.</p><p>- `void push(int val)` pushes an integer `val` onto the top of the stack.</p><p>- `int pop()` removes and returns the most frequent element in the stack.</p><p>    - If there is a **tie** for the **most frequent element**, the element closest to the stack's top is removed and returned.</p><h3>Examples:</h3><ul><li>Input: [\"FreqStack\", \"push\", \"push\", \"push\", \"push\", \"push\", \"push\", \"pop\", \"pop\", \"pop\", \"pop\"]<br>[[], [5], [7], [5], [7], [4], [5], [], [], [], []]<br><br>Output: [null, null, null, null, null, null, null, 5, 7, 5, 4]<br>FreqStack freqStack = new FreqStack();\nfreqStack.push(5); // The stack is [5]\nfreqStack.push(7); // The stack is [5,7]\nfreqStack.push(5); // The stack is [5,7,5]\nfreqStack.push(7); // The stack is [5,7,5,7]\nfreqStack.push(4); // The stack is [5,7,5,7,4]\nfreqStack.push(5); // The stack is [5,7,5,7,4,5]\nfreqStack.pop();   // return 5, as 5 is the most frequent. The stack becomes [5,7,5,7,4].\nfreqStack.pop();   // return 7, as 5 and 7 is the most frequent, but 7 is closest to the top. The stack becomes [5,7,5,4].\nfreqStack.pop();   // return 5, as 5 is the most frequent. The stack becomes [5,7,4].\nfreqStack.pop();   // return 4, as 4, 5 and 7 is the most frequent, but 4 is closest to the top. The stack becomes [5,7].</li></ul><h3>Constraints:</h3><ul><li> `0 <= val <= 1,000,000,000`</li><li> At most `20,000` calls will be made to `push` and `pop`.</li><li> It is guaranteed that there will be at least one element in the stack before calling `pop`.</li></ul>",
+  "description": "<h2>Maximum Frequency Stack</h2><p>Leetcode 895. Maximum Frequency Stack</p><p>Design a stack-like data structure to push elements to the stack and pop the most frequent element from the stack.</p><p>Implement the <code>FreqStack</code> class:</p><ul><li><code>FreqStack()</code> constructs an empty frequency stack.</li><li><code>void push(int val)</code> pushes an integer <code>val</code> onto the top of the stack.</li><li><code>int pop()</code> removes and returns the most frequent element in the stack.</li><li>If there is a <strong>tie</strong> for the <strong>most frequent element</strong>, the element closest to the stack's top is removed and returned.</li></ul><h3>Examples:</h3><ul><li><strong>Input:</strong> [\"FreqStack\", \"push\", \"push\", \"push\", \"push\", \"push\", \"push\", \"pop\", \"pop\", \"pop\", \"pop\"]<br>[[], [5], [7], [5], [7], [4], [5], [], [], [], []]<br><strong>Output:</strong> [null, null, null, null, null, null, null, 5, 7, 5, 4]<br><strong>Explanation:</strong><br>FreqStack freqStack = new FreqStack();<br>freqStack.push(5); // The stack is [5]<br>freqStack.push(7); // The stack is [5,7]<br>freqStack.push(5); // The stack is [5,7,5]<br>freqStack.push(7); // The stack is [5,7,5,7]<br>freqStack.push(4); // The stack is [5,7,5,7,4]<br>freqStack.push(5); // The stack is [5,7,5,7,4,5]<br>freqStack.pop();   // return 5, as 5 is the most frequent. The stack becomes [5,7,5,7,4].<br>freqStack.pop();   // return 7, as 5 and 7 is the most frequent, but 7 is closest to the top. The stack becomes [5,7,5,4].<br>freqStack.pop();   // return 5, as 5 is the most frequent. The stack becomes [5,7,4].<br>freqStack.pop();   // return 4, as 4, 5 and 7 is the most frequent, but 4 is closest to the top. The stack becomes [5,7].</li></ul><h3>Constraints:</h3><ul><li><code>0 <= val <= 10<sup>9</sup></code></li><li>At most <code>2 × 10<sup>4</sup></code> calls will be made to <code>push</code> and <code>pop</code>.</li><li>It is guaranteed that there will be at least one element in the stack before calling <code>pop</code>.</li></ul>",
   "languages": {
     "python": {
-      "template": "def maximumFrequencyStack(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20):\n    ",
-      "solution_text": "Min/Max finding algorithm:\n\n**Algorithm:**\n1. Initialize min/max with first element\n2. Iterate through remaining elements\n3. Update min/max as needed\n\n**Time Complexity:** O(n) - single pass through array\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Handle empty arrays with appropriate defaults\n- Consider both positive and negative numbers\n- Single pass optimization",
-      "solution_code": "def maximumFrequencyStack(nums):\n    if not nums:\n        return 0  # or appropriate default\n    \n    result = nums[0]\n    \n    for num in nums[1:]:\n        if 'max' in 'maximumFrequencyStack'.lower():\n            result = max(result, num)\n        else:\n            result = min(result, num)\n    \n    return result"
+      "template": "class FreqStack:\n\n    def __init__(self):\n        \n\n    def push(self, val: int) -> None:\n        \n\n    def pop(self) -> int:\n        ",
+      "solution_text": "<h3>Hash Map + Stack of Stacks Solution</h3><p>Use frequency tracking with grouped stacks to efficiently find and remove most frequent elements.</p><h4>Algorithm:</h4><ol><li>Track frequency of each element with hash map</li><li>Maintain stacks grouped by frequency level</li><li>Push: increment frequency, add to appropriate frequency stack</li><li>Pop: remove from highest frequency stack, decrement frequency</li></ol><h4>Time Complexity:</h4><p>O(1) for both push and pop operations</p><h4>Space Complexity:</h4><p>O(n) for storing elements and frequency information</p><h4>Key Insights:</h4><ul><li>Separate stacks for each frequency level</li><li>Most recent element at given frequency is on top of its stack</li><li>Track maximum frequency to know which stack to pop from</li></ul>",
+      "solution_code": "class FreqStack:\n\n    def __init__(self):\n        self.freq = {}  # element -> frequency\n        self.group = {}  # frequency -> stack of elements\n        self.max_freq = 0\n\n    def push(self, val: int) -> None:\n        # Update frequency\n        f = self.freq.get(val, 0) + 1\n        self.freq[val] = f\n        \n        # Update max frequency\n        if f > self.max_freq:\n            self.max_freq = f\n        \n        # Add to frequency group\n        if f not in self.group:\n            self.group[f] = []\n        self.group[f].append(val)\n\n    def pop(self) -> int:\n        # Pop from highest frequency group\n        val = self.group[self.max_freq].pop()\n        \n        # Update frequency\n        self.freq[val] -= 1\n        \n        # Update max frequency if needed\n        if not self.group[self.max_freq]:\n            self.max_freq -= 1\n        \n        return val"
     },
     "javascript": {
-      "template": "function maximumFrequencyStack(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) {\n  \n}",
-      "solution_text": "Min/Max finding algorithm:\n\n**Algorithm:**\n1. Initialize min/max with first element\n2. Iterate through remaining elements\n3. Update min/max as needed\n\n**Time Complexity:** O(n) - single pass through array\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Handle empty arrays with appropriate defaults\n- Consider both positive and negative numbers\n- Single pass optimization",
-      "solution_code": "function maximumFrequencyStack(nums) {\n    if (!nums || nums.length === 0) return 0;\n    \n    let result = nums[0];\n    \n    for (let i = 1; i < nums.length; i++) {\n        if ('maximumFrequencyStack'.toLowerCase().includes('max')) {\n            result = Math.max(result, nums[i]);\n        } else {\n            result = Math.min(result, nums[i]);\n        }\n    }\n    \n    return result;\n}"
+      "template": "class FreqStack {\n    constructor() {\n        \n    }\n    \n    push(val) {\n        \n    }\n    \n    pop() {\n        \n    }\n}",
+      "solution_text": "<h3>Hash Map + Stack of Stacks Solution</h3><p>Use frequency tracking with grouped stacks to efficiently find and remove most frequent elements.</p><h4>Algorithm:</h4><ol><li>Track frequency of each element with hash map</li><li>Maintain stacks grouped by frequency level</li><li>Push: increment frequency, add to appropriate frequency stack</li><li>Pop: remove from highest frequency stack, decrement frequency</li></ol><h4>Time Complexity:</h4><p>O(1) for both push and pop operations</p><h4>Space Complexity:</h4><p>O(n) for storing elements and frequency information</p><h4>Key Insights:</h4><ul><li>Separate stacks for each frequency level</li><li>Most recent element at given frequency is on top of its stack</li><li>Track maximum frequency to know which stack to pop from</li></ul>",
+      "solution_code": "class FreqStack {\n    constructor() {\n        this.freq = new Map(); // element -> frequency\n        this.group = new Map(); // frequency -> stack of elements\n        this.maxFreq = 0;\n    }\n    \n    push(val) {\n        // Update frequency\n        const f = (this.freq.get(val) || 0) + 1;\n        this.freq.set(val, f);\n        \n        // Update max frequency\n        if (f > this.maxFreq) {\n            this.maxFreq = f;\n        }\n        \n        // Add to frequency group\n        if (!this.group.has(f)) {\n            this.group.set(f, []);\n        }\n        this.group.get(f).push(val);\n    }\n    \n    pop() {\n        // Pop from highest frequency group\n        const val = this.group.get(this.maxFreq).pop();\n        \n        // Update frequency\n        this.freq.set(val, this.freq.get(val) - 1);\n        \n        // Update max frequency if needed\n        if (this.group.get(this.maxFreq).length === 0) {\n            this.maxFreq--;\n        }\n        \n        return val;\n    }\n}"
     },
     "typescript": {
-      "template": "function maximumFrequencyStack(0: string, 1: string, 2: string, 3: string, 4: string, 5: string, 6: string, 7: string, 8: string, 9: string, 10: string, 11: string, 12: string, 13: string, 14: string, 15: string, 16: string, 17: string, 18: string, 19: string, 20: string): number[] {\n  \n}",
-      "solution_text": "Min/Max finding algorithm:\n\n**Algorithm:**\n1. Initialize min/max with first element\n2. Iterate through remaining elements\n3. Update min/max as needed\n\n**Time Complexity:** O(n) - single pass through array\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Handle empty arrays with appropriate defaults\n- Consider both positive and negative numbers\n- Single pass optimization",
-      "solution_code": "function maximumFrequencyStack(nums: number[]): number {\n    if (!nums || nums.length === 0) return 0;\n    \n    let result = nums[0];\n    \n    for (let i = 1; i < nums.length; i++) {\n        if ('maximumFrequencyStack'.toLowerCase().includes('max')) {\n            result = Math.max(result, nums[i]);\n        } else {\n            result = Math.min(result, nums[i]);\n        }\n    }\n    \n    return result;\n}"
+      "template": "class FreqStack {\n    constructor() {\n        \n    }\n    \n    push(val: number): void {\n        \n    }\n    \n    pop(): number {\n        \n    }\n}",
+      "solution_text": "<h3>Hash Map + Stack of Stacks Solution</h3><p>Use frequency tracking with grouped stacks to efficiently find and remove most frequent elements.</p><h4>Algorithm:</h4><ol><li>Track frequency of each element with hash map</li><li>Maintain stacks grouped by frequency level</li><li>Push: increment frequency, add to appropriate frequency stack</li><li>Pop: remove from highest frequency stack, decrement frequency</li></ol><h4>Time Complexity:</h4><p>O(1) for both push and pop operations</p><h4>Space Complexity:</h4><p>O(n) for storing elements and frequency information</p><h4>Key Insights:</h4><ul><li>Separate stacks for each frequency level</li><li>Most recent element at given frequency is on top of its stack</li><li>Track maximum frequency to know which stack to pop from</li></ul>",
+      "solution_code": "class FreqStack {\n    private freq: Map<number, number>; // element -> frequency\n    private group: Map<number, number[]>; // frequency -> stack of elements\n    private maxFreq: number;\n    \n    constructor() {\n        this.freq = new Map();\n        this.group = new Map();\n        this.maxFreq = 0;\n    }\n    \n    push(val: number): void {\n        // Update frequency\n        const f = (this.freq.get(val) || 0) + 1;\n        this.freq.set(val, f);\n        \n        // Update max frequency\n        if (f > this.maxFreq) {\n            this.maxFreq = f;\n        }\n        \n        // Add to frequency group\n        if (!this.group.has(f)) {\n            this.group.set(f, []);\n        }\n        this.group.get(f)!.push(val);\n    }\n    \n    pop(): number {\n        // Pop from highest frequency group\n        const val = this.group.get(this.maxFreq)!.pop()!;\n        \n        // Update frequency\n        this.freq.set(val, this.freq.get(val)! - 1);\n        \n        // Update max frequency if needed\n        if (this.group.get(this.maxFreq)!.length === 0) {\n            this.maxFreq--;\n        }\n        \n        return val;\n    }\n}"
     },
     "java": {
-      "template": "class Solution {\n    public int[] maximumFrequencyStack(String 0, String 1, String 2, String 3, String 4, String 5, String 6, String 7, String 8, String 9, String 10, String 11, String 12, String 13, String 14, String 15, String 16, String 17, String 18, String 19, String 20) {\n        \n    }\n}",
-      "solution_text": "Min/Max finding algorithm:\n\n**Algorithm:**\n1. Initialize min/max with first element\n2. Iterate through remaining elements\n3. Update min/max as needed\n\n**Time Complexity:** O(n) - single pass through array\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Handle empty arrays with appropriate defaults\n- Consider both positive and negative numbers\n- Single pass optimization",
-      "solution_code": "class Solution {\n    public int maximumFrequencyStack(int[] nums) {\n        if (nums == null || nums.length == 0) return 0;\n        \n        int result = nums[0];\n        \n        for (int i = 1; i < nums.length; i++) {\n            if (\"maximumFrequencyStack\".toLowerCase().contains(\"max\")) {\n                result = Math.max(result, nums[i]);\n            } else {\n                result = Math.min(result, nums[i]);\n            }\n        }\n        \n        return result;\n    }\n}"
+      "template": "class FreqStack {\n\n    public FreqStack() {\n        \n    }\n    \n    public void push(int val) {\n        \n    }\n    \n    public int pop() {\n        \n    }\n}",
+      "solution_text": "<h3>Hash Map + Stack of Stacks Solution</h3><p>Use frequency tracking with grouped stacks to efficiently find and remove most frequent elements.</p><h4>Algorithm:</h4><ol><li>Track frequency of each element with hash map</li><li>Maintain stacks grouped by frequency level</li><li>Push: increment frequency, add to appropriate frequency stack</li><li>Pop: remove from highest frequency stack, decrement frequency</li></ol><h4>Time Complexity:</h4><p>O(1) for both push and pop operations</p><h4>Space Complexity:</h4><p>O(n) for storing elements and frequency information</p><h4>Key Insights:</h4><ul><li>Separate stacks for each frequency level</li><li>Most recent element at given frequency is on top of its stack</li><li>Track maximum frequency to know which stack to pop from</li></ul>",
+      "solution_code": "import java.util.*;\n\nclass FreqStack {\n    private Map<Integer, Integer> freq; // element -> frequency\n    private Map<Integer, Stack<Integer>> group; // frequency -> stack of elements\n    private int maxFreq;\n\n    public FreqStack() {\n        freq = new HashMap<>();\n        group = new HashMap<>();\n        maxFreq = 0;\n    }\n    \n    public void push(int val) {\n        // Update frequency\n        int f = freq.getOrDefault(val, 0) + 1;\n        freq.put(val, f);\n        \n        // Update max frequency\n        if (f > maxFreq) {\n            maxFreq = f;\n        }\n        \n        // Add to frequency group\n        group.computeIfAbsent(f, k -> new Stack<>()).push(val);\n    }\n    \n    public int pop() {\n        // Pop from highest frequency group\n        int val = group.get(maxFreq).pop();\n        \n        // Update frequency\n        freq.put(val, freq.get(val) - 1);\n        \n        // Update max frequency if needed\n        if (group.get(maxFreq).isEmpty()) {\n            maxFreq--;\n        }\n        \n        return val;\n    }\n}"
     }
   },
   "order_matters": false,
   "test_cases": [
     {
       "id": 1,
-      "input": [
-        "FreqStack",
-        "push",
-        "push",
-        "push",
-        "push",
-        "push",
-        "push",
-        "pop",
-        "pop",
-        "pop",
-        "\"pop\"] [[]",
-        "[5]",
-        "[7]",
-        "[5]",
-        "[7]",
-        "[4]",
-        "[5]",
-        "[]",
-        "[]",
-        "[]",
-        "[]"
-      ],
-      "output": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        5,
-        7,
-        5,
-        4
-      ]
+      "input": {
+        "operations": ["FreqStack", "push", "push", "push", "push", "push", "push", "pop", "pop", "pop", "pop"],
+        "values": [[], [5], [7], [5], [7], [4], [5], [], [], [], []]
+      },
+      "output": [null, null, null, null, null, null, null, 5, 7, 5, 4]
+    },
+    {
+      "id": 2,
+      "input": {
+        "operations": ["FreqStack", "push", "push", "push", "pop", "pop", "pop"],
+        "values": [[], [1], [1], [2], [], [], []]
+      },
+      "output": [null, null, null, null, 1, 1, 2]
+    },
+    {
+      "id": 3,
+      "input": {
+        "operations": ["FreqStack", "push", "push", "push", "push", "push", "pop", "pop"],
+        "values": [[], [4], [1], [4], [2], [3], [], []]
+      },
+      "output": [null, null, null, null, null, null, 4, 3]
+    },
+    {
+      "id": 4,
+      "input": {
+        "operations": ["FreqStack", "push", "pop"],
+        "values": [[], [1], []]
+      },
+      "output": [null, null, 1]
+    },
+    {
+      "id": 5,
+      "input": {
+        "operations": ["FreqStack", "push", "push", "push", "push", "pop", "pop", "pop", "pop"],
+        "values": [[], [1], [2], [3], [4], [], [], [], []]
+      },
+      "output": [null, null, null, null, null, 4, 3, 2, 1]
+    },
+    {
+      "id": 6,
+      "input": {
+        "operations": ["FreqStack", "push", "push", "push", "push", "push", "push", "pop", "push", "pop", "pop"],
+        "values": [[], [5], [5], [5], [1], [2], [3], [], [4], [], []]
+      },
+      "output": [null, null, null, null, null, null, null, 5, null, 4, 3]
+    },
+    {
+      "id": 7,
+      "input": {
+        "operations": ["FreqStack", "push", "push", "push", "push", "push", "pop", "pop", "pop", "push", "pop"],
+        "values": [[], [1], [1], [1], [2], [2], [], [], [], [3], []]
+      },
+      "output": [null, null, null, null, null, null, 1, 2, 1, null, 3]
+    },
+    {
+      "id": 8,
+      "input": {
+        "operations": ["FreqStack", "push", "push", "pop", "push", "pop", "pop"],
+        "values": [[], [10], [20], [], [10], [], []]
+      },
+      "output": [null, null, null, 20, null, 10, 10]
+    },
+    {
+      "id": 9,
+      "input": {
+        "operations": ["FreqStack", "push", "push", "push", "push", "push", "pop", "pop", "pop", "pop", "pop"],
+        "values": [[], [7], [8], [7], [8], [9], [], [], [], [], []]
+      },
+      "output": [null, null, null, null, null, null, 8, 7, 9, 8, 7]
+    },
+    {
+      "id": 10,
+      "input": {
+        "operations": ["FreqStack", "push", "push", "push", "push", "push", "push", "push", "pop", "pop", "pop"],
+        "values": [[], [1], [2], [1], [3], [2], [1], [4], [], [], []]
+      },
+      "output": [null, null, null, null, null, null, null, null, 1, 4, 2]
     }
   ]
 }

@@ -104,7 +104,8 @@ export class CodeExecutionService {
     language: string, 
     testCases: any[], 
     functionName: string,
-    orderMatters: boolean = true
+    orderMatters: boolean = true,
+    questionName?: string
   ): Promise<ExecutionResult> {
     const startTime = performance.now();
     const testResults: TestResult[] = [];
@@ -118,7 +119,7 @@ export class CodeExecutionService {
         const processedCode = language === 'typescript' ? this.stripTypeScript(code) : code;
         return await this.executeJavaScript(processedCode, testCases, functionName, startTime, output, orderMatters);
       } else if (language === 'java') {
-        return await this.executeJava(code, testCases, functionName, startTime, output, orderMatters);
+        return await this.executeJava(code, testCases, functionName, startTime, output, orderMatters, questionName);
       } else {
         throw new Error(`Unsupported language: ${language}`);
       }
@@ -319,7 +320,8 @@ sys.stdout = test_output
     functionName: string,
     startTime: number,
     output: string[],
-    orderMatters: boolean = true
+    orderMatters: boolean = true,
+    questionName?: string
   ): Promise<ExecutionResult> {
     const testResults: TestResult[] = [];
 
@@ -335,6 +337,9 @@ sys.stdout = test_output
       const ecjData = await response.arrayBuffer();
       await window.cheerpOSAddStringFile("/str/ecj.jar", new Uint8Array(ecjData));
 
+      // Create question-specific directory path
+      const outputDir = questionName ? `/files/${questionName}` : '/files';
+      
       // Create a wrapper class that includes the function and test execution logic
       const javaWrapper = this.createJavaWrapper(code, functionName, testCases);
       await window.cheerpOSAddStringFile("/str/TestRunner.java", javaWrapper);
@@ -365,7 +370,7 @@ sys.stdout = test_output
           "-target", 
           "1.7",
           "-d",
-          "/files",
+          outputDir,
           "/str/TestRunner.java"
         );
       } finally {
@@ -393,7 +398,7 @@ sys.stdout = test_output
       }
 
       // Only after confirming no compilation errors, check for class files
-      const testRunnerBlob = await window.cjFileBlob("/files/TestRunner.class");
+      const testRunnerBlob = await window.cjFileBlob(`${outputDir}/TestRunner.class`);
       if (!testRunnerBlob) {
         throw new Error("Compilation failed - no class file generated");
       }
@@ -405,27 +410,35 @@ sys.stdout = test_output
       zip.file("META-INF/MANIFEST.MF", manifest);
       zip.file("TestRunner.class", testRunnerData);
 
-      // Check if there's a separate user class to include
-      const classMatch = code.match(/class\s+(\w+)/);
-      if (classMatch && classMatch[1] !== 'TestRunner') {
-        const userClassBlob = await window.cjFileBlob(`/files/${classMatch[1]}.class`);
-        if (userClassBlob) {
-          const userClassData = await userClassBlob.arrayBuffer();
-          zip.file(`${classMatch[1]}.class`, userClassData);
-        } else {
-          // Check if there were compilation errors for the user class
-          const errorLines = compilationOutput.filter(line => 
-            line.includes(classMatch[1]) && (
-              line.includes('ERROR') || 
-              line.includes('error') ||
-              line.includes('cannot find symbol') ||
-              line.includes('cannot resolve') ||
-              line.includes('incompatible types')
-            )
-          );
-          
-          if (errorLines.length > 0) {
-            throw new Error(this.formatCompilationError(errorLines));
+      // Find all user-defined classes in the code and include them
+      const classMatches = [...code.matchAll(/class\s+(\w+)/g)];
+      const includedClasses = new Set(['TestRunner']); // Track to avoid duplicates
+      
+      for (const match of classMatches) {
+        const className = match[1];
+        if (className !== 'TestRunner' && !includedClasses.has(className)) {
+          try {
+            const classBlob = await window.cjFileBlob(`${outputDir}/${className}.class`);
+            if (classBlob) {
+              const classData = await classBlob.arrayBuffer();
+              zip.file(`${className}.class`, classData);
+              includedClasses.add(className);
+            }
+          } catch (error) {
+            // If we can't read the class file, it might be a compilation error
+            const errorLines = compilationOutput.filter(line => 
+              line.includes(className) && (
+                line.includes('ERROR') || 
+                line.includes('error') ||
+                line.includes('cannot find symbol') ||
+                line.includes('cannot resolve') ||
+                line.includes('incompatible types')
+              )
+            );
+            
+            if (errorLines.length > 0) {
+              throw new Error(this.formatCompilationError(errorLines));
+            }
           }
         }
       }

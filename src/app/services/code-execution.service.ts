@@ -86,7 +86,9 @@ export class CodeExecutionService {
     }
 
     // Initialize CheerpJ
+    console.log('[CHEERPJ] Calling cheerpjInit()...');
     await window.cheerpjInit();
+    console.log('[CHEERPJ] cheerpjInit() completed');
   }
 
   private async loadScript(src: string): Promise<void> {
@@ -340,9 +342,22 @@ sys.stdout = test_output
       // Create question-specific directory path
       const outputDir = questionName ? `/files/${questionName}` : '/files';
       
-      // Create a wrapper class that includes the function and test execution logic
-      const javaWrapper = this.createJavaWrapper(code, functionName, testCases);
-      await window.cheerpOSAddStringFile("/str/TestRunner.java", javaWrapper);
+      // Get Java template to extract method signature
+      const javaTemplate = await this.getJavaTemplate(questionName);
+      const signature = this.parseJavaMethodSignature(javaTemplate, functionName);
+      
+      // Check if TestRunner is already compiled for this question
+      const lastCompiledQuestion = sessionStorage.getItem('lastCompiledJavaQuestion');
+      const isTestRunnerCompiled = lastCompiledQuestion === questionName;
+      
+      // Always write user's Solution.java file
+      await window.cheerpOSAddStringFile("/str/Solution.java", code);
+      
+      // Only compile TestRunner if not already compiled for this question
+      if (!isTestRunnerCompiled) {
+        const testRunnerCode = this.createTestRunner(functionName, signature, testCases);
+        await window.cheerpOSAddStringFile("/str/TestRunner.java", testRunnerCode);
+      }
 
       // Compile the Java code and capture compilation output
       const originalConsoleError = console.error;
@@ -362,6 +377,17 @@ sys.stdout = test_output
         originalConsoleError(...args);
       };
 
+      const ecjStartTime = performance.now();
+      
+      // Compile files based on what needs compilation
+      const filesToCompile: string[] = ["/str/Solution.java"];
+      if (!isTestRunnerCompiled) {
+        filesToCompile.push("/str/TestRunner.java");
+        console.log(`[JAVA] Compiling TestRunner for question: ${questionName}`);
+      } else {
+        console.log(`[JAVA] Using cached TestRunner for question: ${questionName}`);
+      }
+      
       try {
         await window.cheerpjRunJar(
           "/str/ecj.jar",
@@ -371,8 +397,15 @@ sys.stdout = test_output
           "1.7",
           "-d",
           outputDir,
-          "/str/TestRunner.java"
+          ...filesToCompile
         );
+        const ecjEndTime = performance.now();
+        console.log(`[TIMING] ECJ compilation: ${Math.round(ecjEndTime - ecjStartTime)}ms`);
+        
+        // Mark this question's TestRunner as compiled
+        if (!isTestRunnerCompiled) {
+          sessionStorage.setItem('lastCompiledJavaQuestion', questionName || '');
+        }
       } finally {
         // Restore original console methods
         console.log = originalConsoleLog;
@@ -397,57 +430,37 @@ sys.stdout = test_output
         throw new Error(this.formatCompilationError(compilationOutput));
       }
 
-      // Only after confirming no compilation errors, check for class files
+      // Check for required class files
       const testRunnerBlob = await window.cjFileBlob(`${outputDir}/TestRunner.class`);
       if (!testRunnerBlob) {
-        throw new Error("Compilation failed - no class file generated");
+        throw new Error("Compilation failed - TestRunner class file not generated");
       }
-      const testRunnerData = await testRunnerBlob.arrayBuffer();
+      
+      const solutionBlob = await window.cjFileBlob(`${outputDir}/Solution.class`);
+      if (!solutionBlob) {
+        throw new Error("Compilation failed - Solution class file not generated");
+      }
 
       // Create JAR file with proper structure
       const manifest = `Manifest-Version: 1.0\r\nMain-Class: TestRunner\r\n\r\n`;
       const zip = new window.JSZip();
       zip.file("META-INF/MANIFEST.MF", manifest);
-      zip.file("TestRunner.class", testRunnerData);
-
-      // Find all user-defined classes in the code and include them
-      const classMatches = [...code.matchAll(/class\s+(\w+)/g)];
-      const includedClasses = new Set(['TestRunner']); // Track to avoid duplicates
       
-      for (const match of classMatches) {
-        const className = match[1];
-        if (className !== 'TestRunner' && !includedClasses.has(className)) {
-          try {
-            const classBlob = await window.cjFileBlob(`${outputDir}/${className}.class`);
-            if (classBlob) {
-              const classData = await classBlob.arrayBuffer();
-              zip.file(`${className}.class`, classData);
-              includedClasses.add(className);
-            }
-          } catch (error) {
-            // If we can't read the class file, it might be a compilation error
-            const errorLines = compilationOutput.filter(line => 
-              line.includes(className) && (
-                line.includes('ERROR') || 
-                line.includes('error') ||
-                line.includes('cannot find symbol') ||
-                line.includes('cannot resolve') ||
-                line.includes('incompatible types')
-              )
-            );
-            
-            if (errorLines.length > 0) {
-              throw new Error(this.formatCompilationError(errorLines));
-            }
-          }
-        }
-      }
+      // Add compiled class files
+      const testRunnerData = await testRunnerBlob.arrayBuffer();
+      const solutionData = await solutionBlob.arrayBuffer();
+      
+      zip.file("TestRunner.class", testRunnerData);
+      zip.file("Solution.class", solutionData);
 
       // Generate and upload JAR
+      const jarStartTime = performance.now();
       const jarBlob = await zip.generateAsync({ type: "blob" });
       const jarBytes = await jarBlob.arrayBuffer();
       const jarPath = `/str/solution.jar`;
       await window.cheerpOSAddStringFile(jarPath, new Uint8Array(jarBytes));
+      const jarEndTime = performance.now();
+      console.log(`[TIMING] JAR creation: ${Math.round(jarEndTime - jarStartTime)}ms`);
 
       // Execute the JAR and capture results
       const executionConsoleLog = console.log;
@@ -472,6 +485,7 @@ sys.stdout = test_output
         }
       };
 
+      const executionStartTime = performance.now();
       try {
         await window.cheerpjRunJar(jarPath);
         
@@ -479,7 +493,9 @@ sys.stdout = test_output
         testResults.push(...this.parseJavaTestResults(capturedOutput, testCases, orderMatters));
         
       } finally {
+        const executionEndTime = performance.now();
         console.log = executionConsoleLog;
+        executionConsoleLog(`[TIMING] User code execution: ${Math.round(executionEndTime - executionStartTime)}ms`);
       }
 
     } catch (error) {
@@ -497,6 +513,7 @@ sys.stdout = test_output
     const endTime = performance.now();
     const passedCount = testResults.filter(result => result.passed).length;
 
+
     return {
       testResults,
       executionTime: Math.round(endTime - startTime),
@@ -506,11 +523,24 @@ sys.stdout = test_output
     };
   }
 
-  private createJavaWrapper(userCode: string, functionName: string, testCases: any[]): string {
-    // Extract the function signature and body from user code
-    const classMatch = userCode.match(/class\s+(\w+)/);
-    const className = classMatch ? classMatch[1] : 'Solution';
+
+  private parseJavaMethodSignature(template: string, functionName: string): { returnType: string, parameters: string } {
+    // Extract method signature from template
+    // Example: "public int[] twoSum(int[] nums, int target)" -> { returnType: "int[]", parameters: "int[] nums, int target" }
+    const methodRegex = new RegExp(`public\\s+(.+?)\\s+${functionName}\\s*\\(([^)]*)\\)`);
+    const match = template.match(methodRegex);
     
+    if (!match) {
+      throw new Error(`Could not parse method signature for function: ${functionName}`);
+    }
+    
+    return {
+      returnType: match[1].trim(),
+      parameters: match[2].trim()
+    };
+  }
+
+  private createTestRunner(functionName: string, signature: { returnType: string, parameters: string }, testCases: any[]): string {
     // Create test execution logic
     const testExecutionCode = testCases.map((testCase) => {
       const args = Object.values(testCase.input);
@@ -519,8 +549,8 @@ sys.stdout = test_output
       return `
         try {
             System.out.println("USER_OUTPUT_START");
-            ${className} solution = new ${className}();
-            Object result = solution.${functionName}(${argList});
+            Solution solution = new Solution();
+            ${signature.returnType} result = solution.${functionName}(${argList});
             System.out.println("USER_OUTPUT_END");
             System.out.println("TEST_RESULT_START");
             System.out.println("ID:" + ${testCase.id});
@@ -534,6 +564,7 @@ sys.stdout = test_output
             System.out.println("ID:" + ${testCase.id});
             System.out.println("INPUT:" + "${this.escapeString(JSON.stringify(testCase.input))}");
             System.out.println("EXPECTED:" + "${this.escapeString(JSON.stringify(testCase.output))}");
+            System.out.println("ACTUAL:null");
             System.out.println("ERROR:" + e.getMessage());
             System.out.println("TEST_RESULT_END");
         }`;
@@ -541,12 +572,11 @@ sys.stdout = test_output
 
     return `
 import java.util.*;
-
-${userCode}
+import java.util.stream.*;
 
 public class TestRunner {
     public static void main(String[] args) {
-        ${testExecutionCode}
+${testExecutionCode}
     }
     
     private static String objectToJson(Object obj) {
@@ -583,9 +613,49 @@ public class TestRunner {
             sb.append("]");
             return sb.toString();
         }
+        if (obj instanceof int[][]) {
+            int[][] arr = (int[][]) obj;
+            StringBuilder sb = new StringBuilder("[");
+            for (int i = 0; i < arr.length; i++) {
+                if (i > 0) sb.append(",");
+                sb.append(objectToJson(arr[i]));
+            }
+            sb.append("]");
+            return sb.toString();
+        }
+        if (obj instanceof String[][]) {
+            String[][] arr = (String[][]) obj;
+            StringBuilder sb = new StringBuilder("[");
+            for (int i = 0; i < arr.length; i++) {
+                if (i > 0) sb.append(",");
+                sb.append(objectToJson(arr[i]));
+            }
+            sb.append("]");
+            return sb.toString();
+        }
         return obj.toString();
     }
 }`;
+  }
+
+  private async getJavaTemplate(questionName?: string): Promise<string> {
+    if (!questionName) {
+      throw new Error('Question name is required to get Java template');
+    }
+    
+    const response = await fetch(`/questions/${questionName}.json`);
+    if (!response.ok) {
+      throw new Error(`Failed to load question data for: ${questionName}`);
+    }
+    
+    const questionData = await response.json();
+    const javaLanguageData = questionData.languages?.java;
+    
+    if (!javaLanguageData?.template) {
+      throw new Error(`No Java template found for question: ${questionName}`);
+    }
+    
+    return javaLanguageData.template;
   }
 
   private javaValueToString(value: any): string {

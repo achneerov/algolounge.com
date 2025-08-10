@@ -7,8 +7,11 @@ declare global {
     cheerpjInit: any;
     cheerpjRunJar: any;
     cheerpOSAddStringFile: any;
+    cheerpOSRemoveFile: any;
+    cheerpOSListDir: any;
     cjFileBlob: any;
     JSZip: any;
+    gc?: () => void;
   }
 }
 
@@ -25,8 +28,44 @@ export class CodeExecutionService {
   private pyodideLoading: Promise<PyodideInterface> | null = null;
   private cheerpjInitialized = false;
   private cheerpjInitializing: Promise<void> | null = null;
+  private ecjUploaded = false; // Track if ECJ JAR is already uploaded
+  private executionCount = 0; // Track number of executions for cleanup
+  private testRunnerCache = new Map<string, number>(); // LRU cache with timestamps
+  private readonly MAX_CACHE_SIZE = 10; // Maximum cached TestRunner classes
+  private readonly CLEANUP_INTERVAL = 20; // Clean filesystem every N executions
 
   constructor() {}
+
+  /**
+   * Manually trigger cleanup of CheerpJ virtual filesystem and caches
+   */
+  public async forceCleanup(): Promise<void> {
+    console.log('[CLEANUP] Manual cleanup triggered');
+    await this.cleanupVirtualFilesystem();
+    this.cleanupTestRunnerCache();
+    
+    // Reset execution count
+    this.executionCount = 0;
+    
+    if (window.gc) {
+      try {
+        window.gc();
+        console.log('[CLEANUP] Manual garbage collection completed');
+      } catch (e) {
+        console.warn('[CLEANUP] Failed to force garbage collection:', e);
+      }
+    }
+  }
+
+  /**
+   * Get current cache statistics for debugging
+   */
+  public getCacheStats(): { cacheSize: number; executionCount: number } {
+    return {
+      cacheSize: this.testRunnerCache.size,
+      executionCount: this.executionCount
+    };
+  }
 
   async initPyodide(): Promise<PyodideInterface> {
     if (this.pyodide) {
@@ -331,24 +370,32 @@ sys.stdout = test_output
       // Initialize CheerpJ
       await this.initCheerpJ();
 
-      // Load ECJ jar from assets and upload to virtual filesystem
-      const response = await fetch('/assets/ecj.jar');
-      if (!response.ok) {
-        throw new Error('Failed to load ECJ compiler jar');
+      // Load ECJ jar from assets and upload to virtual filesystem (only once)
+      if (!this.ecjUploaded) {
+        const response = await fetch('/assets/ecj.jar');
+        if (!response.ok) {
+          throw new Error('Failed to load ECJ compiler jar');
+        }
+        const ecjData = await response.arrayBuffer();
+        await window.cheerpOSAddStringFile("/str/ecj.jar", new Uint8Array(ecjData));
+        this.ecjUploaded = true;
       }
-      const ecjData = await response.arrayBuffer();
-      await window.cheerpOSAddStringFile("/str/ecj.jar", new Uint8Array(ecjData));
 
-      // Create question-specific directory path
-      const outputDir = questionName ? `/files/${questionName}` : '/files';
+      // Output all .class files directly to /files directory
+      const outputDir = '/files';
       
       // Get Java template to extract method signature
       const javaTemplate = await this.getJavaTemplate(questionName);
       const signature = this.parseJavaMethodSignature(javaTemplate, functionName);
       
-      // Check if TestRunner is already compiled for this question
-      const lastCompiledQuestion = sessionStorage.getItem('lastCompiledJavaQuestion');
-      const isTestRunnerCompiled = lastCompiledQuestion === questionName;
+      // Check if TestRunner is already compiled for this question (with LRU tracking)
+      const currentTime = Date.now();
+      const isTestRunnerCompiled = this.testRunnerCache.has(questionName || '');
+      
+      if (isTestRunnerCompiled && questionName) {
+        // Update timestamp for LRU
+        this.testRunnerCache.set(questionName, currentTime);
+      }
       
       // Always write user's Solution.java file
       await window.cheerpOSAddStringFile("/str/Solution.java", code);
@@ -402,9 +449,11 @@ sys.stdout = test_output
         const ecjEndTime = performance.now();
         console.log(`[TIMING] ECJ compilation: ${Math.round(ecjEndTime - ecjStartTime)}ms`);
         
-        // Mark this question's TestRunner as compiled
-        if (!isTestRunnerCompiled) {
-          sessionStorage.setItem('lastCompiledJavaQuestion', questionName || '');
+        // Mark this question's TestRunner as compiled in our LRU cache
+        if (!isTestRunnerCompiled && questionName) {
+          this.testRunnerCache.set(questionName, currentTime);
+          // Also update sessionStorage for backward compatibility
+          sessionStorage.setItem('lastCompiledJavaQuestion', questionName);
         }
       } finally {
         // Restore original console methods
@@ -452,7 +501,7 @@ sys.stdout = test_output
       
       zip.file("TestRunner.class", testRunnerData);
       zip.file("Solution.class", solutionData);
-
+      
       // Generate and upload JAR
       const jarStartTime = performance.now();
       const jarBlob = await zip.generateAsync({ type: "blob" });
@@ -461,6 +510,9 @@ sys.stdout = test_output
       await window.cheerpOSAddStringFile(jarPath, new Uint8Array(jarBytes));
       const jarEndTime = performance.now();
       console.log(`[TIMING] JAR creation: ${Math.round(jarEndTime - jarStartTime)}ms`);
+
+      // Track blobs for cleanup
+      const blobsToCleanup = [testRunnerBlob, solutionBlob, jarBlob];
 
       // Execute the JAR and capture results
       const executionConsoleLog = console.log;
@@ -496,6 +548,21 @@ sys.stdout = test_output
         const executionEndTime = performance.now();
         console.log = executionConsoleLog;
         executionConsoleLog(`[TIMING] User code execution: ${Math.round(executionEndTime - executionStartTime)}ms`);
+        
+        // Enhanced cleanup to prevent memory leaks
+        try {
+          // Clean up captured output array
+          capturedOutput.length = 0;
+          
+          // Clean up blob references
+          this.cleanupBlobReferences(blobsToCleanup);
+          
+          // Perform periodic cleanup
+          await this.performPeriodicCleanup();
+          
+        } catch (cleanupError) {
+          console.warn('[CLEANUP] Error during cleanup:', cleanupError);
+        }
       }
 
     } catch (error) {
@@ -508,6 +575,13 @@ sys.stdout = test_output
         error: error instanceof Error ? error.message : String(error),
         output: []
       });
+      
+      // Perform cleanup even on errors to prevent memory leaks
+      try {
+        await this.performPeriodicCleanup();
+      } catch (cleanupError) {
+        console.warn('[CLEANUP] Error during error cleanup:', cleanupError);
+      }
     }
 
     const endTime = performance.now();
@@ -817,6 +891,110 @@ ${testExecutionCode}
     
     // For primitive types and final comparison
     return normalizedA === normalizedB;
+  }
+
+  private async cleanupVirtualFilesystem(): Promise<void> {
+    try {
+      console.log('[CLEANUP] Starting virtual filesystem cleanup...');
+      
+      // Clean up files directory
+      await this.removeDirectoryContents('/files');
+      
+      // Clean up temp JAR files in /str (but keep ecj.jar)
+      const tempFiles = ['/str/solution.jar', '/str/Solution.java', '/str/TestRunner.java'];
+      for (const filePath of tempFiles) {
+        try {
+          if (window.cheerpOSRemoveFile) {
+            await window.cheerpOSRemoveFile(filePath);
+          }
+        } catch (e) {
+          // File might not exist, ignore
+        }
+      }
+      
+      console.log('[CLEANUP] Virtual filesystem cleanup completed');
+    } catch (error) {
+      console.warn('[CLEANUP] Error during filesystem cleanup:', error);
+    }
+  }
+
+  private async removeDirectoryContents(dirPath: string): Promise<void> {
+    try {
+      // List directory contents if API is available
+      if (window.cheerpOSListDir && window.cheerpOSRemoveFile) {
+        const files = await window.cheerpOSListDir(dirPath);
+        if (Array.isArray(files)) {
+          for (const file of files) {
+            try {
+              await window.cheerpOSRemoveFile(`${dirPath}/${file}`);
+            } catch (e) {
+              // Continue with other files if one fails
+            }
+          }
+        }
+      }
+    } catch (error) {
+      // Directory might not exist or API not available
+    }
+  }
+
+  private cleanupTestRunnerCache(): void {
+    if (this.testRunnerCache.size <= this.MAX_CACHE_SIZE) {
+      return;
+    }
+
+    // Convert to array and sort by timestamp (oldest first)
+    const entries = Array.from(this.testRunnerCache.entries())
+      .sort(([,a], [,b]) => a - b);
+    
+    // Remove oldest entries until we're under the limit
+    const toRemove = entries.slice(0, entries.length - this.MAX_CACHE_SIZE);
+    for (const [questionName] of toRemove) {
+      this.testRunnerCache.delete(questionName);
+      // Also clear from sessionStorage
+      if (sessionStorage.getItem('lastCompiledJavaQuestion') === questionName) {
+        sessionStorage.removeItem('lastCompiledJavaQuestion');
+      }
+    }
+    
+    console.log(`[CLEANUP] Cleaned ${toRemove.length} cached TestRunner entries`);
+  }
+
+  private async performPeriodicCleanup(): Promise<void> {
+    this.executionCount++;
+    
+    // Perform cleanup every N executions
+    if (this.executionCount % this.CLEANUP_INTERVAL === 0) {
+      console.log(`[CLEANUP] Performing periodic cleanup (execution #${this.executionCount})`);
+      
+      await this.cleanupVirtualFilesystem();
+      this.cleanupTestRunnerCache();
+      
+      // Force garbage collection if available
+      if (window.gc) {
+        try {
+          window.gc();
+          console.log('[CLEANUP] Forced garbage collection');
+        } catch (e) {
+          console.warn('[CLEANUP] Failed to force garbage collection:', e);
+        }
+      }
+    }
+  }
+
+  private cleanupBlobReferences(blobs: Blob[]): void {
+    // Revoke blob URLs to help with garbage collection
+    blobs.forEach(blob => {
+      try {
+        if (blob instanceof Blob) {
+          // For blobs created with URL.createObjectURL, we would revoke them
+          // But these are arrayBuffer blobs, so we just clear references
+          blob = null as any;
+        }
+      } catch (e) {
+        // Ignore cleanup errors
+      }
+    });
   }
 
   private formatCompilationError(errorLines: string[]): string {

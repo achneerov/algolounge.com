@@ -397,8 +397,9 @@ sys.stdout = test_output
         this.testRunnerCache.set(questionName, currentTime);
       }
       
-      // Always write user's Solution.java file
-      await window.cheerpOSAddStringFile("/str/Solution.java", code);
+      // Always write user's Solution.java file with necessary imports
+      const codeWithImports = this.addJavaImports(code);
+      await window.cheerpOSAddStringFile("/str/Solution.java", codeWithImports);
       
       // Only compile TestRunner if not already compiled for this question
       if (!isTestRunnerCompiled) {
@@ -995,6 +996,12 @@ ${testExecutionCode}
         // Ignore cleanup errors
       }
     });
+  }
+
+  private addJavaImports(code: string): string {
+    // Always add necessary imports at the beginning since user code never contains imports
+    const imports = 'import java.util.*;\n\n';
+    return imports + code;
   }
 
   private formatCompilationError(errorLines: string[]): string {

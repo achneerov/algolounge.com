@@ -30,7 +30,6 @@ export class QuestionsComponent implements OnInit, OnDestroy {
   description: string = "";
   solutionText: string = "";
   solutionCode: string = "";
-  selectedLanguage: string = "python";
   questionData: any = null;
   template: string = "";
   executionResult: ExecutionResult | null = null;
@@ -71,12 +70,6 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     this.router.navigate(["/questions", name]);
   }
 
-  onLanguageChange(language: string) {
-    this.selectedLanguage = language;
-    this.updateLanguageContent();
-    // Clear previous execution results when language changes
-    this.executionResult = null;
-  }
 
   async onRun() {
     if (!this.ideComponent || !this.questionData) {
@@ -128,7 +121,7 @@ export class QuestionsComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (data) => {
           this.questionData = data;
-          this.updateLanguageContent();
+          this.updateQuestionContent();
           this.notFound = false;
         },
         error: () => {
@@ -137,25 +130,14 @@ export class QuestionsComponent implements OnInit, OnDestroy {
       });
   }
 
-  updateLanguageContent() {
+  updateQuestionContent() {
     if (!this.questionData) return;
-    
-    if (this.questionData.languages) {
-      // Old multi-language format (archived questions)
-      const langData = this.questionData.languages[this.selectedLanguage];
-      if (langData) {
-        this.solutionText = langData.solution_text || "";
-        this.solutionCode = langData.solution_code || "";
-        this.template = langData.template || "";
-      }
-      this.description = this.questionData.description || "";
-    } else {
-      // New Python-only format (current questions)
-      this.description = this.questionData.description || "";
-      this.solutionText = this.questionData.solution_text || "";
-      this.solutionCode = this.questionData.solution_code || "";
-      this.template = this.questionData.template || "";
-    }
+
+    // Python-only format
+    this.description = this.questionData.description || "";
+    this.solutionText = this.questionData.solution_text || "";
+    this.solutionCode = this.questionData.solution_code || "";
+    this.template = this.questionData.template || "";
   }
 
 

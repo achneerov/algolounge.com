@@ -20,30 +20,20 @@ import { python } from "@codemirror/lang-python";
 import { javascript } from "@codemirror/lang-javascript";
 import { java } from "@codemirror/lang-java";
 import { oneDark } from "@codemirror/theme-one-dark";
-import { DropdownModule } from "primeng/dropdown";
-import { FormsModule } from "@angular/forms";
 import { ButtonModule } from "primeng/button";
 
 @Component({
   selector: "app-ide",
-  imports: [CommonModule, DropdownModule, FormsModule, ButtonModule],
+  imports: [CommonModule, ButtonModule],
   templateUrl: "./ide.component.html",
   styleUrl: "./ide.component.scss",
 })
 export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
   @ViewChild("editor") editorElement!: ElementRef;
-  @Input() language: string = "python";
   @Input() template: string = "";
   @Input() questionData: any = null;
   @Input() isRunning: boolean = false;
-  @Output() languageChange = new EventEmitter<string>();
   @Output() run = new EventEmitter<void>();
-
-  allLanguages = [
-    { label: "Python", value: "python" }
-  ];
-
-  languages: { label: string; value: string }[] = [];
 
   private editorView?: EditorView;
   private darkModeQuery?: MediaQueryList;
@@ -53,7 +43,6 @@ export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngAfterViewInit() {
-    this.updateAvailableLanguages();
     this.initEditor();
     this.setupThemeListener();
   }
@@ -78,21 +67,13 @@ export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
     }
   }
 
-  private updateAvailableLanguages() {
-    // Only Python is supported
-    this.languages = [...this.allLanguages];
-  }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes["questionData"]) {
-      this.updateAvailableLanguages();
-    }
-    
     if (
-      (changes["language"] || changes["template"]) &&
+      changes["template"] &&
       this.editorElement
     ) {
-      // Force template reload when language or template changes
+      // Force template reload when template changes
       this.forceTemplateReload = true;
       this.initEditor();
     }
@@ -106,26 +87,7 @@ export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
     
     // Reset the force reload flag
     this.forceTemplateReload = false;
-    let languageExtension;
-
-    switch (this.language.toLowerCase()) {
-      case "python":
-        languageExtension = python();
-        break;
-      case "javascript":
-      case "js":
-        languageExtension = javascript({ jsx: false });
-        break;
-      case "typescript":
-      case "ts":
-        languageExtension = javascript({ typescript: true });
-        break;
-      case "java":
-        languageExtension = java();
-        break;
-      default:
-        languageExtension = python();
-    }
+    const languageExtension = python();
 
     // Check if dark mode is active
     const isDarkMode = isPlatformBrowser(this.platformId) && 
@@ -159,28 +121,16 @@ export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   getFunctionName(): string {
-    // Extract function name from template
+    // Extract function name from Python template
     if (this.template) {
-      if (this.language === "python") {
-        const match = this.template.match(/def\s+(\w+)\s*\(/);
-        return match ? match[1] : "function";
-      } else if (this.language === "java") {
-        const match = this.template.match(/public\s+(?:static\s+)?[\w<>\[\]]+\s+(\w+)\s*\(/);
-        return match ? match[1] : "function";
-      } else {
-        const match = this.template.match(/function\s+(\w+)\s*\(/);
-        return match ? match[1] : "function";
-      }
+      const match = this.template.match(/def\s+(\w+)\s*\(/);
+      return match ? match[1] : "function";
     }
-    
+
     // Fallback to generic name
     return "function";
   }
 
-  onLanguageChange(event: Event): void {
-    const target = event.target as HTMLSelectElement;
-    this.languageChange.emit(target.value);
-  }
 
   resetTemplate(): void {
     if (this.template && this.editorView) {

@@ -17,6 +17,22 @@
       ]
     },
     {
+      "filename": "binary-tree-inorder-traversal",
+      "title": "Binary Tree Inorder Traversal",
+      "keywords": [
+        "binary",
+        "tree",
+        "inorder",
+        "traversal",
+        "leetcode",
+        "given",
+        "root",
+        "return",
+        "its",
+        "nodes"
+      ]
+    },
+    {
       "filename": "climbing-stairs",
       "title": "Climbing Stairs",
       "keywords": [
@@ -195,6 +211,22 @@
         "sliding",
         "window",
         "hashmap"
+      ]
+    },
+    {
+      "filename": "majority-element",
+      "title": "Majority Element",
+      "keywords": [
+        "majority",
+        "element",
+        "leetcode",
+        "169",
+        "given",
+        "array",
+        "nums",
+        "size",
+        "return",
+        "appears"
       ]
     },
     {
@@ -418,6 +450,6 @@
       ]
     }
   ],
-  "lastUpdated": "2025-08-03T19:47:49.630Z",
-  "totalQuestions": 32
+  "lastUpdated": "2025-09-14T14:53:01.697Z",
+  "totalQuestions": 34
 }

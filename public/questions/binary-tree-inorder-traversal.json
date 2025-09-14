@@ -14,7 +14,7 @@
     "nodes"
   ],
   "description": "<h2>Binary Tree Inorder Traversal</h2><p>Leetcode 94. Binary Tree Inorder Traversal</p><p></p><p>You are given the `root` of a binary tree, return the **inorder traversal** of its nodes' values.</p><h3>Examples:</h3><ul><li>Input: root = []<br><br>Output: []</li></ul><h3>Constraints:</h3><ul><li> `0 <= number of nodes in the tree <= 100`</li><li> `-100 <= Node.val <= 100`</li></ul>",
-
+  "entry_function": "binaryTreeInorderTraversal",
   "template": "def binaryTreeInorderTraversal(root):\n    ",
   "solution_text": "<h3>Binary Tree Inorder Traversal</h3><p><strong>Algorithm:</strong></p><ol><li>Traverse left subtree recursively</li><li>Process current node (add to result)</li><li>Traverse right subtree recursively</li></ol><p><strong>Time Complexity:</strong> O(n) - visit each node once</p><p><strong>Space Complexity:</strong> O(h) - recursion stack depth, where h is tree height</p><p><strong>Key Insights:</strong></p><ul><li>Inorder: Left -> Root -> Right</li><li>For BST, inorder gives sorted sequence</li><li>Can be implemented iteratively using stack</li></ul>",
   "solution_code": "def binaryTreeInorderTraversal(root):\n    result = []\n    \n    def inorder(node):\n        if not node:\n            return\n        \n        inorder(node.left)   # Traverse left subtree\n        result.append(node.val)  # Process current node\n        inorder(node.right)  # Traverse right subtree\n    \n    inorder(root)\n    return result",

@@ -37,14 +37,14 @@ import { LocalStorageService } from '../../services/local-storage.service';
             </ng-template>
           </p-autoComplete>
         </div>
-        <button 
+        <button
           [class.active]="activeTab === 'description'"
           (click)="activeTab = 'description'"
           type="button"
           class="tab-button">
           Description
         </button>
-        <button 
+        <button
           [class.active]="activeTab === 'solution'"
           (click)="activeTab = 'solution'"
           type="button"
@@ -52,15 +52,15 @@ import { LocalStorageService } from '../../services/local-storage.service';
           Solution
         </button>
       </div>
-      
+
       <!-- Tab Content -->
       <div class="tab-content-area">
         <div class="completion-indicator" *ngIf="isCompleted">✅</div>
-        <app-description 
+        <app-description
           *ngIf="activeTab === 'description'"
           [content]="description">
         </app-description>
-        <app-solution 
+        <app-solution
           *ngIf="activeTab === 'solution'"
           [solutionText]="solutionText"
           [solutionCode]="solutionCode">
@@ -79,7 +79,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
       border: 1px solid rgba(0, 0, 0, 0.1);
     }
-    
+
     .search-section {
       padding: 8px 16px;
       margin-right: 16px;
@@ -88,11 +88,11 @@ import { LocalStorageService } from '../../services/local-storage.service';
       flex-shrink: 0;
       min-width: 250px;
     }
-    
+
     .question-search {
       width: 250px;
     }
-    
+
     .search-item {
       display: flex;
       justify-content: space-between;
@@ -100,26 +100,27 @@ import { LocalStorageService } from '../../services/local-storage.service';
       width: 100%;
       padding: 4px 0;
     }
-    
+
     .search-title {
       flex: 1;
       font-size: 14px;
     }
-    
+
     .completion-status {
       margin-left: 8px;
       font-size: 12px;
     }
-    
+
     .tab-navigation {
       display: flex;
       align-items: center;
       background-color: #f8f9fa;
+      border-radius: 7px 7px 0px 0px;
       border-bottom: 1px solid #e1e5e9;
       position: relative;
       z-index: 10;
       flex-shrink: 0;
-      padding: 0;
+      margin: 0;
       overflow-x: auto;
       overflow-y: hidden;
       white-space: nowrap;
@@ -127,11 +128,11 @@ import { LocalStorageService } from '../../services/local-storage.service';
       scrollbar-width: none; /* Firefox */
       -ms-overflow-style: none; /* IE and Edge */
     }
-    
+
     .tab-navigation::-webkit-scrollbar {
       display: none; /* Chrome, Safari and Opera */
     }
-    
+
     .tab-button {
       background: none;
       border: none;
@@ -144,19 +145,19 @@ import { LocalStorageService } from '../../services/local-storage.service';
       transition: all 0.2s ease;
       flex-shrink: 0;
       white-space: nowrap;
-      
+
       &:hover {
         color: #495057;
         background-color: #e9ecef;
       }
-      
+
       &.active {
         color: #007bff;
         border-bottom-color: #007bff;
         background-color: white;
       }
     }
-    
+
     .completion-indicator {
       position: absolute;
       top: 16px;
@@ -164,7 +165,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
       font-size: 16px;
       z-index: 100;
     }
-    
+
     .tab-content-area {
       flex: 1;
       overflow: auto;
@@ -172,65 +173,65 @@ import { LocalStorageService } from '../../services/local-storage.service';
       position: relative;
       z-index: 1;
     }
-    
+
     /* Dark mode support */
     @media (prefers-color-scheme: dark) {
       .container {
         background: var(--surface-card, #1f1f1f);
         border-color: rgba(255, 255, 255, 0.1);
       }
-      
+
       .tab-navigation {
         background-color: var(--surface-200, #2d2d2d);
         border-bottom-color: var(--surface-border, #555);
       }
-      
-      
+
+
       .tab-button {
         color: var(--text-color-secondary, #cccccc);
-        
+
         &:hover {
           color: var(--text-color, #ffffff);
           background-color: var(--surface-300, #444);
         }
-        
+
         &.active {
           color: var(--primary-300, #66ccff);
           border-bottom-color: var(--primary-300, #66ccff);
           background-color: var(--surface-card, #1f1f1f);
         }
       }
-      
+
       .tab-content-area {
         background-color: var(--surface-card, #1f1f1f);
       }
     }
-    
+
     :host-context(.dark-mode) .container {
       background: var(--surface-card, #1f1f1f) !important;
       border-color: rgba(255, 255, 255, 0.1) !important;
     }
-    
+
     :host-context(.dark-mode) .tab-navigation {
       background-color: var(--surface-200, #2d2d2d) !important;
       border-bottom-color: var(--surface-border, #555) !important;
     }
-    
+
     :host-context(.dark-mode) .tab-button {
       color: var(--text-color-secondary, #cccccc) !important;
     }
-    
+
     :host-context(.dark-mode) .tab-button:hover {
       color: var(--text-color, #ffffff) !important;
       background-color: var(--surface-300, #444) !important;
     }
-    
+
     :host-context(.dark-mode) .tab-button.active {
       color: var(--primary-300, #66ccff) !important;
       border-bottom-color: var(--primary-300, #66ccff) !important;
       background-color: var(--surface-card, #1f1f1f) !important;
     }
-    
+
     :host-context(.dark-mode) .tab-content-area {
       background-color: var(--surface-card, #1f1f1f) !important;
     }
@@ -242,7 +243,7 @@ export class ContentTabsComponent implements OnInit {
   @Input() solutionCode: string = '';
   @Input() isCompleted: boolean = false;
   @Output() go = new EventEmitter<string>();
-  
+
   activeTab: 'description' | 'solution' = 'description';
   searchResults: QuestionSearchResult[] = [];
   selectedQuestion: QuestionSearchResult | null = null;

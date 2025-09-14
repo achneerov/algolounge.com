@@ -93,11 +93,9 @@ export class QuestionsComponent implements OnInit, OnDestroy {
 
       this.executionResult = await this.codeExecutionService.executeCode(
         code,
-        this.selectedLanguage,
         testCases,
         functionName,
-        this.questionData.order_matters !== false, // Default to true if not specified
-        this.currentQuestionFilename
+        this.questionData.order_matters !== false // Default to true if not specified
       );
 
       // Check if all tests passed and mark as completed

@@ -54,50 +54,14 @@ export class CodeExecutionService {
 
   async executeCode(
     code: string, 
-    language: string, 
     testCases: any[], 
     functionName: string,
-    orderMatters: boolean = true,
-    questionName?: string
-  ): Promise<ExecutionResult> {
-    const startTime = performance.now();
-    const output: string[] = [];
-
-    try {
-      if (language === 'python') {
-        return await this.executePython(code, testCases, functionName, startTime, output, orderMatters);
-      } else {
-        throw new Error(`Unsupported language: ${language}. Only Python is supported.`);
-      }
-    } catch (error) {
-      const endTime = performance.now();
-      return {
-        testResults: [{
-          id: 1,
-          input: {},
-          expectedOutput: null,
-          actualOutput: null,
-          passed: false,
-          error: error instanceof Error ? error.message : String(error)
-        }],
-        executionTime: Math.round(endTime - startTime),
-        passedCount: 0,
-        totalCount: 1,
-        output
-      };
-    }
-  }
-
-  private async executePython(
-    code: string, 
-    testCases: any[], 
-    functionName: string, 
-    startTime: number,
-    output: string[],
     orderMatters: boolean = true
   ): Promise<ExecutionResult> {
+    const startTime = performance.now();
     const pyodide = await this.initPyodide();
     const testResults: TestResult[] = [];
+    const output: string[] = [];
 
     try {
       // Execute the user's code

@@ -356,30 +356,6 @@
       ]
     },
     {
-      "filename": "test-binary-tree-depth",
-      "title": "Test Binary Tree Depth",
-      "keywords": [
-        "binary",
-        "tree",
-        "depth",
-        "test",
-        "convert",
-        "custom"
-      ]
-    },
-    {
-      "filename": "test-linked-list-reverse",
-      "title": "Test Reverse Linked List",
-      "keywords": [
-        "linked",
-        "list",
-        "reverse",
-        "test",
-        "convert",
-        "custom"
-      ]
-    },
-    {
       "filename": "three-sum",
       "title": "3Sum",
       "keywords": [
@@ -474,6 +450,6 @@
       ]
     }
   ],
-  "lastUpdated": "2025-09-14T14:52:11.600Z",
-  "totalQuestions": 36
+  "lastUpdated": "2025-09-14T14:53:01.697Z",
+  "totalQuestions": 34
 }

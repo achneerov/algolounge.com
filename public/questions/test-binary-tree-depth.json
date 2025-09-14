@@ -3,40 +3,12 @@
   "title": "Test Binary Tree Depth",
   "keywords": ["binary", "tree", "depth", "test", "convert", "custom"],
   "description": "<h2>Binary Tree Maximum Depth (Test Question)</h2><p>Given the root of a binary tree, return its maximum depth. This is a test question to validate convert_input and test_code functionality.</p>",
-  
-  "languages": {
-    "python": {
-      "template": "def maxDepth(root):\n    ",
-      "solution_text": "Recursive approach to find maximum depth of binary tree.",
-      "solution_code": "def maxDepth(root):\n    if not root:\n        return 0\n    return 1 + max(maxDepth(root.left), maxDepth(root.right))",
-      "convert_input": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef convert_input(arr):\n    if not arr:\n        return None\n    root = TreeNode(arr[0])\n    queue = [root]\n    i = 1\n    while queue and i < len(arr):\n        node = queue.pop(0)\n        if i < len(arr) and arr[i] is not None:\n            node.left = TreeNode(arr[i])\n            queue.append(node.left)\n        i += 1\n        if i < len(arr) and arr[i] is not None:\n            node.right = TreeNode(arr[i])\n            queue.append(node.right)\n        i += 1\n    return root",
-      "test_code": "def test_code(result):\n    # The result should be an integer representing depth\n    if isinstance(result, int) and result >= 0:\n        return [True, result]\n    else:\n        return [False, f'Expected non-negative integer, got {type(result).__name__}: {result}']"
-    },
-    "javascript": {
-      "template": "function maxDepth(root) {\n  \n}",
-      "solution_text": "Recursive approach to find maximum depth of binary tree.",
-      "solution_code": "function maxDepth(root) {\n    if (!root) return 0;\n    return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));\n}",
-      "convert_input": "class TreeNode {\n    constructor(val, left, right) {\n        this.val = val === undefined ? 0 : val;\n        this.left = left === undefined ? null : left;\n        this.right = right === undefined ? null : right;\n    }\n}\n\nfunction convert_input(arr) {\n    if (!arr || arr.length === 0) return null;\n    const root = new TreeNode(arr[0]);\n    const queue = [root];\n    let i = 1;\n    while (queue.length > 0 && i < arr.length) {\n        const node = queue.shift();\n        if (i < arr.length && arr[i] !== null) {\n            node.left = new TreeNode(arr[i]);\n            queue.push(node.left);\n        }\n        i++;\n        if (i < arr.length && arr[i] !== null) {\n            node.right = new TreeNode(arr[i]);\n            queue.push(node.right);\n        }\n        i++;\n    }\n    return root;\n}",
-      "test_code": "function test_code(result) {\n    if (typeof result === 'number' && result >= 0 && Number.isInteger(result)) {\n        return [true, result];\n    } else {\n        return [false, `Expected non-negative integer, got ${typeof result}: ${result}`];\n    }\n}"
-    },
-    "typescript": {
-      "template": "function maxDepth(root: TreeNode | null): number {\n  \n}",
-      "solution_text": "Recursive approach to find maximum depth of binary tree.",
-      "solution_code": "function maxDepth(root: TreeNode | null): number {\n    if (!root) return 0;\n    return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));\n}",
-      "convert_input": "class TreeNode {\n    val: number;\n    left: TreeNode | null;\n    right: TreeNode | null;\n    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {\n        this.val = val === undefined ? 0 : val;\n        this.left = left === undefined ? null : left;\n        this.right = right === undefined ? null : right;\n    }\n}\n\nfunction convert_input(arr: (number | null)[]): TreeNode | null {\n    if (!arr || arr.length === 0) return null;\n    const root = new TreeNode(arr[0] as number);\n    const queue: TreeNode[] = [root];\n    let i = 1;\n    while (queue.length > 0 && i < arr.length) {\n        const node = queue.shift()!;\n        if (i < arr.length && arr[i] !== null) {\n            node.left = new TreeNode(arr[i] as number);\n            queue.push(node.left);\n        }\n        i++;\n        if (i < arr.length && arr[i] !== null) {\n            node.right = new TreeNode(arr[i] as number);\n            queue.push(node.right);\n        }\n        i++;\n    }\n    return root;\n}",
-      "test_code": "function test_code(result: any): [boolean, any] {\n    if (typeof result === 'number' && result >= 0 && Number.isInteger(result)) {\n        return [true, result];\n    } else {\n        return [false, `Expected non-negative integer, got ${typeof result}: ${result}`];\n    }\n}"
-    },
-    "java": {
-      "template": "class Solution {\n    public int maxDepth(TreeNode root) {\n        \n    }\n}",
-      "solution_text": "Recursive approach to find maximum depth of binary tree.",
-      "solution_code": "class Solution {\n    public int maxDepth(TreeNode root) {\n        if (root == null) return 0;\n        return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));\n    }\n}",
-      "convert_input": "class TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n    TreeNode() {}\n    TreeNode(int val) { this.val = val; }\n    TreeNode(int val, TreeNode left, TreeNode right) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\nclass ConvertHelper {\n    static Object convert_input(int[] arr) {\n        if (arr == null || arr.length == 0) return null;\n        TreeNode root = new TreeNode(arr[0]);\n        java.util.Queue<TreeNode> queue = new java.util.LinkedList<>();\n        queue.offer(root);\n        int i = 1;\n        while (!queue.isEmpty() && i < arr.length) {\n            TreeNode node = queue.poll();\n            if (i < arr.length && arr[i] != -999) { // Use -999 as null marker\n                node.left = new TreeNode(arr[i]);\n                queue.offer(node.left);\n            }\n            i++;\n            if (i < arr.length && arr[i] != -999) {\n                node.right = new TreeNode(arr[i]);\n                queue.offer(node.right);\n            }\n            i++;\n        }\n        return root;\n    }\n}",
-      "test_code": "class TestHelper {\n    static Object[] test_code(Object result) {\n        if (result instanceof Integer && ((Integer) result) >= 0) {\n            return new Object[]{true, result};\n        } else {\n            return new Object[]{false, \"Expected non-negative integer, got \" + result.getClass().getSimpleName() + \": \" + result};\n        }\n    }\n}"
-    }
-  },
-
+  "template": "def maxDepth(root):\n    ",
+  "solution_text": "Recursive approach to find maximum depth of binary tree.",
+  "solution_code": "def maxDepth(root):\n    if not root:\n        return 0\n    return 1 + max(maxDepth(root.left), maxDepth(root.right))",
+  "convert_input": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef convert_input(arr):\n    if not arr:\n        return None\n    root = TreeNode(arr[0])\n    queue = [root]\n    i = 1\n    while queue and i < len(arr):\n        node = queue.pop(0)\n        if i < len(arr) and arr[i] is not None:\n            node.left = TreeNode(arr[i])\n            queue.append(node.left)\n        i += 1\n        if i < len(arr) and arr[i] is not None:\n            node.right = TreeNode(arr[i])\n            queue.append(node.right)\n        i += 1\n    return root",
+  "test_code": "def test_code(result):\n    # The result should be an integer representing depth\n    if isinstance(result, int) and result >= 0:\n        return [True, result]\n    else:\n        return [False, f'Expected non-negative integer, got {type(result).__name__}: {result}']",
   "order_matters": true,
-
   "test_cases": [
     {
       "id": 1,

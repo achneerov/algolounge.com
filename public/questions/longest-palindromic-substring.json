@@ -10,28 +10,9 @@
     "dynamic"
   ],
   "description": "<h2>Longest Palindromic Substring</h2><p>Given a string <code>s</code>, return <em>the longest palindromic substring</em> in <code>s</code>.</p><h3>Examples:</h3><ul><li><strong>Example 1:</strong><br>Input: s = \"babad\"<br>Output: \"bab\"<br>Explanation: \"aba\" is also a valid answer.</li><li><strong>Example 2:</strong><br>Input: s = \"cbbd\"<br>Output: \"bb\"</li></ul><h3>Constraints:</h3><ul><li>1 <= s.length <= 1000</li><li>s consist of only digits and English letters.</li></ul>",
-  "languages": {
-    "python": {
-      "template": "def longestPalindrome(s):\n    ",
-      "solution_text": "Expand around centers. For each position, check both odd and even length palindromes.",
-      "solution_code": "def longestPalindrome(s):\n    if not s:\n        return \"\"\n    \n    start = 0\n    max_len = 1\n    \n    def expand_around_center(left, right):\n        while left >= 0 and right < len(s) and s[left] == s[right]:\n            left -= 1\n            right += 1\n        return right - left - 1\n    \n    for i in range(len(s)):\n        # Odd length palindromes\n        len1 = expand_around_center(i, i)\n        # Even length palindromes\n        len2 = expand_around_center(i, i + 1)\n        \n        current_max = max(len1, len2)\n        if current_max > max_len:\n            max_len = current_max\n            start = i - (current_max - 1) // 2\n    \n    return s[start:start + max_len]"
-    },
-    "javascript": {
-      "template": "function longestPalindrome(s) {\n  \n}",
-      "solution_text": "Expand around centers. For each position, check both odd and even length palindromes.",
-      "solution_code": "function longestPalindrome(s) {\n    if (!s) return \"\";\n    \n    let start = 0;\n    let maxLen = 1;\n    \n    function expandAroundCenter(left, right) {\n        while (left >= 0 && right < s.length && s[left] === s[right]) {\n            left--;\n            right++;\n        }\n        return right - left - 1;\n    }\n    \n    for (let i = 0; i < s.length; i++) {\n        // Odd length palindromes\n        const len1 = expandAroundCenter(i, i);\n        // Even length palindromes\n        const len2 = expandAroundCenter(i, i + 1);\n        \n        const currentMax = Math.max(len1, len2);\n        if (currentMax > maxLen) {\n            maxLen = currentMax;\n            start = i - Math.floor((currentMax - 1) / 2);\n        }\n    }\n    \n    return s.substring(start, start + maxLen);\n}"
-    },
-    "typescript": {
-      "template": "function longestPalindrome(s: string): string {\n  \n}",
-      "solution_text": "Expand around centers. For each position, check both odd and even length palindromes.",
-      "solution_code": "function longestPalindrome(s: string): string {\n    if (!s) return \"\";\n    \n    let start = 0;\n    let maxLen = 1;\n    \n    function expandAroundCenter(left: number, right: number): number {\n        while (left >= 0 && right < s.length && s[left] === s[right]) {\n            left--;\n            right++;\n        }\n        return right - left - 1;\n    }\n    \n    for (let i = 0; i < s.length; i++) {\n        // Odd length palindromes\n        const len1 = expandAroundCenter(i, i);\n        // Even length palindromes\n        const len2 = expandAroundCenter(i, i + 1);\n        \n        const currentMax = Math.max(len1, len2);\n        if (currentMax > maxLen) {\n            maxLen = currentMax;\n            start = i - Math.floor((currentMax - 1) / 2);\n        }\n    }\n    \n    return s.substring(start, start + maxLen);\n}"
-    },
-    "java": {
-      "template": "class Solution {\n    public String longestPalindrome(String s) {\n        \n    }\n}",
-      "solution_text": "Expand around centers. For each position, check both odd and even length palindromes.",
-      "solution_code": "class Solution {\n    public String longestPalindrome(String s) {\n        if (s == null || s.length() == 0) return \"\";\n        \n        int start = 0;\n        int maxLen = 1;\n        \n        for (int i = 0; i < s.length(); i++) {\n            // Odd length palindromes\n            int len1 = expandAroundCenter(s, i, i);\n            // Even length palindromes\n            int len2 = expandAroundCenter(s, i, i + 1);\n            \n            int currentMax = Math.max(len1, len2);\n            if (currentMax > maxLen) {\n                maxLen = currentMax;\n                start = i - (currentMax - 1) / 2;\n            }\n        }\n        \n        return s.substring(start, start + maxLen);\n    }\n    \n    private int expandAroundCenter(String s, int left, int right) {\n        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {\n            left--;\n            right++;\n        }\n        return right - left - 1;\n    }\n}"
-    }
-  },
+  "template": "def longestPalindrome(s):\n    ",
+  "solution_text": "Expand around centers. For each position, check both odd and even length palindromes.",
+  "solution_code": "def longestPalindrome(s):\n    if not s:\n        return \"\"\n    \n    start = 0\n    max_len = 1\n    \n    def expand_around_center(left, right):\n        while left >= 0 and right < len(s) and s[left] == s[right]:\n            left -= 1\n            right += 1\n        return right - left - 1\n    \n    for i in range(len(s)):\n        # Odd length palindromes\n        len1 = expand_around_center(i, i)\n        # Even length palindromes\n        len2 = expand_around_center(i, i + 1)\n        \n        current_max = max(len1, len2)\n        if current_max > max_len:\n            max_len = current_max\n            start = i - (current_max - 1) // 2\n    \n    return s[start:start + max_len]",
   "order_matters": false,
   "test_cases": [
     {

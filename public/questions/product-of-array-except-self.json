@@ -11,6 +11,7 @@
     "multiplication"
   ],
   "description": "<h2>Product of Array Except Self</h2><p>Given an integer array <code>nums</code>, return an array <code>answer</code> such that <code>answer[i]</code> is equal to the product of all the elements of <code>nums</code> except <code>nums[i]</code>.</p><p>The product of any prefix or suffix of <code>nums</code> is guaranteed to fit in a 32-bit integer.</p><p>You must write an algorithm that runs in O(n) time and without using the division operation.</p><h3>Examples:</h3><ul><li><strong>Example 1:</strong><br>Input: nums = [1,2,3,4]<br>Output: [24,12,8,6]</li><li><strong>Example 2:</strong><br>Input: nums = [-1,1,0,-3,3]<br>Output: [0,0,9,0,0]</li></ul><h3>Constraints:</h3><ul><li>2 <= nums.length <= 10<sup>5</sup></li><li>-30 <= nums[i] <= 30</li></ul>",
+  "entry_function": "productExceptSelf",
   "template": "def productExceptSelf(nums):\n    ",
   "solution_text": "Use two passes: first calculate left products, then calculate right products while building the result.",
   "solution_code": "def productExceptSelf(nums):\n    n = len(nums)\n    result = [1] * n\n    \n    # Left pass\n    for i in range(1, n):\n        result[i] = result[i-1] * nums[i-1]\n    \n    # Right pass\n    right = 1\n    for i in range(n-1, -1, -1):\n        result[i] *= right\n        right *= nums[i]\n    \n    return result",

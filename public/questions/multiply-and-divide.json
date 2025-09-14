@@ -1,8 +1,20 @@
 {
   "filename": "multiply-and-divide",
   "title": "Complete the Function",
-  "keywords": ["complete", "function", "multiply", "divide", "number", "mathematical", "operation", "result", "calculation", "arithmetic"],
+  "keywords": [
+    "complete",
+    "function",
+    "multiply",
+    "divide",
+    "number",
+    "mathematical",
+    "operation",
+    "result",
+    "calculation",
+    "arithmetic"
+  ],
   "description": "<h2>Complete the Function</h2><h3>Problem</h3><p>Complete the function <code>multiplyAndDivide</code> that takes a number, multiplies it by 3, and then divides it by 4. The multiplication part is already implemented - you just need to add the division step before returning the result.</p><h3>Examples:</h3><ul><li>If <code>num = 12</code>, the output should be <code>9</code> (12 * 3 = 36, then 36 / 4 = 9).</li><li>If <code>num = 8</code>, the output should be <code>6</code> (8 * 3 = 24, then 24 / 4 = 6).</li></ul>",
+  "entry_function": "multiplyAndDivide",
   "template": "def multiplyAndDivide(num):\n    result = num * 3\n    # TODO: Divide result by 4\n    return result",
   "solution_text": "Simply divide the result by 4 before returning it. This completes the two-step mathematical operation.",
   "solution_code": "def multiplyAndDivide(num):\n    result = num * 3\n    result = result / 4\n    return result",

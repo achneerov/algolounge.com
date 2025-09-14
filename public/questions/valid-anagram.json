@@ -1,8 +1,20 @@
 {
   "filename": "valid-anagram",
   "title": "Valid Anagram",
-  "keywords": ["valid", "anagram", "string", "rearrange", "letters", "character", "frequency", "count", "phrase", "word"],
+  "keywords": [
+    "valid",
+    "anagram",
+    "string",
+    "rearrange",
+    "letters",
+    "character",
+    "frequency",
+    "count",
+    "phrase",
+    "word"
+  ],
   "description": "<h2>Valid Anagram</h2><h3>Problem</h3><p>Given two strings <code>s</code> and <code>t</code>, return <code>true</code> if <code>t</code> is an anagram of <code>s</code>, and <code>false</code> otherwise.</p><p>An anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.</p><h3>Examples:</h3><ul><li>If <code>s = \"anagram\"</code> and <code>t = \"nagaram\"</code>, the output should be <code>true</code>.</li><li>If <code>s = \"rat\"</code> and <code>t = \"car\"</code>, the output should be <code>false</code>.</li></ul>",
+  "entry_function": "isAnagram",
   "template": "def isAnagram(s, t):\n  ",
   "solution_text": "The most efficient approach is to count character frequencies. We can create dictionaries to track the occurrence of each character in both strings and compare them. This approach has O(n) time complexity and O(1) space complexity (since there are at most 26 lowercase English letters).",
   "solution_code": "def isAnagram(s, t):\n    # If lengths are different, they can't be anagrams\n    if len(s) != len(t):\n        return False\n    \n    # Create dictionaries to track character counts\n    char_count_s = {}\n    char_count_t = {}\n    \n    # Count characters in both strings\n    for i in range(len(s)):\n        char_count_s[s[i]] = char_count_s.get(s[i], 0) + 1\n        char_count_t[t[i]] = char_count_t.get(t[i], 0) + 1\n    \n    # Compare the character counts\n    return char_count_s == char_count_t\n    \n    # Alternative solution using sorting:\n    # return sorted(s) == sorted(t)",

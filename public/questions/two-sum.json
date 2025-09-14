@@ -1,8 +1,20 @@
 {
   "filename": "two-sum",
   "title": "Two Sum",
-  "keywords": ["two", "sum", "array", "integer", "target", "indices", "add", "numbers", "hash", "map"],
+  "keywords": [
+    "two",
+    "sum",
+    "array",
+    "integer",
+    "target",
+    "indices",
+    "add",
+    "numbers",
+    "hash",
+    "map"
+  ],
   "description": "<h2>Two Sum</h2><p>Given an array of integers <code>nums</code> and an integer <code>target</code>, return indices of the two numbers such that they add up to <code>target</code>.</p><p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p><p>You can return the answer in any order.</p><h3>Examples:</h3><ul><li>Input: nums = [2,7,11,15], target = 9<br>Output: [0,1]<br>Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].</li><li>Input: nums = [3,2,4], target = 6<br>Output: [1,2]</li><li>Input: nums = [3,3], target = 6<br>Output: [0,1]</li></ul>",
+  "entry_function": "twoSum",
   "template": "def twoSum(nums, target):\n  ",
   "solution_text": "The most efficient approach uses a hash map (dictionary) to keep track of the numbers we've seen and their indices. As we iterate through the array, for each number we calculate its complement (target - current number) and check if we've seen it before. This achieves O(n) time complexity and O(n) space complexity.",
   "solution_code": "def twoSum(nums, target):\n    seen = {}\n    \n    for i, num in enumerate(nums):\n        complement = target - num\n        \n        if complement in seen:\n            return [seen[complement], i]\n        \n        seen[num] = i\n    \n    return []",
@@ -11,82 +23,161 @@
     {
       "id": 1,
       "input": {
-        "nums": [2, 7, 11, 15],
+        "nums": [
+          2,
+          7,
+          11,
+          15
+        ],
         "target": 9
       },
-      "output": [0, 1]
+      "output": [
+        0,
+        1
+      ]
     },
     {
       "id": 2,
       "input": {
-        "nums": [3, 2, 4],
+        "nums": [
+          3,
+          2,
+          4
+        ],
         "target": 6
       },
-      "output": [1, 2]
+      "output": [
+        1,
+        2
+      ]
     },
     {
       "id": 3,
       "input": {
-        "nums": [3, 3],
+        "nums": [
+          3,
+          3
+        ],
         "target": 6
       },
-      "output": [0, 1]
+      "output": [
+        0,
+        1
+      ]
     },
     {
       "id": 4,
       "input": {
-        "nums": [0, 4, 3, 0],
+        "nums": [
+          0,
+          4,
+          3,
+          0
+        ],
         "target": 0
       },
-      "output": [0, 3]
+      "output": [
+        0,
+        3
+      ]
     },
     {
       "id": 5,
       "input": {
-        "nums": [-1, -3, 5, 7],
+        "nums": [
+          -1,
+          -3,
+          5,
+          7
+        ],
         "target": 4
       },
-      "output": [0, 2]
+      "output": [
+        0,
+        2
+      ]
     },
     {
       "id": 6,
       "input": {
-        "nums": [5, 75, 25],
+        "nums": [
+          5,
+          75,
+          25
+        ],
         "target": 100
       },
-      "output": [1, 2]
+      "output": [
+        1,
+        2
+      ]
     },
     {
       "id": 7,
       "input": {
-        "nums": [1, 2, 3, 4, 5],
+        "nums": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
         "target": 9
       },
-      "output": [3, 4]
+      "output": [
+        3,
+        4
+      ]
     },
     {
       "id": 8,
       "input": {
-        "nums": [10, 20, 30, 40, 50],
+        "nums": [
+          10,
+          20,
+          30,
+          40,
+          50
+        ],
         "target": 80
       },
-      "output": [2, 4]
+      "output": [
+        2,
+        4
+      ]
     },
     {
       "id": 9,
       "input": {
-        "nums": [-7, 2, 8, 11, 15],
+        "nums": [
+          -7,
+          2,
+          8,
+          11,
+          15
+        ],
         "target": 1
       },
-      "output": [0, 2]
+      "output": [
+        0,
+        2
+      ]
     },
     {
       "id": 10,
       "input": {
-        "nums": [1000, 2000, 3000, 4000],
+        "nums": [
+          1000,
+          2000,
+          3000,
+          4000
+        ],
         "target": 7000
       },
-      "output": [2, 3]
+      "output": [
+        2,
+        3
+      ]
     }
   ]
 }

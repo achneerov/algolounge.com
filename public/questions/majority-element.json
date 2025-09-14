@@ -14,6 +14,7 @@
     "appears"
   ],
   "description": "<h2>Majority Element</h2><p>Leetcode 169. Majority Element</p><p></p><p>Given an array `nums` of size `n`, return the **majority element**.</p><p></p><p>The majority element is the element that appears more than `⌊n / 2⌋` times in the array. You may assume that the majority element always exists in the array.</p><h3>Examples:</h3><ul><li>Input: nums = [5,5,1,1,1,5,5]<br><br>Output: 5</li><li>Input: nums = [2,2,2]<br><br>Output: 2</li></ul><h3>Constraints:</h3><ul><li> `1 <= nums.length <= 50,000`</li><li> `-1,000,000,000 <= nums[i] <= 1,000,000,000`</li></ul>",
+  "entry_function": "majorityElement",
   "template": "def majorityElement(nums):\n    ",
   "solution_text": "<h3>Boyer-Moore Voting Algorithm</h3><p>Find the majority element that appears more than n/2 times using the elegant Boyer-Moore voting algorithm.</p><h4>Algorithm:</h4><ol><li>Maintain a candidate and count variable</li><li>If count is 0, set current element as candidate</li><li>Increment count if element matches candidate, decrement otherwise</li><li>The majority element will remain as the final candidate</li></ol><h4>Time Complexity:</h4><p>O(n) - single pass through the array</p><h4>Space Complexity:</h4><p>O(1) - constant extra space</p><h4>Key Insights:</h4><ul><li>Majority element appears more than n/2 times, so it will survive the voting process</li><li>Non-majority elements cancel each other out</li><li>No need for additional data structures</li></ul>",
   "solution_code": "def majorityElement(nums):\n    candidate = None\n    count = 0\n    \n    for num in nums:\n        if count == 0:\n            candidate = num\n            count = 1\n        elif num == candidate:\n            count += 1\n        else:\n            count -= 1\n    \n    return candidate",
@@ -22,70 +23,128 @@
     {
       "id": 1,
       "input": {
-        "nums": [5, 5, 1, 1, 1, 5, 5]
+        "nums": [
+          5,
+          5,
+          1,
+          1,
+          1,
+          5,
+          5
+        ]
       },
       "output": 5
     },
     {
       "id": 2,
       "input": {
-        "nums": [2, 2, 2]
+        "nums": [
+          2,
+          2,
+          2
+        ]
       },
       "output": 2
     },
     {
       "id": 3,
       "input": {
-        "nums": [1]
+        "nums": [
+          1
+        ]
       },
       "output": 1
     },
     {
       "id": 4,
       "input": {
-        "nums": [3, 2, 3]
+        "nums": [
+          3,
+          2,
+          3
+        ]
       },
       "output": 3
     },
     {
       "id": 5,
       "input": {
-        "nums": [2, 2, 1, 1, 1, 2, 2]
+        "nums": [
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          2
+        ]
       },
       "output": 2
     },
     {
       "id": 6,
       "input": {
-        "nums": [6, 5, 5]
+        "nums": [
+          6,
+          5,
+          5
+        ]
       },
       "output": 5
     },
     {
       "id": 7,
       "input": {
-        "nums": [1, 1, 1, 2, 2, 1, 1]
+        "nums": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          1,
+          1
+        ]
       },
       "output": 1
     },
     {
       "id": 8,
       "input": {
-        "nums": [4, 4, 4, 4, 3, 3, 3]
+        "nums": [
+          4,
+          4,
+          4,
+          4,
+          3,
+          3,
+          3
+        ]
       },
       "output": 4
     },
     {
       "id": 9,
       "input": {
-        "nums": [-1, -1, 2, 2, -1]
+        "nums": [
+          -1,
+          -1,
+          2,
+          2,
+          -1
+        ]
       },
       "output": -1
     },
     {
       "id": 10,
       "input": {
-        "nums": [0, 0, 0, 1, 1]
+        "nums": [
+          0,
+          0,
+          0,
+          1,
+          1
+        ]
       },
       "output": 0
     }

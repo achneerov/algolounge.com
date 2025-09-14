@@ -81,7 +81,7 @@ export class QuestionsComponent implements OnInit, OnDestroy {
 
     try {
       const code = this.ideComponent.getCode();
-      const functionName = this.ideComponent.getFunctionName();
+      const functionName = this.questionData.entry_function || 'function';
       const testCases = this.questionData.test_cases || [];
 
       this.executionResult = await this.codeExecutionService.executeCode(
@@ -138,6 +138,11 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     this.solutionText = this.questionData.solution_text || "";
     this.solutionCode = this.questionData.solution_code || "";
     this.template = this.questionData.template || "";
+    
+    // Validate that entry_function is provided
+    if (!this.questionData.entry_function) {
+      console.warn(`Question ${this.currentQuestionFilename} is missing entry_function field`);
+    }
   }
 
 

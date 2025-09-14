@@ -1,8 +1,16 @@
 {
   "filename": "test-binary-tree-depth",
   "title": "Test Binary Tree Depth",
-  "keywords": ["binary", "tree", "depth", "test", "convert", "custom"],
+  "keywords": [
+    "binary",
+    "tree",
+    "depth",
+    "test",
+    "convert",
+    "custom"
+  ],
   "description": "<h2>Binary Tree Maximum Depth (Test Question)</h2><p>Given the root of a binary tree, return its maximum depth. This is a test question to validate convert_input and test_code functionality.</p>",
+  "entry_function": "maxDepth",
   "template": "def maxDepth(root):\n    ",
   "solution_text": "Recursive approach to find maximum depth of binary tree.",
   "solution_code": "def maxDepth(root):\n    if not root:\n        return 0\n    return 1 + max(maxDepth(root.left), maxDepth(root.right))",
@@ -13,14 +21,26 @@
     {
       "id": 1,
       "input": {
-        "root": [3, 9, 20, null, null, 15, 7]
+        "root": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ]
       },
       "output": 3
     },
     {
       "id": 2,
       "input": {
-        "root": [1, null, 2]
+        "root": [
+          1,
+          null,
+          2
+        ]
       },
       "output": 2
     },

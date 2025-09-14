@@ -120,16 +120,6 @@ export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
     return this.editorView.state.doc.toString();
   }
 
-  getFunctionName(): string {
-    // Extract function name from Python template
-    if (this.template) {
-      const match = this.template.match(/def\s+(\w+)\s*\(/);
-      return match ? match[1] : "function";
-    }
-
-    // Fallback to generic name
-    return "function";
-  }
 
 
   resetTemplate(): void {

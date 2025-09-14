@@ -53,10 +53,12 @@ export class CodeExecutionService {
   }
 
   async executeCode(
-    code: string, 
-    testCases: any[], 
+    code: string,
+    testCases: any[],
     functionName: string,
-    orderMatters: boolean = true
+    orderMatters: boolean = true,
+    prepareCode?: string,
+    verifyCode?: string
   ): Promise<ExecutionResult> {
     const startTime = performance.now();
     const pyodide = await this.initPyodide();
@@ -67,11 +69,19 @@ export class CodeExecutionService {
       // Execute the user's code
       pyodide.runPython(code);
 
+      // Load prepare and verify functions if provided
+      if (prepareCode) {
+        pyodide.runPython(prepareCode);
+      }
+      if (verifyCode) {
+        pyodide.runPython(verifyCode);
+      }
+
       // Run each test case
       for (let i = 0; i < testCases.length; i++) {
         const testCase = testCases[i];
         const testOutput: string[] = [];
-        
+
         try {
           // Set up output capture for this test case
           pyodide.runPython(`
@@ -81,27 +91,48 @@ test_output = StringIO()
 sys.stdout = test_output
           `);
 
-          // Prepare the function call
-          const args = Object.values(testCase.input);
-          const argString = args.map(arg => JSON.stringify(arg)).join(', ');
-          
-          const result = pyodide.runPython(`${functionName}(${argString})`);
-          
-          // Convert Pyodide result to JS immediately to avoid proxy destruction
-          const jsResult = result && typeof result.toJs === 'function' ? result.toJs() : result;
-          
+          let jsResult: any;
+          let passed: boolean;
+          let outputStr: string = '';
+
+          if (prepareCode && verifyCode) {
+            // Use new prepare/verify flow
+            const inputString = JSON.stringify(testCase.input).replace(/null/g, 'None');
+
+            // Call user function with prepared input
+            const result = pyodide.runPython(`${functionName}(prepare(${inputString}))`);
+
+            // Convert result to JS
+            jsResult = result && typeof result.toJs === 'function' ? result.toJs() : result;
+
+            // Call verify function to check result and get output string
+            const verifyResult = pyodide.runPython(`verify(${functionName}(prepare(${inputString})), ${JSON.stringify(testCase.output)})`);
+            const verifyJs = verifyResult && typeof verifyResult.toJs === 'function' ? verifyResult.toJs() : verifyResult;
+
+            passed = verifyJs[0];
+            outputStr = verifyJs[1] || '';
+          } else {
+            // Use old direct comparison flow
+            const args = Object.values(testCase.input);
+            const argString = args.map(arg => JSON.stringify(arg)).join(', ');
+
+            const result = pyodide.runPython(`${functionName}(${argString})`);
+            jsResult = result && typeof result.toJs === 'function' ? result.toJs() : result;
+            passed = this.deepEqual(jsResult, testCase.output, orderMatters);
+          }
+
           // Get output for this test case
           const capturedOutput = pyodide.runPython('test_output.getvalue()');
           if (capturedOutput) {
             testOutput.push(...capturedOutput.split('\n').filter((line: string) => line.trim()));
           }
-          
+
           testResults.push({
             id: testCase.id,
             input: testCase.input,
             expectedOutput: testCase.output,
-            actualOutput: jsResult,
-            passed: this.deepEqual(jsResult, testCase.output, orderMatters),
+            actualOutput: outputStr || jsResult,
+            passed: passed,
             output: testOutput
           });
         } catch (error) {

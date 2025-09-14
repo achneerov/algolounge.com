@@ -143,21 +143,20 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     if (!this.questionData) return;
     
     if (this.questionData.languages) {
-      // New multi-language format
+      // Old multi-language format (archived questions)
       const langData = this.questionData.languages[this.selectedLanguage];
       if (langData) {
         this.solutionText = langData.solution_text || "";
         this.solutionCode = langData.solution_code || "";
         this.template = langData.template || "";
       }
-      // Set description from the global level for multi-language format
       this.description = this.questionData.description || "";
     } else {
-      // Old single-language format (fallback)
+      // New Python-only format (current questions)
       this.description = this.questionData.description || "";
-      this.solutionText = this.questionData.solution || "";
-      this.solutionCode = "";
-      this.template = "";
+      this.solutionText = this.questionData.solution_text || "";
+      this.solutionCode = this.questionData.solution_code || "";
+      this.template = this.questionData.template || "";
     }
   }
 

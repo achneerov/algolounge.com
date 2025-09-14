@@ -40,10 +40,7 @@ export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Output() run = new EventEmitter<void>();
 
   allLanguages = [
-    { label: "Python", value: "python" },
-    { label: "JavaScript", value: "javascript" },
-    { label: "TypeScript", value: "typescript" },
-    { label: "Java", value: "java" }
+    { label: "Python", value: "python" }
   ];
 
   languages: { label: string; value: string }[] = [];
@@ -82,16 +79,8 @@ export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   private updateAvailableLanguages() {
-    if (this.questionData && this.questionData.languages) {
-      // Filter languages based on what's available in the question data
-      const availableLanguageKeys = Object.keys(this.questionData.languages);
-      this.languages = this.allLanguages.filter(lang => 
-        availableLanguageKeys.includes(lang.value)
-      );
-    } else {
-      // Fallback to all languages if no question data or old format
-      this.languages = [...this.allLanguages];
-    }
+    // Only Python is supported
+    this.languages = [...this.allLanguages];
   }
 
   ngOnChanges(changes: SimpleChanges) {

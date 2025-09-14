@@ -26,10 +26,7 @@ export class HeaderComponent implements OnInit {
   @Output() run = new EventEmitter<void>();
 
   languages = [
-    { label: "Python", value: "python" },
-    { label: "JavaScript", value: "javascript" },
-    { label: "TypeScript", value: "typescript" },
-    { label: "Java", value: "java" }
+    { label: "Python", value: "python" }
   ];
 
   constructor(

@@ -10,28 +10,10 @@
     "shift"
   ],
   "description": "<h2>Reverse Bits</h2><p>Reverse bits of a given 32 bits unsigned integer.</p><h3>Examples:</h3><ul><li><strong>Example 1:</strong><br>Input: n = 00000010100101000001111010011100<br>Output:    964176192 (00111001011110000010100101000000)<br>Explanation: The input binary string represents the unsigned integer 43261596, so return 964176192 which its binary representation is 00111001011110000010100101000000.</li><li><strong>Example 2:</strong><br>Input: n = 11111111111111111111111111111101<br>Output:   3221225471 (10111111111111111111111111111111)<br>Explanation: The input binary string represents the unsigned integer 4294967293, so return 3221225471 which its binary representation is 10111111111111111111111111111111.</li></ul><h3>Constraints:</h3><ul><li>The input must be a binary string of length 32</li></ul>",
-  "languages": {
-    "python": {
-      "template": "def reverseBits(n):\n    ",
-      "solution_text": "Process each bit from right to left and build the result from left to right.",
-      "solution_code": "def reverseBits(n):\n    result = 0\n    for i in range(32):\n        bit = (n >> i) & 1\n        result |= bit << (31 - i)\n    return result"
-    },
-    "javascript": {
-      "template": "function reverseBits(n) {\n  \n}",
-      "solution_text": "Process each bit from right to left and build the result from left to right.",
-      "solution_code": "function reverseBits(n) {\n    let result = 0;\n    for (let i = 0; i < 32; i++) {\n        const bit = (n >> i) & 1;\n        result |= bit << (31 - i);\n    }\n    return result >>> 0; // Unsigned right shift to handle sign\n}"
-    },
-    "typescript": {
-      "template": "function reverseBits(n: number): number {\n  \n}",
-      "solution_text": "Process each bit from right to left and build the result from left to right.",
-      "solution_code": "function reverseBits(n: number): number {\n    let result = 0;\n    for (let i = 0; i < 32; i++) {\n        const bit = (n >> i) & 1;\n        result |= bit << (31 - i);\n    }\n    return result >>> 0; // Unsigned right shift to handle sign\n}"
-    },
-    "java": {
-      "template": "class Solution {\n    public int reverseBits(int n) {\n        \n    }\n}",
-      "solution_text": "Process each bit from right to left and build the result from left to right.",
-      "solution_code": "class Solution {\n    public int reverseBits(int n) {\n        int result = 0;\n        for (int i = 0; i < 32; i++) {\n            int bit = (n >> i) & 1;\n            result |= bit << (31 - i);\n        }\n        return result;\n    }\n}"
-    }
-  },
+  "entry_function": "reverseBits",
+  "template": "def reverseBits(n):\n    ",
+  "solution_text": "Process each bit from right to left and build the result from left to right.",
+  "solution_code": "def reverseBits(n):\n    result = 0\n    for i in range(32):\n        bit = (n >> i) & 1\n        result |= bit << (31 - i)\n    return result",
   "order_matters": false,
   "test_cases": [
     {

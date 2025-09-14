@@ -30,7 +30,6 @@ export class QuestionsComponent implements OnInit, OnDestroy {
   description: string = "";
   solutionText: string = "";
   solutionCode: string = "";
-  selectedLanguage: string = "python";
   questionData: any = null;
   template: string = "";
   executionResult: ExecutionResult | null = null;
@@ -71,12 +70,6 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     this.router.navigate(["/questions", name]);
   }
 
-  onLanguageChange(language: string) {
-    this.selectedLanguage = language;
-    this.updateLanguageContent();
-    // Clear previous execution results when language changes
-    this.executionResult = null;
-  }
 
   async onRun() {
     if (!this.ideComponent || !this.questionData) {
@@ -88,16 +81,16 @@ export class QuestionsComponent implements OnInit, OnDestroy {
 
     try {
       const code = this.ideComponent.getCode();
-      const functionName = this.ideComponent.getFunctionName();
+      const functionName = this.questionData.entry_function || 'function';
       const testCases = this.questionData.test_cases || [];
 
       this.executionResult = await this.codeExecutionService.executeCode(
         code,
-        this.selectedLanguage,
         testCases,
         functionName,
         this.questionData.order_matters !== false, // Default to true if not specified
-        this.currentQuestionFilename
+        this.questionData.prepare, // Pass prepare code
+        this.questionData.verify   // Pass verify code
       );
 
       // Check if all tests passed and mark as completed
@@ -130,7 +123,7 @@ export class QuestionsComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (data) => {
           this.questionData = data;
-          this.updateLanguageContent();
+          this.updateQuestionContent();
           this.notFound = false;
         },
         error: () => {
@@ -139,25 +132,18 @@ export class QuestionsComponent implements OnInit, OnDestroy {
       });
   }
 
-  updateLanguageContent() {
+  updateQuestionContent() {
     if (!this.questionData) return;
+
+    // Python-only format
+    this.description = this.questionData.description || "";
+    this.solutionText = this.questionData.solution_text || "";
+    this.solutionCode = this.questionData.solution_code || "";
+    this.template = this.questionData.template || "";
     
-    if (this.questionData.languages) {
-      // New multi-language format
-      const langData = this.questionData.languages[this.selectedLanguage];
-      if (langData) {
-        this.solutionText = langData.solution_text || "";
-        this.solutionCode = langData.solution_code || "";
-        this.template = langData.template || "";
-      }
-      // Set description from the global level for multi-language format
-      this.description = this.questionData.description || "";
-    } else {
-      // Old single-language format (fallback)
-      this.description = this.questionData.description || "";
-      this.solutionText = this.questionData.solution || "";
-      this.solutionCode = "";
-      this.template = "";
+    // Validate that entry_function is provided
+    if (!this.questionData.entry_function) {
+      console.warn(`Question ${this.currentQuestionFilename} is missing entry_function field`);
     }
   }
 

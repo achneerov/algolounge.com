@@ -11,28 +11,10 @@
     "hashmap"
   ],
   "description": "<h2>Longest Substring Without Repeating Characters</h2><p>Given a string <code>s</code>, find the length of the <strong>longest substring</strong> without repeating characters.</p><h3>Examples:</h3><ul><li><strong>Example 1:</strong><br>Input: s = \"abcabcbb\"<br>Output: 3<br>Explanation: The answer is \"abc\", with the length of 3.</li><li><strong>Example 2:</strong><br>Input: s = \"bbbbb\"<br>Output: 1<br>Explanation: The answer is \"b\", with the length of 1.</li><li><strong>Example 3:</strong><br>Input: s = \"pwwkew\"<br>Output: 3<br>Explanation: The answer is \"wke\", with the length of 3.<br>Notice that the answer must be a substring, \"pwke\" is a subsequence and not a substring.</li></ul><h3>Constraints:</h3><ul><li>0 <= s.length <= 5 * 10<sup>4</sup></li><li>s consists of English letters, digits, symbols and spaces.</li></ul>",
-  "languages": {
-    "python": {
-      "template": "def lengthOfLongestSubstring(s):\n    ",
-      "solution_text": "Use sliding window with hash map to track character positions. When duplicate found, move left pointer.",
-      "solution_code": "def lengthOfLongestSubstring(s):\n    char_map = {}\n    left = 0\n    max_length = 0\n    \n    for right in range(len(s)):\n        if s[right] in char_map and char_map[s[right]] >= left:\n            left = char_map[s[right]] + 1\n        \n        char_map[s[right]] = right\n        max_length = max(max_length, right - left + 1)\n    \n    return max_length"
-    },
-    "javascript": {
-      "template": "function lengthOfLongestSubstring(s) {\n  \n}",
-      "solution_text": "Use sliding window with hash map to track character positions. When duplicate found, move left pointer.",
-      "solution_code": "function lengthOfLongestSubstring(s) {\n    const charMap = new Map();\n    let left = 0;\n    let maxLength = 0;\n    \n    for (let right = 0; right < s.length; right++) {\n        if (charMap.has(s[right]) && charMap.get(s[right]) >= left) {\n            left = charMap.get(s[right]) + 1;\n        }\n        \n        charMap.set(s[right], right);\n        maxLength = Math.max(maxLength, right - left + 1);\n    }\n    \n    return maxLength;\n}"
-    },
-    "typescript": {
-      "template": "function lengthOfLongestSubstring(s: string): number {\n  \n}",
-      "solution_text": "Use sliding window with hash map to track character positions. When duplicate found, move left pointer.",
-      "solution_code": "function lengthOfLongestSubstring(s: string): number {\n    const charMap = new Map<string, number>();\n    let left = 0;\n    let maxLength = 0;\n    \n    for (let right = 0; right < s.length; right++) {\n        if (charMap.has(s[right]) && charMap.get(s[right])! >= left) {\n            left = charMap.get(s[right])! + 1;\n        }\n        \n        charMap.set(s[right], right);\n        maxLength = Math.max(maxLength, right - left + 1);\n    }\n    \n    return maxLength;\n}"
-    },
-    "java": {
-      "template": "class Solution {\n    public int lengthOfLongestSubstring(String s) {\n        \n    }\n}",
-      "solution_text": "Use sliding window with hash map to track character positions. When duplicate found, move left pointer.",
-      "solution_code": "class Solution {\n    public int lengthOfLongestSubstring(String s) {\n        Map<Character, Integer> charMap = new HashMap<>();\n        int left = 0;\n        int maxLength = 0;\n        \n        for (int right = 0; right < s.length(); right++) {\n            char c = s.charAt(right);\n            if (charMap.containsKey(c) && charMap.get(c) >= left) {\n                left = charMap.get(c) + 1;\n            }\n            \n            charMap.put(c, right);\n            maxLength = Math.max(maxLength, right - left + 1);\n        }\n        \n        return maxLength;\n    }\n}"
-    }
-  },
+  "entry_function": "lengthOfLongestSubstring",
+  "template": "def lengthOfLongestSubstring(s):\n    ",
+  "solution_text": "Use sliding window with hash map to track character positions. When duplicate found, move left pointer.",
+  "solution_code": "def lengthOfLongestSubstring(s):\n    char_map = {}\n    left = 0\n    max_length = 0\n    \n    for right in range(len(s)):\n        if s[right] in char_map and char_map[s[right]] >= left:\n            left = char_map[s[right]] + 1\n        \n        char_map[s[right]] = right\n        max_length = max(max_length, right - left + 1)\n    \n    return max_length",
   "order_matters": false,
   "test_cases": [
     {

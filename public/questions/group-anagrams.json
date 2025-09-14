@@ -1,107 +1,208 @@
 {
   "filename": "group-anagrams",
   "title": "Group Anagrams",
-  "keywords": ["group", "anagrams", "array", "strings", "rearrange", "letters", "sorted", "key", "character", "phrase"],
+  "keywords": [
+    "group",
+    "anagrams",
+    "array",
+    "strings",
+    "rearrange",
+    "letters",
+    "sorted",
+    "key",
+    "character",
+    "phrase"
+  ],
   "description": "<h2>Group Anagrams</h2><h3>Problem</h3><p>Given an array of strings <code>strs</code>, group the anagrams together. You can return the answer in any order.</p><p>An <strong>anagram</strong> is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.</p><h3>Examples:</h3><ul><li>If <code>strs = [\"eat\",\"tea\",\"tan\",\"ate\",\"nat\",\"bat\"]</code>, the output should be <code>[[\"bat\"],[\"nat\",\"tan\"],[\"ate\",\"eat\",\"tea\"]]</code>.</li><li>If <code>strs = [\"\"]</code>, the output should be <code>[[\"\"]]</code>.</li><li>If <code>strs = [\"a\"]</code>, the output should be <code>[[\"a\"]]</code>.</li></ul>",
-
-  "languages": {
-    "python": {
-      "template": "def groupAnagrams(strs):\n  ",
-      "solution_text": "The most efficient approach uses a hash map where the key is a sorted version of each string. Since anagrams will have the same characters, sorting them will produce identical keys. We group strings with the same sorted key together. This approach has O(n * m log m) time complexity, where n is the number of strings and m is the average length of the strings.",
-      "solution_code": "def groupAnagrams(strs):\n    # Create a dictionary to group anagrams\n    anagram_groups = {}\n    \n    # Iterate through each string in the input array\n    for s in strs:\n        # Sort the string to use as key\n        # Since anagrams will have the same sorted string\n        sorted_str = ''.join(sorted(s))\n        \n        # If we've seen this sorted string before, add the original\n        # string to its group\n        if sorted_str in anagram_groups:\n            anagram_groups[sorted_str].append(s)\n        # Otherwise, create a new group\n        else:\n            anagram_groups[sorted_str] = [s]\n    \n    # Return the values (groups of anagrams) as a list\n    return list(anagram_groups.values())"
-    },
-    "javascript": {
-      "template": "function groupAnagrams(strs) {\n  \n}",
-      "solution_text": "The most efficient approach uses a Map where the key is a sorted version of each string. Since anagrams will have the same characters, sorting them will produce identical keys. We group strings with the same sorted key together. This approach has O(n * m log m) time complexity, where n is the number of strings and m is the average length of the strings.",
-      "solution_code": "function groupAnagrams(strs) {\n    // Create a map to group anagrams\n    const anagramGroups = new Map();\n    \n    // Iterate through each string in the input array\n    for (const s of strs) {\n        // Sort the string to use as key\n        // Since anagrams will have the same sorted string\n        const sortedStr = s.split('').sort().join('');\n        \n        // If we've seen this sorted string before, add the original\n        // string to its group\n        if (anagramGroups.has(sortedStr)) {\n            anagramGroups.get(sortedStr).push(s);\n        } else {\n            // Otherwise, create a new group\n            anagramGroups.set(sortedStr, [s]);\n        }\n    }\n    \n    // Return the values (groups of anagrams) as an array\n    return Array.from(anagramGroups.values());\n}"
-    },
-    "typescript": {
-      "template": "function groupAnagrams(strs: string[]): string[][] {\n  \n}",
-      "solution_text": "The most efficient approach uses a Map where the key is a sorted version of each string. Since anagrams will have the same characters, sorting them will produce identical keys. We group strings with the same sorted key together. This approach has O(n * m log m) time complexity, where n is the number of strings and m is the average length of the strings. Note: TypeScript type annotations are automatically stripped during execution.",
-      "solution_code": "function groupAnagrams(strs: string[]): string[][] {\n    // Create a map to group anagrams\n    const anagramGroups = new Map<string, string[]>();\n    \n    // Iterate through each string in the input array\n    for (const s of strs) {\n        // Sort the string to use as key\n        // Since anagrams will have the same sorted string\n        const sortedStr = s.split('').sort().join('');\n        \n        // If we've seen this sorted string before, add the original\n        // string to its group\n        if (anagramGroups.has(sortedStr)) {\n            anagramGroups.get(sortedStr).push(s);\n        } else {\n            // Otherwise, create a new group\n            anagramGroups.set(sortedStr, [s]);\n        }\n    }\n    \n    // Return the values (groups of anagrams) as an array\n    return Array.from(anagramGroups.values());\n}"
-    },
-    "java": {
-      "template": "class Solution {\n    public List<List<String>> groupAnagrams(String[] strs) {\n        \n    }\n}",
-      "solution_text": "The most efficient approach uses a HashMap where the key is a sorted version of each string. Since anagrams will have the same characters, sorting them will produce identical keys. We group strings with the same sorted key together. This approach has O(n * m log m) time complexity, where n is the number of strings and m is the average length of the strings.",
-      "solution_code": "import java.util.*;\n\nclass Solution {\n    public List<List<String>> groupAnagrams(String[] strs) {\n        // Create a map to group anagrams\n        Map<String, List<String>> anagramGroups = new HashMap<>();\n        \n        // Iterate through each string in the input array\n        for (String s : strs) {\n            // Sort the string to use as key\n            // Since anagrams will have the same sorted string\n            char[] chars = s.toCharArray();\n            Arrays.sort(chars);\n            String sortedStr = new String(chars);\n            \n            // If we've seen this sorted string before, add the original\n            // string to its group\n            if (anagramGroups.containsKey(sortedStr)) {\n                anagramGroups.get(sortedStr).add(s);\n            } else {\n                // Otherwise, create a new group\n                List<String> group = new ArrayList<>();\n                group.add(s);\n                anagramGroups.put(sortedStr, group);\n            }\n        }\n        \n        // Return the values (groups of anagrams) as a list\n        return new ArrayList<>(anagramGroups.values());\n    }\n}"
-    }
-  },
-
+  "entry_function": "groupAnagrams",
+  "template": "def groupAnagrams(strs):\n  ",
+  "solution_text": "The most efficient approach uses a hash map where the key is a sorted version of each string. Since anagrams will have the same characters, sorting them will produce identical keys. We group strings with the same sorted key together. This approach has O(n * m log m) time complexity, where n is the number of strings and m is the average length of the strings.",
+  "solution_code": "def groupAnagrams(strs):\n    # Create a dictionary to group anagrams\n    anagram_groups = {}\n    \n    # Iterate through each string in the input array\n    for s in strs:\n        # Sort the string to use as key\n        # Since anagrams will have the same sorted string\n        sorted_str = ''.join(sorted(s))\n        \n        # If we've seen this sorted string before, add the original\n        # string to its group\n        if sorted_str in anagram_groups:\n            anagram_groups[sorted_str].append(s)\n        # Otherwise, create a new group\n        else:\n            anagram_groups[sorted_str] = [s]\n    \n    # Return the values (groups of anagrams) as a list\n    return list(anagram_groups.values())",
   "order_matters": false,
-
   "test_cases": [
     {
       "id": 1,
       "input": {
-        "strs": ["eat", "tea", "tan", "ate", "nat", "bat"]
+        "strs": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ]
       },
-      "output": [["bat"], ["nat", "tan"], ["ate", "eat", "tea"]]
+      "output": [
+        [
+          "bat"
+        ],
+        [
+          "nat",
+          "tan"
+        ],
+        [
+          "ate",
+          "eat",
+          "tea"
+        ]
+      ]
     },
     {
       "id": 2,
       "input": {
-        "strs": [""]
+        "strs": [
+          ""
+        ]
       },
-      "output": [[""]]
+      "output": [
+        [
+          ""
+        ]
+      ]
     },
     {
       "id": 3,
       "input": {
-        "strs": ["a"]
+        "strs": [
+          "a"
+        ]
       },
-      "output": [["a"]]
+      "output": [
+        [
+          "a"
+        ]
+      ]
     },
     {
       "id": 4,
       "input": {
-        "strs": ["abc", "cba", "def"]
+        "strs": [
+          "abc",
+          "cba",
+          "def"
+        ]
       },
-      "output": [["abc", "cba"], ["def"]]
+      "output": [
+        [
+          "abc",
+          "cba"
+        ],
+        [
+          "def"
+        ]
+      ]
     },
     {
       "id": 5,
       "input": {
-        "strs": ["abets", "baste", "betas", "beast", "beats"]
+        "strs": [
+          "abets",
+          "baste",
+          "betas",
+          "beast",
+          "beats"
+        ]
       },
-      "output": [["abets", "baste", "betas", "beast", "beats"]]
+      "output": [
+        [
+          "abets",
+          "baste",
+          "betas",
+          "beast",
+          "beats"
+        ]
+      ]
     },
     {
       "id": 6,
       "input": {
-        "strs": ["z", "z"]
+        "strs": [
+          "z",
+          "z"
+        ]
       },
-      "output": [["z", "z"]]
+      "output": [
+        [
+          "z",
+          "z"
+        ]
+      ]
     },
     {
       "id": 7,
       "input": {
-        "strs": ["abc", "def", "ghi"]
+        "strs": [
+          "abc",
+          "def",
+          "ghi"
+        ]
       },
-      "output": [["abc"], ["def"], ["ghi"]]
+      "output": [
+        [
+          "abc"
+        ],
+        [
+          "def"
+        ],
+        [
+          "ghi"
+        ]
+      ]
     },
     {
       "id": 8,
       "input": {
-        "strs": ["cat", "dog", "act", "god"]
+        "strs": [
+          "cat",
+          "dog",
+          "act",
+          "god"
+        ]
       },
       "output": [
-        ["cat", "act"],
-        ["dog", "god"]
+        [
+          "cat",
+          "act"
+        ],
+        [
+          "dog",
+          "god"
+        ]
       ]
     },
     {
       "id": 9,
       "input": {
-        "strs": ["cinema", "iceman", "anemic"]
+        "strs": [
+          "cinema",
+          "iceman",
+          "anemic"
+        ]
       },
-      "output": [["cinema", "iceman", "anemic"]]
+      "output": [
+        [
+          "cinema",
+          "iceman",
+          "anemic"
+        ]
+      ]
     },
     {
       "id": 10,
       "input": {
-        "strs": ["listen", "silent", "enlist"]
+        "strs": [
+          "listen",
+          "silent",
+          "enlist"
+        ]
       },
-      "output": [["listen", "silent", "enlist"]]
+      "output": [
+        [
+          "listen",
+          "silent",
+          "enlist"
+        ]
+      ]
     }
   ]
 }

@@ -1,13 +1,6 @@
 <div class="ide-wrapper">
   <div class="taskbar">
     <div class="taskbar-left">
-      <select 
-        class="language-dropdown" 
-        [value]="language" 
-        (change)="onLanguageChange($event)"
-      >
-        <option *ngFor="let lang of languages" [value]="lang.value">{{ lang.label }}</option>
-      </select>
     </div>
     <div class="taskbar-right">
       <button

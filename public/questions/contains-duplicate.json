@@ -3,33 +3,11 @@
   "title": "Contains Duplicate",
   "keywords": ["contains", "duplicate", "array", "integer", "hash", "set", "distinct", "twice", "appears", "element"],
   "description": "<h2>Contains Duplicate</h2><h3>Problem</h3><p>Given an integer array <code>nums</code>, return <code>true</code> if any value appears at least twice in the array, and return <code>false</code> if every element is distinct.</p><h3>Examples:</h3><ul><li>If <code>nums = [1,2,3,1]</code>, the output should be <code>true</code>.</li><li>If <code>nums = [1,2,3,4]</code>, the output should be <code>false</code>.</li></ul>",
-
-  "languages": {
-    "python": {
-      "template": "def containsDuplicate(nums):\n  ",
-      "solution_text": "The most efficient approach uses a hash set to keep track of elements we've seen. This algorithm has O(n) time complexity and O(n) space complexity in the worst case.",
-      "solution_code": "def containsDuplicate(nums):\n    # Create a set to track seen numbers\n    seen = set()\n    \n    # Iterate through the array\n    for num in nums:\n        # If we've already seen this number, return True\n        if num in seen:\n            return True\n        \n        # Add the number to our set of seen numbers\n        seen.add(num)\n    \n    # If we get through the entire array without finding a duplicate\n    return False"
-    },
-    "javascript": {
-      "template": "function containsDuplicate(nums) {\n  \n}",
-      "solution_text": "The most efficient approach uses a Set to keep track of elements we've seen. This algorithm has O(n) time complexity and O(n) space complexity in the worst case.",
-      "solution_code": "function containsDuplicate(nums) {\n    // Create a set to track seen numbers\n    const seen = new Set();\n    \n    // Iterate through the array\n    for (const num of nums) {\n        // If we've already seen this number, return true\n        if (seen.has(num)) {\n            return true;\n        }\n        // Add the number to our set of seen numbers\n        seen.add(num);\n    }\n    // If we get through the entire array without finding a duplicate\n    return false;\n}"
-    },
-    "typescript": {
-      "template": "function containsDuplicate(nums: number[]): boolean {\n  \n}",
-      "solution_text": "The most efficient approach uses a Set to keep track of elements we've seen. This algorithm has O(n) time complexity and O(n) space complexity in the worst case. Note: TypeScript type annotations are automatically stripped during execution.",
-      "solution_code": "function containsDuplicate(nums: number[]): boolean {\n    // Create a set to track seen numbers\n    const seen = new Set<number>();\n    \n    // Iterate through the array\n    for (const num of nums) {\n        // If we've already seen this number, return true\n        if (seen.has(num)) {\n            return true;\n        }\n        // Add the number to our set of seen numbers\n        seen.add(num);\n    }\n    // If we get through the entire array without finding a duplicate\n    return false;\n}"
-    },
-    "java": {
-      "template": "class Solution {\n    public boolean containsDuplicate(int[] nums) {\n        \n    }\n}",
-      "solution_text": "The most efficient approach uses a HashSet to keep track of elements we've seen. This algorithm has O(n) time complexity and O(n) space complexity in the worst case.",
-      "solution_code": "import java.util.Set;\nimport java.util.HashSet;\n\nclass Solution {\n    public boolean containsDuplicate(int[] nums) {\n        // Create a set to track seen numbers\n        Set<Integer> seen = new HashSet<>();\n        \n        // Iterate through the array\n        for (int num : nums) {\n            // If we've already seen this number, return true\n            if (seen.contains(num)) {\n                return true;\n            }\n            // Add the number to our set of seen numbers\n            seen.add(num);\n        }\n        // If we get through the entire array without finding a duplicate\n        return false;\n    }\n}"
-    }
-  },
-
+  "entry_function": "containsDuplicate",
+  "template": "def containsDuplicate(nums):\n  ",
+  "solution_text": "The most efficient approach uses a hash set to keep track of elements we've seen. This algorithm has O(n) time complexity and O(n) space complexity in the worst case.",
+  "solution_code": "def containsDuplicate(nums):\n    # Create a set to track seen numbers\n    seen = set()\n    \n    # Iterate through the array\n    for num in nums:\n        # If we've already seen this number, return True\n        if num in seen:\n            return True\n        \n        # Add the number to our set of seen numbers\n        seen.add(num)\n    \n    # If we get through the entire array without finding a duplicate\n    return False",
   "order_matters": false,
-
-
   "test_cases": [
     {
       "id": 1,
@@ -99,7 +77,7 @@
       "input": {
         "nums": [0, 0]
       },
-      "output": true
+      "output": false
     }
   ]
 }

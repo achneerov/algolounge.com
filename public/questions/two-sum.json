@@ -1,114 +1,188 @@
 {
   "filename": "two-sum",
   "title": "Two Sum",
-  "keywords": ["two", "sum", "array", "integer", "target", "indices", "add", "numbers", "hash", "map"],
+  "keywords": [
+    "two",
+    "sum",
+    "array",
+    "integer",
+    "target",
+    "indices",
+    "add",
+    "numbers",
+    "hash",
+    "map"
+  ],
   "description": "<h2>Two Sum</h2><p>Given an array of integers <code>nums</code> and an integer <code>target</code>, return indices of the two numbers such that they add up to <code>target</code>.</p><p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p><p>You can return the answer in any order.</p><h3>Examples:</h3><ul><li>Input: nums = [2,7,11,15], target = 9<br>Output: [0,1]<br>Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].</li><li>Input: nums = [3,2,4], target = 6<br>Output: [1,2]</li><li>Input: nums = [3,3], target = 6<br>Output: [0,1]</li></ul>",
+  "entry_function": "twoSum",
+  "template": "def twoSum(nums, target):\n  ",
+  "solution_text": "<h3>Two Sum</h3><p><strong>Algorithm:</strong></p><ol><li>Use a hash map to store previously seen numbers and their indices</li><li>For each number, calculate its complement (target - current number)</li><li>Check if complement exists in hash map</li><li>If found, return the stored index and current index</li><li>Otherwise, store current number and index in hash map</li></ol><p><strong>Time Complexity:</strong> O(n) - single pass through array</p><p><strong>Space Complexity:</strong> O(n) - hash map storage</p><p><strong>Key Insights:</strong></p><ul><li>Hash map provides O(1) lookup time</li><li>One-pass solution vs brute force O(n²)</li><li>Store complement lookups for future iterations</li><li>Handles duplicate values correctly</li></ul>",
+  "solution_code": "def twoSum(nums, target):\n    seen = {}\n    \n    for i, num in enumerate(nums):\n        complement = target - num\n        \n        if complement in seen:\n            return [seen[complement], i]\n        \n        seen[num] = i\n    \n    return []",
 
-  "languages": {
-    "python": {
-      "template": "def twoSum(nums, target):\n  ",
-      "solution_text": "The most efficient approach uses a hash map (dictionary) to keep track of the numbers we've seen and their indices. As we iterate through the array, for each number we calculate its complement (target - current number) and check if we've seen it before. This achieves O(n) time complexity and O(n) space complexity.",
-      "solution_code": "def twoSum(nums, target):\n    seen = {}\n    \n    for i, num in enumerate(nums):\n        complement = target - num\n        \n        if complement in seen:\n            return [seen[complement], i]\n        \n        seen[num] = i\n    \n    return []"
-    },
-    "javascript": {
-      "template": "function twoSum(nums, target) {\n  \n}",
-      "solution_text": "The most efficient approach uses a Map or object to keep track of the numbers we've seen and their indices. As we iterate through the array, for each number we calculate its complement (target - current number) and check if we've seen it before. This achieves O(n) time complexity and O(n) space complexity.",
-      "solution_code": "function twoSum(nums, target) {\n    const seen = new Map();\n    \n    for (let i = 0; i < nums.length; i++) {\n        const complement = target - nums[i];\n        \n        if (seen.has(complement)) {\n            return [seen.get(complement), i];\n        }\n        \n        seen.set(nums[i], i);\n    }\n    \n    return [];\n}"
-    },
-    "typescript": {
-      "template": "function twoSum(nums: number[], target: number): number[] {\n  \n}",
-      "solution_text": "The most efficient approach uses a Map to keep track of the numbers we've seen and their indices. As we iterate through the array, for each number we calculate its complement (target - current number) and check if we've seen it before. This achieves O(n) time complexity and O(n) space complexity. Note: TypeScript type annotations are automatically stripped during execution.",
-      "solution_code": "function twoSum(nums: number[], target: number): number[] {\n    const seen = new Map<number, number>();\n    \n    for (let i = 0; i < nums.length; i++) {\n        const complement = target - nums[i];\n        \n        if (seen.has(complement)) {\n            return [seen.get(complement), i];\n        }\n        \n        seen.set(nums[i], i);\n    }\n    \n    return [];\n}"
-    },
-    "java": {
-      "template": "class Solution {\n    public int[] twoSum(int[] nums, int target) {\n        \n    }\n}",
-      "solution_text": "The most efficient approach uses a HashMap to keep track of the numbers we've seen and their indices. As we iterate through the array, for each number we calculate its complement (target - current number) and check if we've seen it before. This achieves O(n) time complexity and O(n) space complexity.",
-      "solution_code": "class Solution {\n    public int[] twoSum(int[] nums, int target) {\n        Map<Integer, Integer> seen = new HashMap<>();\n        \n        for (int i = 0; i < nums.length; i++) {\n            int complement = target - nums[i];\n            \n            if (seen.containsKey(complement)) {\n                return new int[]{seen.get(complement), i};\n            }\n            \n            seen.put(nums[i], i);\n        }\n        \n        return new int[]{};\n    }\n}"
-    }
-  },
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for twoSum function\"\"\"\n    return (test_case_input['nums'], test_case_input['target'])",
+
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the two sum result\"\"\"\n    def list_to_string(lst):\n        if not lst:\n            return '[]'\n        return '[' + ', '.join(str(x) for x in lst) + ']'\n    \n    # Check if output is valid (should be list of 2 indices)\n    if not actual_output or len(actual_output) != 2:\n        return [False, list_to_string(actual_output)]\n    \n    # For two sum, since order_matters is false, we need to check if\n    # the indices form a valid pair regardless of order\n    actual_set = set(actual_output)\n    expected_set = set(expected_output)\n    \n    passed = actual_set == expected_set\n    output_str = list_to_string(actual_output)\n    \n    return [passed, output_str]",
 
   "order_matters": false,
-
   "test_cases": [
     {
       "id": 1,
       "input": {
-        "nums": [2, 7, 11, 15],
+        "nums": [
+          2,
+          7,
+          11,
+          15
+        ],
         "target": 9
       },
-      "output": [0, 1]
+      "output": [
+        0,
+        1
+      ]
     },
     {
       "id": 2,
       "input": {
-        "nums": [3, 2, 4],
+        "nums": [
+          3,
+          2,
+          4
+        ],
         "target": 6
       },
-      "output": [1, 2]
+      "output": [
+        1,
+        2
+      ]
     },
     {
       "id": 3,
       "input": {
-        "nums": [3, 3],
+        "nums": [
+          3,
+          3
+        ],
         "target": 6
       },
-      "output": [0, 1]
+      "output": [
+        0,
+        1
+      ]
     },
     {
       "id": 4,
       "input": {
-        "nums": [0, 4, 3, 0],
+        "nums": [
+          0,
+          4,
+          3,
+          0
+        ],
         "target": 0
       },
-      "output": [0, 3]
+      "output": [
+        0,
+        3
+      ]
     },
     {
       "id": 5,
       "input": {
-        "nums": [-1, -3, 5, 7],
+        "nums": [
+          -1,
+          -3,
+          5,
+          7
+        ],
         "target": 4
       },
-      "output": [0, 2]
+      "output": [
+        0,
+        2
+      ]
     },
     {
       "id": 6,
       "input": {
-        "nums": [5, 75, 25],
+        "nums": [
+          5,
+          75,
+          25
+        ],
         "target": 100
       },
-      "output": [1, 2]
+      "output": [
+        1,
+        2
+      ]
     },
     {
       "id": 7,
       "input": {
-        "nums": [1, 2, 3, 4, 5],
+        "nums": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
         "target": 9
       },
-      "output": [3, 4]
+      "output": [
+        3,
+        4
+      ]
     },
     {
       "id": 8,
       "input": {
-        "nums": [10, 20, 30, 40, 50],
+        "nums": [
+          10,
+          20,
+          30,
+          40,
+          50
+        ],
         "target": 80
       },
-      "output": [2, 4]
+      "output": [
+        2,
+        4
+      ]
     },
     {
       "id": 9,
       "input": {
-        "nums": [-7, 2, 8, 11, 15],
+        "nums": [
+          -7,
+          2,
+          8,
+          11,
+          15
+        ],
         "target": 1
       },
-      "output": [0, 2]
+      "output": [
+        0,
+        2
+      ]
     },
     {
       "id": 10,
       "input": {
-        "nums": [1000, 2000, 3000, 4000],
+        "nums": [
+          1000,
+          2000,
+          3000,
+          4000
+        ],
         "target": 7000
       },
-      "output": [2, 3]
+      "output": [
+        2,
+        3
+      ]
     }
   ]
 }

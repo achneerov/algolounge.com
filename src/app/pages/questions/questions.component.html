@@ -18,12 +18,10 @@
     <ng-template pTemplate="panel2">
       <p-splitter layout="vertical" [panelSizes]="verticalPanelSizes" [minSizes]="[10, 5]" (onResizeEnd)="onVerticalResizeEnd($event)">
         <ng-template pTemplate="panel1">
-          <app-ide 
-            [language]="selectedLanguage"
+          <app-ide
             [template]="template"
             [questionData]="questionData"
             [isRunning]="isRunning"
-            (languageChange)="onLanguageChange($event)"
             (run)="onRun()"
           ></app-ide>
         </ng-template>

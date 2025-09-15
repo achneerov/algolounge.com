@@ -14,28 +14,10 @@
     "into"
   ],
   "description": "<h2>Group Anagrams</h2><p>Leetcode 49. Group Anagrams</p><p>Given an array of strings <code>strs</code>, group all <em>anagrams</em> together into sublists. You may return the output in <strong>any order</strong>.</p><p>An <strong>anagram</strong> is a string that contains the exact same characters as another string, but the order of the characters can be different.</p><h3>Examples</h3><ul><li><strong>Input:</strong> strs = [\"act\",\"pots\",\"tops\",\"cat\",\"stop\",\"hat\"]<br><strong>Output:</strong> [[\"hat\"],[\"act\", \"cat\"],[\"stop\", \"pots\", \"tops\"]]</li><li><strong>Input:</strong> strs = [\"x\"]<br><strong>Output:</strong> [[\"x\"]]</li><li><strong>Input:</strong> strs = [\"\"]<br><strong>Output:</strong> [[\"\"]]</li></ul><h3>Constraints</h3><ul><li><code>1 <= strs.length <= 1000</code></li><li><code>0 <= strs[i].length <= 100</code></li><li><code>strs[i]</code> is made up of lowercase English letters</li></ul>",
-  "languages": {
-    "python": {
-      "template": "def groupAnagrams(strs):\n    ",
-      "solution_text": "Group anagrams using sorted string as key:\n\n**Algorithm:**\n1. Create a hash map with sorted string as key\n2. For each string, sort its characters to create key\n3. Group strings with the same sorted key\n4. Return all groups as result\n\n**Time Complexity:** O(N * M log M) where N = number of strings, M = max string length\n**Space Complexity:** O(N * M) for storing the groups\n\n**Key Insights:**\n- Sorted characters form unique key for anagrams\n- Hash map efficiently groups anagrams\n- All anagrams will have same sorted key",
-      "solution_code": "def groupAnagrams(strs):\n    from collections import defaultdict\n    \n    groups = defaultdict(list)\n    \n    for s in strs:\n        # Sort characters to create key\n        key = ''.join(sorted(s))\n        groups[key].append(s)\n    \n    return list(groups.values())"
-    },
-    "javascript": {
-      "template": "function groupAnagrams(strs) {\n  \n}",
-      "solution_text": "Group anagrams using sorted string as key:\n\n**Algorithm:**\n1. Create a hash map with sorted string as key\n2. For each string, sort its characters to create key\n3. Group strings with the same sorted key\n4. Return all groups as result\n\n**Time Complexity:** O(N * M log M) where N = number of strings, M = max string length\n**Space Complexity:** O(N * M) for storing the groups\n\n**Key Insights:**\n- Sorted characters form unique key for anagrams\n- Hash map efficiently groups anagrams\n- All anagrams will have same sorted key",
-      "solution_code": "function groupAnagrams(strs) {\n    const groups = new Map();\n    \n    for (const s of strs) {\n        // Sort characters to create key\n        const key = s.split('').sort().join('');\n        \n        if (!groups.has(key)) {\n            groups.set(key, []);\n        }\n        groups.get(key).push(s);\n    }\n    \n    return Array.from(groups.values());\n}"
-    },
-    "typescript": {
-      "template": "function groupAnagrams(strs: string[]): string[][] {\n  \n}",
-      "solution_text": "Group anagrams using sorted string as key:\n\n**Algorithm:**\n1. Create a hash map with sorted string as key\n2. For each string, sort its characters to create key\n3. Group strings with the same sorted key\n4. Return all groups as result\n\n**Time Complexity:** O(N * M log M) where N = number of strings, M = max string length\n**Space Complexity:** O(N * M) for storing the groups\n\n**Key Insights:**\n- Sorted characters form unique key for anagrams\n- Hash map efficiently groups anagrams\n- All anagrams will have same sorted key",
-      "solution_code": "function groupAnagrams(strs: string[]): string[][] {\n    const groups = new Map<string, string[]>();\n    \n    for (const s of strs) {\n        // Sort characters to create key\n        const key = s.split('').sort().join('');\n        \n        if (!groups.has(key)) {\n            groups.set(key, []);\n        }\n        groups.get(key)!.push(s);\n    }\n    \n    return Array.from(groups.values());\n}"
-    },
-    "java": {
-      "template": "import java.util.*;\n\nclass Solution {\n    public List<List<String>> groupAnagrams(String[] strs) {\n        \n    }\n}",
-      "solution_text": "Group anagrams using sorted string as key:\n\n**Algorithm:**\n1. Create a hash map with sorted string as key\n2. For each string, sort its characters to create key\n3. Group strings with the same sorted key\n4. Return all groups as result\n\n**Time Complexity:** O(N * M log M) where N = number of strings, M = max string length\n**Space Complexity:** O(N * M) for storing the groups\n\n**Key Insights:**\n- Sorted characters form unique key for anagrams\n- Hash map efficiently groups anagrams\n- All anagrams will have same sorted key",
-      "solution_code": "import java.util.*;\n\nclass Solution {\n    public List<List<String>> groupAnagrams(String[] strs) {\n        Map<String, List<String>> groups = new HashMap<>();\n        \n        for (String s : strs) {\n            // Sort characters to create key\n            char[] chars = s.toCharArray();\n            Arrays.sort(chars);\n            String key = new String(chars);\n            \n            groups.computeIfAbsent(key, k -> new ArrayList<>()).add(s);\n        }\n        \n        return new ArrayList<>(groups.values());\n    }\n}"
-    }
-  },
+  "entry_function": "groupAnagrams",
+  "template": "def groupAnagrams(strs):\n    ",
+  "solution_text": "Group anagrams using sorted string as key:\n\n**Algorithm:**\n1. Create a hash map with sorted string as key\n2. For each string, sort its characters to create key\n3. Group strings with the same sorted key\n4. Return all groups as result\n\n**Time Complexity:** O(N * M log M) where N = number of strings, M = max string length\n**Space Complexity:** O(N * M) for storing the groups\n\n**Key Insights:**\n- Sorted characters form unique key for anagrams\n- Hash map efficiently groups anagrams\n- All anagrams will have same sorted key",
+  "solution_code": "def groupAnagrams(strs):\n    from collections import defaultdict\n    \n    groups = defaultdict(list)\n    \n    for s in strs:\n        # Sort characters to create key\n        key = ''.join(sorted(s))\n        groups[key].append(s)\n    \n    return list(groups.values())",
   "order_matters": false,
   "test_cases": [
     {

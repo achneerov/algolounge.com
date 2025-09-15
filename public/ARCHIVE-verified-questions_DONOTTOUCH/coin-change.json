@@ -14,34 +14,20 @@
     "different"
   ],
   "description": "<h2>Coin Change</h2><p>Leetcode 322. Coin Change</p><p></p><p>You are given an integer array `coins` representing coins of different denominations (e.g. 1 dollar, 5 dollars, etc) and an integer `amount` representing a target amount of money.</p><p></p><p>Return the fewest number of coins that you need to make up the *exact* target amount. If it is impossible to make up the amount, return `-1`.</p><p></p><p>You may assume that you have an unlimited number of each coin.</p><h3>Examples:</h3><ul><li>Input: coins = [1,5,10], amount = 12<br><br>Output: 3<br>12 = 10 + 1 + 1. Note that we do not have to use every kind coin available.</li><li>Input: coins = [2], amount = 3<br><br>Output: -1<br>The amount of 3 cannot be made up with coins of 2.</li><li>Input: coins = [1], amount = 0<br><br>Output: 0<br>Choosing 0 coins is a valid way to make up 0.</li></ul><h3>Constraints:</h3><ul><li> `1 <= coins.length <= 10`</li><li> `1 <= coins[i] <= 2^31 - 1`</li><li> `0 <= amount <= 10000`</li></ul>",
-  "languages": {
-    "python": {
-      "template": "def coinChange(coins, amount):\n    ",
-      "solution_text": "<h3>Coin Change</h3><p><strong>Algorithm:</strong></p><ol><li>Use DP where dp[i] = minimum coins needed to make amount i</li><li>Initialize dp[0] = 0 (0 coins needed for amount 0)</li><li>For each amount from 1 to target, try each coin</li><li>If coin <= current amount, update dp[amount] = min(dp[amount], dp[amount-coin] + 1)</li><li>Return dp[target] if possible, else -1</li></ol><p><strong>Time Complexity:</strong> O(amount × coins.length) - fill DP table</p><p><strong>Space Complexity:</strong> O(amount) - DP array</p><p><strong>Key Insights:</strong></p><ul><li>This is a minimum optimization problem</li><li>Use large initial value (infinity) for impossible amounts</li><li>Each coin can be used multiple times (unbounded knapsack)</li></ul>",
-      "solution_code": "def coinChange(coins, amount):\n    # dp[i] = minimum coins needed to make amount i\n    dp = [float('inf')] * (amount + 1)\n    dp[0] = 0  # Base case: 0 coins needed for amount 0\n    \n    # Fill dp table for each amount from 1 to target\n    for i in range(1, amount + 1):\n        # Try each coin\n        for coin in coins:\n            if coin <= i:  # Can use this coin\n                dp[i] = min(dp[i], dp[i - coin] + 1)\n    \n    # Return result: -1 if impossible, else minimum coins\n    return dp[amount] if dp[amount] != float('inf') else -1"
-    },
-    "javascript": {
-      "template": "function coinChange(coins, amount) {\n  \n}",
-      "solution_text": "<h3>Coin Change</h3><p><strong>Algorithm:</strong></p><ol><li>Use DP where dp[i] = minimum coins needed to make amount i</li><li>Initialize dp[0] = 0 (0 coins needed for amount 0)</li><li>For each amount from 1 to target, try each coin</li><li>If coin <= current amount, update dp[amount] = min(dp[amount], dp[amount-coin] + 1)</li><li>Return dp[target] if possible, else -1</li></ol><p><strong>Time Complexity:</strong> O(amount × coins.length) - fill DP table</p><p><strong>Space Complexity:</strong> O(amount) - DP array</p><p><strong>Key Insights:</strong></p><ul><li>This is a minimum optimization problem</li><li>Use large initial value (infinity) for impossible amounts</li><li>Each coin can be used multiple times (unbounded knapsack)</li></ul>",
-      "solution_code": "function coinChange(coins, amount) {\n    // dp[i] = minimum coins needed to make amount i\n    const dp = new Array(amount + 1).fill(Infinity);\n    dp[0] = 0; // Base case: 0 coins needed for amount 0\n    \n    // Fill dp table for each amount from 1 to target\n    for (let i = 1; i <= amount; i++) {\n        // Try each coin\n        for (const coin of coins) {\n            if (coin <= i) { // Can use this coin\n                dp[i] = Math.min(dp[i], dp[i - coin] + 1);\n            }\n        }\n    }\n    \n    // Return result: -1 if impossible, else minimum coins\n    return dp[amount] === Infinity ? -1 : dp[amount];\n}"
-    },
-    "typescript": {
-      "template": "function coinChange(coins: number[], amount: number): number {\n  \n}",
-      "solution_text": "<h3>Coin Change</h3><p><strong>Algorithm:</strong></p><ol><li>Use DP where dp[i] = minimum coins needed to make amount i</li><li>Initialize dp[0] = 0 (0 coins needed for amount 0)</li><li>For each amount from 1 to target, try each coin</li><li>If coin <= current amount, update dp[amount] = min(dp[amount], dp[amount-coin] + 1)</li><li>Return dp[target] if possible, else -1</li></ol><p><strong>Time Complexity:</strong> O(amount × coins.length) - fill DP table</p><p><strong>Space Complexity:</strong> O(amount) - DP array</p><p><strong>Key Insights:</strong></p><ul><li>This is a minimum optimization problem</li><li>Use large initial value (infinity) for impossible amounts</li><li>Each coin can be used multiple times (unbounded knapsack)</li></ul>",
-      "solution_code": "function coinChange(coins: number[], amount: number): number {\n    // dp[i] = minimum coins needed to make amount i\n    const dp: number[] = new Array(amount + 1).fill(Infinity);\n    dp[0] = 0; // Base case: 0 coins needed for amount 0\n    \n    // Fill dp table for each amount from 1 to target\n    for (let i = 1; i <= amount; i++) {\n        // Try each coin\n        for (const coin of coins) {\n            if (coin <= i) { // Can use this coin\n                dp[i] = Math.min(dp[i], dp[i - coin] + 1);\n            }\n        }\n    }\n    \n    // Return result: -1 if impossible, else minimum coins\n    return dp[amount] === Infinity ? -1 : dp[amount];\n}"
-    },
-    "java": {
-      "template": "class Solution {\n    public int coinChange(int[] coins, int amount) {\n        \n    }\n}",
-      "solution_text": "<h3>Coin Change</h3><p><strong>Algorithm:</strong></p><ol><li>Use DP where dp[i] = minimum coins needed to make amount i</li><li>Initialize dp[0] = 0 (0 coins needed for amount 0)</li><li>For each amount from 1 to target, try each coin</li><li>If coin <= current amount, update dp[amount] = min(dp[amount], dp[amount-coin] + 1)</li><li>Return dp[target] if possible, else -1</li></ol><p><strong>Time Complexity:</strong> O(amount × coins.length) - fill DP table</p><p><strong>Space Complexity:</strong> O(amount) - DP array</p><p><strong>Key Insights:</strong></p><ul><li>This is a minimum optimization problem</li><li>Use large initial value (infinity) for impossible amounts</li><li>Each coin can be used multiple times (unbounded knapsack)</li></ul>",
-      "solution_code": "class Solution {\n    public int coinChange(int[] coins, int amount) {\n        // dp[i] = minimum coins needed to make amount i\n        int[] dp = new int[amount + 1];\n        Arrays.fill(dp, Integer.MAX_VALUE);\n        dp[0] = 0; // Base case: 0 coins needed for amount 0\n        \n        // Fill dp table for each amount from 1 to target\n        for (int i = 1; i <= amount; i++) {\n            // Try each coin\n            for (int coin : coins) {\n                if (coin <= i && dp[i - coin] != Integer.MAX_VALUE) {\n                    dp[i] = Math.min(dp[i], dp[i - coin] + 1);\n                }\n            }\n        }\n        \n        // Return result: -1 if impossible, else minimum coins\n        return dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount];\n    }\n}"
-    }
-  },
+  "entry_function": "coinChange",
+  "template": "def coinChange(coins, amount):\n    ",
+  "solution_text": "<h3>Coin Change</h3><p><strong>Algorithm:</strong></p><ol><li>Use DP where dp[i] = minimum coins needed to make amount i</li><li>Initialize dp[0] = 0 (0 coins needed for amount 0)</li><li>For each amount from 1 to target, try each coin</li><li>If coin <= current amount, update dp[amount] = min(dp[amount], dp[amount-coin] + 1)</li><li>Return dp[target] if possible, else -1</li></ol><p><strong>Time Complexity:</strong> O(amount × coins.length) - fill DP table</p><p><strong>Space Complexity:</strong> O(amount) - DP array</p><p><strong>Key Insights:</strong></p><ul><li>This is a minimum optimization problem</li><li>Use large initial value (infinity) for impossible amounts</li><li>Each coin can be used multiple times (unbounded knapsack)</li></ul>",
+  "solution_code": "def coinChange(coins, amount):\n    # dp[i] = minimum coins needed to make amount i\n    dp = [float('inf')] * (amount + 1)\n    dp[0] = 0  # Base case: 0 coins needed for amount 0\n    \n    # Fill dp table for each amount from 1 to target\n    for i in range(1, amount + 1):\n        # Try each coin\n        for coin in coins:\n            if coin <= i:  # Can use this coin\n                dp[i] = min(dp[i], dp[i - coin] + 1)\n    \n    # Return result: -1 if impossible, else minimum coins\n    return dp[amount] if dp[amount] != float('inf') else -1",
   "order_matters": false,
   "test_cases": [
     {
       "id": 1,
       "input": {
-        "coins": [1, 5, 10],
+        "coins": [
+          1,
+          5,
+          10
+        ],
         "amount": 12
       },
       "output": 3
@@ -49,7 +35,9 @@
     {
       "id": 2,
       "input": {
-        "coins": [2],
+        "coins": [
+          2
+        ],
         "amount": 3
       },
       "output": -1
@@ -57,7 +45,9 @@
     {
       "id": 3,
       "input": {
-        "coins": [1],
+        "coins": [
+          1
+        ],
         "amount": 0
       },
       "output": 0
@@ -65,7 +55,11 @@
     {
       "id": 4,
       "input": {
-        "coins": [1, 3, 4],
+        "coins": [
+          1,
+          3,
+          4
+        ],
         "amount": 6
       },
       "output": 2
@@ -73,7 +67,12 @@
     {
       "id": 5,
       "input": {
-        "coins": [2, 5, 10, 1],
+        "coins": [
+          2,
+          5,
+          10,
+          1
+        ],
         "amount": 27
       },
       "output": 4
@@ -81,7 +80,9 @@
     {
       "id": 6,
       "input": {
-        "coins": [5],
+        "coins": [
+          5
+        ],
         "amount": 3
       },
       "output": -1
@@ -89,7 +90,11 @@
     {
       "id": 7,
       "input": {
-        "coins": [1, 2, 5],
+        "coins": [
+          1,
+          2,
+          5
+        ],
         "amount": 11
       },
       "output": 3
@@ -97,7 +102,11 @@
     {
       "id": 8,
       "input": {
-        "coins": [2, 3, 5],
+        "coins": [
+          2,
+          3,
+          5
+        ],
         "amount": 9
       },
       "output": 3
@@ -105,7 +114,11 @@
     {
       "id": 9,
       "input": {
-        "coins": [1, 4, 5],
+        "coins": [
+          1,
+          4,
+          5
+        ],
         "amount": 8
       },
       "output": 2
@@ -113,7 +126,11 @@
     {
       "id": 10,
       "input": {
-        "coins": [1, 2, 3],
+        "coins": [
+          1,
+          2,
+          3
+        ],
         "amount": 7
       },
       "output": 3
@@ -121,7 +138,11 @@
     {
       "id": 11,
       "input": {
-        "coins": [7, 3, 1],
+        "coins": [
+          7,
+          3,
+          1
+        ],
         "amount": 18
       },
       "output": 4
@@ -129,7 +150,10 @@
     {
       "id": 12,
       "input": {
-        "coins": [1, 2147483647],
+        "coins": [
+          1,
+          2147483647
+        ],
         "amount": 2
       },
       "output": 2

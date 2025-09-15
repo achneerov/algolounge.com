@@ -14,111 +14,171 @@
     "integer"
   ],
   "description": "<h2>Best Time to Buy and Sell Stock with Cooldown</h2><p>You are given an array <code>prices</code> where <code>prices[i]</code> is the price of a given stock on the <code>i-th</code> day.</p><p>Find the maximum profit you can achieve. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times) with the following restrictions:</p><ul><li>After you sell your stock, you cannot buy stock on the next day (i.e., cooldown one day).</li><li>You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).</li></ul><h3>Examples</h3><p><strong>Example 1:</strong></p><ul><li><strong>Input:</strong> prices = [1,5,3,6,4]</li><li><strong>Output:</strong> 7</li><li><strong>Explanation:</strong> Buy on day 0 (price = 1) and sell on day 1 (price = 5), profit = 4. Then buy on day 2 (price = 3) and sell on day 3 (price = 6), profit = 3. Total profit is 4 + 3 = 7.</li></ul><p><strong>Example 2:</strong></p><ul><li><strong>Input:</strong> prices = [1]</li><li><strong>Output:</strong> 0</li><li><strong>Explanation:</strong> There is only one day, so no transactions can be made.</li></ul><h3>Constraints</h3><ul><li><code>1 <= prices.length <= 5000</code></li><li><code>0 <= prices[i] <= 1000</code></li></ul>",
-  "languages": {
-    "python": {
-      "template": "def bestTimeToBuyAndSellStockWithCooldown(prices):\n    ",
-      "solution_text": "<p><strong>Dynamic Programming Approach:</strong></p><p>We use dynamic programming to track three states at each day:</p><ul><li><strong>hold</strong>: Maximum profit when holding a stock</li><li><strong>sold</strong>: Maximum profit when just sold (cooldown day)</li><li><strong>rest</strong>: Maximum profit when resting (can buy)</li></ul><p><strong>State Transitions:</strong></p><ul><li>hold[i] = max(hold[i-1], rest[i-1] - prices[i]) - either keep holding or buy today</li><li>sold[i] = hold[i-1] + prices[i] - sell the stock we were holding</li><li>rest[i] = max(rest[i-1], sold[i-1]) - either keep resting or finished cooldown</li></ul><p><strong>Time Complexity:</strong> O(n)</p><p><strong>Space Complexity:</strong> O(1) with optimized variables</p>",
-      "solution_code": "def bestTimeToBuyAndSellStockWithCooldown(prices):\n    if not prices or len(prices) <= 1:\n        return 0\n    \n    # State variables: hold (holding stock), sold (just sold), rest (resting)\n    hold = -prices[0]  # Buy on first day\n    sold = 0           # Can't sell on first day\n    rest = 0           # No profit initially\n    \n    for i in range(1, len(prices)):\n        prev_hold = hold\n        prev_sold = sold\n        prev_rest = rest\n        \n        # Update states\n        hold = max(prev_hold, prev_rest - prices[i])  # Keep holding or buy\n        sold = prev_hold + prices[i]                  # Sell stock\n        rest = max(prev_rest, prev_sold)              # Rest or finished cooldown\n    \n    # Return max profit when not holding stock\n    return max(sold, rest)"
-    },
-    "javascript": {
-      "template": "function bestTimeToBuyAndSellStockWithCooldown(prices) {\n  \n}",
-      "solution_text": "<p><strong>Dynamic Programming Approach:</strong></p><p>We use dynamic programming to track three states at each day:</p><ul><li><strong>hold</strong>: Maximum profit when holding a stock</li><li><strong>sold</strong>: Maximum profit when just sold (cooldown day)</li><li><strong>rest</strong>: Maximum profit when resting (can buy)</li></ul><p><strong>State Transitions:</strong></p><ul><li>hold[i] = max(hold[i-1], rest[i-1] - prices[i]) - either keep holding or buy today</li><li>sold[i] = hold[i-1] + prices[i] - sell the stock we were holding</li><li>rest[i] = max(rest[i-1], sold[i-1]) - either keep resting or finished cooldown</li></ul><p><strong>Time Complexity:</strong> O(n)</p><p><strong>Space Complexity:</strong> O(1) with optimized variables</p>",
-      "solution_code": "function bestTimeToBuyAndSellStockWithCooldown(prices) {\n    if (!prices || prices.length <= 1) {\n        return 0;\n    }\n    \n    // State variables: hold (holding stock), sold (just sold), rest (resting)\n    let hold = -prices[0];  // Buy on first day\n    let sold = 0;           // Can't sell on first day\n    let rest = 0;           // No profit initially\n    \n    for (let i = 1; i < prices.length; i++) {\n        const prevHold = hold;\n        const prevSold = sold;\n        const prevRest = rest;\n        \n        // Update states\n        hold = Math.max(prevHold, prevRest - prices[i]);  // Keep holding or buy\n        sold = prevHold + prices[i];                      // Sell stock\n        rest = Math.max(prevRest, prevSold);              // Rest or finished cooldown\n    }\n    \n    // Return max profit when not holding stock\n    return Math.max(sold, rest);\n}"
-    },
-    "typescript": {
-      "template": "function bestTimeToBuyAndSellStockWithCooldown(prices: number[]): number {\n  \n}",
-      "solution_text": "<p><strong>Dynamic Programming Approach:</strong></p><p>We use dynamic programming to track three states at each day:</p><ul><li><strong>hold</strong>: Maximum profit when holding a stock</li><li><strong>sold</strong>: Maximum profit when just sold (cooldown day)</li><li><strong>rest</strong>: Maximum profit when resting (can buy)</li></ul><p><strong>State Transitions:</strong></p><ul><li>hold[i] = max(hold[i-1], rest[i-1] - prices[i]) - either keep holding or buy today</li><li>sold[i] = hold[i-1] + prices[i] - sell the stock we were holding</li><li>rest[i] = max(rest[i-1], sold[i-1]) - either keep resting or finished cooldown</li></ul><p><strong>Time Complexity:</strong> O(n)</p><p><strong>Space Complexity:</strong> O(1) with optimized variables</p>",
-      "solution_code": "function bestTimeToBuyAndSellStockWithCooldown(prices: number[]): number {\n    if (!prices || prices.length <= 1) {\n        return 0;\n    }\n    \n    // State variables: hold (holding stock), sold (just sold), rest (resting)\n    let hold: number = -prices[0];  // Buy on first day\n    let sold: number = 0;           // Can't sell on first day\n    let rest: number = 0;           // No profit initially\n    \n    for (let i = 1; i < prices.length; i++) {\n        const prevHold: number = hold;\n        const prevSold: number = sold;\n        const prevRest: number = rest;\n        \n        // Update states\n        hold = Math.max(prevHold, prevRest - prices[i]);  // Keep holding or buy\n        sold = prevHold + prices[i];                      // Sell stock\n        rest = Math.max(prevRest, prevSold);              // Rest or finished cooldown\n    }\n    \n    // Return max profit when not holding stock\n    return Math.max(sold, rest);\n}"
-    },
-    "java": {
-      "template": "class Solution {\n    public int bestTimeToBuyAndSellStockWithCooldown(int[] prices) {\n        \n    }\n}",
-      "solution_text": "<p><strong>Dynamic Programming Approach:</strong></p><p>We use dynamic programming to track three states at each day:</p><ul><li><strong>hold</strong>: Maximum profit when holding a stock</li><li><strong>sold</strong>: Maximum profit when just sold (cooldown day)</li><li><strong>rest</strong>: Maximum profit when resting (can buy)</li></ul><p><strong>State Transitions:</strong></p><ul><li>hold[i] = max(hold[i-1], rest[i-1] - prices[i]) - either keep holding or buy today</li><li>sold[i] = hold[i-1] + prices[i] - sell the stock we were holding</li><li>rest[i] = max(rest[i-1], sold[i-1]) - either keep resting or finished cooldown</li></ul><p><strong>Time Complexity:</strong> O(n)</p><p><strong>Space Complexity:</strong> O(1) with optimized variables</p>",
-      "solution_code": "class Solution {\n    public int bestTimeToBuyAndSellStockWithCooldown(int[] prices) {\n        if (prices == null || prices.length <= 1) {\n            return 0;\n        }\n        \n        // State variables: hold (holding stock), sold (just sold), rest (resting)\n        int hold = -prices[0];  // Buy on first day\n        int sold = 0;           // Can't sell on first day\n        int rest = 0;           // No profit initially\n        \n        for (int i = 1; i < prices.length; i++) {\n            int prevHold = hold;\n            int prevSold = sold;\n            int prevRest = rest;\n            \n            // Update states\n            hold = Math.max(prevHold, prevRest - prices[i]);  // Keep holding or buy\n            sold = prevHold + prices[i];                      // Sell stock\n            rest = Math.max(prevRest, prevSold);              // Rest or finished cooldown\n        }\n        \n        // Return max profit when not holding stock\n        return Math.max(sold, rest);\n    }\n}"
-    }
-  },
+  "entry_function": "bestTimeToBuyAndSellStockWithCooldown",
+  "template": "def bestTimeToBuyAndSellStockWithCooldown(prices):\n    ",
+  "solution_text": "<p><strong>Dynamic Programming Approach:</strong></p><p>We use dynamic programming to track three states at each day:</p><ul><li><strong>hold</strong>: Maximum profit when holding a stock</li><li><strong>sold</strong>: Maximum profit when just sold (cooldown day)</li><li><strong>rest</strong>: Maximum profit when resting (can buy)</li></ul><p><strong>State Transitions:</strong></p><ul><li>hold[i] = max(hold[i-1], rest[i-1] - prices[i]) - either keep holding or buy today</li><li>sold[i] = hold[i-1] + prices[i] - sell the stock we were holding</li><li>rest[i] = max(rest[i-1], sold[i-1]) - either keep resting or finished cooldown</li></ul><p><strong>Time Complexity:</strong> O(n)</p><p><strong>Space Complexity:</strong> O(1) with optimized variables</p>",
+  "solution_code": "def bestTimeToBuyAndSellStockWithCooldown(prices):\n    if not prices or len(prices) <= 1:\n        return 0\n    \n    # State variables: hold (holding stock), sold (just sold), rest (resting)\n    hold = -prices[0]  # Buy on first day\n    sold = 0           # Can't sell on first day\n    rest = 0           # No profit initially\n    \n    for i in range(1, len(prices)):\n        prev_hold = hold\n        prev_sold = sold\n        prev_rest = rest\n        \n        # Update states\n        hold = max(prev_hold, prev_rest - prices[i])  # Keep holding or buy\n        sold = prev_hold + prices[i]                  # Sell stock\n        rest = max(prev_rest, prev_sold)              # Rest or finished cooldown\n    \n    # Return max profit when not holding stock\n    return max(sold, rest)",
   "order_matters": false,
   "test_cases": [
     {
       "id": 1,
       "input": {
-        "prices": [1, 5, 3, 6, 4]
+        "prices": [
+          1,
+          5,
+          3,
+          6,
+          4
+        ]
       },
       "output": 7
     },
     {
       "id": 2,
       "input": {
-        "prices": [1]
+        "prices": [
+          1
+        ]
       },
       "output": 0
     },
     {
       "id": 3,
       "input": {
-        "prices": [2, 1, 4]
+        "prices": [
+          2,
+          1,
+          4
+        ]
       },
       "output": 3
     },
     {
       "id": 4,
       "input": {
-        "prices": [1, 2, 3, 0, 2]
+        "prices": [
+          1,
+          2,
+          3,
+          0,
+          2
+        ]
       },
       "output": 3
     },
     {
       "id": 5,
       "input": {
-        "prices": [3, 2, 6, 5, 0, 3]
+        "prices": [
+          3,
+          2,
+          6,
+          5,
+          0,
+          3
+        ]
       },
       "output": 7
     },
     {
       "id": 6,
       "input": {
-        "prices": [7, 1, 5, 3, 6, 4]
+        "prices": [
+          7,
+          1,
+          5,
+          3,
+          6,
+          4
+        ]
       },
       "output": 7
     },
     {
       "id": 7,
       "input": {
-        "prices": [1, 2, 4, 2, 5, 7, 2, 4, 9, 0]
+        "prices": [
+          1,
+          2,
+          4,
+          2,
+          5,
+          7,
+          2,
+          4,
+          9,
+          0
+        ]
       },
       "output": 13
     },
     {
       "id": 8,
       "input": {
-        "prices": [5, 4, 3, 2, 1]
+        "prices": [
+          5,
+          4,
+          3,
+          2,
+          1
+        ]
       },
       "output": 0
     },
     {
       "id": 9,
       "input": {
-        "prices": [1, 2, 3, 4, 5]
+        "prices": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
       },
       "output": 4
     },
     {
       "id": 10,
       "input": {
-        "prices": [2, 6, 1, 8, 3, 7]
+        "prices": [
+          2,
+          6,
+          1,
+          8,
+          3,
+          7
+        ]
       },
       "output": 10
     },
     {
       "id": 11,
       "input": {
-        "prices": [10, 5, 20, 1, 15, 3, 12]
+        "prices": [
+          10,
+          5,
+          20,
+          1,
+          15,
+          3,
+          12
+        ]
       },
       "output": 29
     },
     {
       "id": 12,
       "input": {
-        "prices": [100, 180, 260, 310, 40, 535, 695]
+        "prices": [
+          100,
+          180,
+          260,
+          310,
+          40,
+          535,
+          695
+        ]
       },
       "output": 865
     }

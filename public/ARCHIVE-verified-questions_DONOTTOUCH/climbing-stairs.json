@@ -14,28 +14,10 @@
     "top"
   ],
   "description": "<h2>Climbing Stairs</h2><p>You are given an integer <code>n</code> representing the number of steps to reach the top of a staircase. You can climb with either <code>1</code> or <code>2</code> steps at a time.</p><p>Return the number of distinct ways to climb to the top of the staircase.</p><h3>Examples</h3><ul><li><strong>Input:</strong> <code>n = 2</code><br><strong>Output:</strong> <code>2</code><br><strong>Explanation:</strong> There are two ways to climb to the top:<br>1. 1 step + 1 step<br>2. 2 steps</li><li><strong>Input:</strong> <code>n = 3</code><br><strong>Output:</strong> <code>3</code><br><strong>Explanation:</strong> There are three ways to climb to the top:<br>1. 1 step + 1 step + 1 step<br>2. 1 step + 2 steps<br>3. 2 steps + 1 step</li></ul><h3>Constraints</h3><ul><li><code>1 <= n <= 45</code></li></ul>",
-  "languages": {
-    "python": {
-      "template": "def climbingStairs(n):\n    ",
-      "solution_text": "<p><strong>Dynamic Programming solution for Climbing Stairs:</strong></p><p><strong>Algorithm:</strong></p><ol><li>Base cases: 1 way to reach step 0 or 1</li><li>For each step, ways = ways(n-1) + ways(n-2)</li><li>Use space optimization with two variables</li></ol><p><strong>Time Complexity:</strong> O(n) - linear iteration</p><p><strong>Space Complexity:</strong> O(1) - constant space with optimization</p><p><strong>Key Insights:</strong></p><ul><li>Similar to Fibonacci sequence</li><li>Bottom-up dynamic programming</li><li>Space can be optimized to O(1)</li></ul>",
-      "solution_code": "def climbingStairs(n):\n    if n <= 1:\n        return 1\n    \n    # Space-optimized DP\n    prev2, prev1 = 1, 1\n    \n    for i in range(2, n + 1):\n        current = prev1 + prev2\n        prev2, prev1 = prev1, current\n    \n    return prev1"
-    },
-    "javascript": {
-      "template": "function climbingStairs(n) {\n  \n}",
-      "solution_text": "<p><strong>Dynamic Programming solution for Climbing Stairs:</strong></p><p><strong>Algorithm:</strong></p><ol><li>Base cases: 1 way to reach step 0 or 1</li><li>For each step, ways = ways(n-1) + ways(n-2)</li><li>Use space optimization with two variables</li></ol><p><strong>Time Complexity:</strong> O(n) - linear iteration</p><p><strong>Space Complexity:</strong> O(1) - constant space with optimization</p><p><strong>Key Insights:</strong></p><ul><li>Similar to Fibonacci sequence</li><li>Bottom-up dynamic programming</li><li>Space can be optimized to O(1)</li></ul>",
-      "solution_code": "function climbingStairs(n) {\n    if (n <= 1) return 1;\n    \n    // Space-optimized DP\n    let prev2 = 1, prev1 = 1;\n    \n    for (let i = 2; i <= n; i++) {\n        const current = prev1 + prev2;\n        prev2 = prev1;\n        prev1 = current;\n    }\n    \n    return prev1;\n}"
-    },
-    "typescript": {
-      "template": "function climbingStairs(n: number): number {\n  \n}",
-      "solution_text": "<p><strong>Dynamic Programming solution for Climbing Stairs:</strong></p><p><strong>Algorithm:</strong></p><ol><li>Base cases: 1 way to reach step 0 or 1</li><li>For each step, ways = ways(n-1) + ways(n-2)</li><li>Use space optimization with two variables</li></ol><p><strong>Time Complexity:</strong> O(n) - linear iteration</p><p><strong>Space Complexity:</strong> O(1) - constant space with optimization</p><p><strong>Key Insights:</strong></p><ul><li>Similar to Fibonacci sequence</li><li>Bottom-up dynamic programming</li><li>Space can be optimized to O(1)</li></ul>",
-      "solution_code": "function climbingStairs(n: number): number {\n    if (n <= 1) return 1;\n    \n    // Space-optimized DP\n    let prev2 = 1, prev1 = 1;\n    \n    for (let i = 2; i <= n; i++) {\n        const current = prev1 + prev2;\n        prev2 = prev1;\n        prev1 = current;\n    }\n    \n    return prev1;\n}"
-    },
-    "java": {
-      "template": "class Solution {\n    public int climbingStairs(int n) {\n        \n    }\n}",
-      "solution_text": "<p><strong>Dynamic Programming solution for Climbing Stairs:</strong></p><p><strong>Algorithm:</strong></p><ol><li>Base cases: 1 way to reach step 0 or 1</li><li>For each step, ways = ways(n-1) + ways(n-2)</li><li>Use space optimization with two variables</li></ol><p><strong>Time Complexity:</strong> O(n) - linear iteration</p><p><strong>Space Complexity:</strong> O(1) - constant space with optimization</p><p><strong>Key Insights:</strong></p><ul><li>Similar to Fibonacci sequence</li><li>Bottom-up dynamic programming</li><li>Space can be optimized to O(1)</li></ul>",
-      "solution_code": "class Solution {\n    public int climbingStairs(int n) {\n        if (n <= 1) return 1;\n        \n        // Space-optimized DP\n        int prev2 = 1, prev1 = 1;\n        \n        for (int i = 2; i <= n; i++) {\n            int current = prev1 + prev2;\n            prev2 = prev1;\n            prev1 = current;\n        }\n        \n        return prev1;\n    }\n}"
-    }
-  },
+  "entry_function": "climbingStairs",
+  "template": "def climbingStairs(n):\n    ",
+  "solution_text": "<p><strong>Dynamic Programming solution for Climbing Stairs:</strong></p><p><strong>Algorithm:</strong></p><ol><li>Base cases: 1 way to reach step 0 or 1</li><li>For each step, ways = ways(n-1) + ways(n-2)</li><li>Use space optimization with two variables</li></ol><p><strong>Time Complexity:</strong> O(n) - linear iteration</p><p><strong>Space Complexity:</strong> O(1) - constant space with optimization</p><p><strong>Key Insights:</strong></p><ul><li>Similar to Fibonacci sequence</li><li>Bottom-up dynamic programming</li><li>Space can be optimized to O(1)</li></ul>",
+  "solution_code": "def climbingStairs(n):\n    if n <= 1:\n        return 1\n    \n    # Space-optimized DP\n    prev2, prev1 = 1, 1\n    \n    for i in range(2, n + 1):\n        current = prev1 + prev2\n        prev2, prev1 = prev1, current\n    \n    return prev1",
   "order_matters": false,
   "test_cases": [
     {

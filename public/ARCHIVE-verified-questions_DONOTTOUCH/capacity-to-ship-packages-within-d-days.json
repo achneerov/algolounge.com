@@ -14,34 +14,23 @@
     "shipped"
   ],
   "description": "<h2>Capacity to Ship Packages Within D Days</h2><p>A conveyor belt has packages that must be shipped from one port to another within <code>days</code> days.</p><p>The <code>ith</code> package on the conveyor belt has a weight of <code>weights[i]</code>. Each day, we load the ship with packages on the conveyor belt (in the order given by <code>weights</code>). It is not allowed to load weight more than the <strong>maximum weight capacity</strong> of the ship.</p><p>Return the <strong>least weight capacity</strong> of the ship that will result in all the packages on the conveyor belt being shipped within <code>days</code> days.</p><h3>Examples</h3><ul><li><strong>Input:</strong> <code>weights = [2,4,6,1,3,10], days = 4</code><br><strong>Output:</strong> <code>10</code><br><strong>Explanation:</strong><br>1st day: [2]<br>2nd day: [4,6]<br>3rd day: [1,3]<br>4th day: [10]</li><li><strong>Input:</strong> <code>weights = [1,2,3,4,5], days = 5</code><br><strong>Output:</strong> <code>5</code><br><strong>Explanation:</strong><br>1st day: [1], 2nd day: [2], 3rd day: [3], 4th day: [4], 5th day: [5]</li><li><strong>Input:</strong> <code>weights = [1,5,4,4,2,3], days = 3</code><br><strong>Output:</strong> <code>8</code><br><strong>Explanation:</strong><br>1st day: [1,5], 2nd day: [4,4], 3rd day: [2,3]</li></ul><h3>Constraints</h3><ul><li><code>1 <= days, weights.length <= 50000</code></li><li><code>1 <= weights[i] <= 500</code></li></ul>",
-  "languages": {
-    "python": {
-      "template": "def capacityToShipPackagesWithinDDays(weights, days):\n    ",
-      "solution_text": "<p><strong>Binary Search Solution:</strong></p><p>Use binary search to find the minimum ship capacity:</p><ul><li><strong>Search Range:</strong> From max(weights) to sum(weights)</li><li><strong>For each capacity:</strong> Check if we can ship all packages within given days</li><li><strong>Helper function:</strong> Simulate shipping process to count required days</li></ul><p><strong>Algorithm:</strong></p><ol><li>Set left boundary to maximum weight (minimum possible capacity)</li><li>Set right boundary to sum of all weights (maximum possible capacity)</li><li>Binary search for minimum capacity that allows shipping within days</li><li>Use helper function to check if capacity is sufficient</li></ol><p><strong>Time Complexity:</strong> O(n * log(sum)) where sum is total weight</p><p><strong>Space Complexity:</strong> O(1)</p>",
-      "solution_code": "def capacityToShipPackagesWithinDDays(weights, days):\n    def canShip(capacity):\n        days_needed = 1\n        current_weight = 0\n        \n        for weight in weights:\n            if current_weight + weight > capacity:\n                days_needed += 1\n                current_weight = weight\n            else:\n                current_weight += weight\n        \n        return days_needed <= days\n    \n    left = max(weights)  # Minimum capacity (largest package)\n    right = sum(weights)  # Maximum capacity (all packages in one day)\n    \n    while left < right:\n        mid = (left + right) // 2\n        if canShip(mid):\n            right = mid  # Try smaller capacity\n        else:\n            left = mid + 1  # Need larger capacity\n    \n    return left"
-    },
-    "javascript": {
-      "template": "function capacityToShipPackagesWithinDDays(weights, days) {\n  \n}",
-      "solution_text": "<p><strong>Binary Search Solution:</strong></p><p>Use binary search to find the minimum ship capacity:</p><ul><li><strong>Search Range:</strong> From max(weights) to sum(weights)</li><li><strong>For each capacity:</strong> Check if we can ship all packages within given days</li><li><strong>Helper function:</strong> Simulate shipping process to count required days</li></ul><p><strong>Algorithm:</strong></p><ol><li>Set left boundary to maximum weight (minimum possible capacity)</li><li>Set right boundary to sum of all weights (maximum possible capacity)</li><li>Binary search for minimum capacity that allows shipping within days</li><li>Use helper function to check if capacity is sufficient</li></ol><p><strong>Time Complexity:</strong> O(n * log(sum)) where sum is total weight</p><p><strong>Space Complexity:</strong> O(1)</p>",
-      "solution_code": "function capacityToShipPackagesWithinDDays(weights, days) {\n    function canShip(capacity) {\n        let daysNeeded = 1;\n        let currentWeight = 0;\n        \n        for (const weight of weights) {\n            if (currentWeight + weight > capacity) {\n                daysNeeded++;\n                currentWeight = weight;\n            } else {\n                currentWeight += weight;\n            }\n        }\n        \n        return daysNeeded <= days;\n    }\n    \n    let left = Math.max(...weights);  // Minimum capacity (largest package)\n    let right = weights.reduce((sum, weight) => sum + weight, 0);  // Maximum capacity\n    \n    while (left < right) {\n        const mid = Math.floor((left + right) / 2);\n        if (canShip(mid)) {\n            right = mid;  // Try smaller capacity\n        } else {\n            left = mid + 1;  // Need larger capacity\n        }\n    }\n    \n    return left;\n}"
-    },
-    "typescript": {
-      "template": "function capacityToShipPackagesWithinDDays(weights: number[], days: number): number {\n  \n}",
-      "solution_text": "<p><strong>Binary Search Solution:</strong></p><p>Use binary search to find the minimum ship capacity:</p><ul><li><strong>Search Range:</strong> From max(weights) to sum(weights)</li><li><strong>For each capacity:</strong> Check if we can ship all packages within given days</li><li><strong>Helper function:</strong> Simulate shipping process to count required days</li></ul><p><strong>Algorithm:</strong></p><ol><li>Set left boundary to maximum weight (minimum possible capacity)</li><li>Set right boundary to sum of all weights (maximum possible capacity)</li><li>Binary search for minimum capacity that allows shipping within days</li><li>Use helper function to check if capacity is sufficient</li></ol><p><strong>Time Complexity:</strong> O(n * log(sum)) where sum is total weight</p><p><strong>Space Complexity:</strong> O(1)</p>",
-      "solution_code": "function capacityToShipPackagesWithinDDays(weights: number[], days: number): number {\n    function canShip(capacity: number): boolean {\n        let daysNeeded = 1;\n        let currentWeight = 0;\n        \n        for (const weight of weights) {\n            if (currentWeight + weight > capacity) {\n                daysNeeded++;\n                currentWeight = weight;\n            } else {\n                currentWeight += weight;\n            }\n        }\n        \n        return daysNeeded <= days;\n    }\n    \n    let left = Math.max(...weights);  // Minimum capacity (largest package)\n    let right = weights.reduce((sum, weight) => sum + weight, 0);  // Maximum capacity\n    \n    while (left < right) {\n        const mid = Math.floor((left + right) / 2);\n        if (canShip(mid)) {\n            right = mid;  // Try smaller capacity\n        } else {\n            left = mid + 1;  // Need larger capacity\n        }\n    }\n    \n    return left;\n}"
-    },
-    "java": {
-      "template": "class Solution {\n    public int capacityToShipPackagesWithinDDays(int[] weights, int days) {\n        \n    }\n}",
-      "solution_text": "<p><strong>Binary Search Solution:</strong></p><p>Use binary search to find the minimum ship capacity:</p><ul><li><strong>Search Range:</strong> From max(weights) to sum(weights)</li><li><strong>For each capacity:</strong> Check if we can ship all packages within given days</li><li><strong>Helper function:</strong> Simulate shipping process to count required days</li></ul><p><strong>Algorithm:</strong></p><ol><li>Set left boundary to maximum weight (minimum possible capacity)</li><li>Set right boundary to sum of all weights (maximum possible capacity)</li><li>Binary search for minimum capacity that allows shipping within days</li><li>Use helper function to check if capacity is sufficient</li></ol><p><strong>Time Complexity:</strong> O(n * log(sum)) where sum is total weight</p><p><strong>Space Complexity:</strong> O(1)</p>",
-      "solution_code": "import java.util.Arrays;\n\nclass Solution {\n    public int capacityToShipPackagesWithinDDays(int[] weights, int days) {\n        // Helper method to check if we can ship with given capacity\n        boolean canShip(int capacity) {\n            int daysNeeded = 1;\n            int currentWeight = 0;\n            \n            for (int weight : weights) {\n                if (currentWeight + weight > capacity) {\n                    daysNeeded++;\n                    currentWeight = weight;\n                } else {\n                    currentWeight += weight;\n                }\n            }\n            \n            return daysNeeded <= days;\n        }\n        \n        int left = Arrays.stream(weights).max().getAsInt();  // Minimum capacity\n        int right = Arrays.stream(weights).sum();  // Maximum capacity\n        \n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            if (canShip(mid)) {\n                right = mid;  // Try smaller capacity\n            } else {\n                left = mid + 1;  // Need larger capacity\n            }\n        }\n        \n        return left;\n    }\n}"
-    }
-  },
+  "entry_function": "capacityToShipPackagesWithinDDays",
+  "template": "def capacityToShipPackagesWithinDDays(weights, days):\n    ",
+  "solution_text": "<p><strong>Binary Search Solution:</strong></p><p>Use binary search to find the minimum ship capacity:</p><ul><li><strong>Search Range:</strong> From max(weights) to sum(weights)</li><li><strong>For each capacity:</strong> Check if we can ship all packages within given days</li><li><strong>Helper function:</strong> Simulate shipping process to count required days</li></ul><p><strong>Algorithm:</strong></p><ol><li>Set left boundary to maximum weight (minimum possible capacity)</li><li>Set right boundary to sum of all weights (maximum possible capacity)</li><li>Binary search for minimum capacity that allows shipping within days</li><li>Use helper function to check if capacity is sufficient</li></ol><p><strong>Time Complexity:</strong> O(n * log(sum)) where sum is total weight</p><p><strong>Space Complexity:</strong> O(1)</p>",
+  "solution_code": "def capacityToShipPackagesWithinDDays(weights, days):\n    def canShip(capacity):\n        days_needed = 1\n        current_weight = 0\n        \n        for weight in weights:\n            if current_weight + weight > capacity:\n                days_needed += 1\n                current_weight = weight\n            else:\n                current_weight += weight\n        \n        return days_needed <= days\n    \n    left = max(weights)  # Minimum capacity (largest package)\n    right = sum(weights)  # Maximum capacity (all packages in one day)\n    \n    while left < right:\n        mid = (left + right) // 2\n        if canShip(mid):\n            right = mid  # Try smaller capacity\n        else:\n            left = mid + 1  # Need larger capacity\n    \n    return left",
   "order_matters": false,
   "test_cases": [
     {
       "id": 1,
       "input": {
-        "weights": [2, 4, 6, 1, 3, 10],
+        "weights": [
+          2,
+          4,
+          6,
+          1,
+          3,
+          10
+        ],
         "days": 4
       },
       "output": 10
@@ -49,7 +38,13 @@
     {
       "id": 2,
       "input": {
-        "weights": [1, 2, 3, 4, 5],
+        "weights": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
         "days": 5
       },
       "output": 5
@@ -57,7 +52,14 @@
     {
       "id": 3,
       "input": {
-        "weights": [1, 5, 4, 4, 2, 3],
+        "weights": [
+          1,
+          5,
+          4,
+          4,
+          2,
+          3
+        ],
         "days": 3
       },
       "output": 8
@@ -65,7 +67,9 @@
     {
       "id": 4,
       "input": {
-        "weights": [1],
+        "weights": [
+          1
+        ],
         "days": 1
       },
       "output": 1
@@ -73,7 +77,11 @@
     {
       "id": 5,
       "input": {
-        "weights": [10, 50, 100],
+        "weights": [
+          10,
+          50,
+          100
+        ],
         "days": 1
       },
       "output": 160
@@ -81,7 +89,11 @@
     {
       "id": 6,
       "input": {
-        "weights": [10, 50, 100],
+        "weights": [
+          10,
+          50,
+          100
+        ],
         "days": 2
       },
       "output": 150
@@ -89,7 +101,14 @@
     {
       "id": 7,
       "input": {
-        "weights": [3, 2, 2, 4, 1, 4],
+        "weights": [
+          3,
+          2,
+          2,
+          4,
+          1,
+          4
+        ],
         "days": 3
       },
       "output": 6
@@ -97,7 +116,16 @@
     {
       "id": 8,
       "input": {
-        "weights": [5, 4, 5, 2, 3, 4, 5, 6],
+        "weights": [
+          5,
+          4,
+          5,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
         "days": 5
       },
       "output": 9
@@ -105,7 +133,13 @@
     {
       "id": 9,
       "input": {
-        "weights": [1, 2, 3, 1, 1],
+        "weights": [
+          1,
+          2,
+          3,
+          1,
+          1
+        ],
         "days": 4
       },
       "output": 3
@@ -113,7 +147,11 @@
     {
       "id": 10,
       "input": {
-        "weights": [9, 8, 10],
+        "weights": [
+          9,
+          8,
+          10
+        ],
         "days": 3
       },
       "output": 10
@@ -121,7 +159,18 @@
     {
       "id": 11,
       "input": {
-        "weights": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        "weights": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
         "days": 5
       },
       "output": 15
@@ -129,7 +178,18 @@
     {
       "id": 12,
       "input": {
-        "weights": [147, 73, 265, 305, 307, 89, 218, 370, 346, 236],
+        "weights": [
+          147,
+          73,
+          265,
+          305,
+          307,
+          89,
+          218,
+          370,
+          346,
+          236
+        ],
         "days": 6
       },
       "output": 618

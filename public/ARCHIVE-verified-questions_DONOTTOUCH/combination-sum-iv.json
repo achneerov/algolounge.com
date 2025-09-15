@@ -14,34 +14,20 @@
     "target"
   ],
   "description": "<h2>Combination Sum IV</h2><p>Leetcode 377. Combination Sum IV</p><p>You are given an array of <strong>distinct</strong> integers <code>nums</code> and a target integer <code>target</code>, return the number of possible combinations that add up to <code>target</code>.</p><p><strong>Note:</strong> Different sequences are counted as different combinations. For example, <code>[1, 2]</code> and <code>[2, 1]</code> are different combinations.</p><p>The test cases are generated so that the answer can fit in a 32-bit integer.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> nums = [3,1,2], target = 4<br><strong>Output:</strong> 7<br><strong>Explanation:</strong> The possible combination ways are:<br>• (1, 1, 1, 1)<br>• (1, 1, 2)<br>• (1, 2, 1)<br>• (1, 3)<br>• (2, 1, 1)<br>• (2, 2)<br>• (3, 1)</li><li><strong>Input:</strong> nums = [1], target = 3<br><strong>Output:</strong> 1<br><strong>Explanation:</strong> Only one way: (1, 1, 1)</li></ul><h3>Constraints:</h3><ul><li><code>1 <= nums.length <= 200</code></li><li><code>1 <= nums[i], target <= 1000</code></li><li>All the elements of <code>nums</code> are <strong>unique</strong>.</li></ul>",
-  "languages": {
-    "python": {
-      "template": "def combinationSum4(nums, target):\n    ",
-      "solution_text": "<h3>Combination Sum IV</h3><p><strong>Algorithm:</strong></p><ol><li>Use DP where dp[i] = number of ways to make sum i</li><li>Initialize dp[0] = 1 (one way to make sum 0: use no numbers)</li><li>For each target sum from 1 to target, try each number in nums</li><li>If num <= current sum, add dp[sum - num] to dp[sum]</li><li>Return dp[target]</li></ol><p><strong>Time Complexity:</strong> O(target × n) - iterate through sums and numbers</p><p><strong>Space Complexity:</strong> O(target) - DP array</p><p><strong>Key Insights:</strong></p><ul><li>Order matters - different sequences count as different combinations</li><li>Iterate through target sums first, then numbers (vs coin change where we iterate coins first)</li><li>This gives us permutations rather than combinations</li></ul>",
-      "solution_code": "def combinationSum4(nums, target):\n    # DP array: dp[i] = number of ways to make sum i\n    dp = [0] * (target + 1)\n    dp[0] = 1  # One way to make sum 0: use no numbers\n    \n    # For each target sum from 1 to target\n    for curr_sum in range(1, target + 1):\n        # Try each number in nums\n        for num in nums:\n            if num <= curr_sum:\n                dp[curr_sum] += dp[curr_sum - num]\n    \n    return dp[target]"
-    },
-    "javascript": {
-      "template": "function combinationSum4(nums, target) {\n  \n}",
-      "solution_text": "<h3>Combination Sum IV</h3><p><strong>Algorithm:</strong></p><ol><li>Use DP where dp[i] = number of ways to make sum i</li><li>Initialize dp[0] = 1 (one way to make sum 0: use no numbers)</li><li>For each target sum from 1 to target, try each number in nums</li><li>If num <= current sum, add dp[sum - num] to dp[sum]</li><li>Return dp[target]</li></ol><p><strong>Time Complexity:</strong> O(target × n) - iterate through sums and numbers</p><p><strong>Space Complexity:</strong> O(target) - DP array</p><p><strong>Key Insights:</strong></p><ul><li>Order matters - different sequences count as different combinations</li><li>Iterate through target sums first, then numbers (vs coin change where we iterate coins first)</li><li>This gives us permutations rather than combinations</li></ul>",
-      "solution_code": "function combinationSum4(nums, target) {\n    // DP array: dp[i] = number of ways to make sum i\n    const dp = new Array(target + 1).fill(0);\n    dp[0] = 1;  // One way to make sum 0: use no numbers\n    \n    // For each target sum from 1 to target\n    for (let currSum = 1; currSum <= target; currSum++) {\n        // Try each number in nums\n        for (const num of nums) {\n            if (num <= currSum) {\n                dp[currSum] += dp[currSum - num];\n            }\n        }\n    }\n    \n    return dp[target];\n}"
-    },
-    "typescript": {
-      "template": "function combinationSum4(nums: number[], target: number): number {\n  \n}",
-      "solution_text": "<h3>Combination Sum IV</h3><p><strong>Algorithm:</strong></p><ol><li>Use DP where dp[i] = number of ways to make sum i</li><li>Initialize dp[0] = 1 (one way to make sum 0: use no numbers)</li><li>For each target sum from 1 to target, try each number in nums</li><li>If num <= current sum, add dp[sum - num] to dp[sum]</li><li>Return dp[target]</li></ol><p><strong>Time Complexity:</strong> O(target × n) - iterate through sums and numbers</p><p><strong>Space Complexity:</strong> O(target) - DP array</p><p><strong>Key Insights:</strong></p><ul><li>Order matters - different sequences count as different combinations</li><li>Iterate through target sums first, then numbers (vs coin change where we iterate coins first)</li><li>This gives us permutations rather than combinations</li></ul>",
-      "solution_code": "function combinationSum4(nums: number[], target: number): number {\n    // DP array: dp[i] = number of ways to make sum i\n    const dp: number[] = new Array(target + 1).fill(0);\n    dp[0] = 1;  // One way to make sum 0: use no numbers\n    \n    // For each target sum from 1 to target\n    for (let currSum = 1; currSum <= target; currSum++) {\n        // Try each number in nums\n        for (const num of nums) {\n            if (num <= currSum) {\n                dp[currSum] += dp[currSum - num];\n            }\n        }\n    }\n    \n    return dp[target];\n}"
-    },
-    "java": {
-      "template": "class Solution {\n    public int combinationSum4(int[] nums, int target) {\n        \n    }\n}",
-      "solution_text": "<h3>Combination Sum IV</h3><p><strong>Algorithm:</strong></p><ol><li>Use DP where dp[i] = number of ways to make sum i</li><li>Initialize dp[0] = 1 (one way to make sum 0: use no numbers)</li><li>For each target sum from 1 to target, try each number in nums</li><li>If num <= current sum, add dp[sum - num] to dp[sum]</li><li>Return dp[target]</li></ol><p><strong>Time Complexity:</strong> O(target × n) - iterate through sums and numbers</p><p><strong>Space Complexity:</strong> O(target) - DP array</p><p><strong>Key Insights:</strong></p><ul><li>Order matters - different sequences count as different combinations</li><li>Iterate through target sums first, then numbers (vs coin change where we iterate coins first)</li><li>This gives us permutations rather than combinations</li></ul>",
-      "solution_code": "class Solution {\n    public int combinationSum4(int[] nums, int target) {\n        // DP array: dp[i] = number of ways to make sum i\n        int[] dp = new int[target + 1];\n        dp[0] = 1;  // One way to make sum 0: use no numbers\n        \n        // For each target sum from 1 to target\n        for (int currSum = 1; currSum <= target; currSum++) {\n            // Try each number in nums\n            for (int num : nums) {\n                if (num <= currSum) {\n                    dp[currSum] += dp[currSum - num];\n                }\n            }\n        }\n        \n        return dp[target];\n    }\n}"
-    }
-  },
+  "entry_function": "combinationSum4",
+  "template": "def combinationSum4(nums, target):\n    ",
+  "solution_text": "<h3>Combination Sum IV</h3><p><strong>Algorithm:</strong></p><ol><li>Use DP where dp[i] = number of ways to make sum i</li><li>Initialize dp[0] = 1 (one way to make sum 0: use no numbers)</li><li>For each target sum from 1 to target, try each number in nums</li><li>If num <= current sum, add dp[sum - num] to dp[sum]</li><li>Return dp[target]</li></ol><p><strong>Time Complexity:</strong> O(target × n) - iterate through sums and numbers</p><p><strong>Space Complexity:</strong> O(target) - DP array</p><p><strong>Key Insights:</strong></p><ul><li>Order matters - different sequences count as different combinations</li><li>Iterate through target sums first, then numbers (vs coin change where we iterate coins first)</li><li>This gives us permutations rather than combinations</li></ul>",
+  "solution_code": "def combinationSum4(nums, target):\n    # DP array: dp[i] = number of ways to make sum i\n    dp = [0] * (target + 1)\n    dp[0] = 1  # One way to make sum 0: use no numbers\n    \n    # For each target sum from 1 to target\n    for curr_sum in range(1, target + 1):\n        # Try each number in nums\n        for num in nums:\n            if num <= curr_sum:\n                dp[curr_sum] += dp[curr_sum - num]\n    \n    return dp[target]",
   "order_matters": true,
   "test_cases": [
     {
       "id": 1,
       "input": {
-        "nums": [3, 1, 2],
+        "nums": [
+          3,
+          1,
+          2
+        ],
         "target": 4
       },
       "output": 7
@@ -49,7 +35,9 @@
     {
       "id": 2,
       "input": {
-        "nums": [1],
+        "nums": [
+          1
+        ],
         "target": 3
       },
       "output": 1
@@ -57,7 +45,11 @@
     {
       "id": 3,
       "input": {
-        "nums": [1, 2, 3],
+        "nums": [
+          1,
+          2,
+          3
+        ],
         "target": 0
       },
       "output": 1
@@ -65,7 +57,11 @@
     {
       "id": 4,
       "input": {
-        "nums": [2, 1, 3],
+        "nums": [
+          2,
+          1,
+          3
+        ],
         "target": 5
       },
       "output": 13
@@ -73,7 +69,11 @@
     {
       "id": 5,
       "input": {
-        "nums": [4, 2, 1],
+        "nums": [
+          4,
+          2,
+          1
+        ],
         "target": 32
       },
       "output": 39882198
@@ -81,7 +81,11 @@
     {
       "id": 6,
       "input": {
-        "nums": [1, 2, 4],
+        "nums": [
+          1,
+          2,
+          4
+        ],
         "target": 7
       },
       "output": 44
@@ -89,7 +93,9 @@
     {
       "id": 7,
       "input": {
-        "nums": [9],
+        "nums": [
+          9
+        ],
         "target": 3
       },
       "output": 0
@@ -97,7 +103,10 @@
     {
       "id": 8,
       "input": {
-        "nums": [1, 2],
+        "nums": [
+          1,
+          2
+        ],
         "target": 3
       },
       "output": 3
@@ -105,7 +114,12 @@
     {
       "id": 9,
       "input": {
-        "nums": [3, 1, 2, 4],
+        "nums": [
+          3,
+          1,
+          2,
+          4
+        ],
         "target": 6
       },
       "output": 39
@@ -113,7 +127,13 @@
     {
       "id": 10,
       "input": {
-        "nums": [1, 2, 3, 4, 5],
+        "nums": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
         "target": 10
       },
       "output": 3473
@@ -121,7 +141,11 @@
     {
       "id": 11,
       "input": {
-        "nums": [10, 20, 30],
+        "nums": [
+          10,
+          20,
+          30
+        ],
         "target": 40
       },
       "output": 0
@@ -129,7 +153,11 @@
     {
       "id": 12,
       "input": {
-        "nums": [5, 3, 8],
+        "nums": [
+          5,
+          3,
+          8
+        ],
         "target": 9
       },
       "output": 3

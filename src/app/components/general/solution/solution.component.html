@@ -4,7 +4,7 @@
     <!-- Solution Text Section -->
     <div *ngIf="solutionText" class="solution-text">
       <h3>Approach</h3>
-      <p>{{ solutionText }}</p>
+      <div [innerHTML]="solutionText"></div>
     </div>
     
     <!-- Solution Code Section -->

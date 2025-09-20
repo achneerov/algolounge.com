@@ -1,0 +1,105 @@
+{
+  "filename": "word-ladder",
+  "title": "Word Ladder",
+  "keywords": [
+    "word",
+    "ladder",
+    "leetcode",
+    "127",
+    "given",
+    "two",
+    "words",
+    "beginword",
+    "endword",
+    "transformation",
+    "bfs",
+    "graph"
+  ],
+  "description": "<h2>Word Ladder</h2><p>Leetcode 127. Word Ladder</p><p></p><p>You are given two words, `beginWord` and `endWord`, and also a list of words `wordList`. All of the given words are of the same length, consisting of lowercase English letters, and are all distinct.</p><p></p><p>Your goal is to transform `beginWord` into `endWord` by following the rules:</p><p>    </p><p>* You may transform `beginWord` to any word within `wordList`, provided that at exactly one position the words have a different character, and the rest of the positions have the same characters.</p><p>* You may repeat the previous step with the new word that you obtain, and you may do this as many times as needed.</p><p></p><p>Return the **minimum number of words within the transformation sequence** needed to obtain the `endWord`, or `0` if no such sequence exists.</p><h3>Examples:</h3><ul><li>Input: beginWord = \"cat\", endWord = \"sag\", wordList = [\"bat\",\"bag\",\"sag\",\"dag\",\"dot\"]<br><br>Output: 4<br>The transformation sequence is `\"cat\" -> \"bat\" -> \"bag\" -> \"sag\"`.</li><li>Input: beginWord = \"cat\", endWord = \"sag\", wordList = [\"bat\",\"bag\",\"sat\",\"dag\",\"dot\"]<br><br>Output: 0<br>There is no possible transformation sequence from `\"cat\"` to `\"sag\"` since the word `\"sag\"` is not in the wordList.</li></ul><h3>Constraints:</h3><ul><li> `1 <= beginWord.length <= 10`</li><li> `1 <= wordList.length <= 100`</li></ul>",
+  "entry_function": "ladderLength",
+  "template": "def ladderLength(beginWord, endWord, wordList):\n    ",
+  "solution_text": "<h3>Word Ladder</h3><p><strong>Algorithm:</strong></p><ol><li>Use BFS to find shortest transformation path</li><li>For each word, try changing each character to find valid neighbors</li><li>Only consider words that are in the wordList</li><li>Return the length of transformation sequence</li></ol><p><strong>Time Complexity:</strong> O(M² × N) where M is word length and N is number of words</p><p><strong>Space Complexity:</strong> O(M × N) for the queue and visited set</p><p><strong>Key Insights:</strong></p><ul><li>BFS guarantees shortest path in unweighted graph</li><li>Each word is a node, edges connect words differing by one character</li><li>Use set for O(1) word lookup</li><li>Track visited words to avoid cycles</li></ul>",
+  "solution_code": "def ladderLength(beginWord, endWord, wordList):\n    from collections import deque\n    \n    if endWord not in wordList:\n        return 0\n    \n    word_set = set(wordList)\n    queue = deque([(beginWord, 1)])\n    visited = {beginWord}\n    \n    while queue:\n        current_word, length = queue.popleft()\n        \n        if current_word == endWord:\n            return length\n        \n        # Try changing each character\n        for i in range(len(current_word)):\n            for c in 'abcdefghijklmnopqrstuvwxyz':\n                if c == current_word[i]:\n                    continue\n                \n                next_word = current_word[:i] + c + current_word[i+1:]\n                \n                if next_word in word_set and next_word not in visited:\n                    visited.add(next_word)\n                    queue.append((next_word, length + 1))\n    \n    return 0",
+
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for ladderLength function\"\"\"\n    return (test_case_input['beginWord'], test_case_input['endWord'], test_case_input['wordList'])",
+
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the word ladder result\"\"\"\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    \n    return [passed, output_str]",
+
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "beginWord": "cat",
+        "endWord": "sag",
+        "wordList": [
+          "bat",
+          "bag",
+          "sag",
+          "dag",
+          "dot"
+        ]
+      },
+      "output": 4
+    },
+    {
+      "id": 2,
+      "input": {
+        "beginWord": "cat",
+        "endWord": "sag",
+        "wordList": [
+          "bat",
+          "bag",
+          "sat",
+          "dag",
+          "dot"
+        ]
+      },
+      "output": 0
+    },
+    {
+      "id": 3,
+      "input": {
+        "beginWord": "hit",
+        "endWord": "cog",
+        "wordList": [
+          "hot",
+          "dot",
+          "dog",
+          "lot",
+          "log",
+          "cog"
+        ]
+      },
+      "output": 5
+    },
+    {
+      "id": 4,
+      "input": {
+        "beginWord": "hit",
+        "endWord": "cog",
+        "wordList": [
+          "hot",
+          "dot",
+          "dog",
+          "lot",
+          "log"
+        ]
+      },
+      "output": 0
+    },
+    {
+      "id": 5,
+      "input": {
+        "beginWord": "a",
+        "endWord": "c",
+        "wordList": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      "output": 2
+    }
+  ]
+}

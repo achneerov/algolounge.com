@@ -5,17 +5,17 @@
   "keywords": ["algorithms", "data structures", "technical interviews", "problem solving", "fall", "comprehensive", "progressive learning", "competitive programming"],
   "units": {
     "unit_1": {
-      "title": "Week 1 - Course Introduction",
+      "title": "Week 1",
       "description": "Welcome to AlgoTime Fall 2025! Get ready for an exciting journey.",
       "questions": []
     },
     "unit_2": {
-      "title": "Week 2 - Foundation Building",
+      "title": "Week 2",
       "description": "Building the fundamental concepts and problem-solving mindset.",
       "questions": []
     },
     "unit_3": {
-      "title": "Week 3 - Essential Problem Patterns",
+      "title": "Week 3",
       "description": "Core algorithmic patterns including stacks, binary search, arrays, and trees.",
       "questions": [
         {
@@ -45,67 +45,67 @@
       ]
     },
     "unit_4": {
-      "title": "Week 4 - Advanced Techniques",
+      "title": "Week 4",
       "description": "Expanding your algorithmic toolkit with advanced problem-solving strategies.",
       "questions": []
     },
     "unit_5": {
-      "title": "Week 5 - Data Structure Deep Dive",
+      "title": "Week 5",
       "description": "Comprehensive exploration of fundamental data structures.",
       "questions": []
     },
     "unit_6": {
-      "title": "Week 6 - Graph Algorithms",
+      "title": "Week 6",
       "description": "Introduction to graph theory and traversal algorithms.",
       "questions": []
     },
     "unit_7": {
-      "title": "Week 7 - Dynamic Programming Foundations",
+      "title": "Week 7",
       "description": "Building blocks of dynamic programming and memoization.",
       "questions": []
     },
     "unit_8": {
-      "title": "Week 8 - Midterm Review",
+      "title": "Week 8",
       "description": "Consolidating knowledge from the first half of the course.",
       "questions": []
     },
     "unit_9": {
-      "title": "Week 9 - Advanced Graph Algorithms",
+      "title": "Week 9",
       "description": "Complex graph problems and optimization techniques.",
       "questions": []
     },
     "unit_10": {
-      "title": "Week 10 - Advanced Dynamic Programming",
+      "title": "Week 10",
       "description": "Complex DP patterns and multi-dimensional problems.",
       "questions": []
     },
     "unit_11": {
-      "title": "Week 11 - String Algorithms",
+      "title": "Week 11",
       "description": "Advanced string processing and pattern matching.",
       "questions": []
     },
     "unit_12": {
-      "title": "Week 12 - Mathematical Algorithms",
+      "title": "Week 12",
       "description": "Number theory, combinatorics, and mathematical problem solving.",
       "questions": []
     },
     "unit_13": {
-      "title": "Week 13 - System Design Basics",
+      "title": "Week 13",
       "description": "Introduction to system design and scalability concepts.",
       "questions": []
     },
     "unit_14": {
-      "title": "Week 14 - Advanced Problem Solving",
+      "title": "Week 14",
       "description": "Complex algorithmic challenges and optimization strategies.",
       "questions": []
     },
     "unit_15": {
-      "title": "Week 15 - Final Project Preparation",
+      "title": "Week 15",
       "description": "Comprehensive review and capstone project development.",
       "questions": []
     },
     "unit_16": {
-      "title": "Week 16 - Course Finale & Interview Prep",
+      "title": "Week 16",
       "description": "Final assessments and technical interview preparation.",
       "questions": []
     }

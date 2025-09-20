@@ -161,6 +161,9 @@
   
   .question-content {
     flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
 
     h3 {
       color: var(--text-color, #333333);
@@ -168,6 +171,26 @@
       font-size: 1rem;
       font-weight: 500;
     }
+  }
+
+  .tags-container {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .difficulty-tag {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    min-width: 50px;
+    text-align: center;
+    flex-shrink: 0;
   }
 
   .question-actions {
@@ -229,34 +252,34 @@
     .back-btn {
       color: var(--text-color, #ffffff) !important;
       border-color: rgba(255, 255, 255, 0.2) !important;
-      
+
       &:hover {
         background: var(--surface-300, #444444) !important;
       }
     }
-    
+
     .favorite-button {
       color: #ccc !important;
-      
+
       &.favorited {
         color: #ffd700 !important;
       }
     }
-    
+
     h1 {
       color: var(--text-color, #ffffff) !important;
     }
-    
+
     .course-description {
       color: var(--text-color-secondary, #cccccc) !important;
     }
   }
-  
+
   .course-section {
     background: var(--surface-card, #2a2a2a) !important;
     border-color: rgba(255, 255, 255, 0.1) !important;
   }
-  
+
   .section-header {
     h2 {
       color: var(--text-color, #ffffff) !important;
@@ -274,18 +297,19 @@
       color: var(--text-color-secondary, #cccccc) !important;
     }
   }
-  
+
   .question-item {
     background: var(--surface-300, #444444) !important;
     border-color: rgba(255, 255, 255, 0.05) !important;
-    
+
     &:hover {
       background: var(--surface-400, #555555) !important;
     }
-    
+
     .question-content h3 {
       color: var(--text-color, #ffffff) !important;
     }
+
 
     .leetcode-link-btn {
       background: rgba(33, 102, 172, 0.3) !important;
@@ -360,6 +384,7 @@
       color: var(--text-color, #ffffff) !important;
     }
 
+
     .leetcode-link-btn {
       background: rgba(33, 102, 172, 0.3) !important;
 
@@ -368,11 +393,11 @@
       }
     }
   }
-  
+
   .no-questions-in-section p {
     color: var(--text-color-secondary, #aaaaaa) !important;
   }
-  
+
   .no-sections p {
     color: var(--text-color-secondary, #cccccc) !important;
   }

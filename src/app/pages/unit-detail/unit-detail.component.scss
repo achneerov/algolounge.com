@@ -106,6 +106,9 @@
 
   .question-content {
     flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
 
     h3 {
       color: var(--text-color, #333333);
@@ -113,6 +116,26 @@
       font-size: 1rem;
       font-weight: 500;
     }
+  }
+
+  .tags-container {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .difficulty-tag {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    min-width: 50px;
+    text-align: center;
+    flex-shrink: 0;
   }
 
   .question-actions {
@@ -210,6 +233,7 @@
       color: var(--text-color, #ffffff) !important;
     }
 
+
     .leetcode-link-btn {
       background: rgba(33, 102, 172, 0.3) !important;
 
@@ -268,6 +292,7 @@
     h3 {
       color: var(--text-color, #ffffff) !important;
     }
+
 
     .leetcode-link-btn {
       background: rgba(33, 102, 172, 0.3) !important;

@@ -4,10 +4,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { LocalStorageService } from '../../services/local-storage.service';
 
+interface CourseTag {
+  text: string;
+  color: string;
+}
+
 interface CourseQuestion {
   filename: string;
   title: string;
   leetcode_url?: string;
+  tags?: CourseTag[];
 }
 
 interface CourseSection {
@@ -99,11 +105,12 @@ export class CourseDetailComponent implements OnInit {
                 title: this.formatQuestionTitle(question)
               });
             } else if (typeof question === 'object' && question.filename) {
-              // New format: object with filename and optional leetcode_url
+              // New format: object with filename and optional attributes
               section.questions.push({
                 filename: question.filename,
                 title: this.formatQuestionTitle(question.filename),
-                leetcode_url: question.leetcode_url
+                leetcode_url: question.leetcode_url,
+                tags: question.tags
               });
             }
           }

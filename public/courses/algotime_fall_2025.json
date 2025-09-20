@@ -20,27 +20,47 @@
       "questions": [
         {
           "filename": "valid-parentheses",
-          "leetcode_url": "https://leetcode.com/problems/valid-parentheses/"
+          "leetcode_url": "https://leetcode.com/problems/valid-parentheses/",
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Alex's Favorite", "color": "#ffd700" }
+          ]
         },
         {
           "filename": "binary-search",
-          "leetcode_url": "https://leetcode.com/problems/binary-search/"
+          "leetcode_url": "https://leetcode.com/problems/binary-search/",
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" }
+          ]
         },
         {
           "filename": "product-of-array-except-self",
-          "leetcode_url": "https://leetcode.com/problems/product-of-array-except-self/"
+          "leetcode_url": "https://leetcode.com/problems/product-of-array-except-self/",
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" }
+          ]
         },
         {
           "filename": "valid-sudoku",
-          "leetcode_url": "https://leetcode.com/problems/valid-sudoku/"
+          "leetcode_url": "https://leetcode.com/problems/valid-sudoku/",
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Alex's Favorite", "color": "#ffd700" }
+          ]
         },
         {
           "filename": "median-of-two-sorted-arrays",
-          "leetcode_url": "https://leetcode.com/problems/median-of-two-sorted-arrays/"
+          "leetcode_url": "https://leetcode.com/problems/median-of-two-sorted-arrays/",
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" }
+          ]
         },
         {
           "filename": "binary-tree-maximum-path-sum",
-          "leetcode_url": "https://leetcode.com/problems/binary-tree-maximum-path-sum/"
+          "leetcode_url": "https://leetcode.com/problems/binary-tree-maximum-path-sum/",
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" }
+          ]
         }
       ]
     },
@@ -50,19 +70,46 @@
       "questions": [
         {
           "filename": "best-time-to-buy-and-sell-stock",
-          "leetcode_url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/"
+          "leetcode_url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" }
+          ]
         },
         {
           "filename": "reverse-linked-list",
-          "leetcode_url": "https://leetcode.com/problems/reverse-linked-list/"
+          "leetcode_url": "https://leetcode.com/problems/reverse-linked-list/",
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Alex's Favorite", "color": "#ffd700" }
+          ]
         },
         {
           "filename": "remove-nth-node-from-end-of-list",
-          "leetcode_url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/"
+          "leetcode_url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" }
+          ]
+        },
+        {
+          "filename": "copy-list-with-random-pointer",
+          "leetcode_url": "https://leetcode.com/problems/copy-list-with-random-pointer/",
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" }
+          ]
         },
         {
           "filename": "word-ladder",
-          "leetcode_url": "https://leetcode.com/problems/word-ladder/"
+          "leetcode_url": "https://leetcode.com/problems/word-ladder/",
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" }
+          ]
+        },
+        {
+          "filename": "longest-increasing-path-in-a-matrix",
+          "leetcode_url": "https://leetcode.com/problems/longest-increasing-path-in-a-matrix/",
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" }
+          ]
         }
       ]
     },

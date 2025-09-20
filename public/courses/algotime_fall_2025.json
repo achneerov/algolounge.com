@@ -20,7 +20,11 @@
       "questions": [
         {
           "filename": "valid-parentheses",
-          "leetcode_url": "https://leetcode.com/problems/valid-parentheses/",
+          "urls": [
+            { "url": "https://leetcode.com/problems/valid-parentheses/", "tooltip": "LeetCode Problem", "color": "#2563eb" },
+            { "url": "https://www.youtube.com/watch?v=WTzjTskDFMg", "tooltip": "Video Solution", "color": "#dc2626" },
+            { "url": "https://github.com/neetcode-gh/leetcode/blob/main/python/0020-valid-parentheses.py", "tooltip": "Code Solution", "color": "#16a34a" }
+          ],
           "tags": [
             { "text": "Easy", "color": "#22c55e" },
             { "text": "Alex's Favorite", "color": "#ffd700" }
@@ -28,21 +32,30 @@
         },
         {
           "filename": "binary-search",
-          "leetcode_url": "https://leetcode.com/problems/binary-search/",
+          "urls": [
+            { "url": "https://leetcode.com/problems/binary-search/", "tooltip": "LeetCode Problem", "color": "#2563eb" },
+            { "url": "https://www.youtube.com/watch?v=s4DPM8ct1pI", "tooltip": "Video Tutorial", "color": "#dc2626" }
+          ],
           "tags": [
             { "text": "Easy", "color": "#22c55e" }
           ]
         },
         {
           "filename": "product-of-array-except-self",
-          "leetcode_url": "https://leetcode.com/problems/product-of-array-except-self/",
+          "urls": [
+            { "url": "https://leetcode.com/problems/product-of-array-except-self/", "tooltip": "LeetCode Problem", "color": "#2563eb" }
+          ],
           "tags": [
             { "text": "Medium", "color": "#f59e0b" }
           ]
         },
         {
           "filename": "valid-sudoku",
-          "leetcode_url": "https://leetcode.com/problems/valid-sudoku/",
+          "urls": [
+            { "url": "https://leetcode.com/problems/valid-sudoku/", "tooltip": "LeetCode Problem", "color": "#2563eb" },
+            { "url": "https://www.youtube.com/watch?v=TjFXEUCMqI8", "tooltip": "Video Explanation", "color": "#dc2626" },
+            { "url": "https://en.wikipedia.org/wiki/Sudoku", "tooltip": "Sudoku Rules", "color": "#7c3aed" }
+          ],
           "tags": [
             { "text": "Medium", "color": "#f59e0b" },
             { "text": "Alex's Favorite", "color": "#ffd700" }
@@ -50,14 +63,19 @@
         },
         {
           "filename": "median-of-two-sorted-arrays",
-          "leetcode_url": "https://leetcode.com/problems/median-of-two-sorted-arrays/",
+          "urls": [
+            { "url": "https://leetcode.com/problems/median-of-two-sorted-arrays/", "tooltip": "LeetCode Problem", "color": "#2563eb" }
+          ],
           "tags": [
             { "text": "Hard", "color": "#ef4444" }
           ]
         },
         {
           "filename": "binary-tree-maximum-path-sum",
-          "leetcode_url": "https://leetcode.com/problems/binary-tree-maximum-path-sum/",
+          "urls": [
+            { "url": "https://leetcode.com/problems/binary-tree-maximum-path-sum/", "tooltip": "LeetCode Problem", "color": "#2563eb" },
+            { "url": "https://www.youtube.com/watch?v=Hr5cWUld4vU", "tooltip": "Video Solution", "color": "#dc2626" }
+          ],
           "tags": [
             { "text": "Hard", "color": "#ef4444" }
           ]
@@ -70,14 +88,20 @@
       "questions": [
         {
           "filename": "best-time-to-buy-and-sell-stock",
-          "leetcode_url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+          "urls": [
+            { "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/", "tooltip": "LeetCode Problem", "color": "#2563eb" }
+          ],
           "tags": [
             { "text": "Easy", "color": "#22c55e" }
           ]
         },
         {
           "filename": "reverse-linked-list",
-          "leetcode_url": "https://leetcode.com/problems/reverse-linked-list/",
+          "urls": [
+            { "url": "https://leetcode.com/problems/reverse-linked-list/", "tooltip": "LeetCode Problem", "color": "#2563eb" },
+            { "url": "https://www.youtube.com/watch?v=G0_I-ZF0S38", "tooltip": "Video Tutorial", "color": "#dc2626" },
+            { "url": "https://visualgo.net/en/list", "tooltip": "Interactive Visualization", "color": "#f59e0b" }
+          ],
           "tags": [
             { "text": "Easy", "color": "#22c55e" },
             { "text": "Alex's Favorite", "color": "#ffd700" }
@@ -85,28 +109,40 @@
         },
         {
           "filename": "remove-nth-node-from-end-of-list",
-          "leetcode_url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
+          "urls": [
+            { "url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/", "tooltip": "LeetCode Problem", "color": "#2563eb" },
+            { "url": "https://www.youtube.com/watch?v=XVuQxVej6y8", "tooltip": "Video Solution", "color": "#dc2626" }
+          ],
           "tags": [
             { "text": "Medium", "color": "#f59e0b" }
           ]
         },
         {
           "filename": "copy-list-with-random-pointer",
-          "leetcode_url": "https://leetcode.com/problems/copy-list-with-random-pointer/",
+          "urls": [
+            { "url": "https://leetcode.com/problems/copy-list-with-random-pointer/", "tooltip": "LeetCode Problem", "color": "#2563eb" },
+            { "url": "https://www.youtube.com/watch?v=5Y2EiZST97Y", "tooltip": "Video Explanation", "color": "#dc2626" },
+            { "url": "https://github.com/neetcode-gh/leetcode/blob/main/python/0138-copy-list-with-random-pointer.py", "tooltip": "Code Solution", "color": "#16a34a" }
+          ],
           "tags": [
             { "text": "Medium", "color": "#f59e0b" }
           ]
         },
         {
           "filename": "word-ladder",
-          "leetcode_url": "https://leetcode.com/problems/word-ladder/",
+          "urls": [
+            { "url": "https://leetcode.com/problems/word-ladder/", "tooltip": "LeetCode Problem", "color": "#2563eb" },
+            { "url": "https://www.youtube.com/watch?v=h9iTnkgv05E", "tooltip": "BFS Explanation", "color": "#dc2626" }
+          ],
           "tags": [
             { "text": "Hard", "color": "#ef4444" }
           ]
         },
         {
           "filename": "longest-increasing-path-in-a-matrix",
-          "leetcode_url": "https://leetcode.com/problems/longest-increasing-path-in-a-matrix/",
+          "urls": [
+            { "url": "https://leetcode.com/problems/longest-increasing-path-in-a-matrix/", "tooltip": "LeetCode Problem", "color": "#2563eb" }
+          ],
           "tags": [
             { "text": "Hard", "color": "#ef4444" }
           ]

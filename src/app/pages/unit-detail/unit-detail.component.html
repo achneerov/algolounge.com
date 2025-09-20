@@ -32,10 +32,11 @@
         </div>
         <div class="question-actions">
           <button
-            *ngIf="question.leetcode_url"
-            class="leetcode-link-btn"
-            (click)="onLeetCodeClick($event, question.leetcode_url!)"
-            title="View on LeetCode"
+            *ngFor="let urlItem of question.urls"
+            class="url-btn"
+            [style.background-color]="urlItem.color"
+            (click)="onUrlClick($event, urlItem.url)"
+            [title]="urlItem.tooltip"
           >
             🔗
           </button>

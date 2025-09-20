@@ -9,10 +9,16 @@ interface CourseTag {
   color: string;
 }
 
+interface CourseUrl {
+  url: string;
+  tooltip: string;
+  color: string;
+}
+
 interface CourseQuestion {
   filename: string;
   title: string;
-  leetcode_url?: string;
+  urls?: CourseUrl[];
   tags?: CourseTag[];
 }
 
@@ -109,7 +115,7 @@ export class CourseDetailComponent implements OnInit {
               section.questions.push({
                 filename: question.filename,
                 title: this.formatQuestionTitle(question.filename),
-                leetcode_url: question.leetcode_url,
+                urls: question.urls,
                 tags: question.tags
               });
             }
@@ -159,9 +165,9 @@ export class CourseDetailComponent implements OnInit {
     return this.localStorageService.isQuestionCompleted(questionFilename);
   }
 
-  onLeetCodeClick(event: Event, leetcodeUrl: string) {
+  onUrlClick(event: Event, url: string) {
     event.stopPropagation(); // Prevent the question click from firing
-    window.open(leetcodeUrl, '_blank');
+    window.open(url, '_blank');
   }
 
   onUnitClick(unitKey: string) {

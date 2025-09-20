@@ -124,6 +124,8 @@ export class QuestionsComponent implements OnInit, OnDestroy {
           this.questionData = data;
           this.updateQuestionContent();
           this.notFound = false;
+          // Preload Pyodide to reduce first-run delay
+          this.preloadPyodide();
         },
         error: () => {
           this.notFound = true;
@@ -153,5 +155,13 @@ export class QuestionsComponent implements OnInit, OnDestroy {
 
   onVerticalResizeEnd(event: any) {
     this.verticalPanelSizes = event.sizes;
+  }
+
+  private async preloadPyodide() {
+    try {
+      await this.codeExecutionService.initPyodide();
+    } catch (error) {
+      console.warn('Failed to preload Pyodide:', error);
+    }
   }
 }

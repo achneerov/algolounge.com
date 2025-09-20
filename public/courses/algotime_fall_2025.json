@@ -89,62 +89,67 @@
         {
           "filename": "best-time-to-buy-and-sell-stock",
           "urls": [
-            { "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/", "tooltip": "LeetCode Problem", "color": "#2563eb", "visibleString": "🔗" }
+            { "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/best-time-to-buy-and-sell-stock", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
           ],
           "tags": [
-            { "text": "Easy", "color": "#22c55e" }
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Sliding Window", "color": "#3b82f6" }
           ]
         },
         {
           "filename": "reverse-linked-list",
           "urls": [
-            { "url": "https://leetcode.com/problems/reverse-linked-list/", "tooltip": "LeetCode Problem", "color": "#2563eb", "visibleString": "🔗" },
-            { "url": "https://www.youtube.com/watch?v=G0_I-ZF0S38", "tooltip": "Video Tutorial", "color": "#dc2626", "visibleString": "📹" },
-            { "url": "https://visualgo.net/en/list", "tooltip": "Interactive Visualization", "color": "#f59e0b", "visibleString": "🎮" }
+            { "url": "https://leetcode.com/problems/reverse-linked-list/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/reverse-linked-list", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
           ],
           "tags": [
             { "text": "Easy", "color": "#22c55e" },
-            { "text": "Alex's Favorite", "color": "#ffd700" }
+            { "text": "Linked List", "color": "#8b5cf6" }
           ]
         },
         {
           "filename": "remove-nth-node-from-end-of-list",
           "urls": [
-            { "url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/", "tooltip": "LeetCode Problem", "color": "#2563eb", "visibleString": "🔗" },
-            { "url": "https://www.youtube.com/watch?v=XVuQxVej6y8", "tooltip": "Video Solution", "color": "#dc2626", "visibleString": "📹" }
+            { "url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/remove-nth-node-from-end-of-list", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
           ],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" }
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Linked List", "color": "#8b5cf6" }
           ]
         },
         {
           "filename": "copy-list-with-random-pointer",
           "urls": [
-            { "url": "https://leetcode.com/problems/copy-list-with-random-pointer/", "tooltip": "LeetCode Problem", "color": "#2563eb", "visibleString": "🔗" },
-            { "url": "https://www.youtube.com/watch?v=5Y2EiZST97Y", "tooltip": "Video Explanation", "color": "#dc2626", "visibleString": "📹" },
-            { "url": "https://github.com/neetcode-gh/leetcode/blob/main/python/0138-copy-list-with-random-pointer.py", "tooltip": "Code Solution", "color": "#16a34a", "visibleString": "💻" }
+            { "url": "https://leetcode.com/problems/copy-list-with-random-pointer/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/copy-list-with-random-pointer", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
           ],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" }
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Linked List", "color": "#8b5cf6" }
           ]
         },
         {
           "filename": "word-ladder",
           "urls": [
-            { "url": "https://leetcode.com/problems/word-ladder/", "tooltip": "LeetCode Problem", "color": "#2563eb", "visibleString": "🔗" },
-            { "url": "https://www.youtube.com/watch?v=h9iTnkgv05E", "tooltip": "BFS Explanation", "color": "#dc2626", "visibleString": "📹" }
+            { "url": "https://leetcode.com/problems/word-ladder/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/word-ladder", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
           ],
           "tags": [
-            { "text": "Hard", "color": "#ef4444" }
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Graph", "color": "#ec4899" }
           ]
         },
         {
           "filename": "longest-increasing-path-in-a-matrix",
           "urls": [
-            { "url": "https://leetcode.com/problems/longest-increasing-path-in-a-matrix/", "tooltip": "LeetCode Problem", "color": "#2563eb", "visibleString": "🔗" }
+            { "url": "https://leetcode.com/problems/longest-increasing-path-in-a-matrix/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/longest-increasing-path-in-a-matrix", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
           ],
           "tags": [
-            { "text": "Hard", "color": "#ef4444" }
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "2D Dynamic Programming", "color": "#06b6d4" }
           ]
         }
       ]

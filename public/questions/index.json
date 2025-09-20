@@ -70,6 +70,45 @@
       ]
     },
     {
+      "filename": "copy-list-with-random-pointer",
+      "title": "Copy List with Random Pointer",
+      "keywords": [
+        "copy",
+        "linked",
+        "list",
+        "random",
+        "pointer",
+        "leetcode",
+        "138",
+        "given",
+        "head",
+        "deep",
+        "clone",
+        "hash",
+        "map"
+      ]
+    },
+    {
+      "filename": "longest-increasing-path-in-a-matrix",
+      "title": "Longest Increasing Path in a Matrix",
+      "keywords": [
+        "longest",
+        "increasing",
+        "path",
+        "matrix",
+        "leetcode",
+        "329",
+        "dfs",
+        "memoization",
+        "dynamic",
+        "programming",
+        "grid",
+        "depth",
+        "first",
+        "search"
+      ]
+    },
+    {
       "filename": "median-of-two-sorted-arrays",
       "title": "Median of Two Sorted Arrays",
       "keywords": [
@@ -202,6 +241,6 @@
       ]
     }
   ],
-  "lastUpdated": "2025-09-20T15:37:12.760Z",
-  "totalQuestions": 12
+  "lastUpdated": "2025-09-20T15:44:26.908Z",
+  "totalQuestions": 14
 }

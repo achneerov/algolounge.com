@@ -100,7 +100,8 @@ sys.stdout = test_output
           jsResult = result && typeof result.toJs === 'function' ? result.toJs() : result;
 
           // Call verify function to check result and get output string
-          const verifyResult = pyodide.runPython(`verify(${functionName}(*prepare(${inputString})), ${JSON.stringify(testCase.output)})`);
+          const outputString = JSON.stringify(testCase.output).replace(/null/g, 'None');
+          const verifyResult = pyodide.runPython(`verify(${functionName}(*prepare(${inputString})), ${outputString})`);
           const verifyJs = verifyResult && typeof verifyResult.toJs === 'function' ? verifyResult.toJs() : verifyResult;
 
           passed = verifyJs[0];

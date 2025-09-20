@@ -1,0 +1,101 @@
+{
+  "filename": "copy-list-with-random-pointer",
+  "title": "Copy List with Random Pointer",
+  "keywords": [
+    "copy",
+    "linked",
+    "list",
+    "random",
+    "pointer",
+    "leetcode",
+    "138",
+    "given",
+    "head",
+    "deep",
+    "clone",
+    "hash",
+    "map"
+  ],
+  "description": "<h2>Copy List with Random Pointer</h2><p>Leetcode 138. Copy List With Random Pointer</p><p></p><p>You are given the head of a linked list of length `n`. Unlike a singly linked list, each node contains an additional pointer `random`, which may point to any node in the list, or `null`.</p><p></p><p>Create a **deep copy** of the list. </p><p></p><p>The deep copy should consist of exactly `n` **new** nodes, each including:</p><p>* The original value `val` of the copied node</p><p>* A `next` pointer to the new node corresponding to the `next` pointer of the original node</p><p>* A `random` pointer to the new node corresponding to the `random` pointer of the original node</p><p></p><p>Note: None of the pointers in the new list should point to nodes in the original list.</p><p></p><p>*Return the head of the copied linked list.*</p><p></p><p>In the examples, the linked list is represented as a list of `n` nodes. Each node is represented as a pair of `[val, random_index]` where `random_index` is the index of the node (0-indexed) that the `random` pointer points to, or `null` if it does not point to any node.</p><h3>Examples:</h3><ul><li>Input: head = [[7,null],[13,0],[11,4],[10,2],[1,0]]<br><br>Output: [[7,null],[13,0],[11,4],[10,2],[1,0]]</li><li>Input: head = [[1,1],[2,1]]<br><br>Output: [[1,1],[2,1]]</li><li>Input: head = [[3,null],[3,0],[3,null]]<br><br>Output: [[3,null],[3,0],[3,null]]</li></ul><h3>Constraints:</h3><ul><li> `0 <= n <= 1000`</li><li> `-10^4 <= Node.val <= 10^4`</li><li> `random` is `null` or is pointing to some node in the linked list.</li></ul>",
+  "entry_function": "copyRandomList",
+  "template": "def copyRandomList(head):\n    ",
+  "solution_text": "<h3>Copy List with Random Pointer</h3><p><strong>Algorithm:</strong></p><ol><li>First pass: Create new nodes and store original->new mapping in hash map</li><li>Second pass: Set next and random pointers using the mapping</li><li>Handle null pointers appropriately</li></ol><p><strong>Time Complexity:</strong> O(n) - two passes through the list</p><p><strong>Space Complexity:</strong> O(n) - hash map storage</p><p><strong>Key Insights:</strong></p><ul><li>Hash map enables O(1) node lookup</li><li>Two-pass approach separates node creation from pointer assignment</li><li>Deep copy requires all new nodes with no references to original</li><li>Handle edge cases: null head, single node, cycles</li></ul>",
+  "solution_code": "def copyRandomList(head):\n    if not head:\n        return None\n    \n    # Hash map to store mapping from original to new nodes\n    node_map = {}\n    \n    # First pass: create new nodes\n    current = head\n    while current:\n        node_map[current] = ListNode(current.val)\n        current = current.next\n    \n    # Second pass: set next and random pointers\n    current = head\n    while current:\n        new_node = node_map[current]\n        \n        # Set next pointer\n        if current.next:\n            new_node.next = node_map[current.next]\n        \n        # Set random pointer\n        if current.random:\n            new_node.random = node_map[current.random]\n        \n        current = current.next\n    \n    return node_map[head]",
+
+  "prepare": "class ListNode:\n    def __init__(self, val=0, next=None, random=None):\n        self.val = val\n        self.next = next\n        self.random = random\n    \n    def __repr__(self):\n        return f'ListNode({self.val})'\n\ndef prepare(test_case_input):\n    \"\"\"Convert array representation to ListNode structure with random pointers\"\"\"\n    nodes_data = test_case_input['head']\n    if not nodes_data:\n        return (None,)\n    \n    # Create all nodes first\n    nodes = []\n    for val, _ in nodes_data:\n        nodes.append(ListNode(val))\n    \n    # Set next pointers\n    for i in range(len(nodes) - 1):\n        nodes[i].next = nodes[i + 1]\n    \n    # Set random pointers\n    for i, (_, random_idx) in enumerate(nodes_data):\n        if random_idx is not None:\n            nodes[i].random = nodes[random_idx]\n    \n    return (nodes[0] if nodes else None,)",
+
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the copied linked list structure\"\"\"\n    def list_to_array(head):\n        \"\"\"Convert linked list back to array format for comparison\"\"\"\n        if not head:\n            return []\n        \n        # First pass: collect all nodes and build index mapping\n        nodes = []\n        node_to_index = {}\n        current = head\n        index = 0\n        \n        while current:\n            nodes.append(current)\n            node_to_index[current] = index\n            current = current.next\n            index += 1\n        \n        # Second pass: build result array\n        result = []\n        for node in nodes:\n            random_idx = node_to_index[node.random] if node.random else None\n            result.append([node.val, random_idx])\n        \n        return result\n    \n    def array_to_string(arr):\n        if not arr:\n            return '[]'\n        return '[' + ', '.join(f'[{val}, {random_idx}]' for val, random_idx in arr) + ']'\n    \n    actual_array = list_to_array(actual_output)\n    passed = actual_array == expected_output\n    output_str = array_to_string(actual_array)\n    \n    return [passed, output_str]",
+
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "head": []
+      },
+      "output": []
+    },
+    {
+      "id": 2,
+      "input": {
+        "head": [[7, null], [13, 0], [11, 4], [10, 2], [1, 0]]
+      },
+      "output": [[7, null], [13, 0], [11, 4], [10, 2], [1, 0]]
+    },
+    {
+      "id": 3,
+      "input": {
+        "head": [[1, 1], [2, 1]]
+      },
+      "output": [[1, 1], [2, 1]]
+    },
+    {
+      "id": 4,
+      "input": {
+        "head": [[3, null], [3, 0], [3, null]]
+      },
+      "output": [[3, null], [3, 0], [3, null]]
+    },
+    {
+      "id": 5,
+      "input": {
+        "head": [[1, null]]
+      },
+      "output": [[1, null]]
+    },
+    {
+      "id": 6,
+      "input": {
+        "head": [[1, 0], [2, 0]]
+      },
+      "output": [[1, 0], [2, 0]]
+    },
+    {
+      "id": 7,
+      "input": {
+        "head": [[7, null], [13, 0], [11, 4], [10, 2], [1, 0]]
+      },
+      "output": [[7, null], [13, 0], [11, 4], [10, 2], [1, 0]]
+    },
+    {
+      "id": 8,
+      "input": {
+        "head": [[1, 1], [2, 1], [3, 2]]
+      },
+      "output": [[1, 1], [2, 1], [3, 2]]
+    },
+    {
+      "id": 9,
+      "input": {
+        "head": [[1, 0], [2, 1], [3, 0], [4, 2]]
+      },
+      "output": [[1, 0], [2, 1], [3, 0], [4, 2]]
+    },
+    {
+      "id": 10,
+      "input": {
+        "head": [[10, 1], [20, 0], [30, null]]
+      },
+      "output": [[10, 1], [20, 0], [30, null]]
+    }
+  ]
+}

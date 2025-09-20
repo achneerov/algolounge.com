@@ -40,7 +40,7 @@
             (click)="onUrlClick($event, urlItem.url)"
             [title]="urlItem.tooltip"
           >
-            🔗
+            {{ urlItem.visibleString || '🔗' }}
           </button>
           <span *ngIf="isQuestionCompleted(question.filename)" class="completion-check">✅</span>
         </div>

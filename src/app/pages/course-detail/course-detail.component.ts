@@ -13,6 +13,7 @@ interface CourseUrl {
   url: string;
   tooltip: string;
   color: string;
+  visibleString?: string;
 }
 
 interface CourseQuestion {

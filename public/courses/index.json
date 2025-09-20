@@ -13,72 +13,8 @@
         "progressive learning",
         "competitive programming"
       ]
-    },
-    {
-      "filename": "algotime_summer_2025",
-      "title": "AlgoTime Summer 2025",
-      "keywords": [
-        "algorithms",
-        "data structures",
-        "technical interviews",
-        "coding fundamentals",
-        "problem solving",
-        "bootcamp",
-        "summer",
-        "arrays",
-        "hash tables",
-        "strings"
-      ]
-    },
-    {
-      "filename": "beginner_coding_challenge",
-      "title": "30-Day Beginner Coding Challenge",
-      "keywords": [
-        "beginner",
-        "programming",
-        "problem solving",
-        "computational thinking",
-        "algorithms",
-        "30-day challenge",
-        "python",
-        "javascript",
-        "typescript",
-        "basic coding"
-      ]
-    },
-    {
-      "filename": "data_structures_bootcamp",
-      "title": "Data Structures Bootcamp",
-      "keywords": [
-        "data structures",
-        "bootcamp",
-        "algorithms",
-        "arrays",
-        "hash tables",
-        "strings",
-        "mathematical problems",
-        "optimization",
-        "performance",
-        "memory management"
-      ]
-    },
-    {
-      "filename": "javascript_interview_prep",
-      "title": "JavaScript Interview Prep Sprint",
-      "keywords": [
-        "javascript",
-        "interview prep",
-        "frontend",
-        "fullstack",
-        "coding challenges",
-        "tech companies",
-        "intensive",
-        "ES6",
-        "async",
-        "functional programming"
-      ]
     }
   ],
-  "lastUpdated": "2025-09-20T02:31:04.574Z",
-  "totalCourses": 5
+  "lastUpdated": "2025-09-20T02:48:38.295Z",
+  "totalCourses": 1
 }

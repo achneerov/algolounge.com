@@ -13,7 +13,7 @@
     "head",
     "return"
   ],
-  "description": "<h2>Reverse Linked List</h2><p>Leetcode 206. Reverse Linked List</p><p></p><p>Given the beginning of a singly linked list `head`, reverse the list, and return the new beginning of the list.</p><h3>Examples:</h3><ul><li>Input: head = [0,1,2,3]<br><br>Output: [3,2,1,0]</li><li>Input: head = []<br><br>Output: []</li></ul><h3>Constraints:</h3><ul><li> `0 <= The length of the list <= 1000`.</li><li> `-1000 <= Node.val <= 1000`</li></ul>",
+  "description": "<h2>Reverse Linked List</h2><p></p><p>Given the beginning of a singly linked list `head`, reverse the list, and return the new beginning of the list.</p><h3>Examples:</h3><ul><li>Input: head = [0,1,2,3]<br><br>Output: [3,2,1,0]</li><li>Input: head = []<br><br>Output: []</li></ul><h3>Constraints:</h3><ul><li> `0 <= The length of the list <= 1000`.</li><li> `-1000 <= Node.val <= 1000`</li></ul>",
   "entry_function": "reverseLinkedList",
   "template": "def reverseLinkedList(head):\n    ",
   "solution_text": "<h3>Reverse Linked List</h3><p><strong>Algorithm:</strong></p><ol><li>Use three pointers: prev, curr, and next</li><li>Iterate through the list, reversing links</li><li>Move pointers forward in each iteration</li><li>Return the new head (prev pointer)</li></ol><p><strong>Time Complexity:</strong> O(n) - single pass through list</p><p><strong>Space Complexity:</strong> O(1) - only using constant extra space</p><p><strong>Key Insights:</strong></p><ul><li>Iterative approach using three pointers</li><li>Reverse the direction of each link</li><li>Handle null head edge case</li><li>Can also be solved recursively</li></ul>",

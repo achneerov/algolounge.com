@@ -53,6 +53,31 @@
   }
 }
 
+.github-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--surface-100, #f8f9fa) !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 6px !important;
+  border-bottom: none !important;
+  transition: all 0.2s ease !important;
+
+  &:hover {
+    background: var(--surface-200, #e9ecef) !important;
+    border-bottom: none !important;
+    transform: translateY(-1px);
+  }
+
+  svg {
+    transition: transform 0.2s ease;
+  }
+
+  &:hover svg {
+    transform: scale(1.1);
+  }
+}
+
 // Dark mode overrides
 :host-context(.dark-mode) .global-header {
   background: var(--surface-card, #2a2a2a) !important;
@@ -69,11 +94,21 @@
 
 :host-context(.dark-mode) .nav-links a {
   color: var(--text-color, #ffffff) !important;
-  
+
   &:hover,
   &.active {
     color: var(--primary-300, #66ccff) !important;
     border-bottom-color: var(--primary-300, #66ccff) !important;
+  }
+}
+
+:host-context(.dark-mode) .github-link {
+  background: var(--surface-400, #555555) !important;
+  color: var(--text-color, #ffffff) !important;
+
+  &:hover {
+    background: var(--surface-500, #666666) !important;
+    color: var(--text-color, #ffffff) !important;
   }
 }
 
@@ -93,11 +128,21 @@
   
   .nav-links a {
     color: var(--text-color, #ffffff) !important;
-    
+
     &:hover,
     &.active {
       color: var(--primary-300, #66ccff) !important;
       border-bottom-color: var(--primary-300, #66ccff) !important;
+    }
+  }
+
+  .github-link {
+    background: var(--surface-400, #555555) !important;
+    color: var(--text-color, #ffffff) !important;
+
+    &:hover {
+      background: var(--surface-500, #666666) !important;
+      color: var(--text-color, #ffffff) !important;
     }
   }
 }

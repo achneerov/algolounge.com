@@ -18,7 +18,10 @@
   <div class="sections-container" *ngIf="courseSections.length > 0">
     <div *ngFor="let section of courseSections" class="course-section">
       <div class="section-header">
-        <h2>{{ section.title }}</h2>
+        <h2 class="section-title-clickable" (click)="onUnitClick(section.unitKey)">
+          {{ section.title }}
+          <span class="unit-link-icon">🔗</span>
+        </h2>
         <p *ngIf="section.description" class="section-description">{{ section.description }}</p>
       </div>
       

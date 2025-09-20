@@ -14,6 +14,7 @@ interface CourseSection {
   title: string;
   description?: string;
   questions: CourseQuestion[];
+  unitKey: string;
 }
 
 interface Course {
@@ -84,7 +85,8 @@ export class CourseDetailComponent implements OnInit {
         const section: CourseSection = {
           title: (value as any).title || this.formatSectionTitle(key),
           description: (value as any).description,
-          questions: []
+          questions: [],
+          unitKey: key
         };
         
         // Extract questions from this section
@@ -153,5 +155,9 @@ export class CourseDetailComponent implements OnInit {
   onLeetCodeClick(event: Event, leetcodeUrl: string) {
     event.stopPropagation(); // Prevent the question click from firing
     window.open(leetcodeUrl, '_blank');
+  }
+
+  onUnitClick(unitKey: string) {
+    this.router.navigate(['/courses', this.courseName, unitKey]);
   }
 }

@@ -1,0 +1,44 @@
+<div class="unit-detail-container">
+  <div class="unit-header">
+    <div class="header-top">
+      <button class="back-btn" (click)="goBackToCourse()">← Back to Course</button>
+    </div>
+    <h1 *ngIf="unit">{{ unit.title }}</h1>
+    <p *ngIf="unit?.description" class="unit-description">{{ unit?.description }}</p>
+    <p *ngIf="course" class="course-context">Part of: {{ course.course_name }}</p>
+  </div>
+
+  <div class="questions-section" *ngIf="unit">
+    <div class="questions-list" *ngIf="unit.questions.length > 0">
+      <div
+        *ngFor="let question of unit.questions"
+        class="question-item"
+        [class.completed]="isQuestionCompleted(question.filename)"
+        (click)="onQuestionClick(question)"
+      >
+        <div class="question-content">
+          <h3>{{ question.title }}</h3>
+        </div>
+        <div class="question-actions">
+          <button
+            *ngIf="question.leetcode_url"
+            class="leetcode-link-btn"
+            (click)="onLeetCodeClick($event, question.leetcode_url!)"
+            title="View on LeetCode"
+          >
+            🔗
+          </button>
+          <span *ngIf="isQuestionCompleted(question.filename)" class="completion-check">✅</span>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="unit.questions.length === 0" class="no-questions">
+      <p>No questions in this unit yet.</p>
+    </div>
+  </div>
+
+  <div *ngIf="!unit" class="loading">
+    <p>Loading unit...</p>
+  </div>
+</div>

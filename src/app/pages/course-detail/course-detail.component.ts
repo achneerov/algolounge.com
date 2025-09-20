@@ -7,6 +7,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
 interface CourseQuestion {
   filename: string;
   title: string;
+  leetcode_url?: string;
 }
 
 interface CourseSection {
@@ -88,11 +89,19 @@ export class CourseDetailComponent implements OnInit {
         
         // Extract questions from this section
         if ((value as any).questions && Array.isArray((value as any).questions)) {
-          for (const questionFilename of (value as any).questions) {
-            if (typeof questionFilename === 'string') {
+          for (const question of (value as any).questions) {
+            if (typeof question === 'string') {
+              // Old format: just string filename
               section.questions.push({
-                filename: questionFilename,
-                title: this.formatQuestionTitle(questionFilename)
+                filename: question,
+                title: this.formatQuestionTitle(question)
+              });
+            } else if (typeof question === 'object' && question.filename) {
+              // New format: object with filename and optional leetcode_url
+              section.questions.push({
+                filename: question.filename,
+                title: this.formatQuestionTitle(question.filename),
+                leetcode_url: question.leetcode_url
               });
             }
           }
@@ -139,5 +148,10 @@ export class CourseDetailComponent implements OnInit {
 
   isQuestionCompleted(questionFilename: string): boolean {
     return this.localStorageService.isQuestionCompleted(questionFilename);
+  }
+
+  onLeetCodeClick(event: Event, leetcodeUrl: string) {
+    event.stopPropagation(); // Prevent the question click from firing
+    window.open(leetcodeUrl, '_blank');
   }
 }

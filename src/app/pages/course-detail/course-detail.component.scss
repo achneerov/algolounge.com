@@ -139,7 +139,7 @@
   
   .question-content {
     flex: 1;
-    
+
     h3 {
       color: var(--text-color, #333333);
       margin: 0;
@@ -147,10 +147,36 @@
       font-weight: 500;
     }
   }
-  
+
+  .question-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .leetcode-link-btn {
+    background: #ff9800;
+    border: none;
+    border-radius: 4px;
+    padding: 0.4rem 0.6rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      background: #f57c00;
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
   .completion-check {
     font-size: 1.2rem;
-    margin-left: 0.5rem;
   }
 }
 
@@ -230,6 +256,14 @@
     .question-content h3 {
       color: var(--text-color, #ffffff) !important;
     }
+
+    .leetcode-link-btn {
+      background: #ff9800 !important;
+
+      &:hover {
+        background: #f57c00 !important;
+      }
+    }
   }
   
   .no-questions-in-section p {
@@ -286,6 +320,14 @@
     
     h3 {
       color: var(--text-color, #ffffff) !important;
+    }
+
+    .leetcode-link-btn {
+      background: #ff9800 !important;
+
+      &:hover {
+        background: #f57c00 !important;
+      }
     }
   }
   

@@ -23,8 +23,8 @@
       </div>
       
       <div class="questions-list" *ngIf="section.questions.length > 0">
-        <div 
-          *ngFor="let question of section.questions" 
+        <div
+          *ngFor="let question of section.questions"
           class="question-item"
           [class.completed]="isQuestionCompleted(question.filename)"
           (click)="onQuestionClick(question)"
@@ -32,7 +32,17 @@
           <div class="question-content">
             <h3>{{ question.title }}</h3>
           </div>
-          <span *ngIf="isQuestionCompleted(question.filename)" class="completion-check">✅</span>
+          <div class="question-actions">
+            <button
+              *ngIf="question.leetcode_url"
+              class="leetcode-link-btn"
+              (click)="onLeetCodeClick($event, question.leetcode_url!)"
+              title="View on LeetCode"
+            >
+              🔗
+            </button>
+            <span *ngIf="isQuestionCompleted(question.filename)" class="completion-check">✅</span>
+          </div>
         </div>
       </div>
       

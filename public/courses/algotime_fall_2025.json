@@ -49,6 +49,10 @@
       "description": "Expanding your algorithmic toolkit with advanced problem-solving strategies.",
       "questions": [
         {
+          "filename": "best-time-to-buy-and-sell-stock",
+          "leetcode_url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/"
+        },
+        {
           "filename": "reverse-linked-list",
           "leetcode_url": "https://leetcode.com/problems/reverse-linked-list/"
         },

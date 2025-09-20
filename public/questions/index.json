@@ -1,6 +1,27 @@
 {
   "questions": [
     {
+      "filename": "best-time-to-buy-and-sell-stock",
+      "title": "Best Time to Buy and Sell Stock",
+      "keywords": [
+        "best",
+        "time",
+        "buy",
+        "sell",
+        "stock",
+        "array",
+        "profit",
+        "maximum",
+        "sliding",
+        "window",
+        "leetcode",
+        "121",
+        "greedy",
+        "dynamic",
+        "programming"
+      ]
+    },
+    {
       "filename": "binary-search",
       "title": "Binary Search",
       "keywords": [
@@ -181,6 +202,6 @@
       ]
     }
   ],
-  "lastUpdated": "2025-09-20T03:20:06.814Z",
-  "totalQuestions": 11
+  "lastUpdated": "2025-09-20T15:18:59.809Z",
+  "totalQuestions": 12
 }

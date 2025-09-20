@@ -1,0 +1,111 @@
+{
+  "filename": "valid-sudoku",
+  "title": "Valid Sudoku",
+  "keywords": [
+    "valid",
+    "sudoku",
+    "matrix",
+    "board",
+    "validation",
+    "rules",
+    "duplicates",
+    "constraints",
+    "game",
+    "puzzle"
+  ],
+  "description": "<h2>Valid Sudoku</h2><p>Determine if a <code>9 x 9</code> Sudoku board is valid. Only the filled cells need to be validated <strong>according to the following rules</strong>:</p><ol><li>Each row must contain the digits <code>1-9</code> without repetition.</li><li>Each column must contain the digits <code>1-9</code> without repetition.</li><li>Each of the nine <code>3 x 3</code> sub-boxes of the grid must contain the digits <code>1-9</code> without repetition.</li></ol><p><strong>Note:</strong></p><ul><li>A Sudoku board (partially filled) could be valid but is not necessarily solvable.</li><li>Only the filled cells need to be validated according to the mentioned rules.</li></ul><h3>Examples:</h3><ul><li>Input: board = <br>[[\"5\",\"3\",\".\",\".\",\"7\",\".\",\".\",\".\",\".\"],<br>[\"6\",\".\",\".\",\"1\",\"9\",\"5\",\".\",\".\",\".\"],<br>[\".\",\"9\",\"8\",\".\",\".\",\".\",\".\",\"6\",\".\"],<br>[\"8\",\".\",\".\",\".\",\"6\",\".\",\".\",\".\",\"3\"],<br>[\"4\",\".\",\".\",\"8\",\".\",\"3\",\".\",\".\",\"1\"],<br>[\"7\",\".\",\".\",\".\",\"2\",\".\",\".\",\".\",\"6\"],<br>[\".\",\"6\",\".\",\".\",\".\",\".\",\"2\",\"8\",\".\"],<br>[\".\",\".\",\".\",\"4\",\"1\",\"9\",\".\",\".\",\"5\"],<br>[\".\",\".\",\".\",\".\",\"8\",\".\",\".\",\"7\",\"9\"]]<br>Output: true</li></ul><h3>Constraints:</h3><ul><li><code>board.length == 9</code></li><li><code>board[i].length == 9</code></li><li><code>board[i][j]</code> is a digit <code>1-9</code> or <code>'.'</code></li></ul>",
+  "entry_function": "isValidSudoku",
+  "template": "def isValidSudoku(board):\n    ",
+  "solution_text": "<h3>Valid Sudoku</h3><p><strong>Algorithm:</strong></p><ol><li>Use sets to track seen digits in rows, columns, and 3x3 boxes</li><li>Iterate through each cell in the 9x9 board</li><li>For non-empty cells, check if digit already exists in:</li><ul><li>Current row</li><li>Current column</li><li>Current 3x3 sub-box</li></ul><li>If any duplicate found, return false</li><li>Add digit to respective sets and continue</li></ol><p><strong>Time Complexity:</strong> O(1) - always process 9x9 board (constant)</p><p><strong>Space Complexity:</strong> O(1) - sets have at most 9 elements each</p><p><strong>Key Insights:</strong></p><ul><li>Use sets for O(1) lookup time</li><li>Box index calculation: (row // 3) * 3 + (col // 3)</li><li>Only validate filled cells (ignore '.')</li><li>Early termination on first duplicate found</li></ul>",
+  "solution_code": "def isValidSudoku(board):\n    # Sets to track seen digits in rows, columns, and boxes\n    rows = [set() for _ in range(9)]\n    cols = [set() for _ in range(9)]\n    boxes = [set() for _ in range(9)]\n    \n    for row in range(9):\n        for col in range(9):\n            cell = board[row][col]\n            \n            # Skip empty cells\n            if cell == '.':\n                continue\n            \n            # Calculate which 3x3 box this cell belongs to\n            box_index = (row // 3) * 3 + (col // 3)\n            \n            # Check if digit already exists in row, column, or box\n            if (cell in rows[row] or \n                cell in cols[col] or \n                cell in boxes[box_index]):\n                return False\n            \n            # Add digit to respective sets\n            rows[row].add(cell)\n            cols[col].add(cell)\n            boxes[box_index].add(cell)\n    \n    return True",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for isValidSudoku function\"\"\"\n    return (test_case_input['board'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the sudoku validation result\"\"\"\n    def bool_to_string(val):\n        return 'true' if val else 'false'\n    \n    # Convert expected output string to boolean for comparison if needed\n    expected_bool = expected_output == 'true' if isinstance(expected_output, str) else expected_output\n    \n    passed = actual_output == expected_bool\n    output_str = bool_to_string(actual_output)\n    \n    return [passed, output_str]",
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "board": [
+          ["5","3",".",".",".",".",".",".","."],
+          ["6",".",".","1","9","5",".",".","."],
+          [".","9","8",".",".",".",".","6","."],
+          ["8",".",".",".","6",".",".",".","3"],
+          ["4",".",".","8",".","3",".",".","1"],
+          ["7",".",".",".","2",".",".",".","6"],
+          [".","6",".",".",".",".","2","8","."],
+          [".",".",".","4","1","9",".",".","5"],
+          [".",".",".",".","8",".",".",".","9"]
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 2,
+      "input": {
+        "board": [
+          ["8","3",".",".",".",".",".",".","."],
+          ["6",".",".","1","9","5",".",".","."],
+          [".","9","8",".",".",".",".","6","."],
+          ["8",".",".",".","6",".",".",".","3"],
+          ["4",".",".","8",".","3",".",".","1"],
+          ["7",".",".",".","2",".",".",".","6"],
+          [".","6",".",".",".",".","2","8","."],
+          [".",".",".","4","1","9",".",".","5"],
+          [".",".",".",".","8",".",".",".","9"]
+        ]
+      },
+      "output": "false"
+    },
+    {
+      "id": 3,
+      "input": {
+        "board": [
+          [".",".",".",".",".",".",".",".","."],
+          [".",".",".",".",".",".",".",".","."],
+          [".",".",".",".",".",".",".",".","."],
+          [".",".",".",".",".",".",".",".","."],
+          [".",".",".",".",".",".",".",".","."],
+          [".",".",".",".",".",".",".",".","."],
+          [".",".",".",".",".",".",".",".","."],
+          [".",".",".",".",".",".",".",".","."],
+          [".",".",".",".",".",".",".",".","."]
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 4,
+      "input": {
+        "board": [
+          ["1","2","3","4","5","6","7","8","9"],
+          [".",".",".",".",".",".",".",".","."],
+          [".",".",".",".",".",".",".",".","."],
+          [".",".",".",".",".",".",".",".","."],
+          [".",".",".",".",".",".",".",".","."],
+          [".",".",".",".",".",".",".",".","."],
+          [".",".",".",".",".",".",".",".","."],
+          [".",".",".",".",".",".",".",".","."],
+          [".",".",".",".",".",".",".",".","."]
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 5,
+      "input": {
+        "board": [
+          ["1","1",".",".",".",".",".",".","."],
+          [".",".",".",".",".",".",".",".","."],
+          [".",".",".",".",".",".",".",".","."],
+          [".",".",".",".",".",".",".",".","."],
+          [".",".",".",".",".",".",".",".","."],
+          [".",".",".",".",".",".",".",".","."],
+          [".",".",".",".",".",".",".",".","."],
+          [".",".",".",".",".",".",".",".","."],
+          [".",".",".",".",".",".",".",".","."]
+        ]
+      },
+      "output": "false"
+    }
+  ]
+}

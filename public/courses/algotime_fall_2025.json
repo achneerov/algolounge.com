@@ -47,7 +47,20 @@
     "unit_4": {
       "title": "Week 4",
       "description": "Expanding your algorithmic toolkit with advanced problem-solving strategies.",
-      "questions": []
+      "questions": [
+        {
+          "filename": "reverse-linked-list",
+          "leetcode_url": "https://leetcode.com/problems/reverse-linked-list/"
+        },
+        {
+          "filename": "remove-nth-node-from-end-of-list",
+          "leetcode_url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/"
+        },
+        {
+          "filename": "word-ladder",
+          "leetcode_url": "https://leetcode.com/problems/word-ladder/"
+        }
+      ]
     },
     "unit_5": {
       "title": "Week 5",

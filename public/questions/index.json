@@ -1,6 +1,22 @@
 {
   "questions": [
     {
+      "filename": "binary-search",
+      "title": "Binary Search",
+      "keywords": [
+        "binary",
+        "search",
+        "leetcode",
+        "704",
+        "given",
+        "array",
+        "distinct",
+        "integers",
+        "nums",
+        "sorted"
+      ]
+    },
+    {
       "filename": "binary-tree-inorder-traversal",
       "title": "Binary Tree Inorder Traversal",
       "keywords": [
@@ -14,6 +30,54 @@
         "return",
         "its",
         "nodes"
+      ]
+    },
+    {
+      "filename": "binary-tree-maximum-path-sum",
+      "title": "Binary Tree Maximum Path Sum",
+      "keywords": [
+        "binary",
+        "tree",
+        "maximum",
+        "path",
+        "sum",
+        "leetcode",
+        "124",
+        "given",
+        "root",
+        "non"
+      ]
+    },
+    {
+      "filename": "median-of-two-sorted-arrays",
+      "title": "Median of Two Sorted Arrays",
+      "keywords": [
+        "median",
+        "two",
+        "sorted",
+        "arrays",
+        "binary",
+        "search",
+        "logarithmic",
+        "time",
+        "partition",
+        "divide"
+      ]
+    },
+    {
+      "filename": "product-of-array-except-self",
+      "title": "Product of Array Except Self",
+      "keywords": [
+        "product",
+        "array",
+        "except",
+        "self",
+        "prefix",
+        "suffix",
+        "multiplication",
+        "division",
+        "algorithm",
+        "optimization"
       ]
     },
     {
@@ -31,8 +95,40 @@
         "hash",
         "map"
       ]
+    },
+    {
+      "filename": "valid-parentheses",
+      "title": "Valid Parentheses",
+      "keywords": [
+        "valid",
+        "parentheses",
+        "stack",
+        "brackets",
+        "string",
+        "matching",
+        "pairs",
+        "nested",
+        "structure",
+        "validation"
+      ]
+    },
+    {
+      "filename": "valid-sudoku",
+      "title": "Valid Sudoku",
+      "keywords": [
+        "valid",
+        "sudoku",
+        "matrix",
+        "board",
+        "validation",
+        "rules",
+        "duplicates",
+        "constraints",
+        "game",
+        "puzzle"
+      ]
     }
   ],
-  "lastUpdated": "2025-09-14T21:25:07.417Z",
-  "totalQuestions": 2
+  "lastUpdated": "2025-09-19T23:59:05.827Z",
+  "totalQuestions": 8
 }

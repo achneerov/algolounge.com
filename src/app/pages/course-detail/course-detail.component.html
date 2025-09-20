@@ -50,7 +50,9 @@
             <button
               *ngFor="let urlItem of question.urls"
               class="url-btn"
-              [style.background-color]="urlItem.color"
+              [style.background-color]="urlItem.color + '40'"
+              [style.border]="'1px solid ' + urlItem.color + '60'"
+              [style.color]="urlItem.color"
               (click)="onUrlClick($event, urlItem.url)"
               [title]="urlItem.tooltip"
             >

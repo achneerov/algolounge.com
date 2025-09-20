@@ -18,6 +18,5 @@ export interface Question {
   keywords: string[];
   description: string;
   languages: Record<string, LanguageContent>;
-  order_matters?: boolean;
   test_cases: TestCase[];
 }

@@ -18,7 +18,8 @@
   "template": "def binarySearch(nums, target):\n    ",
   "solution_text": "Classic Binary Search implementation:\n\n**Algorithm:**\n1. Initialize left and right pointers to array bounds\n2. While left <= right, calculate middle index\n3. Compare middle element with target\n4. Adjust search space based on comparison\n\n**Time Complexity:** O(log n) - halves search space each iteration\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Requires sorted input array\n- Avoids integer overflow with left + (right - left) // 2\n- Returns -1 if target not found",
   "solution_code": "def binarySearch(nums, target):\n    left, right = 0, len(nums) - 1\n    \n    while left <= right:\n        # Avoid integer overflow\n        mid = left + (right - left) // 2\n        \n        if nums[mid] == target:\n            return mid\n        elif nums[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    \n    return -1",
-  "order_matters": false,
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for binarySearch function\"\"\"\n    return (test_case_input['nums'], test_case_input['target'])",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the binary search result\"\"\"\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    \n    return [passed, output_str]",
   "test_cases": [
     {
       "id": 1,

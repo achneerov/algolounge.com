@@ -20,7 +20,6 @@
   "solution_code": "def productExceptSelf(nums):\n    n = len(nums)\n    result = [1] * n\n    \n    # First pass: calculate prefix products\n    # result[i] contains product of all elements to the left of i\n    for i in range(1, n):\n        result[i] = result[i-1] * nums[i-1]\n    \n    # Second pass: multiply by suffix products\n    # Use running variable to calculate product of all elements to the right\n    right_product = 1\n    for i in range(n-1, -1, -1):\n        result[i] *= right_product\n        right_product *= nums[i]\n    \n    return result",
   "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for productExceptSelf function\"\"\"\n    return (test_case_input['nums'],)",
   "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the product except self result\"\"\"\n    def list_to_string(lst):\n        if not lst:\n            return '[]'\n        return '[' + ', '.join(str(x) for x in lst) + ']'\n    \n    passed = actual_output == expected_output\n    output_str = list_to_string(actual_output)\n    \n    return [passed, output_str]",
-  "order_matters": true,
   "test_cases": [
     {
       "id": 1,

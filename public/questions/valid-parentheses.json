@@ -20,7 +20,6 @@
   "solution_code": "def isValid(s):\n    stack = []\n    mapping = {')': '(', '}': '{', ']': '['}\n    \n    for char in s:\n        if char in mapping:\n            # Closing bracket\n            if not stack or stack.pop() != mapping[char]:\n                return False\n        else:\n            # Opening bracket\n            stack.append(char)\n    \n    return len(stack) == 0",
   "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for isValid function\"\"\"\n    return (test_case_input['s'],)",
   "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the parentheses validation result\"\"\"\n    def bool_to_string(val):\n        return 'true' if val else 'false'\n    \n    # Convert expected output string to boolean for comparison\n    expected_bool = expected_output == 'true' if isinstance(expected_output, str) else expected_output\n    \n    passed = actual_output == expected_bool\n    output_str = bool_to_string(actual_output)\n    \n    return [passed, output_str]",
-  "order_matters": false,
   "test_cases": [
     {
       "id": 1,

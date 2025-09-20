@@ -25,7 +25,6 @@
 
   "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the word ladder result\"\"\"\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    \n    return [passed, output_str]",
 
-  "order_matters": false,
   "test_cases": [
     {
       "id": 1,

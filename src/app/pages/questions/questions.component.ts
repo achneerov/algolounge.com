@@ -88,7 +88,6 @@ export class QuestionsComponent implements OnInit, OnDestroy {
         code,
         testCases,
         functionName,
-        this.questionData.order_matters !== false, // Default to true if not specified
         this.questionData.prepare, // Pass prepare code
         this.questionData.verify   // Pass verify code
       );

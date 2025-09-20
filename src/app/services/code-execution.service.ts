@@ -56,9 +56,8 @@ export class CodeExecutionService {
     code: string,
     testCases: any[],
     functionName: string,
-    orderMatters: boolean = true,
-    prepareCode?: string,
-    verifyCode?: string
+    prepareCode: string,
+    verifyCode: string
   ): Promise<ExecutionResult> {
     const startTime = performance.now();
     const pyodide = await this.initPyodide();
@@ -69,13 +68,9 @@ export class CodeExecutionService {
       // Execute the user's code
       pyodide.runPython(code);
 
-      // Load prepare and verify functions if provided
-      if (prepareCode) {
-        pyodide.runPython(prepareCode);
-      }
-      if (verifyCode) {
-        pyodide.runPython(verifyCode);
-      }
+      // Load required prepare and verify functions
+      pyodide.runPython(prepareCode);
+      pyodide.runPython(verifyCode);
 
       // Run each test case
       for (let i = 0; i < testCases.length; i++) {
@@ -95,31 +90,21 @@ sys.stdout = test_output
           let passed: boolean;
           let outputStr: string = '';
 
-          if (prepareCode && verifyCode) {
-            // Use new prepare/verify flow
-            const inputString = JSON.stringify(testCase.input).replace(/null/g, 'None');
+          // Use prepare/verify flow (required for all questions)
+          const inputString = JSON.stringify(testCase.input).replace(/null/g, 'None');
 
-            // Call user function with prepared input (unpack tuple from prepare)
-            const result = pyodide.runPython(`${functionName}(*prepare(${inputString}))`);
+          // Call user function with prepared input (unpack tuple from prepare)
+          const result = pyodide.runPython(`${functionName}(*prepare(${inputString}))`);
 
-            // Convert result to JS
-            jsResult = result && typeof result.toJs === 'function' ? result.toJs() : result;
+          // Convert result to JS
+          jsResult = result && typeof result.toJs === 'function' ? result.toJs() : result;
 
-            // Call verify function to check result and get output string
-            const verifyResult = pyodide.runPython(`verify(${functionName}(*prepare(${inputString})), ${JSON.stringify(testCase.output)})`);
-            const verifyJs = verifyResult && typeof verifyResult.toJs === 'function' ? verifyResult.toJs() : verifyResult;
+          // Call verify function to check result and get output string
+          const verifyResult = pyodide.runPython(`verify(${functionName}(*prepare(${inputString})), ${JSON.stringify(testCase.output)})`);
+          const verifyJs = verifyResult && typeof verifyResult.toJs === 'function' ? verifyResult.toJs() : verifyResult;
 
-            passed = verifyJs[0];
-            outputStr = verifyJs[1] || '';
-          } else {
-            // Use old direct comparison flow
-            const args = Object.values(testCase.input);
-            const argString = args.map(arg => JSON.stringify(arg)).join(', ');
-
-            const result = pyodide.runPython(`${functionName}(${argString})`);
-            jsResult = result && typeof result.toJs === 'function' ? result.toJs() : result;
-            passed = this.deepEqual(jsResult, testCase.output, orderMatters);
-          }
+          passed = verifyJs[0];
+          outputStr = verifyJs[1] || '';
 
           // Get output for this test case
           const capturedOutput = pyodide.runPython('test_output.getvalue()');
@@ -176,53 +161,4 @@ sys.stdout = test_output
     };
   }
 
-  private deepEqual(a: any, b: any, orderMatters: boolean = true): boolean {
-    if (a === b) return true;
-    
-    // Handle null/undefined cases
-    if (a == null || b == null) return a === b;
-    
-    // Since we now convert Pyodide objects earlier, we don't need to do it here
-    const normalizedA = a;
-    const normalizedB = b;
-    
-    // Check if both are arrays (handles Pyodide arrays too)
-    const isArrayA = Array.isArray(normalizedA) || (normalizedA && typeof normalizedA[Symbol.iterator] === 'function' && typeof normalizedA.length === 'number');
-    const isArrayB = Array.isArray(normalizedB) || (normalizedB && typeof normalizedB[Symbol.iterator] === 'function' && typeof normalizedB.length === 'number');
-    
-    if (isArrayA && isArrayB) {
-      const arrayA = Array.from(normalizedA);
-      const arrayB = Array.from(normalizedB);
-      if (arrayA.length !== arrayB.length) return false;
-      
-      if (!orderMatters) {
-        // For order-agnostic comparison (like Group Anagrams)
-        // Check if it's a 2D array
-        if (arrayA.length > 0 && Array.isArray(arrayA[0])) {
-          // Sort both arrays and their sub-arrays for comparison
-          const sortedA = (arrayA as any[][]).map(arr => [...arr].sort()).sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b)));
-          const sortedB = (arrayB as any[][]).map(arr => [...arr].sort()).sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b)));
-          return this.deepEqual(sortedA, sortedB, true); // Use order-sensitive comparison for sorted arrays
-        } else {
-          // For 1D arrays, just sort and compare
-          const sortedA = [...arrayA].sort();
-          const sortedB = [...arrayB].sort();
-          return this.deepEqual(sortedA, sortedB, true);
-        }
-      }
-      
-      return arrayA.every((val, index) => this.deepEqual(val, arrayB[index], orderMatters));
-    }
-    
-    // Handle objects
-    if (typeof normalizedA === 'object' && typeof normalizedB === 'object' && normalizedA !== null && normalizedB !== null && !isArrayA && !isArrayB) {
-      const keysA = Object.keys(normalizedA);
-      const keysB = Object.keys(normalizedB);
-      if (keysA.length !== keysB.length) return false;
-      return keysA.every(key => this.deepEqual(normalizedA[key], normalizedB[key]));
-    }
-    
-    // For primitive types and final comparison
-    return normalizedA === normalizedB;
-  }
 }

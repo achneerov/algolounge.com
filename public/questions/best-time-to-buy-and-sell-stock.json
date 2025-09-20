@@ -25,7 +25,6 @@
   "solution_code": "def maxProfit(prices):\n    if not prices or len(prices) < 2:\n        return 0\n    \n    min_price = prices[0]  # Minimum price seen so far (best buy price)\n    max_profit = 0         # Maximum profit achievable\n    \n    for price in prices[1:]:\n        # Calculate profit if we sell at current price\n        current_profit = price - min_price\n        \n        # Update maximum profit if current is better\n        max_profit = max(max_profit, current_profit)\n        \n        # Update minimum price if current is lower\n        min_price = min(min_price, price)\n    \n    return max_profit",
   "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for maxProfit function\"\"\"\n    return (test_case_input['prices'],)",
   "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the maximum profit result\"\"\"\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    \n    return [passed, output_str]",
-  "order_matters": false,
   "test_cases": [
     {
       "id": 1,

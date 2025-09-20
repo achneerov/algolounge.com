@@ -23,7 +23,6 @@
 
   "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the inorder traversal result\"\"\"\n    def list_to_string(lst):\n        if not lst:\n            return '[]'\n        return '[' + ', '.join(str(x) for x in lst) + ']'\n    \n    passed = actual_output == expected_output\n    output_str = list_to_string(actual_output)\n    \n    return [passed, output_str]",
 
-  "order_matters": false,
   "test_cases": [
     {
       "id": 1,

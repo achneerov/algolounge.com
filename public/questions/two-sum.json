@@ -21,9 +21,8 @@
 
   "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for twoSum function\"\"\"\n    return (test_case_input['nums'], test_case_input['target'])",
 
-  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the two sum result\"\"\"\n    def list_to_string(lst):\n        if not lst:\n            return '[]'\n        return '[' + ', '.join(str(x) for x in lst) + ']'\n    \n    # Check if output is valid (should be list of 2 indices)\n    if not actual_output or len(actual_output) != 2:\n        return [False, list_to_string(actual_output)]\n    \n    # For two sum, since order_matters is false, we need to check if\n    # the indices form a valid pair regardless of order\n    actual_set = set(actual_output)\n    expected_set = set(expected_output)\n    \n    passed = actual_set == expected_set\n    output_str = list_to_string(actual_output)\n    \n    return [passed, output_str]",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the two sum result\"\"\"\n    def list_to_string(lst):\n        if not lst:\n            return '[]'\n        return '[' + ', '.join(str(x) for x in lst) + ']'\n    \n    # Check if output is valid (should be list of 2 indices)\n    if not actual_output or len(actual_output) != 2:\n        return [False, list_to_string(actual_output)]\n    \n    # For two sum, we need to check if\n    # the indices form a valid pair regardless of order\n    actual_set = set(actual_output)\n    expected_set = set(expected_output)\n    \n    passed = actual_set == expected_set\n    output_str = list_to_string(actual_output)\n    \n    return [passed, output_str]",
 
-  "order_matters": false,
   "test_cases": [
     {
       "id": 1,

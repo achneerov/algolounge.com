@@ -172,6 +172,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
       background-color: white;
       position: relative;
       z-index: 1;
+      border-radius: 0 0 7px 7px;
     }
 
     /* Dark mode support */

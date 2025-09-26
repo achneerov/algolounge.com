@@ -93,15 +93,16 @@ sys.stdout = test_output
           // Use prepare/verify flow (required for all questions)
           const inputString = JSON.stringify(testCase.input).replace(/null/g, 'None');
 
-          // Call user function with prepared input (unpack tuple from prepare)
-          const result = pyodide.runPython(`${functionName}(*prepare(${inputString}))`);
-
-          // Convert result to JS
+          // Call user function with prepared input and store result in Python variable - ONLY ONCE
+          pyodide.runPython(`__computed_result = ${functionName}(*prepare(${inputString}))`);
+          
+          // Get the result for JavaScript usage
+          const result = pyodide.runPython('__computed_result');
           jsResult = result && typeof result.toJs === 'function' ? result.toJs() : result;
 
-          // Call verify function to check result and get output string
+          // Call verify function using the stored result (no re-execution of user function)
           const outputString = JSON.stringify(testCase.output).replace(/null/g, 'None');
-          const verifyResult = pyodide.runPython(`verify(${functionName}(*prepare(${inputString})), ${outputString})`);
+          const verifyResult = pyodide.runPython(`verify(__computed_result, ${outputString})`);
           const verifyJs = verifyResult && typeof verifyResult.toJs === 'function' ? verifyResult.toJs() : verifyResult;
 
           passed = verifyJs[0];

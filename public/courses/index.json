@@ -1,7 +1,7 @@
 {
   "courses": [
     {
-      "filename": "algotime_fall_2025",
+      "filename": "algotimefall2025",
       "title": "AlgoTime Fall 2025",
       "keywords": [
         "algorithms",
@@ -15,6 +15,6 @@
       ]
     }
   ],
-  "lastUpdated": "2025-09-30T01:58:03.196Z",
+  "lastUpdated": "2025-09-30T02:09:03.133Z",
   "totalCourses": 1
 }

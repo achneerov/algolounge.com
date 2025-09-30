@@ -105,6 +105,22 @@
       ]
     },
     {
+      "filename": "linked-list-cycle",
+      "title": "Linked List Cycle Detection",
+      "keywords": [
+        "linked",
+        "list",
+        "cycle",
+        "detection",
+        "leetcode",
+        "141",
+        "given",
+        "beginning",
+        "head",
+        "return"
+      ]
+    },
+    {
       "filename": "longest-increasing-path-in-a-matrix",
       "title": "Longest Increasing Path in a Matrix",
       "keywords": [
@@ -322,6 +338,6 @@
       ]
     }
   ],
-  "lastUpdated": "2025-09-30T01:58:03.193Z",
-  "totalQuestions": 19
+  "lastUpdated": "2025-09-30T02:09:03.132Z",
+  "totalQuestions": 20
 }

@@ -1,0 +1,98 @@
+{
+  "filename": "serialize-and-deserialize-binary-tree",
+  "title": "Serialize and Deserialize Binary Tree",
+  "keywords": [
+    "serialize",
+    "deserialize",
+    "binary",
+    "tree",
+    "leetcode",
+    "297",
+    "implement",
+    "algorithm",
+    "serialization",
+    "process"
+  ],
+  "description": "<h2>Serialize and Deserialize Binary Tree</h2><p>Leetcode 297. Serialize And Deserialize Binary Tree</p><p></p><p>Implement an algorithm to serialize and deserialize a binary tree.</p><p></p><p>Serialization is the process of converting an in-memory structure into a sequence of bits so that it can be stored or sent across a network to be reconstructed later in another computer environment.</p><p></p><p>You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure. There is no additional restriction on how your serialization/deserialization algorithm should work.</p><p></p><p>**Note:** The input/output format in the examples is the same as how NeetCode serializes a binary tree. You do not necessarily need to follow this format.</p><h3>Examples:</h3><ul><li>Input: root = [1,2,3,null,null,4,5]<br>Output: [1,2,3,null,null,4,5]</li><li>Input: root = []<br>Output: []</li></ul><h3>Constraints:</h3><ul><li> `0 <= The number of nodes in the tree <= 1000`.</li><li> `-1000 <= Node.val <= 1000`</li></ul>",
+  "entry_function": "serializeAndDeserialize",
+  "template": "# Definition for a binary tree node.\n# class TreeNode:\n#     def __init__(self, val=0, left=None, right=None):\n#         self.val = val\n#         self.left = left\n#         self.right = right\n\ndef serializeAndDeserialize(root):\n    ",
+  "solution_text": "<h3>Serialize and Deserialize Binary Tree - DFS Approach</h3>\n\n<p><strong>Algorithm:</strong></p>\n<ol>\n<li><strong>Serialize:</strong> Use preorder traversal (root, left, right) to create string representation</li>\n<li>Use special marker (e.g., 'null') for None nodes</li>\n<li>Join values with delimiter (e.g., comma)</li>\n<li><strong>Deserialize:</strong> Split string and reconstruct tree using same preorder pattern</li>\n<li>Use iterator/index to track current position in values list</li>\n</ol>\n\n<p><strong>Time Complexity:</strong> O(n) - visit each node once for both operations</p>\n<p><strong>Space Complexity:</strong> O(n) - storage for string and recursion stack</p>\n\n<p><strong>Key Insights:</strong></p>\n<ul>\n<li>Preorder traversal allows efficient reconstruction</li>\n<li>Need to encode null nodes to preserve structure</li>\n<li>Delimiter separates values in serialized form</li>\n<li>Both operations mirror each other's structure</li>\n</ul>",
+  "solution_code": "def serializeAndDeserialize(root):\n    # Serialize: Convert tree to string\n    def serialize(node):\n        if not node:\n            return 'null'\n        return str(node.val) + ',' + serialize(node.left) + ',' + serialize(node.right)\n    \n    # Deserialize: Convert string back to tree\n    def deserialize(data):\n        def build():\n            val = next(vals)\n            if val == 'null':\n                return None\n            node = TreeNode(int(val))\n            node.left = build()\n            node.right = build()\n            return node\n        \n        vals = iter(data.split(','))\n        return build()\n    \n    # Perform both operations and return deserialized tree\n    serialized = serialize(root)\n    return deserialize(serialized)",
+
+  "prepare": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n    \n    def __repr__(self):\n        return f'TreeNode({self.val})'\n\ndef prepare(test_case_input):\n    \"\"\"Convert array representation to TreeNode structure\"\"\"\n    root_array = test_case_input['root']\n    if not root_array or root_array[0] is None:\n        return (None,)\n\n    def build_tree(arr):\n        from collections import deque\n        \n        root = TreeNode(arr[0])\n        queue = deque([root])\n        i = 1\n        \n        while queue and i < len(arr):\n            node = queue.popleft()\n            \n            # Add left child\n            if i < len(arr):\n                if arr[i] is not None:\n                    node.left = TreeNode(arr[i])\n                    queue.append(node.left)\n                i += 1\n            \n            # Add right child\n            if i < len(arr):\n                if arr[i] is not None:\n                    node.right = TreeNode(arr[i])\n                    queue.append(node.right)\n                i += 1\n        \n        return root\n\n    return (build_tree(root_array),)",
+
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the serialized/deserialized tree matches original\"\"\"\n    from collections import deque\n    \n    def tree_to_array(root):\n        if not root:\n            return []\n        \n        result = []\n        queue = deque([root])\n        \n        while queue:\n            node = queue.popleft()\n            if node:\n                result.append(node.val)\n                queue.append(node.left)\n                queue.append(node.right)\n            else:\n                result.append(None)\n        \n        # Remove trailing nulls\n        while result and result[-1] is None:\n            result.pop()\n        \n        return result\n    \n    def list_to_string(lst):\n        if not lst:\n            return '[]'\n        return '[' + ', '.join('null' if x is None else str(x) for x in lst) + ']'\n    \n    actual_array = tree_to_array(actual_output)\n    passed = actual_array == expected_output\n    output_str = list_to_string(actual_array)\n    \n    return [passed, output_str]",
+
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "root": [1, 2, 3, null, null, 4, 5]
+      },
+      "output": [1, 2, 3, null, null, 4, 5]
+    },
+    {
+      "id": 2,
+      "input": {
+        "root": []
+      },
+      "output": []
+    },
+    {
+      "id": 3,
+      "input": {
+        "root": [1]
+      },
+      "output": [1]
+    },
+    {
+      "id": 4,
+      "input": {
+        "root": [1, 2]
+      },
+      "output": [1, 2]
+    },
+    {
+      "id": 5,
+      "input": {
+        "root": [1, null, 2]
+      },
+      "output": [1, null, 2]
+    },
+    {
+      "id": 6,
+      "input": {
+        "root": [5, 3, 7, 2, 4, 6, 8]
+      },
+      "output": [5, 3, 7, 2, 4, 6, 8]
+    },
+    {
+      "id": 7,
+      "input": {
+        "root": [1, 2, 3, 4, 5, 6, 7]
+      },
+      "output": [1, 2, 3, 4, 5, 6, 7]
+    },
+    {
+      "id": 8,
+      "input": {
+        "root": [10, 5, 15, null, null, 12, 20]
+      },
+      "output": [10, 5, 15, null, null, 12, 20]
+    },
+    {
+      "id": 9,
+      "input": {
+        "root": [1, 2, 3, null, 4, null, 5]
+      },
+      "output": [1, 2, 3, null, 4, null, 5]
+    },
+    {
+      "id": 10,
+      "input": {
+        "root": [8, 3, 10, 1, 6, null, 14, null, null, 4, 7, 13]
+      },
+      "output": [8, 3, 10, 1, 6, null, 14, null, null, 4, 7, 13]
+    }
+  ]
+}

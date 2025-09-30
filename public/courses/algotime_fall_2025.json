@@ -157,7 +157,74 @@
     "week5": {
       "title": "Week 5",
       "description": "These are the questions that will be looked at in week 5.",
-      "questions": []
+      "questions": [
+        {
+          "filename": "merge-two-sorted-lists",
+          "urls": [
+            { "url": "https://leetcode.com/problems/merge-two-sorted-lists/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/merge-two-sorted-lists", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Linked List", "color": "#8b5cf6" }
+          ]
+        },
+        {
+          "filename": "linked-list-cycle",
+          "urls": [
+            { "url": "https://leetcode.com/problems/linked-list-cycle/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/linked-list-cycle", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Linked List", "color": "#8b5cf6" }
+          ]
+        },
+        {
+          "filename": "reorder-list",
+          "urls": [
+            { "url": "https://leetcode.com/problems/reorder-list/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/reorder-list", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Linked List", "color": "#8b5cf6" }
+          ]
+        },
+        {
+          "filename": "add-two-numbers",
+          "urls": [
+            { "url": "https://leetcode.com/problems/add-two-numbers/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/add-two-numbers", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Linked List", "color": "#8b5cf6" }
+          ]
+        },
+        {
+          "filename": "serialize-and-deserialize-binary-tree",
+          "urls": [
+            { "url": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/serialize-and-deserialize-binary-tree", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Trees", "color": "#10b981" }
+          ]
+        },
+        {
+          "filename": "word-search-ii",
+          "urls": [
+            { "url": "https://leetcode.com/problems/word-search-ii/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/word-search-ii", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Tries", "color": "#f97316" }
+          ]
+        }
+      ]
     },
     "week6": {
       "title": "Week 6",

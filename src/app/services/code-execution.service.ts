@@ -1,55 +1,47 @@
 import { Injectable } from '@angular/core';
 import { TestResult, ExecutionResult } from '../pages/questions/console/console.component';
 
-declare global {
-  interface Window {
-    loadPyodide: any;
-  }
-}
-
-interface PyodideInterface {
-  runPython: (code: string) => any;
-}
-
 @Injectable({
   providedIn: 'root'
 })
 export class CodeExecutionService {
-  private pyodide: PyodideInterface | null = null;
-  private pyodideLoading: Promise<PyodideInterface> | null = null;
+  private worker: Worker | null = null;
+  private workerReady: boolean = false;
 
   constructor() {}
 
-  async initPyodide(): Promise<PyodideInterface> {
-    if (this.pyodide) {
-      return this.pyodide;
+  async initPyodide(): Promise<void> {
+    if (this.workerReady) {
+      return;
     }
 
-    if (this.pyodideLoading) {
-      return this.pyodideLoading;
+    if (!this.worker) {
+      this.worker = new Worker(new URL('../workers/code-execution.worker', import.meta.url), {
+        type: 'module'
+      });
+
+      // Wait for worker to be ready
+      await new Promise<void>((resolve, reject) => {
+        const timeout = setTimeout(() => {
+          reject(new Error('Worker initialization timeout'));
+        }, 30000);
+
+        this.worker!.onmessage = (e) => {
+          if (e.data.type === 'ready') {
+            clearTimeout(timeout);
+            this.workerReady = true;
+            resolve();
+          }
+        };
+
+        this.worker!.onerror = (error) => {
+          clearTimeout(timeout);
+          reject(error);
+        };
+
+        this.worker!.postMessage({ type: 'init' });
+      });
     }
-
-    // Load Pyodide script dynamically to avoid Vite warnings
-    if (!window.loadPyodide) {
-      await this.loadPyodideScript();
-    }
-
-    this.pyodideLoading = window.loadPyodide({
-      indexURL: "https://cdn.jsdelivr.net/pyodide/v0.28.0/full/"
-    });
-
-    this.pyodide = await this.pyodideLoading;
-    return this.pyodide!;
-  }
-
-  private async loadPyodideScript(): Promise<void> {
-    return new Promise((resolve, reject) => {
-      const script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/pyodide/v0.28.0/full/pyodide.js';
-      script.onload = () => resolve();
-      script.onerror = () => reject(new Error('Failed to load Pyodide'));
-      document.head.appendChild(script);
-    });
   }
 
   async executeCode(
@@ -57,113 +49,101 @@ export class CodeExecutionService {
     testCases: any[],
     functionName: string,
     prepareCode: string,
-    verifyCode: string
+    verifyCode: string,
+    timeout: number = 5000
   ): Promise<ExecutionResult> {
-    const startTime = performance.now();
-    const pyodide = await this.initPyodide();
-    const testResults: TestResult[] = [];
-    const output: string[] = [];
+    await this.initPyodide();
 
-    try {
-      // Execute the user's code
-      pyodide.runPython(code);
-
-      // Load required prepare and verify functions
-      pyodide.runPython(prepareCode);
-      pyodide.runPython(verifyCode);
-
-      // Run each test case
-      for (let i = 0; i < testCases.length; i++) {
-        const testCase = testCases[i];
-        const testOutput: string[] = [];
-
-        try {
-          // Set up output capture for this test case
-          pyodide.runPython(`
-import sys
-from io import StringIO
-test_output = StringIO()
-sys.stdout = test_output
-          `);
-
-          let jsResult: any;
-          let passed: boolean;
-          let outputStr: string = '';
-
-          // Use prepare/verify flow (required for all questions)
-          const inputString = JSON.stringify(testCase.input).replace(/null/g, 'None');
-
-          // Call user function with prepared input (unpack tuple from prepare)
-          const result = pyodide.runPython(`
-_test_input = prepare(${inputString})
-_test_result = ${functionName}(*_test_input)
-_test_result
-          `);
-
-          // Convert result to JS
-          jsResult = result && typeof result.toJs === 'function' ? result.toJs() : result;
-
-          // Call verify function to check result and get output string
-          const outputString = JSON.stringify(testCase.output).replace(/null/g, 'None');
-          const verifyResult = pyodide.runPython(`verify(_test_result, ${outputString})`);
-          const verifyJs = verifyResult && typeof verifyResult.toJs === 'function' ? verifyResult.toJs() : verifyResult;
-
-          passed = verifyJs[0];
-          outputStr = verifyJs[1] || '';
-
-          // Get output for this test case
-          const capturedOutput = pyodide.runPython('test_output.getvalue()');
-          if (capturedOutput) {
-            testOutput.push(...capturedOutput.split('\n').filter((line: string) => line.trim()));
-          }
-
-          testResults.push({
-            id: testCase.id,
-            input: testCase.input,
-            expectedOutput: testCase.output,
-            actualOutput: outputStr || jsResult,
-            passed: passed,
-            output: testOutput
-          });
-        } catch (error) {
-          testResults.push({
-            id: testCase.id,
-            input: testCase.input,
-            expectedOutput: testCase.output,
-            actualOutput: null,
-            passed: false,
-            error: error instanceof Error ? error.message : String(error),
-            output: testOutput
-          });
-        } finally {
-          // Restore stdout
-          pyodide.runPython('sys.stdout = sys.__stdout__');
-        }
+    return new Promise((resolve, reject) => {
+      if (!this.worker) {
+        reject(new Error('Worker not initialized'));
+        return;
       }
 
-    } catch (error) {
-      // If there's an error in the code itself
-      testResults.push({
-        id: 1,
-        input: {},
-        expectedOutput: null,
-        actualOutput: null,
-        passed: false,
-        error: error instanceof Error ? error.message : String(error),
-        output: []
+      const timeoutId = setTimeout(() => {
+        // Terminate the worker on timeout
+        if (this.worker) {
+          this.worker.terminate();
+          this.worker = null;
+          this.workerReady = false;
+        }
+
+        const timeoutSeconds = Math.round(timeout / 1000);
+        resolve({
+          testResults: [{
+            id: 1,
+            input: {},
+            expectedOutput: null,
+            actualOutput: null,
+            passed: false,
+            error: `⏱️ Execution timeout (${timeoutSeconds}s). Your code may have an infinite loop or is taking too long. The worker has been reset - you can run your code again.`,
+            output: []
+          }],
+          executionTime: timeout,
+          passedCount: 0,
+          totalCount: 1,
+          output: []
+        });
+      }, timeout);
+
+      const messageHandler = (e: MessageEvent) => {
+        clearTimeout(timeoutId);
+        this.worker!.removeEventListener('message', messageHandler);
+
+        if (e.data.type === 'result') {
+          resolve(e.data.result);
+        } else if (e.data.type === 'error') {
+          resolve({
+            testResults: [{
+              id: 1,
+              input: {},
+              expectedOutput: null,
+              actualOutput: null,
+              passed: false,
+              error: e.data.error,
+              output: []
+            }],
+            executionTime: 0,
+            passedCount: 0,
+            totalCount: 1,
+            output: []
+          });
+        }
+      };
+
+      const errorHandler = (error: ErrorEvent) => {
+        clearTimeout(timeoutId);
+        this.worker!.removeEventListener('error', errorHandler);
+
+        resolve({
+          testResults: [{
+            id: 1,
+            input: {},
+            expectedOutput: null,
+            actualOutput: null,
+            passed: false,
+            error: error.message || 'Worker error',
+            output: []
+          }],
+          executionTime: 0,
+          passedCount: 0,
+          totalCount: 1,
+          output: []
+        });
+      };
+
+      this.worker.addEventListener('message', messageHandler);
+      this.worker.addEventListener('error', errorHandler);
+
+      this.worker.postMessage({
+        type: 'execute',
+        code,
+        testCases,
+        functionName,
+        prepareCode,
+        verifyCode,
+        timeout
       });
-    }
-
-    const endTime = performance.now();
-    const passedCount = testResults.filter(result => result.passed).length;
-
-    return {
-      testResults,
-      executionTime: Math.round(endTime - startTime),
-      passedCount,
-      totalCount: testResults.length,
-      output
-    };
+    });
   }
-
 }

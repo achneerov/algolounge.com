@@ -229,7 +229,74 @@
     "week6": {
       "title": "Week 6",
       "description": "These are the questions that will be looked at in week 6.",
-      "questions": []
+      "questions": [
+        {
+          "filename": "invert-binary-tree",
+          "urls": [
+            { "url": "https://leetcode.com/problems/invert-binary-tree/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/invert-binary-tree", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Trees", "color": "#10b981" }
+          ]
+        },
+        {
+          "filename": "maximum-depth-of-binary-tree",
+          "urls": [
+            { "url": "https://leetcode.com/problems/maximum-depth-of-binary-tree/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/maximum-depth-of-binary-tree", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Trees", "color": "#10b981" }
+          ]
+        },
+        {
+          "filename": "longest-consecutive-sequence",
+          "urls": [
+            { "url": "https://leetcode.com/problems/longest-consecutive-sequence/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/longest-consecutive-sequence", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Arrays and Hashing", "color": "#3b82f6" }
+          ]
+        },
+        {
+          "filename": "two-sum-ii-input-array-is-sorted",
+          "urls": [
+            { "url": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/two-sum-ii-input-array-is-sorted", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Two Pointers", "color": "#a855f7" }
+          ]
+        },
+        {
+          "filename": "trapping-rain-water",
+          "urls": [
+            { "url": "https://leetcode.com/problems/trapping-rain-water/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/trapping-rain-water", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Two Pointers", "color": "#a855f7" }
+          ]
+        },
+        {
+          "filename": "largest-rectangle-in-histogram",
+          "urls": [
+            { "url": "https://leetcode.com/problems/largest-rectangle-in-histogram/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/largest-rectangle-in-histogram", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Stack", "color": "#eab308" }
+          ]
+        }
+      ]
     },
     "week7": {
       "title": "Week 7",

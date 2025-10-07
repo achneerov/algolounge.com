@@ -22,6 +22,37 @@ Required JSON structure for migrated questions:
 - Maintain consistent naming conventions (kebab-case filenames)
 - Include appropriate difficulty and topic metadata
 
+**IMPORTANT: Description Field HTML Formatting Rules**
+
+The `description` field MUST contain valid HTML, NOT markdown. Follow these strict formatting rules:
+
+1. **Inline Code**: Use `<code>` tags instead of backticks
+   - ✅ Correct: `<code>nums</code>`, `<code>target</code>`
+   - ❌ Incorrect: `` `nums` ``, `` `target` ``
+
+2. **Bold Text**: Use `<strong>` tags instead of `**`
+   - ✅ Correct: `<strong>non-decreasing order</strong>`
+   - ❌ Incorrect: `**non-decreasing order**`
+
+3. **HTML Character Escaping**: Always escape special HTML characters
+   - `<` must be written as `&lt;`
+   - `>` must be written as `&gt;`
+   - `&` must be written as `&amp;`
+   - Example: `<code>0 &lt;= nums.length &lt;= 100</code>`
+
+4. **Structure Elements**: Use proper HTML tags
+   - Headings: `<h2>`, `<h3>`
+   - Paragraphs: `<p>`
+   - Lists: `<ul>`, `<ol>`, `<li>`
+   - Line breaks: `<br>`
+
+**Example of Correct Description Format:**
+```json
+"description": "<h2>Two Sum</h2><p>Given an array of integers <code>nums</code> and an integer <code>target</code>, return indices of the two numbers such that they add up to <code>target</code>.</p><h3>Constraints:</h3><ul><li><code>2 &lt;= nums.length &lt;= 10<sup>4</sup></code></li><li><code>-10<sup>9</sup> &lt;= nums[i] &lt;= 10<sup>9</sup></code></li></ul>"
+```
+
+The same HTML formatting rules apply to the `solution_text` field.
+
 For each migration:
 - Report which problems were found in the archive
 - Report which problems were not found

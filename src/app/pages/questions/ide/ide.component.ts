@@ -34,6 +34,7 @@ export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() questionData: any = null;
   @Input() isRunning: boolean = false;
   @Output() run = new EventEmitter<void>();
+  @Output() stop = new EventEmitter<void>();
 
   private editorView?: EditorView;
   private darkModeQuery?: MediaQueryList;
@@ -123,6 +124,11 @@ export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
 
 
   resetTemplate(): void {
+    // If code is running, stop it first
+    if (this.isRunning) {
+      this.stop.emit();
+    }
+
     if (this.template && this.editorView) {
       // Force template reload and reinitialize editor
       this.forceTemplateReload = true;

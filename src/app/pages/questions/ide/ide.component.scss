@@ -58,51 +58,86 @@
 }
 
 .reset-btn {
-  width: 20px !important;
-  height: 20px !important;
+  width: 32px !important;
+  height: 32px !important;
   padding: 0 !important;
-  font-size: 0.75rem !important;
-  border-radius: 3px !important;
+  border-radius: 6px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   min-width: unset !important;
   background: transparent !important;
-  border: none !important;
-  
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    color: #6b7280;
+  }
+
   ::ng-deep .p-button {
     background: transparent !important;
     background-color: transparent !important;
     border: none !important;
     color: var(--text-color, #333333) !important;
     box-shadow: none !important;
-    width: 20px !important;
-    height: 20px !important;
+    width: 32px !important;
+    height: 32px !important;
     padding: 0 !important;
     min-width: unset !important;
-    
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
     &:enabled:hover {
-      background: var(--surface-200, #e9ecef) !important;
-      background-color: var(--surface-200, #e9ecef) !important;
+      background: #f3f4f6 !important;
+      background-color: #f3f4f6 !important;
       border: none !important;
       box-shadow: none !important;
     }
-    
+
     &:disabled {
-      opacity: 0.5 !important;
+      opacity: 0.4 !important;
       background: transparent !important;
       background-color: transparent !important;
+      cursor: not-allowed !important;
     }
-    
+
     &:focus {
-      box-shadow: none !important;
+      box-shadow: 0 0 0 2px rgba(107, 114, 128, 0.2) !important;
       outline: none !important;
     }
-    
+
     &:active {
-      background: var(--surface-200, #e9ecef) !important;
-      background-color: var(--surface-200, #e9ecef) !important;
+      background: #e5e7eb !important;
+      background-color: #e5e7eb !important;
+      transform: scale(0.95);
     }
+  }
+
+  &:enabled:hover {
+    background: #f3f4f6 !important;
+    border-color: rgba(0, 0, 0, 0.15) !important;
+
+    svg {
+      color: #374151;
+    }
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px rgba(107, 114, 128, 0.2);
+    outline: none;
+  }
+
+  &:active {
+    transform: scale(0.95);
   }
 }
 
@@ -110,32 +145,54 @@
   background: #22c55e;
   border: 1px solid #22c55e;
   color: white;
-  font-size: 0.75rem;
-  padding: 2px 6px;
-  border-radius: 3px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 6px;
   cursor: pointer;
   outline: none;
-  min-width: 80px;
-  
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+    stroke: none;
+  }
+
+  span {
+    line-height: 1;
+  }
+
   &:enabled:hover {
     background: #16a34a;
     border-color: #16a34a;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
   }
-  
+
   &:disabled {
     opacity: 0.5;
-    background: var(--surface-300, #dee2e6);
-    border-color: var(--surface-300, #dee2e6);
-    color: var(--text-color-secondary, #6c757d);
+    background: #9ca3af;
+    border-color: #9ca3af;
+    color: white;
     cursor: not-allowed;
+    box-shadow: none;
   }
-  
+
   &:focus {
-    box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.25);
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
   }
-  
+
   &:active {
-    background: #16a34a;
+    background: #15803d;
+    border-color: #15803d;
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   }
 }
 
@@ -170,21 +227,38 @@
   }
 }
 
-:host-context(.dark-mode) .reset-btn ::ng-deep .p-button {
-  background: transparent !important;
-  background-color: transparent !important;
-  border: none !important;
-  color: var(--text-color, #ffffff) !important;
-  
-  &:enabled:hover {
-    background: var(--surface-400, #444444) !important;
-    background-color: var(--surface-400, #444444) !important;
-    border: none !important;
+:host-context(.dark-mode) .reset-btn {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+
+  svg {
+    color: #9ca3af;
   }
-  
-  &:active {
-    background: var(--surface-400, #444444) !important;
-    background-color: var(--surface-400, #444444) !important;
+
+  &:enabled:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+
+    svg {
+      color: #d1d5db;
+    }
+  }
+
+  ::ng-deep .p-button {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    color: var(--text-color, #ffffff) !important;
+
+    &:enabled:hover {
+      background: rgba(255, 255, 255, 0.05) !important;
+      background-color: rgba(255, 255, 255, 0.05) !important;
+      border: none !important;
+    }
+
+    &:active {
+      background: rgba(255, 255, 255, 0.08) !important;
+      background-color: rgba(255, 255, 255, 0.08) !important;
+    }
   }
 }
 
@@ -231,21 +305,38 @@
     }
   }
   
-  .reset-btn ::ng-deep .p-button {
-    background: transparent !important;
-    background-color: transparent !important;
-    border: none !important;
-    color: var(--text-color, #ffffff) !important;
-    
-    &:enabled:hover {
-      background: var(--surface-400, #444444) !important;
-      background-color: var(--surface-400, #444444) !important;
-      border: none !important;
+  .reset-btn {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+
+    svg {
+      color: #9ca3af;
     }
-    
-    &:active {
-      background: var(--surface-400, #444444) !important;
-      background-color: var(--surface-400, #444444) !important;
+
+    &:enabled:hover {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border-color: rgba(255, 255, 255, 0.15) !important;
+
+      svg {
+        color: #d1d5db;
+      }
+    }
+
+    ::ng-deep .p-button {
+      background: transparent !important;
+      background-color: transparent !important;
+      border: none !important;
+      color: var(--text-color, #ffffff) !important;
+
+      &:enabled:hover {
+        background: rgba(255, 255, 255, 0.05) !important;
+        background-color: rgba(255, 255, 255, 0.05) !important;
+        border: none !important;
+      }
+
+      &:active {
+        background: rgba(255, 255, 255, 0.08) !important;
+        background-color: rgba(255, 255, 255, 0.08) !important;
+      }
     }
   }
   

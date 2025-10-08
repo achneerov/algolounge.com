@@ -113,6 +113,11 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     }
   }
 
+  onStop() {
+    this.codeExecutionService.stopExecution();
+    this.isRunning = false;
+  }
+
   notFound = false;
 
   loadQuestion(name: string) {

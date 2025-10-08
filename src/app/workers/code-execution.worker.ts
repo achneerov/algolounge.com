@@ -2,12 +2,15 @@
 
 interface PyodideInterface {
   runPython: (code: string) => any;
+  setInterruptBuffer: (buffer: Int32Array) => void;
+  checkInterrupt: () => void;
 }
 
 declare const loadPyodide: any;
 
 let pyodide: PyodideInterface | null = null;
 let pyodideLoading: Promise<PyodideInterface> | null = null;
+let interruptBuffer: Int32Array | null = null;
 
 interface ExecuteMessage {
   type: 'execute';
@@ -23,7 +26,15 @@ interface InitMessage {
   type: 'init';
 }
 
-type WorkerMessage = ExecuteMessage | InitMessage;
+interface InterruptMessage {
+  type: 'interrupt';
+}
+
+interface GetInterruptBufferMessage {
+  type: 'getInterruptBuffer';
+}
+
+type WorkerMessage = ExecuteMessage | InitMessage | InterruptMessage | GetInterruptBufferMessage;
 
 async function initPyodide(): Promise<PyodideInterface> {
   if (pyodide) {
@@ -41,6 +52,12 @@ async function initPyodide(): Promise<PyodideInterface> {
       const pyodideInstance = await pyodideModule.loadPyodide({
         indexURL: "https://cdn.jsdelivr.net/pyodide/v0.28.0/full/"
       });
+
+      // Set up interrupt buffer for stopping infinite loops (if SharedArrayBuffer is available)
+      if (typeof SharedArrayBuffer !== 'undefined') {
+        interruptBuffer = new Int32Array(new SharedArrayBuffer(4));
+        pyodideInstance.setInterruptBuffer(interruptBuffer);
+      }
 
       return pyodideInstance;
     } catch (error) {
@@ -173,7 +190,22 @@ addEventListener('message', async ({ data }: MessageEvent<WorkerMessage>) => {
     if (data.type === 'init') {
       await initPyodide();
       postMessage({ type: 'ready' });
+    } else if (data.type === 'getInterruptBuffer') {
+      // Send the interrupt buffer to the main thread
+      if (interruptBuffer) {
+        postMessage({ type: 'interruptBuffer', buffer: interruptBuffer }, [interruptBuffer.buffer as any]);
+      }
+    } else if (data.type === 'interrupt') {
+      // Signal interrupt by setting the buffer value
+      if (interruptBuffer) {
+        Atomics.store(interruptBuffer, 0, 2);
+      }
     } else if (data.type === 'execute') {
+      // Reset interrupt buffer before execution
+      if (interruptBuffer) {
+        Atomics.store(interruptBuffer, 0, 0);
+      }
+
       const result = await executeCode(
         data.code,
         data.testCases,

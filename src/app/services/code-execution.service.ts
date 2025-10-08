@@ -7,6 +7,8 @@ import { TestResult, ExecutionResult } from '../pages/questions/console/console.
 export class CodeExecutionService {
   private worker: Worker | null = null;
   private workerReady: boolean = false;
+  private interruptBuffer: Int32Array | null = null;
+  private currentExecutionTimeout: number | null = null;
 
   constructor() {}
 
@@ -26,13 +28,18 @@ export class CodeExecutionService {
           reject(new Error('Worker initialization timeout'));
         }, 30000);
 
-        this.worker!.onmessage = (e) => {
+        const messageHandler = (e: MessageEvent) => {
           if (e.data.type === 'ready') {
             clearTimeout(timeout);
             this.workerReady = true;
+            this.worker!.removeEventListener('message', messageHandler);
             resolve();
+          } else if (e.data.type === 'interruptBuffer') {
+            this.interruptBuffer = e.data.buffer;
           }
         };
+
+        this.worker!.addEventListener('message', messageHandler);
 
         this.worker!.onerror = (error) => {
           clearTimeout(timeout);
@@ -61,12 +68,7 @@ export class CodeExecutionService {
       }
 
       const timeoutId = setTimeout(() => {
-        // Terminate the worker on timeout
-        if (this.worker) {
-          this.worker.terminate();
-          this.worker = null;
-          this.workerReady = false;
-        }
+        this.stopExecution();
 
         const timeoutSeconds = Math.round(timeout / 1000);
         resolve({
@@ -76,7 +78,7 @@ export class CodeExecutionService {
             expectedOutput: null,
             actualOutput: null,
             passed: false,
-            error: `⏱️ Execution timeout (${timeoutSeconds}s). Your code may have an infinite loop or is taking too long. The worker has been reset - you can run your code again.`,
+            error: `⏱️ Execution timeout (${timeoutSeconds}s). Your code may have an infinite loop or is taking too long.`,
             output: []
           }],
           executionTime: timeout,
@@ -86,8 +88,13 @@ export class CodeExecutionService {
         });
       }, timeout);
 
+      this.currentExecutionTimeout = timeoutId as any;
+
       const messageHandler = (e: MessageEvent) => {
-        clearTimeout(timeoutId);
+        if (this.currentExecutionTimeout) {
+          clearTimeout(this.currentExecutionTimeout);
+          this.currentExecutionTimeout = null;
+        }
         this.worker!.removeEventListener('message', messageHandler);
 
         if (e.data.type === 'result') {
@@ -112,7 +119,10 @@ export class CodeExecutionService {
       };
 
       const errorHandler = (error: ErrorEvent) => {
-        clearTimeout(timeoutId);
+        if (this.currentExecutionTimeout) {
+          clearTimeout(this.currentExecutionTimeout);
+          this.currentExecutionTimeout = null;
+        }
         this.worker!.removeEventListener('error', errorHandler);
 
         resolve({
@@ -145,5 +155,23 @@ export class CodeExecutionService {
         timeout
       });
     });
+  }
+
+  stopExecution(): void {
+    // Clear the timeout
+    if (this.currentExecutionTimeout) {
+      clearTimeout(this.currentExecutionTimeout);
+      this.currentExecutionTimeout = null;
+    }
+
+    // Send interrupt signal if available, otherwise terminate worker
+    if (this.worker && this.interruptBuffer) {
+      Atomics.store(this.interruptBuffer, 0, 2);
+    } else if (this.worker) {
+      // Fallback: terminate and reset worker if SharedArrayBuffer not available
+      this.worker.terminate();
+      this.worker = null;
+      this.workerReady = false;
+    }
   }
 }

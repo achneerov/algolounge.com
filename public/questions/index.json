@@ -105,6 +105,38 @@
       ]
     },
     {
+      "filename": "invert-binary-tree",
+      "title": "Invert Binary Tree",
+      "keywords": [
+        "invert",
+        "binary",
+        "tree",
+        "leetcode",
+        "226",
+        "given",
+        "root",
+        "return",
+        "mirror",
+        "recursive"
+      ]
+    },
+    {
+      "filename": "largest-rectangle-in-histogram",
+      "title": "Largest Rectangle In Histogram",
+      "keywords": [
+        "largest",
+        "rectangle",
+        "histogram",
+        "leetcode",
+        "84",
+        "given",
+        "array",
+        "integers",
+        "heights",
+        "stack"
+      ]
+    },
+    {
       "filename": "linked-list-cycle",
       "title": "Linked List Cycle Detection",
       "keywords": [
@@ -118,6 +150,22 @@
         "beginning",
         "head",
         "return"
+      ]
+    },
+    {
+      "filename": "longest-consecutive-sequence",
+      "title": "Longest Consecutive Sequence",
+      "keywords": [
+        "longest",
+        "consecutive",
+        "sequence",
+        "leetcode",
+        "128",
+        "given",
+        "array",
+        "integers",
+        "nums",
+        "hashset"
       ]
     },
     {
@@ -138,6 +186,22 @@
         "depth",
         "first",
         "search"
+      ]
+    },
+    {
+      "filename": "maximum-depth-of-binary-tree",
+      "title": "Maximum Depth of Binary Tree",
+      "keywords": [
+        "maximum",
+        "depth",
+        "binary",
+        "tree",
+        "leetcode",
+        "104",
+        "given",
+        "root",
+        "return",
+        "height"
       ]
     },
     {
@@ -255,6 +319,23 @@
       ]
     },
     {
+      "filename": "trapping-rain-water",
+      "title": "Trapping Rain Water",
+      "keywords": [
+        "trapping",
+        "rain",
+        "water",
+        "leetcode",
+        "42",
+        "given",
+        "array",
+        "non-negative",
+        "integers",
+        "height",
+        "two-pointers"
+      ]
+    },
+    {
       "filename": "two-sum",
       "title": "Two Sum",
       "keywords": [
@@ -268,6 +349,22 @@
         "numbers",
         "hash",
         "map"
+      ]
+    },
+    {
+      "filename": "two-sum-ii-input-array-is-sorted",
+      "title": "Two Sum II - Input Array Is Sorted",
+      "keywords": [
+        "two",
+        "sum",
+        "leetcode",
+        "167",
+        "input",
+        "array",
+        "sorted",
+        "given",
+        "integers",
+        "two-pointers"
       ]
     },
     {
@@ -338,6 +435,6 @@
       ]
     }
   ],
-  "lastUpdated": "2025-09-30T02:09:03.132Z",
-  "totalQuestions": 20
+  "lastUpdated": "2025-10-07T23:05:12.072Z",
+  "totalQuestions": 26
 }

@@ -1,6 +1,22 @@
 {
   "questions": [
     {
+      "filename": "4sum",
+      "title": "4Sum",
+      "keywords": [
+        "4sum",
+        "leetcode",
+        "array",
+        "integer",
+        "quadruplets",
+        "target",
+        "two-pointers",
+        "sorting",
+        "combination",
+        "unique"
+      ]
+    },
+    {
       "filename": "add-two-numbers",
       "title": "Add Two Numbers",
       "keywords": [
@@ -86,6 +102,38 @@
       ]
     },
     {
+      "filename": "climbing-stairs",
+      "title": "Climbing Stairs",
+      "keywords": [
+        "climbing",
+        "stairs",
+        "dynamic",
+        "programming",
+        "fibonacci",
+        "recursion",
+        "memoization",
+        "iteration",
+        "combination",
+        "optimization"
+      ]
+    },
+    {
+      "filename": "coin-change",
+      "title": "Coin Change",
+      "keywords": [
+        "coin",
+        "change",
+        "dynamic",
+        "programming",
+        "dp",
+        "minimum",
+        "optimization",
+        "unbounded",
+        "knapsack",
+        "greedy"
+      ]
+    },
+    {
       "filename": "copy-list-with-random-pointer",
       "title": "Copy List with Random Pointer",
       "keywords": [
@@ -102,6 +150,22 @@
         "clone",
         "hash",
         "map"
+      ]
+    },
+    {
+      "filename": "house-robber",
+      "title": "House Robber",
+      "keywords": [
+        "house",
+        "robber",
+        "dynamic",
+        "programming",
+        "dp",
+        "maximum",
+        "adjacent",
+        "optimization",
+        "decision",
+        "problem"
       ]
     },
     {
@@ -153,6 +217,22 @@
       ]
     },
     {
+      "filename": "longest-common-subsequence",
+      "title": "Longest Common Subsequence",
+      "keywords": [
+        "longest",
+        "common",
+        "subsequence",
+        "lcs",
+        "dynamic",
+        "programming",
+        "dp",
+        "string",
+        "table",
+        "2d"
+      ]
+    },
+    {
       "filename": "longest-consecutive-sequence",
       "title": "Longest Consecutive Sequence",
       "keywords": [
@@ -189,6 +269,22 @@
       ]
     },
     {
+      "filename": "longest-palindromic-substring",
+      "title": "Longest Palindromic Substring",
+      "keywords": [
+        "longest",
+        "palindrome",
+        "substring",
+        "string",
+        "expand",
+        "center",
+        "two-pointers",
+        "dynamic",
+        "programming",
+        "pattern"
+      ]
+    },
+    {
       "filename": "maximum-depth-of-binary-tree",
       "title": "Maximum Depth of Binary Tree",
       "keywords": [
@@ -202,6 +298,22 @@
         "root",
         "return",
         "height"
+      ]
+    },
+    {
+      "filename": "maximum-subarray",
+      "title": "Maximum Subarray",
+      "keywords": [
+        "maximum",
+        "subarray",
+        "kadane",
+        "algorithm",
+        "dynamic",
+        "programming",
+        "array",
+        "sum",
+        "contiguous",
+        "optimization"
       ]
     },
     {
@@ -368,6 +480,22 @@
       ]
     },
     {
+      "filename": "valid-anagram",
+      "title": "Valid Anagram",
+      "keywords": [
+        "valid",
+        "anagram",
+        "string",
+        "hash",
+        "map",
+        "frequency",
+        "counter",
+        "sorting",
+        "characters",
+        "comparison"
+      ]
+    },
+    {
       "filename": "valid-parentheses",
       "title": "Valid Parentheses",
       "keywords": [
@@ -435,6 +563,6 @@
       ]
     }
   ],
-  "lastUpdated": "2025-10-07T23:05:12.072Z",
-  "totalQuestions": 26
+  "lastUpdated": "2025-10-09T02:51:08.414Z",
+  "totalQuestions": 34
 }

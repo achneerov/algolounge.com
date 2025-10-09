@@ -1,0 +1,95 @@
+{
+  "filename": "climbing-stairs",
+  "title": "Climbing Stairs",
+  "keywords": [
+    "climbing",
+    "stairs",
+    "dynamic",
+    "programming",
+    "fibonacci",
+    "recursion",
+    "memoization",
+    "iteration",
+    "combination",
+    "optimization"
+  ],
+  "description": "<h2>Climbing Stairs</h2><p>You are given an integer <code>n</code> representing the number of steps to reach the top of a staircase. You can climb with either <code>1</code> or <code>2</code> steps at a time.</p><p>Return the number of distinct ways to climb to the top of the staircase.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> n = 2<br><strong>Output:</strong> 2<br><strong>Explanation:</strong> There are two ways to climb to the top:<br>1. 1 step + 1 step<br>2. 2 steps</li><li><strong>Input:</strong> n = 3<br><strong>Output:</strong> 3<br><strong>Explanation:</strong> There are three ways to climb to the top:<br>1. 1 step + 1 step + 1 step<br>2. 1 step + 2 steps<br>3. 2 steps + 1 step</li></ul><h3>Constraints:</h3><ul><li><code>1 <= n <= 45</code></li></ul>",
+  "entry_function": "climbStairs",
+  "template": "def climbStairs(n):\n    ",
+  "solution_text": "<h3>Climbing Stairs</h3><p><strong>Algorithm:</strong></p><ol><li>Recognize this as a Fibonacci sequence problem</li><li>Use dynamic programming with space optimization</li><li>For each step, total ways = ways from (n-1) + ways from (n-2)</li><li>Maintain only two variables instead of full array</li></ol><p><strong>Time Complexity:</strong> O(n) - single pass through steps</p><p><strong>Space Complexity:</strong> O(1) - constant space with two variables</p><p><strong>Key Insights:</strong></p><ul><li>Pattern follows Fibonacci sequence (1, 1, 2, 3, 5, 8...)</li><li>Bottom-up DP approach avoids recursion overhead</li><li>Space optimization reduces O(n) array to O(1) variables</li><li>To reach step n, you must come from step (n-1) or (n-2)</li></ul>",
+  "solution_code": "def climbStairs(n):\n    if n <= 1:\n        return 1\n    \n    # Space-optimized DP\n    # prev2 = ways to reach step (i-2)\n    # prev1 = ways to reach step (i-1)\n    prev2, prev1 = 1, 1\n    \n    for i in range(2, n + 1):\n        current = prev1 + prev2\n        prev2, prev1 = prev1, current\n    \n    return prev1",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for climbStairs function\"\"\"\n    return (test_case_input['n'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the climbing stairs result\"\"\"\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "n": 2
+      },
+      "output": 2
+    },
+    {
+      "id": 2,
+      "input": {
+        "n": 3
+      },
+      "output": 3
+    },
+    {
+      "id": 3,
+      "input": {
+        "n": 1
+      },
+      "output": 1
+    },
+    {
+      "id": 4,
+      "input": {
+        "n": 4
+      },
+      "output": 5
+    },
+    {
+      "id": 5,
+      "input": {
+        "n": 5
+      },
+      "output": 8
+    },
+    {
+      "id": 6,
+      "input": {
+        "n": 6
+      },
+      "output": 13
+    },
+    {
+      "id": 7,
+      "input": {
+        "n": 10
+      },
+      "output": 89
+    },
+    {
+      "id": 8,
+      "input": {
+        "n": 15
+      },
+      "output": 987
+    },
+    {
+      "id": 9,
+      "input": {
+        "n": 20
+      },
+      "output": 10946
+    },
+    {
+      "id": 10,
+      "input": {
+        "n": 35
+      },
+      "output": 14930352
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "filename": "longest-common-subsequence",
+  "title": "Longest Common Subsequence",
+  "keywords": [
+    "longest",
+    "common",
+    "subsequence",
+    "lcs",
+    "dynamic",
+    "programming",
+    "dp",
+    "string",
+    "table",
+    "2d"
+  ],
+  "description": "<h2>Longest Common Subsequence</h2><p>Given two strings <code>text1</code> and <code>text2</code>, return the length of the <em>longest common subsequence</em> between the two strings if one exists, otherwise return <code>0</code>.</p><p>A <strong>subsequence</strong> is a sequence that can be derived from the given sequence by deleting some or no elements without changing the relative order of the remaining characters.</p><p>For example, <code>\"cat\"</code> is a subsequence of <code>\"crabt\"</code>.</p><p>A <strong>common subsequence</strong> of two strings is a subsequence that exists in both strings.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> text1 = \"cat\", text2 = \"crabt\"<br><strong>Output:</strong> 3<br><strong>Explanation:</strong> The longest common subsequence is \"cat\" which has a length of 3.</li><li><strong>Input:</strong> text1 = \"abcd\", text2 = \"abcd\"<br><strong>Output:</strong> 4</li><li><strong>Input:</strong> text1 = \"abcd\", text2 = \"efgh\"<br><strong>Output:</strong> 0</li></ul><h3>Constraints:</h3><ul><li><code>1 <= text1.length, text2.length <= 1000</code></li><li><code>text1</code> and <code>text2</code> consist of only lowercase English characters</li></ul>",
+  "entry_function": "longestCommonSubsequence",
+  "template": "def longestCommonSubsequence(text1, text2):\n    ",
+  "solution_text": "<h3>Longest Common Subsequence</h3><p><strong>Algorithm:</strong></p><ol><li>Create a 2D DP table where dp[i][j] = LCS length for first i chars of text1 and first j chars of text2</li><li>Initialize first row and column to 0 (base case: empty string)</li><li>For each cell, if characters match: dp[i][j] = dp[i-1][j-1] + 1</li><li>If characters don't match: dp[i][j] = max(dp[i-1][j], dp[i][j-1])</li><li>Return dp[m][n] as the final answer</li></ol><p><strong>Time Complexity:</strong> O(m × n) - fill entire DP table</p><p><strong>Space Complexity:</strong> O(m × n) - 2D DP table storage</p><p><strong>Key Insights:</strong></p><ul><li>Classic 2D dynamic programming problem</li><li>Each cell represents optimal solution for substring pair</li><li>Character match: extend diagonal value by 1</li><li>Character mismatch: take max of top or left cell</li><li>Can be optimized to O(n) space using 1D array</li></ul>",
+  "solution_code": "def longestCommonSubsequence(text1, text2):\n    m, n = len(text1), len(text2)\n    \n    # Create a 2D DP table\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n    \n    # Fill the DP table\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            if text1[i - 1] == text2[j - 1]:\n                # Characters match, extend previous LCS\n                dp[i][j] = dp[i - 1][j - 1] + 1\n            else:\n                # Characters don't match, take maximum from left or top\n                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])\n    \n    return dp[m][n]",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for longestCommonSubsequence function\"\"\"\n    return (test_case_input['text1'], test_case_input['text2'])",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the longest common subsequence result\"\"\"\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "text1": "cat",
+        "text2": "crabt"
+      },
+      "output": 3
+    },
+    {
+      "id": 2,
+      "input": {
+        "text1": "abcd",
+        "text2": "abcd"
+      },
+      "output": 4
+    },
+    {
+      "id": 3,
+      "input": {
+        "text1": "abcd",
+        "text2": "efgh"
+      },
+      "output": 0
+    },
+    {
+      "id": 4,
+      "input": {
+        "text1": "",
+        "text2": "abc"
+      },
+      "output": 0
+    },
+    {
+      "id": 5,
+      "input": {
+        "text1": "abc",
+        "text2": ""
+      },
+      "output": 0
+    },
+    {
+      "id": 6,
+      "input": {
+        "text1": "a",
+        "text2": "a"
+      },
+      "output": 1
+    },
+    {
+      "id": 7,
+      "input": {
+        "text1": "ace",
+        "text2": "aec"
+      },
+      "output": 2
+    },
+    {
+      "id": 8,
+      "input": {
+        "text1": "abcdef",
+        "text2": "ace"
+      },
+      "output": 3
+    },
+    {
+      "id": 9,
+      "input": {
+        "text1": "programming",
+        "text2": "algorithm"
+      },
+      "output": 3
+    },
+    {
+      "id": 10,
+      "input": {
+        "text1": "xyz",
+        "text2": "abc"
+      },
+      "output": 0
+    }
+  ]
+}

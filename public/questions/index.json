@@ -1,6 +1,22 @@
 {
   "questions": [
     {
+      "filename": "4sum",
+      "title": "4Sum",
+      "keywords": [
+        "4sum",
+        "leetcode",
+        "array",
+        "integer",
+        "quadruplets",
+        "target",
+        "two-pointers",
+        "sorting",
+        "combination",
+        "unique"
+      ]
+    },
+    {
       "filename": "add-two-numbers",
       "title": "Add Two Numbers",
       "keywords": [
@@ -435,6 +451,6 @@
       ]
     }
   ],
-  "lastUpdated": "2025-10-07T23:05:12.072Z",
-  "totalQuestions": 26
+  "lastUpdated": "2025-10-09T01:58:56.060Z",
+  "totalQuestions": 27
 }

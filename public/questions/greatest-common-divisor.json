@@ -1,0 +1,64 @@
+{
+  "filename": "greatest-common-divisor",
+  "title": "HW08 - Greatest Common Divisor (GCD)",
+  "keywords": [
+    "gcd",
+    "math",
+    "euclidean",
+    "algorithm",
+    "easy",
+    "recursion"
+  ],
+  "description": "<h2>HW08 - Greatest Common Divisor (GCD)</h2><p>Find the greatest common divisor of two integers using the Euclidean algorithm.</p><h3>Examples:</h3><ul><li>Input: a = 12, b = 8<br>Output: 4<br>Explanation: Divisors of 12: [1,2,3,4,6,12], Divisors of 8: [1,2,4,8], GCD = 4</li><li>Input: a = 15, b = 25<br>Output: 5</li><li>Input: a = 0, b = 42<br>Output: 42</li></ul><h3>Constraints:</h3><ul><li>-10⁹ ≤ a, b ≤ 10⁹</li><li>Handle negative numbers and zero cases</li><li>GCD is always positive</li></ul>",
+  "entry_function": "gcd",
+  "template": "def gcd(a, b):\n  ",
+  "solution_text": "<h3>Greatest Common Divisor</h3><p><strong>Algorithm:</strong></p><ol><li>Use Euclidean algorithm</li><li>Repeatedly apply: gcd(a, b) = gcd(b, a % b)</li><li>Base case: when b = 0, return |a|</li></ol><p><strong>Time Complexity:</strong> O(log(min(a, b)))</p><p><strong>Space Complexity:</strong> O(1) - iterative approach</p>",
+  "solution_code": "def gcd(a, b):\n    a, b = abs(a), abs(b)\n    while b:\n        a, b = b, a % b\n    return a",
+
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for gcd function\"\"\"\n    return (test_case_input['a'], test_case_input['b'])",
+
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the GCD result\"\"\"\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "a": 12,
+        "b": 8
+      },
+      "output": 4
+    },
+    {
+      "id": 2,
+      "input": {
+        "a": 15,
+        "b": 25
+      },
+      "output": 5
+    },
+    {
+      "id": 3,
+      "input": {
+        "a": 0,
+        "b": 42
+      },
+      "output": 42
+    },
+    {
+      "id": 4,
+      "input": {
+        "a": 17,
+        "b": 19
+      },
+      "output": 1
+    },
+    {
+      "id": 5,
+      "input": {
+        "a": -12,
+        "b": 8
+      },
+      "output": 4
+    }
+  ]
+}

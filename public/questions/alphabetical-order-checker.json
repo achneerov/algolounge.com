@@ -1,0 +1,58 @@
+{
+  "filename": "alphabetical-order-checker",
+  "title": "HW18 - Alphabetical Order Checker",
+  "keywords": [
+    "string",
+    "sorting",
+    "medium",
+    "validation",
+    "comparison"
+  ],
+  "description": "<h2>HW18 - Alphabetical Order Checker</h2><p>Determine if the characters in a string are in non-decreasing alphabetical order.</p><h3>Examples:</h3><ul><li>Input: \"abc\"<br>Output: true</li><li>Input: \"aab\"<br>Output: true<br>Explanation: 'a' ≤ 'a' ≤ 'b' (non-decreasing)</li><li>Input: \"ba\"<br>Output: false</li><li>Input: \"\"<br>Output: true<br>Explanation: Empty string is considered ordered</li></ul><h3>Constraints:</h3><ul><li>Empty strings and single characters are considered ordered</li><li>Repeating characters are allowed (non-decreasing)</li></ul>",
+  "entry_function": "isAlphabeticalOrder",
+  "template": "def isAlphabeticalOrder(s):\n  ",
+  "solution_text": "<h3>Alphabetical Order Checker</h3><p><strong>Algorithm:</strong></p><ol><li>Iterate through string</li><li>Compare each character with previous</li><li>Return false if any character is less than previous</li></ol><p><strong>Time Complexity:</strong> O(n) - iterate through string</p><p><strong>Space Complexity:</strong> O(1) - constant space</p>",
+  "solution_code": "def isAlphabeticalOrder(s):\n    for i in range(1, len(s)):\n        if s[i] < s[i-1]:\n            return False\n    return True",
+
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for isAlphabeticalOrder function\"\"\"\n    return (test_case_input['s'],)",
+
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the order check result\"\"\"\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "s": "abc"
+      },
+      "output": true
+    },
+    {
+      "id": 2,
+      "input": {
+        "s": "aab"
+      },
+      "output": true
+    },
+    {
+      "id": 3,
+      "input": {
+        "s": "ba"
+      },
+      "output": false
+    },
+    {
+      "id": 4,
+      "input": {
+        "s": ""
+      },
+      "output": true
+    },
+    {
+      "id": 5,
+      "input": {
+        "s": "abcdefghijklmnopqrstuvwxyz"
+      },
+      "output": true
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "filename": "alice-typing-problem",
+  "title": "HW14 - Alice Typing Problem",
+  "keywords": [
+    "string",
+    "counting",
+    "medium",
+    "grouping",
+    "consecutive"
+  ],
+  "description": "<h2>HW14 - Alice Typing Problem</h2><p>Alice may have held a key too long at most once while typing. Count the number of possible original strings she could have intended.</p><h3>Examples:</h3><ul><li>Input: \"aaa\"<br>Output: 3<br>Explanation: Could have intended \"a\", \"aa\", or \"aaa\"</li><li>Input: \"abc\"<br>Output: 1<br>Explanation: No consecutive duplicates, so only \"abc\" is possible</li></ul><h3>Constraints:</h3><ul><li>At most one typing mistake occurred</li><li>Groups of identical chars indicate possible mistakes</li></ul>",
+  "entry_function": "countPossibleStrings",
+  "template": "def countPossibleStrings(typed):\n  ",
+  "solution_text": "<h3>Alice Typing Problem</h3><p><strong>Algorithm:</strong></p><ol><li>Find all groups of consecutive identical characters</li><li>Count groups with length > 1</li><li>Return max group length (possible reductions) + 1</li></ol><p><strong>Time Complexity:</strong> O(n) - iterate through string</p><p><strong>Space Complexity:</strong> O(1) - constant space</p>",
+  "solution_code": "def countPossibleStrings(typed):\n    if not typed:\n        return 1\n    \n    max_group_len = 1\n    current_len = 1\n    \n    for i in range(1, len(typed)):\n        if typed[i] == typed[i-1]:\n            current_len += 1\n            max_group_len = max(max_group_len, current_len)\n        else:\n            current_len = 1\n    \n    return max_group_len",
+
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for countPossibleStrings function\"\"\"\n    return (test_case_input['typed'],)",
+
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the count result\"\"\"\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "typed": "aaa"
+      },
+      "output": 3
+    },
+    {
+      "id": 2,
+      "input": {
+        "typed": "abc"
+      },
+      "output": 1
+    },
+    {
+      "id": 3,
+      "input": {
+        "typed": "aabbcc"
+      },
+      "output": 2
+    },
+    {
+      "id": 4,
+      "input": {
+        "typed": "aaaa"
+      },
+      "output": 4
+    },
+    {
+      "id": 5,
+      "input": {
+        "typed": "abcccde"
+      },
+      "output": 3
+    }
+  ]
+}

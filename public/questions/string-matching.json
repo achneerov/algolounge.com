@@ -1,0 +1,63 @@
+{
+  "filename": "string-matching",
+  "title": "HW17 - String Matching",
+  "keywords": [
+    "string",
+    "hash-map",
+    "medium",
+    "frequency",
+    "counter"
+  ],
+  "description": "<h2>HW17 - String Matching</h2><p>Check if string B can be formed using letters from string A, where each letter in A can be used at most once.</p><h3>Examples:</h3><ul><li>Input: A = \"aab\", B = \"ab\"<br>Output: true<br>Explanation: Can use 1 'a' and 1 'b' from A to form B</li><li>Input: A = \"ab\", B = \"aab\"<br>Output: false<br>Explanation: Need 2 'a's but A only has 1 'a'</li></ul><h3>Constraints:</h3><ul><li>Both strings can be empty</li><li>Case-sensitive matching</li></ul>",
+  "entry_function": "canFormString",
+  "template": "def canFormString(A, B):\n  ",
+  "solution_text": "<h3>String Matching</h3><p><strong>Algorithm:</strong></p><ol><li>Count frequency of characters in both strings</li><li>Check if A has at least as many of each character as B needs</li></ol><p><strong>Time Complexity:</strong> O(n + m) - count both strings</p><p><strong>Space Complexity:</strong> O(1) - limited character set</p>",
+  "solution_code": "from collections import Counter\n\ndef canFormString(A, B):\n    count_A = Counter(A)\n    count_B = Counter(B)\n    \n    for char, needed in count_B.items():\n        if count_A[char] < needed:\n            return False\n    \n    return True",
+
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for canFormString function\"\"\"\n    return (test_case_input['A'], test_case_input['B'])",
+
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the matching result\"\"\"\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "A": "aab",
+        "B": "ab"
+      },
+      "output": true
+    },
+    {
+      "id": 2,
+      "input": {
+        "A": "ab",
+        "B": "aab"
+      },
+      "output": false
+    },
+    {
+      "id": 3,
+      "input": {
+        "A": "",
+        "B": ""
+      },
+      "output": true
+    },
+    {
+      "id": 4,
+      "input": {
+        "A": "hello",
+        "B": "ell"
+      },
+      "output": true
+    },
+    {
+      "id": 5,
+      "input": {
+        "A": "world",
+        "B": "door"
+      },
+      "output": false
+    }
+  ]
+}

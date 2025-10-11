@@ -1,6 +1,294 @@
 {
   "questions": [
     {
+      "filename": "hello-world",
+      "title": "HW00 - Hello World",
+      "keywords": [
+        "hello",
+        "world",
+        "beginner",
+        "tutorial",
+        "string",
+        "return",
+        "function",
+        "basic"
+      ]
+    },
+    {
+      "filename": "sum-two-integers",
+      "title": "HW01 - Sum Two Integers",
+      "keywords": [
+        "sum",
+        "addition",
+        "integers",
+        "beginner",
+        "math",
+        "basic",
+        "arithmetic"
+      ]
+    },
+    {
+      "filename": "string-comparison",
+      "title": "HW02 - String Comparison",
+      "keywords": [
+        "string",
+        "comparison",
+        "equality",
+        "beginner",
+        "boolean",
+        "case-sensitive"
+      ]
+    },
+    {
+      "filename": "multiple-check",
+      "title": "HW03 - Multiple Check",
+      "keywords": [
+        "multiple",
+        "modulo",
+        "divisibility",
+        "beginner",
+        "math",
+        "integer"
+      ]
+    },
+    {
+      "filename": "last-even-index",
+      "title": "HW04 - Last Even Index",
+      "keywords": [
+        "array",
+        "even",
+        "index",
+        "easy",
+        "iteration",
+        "modulo"
+      ]
+    },
+    {
+      "filename": "sum-of-digits-times-seven",
+      "title": "HW05 - Sum of Digits Times Seven",
+      "keywords": [
+        "digits",
+        "sum",
+        "multiplication",
+        "easy",
+        "math",
+        "string"
+      ]
+    },
+    {
+      "filename": "count-vowels",
+      "title": "HW06 - Count Vowels",
+      "keywords": [
+        "string",
+        "vowels",
+        "count",
+        "easy",
+        "iteration"
+      ]
+    },
+    {
+      "filename": "coffee-shop-billing",
+      "title": "HW07 - Alex's Brew Coffee Shop Billing",
+      "keywords": [
+        "array",
+        "math",
+        "tax",
+        "easy",
+        "calculation"
+      ]
+    },
+    {
+      "filename": "greatest-common-divisor",
+      "title": "HW08 - Greatest Common Divisor (GCD)",
+      "keywords": [
+        "gcd",
+        "math",
+        "euclidean",
+        "algorithm",
+        "easy",
+        "recursion"
+      ]
+    },
+    {
+      "filename": "canadian-province-validator",
+      "title": "HW09 - Canadian Province Validator",
+      "keywords": [
+        "string",
+        "validation",
+        "canada",
+        "easy",
+        "set"
+      ]
+    },
+    {
+      "filename": "string-reversal",
+      "title": "HW10 - String Reversal",
+      "keywords": [
+        "string",
+        "reverse",
+        "easy",
+        "slicing"
+      ]
+    },
+    {
+      "filename": "caffeine-calculator",
+      "title": "HW11 - Caffeine Calculator",
+      "keywords": [
+        "math",
+        "ceiling",
+        "division",
+        "easy",
+        "calculation"
+      ]
+    },
+    {
+      "filename": "palindrome-checker",
+      "title": "HW12 - Palindrome Checker",
+      "keywords": [
+        "palindrome",
+        "string",
+        "medium",
+        "two-pointers",
+        "alphanumeric"
+      ]
+    },
+    {
+      "filename": "coffee-production-scheduler",
+      "title": "HW13 - Coffee Production Scheduler",
+      "keywords": [
+        "simulation",
+        "string",
+        "medium",
+        "state-machine",
+        "counter"
+      ]
+    },
+    {
+      "filename": "alice-typing-problem",
+      "title": "HW14 - Alice Typing Problem",
+      "keywords": [
+        "string",
+        "counting",
+        "medium",
+        "grouping",
+        "consecutive"
+      ]
+    },
+    {
+      "filename": "binary-representation",
+      "title": "HW15 - Binary Representation",
+      "keywords": [
+        "binary",
+        "conversion",
+        "medium",
+        "bit-manipulation",
+        "string"
+      ]
+    },
+    {
+      "filename": "most-frequent-element",
+      "title": "HW16 - Most Frequent Element",
+      "keywords": [
+        "array",
+        "frequency",
+        "medium",
+        "hash-map",
+        "counting"
+      ]
+    },
+    {
+      "filename": "string-matching",
+      "title": "HW17 - String Matching",
+      "keywords": [
+        "string",
+        "hash-map",
+        "medium",
+        "frequency",
+        "counter"
+      ]
+    },
+    {
+      "filename": "alphabetical-order-checker",
+      "title": "HW18 - Alphabetical Order Checker",
+      "keywords": [
+        "string",
+        "sorting",
+        "medium",
+        "validation",
+        "comparison"
+      ]
+    },
+    {
+      "filename": "coffee-sales-projection",
+      "title": "HW19 - Coffee Sales Projection",
+      "keywords": [
+        "array",
+        "math",
+        "medium",
+        "percentage",
+        "calculation"
+      ]
+    },
+    {
+      "filename": "coin-change-min",
+      "title": "HW20 - Coin Change Problem",
+      "keywords": [
+        "dynamic",
+        "programming",
+        "dp",
+        "hard",
+        "optimization",
+        "coins"
+      ]
+    },
+    {
+      "filename": "tribonacci-sequence",
+      "title": "HW21 - Tribonacci Sequence",
+      "keywords": [
+        "dynamic",
+        "programming",
+        "hard",
+        "recursion",
+        "fibonacci",
+        "sequence"
+      ]
+    },
+    {
+      "filename": "dice-ways",
+      "title": "HW22 - Dice Ways",
+      "keywords": [
+        "dynamic",
+        "programming",
+        "hard",
+        "combinatorics",
+        "counting"
+      ]
+    },
+    {
+      "filename": "tax-game",
+      "title": "HW23 - Tax Game",
+      "keywords": [
+        "greedy",
+        "algorithm",
+        "veryhard",
+        "optimization",
+        "divisors",
+        "game-theory"
+      ]
+    },
+    {
+      "filename": "icar-traffic-lights",
+      "title": "HW24 - iCar Traffic Lights",
+      "keywords": [
+        "physics",
+        "simulation",
+        "veryhard",
+        "math",
+        "optimization",
+        "timing"
+      ]
+    },
+    {
       "filename": "4sum",
       "title": "4Sum",
       "keywords": [
@@ -563,6 +851,6 @@
       ]
     }
   ],
-  "lastUpdated": "2025-10-09T02:51:08.414Z",
-  "totalQuestions": 34
+  "lastUpdated": "2025-10-11T00:00:00.000Z",
+  "totalQuestions": 59
 }

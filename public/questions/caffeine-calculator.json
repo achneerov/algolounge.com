@@ -1,0 +1,63 @@
+{
+  "filename": "caffeine-calculator",
+  "title": "HW11 - Caffeine Calculator",
+  "keywords": [
+    "math",
+    "ceiling",
+    "division",
+    "easy",
+    "calculation"
+  ],
+  "description": "<h2>HW11 - Caffeine Calculator</h2><p>Paulina needs at least a certain amount of caffeine. Calculate the minimum volume of coffee needed given the caffeine concentration.</p><h3>Example:</h3><ul><li>Input: minCaffeine = 100, concentration = 15<br>Output: 7<br>Explanation: ceil(100/15) = ceil(6.67) = 7 ml</li></ul><h3>Constraints:</h3><ul><li>Use ceiling function since Paulina needs AT LEAST the minimum</li><li>Both inputs are positive integers</li></ul>",
+  "entry_function": "minCoffeeVolume",
+  "template": "def minCoffeeVolume(minCaffeine, concentration):\n  ",
+  "solution_text": "<h3>Caffeine Calculator</h3><p><strong>Algorithm:</strong></p><ol><li>Divide minimum caffeine by concentration</li><li>Round up using ceiling function</li></ol><p><strong>Time Complexity:</strong> O(1) - constant time</p><p><strong>Space Complexity:</strong> O(1) - constant space</p>",
+  "solution_code": "import math\n\ndef minCoffeeVolume(minCaffeine, concentration):\n    return math.ceil(minCaffeine / concentration)",
+
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for minCoffeeVolume function\"\"\"\n    return (test_case_input['minCaffeine'], test_case_input['concentration'])",
+
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the minimum volume\"\"\"\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "minCaffeine": 100,
+        "concentration": 15
+      },
+      "output": 7
+    },
+    {
+      "id": 2,
+      "input": {
+        "minCaffeine": 50,
+        "concentration": 10
+      },
+      "output": 5
+    },
+    {
+      "id": 3,
+      "input": {
+        "minCaffeine": 75,
+        "concentration": 20
+      },
+      "output": 4
+    },
+    {
+      "id": 4,
+      "input": {
+        "minCaffeine": 200,
+        "concentration": 25
+      },
+      "output": 8
+    },
+    {
+      "id": 5,
+      "input": {
+        "minCaffeine": 1,
+        "concentration": 1
+      },
+      "output": 1
+    }
+  ]
+}

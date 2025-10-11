@@ -1,0 +1,58 @@
+{
+  "filename": "palindrome-checker",
+  "title": "HW12 - Palindrome Checker",
+  "keywords": [
+    "palindrome",
+    "string",
+    "medium",
+    "two-pointers",
+    "alphanumeric"
+  ],
+  "description": "<h2>HW12 - Palindrome Checker</h2><p>Determine if a string is a palindrome, ignoring non-alphanumeric characters and case.</p><h3>Examples:</h3><ul><li>Input: \"A man, a plan, a canal: Panama\"<br>Output: true<br>Explanation: \"amanaplanacanalpanama\" reads the same forwards and backwards</li><li>Input: \"race a car\"<br>Output: false</li></ul><h3>Constraints:</h3><ul><li>Ignore punctuation and spaces</li><li>Case-insensitive</li></ul>",
+  "entry_function": "isPalindrome",
+  "template": "def isPalindrome(s):\n  ",
+  "solution_text": "<h3>Palindrome Checker</h3><p><strong>Algorithm:</strong></p><ol><li>Filter to keep only alphanumeric characters</li><li>Convert to lowercase</li><li>Check if string equals its reverse</li></ol><p><strong>Time Complexity:</strong> O(n) - process string once</p><p><strong>Space Complexity:</strong> O(n) - filtered string</p>",
+  "solution_code": "def isPalindrome(s):\n    filtered = ''.join(c.lower() for c in s if c.isalnum())\n    return filtered == filtered[::-1]",
+
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for isPalindrome function\"\"\"\n    return (test_case_input['s'],)",
+
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the palindrome result\"\"\"\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "s": "A man, a plan, a canal: Panama"
+      },
+      "output": true
+    },
+    {
+      "id": 2,
+      "input": {
+        "s": "race a car"
+      },
+      "output": false
+    },
+    {
+      "id": 3,
+      "input": {
+        "s": ""
+      },
+      "output": true
+    },
+    {
+      "id": 4,
+      "input": {
+        "s": "Was it a car or a cat I saw?"
+      },
+      "output": true
+    },
+    {
+      "id": 5,
+      "input": {
+        "s": "hello"
+      },
+      "output": false
+    }
+  ]
+}

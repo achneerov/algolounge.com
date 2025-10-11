@@ -1,0 +1,59 @@
+{
+  "filename": "tax-game",
+  "title": "HW23 - Tax Game",
+  "keywords": [
+    "greedy",
+    "algorithm",
+    "veryhard",
+    "optimization",
+    "divisors",
+    "game-theory"
+  ],
+  "description": "<h2>HW23 - Tax Game</h2><p>Optimal strategy game where you select numbers from 1 to n, but taking a number forces you to give up all its proper divisors that are still available.</p><h3>Example:</h3><ul><li>Input: n = 7<br>Output: [4, 6, 7]<br>Explanation:<br>- Take 7 (no divisors to give up since 1 is already gone)<br>- Take 6 (give up divisors 2, 3)<br>- Take 4 (give up divisor 1, but already taken)</li></ul><p><strong>Rules:</strong></p><ol><li>Start with numbers 1 to n available</li><li>When you take number x, remove all its proper divisors from available set</li><li>Maximize your score (sum of taken numbers)</li><li>Use greedy approach: take largest available numbers first</li></ol><h3>Constraints:</h3><ul><li>1 ≤ n ≤ 1000</li><li>Return both count and list of selected numbers</li></ul>",
+  "entry_function": "taxGame",
+  "template": "def taxGame(n):\n  ",
+  "solution_text": "<h3>Tax Game</h3><p><strong>Algorithm:</strong></p><ol><li>Start with all numbers 1 to n available</li><li>Greedily take largest available number</li><li>Remove all its divisors from available set</li><li>Repeat until no numbers remain</li></ol><p><strong>Time Complexity:</strong> O(n²) - checking divisors</p><p><strong>Space Complexity:</strong> O(n) - available set</p>",
+  "solution_code": "def taxGame(n):\n    available = set(range(1, n + 1))\n    selected = []\n    \n    while available:\n        # Take largest available number\n        num = max(available)\n        selected.append(num)\n        available.remove(num)\n        \n        # Remove all proper divisors of num\n        for i in range(1, num):\n            if num % i == 0 and i in available:\n                available.remove(i)\n    \n    return sorted(selected)",
+
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for taxGame function\"\"\"\n    return (test_case_input['n'],)",
+
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the tax game result\"\"\"\n    def list_to_string(lst):\n        return '[' + ', '.join(str(x) for x in lst) + ']'\n    \n    passed = actual_output == expected_output\n    return [passed, list_to_string(actual_output)]",
+
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "n": 7
+      },
+      "output": [4, 6, 7]
+    },
+    {
+      "id": 2,
+      "input": {
+        "n": 10
+      },
+      "output": [6, 7, 8, 9, 10]
+    },
+    {
+      "id": 3,
+      "input": {
+        "n": 5
+      },
+      "output": [4, 5]
+    },
+    {
+      "id": 4,
+      "input": {
+        "n": 1
+      },
+      "output": [1]
+    },
+    {
+      "id": 5,
+      "input": {
+        "n": 15
+      },
+      "output": [8, 11, 12, 13, 14, 15]
+    }
+  ]
+}

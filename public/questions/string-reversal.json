@@ -1,22 +1,19 @@
 {
   "filename": "string-reversal",
-  "title": "HW10 - String Reversal",
+  "title": "String Reversal",
   "keywords": [
     "string",
     "reverse",
-    "easy",
-    "slicing"
+    "slicing",
+    "easy"
   ],
-  "description": "<h2>HW10 - String Reversal</h2><p>Given a string, return it with all characters in reverse order.</p><h3>Examples:</h3><ul><li>Input: \"hello\"<br>Output: \"olleh\"</li><li>Input: \"abc\"<br>Output: \"cba\"</li><li>Input: \"\"<br>Output: \"\"</li></ul><h3>Constraints:</h3><ul><li>String can be empty</li><li>Preserve all characters including spaces</li></ul>",
+  "description": "<h2>String Reversal</h2><p>Given a string, return it with all characters in reverse order.</p><h3>Examples:</h3><ul><li>Input: \"hello\"<br>Output: \"olleh\"</li><li>Input: \"abc\"<br>Output: \"cba\"</li><li>Input: \"\"<br>Output: \"\"</li></ul><h3>Constraints:</h3><ul><li>String can be empty</li><li>Preserve all characters including spaces</li></ul>",
   "entry_function": "reverseString",
   "template": "def reverseString(s):\n  ",
   "solution_text": "<h3>String Reversal</h3><p><strong>Algorithm:</strong></p><ol><li>Use Python's slicing notation [::-1]</li><li>Return reversed string</li></ol><p><strong>Time Complexity:</strong> O(n) - create reversed copy</p><p><strong>Space Complexity:</strong> O(n) - new string</p>",
   "solution_code": "def reverseString(s):\n    return s[::-1]",
-
   "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for reverseString function\"\"\"\n    return (test_case_input['s'],)",
-
   "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the reversed string\"\"\"\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
-
   "test_cases": [
     {
       "id": 1,
@@ -52,6 +49,41 @@
         "s": "hello world"
       },
       "output": "dlrow olleh"
+    },
+    {
+      "id": 6,
+      "input": {
+        "s": "12345"
+      },
+      "output": "54321"
+    },
+    {
+      "id": 7,
+      "input": {
+        "s": "racecar"
+      },
+      "output": "racecar"
+    },
+    {
+      "id": 8,
+      "input": {
+        "s": "Python"
+      },
+      "output": "nohtyP"
+    },
+    {
+      "id": 9,
+      "input": {
+        "s": "  spaces  "
+      },
+      "output": "  secaps  "
+    },
+    {
+      "id": 10,
+      "input": {
+        "s": "!@#"
+      },
+      "output": "#@!"
     }
   ]
 }

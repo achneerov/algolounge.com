@@ -1,6 +1,6 @@
 {
   "filename": "sum-two-integers",
-  "title": "HW01 - Sum Two Integers",
+  "title": "Sum Two Integers",
   "keywords": [
     "sum",
     "addition",
@@ -8,18 +8,16 @@
     "beginner",
     "math",
     "basic",
-    "arithmetic"
+    "arithmetic",
+    "easy"
   ],
   "description": "<h2>Sum Two Integers</h2><p>Given two integers, return their sum.</p><h3>Example:</h3><ul><li>Input: a = 5, b = 3<br>Output: 8</li></ul><h3>Constraints:</h3><ul><li>Standard integer range</li><li>Simple addition operation</li></ul>",
   "entry_function": "sumTwo",
   "template": "def sumTwo(a, b):\n  ",
   "solution_text": "<h3>Sum Two Integers</h3><p><strong>Algorithm:</strong></p><ol><li>Add the two numbers together</li><li>Return the result</li></ol><p><strong>Time Complexity:</strong> O(1) - constant time</p><p><strong>Space Complexity:</strong> O(1) - constant space</p><p><strong>Key Insights:</strong></p><ul><li>Basic arithmetic operation</li><li>Uses built-in addition operator</li></ul>",
   "solution_code": "def sumTwo(a, b):\n    return a + b",
-
   "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for sumTwo function\"\"\"\n    return (test_case_input['a'], test_case_input['b'])",
-
   "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the sum result\"\"\"\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
-
   "test_cases": [
     {
       "id": 1,
@@ -60,6 +58,46 @@
         "b": -25
       },
       "output": -40
+    },
+    {
+      "id": 6,
+      "input": {
+        "a": 1000,
+        "b": 2000
+      },
+      "output": 3000
+    },
+    {
+      "id": 7,
+      "input": {
+        "a": -100,
+        "b": 100
+      },
+      "output": 0
+    },
+    {
+      "id": 8,
+      "input": {
+        "a": 1,
+        "b": 1
+      },
+      "output": 2
+    },
+    {
+      "id": 9,
+      "input": {
+        "a": -50,
+        "b": 25
+      },
+      "output": -25
+    },
+    {
+      "id": 10,
+      "input": {
+        "a": 999,
+        "b": 1
+      },
+      "output": 1000
     }
   ]
 }

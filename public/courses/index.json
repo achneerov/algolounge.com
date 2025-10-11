@@ -1,20 +1,6 @@
 {
   "courses": [
     {
-      "filename": "helloworld2025",
-      "title": "Hello World 2025",
-      "keywords": [
-        "beginner",
-        "tutorial",
-        "algorithms",
-        "data structures",
-        "progressive learning",
-        "coffee theme",
-        "competitive programming",
-        "interview prep"
-      ]
-    },
-    {
       "filename": "algotimefall2025",
       "title": "AlgoTime Fall 2025",
       "keywords": [
@@ -27,8 +13,21 @@
         "progressive learning",
         "competitive programming"
       ]
+    },
+    {
+      "filename": "helloworld2025",
+      "title": "Hello World 2025",
+      "keywords": [
+        "beginner",
+        "tutorial",
+        "algorithms",
+        "data structures",
+        "progressive learning",
+        "competitive programming",
+        "interview prep"
+      ]
     }
   ],
-  "lastUpdated": "2025-10-11T00:00:00.000Z",
+  "lastUpdated": "2025-10-11T22:45:59.449Z",
   "totalCourses": 2
 }

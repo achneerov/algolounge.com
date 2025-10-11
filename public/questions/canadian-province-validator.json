@@ -1,58 +1,90 @@
 {
   "filename": "canadian-province-validator",
-  "title": "HW09 - Canadian Province Validator",
+  "title": "Canadian Province Validator",
   "keywords": [
     "string",
     "validation",
     "canada",
-    "easy",
-    "set"
+    "set",
+    "easy"
   ],
-  "description": "<h2>HW09 - Canadian Province Validator</h2><p>Determine if a given string represents a Canadian province (not territory). Accept both full names and abbreviations.</p><p><strong>Valid Provinces:</strong> Alberta (AB), British Columbia (BC), Manitoba (MB), New Brunswick (NB), Newfoundland and Labrador (NL), Nova Scotia (NS), Ontario (ON), Prince Edward Island (PE), Quebec (QC), Saskatchewan (SK)</p><h3>Examples:</h3><ul><li>Input: \"Alberta\"<br>Output: true</li><li>Input: \"Yukon\"<br>Output: false<br>Explanation: Yukon is a territory, not a province</li></ul><h3>Constraints:</h3><ul><li>Case may vary</li><li>Accepts abbreviations</li><li>Territories return false</li></ul>",
+  "description": "<h2>Canadian Province Validator</h2><p>Determine if a given string represents a Canadian province (not territory). Accept both full names and abbreviations.</p><p><strong>Valid Provinces:</strong> Alberta (AB), British Columbia (BC), Manitoba (MB), New Brunswick (NB), Newfoundland and Labrador (NL), Nova Scotia (NS), Ontario (ON), Prince Edward Island (PE), Quebec (QC), Saskatchewan (SK)</p><h3>Examples:</h3><ul><li>Input: \"Alberta\"<br>Output: true</li><li>Input: \"Yukon\"<br>Output: false<br>Explanation: Yukon is a territory, not a province</li></ul><h3>Constraints:</h3><ul><li>Case may vary</li><li>Accepts abbreviations</li><li>Territories return false</li></ul>",
   "entry_function": "isCanadianProvince",
   "template": "def isCanadianProvince(name):\n  ",
   "solution_text": "<h3>Canadian Province Validator</h3><p><strong>Algorithm:</strong></p><ol><li>Create set of valid province names and abbreviations</li><li>Normalize input to lowercase</li><li>Check if input is in the set</li></ol><p><strong>Time Complexity:</strong> O(1) - set lookup</p><p><strong>Space Complexity:</strong> O(1) - fixed set size</p>",
   "solution_code": "def isCanadianProvince(name):\n    provinces = {\n        'alberta', 'ab',\n        'british columbia', 'bc',\n        'manitoba', 'mb',\n        'new brunswick', 'nb',\n        'newfoundland and labrador', 'nl',\n        'nova scotia', 'ns',\n        'ontario', 'on',\n        'prince edward island', 'pe',\n        'quebec', 'qc',\n        'saskatchewan', 'sk'\n    }\n    return name.lower() in provinces",
-
   "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for isCanadianProvince function\"\"\"\n    return (test_case_input['name'],)",
-
-  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the validation result\"\"\"\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
-
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the validation result\"\"\"\n    def bool_to_string(val):\n        return 'true' if val else 'false'\n    \n    # Convert expected output string to boolean for comparison\n    expected_bool = expected_output == 'true' if isinstance(expected_output, str) else expected_output\n    \n    passed = actual_output == expected_bool\n    output_str = bool_to_string(actual_output)\n    \n    return [passed, output_str]",
   "test_cases": [
     {
       "id": 1,
       "input": {
         "name": "Alberta"
       },
-      "output": true
+      "output": "true"
     },
     {
       "id": 2,
       "input": {
         "name": "Yukon"
       },
-      "output": false
+      "output": "false"
     },
     {
       "id": 3,
       "input": {
         "name": "ON"
       },
-      "output": true
+      "output": "true"
     },
     {
       "id": 4,
       "input": {
         "name": "Quebec"
       },
-      "output": true
+      "output": "true"
     },
     {
       "id": 5,
       "input": {
         "name": "Northwest Territories"
       },
-      "output": false
+      "output": "false"
+    },
+    {
+      "id": 6,
+      "input": {
+        "name": "BC"
+      },
+      "output": "true"
+    },
+    {
+      "id": 7,
+      "input": {
+        "name": "british columbia"
+      },
+      "output": "true"
+    },
+    {
+      "id": 8,
+      "input": {
+        "name": "Saskatchewan"
+      },
+      "output": "true"
+    },
+    {
+      "id": 9,
+      "input": {
+        "name": "Nunavut"
+      },
+      "output": "false"
+    },
+    {
+      "id": 10,
+      "input": {
+        "name": "NS"
+      },
+      "output": "true"
     }
   ]
 }

@@ -1,58 +1,127 @@
 {
   "filename": "coffee-shop-billing",
-  "title": "HW07 - Alex's Brew Coffee Shop Billing",
+  "title": "Alex's Brew Coffee Shop Billing",
   "keywords": [
     "array",
     "math",
     "tax",
-    "easy",
-    "calculation"
+    "calculation",
+    "easy"
   ],
-  "description": "<h2>HW07 - Alex's Brew Coffee Shop Billing</h2><p>Calculate the total cost for coffee shop orders including 15% tax, rounded to the nearest dollar.</p><p><strong>Menu Prices:</strong></p><ul><li>Espresso: $3</li><li>Latte: $5</li><li>Croissant: $6</li></ul><h3>Example:</h3><ul><li>Input: [\"Espresso\", \"Latte\", \"Croissant\"]<br>Output: 16<br>Explanation: ($3 + $5 + $6) × 1.15 = $16.10 → $16</li></ul><h3>Constraints:</h3><ul><li>1 ≤ number of items ≤ 100</li><li>Items can repeat</li><li>Round to nearest dollar after tax</li></ul>",
+  "description": "<h2>Alex's Brew Coffee Shop Billing</h2><p>Calculate the total cost for coffee shop orders including 15% tax, rounded to the nearest dollar.</p><p><strong>Menu Prices:</strong></p><ul><li>Espresso: $3</li><li>Latte: $5</li><li>Croissant: $6</li></ul><h3>Example:</h3><ul><li>Input: [\"Espresso\", \"Latte\", \"Croissant\"]<br>Output: 16<br>Explanation: ($3 + $5 + $6) × 1.15 = $16.10 → $16</li></ul><h3>Constraints:</h3><ul><li>1 ≤ number of items ≤ 100</li><li>Items can repeat</li><li>Round to nearest dollar after tax</li></ul>",
   "entry_function": "calculateBill",
   "template": "def calculateBill(items):\n  ",
   "solution_text": "<h3>Coffee Shop Billing</h3><p><strong>Algorithm:</strong></p><ol><li>Create price map for menu items</li><li>Sum prices for all items</li><li>Apply 15% tax</li><li>Round to nearest dollar</li></ol><p><strong>Time Complexity:</strong> O(n) - iterate through items</p><p><strong>Space Complexity:</strong> O(1) - constant space for price map</p>",
   "solution_code": "def calculateBill(items):\n    prices = {\n        'Espresso': 3,\n        'Latte': 5,\n        'Croissant': 6\n    }\n    subtotal = sum(prices[item] for item in items)\n    total_with_tax = subtotal * 1.15\n    return round(total_with_tax)",
-
   "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for calculateBill function\"\"\"\n    return (test_case_input['items'],)",
-
   "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the bill amount\"\"\"\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
-
   "test_cases": [
     {
       "id": 1,
       "input": {
-        "items": ["Espresso", "Latte", "Croissant"]
+        "items": [
+          "Espresso",
+          "Latte",
+          "Croissant"
+        ]
       },
       "output": 16
     },
     {
       "id": 2,
       "input": {
-        "items": ["Espresso"]
+        "items": [
+          "Espresso"
+        ]
       },
       "output": 3
     },
     {
       "id": 3,
       "input": {
-        "items": ["Latte", "Latte"]
+        "items": [
+          "Latte",
+          "Latte"
+        ]
       },
       "output": 12
     },
     {
       "id": 4,
       "input": {
-        "items": ["Croissant", "Croissant", "Croissant"]
+        "items": [
+          "Croissant",
+          "Croissant",
+          "Croissant"
+        ]
       },
       "output": 21
     },
     {
       "id": 5,
       "input": {
-        "items": ["Espresso", "Espresso", "Espresso", "Espresso"]
+        "items": [
+          "Espresso",
+          "Espresso",
+          "Espresso",
+          "Espresso"
+        ]
       },
       "output": 14
+    },
+    {
+      "id": 6,
+      "input": {
+        "items": [
+          "Latte",
+          "Croissant"
+        ]
+      },
+      "output": 13
+    },
+    {
+      "id": 7,
+      "input": {
+        "items": [
+          "Espresso",
+          "Latte",
+          "Latte",
+          "Croissant"
+        ]
+      },
+      "output": 22
+    },
+    {
+      "id": 8,
+      "input": {
+        "items": [
+          "Croissant"
+        ]
+      },
+      "output": 7
+    },
+    {
+      "id": 9,
+      "input": {
+        "items": [
+          "Latte"
+        ]
+      },
+      "output": 6
+    },
+    {
+      "id": 10,
+      "input": {
+        "items": [
+          "Espresso",
+          "Espresso",
+          "Latte",
+          "Latte",
+          "Croissant",
+          "Croissant"
+        ]
+      },
+      "output": 32
     }
   ]
 }

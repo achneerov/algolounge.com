@@ -1,8 +1,16 @@
 {
   "filename": "helloworld2025",
   "course_name": "Hello World 2025",
-  "course_description": "A comprehensive beginner-friendly programming course featuring 25 coffee-themed coding challenges. Progress from basic concepts to advanced algorithms while enjoying the warmth of coding problems inspired by coffee culture.",
-  "keywords": ["beginner", "tutorial", "algorithms", "data structures", "progressive learning", "coffee theme", "competitive programming", "interview prep"],
+  "course_description": "Problems from the SCS Hello World 2025 competition.",
+  "keywords": [
+    "beginner",
+    "tutorial",
+    "algorithms",
+    "data structures",
+    "progressive learning",
+    "competitive programming",
+    "interview prep"
+  ],
   "units": {
     "tutorial": {
       "title": "Tutorial",
@@ -12,239 +20,358 @@
           "filename": "hello-world",
           "urls": [],
           "tags": [
-            { "text": "Tutorial", "color": "#22c55e" },
-            { "text": "HW00", "color": "#8b5cf6" }
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW00",
+              "color": "#8b5cf6"
+            }
           ]
         }
       ]
     },
     "beginner": {
-      "title": "Beginner Level",
+      "title": "",
       "description": "Learn fundamental programming concepts with simple problems.",
       "questions": [
         {
           "filename": "sum-two-integers",
           "urls": [],
           "tags": [
-            { "text": "Beginner", "color": "#22c55e" },
-            { "text": "HW01", "color": "#8b5cf6" }
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW01",
+              "color": "#8b5cf6"
+            }
           ]
         },
         {
           "filename": "string-comparison",
           "urls": [],
           "tags": [
-            { "text": "Beginner", "color": "#22c55e" },
-            { "text": "HW02", "color": "#8b5cf6" }
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW02",
+              "color": "#8b5cf6"
+            }
           ]
         },
         {
           "filename": "multiple-check",
           "urls": [],
           "tags": [
-            { "text": "Beginner", "color": "#22c55e" },
-            { "text": "HW03", "color": "#8b5cf6" }
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW03",
+              "color": "#8b5cf6"
+            }
           ]
         }
       ]
     },
     "easy": {
-      "title": "Easy Level",
+      "title": "",
       "description": "Build your skills with straightforward algorithmic problems.",
       "questions": [
         {
           "filename": "last-even-index",
           "urls": [],
           "tags": [
-            { "text": "Easy", "color": "#3b82f6" },
-            { "text": "HW04", "color": "#8b5cf6" }
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW04",
+              "color": "#8b5cf6"
+            }
           ]
         },
         {
           "filename": "sum-of-digits-times-seven",
           "urls": [],
           "tags": [
-            { "text": "Easy", "color": "#3b82f6" },
-            { "text": "HW05", "color": "#8b5cf6" }
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW05",
+              "color": "#8b5cf6"
+            }
           ]
         },
         {
           "filename": "count-vowels",
           "urls": [],
           "tags": [
-            { "text": "Easy", "color": "#3b82f6" },
-            { "text": "HW06", "color": "#8b5cf6" }
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW06",
+              "color": "#8b5cf6"
+            }
           ]
         },
         {
           "filename": "coffee-shop-billing",
           "urls": [],
           "tags": [
-            { "text": "Easy", "color": "#3b82f6" },
-            { "text": "HW07", "color": "#8b5cf6" },
-            { "text": "☕ Coffee Theme", "color": "#92400e" }
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW07",
+              "color": "#8b5cf6"
+            }
           ]
         },
         {
           "filename": "greatest-common-divisor",
           "urls": [],
           "tags": [
-            { "text": "Easy", "color": "#3b82f6" },
-            { "text": "HW08", "color": "#8b5cf6" }
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW08",
+              "color": "#8b5cf6"
+            }
           ]
         },
         {
           "filename": "canadian-province-validator",
           "urls": [],
           "tags": [
-            { "text": "Easy", "color": "#3b82f6" },
-            { "text": "HW09", "color": "#8b5cf6" }
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW09",
+              "color": "#8b5cf6"
+            }
           ]
         },
         {
           "filename": "string-reversal",
           "urls": [],
           "tags": [
-            { "text": "Easy", "color": "#3b82f6" },
-            { "text": "HW10", "color": "#8b5cf6" }
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW10",
+              "color": "#8b5cf6"
+            }
           ]
         },
         {
           "filename": "caffeine-calculator",
           "urls": [],
           "tags": [
-            { "text": "Easy", "color": "#3b82f6" },
-            { "text": "HW11", "color": "#8b5cf6" },
-            { "text": "☕ Coffee Theme", "color": "#92400e" }
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW11",
+              "color": "#8b5cf6"
+            }
           ]
         }
       ]
     },
     "medium": {
       "title": "Medium Level",
-      "description": "Challenge yourself with more complex algorithmic thinking.",
+      "description": "",
       "questions": [
         {
           "filename": "palindrome-checker",
           "urls": [],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "HW12", "color": "#8b5cf6" }
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW12",
+              "color": "#8b5cf6"
+            }
           ]
         },
         {
           "filename": "coffee-production-scheduler",
           "urls": [],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "HW13", "color": "#8b5cf6" },
-            { "text": "☕ Coffee Theme", "color": "#92400e" }
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            },
+            {
+              "text": "HW13",
+              "color": "#8b5cf6"
+            }
           ]
         },
         {
           "filename": "alice-typing-problem",
           "urls": [],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "HW14", "color": "#8b5cf6" }
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            },
+            {
+              "text": "HW14",
+              "color": "#8b5cf6"
+            }
           ]
         },
         {
           "filename": "binary-representation",
           "urls": [],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "HW15", "color": "#8b5cf6" }
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW15",
+              "color": "#8b5cf6"
+            }
           ]
         },
         {
           "filename": "most-frequent-element",
           "urls": [],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "HW16", "color": "#8b5cf6" }
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW16",
+              "color": "#8b5cf6"
+            }
           ]
         },
         {
           "filename": "string-matching",
           "urls": [],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "HW17", "color": "#8b5cf6" }
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW17",
+              "color": "#8b5cf6"
+            }
           ]
         },
         {
           "filename": "alphabetical-order-checker",
           "urls": [],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "HW18", "color": "#8b5cf6" }
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW18",
+              "color": "#8b5cf6"
+            }
           ]
         },
         {
           "filename": "coffee-sales-projection",
           "urls": [],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "HW19", "color": "#8b5cf6" },
-            { "text": "☕ Coffee Theme", "color": "#92400e" }
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            },
+            {
+              "text": "HW19",
+              "color": "#8b5cf6"
+            }
           ]
         }
       ]
     },
     "hard": {
       "title": "Hard Level",
-      "description": "Master advanced algorithms and dynamic programming techniques.",
+      "description": "Cooked.",
       "questions": [
         {
-          "filename": "coin-change-min",
+          "filename": "coin-change",
           "urls": [],
           "tags": [
-            { "text": "Hard", "color": "#ef4444" },
-            { "text": "HW20", "color": "#8b5cf6" },
-            { "text": "Dynamic Programming", "color": "#06b6d4" }
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            },
+            {
+              "text": "HW20",
+              "color": "#8b5cf6"
+            },
+            {
+              "text": "Dynamic Programming",
+              "color": "#06b6d4"
+            }
           ]
         },
         {
           "filename": "tribonacci-sequence",
           "urls": [],
           "tags": [
-            { "text": "Hard", "color": "#ef4444" },
-            { "text": "HW21", "color": "#8b5cf6" },
-            { "text": "Dynamic Programming", "color": "#06b6d4" }
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            },
+            {
+              "text": "HW21",
+              "color": "#8b5cf6"
+            },
+            {
+              "text": "Dynamic Programming",
+              "color": "#06b6d4"
+            }
           ]
         },
         {
           "filename": "dice-ways",
           "urls": [],
           "tags": [
-            { "text": "Hard", "color": "#ef4444" },
-            { "text": "HW22", "color": "#8b5cf6" },
-            { "text": "Dynamic Programming", "color": "#06b6d4" }
-          ]
-        }
-      ]
-    },
-    "veryhard": {
-      "title": "Very Hard Level",
-      "description": "Tackle the most challenging problems that test your limits.",
-      "questions": [
-        {
-          "filename": "tax-game",
-          "urls": [],
-          "tags": [
-            { "text": "Very Hard", "color": "#7c2d12" },
-            { "text": "HW23", "color": "#8b5cf6" },
-            { "text": "Greedy", "color": "#16a34a" }
-          ]
-        },
-        {
-          "filename": "icar-traffic-lights",
-          "urls": [],
-          "tags": [
-            { "text": "Very Hard", "color": "#7c2d12" },
-            { "text": "HW24", "color": "#8b5cf6" },
-            { "text": "Physics", "color": "#ec4899" }
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            },
+            {
+              "text": "HW22",
+              "color": "#8b5cf6"
+            },
+            {
+              "text": "Dynamic Programming",
+              "color": "#06b6d4"
+            }
           ]
         }
       ]

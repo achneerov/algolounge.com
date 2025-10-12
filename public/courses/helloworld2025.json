@@ -14,7 +14,7 @@
   "units": {
     "tutorial": {
       "title": "Tutorial",
-      "description": "Get started with your first program!",
+      "description": "",
       "questions": [
         {
           "filename": "hello-world",
@@ -34,7 +34,7 @@
     },
     "beginner": {
       "title": "",
-      "description": "Learn fundamental programming concepts with simple problems.",
+      "description": "",
       "questions": [
         {
           "filename": "sum-two-integers",
@@ -82,7 +82,7 @@
     },
     "easy": {
       "title": "",
-      "description": "Build your skills with straightforward algorithmic problems.",
+      "description": "",
       "questions": [
         {
           "filename": "last-even-index",
@@ -199,7 +199,7 @@
       ]
     },
     "medium": {
-      "title": "Medium Level",
+      "title": "Medium",
       "description": "",
       "questions": [
         {
@@ -317,8 +317,8 @@
       ]
     },
     "hard": {
-      "title": "Hard Level",
-      "description": "Cooked.",
+      "title": "Hard",
+      "description": "",
       "questions": [
         {
           "filename": "coin-change",

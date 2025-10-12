@@ -1,0 +1,39 @@
+{
+  "filename": "hello-world",
+  "title": "Hello World",
+  "keywords": [
+    "hello",
+    "world",
+    "beginner",
+    "tutorial",
+    "string",
+    "return",
+    "function",
+    "basic",
+    "easy"
+  ],
+  "description": "<h2>Hello World</h2><p>Write a function that returns the string <code>Hello World</code>.</p><h3>Example:</h3><ul><li>Input: (no input)<br>Output: \"Hello World\"</li></ul><h3>Constraints:</h3><ul><li>No input required</li><li>Return exactly the string 'Hello World'</li></ul>",
+  "entry_function": "helloWorld",
+  "template": "def helloWorld():\n  ",
+  "solution_text": "<h3>Hello World</h3><p><strong>Algorithm:</strong></p><ol><li>Return the string literal \"Hello World\"</li></ol><p><strong>Time Complexity:</strong> O(1) - constant time</p><p><strong>Space Complexity:</strong> O(1) - constant space</p><p><strong>Key Insights:</strong></p><ul><li>This is a simple function to verify your environment</li><li>No computation or logic required</li><li>Just return the exact string</li></ul>",
+  "solution_code": "def helloWorld():\n    return \"Hello World\"",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"No input needed for hello world\"\"\"\n    return ()",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify hello world output\"\"\"\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {},
+      "output": "Hello World"
+    },
+    {
+      "id": 2,
+      "input": {},
+      "output": "Hello World"
+    },
+    {
+      "id": 3,
+      "input": {},
+      "output": "Hello World"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "filename": "sum-of-digits-times-seven",
+  "title": "Sum of Digits Times Seven",
+  "keywords": [
+    "digits",
+    "sum",
+    "multiplication",
+    "math",
+    "string",
+    "easy"
+  ],
+  "description": "<h2>Sum of Digits Times Seven</h2><p>Given an integer <code>n</code>, calculate the sum of all its digits, then multiply the result by 7.</p><h3>Examples:</h3><ul><li>Input: 123<br>Output: 42<br>Explanation: (1 + 2 + 3) × 7 = 6 × 7 = 42</li><li>Input: 999<br>Output: 189<br>Explanation: (9 + 9 + 9) × 7 = 27 × 7 = 189</li><li>Input: 0<br>Output: 0</li></ul><h3>Constraints:</h3><ul><li>Handle single digits and multiple digits</li><li>Non-negative integers</li></ul>",
+  "entry_function": "sumDigitsTimes7",
+  "template": "def sumDigitsTimes7(n):\n  ",
+  "solution_text": "<h3>Sum of Digits Times Seven</h3><p><strong>Algorithm:</strong></p><ol><li>Convert number to string to iterate digits</li><li>Sum all digits</li><li>Multiply by 7</li></ol><p><strong>Time Complexity:</strong> O(d) - where d is number of digits</p><p><strong>Space Complexity:</strong> O(1) - constant space</p>",
+  "solution_code": "def sumDigitsTimes7(n):\n    digit_sum = sum(int(d) for d in str(n))\n    return digit_sum * 7",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for sumDigitsTimes7 function\"\"\"\n    return (test_case_input['n'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the result\"\"\"\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "n": 123
+      },
+      "output": 42
+    },
+    {
+      "id": 2,
+      "input": {
+        "n": 999
+      },
+      "output": 189
+    },
+    {
+      "id": 3,
+      "input": {
+        "n": 0
+      },
+      "output": 0
+    },
+    {
+      "id": 4,
+      "input": {
+        "n": 5
+      },
+      "output": 35
+    },
+    {
+      "id": 5,
+      "input": {
+        "n": 1000
+      },
+      "output": 7
+    },
+    {
+      "id": 6,
+      "input": {
+        "n": 111
+      },
+      "output": 21
+    },
+    {
+      "id": 7,
+      "input": {
+        "n": 9999
+      },
+      "output": 252
+    },
+    {
+      "id": 8,
+      "input": {
+        "n": 1234
+      },
+      "output": 70
+    },
+    {
+      "id": 9,
+      "input": {
+        "n": 100
+      },
+      "output": 7
+    },
+    {
+      "id": 10,
+      "input": {
+        "n": 777
+      },
+      "output": 147
+    }
+  ]
+}

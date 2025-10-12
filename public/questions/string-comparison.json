@@ -1,0 +1,102 @@
+{
+  "filename": "string-comparison",
+  "title": "String Comparison",
+  "keywords": [
+    "string",
+    "comparison",
+    "equality",
+    "beginner",
+    "boolean",
+    "case-sensitive",
+    "easy"
+  ],
+  "description": "<h2>String Comparison</h2><p><em>Note: Some systems may show output as 1 or 0, but they represent true or false. Your function should return a boolean.</em></p><p>Given two strings, determine if they are exactly identical. The comparison is case-sensitive and considers all characters including whitespace.</p><h3>Examples:</h3><ul><li>Input: s1 = \"hello\", s2 = \"hello\"<br>Output: true</li><li>Input: s1 = \"Hello\", s2 = \"hello\"<br>Output: false</li><li>Input: s1 = \"\", s2 = \"\"<br>Output: true</li></ul><h3>Constraints:</h3><ul><li>Strings can be empty</li><li>Case-sensitive comparison</li><li>Whitespace matters</li></ul>",
+  "entry_function": "areStringsEqual",
+  "template": "def areStringsEqual(s1, s2):\n  ",
+  "solution_text": "<h3>String Comparison</h3><p><strong>Algorithm:</strong></p><ol><li>Use Python's built-in equality operator</li><li>Return the boolean result</li></ol><p><strong>Time Complexity:</strong> O(n) - where n is length of strings</p><p><strong>Space Complexity:</strong> O(1) - constant space</p><p><strong>Key Insights:</strong></p><ul><li>Python's == operator performs case-sensitive comparison</li><li>Handles empty strings correctly</li><li>No need for manual character-by-character comparison</li></ul>",
+  "solution_code": "def areStringsEqual(s1, s2):\n    return s1 == s2",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for areStringsEqual function\"\"\"\n    return (test_case_input['s1'], test_case_input['s2'])",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the boolean result\"\"\"\n    def bool_to_string(val):\n        return 'true' if val else 'false'\n    \n    # Convert expected output string to boolean for comparison\n    expected_bool = expected_output == 'true' if isinstance(expected_output, str) else expected_output\n    \n    passed = actual_output == expected_bool\n    output_str = bool_to_string(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "s1": "hello",
+        "s2": "hello"
+      },
+      "output": "true"
+    },
+    {
+      "id": 2,
+      "input": {
+        "s1": "Hello",
+        "s2": "hello"
+      },
+      "output": "false"
+    },
+    {
+      "id": 3,
+      "input": {
+        "s1": "",
+        "s2": ""
+      },
+      "output": "true"
+    },
+    {
+      "id": 4,
+      "input": {
+        "s1": "test ",
+        "s2": "test"
+      },
+      "output": "false"
+    },
+    {
+      "id": 5,
+      "input": {
+        "s1": "abc",
+        "s2": "abc"
+      },
+      "output": "true"
+    },
+    {
+      "id": 6,
+      "input": {
+        "s1": "hello world",
+        "s2": "hello world"
+      },
+      "output": "true"
+    },
+    {
+      "id": 7,
+      "input": {
+        "s1": "Test",
+        "s2": "test"
+      },
+      "output": "false"
+    },
+    {
+      "id": 8,
+      "input": {
+        "s1": "a",
+        "s2": "a"
+      },
+      "output": "true"
+    },
+    {
+      "id": 9,
+      "input": {
+        "s1": "  ",
+        "s2": " "
+      },
+      "output": "false"
+    },
+    {
+      "id": 10,
+      "input": {
+        "s1": "123",
+        "s2": "123"
+      },
+      "output": "true"
+    }
+  ]
+}

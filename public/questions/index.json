@@ -33,6 +33,28 @@
       ]
     },
     {
+      "filename": "alice-typing-problem",
+      "title": "Alice Typing Problem",
+      "keywords": [
+        "string",
+        "counting",
+        "grouping",
+        "consecutive",
+        "medium"
+      ]
+    },
+    {
+      "filename": "alphabetical-order-checker",
+      "title": "Alphabetical Order Checker",
+      "keywords": [
+        "string",
+        "sorting",
+        "validation",
+        "comparison",
+        "easy"
+      ]
+    },
+    {
       "filename": "best-time-to-buy-and-sell-stock",
       "title": "Best Time to Buy and Sell Stock",
       "keywords": [
@@ -51,6 +73,17 @@
         "greedy",
         "dynamic",
         "programming"
+      ]
+    },
+    {
+      "filename": "binary-representation",
+      "title": "Binary Representation",
+      "keywords": [
+        "binary",
+        "conversion",
+        "bit-manipulation",
+        "string",
+        "easy"
       ]
     },
     {
@@ -102,6 +135,28 @@
       ]
     },
     {
+      "filename": "caffeine-calculator",
+      "title": "Caffeine Calculator",
+      "keywords": [
+        "math",
+        "ceiling",
+        "division",
+        "calculation",
+        "easy"
+      ]
+    },
+    {
+      "filename": "canadian-province-validator",
+      "title": "Canadian Province Validator",
+      "keywords": [
+        "string",
+        "validation",
+        "canada",
+        "set",
+        "easy"
+      ]
+    },
+    {
       "filename": "climbing-stairs",
       "title": "Climbing Stairs",
       "keywords": [
@@ -118,6 +173,39 @@
       ]
     },
     {
+      "filename": "coffee-production-scheduler",
+      "title": "HW13 - Coffee Production Scheduler",
+      "keywords": [
+        "simulation",
+        "string",
+        "state-machine",
+        "counter",
+        "medium"
+      ]
+    },
+    {
+      "filename": "coffee-sales-projection",
+      "title": "Coffee Sales Projection",
+      "keywords": [
+        "array",
+        "math",
+        "percentage",
+        "calculation",
+        "medium"
+      ]
+    },
+    {
+      "filename": "coffee-shop-billing",
+      "title": "Alex's Brew Coffee Shop Billing",
+      "keywords": [
+        "array",
+        "math",
+        "tax",
+        "calculation",
+        "easy"
+      ]
+    },
+    {
       "filename": "coin-change",
       "title": "Coin Change",
       "keywords": [
@@ -130,7 +218,10 @@
         "optimization",
         "unbounded",
         "knapsack",
-        "greedy"
+        "greedy",
+        "hw20",
+        "hello world 2025",
+        "medium"
       ]
     },
     {
@@ -150,6 +241,55 @@
         "clone",
         "hash",
         "map"
+      ]
+    },
+    {
+      "filename": "count-vowels",
+      "title": "Count Vowels",
+      "keywords": [
+        "string",
+        "vowels",
+        "count",
+        "iteration",
+        "easy"
+      ]
+    },
+    {
+      "filename": "dice-ways",
+      "title": "Dice Ways",
+      "keywords": [
+        "dynamic",
+        "programming",
+        "combinatorics",
+        "counting",
+        "medium"
+      ]
+    },
+    {
+      "filename": "greatest-common-divisor",
+      "title": "Greatest Common Divisor (GCD)",
+      "keywords": [
+        "gcd",
+        "math",
+        "euclidean",
+        "algorithm",
+        "recursion",
+        "easy"
+      ]
+    },
+    {
+      "filename": "hello-world",
+      "title": "Hello World",
+      "keywords": [
+        "hello",
+        "world",
+        "beginner",
+        "tutorial",
+        "string",
+        "return",
+        "function",
+        "basic",
+        "easy"
       ]
     },
     {
@@ -198,6 +338,18 @@
         "integers",
         "heights",
         "stack"
+      ]
+    },
+    {
+      "filename": "last-even-index",
+      "title": "Last Even Index",
+      "keywords": [
+        "array",
+        "even",
+        "index",
+        "iteration",
+        "modulo",
+        "easy"
       ]
     },
     {
@@ -349,6 +501,41 @@
       ]
     },
     {
+      "filename": "most-frequent-element",
+      "title": "Most Frequent Element",
+      "keywords": [
+        "array",
+        "frequency",
+        "hash-map",
+        "counting",
+        "easy"
+      ]
+    },
+    {
+      "filename": "multiple-check",
+      "title": "Multiple Check",
+      "keywords": [
+        "multiple",
+        "modulo",
+        "divisibility",
+        "beginner",
+        "math",
+        "integer",
+        "easy"
+      ]
+    },
+    {
+      "filename": "palindrome-checker",
+      "title": "Palindrome Checker",
+      "keywords": [
+        "palindrome",
+        "string",
+        "two-pointers",
+        "alphanumeric",
+        "easy"
+      ]
+    },
+    {
       "filename": "product-of-array-except-self",
       "title": "Product of Array Except Self",
       "keywords": [
@@ -431,6 +618,66 @@
       ]
     },
     {
+      "filename": "string-comparison",
+      "title": "String Comparison",
+      "keywords": [
+        "string",
+        "comparison",
+        "equality",
+        "beginner",
+        "boolean",
+        "case-sensitive",
+        "easy"
+      ]
+    },
+    {
+      "filename": "string-matching",
+      "title": "String Matching",
+      "keywords": [
+        "string",
+        "hash-map",
+        "frequency",
+        "counter",
+        "easy"
+      ]
+    },
+    {
+      "filename": "string-reversal",
+      "title": "String Reversal",
+      "keywords": [
+        "string",
+        "reverse",
+        "slicing",
+        "easy"
+      ]
+    },
+    {
+      "filename": "sum-of-digits-times-seven",
+      "title": "Sum of Digits Times Seven",
+      "keywords": [
+        "digits",
+        "sum",
+        "multiplication",
+        "math",
+        "string",
+        "easy"
+      ]
+    },
+    {
+      "filename": "sum-two-integers",
+      "title": "Sum Two Integers",
+      "keywords": [
+        "sum",
+        "addition",
+        "integers",
+        "beginner",
+        "math",
+        "basic",
+        "arithmetic",
+        "easy"
+      ]
+    },
+    {
       "filename": "trapping-rain-water",
       "title": "Trapping Rain Water",
       "keywords": [
@@ -445,6 +692,18 @@
         "integers",
         "height",
         "two-pointers"
+      ]
+    },
+    {
+      "filename": "tribonacci-sequence",
+      "title": "Tribonacci Sequence",
+      "keywords": [
+        "dynamic",
+        "programming",
+        "recursion",
+        "fibonacci",
+        "sequence",
+        "medium"
       ]
     },
     {
@@ -563,6 +822,6 @@
       ]
     }
   ],
-  "lastUpdated": "2025-10-09T02:51:08.414Z",
-  "totalQuestions": 34
+  "lastUpdated": "2025-10-11T22:45:59.447Z",
+  "totalQuestions": 56
 }

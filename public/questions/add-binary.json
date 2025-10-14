@@ -1,0 +1,106 @@
+{
+  "filename": "add-binary",
+  "title": "Add Binary",
+  "keywords": [
+    "add",
+    "binary",
+    "leetcode",
+    "given",
+    "two",
+    "strings",
+    "return",
+    "their",
+    "sum",
+    "string"
+  ],
+  "description": "<h2>Add Binary</h2><p>Leetcode 67. Add Binary</p><p>You are given two binary strings <code>a</code> and <code>b</code>, return their sum as a binary string.</p><h3>Examples:</h3><ul><li>Input: a = \"101\", b = \"10\"<br><br>Output: \"111\"</li><li>Input: a = \"10010\", b = \"111\"<br><br>Output: \"11001\"</li></ul><h3>Constraints:</h3><ul><li><code>1 <= a.length, b.length <= 10,000</code></li><li><code>a</code> and <code>b</code> consist only of <code>'0'</code> or <code>'1'</code> characters.</li><li>Each string does not contain leading zeros except for the zero itself.</li></ul>",
+  "entry_function": "addBinary",
+  "template": "def addBinary(a, b):\n    ",
+  "solution_text": "Binary addition using string manipulation:\n\n**Algorithm:**\n1. Start from the rightmost digits of both strings\n2. Add corresponding digits with carry\n3. Handle carry propagation\n4. Continue until both strings are processed\n\n**Time Complexity:** O(max(m, n)) - where m, n are string lengths\n**Space Complexity:** O(max(m, n)) - for result string\n\n**Key Insights:**\n- Process from right to left like manual addition\n- Handle carry carefully\n- Pad shorter string with leading zeros conceptually",
+  "solution_code": "def addBinary(a, b):\n    result = []\n    carry = 0\n    i, j = len(a) - 1, len(b) - 1\n    \n    while i >= 0 or j >= 0 or carry:\n        digit_sum = carry\n        \n        if i >= 0:\n            digit_sum += int(a[i])\n            i -= 1\n        \n        if j >= 0:\n            digit_sum += int(b[j])\n            j -= 1\n        \n        result.append(str(digit_sum % 2))\n        carry = digit_sum // 2\n    \n    return ''.join(reversed(result))",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['a'], test_case_input['b'])",
+  "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    output_str = '\"' + str(actual_output) + '\"'\n    return [passed, output_str]",
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "a": "101",
+        "b": "10"
+      },
+      "output": "111"
+    },
+    {
+      "id": 2,
+      "input": {
+        "a": "10010",
+        "b": "111"
+      },
+      "output": "11001"
+    },
+    {
+      "id": 3,
+      "input": {
+        "a": "11",
+        "b": "1"
+      },
+      "output": "100"
+    },
+    {
+      "id": 4,
+      "input": {
+        "a": "1010",
+        "b": "1011"
+      },
+      "output": "10101"
+    },
+    {
+      "id": 5,
+      "input": {
+        "a": "1",
+        "b": "1"
+      },
+      "output": "10"
+    },
+    {
+      "id": 6,
+      "input": {
+        "a": "0",
+        "b": "0"
+      },
+      "output": "0"
+    },
+    {
+      "id": 7,
+      "input": {
+        "a": "1",
+        "b": "0"
+      },
+      "output": "1"
+    },
+    {
+      "id": 8,
+      "input": {
+        "a": "0",
+        "b": "1"
+      },
+      "output": "1"
+    },
+    {
+      "id": 9,
+      "input": {
+        "a": "1111",
+        "b": "1111"
+      },
+      "output": "11110"
+    },
+    {
+      "id": 10,
+      "input": {
+        "a": "100",
+        "b": "110010"
+      },
+      "output": "110110"
+    }
+  ]
+}

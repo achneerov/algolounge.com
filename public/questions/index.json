@@ -253,6 +253,22 @@
       ]
     },
     {
+      "filename": "car-fleet",
+      "title": "Car Fleet",
+      "keywords": [
+        "car",
+        "fleet",
+        "leetcode",
+        "853",
+        "there",
+        "cars",
+        "traveling",
+        "same",
+        "destination",
+        "one"
+      ]
+    },
+    {
       "filename": "climbing-stairs",
       "title": "Climbing Stairs",
       "keywords": [
@@ -375,6 +391,39 @@
         "combinatorics",
         "counting",
         "medium"
+      ]
+    },
+    {
+      "filename": "evaluate-reverse-polish-notation",
+      "title": "Evaluate Reverse Polish Notation",
+      "keywords": [
+        "evaluate",
+        "reverse",
+        "polish",
+        "notation",
+        "leetcode",
+        "150",
+        "given",
+        "array",
+        "strings",
+        "tokens"
+      ]
+    },
+    {
+      "filename": "generate-parentheses",
+      "title": "Generate Parentheses",
+      "keywords": [
+        "generate",
+        "parentheses",
+        "leetcode",
+        "22",
+        "given",
+        "integer",
+        "return",
+        "all",
+        "well",
+        "formed",
+        "strings"
       ]
     },
     {
@@ -934,6 +983,6 @@
       ]
     }
   ],
-  "lastUpdated": "2025-10-14T01:33:51.741Z",
-  "totalQuestions": 63
+  "lastUpdated": "2025-10-14T02:12:30.352Z",
+  "totalQuestions": 66
 }

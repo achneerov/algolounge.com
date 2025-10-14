@@ -243,6 +243,7 @@ export class ContentTabsComponent implements OnInit {
   @Input() solutionText: string = '';
   @Input() solutionCode: string = '';
   @Input() isCompleted: boolean = false;
+  @Input() currentQuestionFilename: string = '';
   @Output() go = new EventEmitter<string>();
 
   activeTab: 'description' | 'solution' = 'description';
@@ -258,6 +259,11 @@ export class ContentTabsComponent implements OnInit {
     this.questionSearchService.isIndexLoaded().subscribe(loaded => {
       if (loaded) {
         this.onSearch({ query: "" });
+        // Set the currently selected question
+        if (this.currentQuestionFilename) {
+          const allQuestions = this.questionSearchService.getAllQuestions();
+          this.selectedQuestion = allQuestions.find(q => q.filename === this.currentQuestionFilename) || null;
+        }
       }
     });
   }
@@ -273,7 +279,8 @@ export class ContentTabsComponent implements OnInit {
 
   onSelect(event: any): void {
     const question = event.value as QuestionSearchResult;
-    this.selectedQuestion = null;
+    // Keep the selected question displayed in the search bar
+    this.selectedQuestion = question;
     this.go.emit(question.filename);
   }
 
@@ -281,7 +288,8 @@ export class ContentTabsComponent implements OnInit {
     if (event.key === 'Enter') {
       if (this.searchResults.length > 0) {
         const topResult = this.searchResults[0];
-        this.selectedQuestion = null;
+        // Keep the selected question displayed in the search bar
+        this.selectedQuestion = topResult;
         this.go.emit(topResult.filename);
       }
     }

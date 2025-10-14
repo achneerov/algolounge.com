@@ -1,0 +1,59 @@
+{
+  "filename": "generate-parentheses",
+  "title": "Generate Parentheses",
+  "keywords": [
+    "generate",
+    "parentheses",
+    "leetcode",
+    "22",
+    "given",
+    "integer",
+    "return",
+    "all",
+    "well",
+    "formed",
+    "strings"
+  ],
+  "description": "<h2>Generate Parentheses</h2><p>Leetcode 22. Generate Parentheses</p><p>You are given an integer <code>n</code>. Return all well-formed parentheses strings that you can generate with <code>n</code> pairs of parentheses.</p><h3>Examples:</h3><ul><li>Input: n = 1<br><br>Output: [\"()\"]</li><li>Input: n = 3<br><br>Output: [\"((()))\",\"(()())\",\"(())()\",\"()(())\",\"()()()\"]</li></ul><h3>Constraints:</h3><ul><li><code>1 <= n <= 7</code></li></ul>",
+  "entry_function": "generateParentheses",
+  "template": "def generateParentheses(n):\n    ",
+  "solution_text": "Backtracking Solution for Generate Parentheses:\n\n**Algorithm:**\n1. Start with empty string and track open/close parentheses count\n2. At each step: add '(' if open count < n, add ')' if close count < open count\n3. Base case: when string length equals 2*n, add to result\n4. Backtrack by trying both options at each valid position\n\n**Time Complexity:** O(4^n / √n) - Catalan number combinations\n**Space Complexity:** O(4^n / √n) - for storing all valid combinations\n\n**Key Insights:**\n- Only add ')' when we have more '(' than ')' (maintains validity)\n- Recursively build strings character by character\n- Catalan number determines count of valid combinations",
+  "solution_code": "def generateParentheses(n):\n    result = []\n    \n    def backtrack(current, open_count, close_count):\n        # Base case: complete valid combination\n        if len(current) == 2 * n:\n            result.append(current)\n            return\n        \n        # Add opening parenthesis if we haven't used all\n        if open_count < n:\n            backtrack(current + '(', open_count + 1, close_count)\n        \n        # Add closing parenthesis if it would be valid\n        if close_count < open_count:\n            backtrack(current + ')', open_count, close_count + 1)\n    \n    backtrack('', 0, 0)\n    return result",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['n'],)",
+  "verify": "def verify(actual_output, expected_output):\n    # Sort both lists for comparison since order doesn't matter\n    actual_sorted = sorted(actual_output)\n    expected_sorted = sorted(expected_output)\n    passed = actual_sorted == expected_sorted\n    output_str = str(actual_sorted)\n    return [passed, output_str]",
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "n": 1
+      },
+      "output": ["()"]
+    },
+    {
+      "id": 2,
+      "input": {
+        "n": 2
+      },
+      "output": ["(())", "()()"]
+    },
+    {
+      "id": 3,
+      "input": {
+        "n": 3
+      },
+      "output": ["((()))", "(()())", "(())()", "()(())", "()()()"]
+    },
+    {
+      "id": 4,
+      "input": {
+        "n": 4
+      },
+      "output": [
+        "(((())))", "((()()))", "((())())", "((()))()", "(()(()))",
+        "(()()())", "(()())()", "(())(())", "(())()()", "()((()))",
+        "()(()())", "()(())()", "()()(())", "()()()()"
+      ]
+    }
+  ]
+}

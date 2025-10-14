@@ -279,7 +279,8 @@ export class ContentTabsComponent implements OnInit {
 
   onSelect(event: any): void {
     const question = event.value as QuestionSearchResult;
-    this.selectedQuestion = null;
+    // Keep the selected question displayed in the search bar
+    this.selectedQuestion = question;
     this.go.emit(question.filename);
   }
 
@@ -287,7 +288,8 @@ export class ContentTabsComponent implements OnInit {
     if (event.key === 'Enter') {
       if (this.searchResults.length > 0) {
         const topResult = this.searchResults[0];
-        this.selectedQuestion = null;
+        // Keep the selected question displayed in the search bar
+        this.selectedQuestion = topResult;
         this.go.emit(topResult.filename);
       }
     }

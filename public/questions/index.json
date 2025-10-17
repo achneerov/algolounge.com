@@ -578,6 +578,23 @@
       ]
     },
     {
+      "filename": "last-stone-weight",
+      "title": "Last Stone Weight",
+      "keywords": [
+        "last",
+        "stone",
+        "weight",
+        "heap",
+        "priority",
+        "queue",
+        "max",
+        "heap",
+        "simulation",
+        "leetcode",
+        "1046"
+      ]
+    },
+    {
       "filename": "linked-list-cycle",
       "title": "Linked List Cycle Detection",
       "keywords": [
@@ -1062,6 +1079,6 @@
       ]
     }
   ],
-  "lastUpdated": "2025-10-17T17:51:49.269Z",
-  "totalQuestions": 71
+  "lastUpdated": "2025-10-17T18:19:14.524Z",
+  "totalQuestions": 72
 }

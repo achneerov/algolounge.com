@@ -1,0 +1,96 @@
+{
+  "filename": "last-stone-weight",
+  "title": "Last Stone Weight",
+  "keywords": [
+    "last",
+    "stone",
+    "weight",
+    "heap",
+    "priority",
+    "queue",
+    "max",
+    "heap",
+    "simulation",
+    "leetcode",
+    "1046"
+  ],
+  "description": "<h2>Last Stone Weight</h2><p>You are given an array of integers <code>stones</code> where <code>stones[i]</code> represents the weight of the <code>i<sup>th</sup></code> stone.</p><p>We want to run a simulation on the stones as follows:</p><ul><li>At each step, we choose the <strong>two heaviest stones</strong>, with weight <code>x</code> and <code>y</code> and smash them together</li><li>If <code>x == y</code>, both stones are destroyed</li><li>If <code>x &lt; y</code>, the stone of weight <code>x</code> is destroyed, and the stone of weight <code>y</code> has new weight <code>y - x</code>.</li></ul><p>Return the weight of the last remaining stone or return <code>0</code> if none remain.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> stones = [2,3,6,2,4]<br><strong>Output:</strong> 1<br><strong>Explanation:</strong><br>We smash 6 and 4 and get 2, so the array becomes [2,3,2,2].<br>Then we smash 3 and 2 and get 1, so the array becomes [2,2,1].<br>Then we smash 2 and 2, so the array becomes [1].</li><li><strong>Input:</strong> stones = [1,2]<br><strong>Output:</strong> 1</li></ul><h3>Constraints:</h3><ul><li><code>1 &lt;= stones.length &lt;= 30</code></li><li><code>1 &lt;= stones[i] &lt;= 100</code></li></ul>",
+  "entry_function": "lastStoneWeight",
+  "template": "def lastStoneWeight(stones):\n    ",
+  "solution_text": "<h3>Last Stone Weight</h3><p><strong>Algorithm:</strong></p><ol><li>Use a max heap to efficiently get the two heaviest stones</li><li>Python's heapq is a min heap, so negate values to simulate max heap</li><li>While there are at least 2 stones, pop the two heaviest</li><li>If they're different weights, push the difference back</li><li>Return the last stone's weight, or 0 if none remain</li></ol><p><strong>Time Complexity:</strong> O(n log n) - each stone operation involves heap push/pop</p><p><strong>Space Complexity:</strong> O(n) - heap storage</p><p><strong>Key Insights:</strong></p><ul><li>Max heap allows efficient access to heaviest stones</li><li>Simulate the smashing process until one or zero stones remain</li><li>Negate values for max heap behavior in Python's min heap</li></ul>",
+  "solution_code": "import heapq\n\ndef lastStoneWeight(stones):\n    # Create max heap by negating all values\n    max_heap = [-stone for stone in stones]\n    heapq.heapify(max_heap)\n    \n    # Continue until one or zero stones remain\n    while len(max_heap) > 1:\n        # Pop two heaviest stones\n        first = -heapq.heappop(max_heap)\n        second = -heapq.heappop(max_heap)\n        \n        # If they're different, push the difference back\n        if first != second:\n            heapq.heappush(max_heap, -(first - second))\n    \n    # Return the last stone's weight, or 0 if none remain\n    return -max_heap[0] if max_heap else 0",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for lastStoneWeight function\"\"\"\n    return (test_case_input['stones'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the last stone weight result\"\"\"\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "stones": [2, 3, 6, 2, 4]
+      },
+      "output": 1
+    },
+    {
+      "id": 2,
+      "input": {
+        "stones": [1, 2]
+      },
+      "output": 1
+    },
+    {
+      "id": 3,
+      "input": {
+        "stones": [1]
+      },
+      "output": 1
+    },
+    {
+      "id": 4,
+      "input": {
+        "stones": [2, 2]
+      },
+      "output": 0
+    },
+    {
+      "id": 5,
+      "input": {
+        "stones": [7, 6, 7, 6, 9]
+      },
+      "output": 3
+    },
+    {
+      "id": 6,
+      "input": {
+        "stones": [1, 3]
+      },
+      "output": 2
+    },
+    {
+      "id": 7,
+      "input": {
+        "stones": [3, 7, 2]
+      },
+      "output": 2
+    },
+    {
+      "id": 8,
+      "input": {
+        "stones": [10, 4, 2, 10]
+      },
+      "output": 2
+    },
+    {
+      "id": 9,
+      "input": {
+        "stones": [1, 1, 2, 3, 5]
+      },
+      "output": 0
+    },
+    {
+      "id": 10,
+      "input": {
+        "stones": [100, 90, 80, 70, 60, 50, 40, 30, 20, 10]
+      },
+      "output": 10
+    }
+  ]
+}

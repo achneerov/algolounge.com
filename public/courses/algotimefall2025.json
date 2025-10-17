@@ -303,6 +303,17 @@
       "description": "These are the questions that will be looked at in week 7.",
       "questions": [
         {
+          "filename": "last-stone-weight",
+          "urls": [
+            { "url": "https://leetcode.com/problems/last-stone-weight/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/last-stone-weight", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Heap / Priority Queue", "color": "#ec4899" }
+          ]
+        },
+        {
           "filename": "contains-duplicate",
           "urls": [
             { "url": "https://leetcode.com/problems/contains-duplicate/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },

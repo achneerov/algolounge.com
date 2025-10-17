@@ -303,6 +303,91 @@
       "description": "These are the questions that will be looked at in week 7.",
       "questions": [
         {
+          "filename": "contains-duplicate",
+          "urls": [
+            { "url": "https://leetcode.com/problems/contains-duplicate/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/contains-duplicate", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Arrays and Hashing", "color": "#3b82f6" }
+          ]
+        },
+        {
+          "filename": "two-sum",
+          "urls": [
+            { "url": "https://leetcode.com/problems/two-sum/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/two-sum", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Arrays and Hashing", "color": "#3b82f6" }
+          ]
+        },
+        {
+          "filename": "valid-sudoku",
+          "urls": [
+            { "url": "https://leetcode.com/problems/valid-sudoku/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/valid-sudoku", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Arrays and Hashing", "color": "#3b82f6" },
+            { "text": "Alex's Favorite", "color": "#ffd700" }
+          ]
+        },
+        {
+          "filename": "longest-consecutive-sequence",
+          "urls": [
+            { "url": "https://leetcode.com/problems/longest-consecutive-sequence/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/longest-consecutive-sequence", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Arrays and Hashing", "color": "#3b82f6" }
+          ]
+        },
+        {
+          "filename": "coin-change",
+          "urls": [
+            { "url": "https://leetcode.com/problems/coin-change/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/coin-change", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "HW20", "color": "#8b5cf6" },
+            { "text": "Dynamic Programming", "color": "#06b6d4" }
+          ]
+        },
+        {
+          "filename": "n-queens",
+          "urls": [
+            { "url": "https://leetcode.com/problems/n-queens/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/n-queens", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Backtracking", "color": "#f59e0b" }
+          ]
+        },
+        {
+          "filename": "find-median-from-data-stream",
+          "urls": [
+            { "url": "https://leetcode.com/problems/find-median-from-data-stream/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/find-median-from-data-stream", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Heap / Priority Queue", "color": "#ec4899" }
+          ]
+        }
+      ]
+    },
+    "week8": {
+      "title": "Week 8",
+      "description": "These are the questions that will be looked at in week 8.",
+      "questions": [
+        {
           "filename": "binary-tree-diameter",
           "urls": [
             { "url": "https://leetcode.com/problems/diameter-of-binary-tree/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
@@ -345,35 +430,8 @@
             { "text": "Medium", "color": "#f59e0b" },
             { "text": "Two Pointers", "color": "#a855f7" }
           ]
-        },
-        {
-          "filename": "n-queens",
-          "urls": [
-            { "url": "https://leetcode.com/problems/n-queens/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/n-queens", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
-          ],
-          "tags": [
-            { "text": "Hard", "color": "#ef4444" },
-            { "text": "Backtracking", "color": "#f59e0b" }
-          ]
-        },
-        {
-          "filename": "find-median-from-data-stream",
-          "urls": [
-            { "url": "https://leetcode.com/problems/find-median-from-data-stream/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/find-median-from-data-stream", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
-          ],
-          "tags": [
-            { "text": "Hard", "color": "#ef4444" },
-            { "text": "Heap / Priority Queue", "color": "#ec4899" }
-          ]
         }
       ]
-    },
-    "week8": {
-      "title": "Week 8",
-      "description": "These are the questions that will be looked at in week 8.",
-      "questions": []
     },
     "week9": {
       "title": "Week 9",

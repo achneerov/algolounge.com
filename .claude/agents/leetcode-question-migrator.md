@@ -22,6 +22,28 @@ Required JSON structure for migrated questions:
 - Maintain consistent naming conventions (kebab-case filenames)
 - Include appropriate difficulty and topic metadata
 
+**CRITICAL: Boolean Output Handling**
+
+When test cases have boolean outputs (true/false), you MUST:
+
+1. **Store outputs as STRINGS** in JSON: `"output": "true"` or `"output": "false"`
+   - ✅ Correct: `"output": "true"`
+   - ✅ Correct: `"output": "false"`
+   - ❌ Incorrect: `"output": true` (JSON boolean - causes Python execution errors)
+   - ❌ Incorrect: `"output": True` (Python boolean - invalid JSON)
+
+2. **Use a custom verify function** that handles string-to-boolean conversion:
+```python
+"verify": "def verify(actual_output, expected_output):\n    def bool_to_string(val):\n        return 'true' if val else 'false'\n    \n    # Convert expected output string to boolean for comparison if needed\n    expected_bool = expected_output == 'true' if isinstance(expected_output, str) else expected_output\n    \n    passed = actual_output == expected_bool\n    output_str = bool_to_string(actual_output)\n    \n    return [passed, output_str]"
+```
+
+3. **Reference Example**: See `/Users/alexanderchneerov/D/algolounge.com/public/questions/valid-sudoku.json` for a working example with boolean outputs
+
+**Why this is necessary:**
+- JSON boolean values (`true`/`false`) become Python runtime errors when the test framework evaluates them
+- Python boolean values (`True`/`False`) are invalid JSON syntax
+- String values (`"true"`/`"false"`) avoid both issues and work correctly with the custom verify function
+
 **IMPORTANT: Description Field HTML Formatting Rules**
 
 The `description` field MUST contain valid HTML, NOT markdown. Follow these strict formatting rules:
@@ -51,7 +73,26 @@ The `description` field MUST contain valid HTML, NOT markdown. Follow these stri
 "description": "<h2>Two Sum</h2><p>Given an array of integers <code>nums</code> and an integer <code>target</code>, return indices of the two numbers such that they add up to <code>target</code>.</p><h3>Constraints:</h3><ul><li><code>2 &lt;= nums.length &lt;= 10<sup>4</sup></code></li><li><code>-10<sup>9</sup> &lt;= nums[i] &lt;= 10<sup>9</sup></code></li></ul>"
 ```
 
-The same HTML formatting rules apply to the `solution_text` field.
+**CRITICAL: Solution Text HTML Formatting**
+
+The `solution_text` field MUST use the same HTML formatting rules as the description field. This is CRITICAL for proper display in the UI.
+
+**Required `solution_text` Format:**
+```json
+"solution_text": "<h3>Problem Title</h3><p><strong>Algorithm:</strong></p><ol><li>Step 1 description</li><li>Step 2 description</li><li>Step 3 description</li></ol><p><strong>Time Complexity:</strong> O(n) - explanation</p><p><strong>Space Complexity:</strong> O(1) - explanation</p><p><strong>Key Insights:</strong></p><ul><li>Insight 1</li><li>Insight 2</li><li>Insight 3</li></ul>"
+```
+
+**DO NOT use plain text or markdown formatting like:**
+- ❌ "**Algorithm:**\n1. Step one\n2. Step two" (markdown style)
+- ❌ "Algorithm:\n\n1. Step one" (plain text with markdown)
+
+**ALWAYS use HTML tags:**
+- ✅ `<h3>Title</h3>` for the solution heading
+- ✅ `<p><strong>Algorithm:</strong></p>` for section headers
+- ✅ `<ol><li>Step</li></ol>` for ordered lists (Algorithm steps)
+- ✅ `<ul><li>Point</li></ul>` for unordered lists (Key Insights)
+- ✅ `<code>code</code>` for inline code
+- ✅ Proper HTML escaping: `&lt;` for `<`, `&gt;` for `>`, `&amp;` for `&`
 
 For each migration:
 - Report which problems were found in the archive

@@ -1,6 +1,22 @@
 {
   "questions": [
     {
+      "filename": "3sum",
+      "title": "3Sum",
+      "keywords": [
+        "3sum",
+        "three",
+        "sum",
+        "array",
+        "triplets",
+        "two",
+        "pointers",
+        "sorting",
+        "integer",
+        "leetcode"
+      ]
+    },
+    {
       "filename": "4sum",
       "title": "4Sum",
       "keywords": [
@@ -337,6 +353,22 @@
       ]
     },
     {
+      "filename": "container-with-most-water",
+      "title": "Container With Most Water",
+      "keywords": [
+        "container",
+        "most",
+        "water",
+        "array",
+        "two",
+        "pointers",
+        "area",
+        "max",
+        "height",
+        "leetcode"
+      ]
+    },
+    {
       "filename": "copy-list-with-random-pointer",
       "title": "Copy List with Random Pointer",
       "keywords": [
@@ -407,6 +439,22 @@
         "array",
         "strings",
         "tokens"
+      ]
+    },
+    {
+      "filename": "find-median-from-data-stream",
+      "title": "Find Median From Data Stream",
+      "keywords": [
+        "find",
+        "median",
+        "data",
+        "stream",
+        "heap",
+        "priority",
+        "queue",
+        "class",
+        "design",
+        "leetcode"
       ]
     },
     {
@@ -683,6 +731,21 @@
         "math",
         "integer",
         "easy"
+      ]
+    },
+    {
+      "filename": "n-queens",
+      "title": "N-Queens",
+      "keywords": [
+        "n",
+        "queens",
+        "backtracking",
+        "chessboard",
+        "puzzle",
+        "recursion",
+        "constraint",
+        "satisfaction",
+        "leetcode"
       ]
     },
     {
@@ -983,6 +1046,6 @@
       ]
     }
   ],
-  "lastUpdated": "2025-10-14T02:12:30.352Z",
-  "totalQuestions": 66
+  "lastUpdated": "2025-10-17T01:14:14.995Z",
+  "totalQuestions": 70
 }

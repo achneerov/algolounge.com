@@ -301,7 +301,74 @@
     "week7": {
       "title": "Week 7",
       "description": "These are the questions that will be looked at in week 7.",
-      "questions": []
+      "questions": [
+        {
+          "filename": "binary-tree-diameter",
+          "urls": [
+            { "url": "https://leetcode.com/problems/diameter-of-binary-tree/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/diameter-of-binary-tree", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Trees", "color": "#10b981" }
+          ]
+        },
+        {
+          "filename": "balanced-binary-tree",
+          "urls": [
+            { "url": "https://leetcode.com/problems/balanced-binary-tree/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/balanced-binary-tree", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Trees", "color": "#10b981" }
+          ]
+        },
+        {
+          "filename": "3sum",
+          "urls": [
+            { "url": "https://leetcode.com/problems/3sum/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/3sum", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Two Pointers", "color": "#a855f7" }
+          ]
+        },
+        {
+          "filename": "container-with-most-water",
+          "urls": [
+            { "url": "https://leetcode.com/problems/container-with-most-water/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/container-with-most-water", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Two Pointers", "color": "#a855f7" }
+          ]
+        },
+        {
+          "filename": "n-queens",
+          "urls": [
+            { "url": "https://leetcode.com/problems/n-queens/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/n-queens", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Backtracking", "color": "#f59e0b" }
+          ]
+        },
+        {
+          "filename": "find-median-from-data-stream",
+          "urls": [
+            { "url": "https://leetcode.com/problems/find-median-from-data-stream/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/find-median-from-data-stream", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Heap / Priority Queue", "color": "#ec4899" }
+          ]
+        }
+      ]
     },
     "week8": {
       "title": "Week 8",

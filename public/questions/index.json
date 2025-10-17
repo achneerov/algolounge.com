@@ -369,6 +369,22 @@
       ]
     },
     {
+      "filename": "contains-duplicate",
+      "title": "Contains Duplicate",
+      "keywords": [
+        "contains",
+        "duplicate",
+        "array",
+        "hash",
+        "set",
+        "integer",
+        "leetcode",
+        "217",
+        "unique",
+        "validation"
+      ]
+    },
+    {
       "filename": "copy-list-with-random-pointer",
       "title": "Copy List with Random Pointer",
       "keywords": [
@@ -1046,6 +1062,6 @@
       ]
     }
   ],
-  "lastUpdated": "2025-10-17T01:39:26.465Z",
-  "totalQuestions": 70
+  "lastUpdated": "2025-10-17T17:47:20.013Z",
+  "totalQuestions": 71
 }

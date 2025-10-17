@@ -1,0 +1,95 @@
+{
+  "filename": "contains-duplicate",
+  "title": "Contains Duplicate",
+  "keywords": [
+    "contains",
+    "duplicate",
+    "array",
+    "hash",
+    "set",
+    "integer",
+    "leetcode",
+    "217",
+    "unique",
+    "validation"
+  ],
+  "description": "<h2>Contains Duplicate</h2><p>Given an integer array <code>nums</code>, return <code>true</code> if any value appears <strong>at least twice</strong> in the array, and return <code>false</code> if every element is distinct.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> nums = [1,2,3,1]<br><strong>Output:</strong> true<br><strong>Explanation:</strong> The element 1 occurs at indices 0 and 3.</li><li><strong>Input:</strong> nums = [1,2,3,4]<br><strong>Output:</strong> false<br><strong>Explanation:</strong> All elements are distinct.</li><li><strong>Input:</strong> nums = [1,1,1,3,3,4,3,2,4,2]<br><strong>Output:</strong> true</li></ul><h3>Constraints:</h3><ul><li><code>1 &lt;= nums.length &lt;= 10<sup>5</sup></code></li><li><code>-10<sup>9</sup> &lt;= nums[i] &lt;= 10<sup>9</sup></code></li></ul>",
+  "entry_function": "containsDuplicate",
+  "template": "def containsDuplicate(nums):\n    ",
+  "solution_text": "<h3>Contains Duplicate</h3><p><strong>Algorithm:</strong></p><ol><li>Use a hash set to track numbers we've seen</li><li>Iterate through each number in the array</li><li>If the number is already in the set, return true (duplicate found)</li><li>Otherwise, add the number to the set</li><li>If we finish the loop without finding duplicates, return false</li></ol><p><strong>Time Complexity:</strong> O(n) - single pass through array</p><p><strong>Space Complexity:</strong> O(n) - hash set storage in worst case</p><p><strong>Key Insights:</strong></p><ul><li>Hash set provides O(1) lookup and insertion time</li><li>Early termination on first duplicate found</li><li>Alternative approaches: sorting O(n log n) or brute force O(n²)</li><li>Set-based solution is optimal for time complexity</li></ul>",
+  "solution_code": "def containsDuplicate(nums):\n    seen = set()\n    \n    for num in nums:\n        if num in seen:\n            return True\n        seen.add(num)\n    \n    return False",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for containsDuplicate function\"\"\"\n    return (test_case_input['nums'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the contains duplicate result\"\"\"\n    def bool_to_string(val):\n        return 'true' if val else 'false'\n    \n    # Convert expected output string to boolean for comparison\n    expected_bool = expected_output == 'true' if isinstance(expected_output, str) else expected_output\n    \n    passed = actual_output == expected_bool\n    output_str = bool_to_string(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [1, 2, 3, 1]
+      },
+      "output": "true"
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [1, 2, 3, 4]
+      },
+      "output": "false"
+    },
+    {
+      "id": 3,
+      "input": {
+        "nums": [1, 1, 1, 3, 3, 4, 3, 2, 4, 2]
+      },
+      "output": "true"
+    },
+    {
+      "id": 4,
+      "input": {
+        "nums": [1]
+      },
+      "output": "false"
+    },
+    {
+      "id": 5,
+      "input": {
+        "nums": [1, 2]
+      },
+      "output": "false"
+    },
+    {
+      "id": 6,
+      "input": {
+        "nums": [2, 2]
+      },
+      "output": "true"
+    },
+    {
+      "id": 7,
+      "input": {
+        "nums": [1, 5, 9, 1, 5, 9]
+      },
+      "output": "true"
+    },
+    {
+      "id": 8,
+      "input": {
+        "nums": [-1, -2, -3, -4]
+      },
+      "output": "false"
+    },
+    {
+      "id": 9,
+      "input": {
+        "nums": [0, 0]
+      },
+      "output": "true"
+    },
+    {
+      "id": 10,
+      "input": {
+        "nums": [10, 20, 30, 40, 50, 60, 70, 80, 90, 10]
+      },
+      "output": "true"
+    }
+  ]
+}

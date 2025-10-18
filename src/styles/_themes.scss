@@ -1,0 +1,127 @@
+// AlgoLounge Theme Definitions
+@use 'variables' as *;
+
+// CSS Custom Properties for Theme Switching
+:root {
+  // Light theme (default)
+  --color-primary: #{$light-sky-blue};
+  --color-primary-dark: #{$light-deep-navy};
+  --color-accent: #{$light-sunset-gold};
+  --color-text-primary: #{$light-deep-navy};
+  --color-text-secondary: #{$light-slate-gray};
+  --color-bg-primary: #{$light-cloud-white};
+  --color-bg-surface: #{$light-surface};
+  --color-border: #{$light-border};
+
+  // Semantic colors
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #3B82F6;
+
+  // Code editor colors (light)
+  --code-bg: #FFFFFF;
+  --code-text: #1E293B;
+  --code-comment: #64748B;
+  --code-keyword: #0369A1;
+  --code-function: #7C3AED;
+  --code-string: #059669;
+  --code-number: #DC2626;
+  --code-variable: #EA580C;
+}
+
+// Dark theme
+html.dark-mode,
+html:not(.light-mode) {
+  @media (prefers-color-scheme: dark) {
+    --color-primary: #{$dark-warm-blue};
+    --color-primary-dark: #{$dark-navy};
+    --color-accent: #{$light-sunset-gold};
+    --color-text-primary: #{$light-cloud-white};
+    --color-text-secondary: #{$dark-slate};
+    --color-bg-primary: #{$dark-surface};
+    --color-bg-surface: #{$dark-charcoal};
+    --color-border: #{$dark-border};
+
+    // Semantic colors (adjusted for dark mode)
+    --color-success: #34D399;
+    --color-warning: #FBBF24;
+    --color-error: #F87171;
+    --color-info: #60A5FA;
+
+    // Code editor colors (dark)
+    --code-bg: #1E293B;
+    --code-text: #E2E8F0;
+    --code-comment: #94A3B8;
+    --code-keyword: #38BDF8;
+    --code-function: #A78BFA;
+    --code-string: #34D399;
+    --code-number: #FB923C;
+    --code-variable: #FB7185;
+  }
+}
+
+// Force dark mode when class is applied
+html.dark-mode {
+  --color-primary: #{$dark-warm-blue};
+  --color-primary-dark: #{$dark-navy};
+  --color-accent: #{$light-sunset-gold};
+  --color-text-primary: #{$light-cloud-white};
+  --color-text-secondary: #{$dark-slate};
+  --color-bg-primary: #{$dark-surface};
+  --color-bg-surface: #{$dark-charcoal};
+  --color-border: #{$dark-border};
+
+  --color-success: #34D399;
+  --color-warning: #FBBF24;
+  --color-error: #F87171;
+  --color-info: #60A5FA;
+
+  --code-bg: #1E293B;
+  --code-text: #E2E8F0;
+  --code-comment: #94A3B8;
+  --code-keyword: #38BDF8;
+  --code-function: #A78BFA;
+  --code-string: #34D399;
+  --code-number: #FB923C;
+  --code-variable: #FB7185;
+}
+
+// Force light mode when class is applied
+html.light-mode {
+  --color-primary: #{$light-sky-blue};
+  --color-primary-dark: #{$light-deep-navy};
+  --color-accent: #{$light-sunset-gold};
+  --color-text-primary: #{$light-deep-navy};
+  --color-text-secondary: #{$light-slate-gray};
+  --color-bg-primary: #{$light-cloud-white};
+  --color-bg-surface: #{$light-surface};
+  --color-border: #{$light-border};
+
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #3B82F6;
+
+  --code-bg: #FFFFFF;
+  --code-text: #1E293B;
+  --code-comment: #64748B;
+  --code-keyword: #0369A1;
+  --code-function: #7C3AED;
+  --code-string: #059669;
+  --code-number: #DC2626;
+  --code-variable: #EA580C;
+}
+
+// Smooth theme transitions
+* {
+  transition: background-color $transition-base,
+              color $transition-base,
+              border-color $transition-base,
+              box-shadow $transition-base;
+}
+
+// Disable transitions for elements that shouldn't animate
+code, pre, input, textarea, select {
+  transition: none !important;
+}

@@ -1,0 +1,35 @@
+<div class="demo-container">
+  <!-- Code Editor Window -->
+  <div class="code-window">
+    <!-- Window Header -->
+    <div class="window-header">
+      <div class="window-dots">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+      </div>
+      <span class="window-title">two_sum.py</span>
+    </div>
+
+    <!-- Code Content -->
+    <div class="code-content">
+      <pre class="code-display"><code>{{ displayedCode() }}<span class="cursor" *ngIf="isTyping()">|</span></code></pre>
+    </div>
+  </div>
+
+  <!-- Test Results -->
+  <div class="test-results" *ngIf="testResults().length > 0">
+    <div class="results-header">Test Results</div>
+    <div class="test-list">
+      <div
+        *ngFor="let test of testResults()"
+        class="test-item"
+        [@slideIn]>
+        <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="3">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        <span class="test-text">{{ test.text }}</span>
+      </div>
+    </div>
+  </div>
+</div>

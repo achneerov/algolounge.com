@@ -55,7 +55,6 @@ import { LocalStorageService } from '../../services/local-storage.service';
 
       <!-- Tab Content -->
       <div class="tab-content-area">
-        <div class="completion-indicator" *ngIf="isCompleted">✅</div>
         <app-description
           *ngIf="activeTab === 'description'"
           [content]="description">

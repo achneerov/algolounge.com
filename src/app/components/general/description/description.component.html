@@ -1,5 +1,50 @@
 <div class="description-container">
-  <div *ngIf="content; else noContent" [innerHTML]="content"></div>
+  <div *ngIf="content; else noContent" class="parsed-content">
+    <!-- Render parsed sections -->
+    <div *ngFor="let section of parsedSections" [ngSwitch]="section.type">
+
+      <!-- Title -->
+      <h1 *ngSwitchCase="'title'" class="problem-title">{{ section.content }}</h1>
+
+      <!-- Main Description -->
+      <div *ngSwitchCase="'description'" class="problem-description" [innerHTML]="section.content"></div>
+
+      <!-- Examples Section -->
+      <div *ngSwitchCase="'examples'" class="examples-section">
+        <h3 class="section-heading">
+          Examples
+        </h3>
+        <div class="examples-grid">
+          <div *ngFor="let example of section.examples; let i = index" class="example-box">
+            <div class="example-header">Example {{ i + 1 }}</div>
+            <div class="example-content">
+              <div class="io-block" *ngIf="example.input">
+                <div class="io-label">Input:</div>
+                <div class="io-value"><code>{{ example.input }}</code></div>
+              </div>
+              <div class="io-block" *ngIf="example.output">
+                <div class="io-label">Output:</div>
+                <div class="io-value"><code>{{ example.output }}</code></div>
+              </div>
+              <div class="explanation" *ngIf="example.explanation" [innerHTML]="example.explanation"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Constraints Section -->
+      <div *ngSwitchCase="'constraints'" class="constraints-section">
+        <h3 class="section-heading">
+          Constraints
+        </h3>
+        <ul class="constraints-list" [innerHTML]="section.content"></ul>
+      </div>
+
+      <!-- Generic Section -->
+      <div *ngSwitchDefault [innerHTML]="section.content"></div>
+    </div>
+  </div>
+
   <ng-template #noContent>
     <p class="no-content">No description available.</p>
   </ng-template>

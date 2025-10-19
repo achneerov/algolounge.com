@@ -37,7 +37,7 @@ export class QuestionsComponent implements OnInit, OnDestroy {
   executionResult: ExecutionResult | null = null;
   isRunning: boolean = false;
   horizontalPanelSizes: number[] = [40, 60];
-  verticalPanelSizes: number[] = [70, 30];
+  verticalPanelSizes: number[] = [65, 35];
   currentQuestionFilename: string = "";
   isCompleted: boolean = false;
   showSuccessAnimation = signal(false);

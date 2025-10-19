@@ -45,13 +45,6 @@
   border-radius: $radius-lg;
   overflow: hidden;
   box-shadow: $shadow-sm;
-  transition: all $transition-base;
-
-  &:hover {
-    border-color: var(--color-primary);
-    box-shadow: $shadow-md;
-    transform: translateY(-2px);
-  }
 }
 
 .algorithm-step {
@@ -60,14 +53,9 @@
   gap: 1rem;
   padding: 1rem 1.25rem;
   border-bottom: 1px solid var(--color-border);
-  transition: background-color $transition-base;
 
   &:last-child {
     border-bottom: none;
-  }
-
-  &:hover {
-    background-color: var(--color-bg-primary);
   }
 }
 
@@ -122,13 +110,6 @@
   border-radius: $radius-lg;
   padding: 1rem 1.25rem;
   box-shadow: $shadow-sm;
-  transition: all $transition-base;
-
-  &:hover {
-    border-color: var(--color-primary);
-    box-shadow: $shadow-md;
-    transform: translateY(-2px);
-  }
 }
 
 .complexity-label {
@@ -169,13 +150,6 @@
   border-radius: $radius-lg;
   overflow: hidden;
   box-shadow: $shadow-sm;
-  transition: all $transition-base;
-
-  &:hover {
-    border-color: var(--color-primary);
-    box-shadow: $shadow-md;
-    transform: translateY(-2px);
-  }
 }
 
 .insight-item {
@@ -184,14 +158,9 @@
   gap: 1rem;
   padding: 1rem 1.25rem;
   border-bottom: 1px solid var(--color-border);
-  transition: background-color $transition-base;
 
   &:last-child {
     border-bottom: none;
-  }
-
-  &:hover {
-    background-color: var(--color-bg-primary);
   }
 }
 
@@ -309,13 +278,6 @@
   border-radius: $radius-lg;
   overflow: hidden;
   box-shadow: $shadow-sm;
-  transition: all $transition-base;
-
-  &:hover {
-    border-color: var(--color-primary);
-    box-shadow: $shadow-md;
-    transform: translateY(-2px);
-  }
 
   pre {
     background: transparent;

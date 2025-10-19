@@ -1,12 +1,14 @@
+@use '../../../../styles/variables' as *;
+
 :host {
   display: block;
   height: 100%;
   width: 100%;
   overflow: hidden;
-  background: var(--surface-card, #fbfcfd);
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: var(--color-bg-primary);
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+  border: 1px solid var(--color-border);
 }
 
 .ide-wrapper {
@@ -20,9 +22,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 6px 12px;
-  background: var(--surface-100, #f8f9fa);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding: $spacing-sm $spacing-md;
+  background: var(--color-bg-secondary);
+  border-bottom: 1px solid var(--color-border);
   min-height: 24px;
   box-sizing: border-box;
 }
@@ -38,9 +40,9 @@
 }
 
 .taskbar-right {
-  margin-left: 8px;
+  margin-left: $spacing-sm;
   display: flex;
-  gap: 8px;
+  gap: $spacing-sm;
 }
 
 .language-dropdown {
@@ -142,20 +144,20 @@
 }
 
 .run-btn {
-  background: #22c55e;
-  border: 1px solid #22c55e;
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary);
   color: white;
-  font-size: 0.875rem;
-  font-weight: 500;
-  padding: 6px 14px;
-  border-radius: 6px;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $radius-md;
   cursor: pointer;
   outline: none;
   display: flex;
   align-items: center;
-  gap: 6px;
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  gap: $spacing-sm;
+  transition: all $transition-base;
+  box-shadow: $shadow-sm;
 
   svg {
     width: 14px;
@@ -169,30 +171,30 @@
   }
 
   &:enabled:hover {
-    background: #16a34a;
-    border-color: #16a34a;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    box-shadow: $shadow-md;
     transform: translateY(-1px);
   }
 
   &:disabled {
     opacity: 0.5;
-    background: #9ca3af;
-    border-color: #9ca3af;
+    background: var(--color-text-secondary);
+    border-color: var(--color-text-secondary);
     color: white;
     cursor: not-allowed;
     box-shadow: none;
   }
 
   &:focus {
-    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
   }
 
   &:active {
-    background: #15803d;
-    border-color: #15803d;
+    background: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
     transform: translateY(0);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: $shadow-sm;
   }
 }
 
@@ -201,163 +203,14 @@
   width: 100%;
   overflow: auto;
 
-  // Remove outline from CodeMirror editor
+  // CodeMirror editor styling
   ::ng-deep .cm-editor {
     outline: none !important;
-  }
-}
-
-// Dark mode overrides
-:host-context(.dark-mode) {
-  background: var(--surface-card, #2a2a2a) !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-:host-context(.dark-mode) .taskbar {
-  background: var(--surface-200, #2d2d2d) !important;
-  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-:host-context(.dark-mode) .language-dropdown {
-  border-color: rgba(255, 255, 255, 0.15) !important;
-  color: var(--text-color, #ffffff) !important;
-  
-  &:focus {
-    border-color: rgba(255, 255, 255, 0.3) !important;
-  }
-}
-
-:host-context(.dark-mode) .reset-btn {
-  border-color: rgba(255, 255, 255, 0.1) !important;
-
-  svg {
-    color: #9ca3af;
+    height: 100%;
   }
 
-  &:enabled:hover {
-    background: rgba(255, 255, 255, 0.05) !important;
-    border-color: rgba(255, 255, 255, 0.15) !important;
-
-    svg {
-      color: #d1d5db;
-    }
-  }
-
-  ::ng-deep .p-button {
-    background: transparent !important;
-    background-color: transparent !important;
-    border: none !important;
-    color: var(--text-color, #ffffff) !important;
-
-    &:enabled:hover {
-      background: rgba(255, 255, 255, 0.05) !important;
-      background-color: rgba(255, 255, 255, 0.05) !important;
-      border: none !important;
-    }
-
-    &:active {
-      background: rgba(255, 255, 255, 0.08) !important;
-      background-color: rgba(255, 255, 255, 0.08) !important;
-    }
-  }
-}
-
-:host-context(.dark-mode) .run-btn {
-  background: #22c55e;
-  border-color: #22c55e;
-  color: white;
-  
-  &:enabled:hover {
-    background: #16a34a;
-    border-color: #16a34a;
-  }
-  
-  &:disabled {
-    background: var(--surface-600, #555555);
-    border-color: var(--surface-600, #555555);
-    color: var(--text-color-secondary, #cccccc);
-  }
-  
-  &:active {
-    background: #16a34a;
-  }
-}
-
-// Let CodeMirror handle its own theming - no overrides needed
-
-@media (prefers-color-scheme: dark) {
-  :host {
-    background: var(--surface-card, #2a2a2a) !important;
-    border-color: rgba(255, 255, 255, 0.1) !important;
-  }
-  
-  .taskbar {
-    background: var(--surface-200, #2d2d2d) !important;
-    border-bottom-color: rgba(255, 255, 255, 0.1) !important;
-  }
-  
-  .language-dropdown {
-    border-color: rgba(255, 255, 255, 0.15) !important;
-    color: var(--text-color, #ffffff) !important;
-    
-    &:focus {
-      border-color: rgba(255, 255, 255, 0.3) !important;
-    }
-  }
-  
-  .reset-btn {
-    border-color: rgba(255, 255, 255, 0.1) !important;
-
-    svg {
-      color: #9ca3af;
-    }
-
-    &:enabled:hover {
-      background: rgba(255, 255, 255, 0.05) !important;
-      border-color: rgba(255, 255, 255, 0.15) !important;
-
-      svg {
-        color: #d1d5db;
-      }
-    }
-
-    ::ng-deep .p-button {
-      background: transparent !important;
-      background-color: transparent !important;
-      border: none !important;
-      color: var(--text-color, #ffffff) !important;
-
-      &:enabled:hover {
-        background: rgba(255, 255, 255, 0.05) !important;
-        background-color: rgba(255, 255, 255, 0.05) !important;
-        border: none !important;
-      }
-
-      &:active {
-        background: rgba(255, 255, 255, 0.08) !important;
-        background-color: rgba(255, 255, 255, 0.08) !important;
-      }
-    }
-  }
-  
-  .run-btn {
-    background: #22c55e;
-    border-color: #22c55e;
-    color: white;
-    
-    &:enabled:hover {
-      background: #16a34a;
-      border-color: #16a34a;
-    }
-    
-    &:disabled {
-      background: var(--surface-600, #555555);
-      border-color: var(--surface-600, #555555);
-      color: var(--text-color-secondary, #cccccc);
-    }
-    
-    &:active {
-      background: #16a34a;
-    }
+  // Ensure proper background colors
+  ::ng-deep .cm-scroller {
+    overflow: auto;
   }
 }

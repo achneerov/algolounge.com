@@ -74,15 +74,15 @@ import { LocalStorageService } from '../../services/local-storage.service';
       flex-direction: column;
       height: 100%;
       width: 100%;
-      background: var(--surface-card, #ffffff);
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-      border: 1px solid rgba(0, 0, 0, 0.1);
+      background: var(--color-bg-primary);
+      border-radius: 0.75rem;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--color-border);
     }
 
     .search-section {
-      padding: 8px 16px;
-      margin-right: 16px;
+      padding: 0.5rem 1rem;
+      margin-right: 1rem;
       display: flex;
       align-items: center;
       flex-shrink: 0;
@@ -98,25 +98,25 @@ import { LocalStorageService } from '../../services/local-storage.service';
       justify-content: space-between;
       align-items: center;
       width: 100%;
-      padding: 4px 0;
+      padding: 0.25rem 0;
     }
 
     .search-title {
       flex: 1;
-      font-size: 14px;
+      font-size: 0.875rem;
     }
 
     .completion-status {
-      margin-left: 8px;
-      font-size: 12px;
+      margin-left: 0.5rem;
+      font-size: 0.75rem;
     }
 
     .tab-navigation {
       display: flex;
       align-items: center;
-      background-color: #f8f9fa;
-      border-radius: 7px 7px 0px 0px;
-      border-bottom: 1px solid #e1e5e9;
+      background-color: var(--color-bg-secondary);
+      border-radius: 0.75rem 0.75rem 0 0;
+      border-bottom: 1px solid var(--color-border);
       position: relative;
       z-index: 10;
       flex-shrink: 0;
@@ -125,117 +125,56 @@ import { LocalStorageService } from '../../services/local-storage.service';
       overflow-y: hidden;
       white-space: nowrap;
       min-width: 0;
-      scrollbar-width: none; /* Firefox */
-      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none;
+      -ms-overflow-style: none;
     }
 
     .tab-navigation::-webkit-scrollbar {
-      display: none; /* Chrome, Safari and Opera */
+      display: none;
     }
 
     .tab-button {
       background: none;
       border: none;
-      padding: 14px 20px;
+      padding: 0.875rem 1.25rem;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 0.875rem;
       font-weight: 500;
-      color: #6c757d;
+      color: var(--color-text-secondary);
       border-bottom: 3px solid transparent;
-      transition: all 0.2s ease;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       flex-shrink: 0;
       white-space: nowrap;
 
       &:hover {
-        color: #495057;
-        background-color: #e9ecef;
+        color: var(--color-text-primary);
+        background-color: var(--color-bg-surface);
       }
 
       &.active {
-        color: #007bff;
-        border-bottom-color: #007bff;
-        background-color: white;
+        color: var(--color-primary);
+        border-bottom-color: var(--color-primary);
+        background-color: var(--color-bg-primary);
       }
     }
 
     .completion-indicator {
       position: absolute;
-      top: 16px;
-      right: 16px;
-      font-size: 16px;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1rem;
       z-index: 100;
     }
 
     .tab-content-area {
       flex: 1;
       overflow: auto;
-      background-color: white;
+      background-color: var(--color-bg-primary);
       position: relative;
       z-index: 1;
-      border-radius: 0 0 7px 7px;
+      border-radius: 0 0 0.75rem 0.75rem;
     }
 
-    /* Dark mode support */
-    @media (prefers-color-scheme: dark) {
-      .container {
-        background: var(--surface-card, #1f1f1f);
-        border-color: rgba(255, 255, 255, 0.1);
-      }
-
-      .tab-navigation {
-        background-color: var(--surface-200, #2d2d2d);
-        border-bottom-color: var(--surface-border, #555);
-      }
-
-
-      .tab-button {
-        color: var(--text-color-secondary, #cccccc);
-
-        &:hover {
-          color: var(--text-color, #ffffff);
-          background-color: var(--surface-300, #444);
-        }
-
-        &.active {
-          color: var(--primary-300, #66ccff);
-          border-bottom-color: var(--primary-300, #66ccff);
-          background-color: var(--surface-card, #1f1f1f);
-        }
-      }
-
-      .tab-content-area {
-        background-color: var(--surface-card, #1f1f1f);
-      }
-    }
-
-    :host-context(.dark-mode) .container {
-      background: var(--surface-card, #1f1f1f) !important;
-      border-color: rgba(255, 255, 255, 0.1) !important;
-    }
-
-    :host-context(.dark-mode) .tab-navigation {
-      background-color: var(--surface-200, #2d2d2d) !important;
-      border-bottom-color: var(--surface-border, #555) !important;
-    }
-
-    :host-context(.dark-mode) .tab-button {
-      color: var(--text-color-secondary, #cccccc) !important;
-    }
-
-    :host-context(.dark-mode) .tab-button:hover {
-      color: var(--text-color, #ffffff) !important;
-      background-color: var(--surface-300, #444) !important;
-    }
-
-    :host-context(.dark-mode) .tab-button.active {
-      color: var(--primary-300, #66ccff) !important;
-      border-bottom-color: var(--primary-300, #66ccff) !important;
-      background-color: var(--surface-card, #1f1f1f) !important;
-    }
-
-    :host-context(.dark-mode) .tab-content-area {
-      background-color: var(--surface-card, #1f1f1f) !important;
-    }
   `]
 })
 export class ContentTabsComponent implements OnInit {

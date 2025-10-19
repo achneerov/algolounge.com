@@ -127,6 +127,8 @@ import { LocalStorageService } from '../../services/local-storage.service';
       min-width: 0;
       scrollbar-width: none;
       -ms-overflow-style: none;
+      height: 56px;
+      box-sizing: border-box;
     }
 
     .tab-navigation::-webkit-scrollbar {

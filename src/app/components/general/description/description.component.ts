@@ -21,6 +21,7 @@ interface ParsedSection {
 })
 export class DescriptionComponent implements OnChanges {
   @Input() content: string = '';
+  @Input() isCompleted: boolean = false;
   parsedSections: ParsedSection[] = [];
 
   ngOnChanges(changes: SimpleChanges): void {

@@ -4,7 +4,10 @@
     <div *ngFor="let section of parsedSections" [ngSwitch]="section.type">
 
       <!-- Title -->
-      <h1 *ngSwitchCase="'title'" class="problem-title">{{ section.content }}</h1>
+      <div *ngSwitchCase="'title'" class="title-section">
+        <h1 class="problem-title">{{ section.content }}</h1>
+        <span class="completion-badge" *ngIf="isCompleted">Completed</span>
+      </div>
 
       <!-- Main Description -->
       <div *ngSwitchCase="'description'" class="problem-description" [innerHTML]="section.content"></div>
@@ -37,7 +40,7 @@
         <h3 class="section-heading">
           Constraints
         </h3>
-        <div class="constraints-container">
+        <div class="constraints-container" *ngIf="section.constraints && section.constraints.length > 0">
           <div *ngFor="let constraint of section.constraints" class="constraint-item">
             <div class="constraint-bullet"></div>
             <div class="constraint-text" [innerHTML]="constraint"></div>

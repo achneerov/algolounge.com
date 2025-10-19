@@ -36,6 +36,45 @@ interface GetInterruptBufferMessage {
 
 type WorkerMessage = ExecuteMessage | InitMessage | InterruptMessage | GetInterruptBufferMessage;
 
+/**
+ * Parse Python error and extract clean, user-friendly error message
+ * Removes Pyodide internals and extracts line number from user code
+ */
+function parseErrorMessage(errorMessage: string): string {
+  // Check if this is a Python traceback
+  if (!errorMessage.includes('Traceback') && !errorMessage.includes('File')) {
+    return errorMessage;
+  }
+
+  // Extract the last line which contains the actual error
+  const lines = errorMessage.split('\n').filter(line => line.trim());
+  const errorLine = lines[lines.length - 1] || errorMessage;
+
+  // Try to extract line number from user code (not from <exec> or pyodide internals)
+  let lineNumber: number | null = null;
+  for (const line of lines) {
+    // Look for "File <exec>, line X"
+    const execMatch = line.match(/File.*<exec>.*line (\d+)/);
+    if (execMatch) {
+      lineNumber = parseInt(execMatch[1]);
+      break;
+    }
+  }
+
+  // Clean up the error message
+  let cleanError = errorLine.trim();
+
+  // Remove common Python error prefixes if they exist
+  cleanError = cleanError.replace(/^(Error:|Exception:)\s*/, '');
+
+  // Format the final error message
+  if (lineNumber) {
+    return `Line ${lineNumber}: ${cleanError}`;
+  }
+
+  return cleanError;
+}
+
 async function initPyodide(): Promise<PyodideInterface> {
   if (pyodide) {
     return pyodide;
@@ -144,13 +183,14 @@ _test_result
           output: testOutput
         });
       } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : String(error);
         testResults.push({
           id: testCase.id,
           input: testCase.input,
           expectedOutput: testCase.output,
           actualOutput: null,
           passed: false,
-          error: error instanceof Error ? error.message : String(error),
+          error: parseErrorMessage(errorMessage),
           output: testOutput
         });
       } finally {
@@ -161,13 +201,14 @@ _test_result
 
   } catch (error) {
     // If there's an error in the code itself
+    const errorMessage = error instanceof Error ? error.message : String(error);
     testResults.push({
       id: 1,
       input: {},
       expectedOutput: null,
       actualOutput: null,
       passed: false,
-      error: error instanceof Error ? error.message : String(error),
+      error: parseErrorMessage(errorMessage),
       output: []
     });
   }

@@ -1,35 +1,58 @@
 <div class="console-container" *ngIf="result; else emptyConsole">
-  <!-- Summary at top -->
-  <div class="summary">
-    <div class="summary-line">
-      Execution completed in {{ result.executionTime }}ms
-    </div>
-    <div class="summary-line">
-      {{ result.passedCount }}/{{ result.totalCount }} test cases passed
+  <!-- Enhanced Summary Section -->
+  <div class="summary-header">
+    <div class="summary-stats">
+      <div class="stat-box time">
+        <div class="stat-value">{{ result.executionTime }}<span class="stat-unit">ms</span></div>
+        <div class="stat-label">EXECUTION TIME</div>
+      </div>
+      <div class="stat-box tests" [ngClass]="{ 'all-passed': result.passedCount === result.totalCount, 'some-failed': result.passedCount < result.totalCount }">
+        <div class="stat-value">{{ result.passedCount }}/{{ result.totalCount }}</div>
+        <div class="stat-label">TESTS PASSED</div>
+      </div>
     </div>
   </div>
 
-  <!-- Test Results -->
-  <div class="test-results">
-    <div 
-      *ngFor="let testResult of result.testResults" 
-      class="test-case"
-      [ngClass]="{ 'passed': testResult.passed, 'failed': !testResult.passed }"
+  <!-- Compact Test Results -->
+  <div class="test-results-compact">
+    <div
+      *ngFor="let testResult of result.testResults"
+      class="test-row"
     >
-      <div class="test-header">Test Case {{ testResult.id }}</div>
-      <div class="test-input">Input: {{ formatValue(testResult.input) }}</div>
-      <div class="test-expected">Expected: {{ formatValue(testResult.expectedOutput) }}</div>
-      <div class="test-actual">
-        <span *ngIf="!testResult.error">Actual: {{ formatValue(testResult.actualOutput) }}</span>
-        <span *ngIf="testResult.error" class="error">Error: {{ testResult.error }}</span>
-      </div>
-      <div *ngIf="testResult.output && testResult.output.length > 0" class="test-output">
-        <div class="output-label">Output:</div>
-        <div *ngFor="let line of testResult.output" class="output-line">{{ line }}</div>
-      </div>
-      <div class="test-status">
-        <span *ngIf="testResult.passed" class="pass-icon">✓ PASS</span>
-        <span *ngIf="!testResult.passed" class="fail-icon">✗ FAIL</span>
+      <div class="test-content">
+        <div class="test-header-compact">
+          <span class="test-number">Test {{ testResult.id }}</span>
+          <span class="test-badge" [ngClass]="{ 'badge-pass': testResult.passed, 'badge-fail': !testResult.passed }">
+            {{ testResult.passed ? 'PASS' : 'FAIL' }}
+          </span>
+        </div>
+
+        <div class="test-details" *ngIf="!testResult.error">
+          <div class="detail-row">
+            <span class="detail-label">INPUT:</span>
+            <code class="detail-value">{{ formatValue(testResult.input) }}</code>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">EXPECTED:</span>
+            <code class="detail-value expected">{{ formatValue(testResult.expectedOutput) }}</code>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">ACTUAL:</span>
+            <code class="detail-value actual">{{ formatValue(testResult.actualOutput) }}</code>
+          </div>
+        </div>
+
+        <div class="error-message" *ngIf="testResult.error">
+          <div class="error-icon">⚠</div>
+          <div class="error-text">{{ testResult.error }}</div>
+        </div>
+
+        <div *ngIf="testResult.output && testResult.output.length > 0" class="console-output">
+          <div class="output-header">CONSOLE OUTPUT:</div>
+          <div class="output-lines">
+            <div *ngFor="let line of testResult.output" class="output-line">{{ line }}</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

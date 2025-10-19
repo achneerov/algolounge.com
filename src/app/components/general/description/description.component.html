@@ -37,7 +37,12 @@
         <h3 class="section-heading">
           Constraints
         </h3>
-        <ul class="constraints-list" [innerHTML]="section.content"></ul>
+        <div class="constraints-container">
+          <div *ngFor="let constraint of section.constraints" class="constraint-item">
+            <div class="constraint-bullet"></div>
+            <div class="constraint-text" [innerHTML]="constraint"></div>
+          </div>
+        </div>
       </div>
 
       <!-- Generic Section -->

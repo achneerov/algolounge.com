@@ -9,6 +9,7 @@ interface ParsedSection {
     output?: string;
     explanation?: string;
   }>;
+  constraints?: string[];
 }
 
 @Component({
@@ -180,9 +181,17 @@ export class DescriptionComponent implements OnChanges {
 
     if (!listElement) return null;
 
+    const constraints: string[] = [];
+    const items = Array.from(listElement.querySelectorAll('li'));
+
+    items.forEach(item => {
+      constraints.push(item.innerHTML.trim());
+    });
+
     return {
       type: 'constraints',
-      content: listElement.outerHTML
+      content: '',
+      constraints
     };
   }
 }

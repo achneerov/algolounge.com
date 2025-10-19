@@ -20,12 +20,12 @@ html, body {
   html {
     color-scheme: dark;
   }
-  
+
   html, body {
     background-color: var(--surface-ground, #1a1a1a);
     color: var(--text-color, #ffffff);
   }
-  
+
   html:not(.light-mode) {
     &.dark-mode, & {
       .dark-mode {
@@ -35,7 +35,7 @@ html, body {
   }
 }
 
-html.dark-mode, 
+html.dark-mode,
 html:not(.light-mode) {
   background-color: var(--surface-ground, #1a1a1a);
   color: var(--text-color, #ffffff);
@@ -45,7 +45,7 @@ html:not(.light-mode) {
 html.light-mode {
   background-color: var(--surface-ground, #ffffff);
   color: var(--text-color, #000000);
-  
+
   .dark-mode {
     display: none;
   }
@@ -176,12 +176,13 @@ body > .p-autocomplete-panel {
     color: var(--color-text-secondary);
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     margin-left: 0.25rem;
+    height: 2rem;
 
     &:enabled:hover {
       background: var(--color-bg-primary);
       border-color: var(--color-primary);
       color: var(--color-primary);
-      transform: translateY(-2px);
+      /*transform: translateY(-2px);*/
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
 

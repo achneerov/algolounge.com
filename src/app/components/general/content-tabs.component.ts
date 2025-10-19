@@ -134,27 +134,35 @@ import { LocalStorageService } from '../../services/local-storage.service';
     }
 
     .tab-button {
-      background: none;
-      border: none;
-      padding: 0.875rem 1.25rem;
+      background: transparent;
+      border: 2px solid transparent;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
       cursor: pointer;
       font-size: 0.875rem;
       font-weight: 500;
       color: var(--color-text-secondary);
-      border-bottom: 3px solid transparent;
       transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       flex-shrink: 0;
       white-space: nowrap;
+      margin: 0.5rem 0.25rem;
 
       &:hover {
-        color: var(--color-text-primary);
-        background-color: var(--color-bg-surface);
+        background: var(--color-bg-primary);
+        border-color: var(--color-primary);
+        color: var(--color-primary);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
       }
 
       &.active {
         color: var(--color-primary);
-        border-bottom-color: var(--color-primary);
+        border-color: var(--color-primary);
         background-color: var(--color-bg-primary);
+      }
+
+      &:active {
+        transform: translateY(0);
       }
     }
 

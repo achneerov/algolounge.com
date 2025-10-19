@@ -60,72 +60,29 @@
 }
 
 .reset-btn {
-  width: 32px !important;
-  height: 32px !important;
-  padding: 0 !important;
-  border-radius: 6px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  min-width: unset !important;
-  background: transparent !important;
-  border: 1px solid rgba(0, 0, 0, 0.1) !important;
-  transition: all 0.2s ease !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 2px solid var(--color-border);
+  border-radius: $radius-md;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
+  color: var(--color-text-secondary);
+  transition: all $transition-base;
+  padding: 0;
 
-  svg {
-    width: 16px;
-    height: 16px;
-    color: #6b7280;
+  &:hover {
+    background: var(--color-bg-primary);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
   }
 
-  ::ng-deep .p-button {
-    background: transparent !important;
-    background-color: transparent !important;
-    border: none !important;
-    color: var(--text-color, #333333) !important;
-    box-shadow: none !important;
-    width: 32px !important;
-    height: 32px !important;
-    padding: 0 !important;
-    min-width: unset !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-
-    &:enabled:hover {
-      background: #f3f4f6 !important;
-      background-color: #f3f4f6 !important;
-      border: none !important;
-      box-shadow: none !important;
-    }
-
-    &:disabled {
-      opacity: 0.4 !important;
-      background: transparent !important;
-      background-color: transparent !important;
-      cursor: not-allowed !important;
-    }
-
-    &:focus {
-      box-shadow: 0 0 0 2px rgba(107, 114, 128, 0.2) !important;
-      outline: none !important;
-    }
-
-    &:active {
-      background: #e5e7eb !important;
-      background-color: #e5e7eb !important;
-      transform: scale(0.95);
-    }
-  }
-
-  &:enabled:hover {
-    background: #f3f4f6 !important;
-    border-color: rgba(0, 0, 0, 0.15) !important;
-
-    svg {
-      color: #374151;
-    }
+  &:active {
+    transform: translateY(0);
   }
 
   &:disabled {
@@ -133,19 +90,20 @@
     cursor: not-allowed;
   }
 
-  &:focus {
-    box-shadow: 0 0 0 2px rgba(107, 114, 128, 0.2);
-    outline: none;
+  .reset-icon {
+    width: 20px;
+    height: 20px;
+    transition: transform $transition-base;
   }
 
-  &:active {
-    transform: scale(0.95);
+  &:hover .reset-icon {
+    transform: rotate(360deg);
   }
 }
 
 .run-btn {
   background: var(--color-primary);
-  border: 1px solid var(--color-primary);
+  border: 2px solid var(--color-primary);
   color: white;
   font-size: $font-size-sm;
   font-weight: 600;
@@ -157,7 +115,6 @@
   align-items: center;
   gap: $spacing-sm;
   transition: all $transition-base;
-  box-shadow: $shadow-sm;
 
   svg {
     width: 14px;
@@ -174,7 +131,7 @@
     background: var(--color-primary-dark);
     border-color: var(--color-primary-dark);
     box-shadow: $shadow-md;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
   }
 
   &:disabled {
@@ -190,7 +147,7 @@
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
   }
 
-  &:active {
+  &:active:not(:disabled) {
     background: var(--color-primary-dark);
     border-color: var(--color-primary-dark);
     transform: translateY(0);

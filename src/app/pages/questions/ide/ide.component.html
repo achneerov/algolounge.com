@@ -4,14 +4,13 @@
     </div>
     <div class="taskbar-right">
       <button
-        pButton
         type="button"
         (click)="resetTemplate()"
         [disabled]="!template"
         class="reset-btn"
         title="Reset Code"
       >
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="reset-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
           <path d="M21 3v5h-5" />
           <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
@@ -24,8 +23,8 @@
         [disabled]="isRunning"
         class="run-btn"
       >
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="5 3 19 12 5 21 5 3" />
+        <svg class="airplane-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -0.5 17 17" fill="currentColor">
+          <path d="M17,1.042 L11.436,14.954 L7.958,11.477 L8.653,13.563 L7.03,14.958 L7.03,11.563 L14.984,3.375 L6.047,9.969 L1,8.694 L17,1.042 Z"/>
         </svg>
         <span>{{ isRunning ? 'Running...' : 'Run' }}</span>
       </button>

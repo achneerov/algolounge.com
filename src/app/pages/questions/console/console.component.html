@@ -61,7 +61,11 @@
 
 <ng-template #emptyConsole>
   <div class="console-container empty">
-    <div class="empty-message">
+    <div *ngIf="isRunning" class="running-state">
+      <div class="spinner"></div>
+      <div class="running-message">Running your code...</div>
+    </div>
+    <div *ngIf="!isRunning" class="empty-message">
       Click Run to execute your code and see test results here.
     </div>
   </div>

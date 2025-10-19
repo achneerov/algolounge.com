@@ -27,6 +27,7 @@ export interface ExecutionResult {
 })
 export class ConsoleComponent {
   @Input() result: ExecutionResult | null = null;
+  @Input() isRunning: boolean = false;
 
   formatValue(value: any): string {
     if (Array.isArray(value)) {

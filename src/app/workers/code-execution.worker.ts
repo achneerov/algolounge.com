@@ -84,24 +84,7 @@ async function executeCode(
 
   try {
     // Execute the user's code
-    try {
-      pyodideInstance.runPython(code);
-    } catch (error) {
-      // Handle syntax errors more gracefully
-      const errorMsg = error instanceof Error ? error.message : String(error);
-      if (errorMsg.includes('SyntaxError') || errorMsg.includes('IndentationError')) {
-        // Extract just the error type and message
-        const match = errorMsg.match(/(SyntaxError|IndentationError): (.+?)(?:\n|$)/);
-        if (match) {
-          throw new Error(`${match[1]}: ${match[2]}`);
-        }
-        // Fallback to showing the last line which usually has the error
-        const lines = errorMsg.split('\n').filter(line => line.trim());
-        const lastLine = lines[lines.length - 1];
-        throw new Error(lastLine);
-      }
-      throw error;
-    }
+    pyodideInstance.runPython(code);
 
     // Load required prepare and verify functions
     pyodideInstance.runPython(prepareCode);

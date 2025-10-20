@@ -1,0 +1,165 @@
+{
+  "filename": "burst-balloons",
+  "title": "Burst Balloons",
+  "keywords": [
+    "burst",
+    "balloons",
+    "leetcode",
+    "312",
+    "given",
+    "array",
+    "integers",
+    "nums",
+    "size",
+    "ith"
+  ],
+  "description": "<h2>Burst Balloons</h2><p>You are given <code>n</code> balloons, indexed from <code>0</code> to <code>n - 1</code>. Each balloon is painted with a number on it represented by array <code>nums</code>. You are asked to burst all the balloons.</p><p>If you burst the <code>i-th</code> balloon, you will get <code>nums[i - 1] * nums[i] * nums[i + 1]</code> coins. If <code>i - 1</code> or <code>i + 1</code> goes out of bounds of the array, then treat it as if there is a balloon with a <code>1</code> painted on it.</p><p>Return the maximum coins you can collect by bursting the balloons wisely.</p><h3>Examples</h3><p><strong>Example 1:</strong></p><ul><li><strong>Input:</strong> nums = [3,1,5,8]</li><li><strong>Output:</strong> 167</li><li><strong>Explanation:</strong><br>nums = [3,1,5,8] \u2192 [3,5,8] \u2192 [3,8] \u2192 [8] \u2192 []<br>coins = 3*1*5 + 3*5*8 + 1*3*8 + 1*8*1 = 15 + 120 + 24 + 8 = 167</li></ul><p><strong>Example 2:</strong></p><ul><li><strong>Input:</strong> nums = [1,5]</li><li><strong>Output:</strong> 10</li><li><strong>Explanation:</strong><br>nums = [1,5] \u2192 [5] \u2192 []<br>coins = 1*1*5 + 1*5*1 = 5 + 5 = 10</li></ul><h3>Constraints</h3><ul><li><code>n == nums.length</code></li><li><code>1 <= n <= 300</code></li><li><code>0 <= nums[i] <= 100</code></li></ul>",
+  "entry_function": "burstBalloons",
+  "template": "def burstBalloons(nums):\n    ",
+  "solution_text": "<h3>Burst Balloons</h3><p><strong>Algorithm:</strong></p><ol><li>Use dynamic programming with interval DP approach</li><li>Add virtual balloons with value 1 at both ends</li><li>For each interval [i,j], try every possible last balloon k to burst</li><li>dp[i][j] = max coins from bursting all balloons between i and j (exclusive)</li><li>The answer is dp[0][n+1] where n is the original array length</li></ol><p><strong>Time Complexity:</strong> O(n\u00b3) - three nested loops for DP</p><p><strong>Space Complexity:</strong> O(n\u00b2) - 2D DP table</p><p><strong>Key Insights:</strong></p><ul><li>Think backwards: which balloon to burst last in each interval</li><li>Add dummy balloons to handle boundary conditions</li><li>Interval DP pattern: combine smaller solved subproblems</li></ul>",
+  "solution_code": "def burstBalloons(nums):\n    # Add dummy balloons with value 1 at both ends\n    balloons = [1] + nums + [1]\n    n = len(balloons)\n    \n    # dp[i][j] = max coins from bursting balloons between i and j (exclusive)\n    dp = [[0] * n for _ in range(n)]\n    \n    # Length of the interval\n    for length in range(2, n):\n        # Start position\n        for i in range(n - length):\n            j = i + length\n            \n            # Try every balloon k as the last one to burst in interval [i,j]\n            for k in range(i + 1, j):\n                # Coins from bursting balloon k last\n                coins = balloons[i] * balloons[k] * balloons[j]\n                # Total coins = coins from k + left subproblem + right subproblem\n                dp[i][j] = max(dp[i][j], dp[i][k] + coins + dp[k][j])\n    \n    # Return max coins from the entire array (excluding dummy balloons)\n    return dp[0][n - 1]",
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [
+          3,
+          1,
+          5,
+          8
+        ]
+      },
+      "output": 167
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [
+          1,
+          5
+        ]
+      },
+      "output": 10
+    },
+    {
+      "id": 3,
+      "input": {
+        "nums": [
+          1
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 4,
+      "input": {
+        "nums": [
+          2,
+          4,
+          8
+        ]
+      },
+      "output": 88
+    },
+    {
+      "id": 5,
+      "input": {
+        "nums": [
+          5,
+          10
+        ]
+      },
+      "output": 60
+    },
+    {
+      "id": 6,
+      "input": {
+        "nums": [
+          9,
+          76,
+          64,
+          21
+        ]
+      },
+      "output": 116718
+    },
+    {
+      "id": 7,
+      "input": {
+        "nums": [
+          7,
+          9,
+          8,
+          0,
+          2
+        ]
+      },
+      "output": 637
+    },
+    {
+      "id": 8,
+      "input": {
+        "nums": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "output": 110
+    },
+    {
+      "id": 9,
+      "input": {
+        "nums": [
+          100,
+          1,
+          1,
+          100
+        ]
+      },
+      "output": 20200
+    },
+    {
+      "id": 10,
+      "input": {
+        "nums": [
+          6,
+          2,
+          7,
+          4,
+          3,
+          5
+        ]
+      },
+      "output": 530
+    },
+    {
+      "id": 11,
+      "input": {
+        "nums": [
+          50,
+          60,
+          70
+        ]
+      },
+      "output": 213570
+    },
+    {
+      "id": 12,
+      "input": {
+        "nums": [
+          15,
+          25,
+          35,
+          45
+        ]
+      },
+      "output": 56970
+    }
+  ],
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['nums'],)",
+  "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    return [passed, output_str]"
+}

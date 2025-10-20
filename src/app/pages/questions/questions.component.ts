@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from "@angular/core";
+import { Component, OnInit, OnDestroy, ViewChild, signal } from "@angular/core";
 import { IdeComponent } from "./ide/ide.component";
 import { ConsoleComponent, ExecutionResult } from "./console/console.component";
 import { ContentTabsComponent } from "../../components/general/content-tabs.component";
@@ -9,6 +9,7 @@ import { HttpClient } from "@angular/common/http";
 import { NotFoundComponent } from "../not-found/not-found.component";
 import { CodeExecutionService } from "../../services/code-execution.service";
 import { LocalStorageService } from "../../services/local-storage.service";
+import { SuccessAnimationComponent } from "../../components/questions/success-animation/success-animation.component";
 
 @Component({
   selector: "app-questions",
@@ -20,13 +21,14 @@ import { LocalStorageService } from "../../services/local-storage.service";
     ContentTabsComponent,
     SplitterModule,
     NotFoundComponent,
+    SuccessAnimationComponent,
   ],
   templateUrl: "./questions.component.html",
   styleUrl: "./questions.component.scss",
 })
 export class QuestionsComponent implements OnInit, OnDestroy {
   @ViewChild(IdeComponent) ideComponent!: IdeComponent;
-  
+
   description: string = "";
   solutionText: string = "";
   solutionCode: string = "";
@@ -35,9 +37,10 @@ export class QuestionsComponent implements OnInit, OnDestroy {
   executionResult: ExecutionResult | null = null;
   isRunning: boolean = false;
   horizontalPanelSizes: number[] = [40, 60];
-  verticalPanelSizes: number[] = [70, 30];
+  verticalPanelSizes: number[] = [65, 35];
   currentQuestionFilename: string = "";
   isCompleted: boolean = false;
+  showSuccessAnimation = signal(false);
 
   constructor(
     private router: Router,
@@ -94,10 +97,16 @@ export class QuestionsComponent implements OnInit, OnDestroy {
 
       // Check if all tests passed and mark as completed
       if (this.executionResult.passedCount === this.executionResult.totalCount && this.executionResult.totalCount > 0) {
+        // Mark as completed if not already
         if (!this.isCompleted) {
           this.localStorageService.addCompletedQuestion(this.currentQuestionFilename);
           this.isCompleted = true;
         }
+        // Trigger success animation every time all tests pass
+        console.log('All tests passed! Triggering success animation');
+        this.showSuccessAnimation.set(true);
+      } else {
+        console.log('Not all tests passed:', this.executionResult.passedCount, '/', this.executionResult.totalCount);
       }
     } catch (error) {
       console.error('Execution error:', error);
@@ -168,5 +177,9 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     } catch (error) {
       console.warn('Failed to preload Pyodide:', error);
     }
+  }
+
+  onSuccessAnimationComplete() {
+    this.showSuccessAnimation.set(false);
   }
 }

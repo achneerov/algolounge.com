@@ -1,30 +1,62 @@
 <div class="solution-container">
-  <div *ngIf="solutionText || solutionCode; else noContent">
-    
-    <!-- Solution Text Section -->
-    <div *ngIf="solutionText" class="solution-text">
-      <h3>Approach</h3>
-      <div [innerHTML]="solutionText"></div>
+  <div *ngIf="solutionText || solutionCode; else noContent" class="parsed-content">
+
+    <!-- Render parsed sections -->
+    <div *ngFor="let section of parsedSections" [ngSwitch]="section.type">
+
+      <!-- Algorithm Section -->
+      <div *ngSwitchCase="'algorithm'" class="algorithm-section">
+        <h3 class="section-heading">{{ section.title }}</h3>
+        <div class="algorithm-container">
+          <div *ngFor="let item of section.items; let i = index" class="algorithm-step">
+            <div class="step-number">{{ i + 1 }}</div>
+            <div class="step-content" [innerHTML]="item"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Complexity Section -->
+      <div *ngSwitchCase="'complexity'" class="complexity-section">
+        <div class="complexity-box">
+          <div class="complexity-label">{{ section.title }}</div>
+          <div class="complexity-value" [innerHTML]="section.content"></div>
+        </div>
+      </div>
+
+      <!-- Key Insights Section -->
+      <div *ngSwitchCase="'insights'" class="insights-section">
+        <h3 class="section-heading">{{ section.title }}</h3>
+        <div class="insights-container">
+          <div *ngFor="let item of section.items" class="insight-item">
+            <div class="insight-bullet"></div>
+            <div class="insight-text" [innerHTML]="item"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Generic Section (old format) -->
+      <div *ngSwitchDefault class="generic-section" [innerHTML]="section.content"></div>
     </div>
-    
+
     <!-- Solution Code Section -->
     <div *ngIf="solutionCode" class="solution-code">
       <div class="code-header">
-        <h3>Implementation</h3>
-        <button 
-          class="copy-button" 
-          (click)="copyCode()" 
+        <h3 class="section-heading">Implementation</h3>
+        <button
+          class="copy-button"
+          (click)="copyCode()"
+          [class.copied]="showCopyFeedback"
           title="Copy code">
-          📋 Copy
+          {{ showCopyFeedback ? 'Copied!' : 'Copy' }}
         </button>
       </div>
       <div class="code-block">
         <pre><code>{{ solutionCode }}</code></pre>
       </div>
     </div>
-    
+
   </div>
-  
+
   <ng-template #noContent>
     <p class="no-content">No solution available.</p>
   </ng-template>

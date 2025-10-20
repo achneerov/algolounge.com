@@ -78,7 +78,7 @@ export class CodeExecutionService {
             expectedOutput: null,
             actualOutput: null,
             passed: false,
-            error: `⏱️ Execution timeout (${timeoutSeconds}s). Your code may have an infinite loop or is taking too long.`,
+            error: `Execution timeout (${timeoutSeconds}s). Your code may have an infinite loop or is taking too long.`,
             output: []
           }],
           executionTime: timeout,

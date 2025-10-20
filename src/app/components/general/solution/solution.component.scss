@@ -1,3 +1,5 @@
+@use '../../../../styles/variables' as *;
+
 :host {
   display: block;
   width: 100%;
@@ -6,172 +8,325 @@
 }
 
 .solution-container {
-  padding: 1.5rem;
+  padding: 2rem;
   height: 100%;
   width: 100%;
   min-width: 0;
   overflow-y: auto;
   box-sizing: border-box;
-  background: var(--surface-card, #ffffff);
-  color: var(--text-color, #000000);
-  
-  .solution-text {
-    margin-bottom: 2rem;
-    
-    h3 {
-      color: var(--text-color, #333);
-      margin-bottom: 0.75rem;
-      font-size: 1.25rem;
-      font-weight: 600;
-    }
-    
-    p {
+  background: transparent;
+  color: var(--color-text-primary);
+}
+
+.parsed-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+// Section Heading
+.section-heading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 2rem 0 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+// Algorithm Section
+.algorithm-section {
+  margin: 2rem 0;
+}
+
+.algorithm-container {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+}
+
+.algorithm-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.step-number {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: $font-size-sm;
+  margin-top: 0.1rem;
+}
+
+.step-content {
+  flex: 1;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  font-size: $font-size-sm;
+
+  :deep(code) {
+    background-color: var(--color-bg-primary);
+    padding: 2px 8px;
+    border-radius: $radius-sm;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9em;
+    color: var(--color-primary);
+    border: 1px solid var(--color-border);
+  }
+
+  :deep(strong) {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+}
+
+// Complexity Section
+.complexity-section {
+  margin: 1rem 0;
+}
+
+.complexity-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  padding: 1rem 1.25rem;
+  box-shadow: $shadow-sm;
+}
+
+.complexity-label {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  font-size: $font-size-sm;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  min-width: 120px;
+}
+
+.complexity-value {
+  flex: 1;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  color: var(--color-primary);
+  font-size: $font-size-base;
+  font-weight: 600;
+
+  :deep(code) {
+    background-color: var(--color-bg-primary);
+    padding: 2px 8px;
+    border-radius: $radius-sm;
+    font-family: inherit;
+    font-size: 0.9em;
+    color: var(--color-primary);
+    border: 1px solid var(--color-border);
+  }
+}
+
+// Key Insights Section
+.insights-section {
+  margin: 2rem 0;
+}
+
+.insights-container {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+}
+
+.insight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.insight-bullet {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  margin-top: 0.5rem;
+}
+
+.insight-text {
+  flex: 1;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  font-size: $font-size-sm;
+
+  :deep(code) {
+    background-color: var(--color-bg-primary);
+    padding: 2px 8px;
+    border-radius: $radius-sm;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9em;
+    color: var(--color-primary);
+    border: 1px solid var(--color-border);
+  }
+
+  :deep(strong) {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+}
+
+// Generic Section (old format)
+.generic-section {
+  margin-bottom: 2rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  font-size: $font-size-base;
+
+  :deep(p) {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+
+  :deep(code) {
+    background-color: var(--color-bg-secondary);
+    padding: 2px 8px;
+    border-radius: $radius-sm;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9em;
+    color: var(--color-primary);
+    border: 1px solid var(--color-border);
+  }
+
+  :deep(ul), :deep(ol) {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+
+    li {
+      margin-bottom: 0.5rem;
       line-height: 1.6;
-      color: var(--text-color-secondary, #555);
-      word-wrap: break-word;
-      margin: 0;
     }
   }
-  
-  .solution-code {
-    .code-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.75rem;
-      
-      h3 {
-        color: var(--text-color, #333);
-        font-size: 1.25rem;
-        font-weight: 600;
-        margin: 0;
-      }
-      
-      .copy-button {
-        background: var(--surface-100, #f6f8fa);
-        border: 1px solid var(--surface-border, #d0d7de);
-        color: var(--text-color, #000);
-        border-radius: 6px;
-        padding: 6px 12px;
-        font-size: 12px;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        
-        &:hover {
-          background: var(--surface-200, #f1f3f4);
-          border-color: var(--surface-border, #c1c8cd);
-        }
-        
-        &:active {
-          background: var(--surface-300, #dfe2e5);
-        }
-      }
-    }
-    
-    .code-block {
-      pre {
-        background-color: var(--surface-100, #f6f8fa);
-        border: 1px solid var(--surface-border, #d0d7de);
-        border-radius: 6px;
-        padding: 1rem;
-        margin: 0;
-        overflow-x: auto;
-        white-space: pre;
-        font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
-        font-size: 14px;
-        line-height: 1.45;
-        
-        code {
-          background: none;
-          padding: 0;
-          border: none;
-          font-size: inherit;
-          color: var(--text-color, #24292f);
-          white-space: pre;
-        }
-      }
-    }
+}
+
+// Solution Code Section
+.solution-code {
+  margin: 2rem 0;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.copy-button {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  border-radius: $radius-md;
+  padding: 0.5rem 1rem;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all $transition-base;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  &:hover {
+    background: var(--color-bg-primary);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: $shadow-sm;
   }
-  
-  .no-content {
-    color: var(--text-color-secondary, #888);
-    font-style: italic;
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &.copied {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
   }
 }
 
-// Dark mode overrides
-:host-context(.dark-mode) .solution-container {
-  background: var(--surface-card, #2a2a2a) !important;
-  color: var(--text-color, #ffffff) !important;
+.code-block {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+
+  pre {
+    background: transparent;
+    border: none;
+    padding: 1.25rem;
+    margin: 0;
+    overflow-x: auto;
+    white-space: pre;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: $font-size-sm;
+    line-height: 1.6;
+
+    code {
+      background: none;
+      padding: 0;
+      border: none;
+      font-size: inherit;
+      color: var(--color-text-primary);
+      white-space: pre;
+    }
+  }
 }
 
-:host-context(.dark-mode) .solution-container .solution-text h3,
-:host-context(.dark-mode) .solution-container .code-header h3 {
-  color: var(--text-color, #ffffff) !important;
+// No content message
+.no-content {
+  color: var(--color-text-secondary);
+  font-style: italic;
+  text-align: center;
+  padding: 3rem;
 }
 
-:host-context(.dark-mode) .solution-container .solution-text p {
-  color: var(--text-color-secondary, #cccccc) !important;
-}
-
-:host-context(.dark-mode) .solution-container .copy-button {
-  background: var(--surface-200, #333) !important;
-  border-color: var(--surface-border, #555) !important;
-  color: var(--text-color, #ffffff) !important;
-}
-
-:host-context(.dark-mode) .solution-container .copy-button:hover {
-  background: var(--surface-300, #444) !important;
-}
-
-:host-context(.dark-mode) .solution-container pre {
-  background-color: var(--surface-200, #2d2d2d) !important;
-  border-color: var(--surface-border, #555) !important;
-}
-
-:host-context(.dark-mode) .solution-container pre code {
-  color: var(--text-color, #ffffff) !important;
-}
-
-:host-context(.dark-mode) .solution-container .no-content {
-  color: var(--text-color-secondary, #aaaaaa) !important;
-}
-
-@media (prefers-color-scheme: dark) {
+// Responsive
+@media (max-width: 768px) {
   .solution-container {
-    background: var(--surface-card, #2a2a2a) !important;
-    color: var(--text-color, #ffffff) !important;
+    padding: 1rem;
   }
-  
-  .solution-container .solution-text h3,
-  .solution-container .code-header h3 {
-    color: var(--text-color, #ffffff) !important;
+
+  .section-heading {
+    font-size: 1.1rem;
   }
-  
-  .solution-container .solution-text p {
-    color: var(--text-color-secondary, #cccccc) !important;
+
+  .step-number {
+    width: 24px;
+    height: 24px;
+    font-size: 0.7rem;
   }
-  
-  .solution-container .copy-button {
-    background: var(--surface-200, #333) !important;
-    border-color: var(--surface-border, #555) !important;
-    color: var(--text-color, #ffffff) !important;
-  }
-  
-  .solution-container .copy-button:hover {
-    background: var(--surface-300, #444) !important;
-  }
-  
-  .solution-container pre {
-    background-color: var(--surface-200, #2d2d2d) !important;
-    border-color: var(--surface-border, #555) !important;
-  }
-  
-  .solution-container pre code {
-    color: var(--text-color, #ffffff) !important;
-  }
-  
-  .solution-container .no-content {
-    color: var(--text-color-secondary, #aaaaaa) !important;
+
+  .complexity-label {
+    min-width: 100px;
+    font-size: 0.7rem;
   }
 }

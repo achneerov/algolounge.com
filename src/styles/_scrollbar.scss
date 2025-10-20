@@ -1,0 +1,84 @@
+// Modern Custom Scrollbar Styles
+@use 'variables' as *;
+
+// Modern scrollbar styling for Firefox and other browsers that support scrollbar-color
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) var(--color-bg-secondary);
+}
+
+// WebKit browsers (Chrome, Safari, Edge, Opera)
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+  border-radius: $radius-md;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: $radius-md;
+  border: 2px solid var(--color-bg-secondary);
+  transition: background-color $transition-base;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: var(--color-primary-dark);
+}
+
+// Corner where horizontal and vertical scrollbars meet
+::-webkit-scrollbar-corner {
+  background: var(--color-bg-secondary);
+}
+
+// Thinner scrollbars for code editor and specific areas
+.editor-container,
+.cm-scroller,
+app-console,
+app-description,
+app-solution {
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: 1px solid var(--color-bg-secondary);
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  ::-webkit-scrollbar-thumb {
+    transition: none;
+  }
+
+  * {
+    scrollbar-width: auto;
+  }
+}
+
+// Ultra-thin scrollbars on mobile/tablet
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: 1px solid var(--color-bg-secondary);
+  }
+
+  * {
+    scrollbar-width: thin;
+  }
+}

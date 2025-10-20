@@ -1,3 +1,5 @@
+@use '../../../../styles/variables' as *;
+
 :host {
   display: block;
   width: 100%;
@@ -6,125 +8,272 @@
 }
 
 .description-container {
-  padding: 1rem;
+  padding: 2rem;
   height: 100%;
   width: 100%;
   min-width: 0;
   overflow-y: auto;
   box-sizing: border-box;
-  background: var(--surface-card, #fbfcfd);
-  color: var(--text-color, #000000);
-  
-  :deep(h1), :deep(h2), :deep(h3) {
-    color: var(--text-color, #333);
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
-  }
-  
-  :deep(h2) {
-    font-size: 1.5rem;
-  }
-  
-  :deep(h3) {
-    font-size: 1.25rem;
-  }
-  
+  background: transparent;
+  color: var(--color-text-primary);
+}
+
+.parsed-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+// Title Section
+.title-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--color-border);
+  flex-wrap: wrap;
+}
+
+.problem-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0;
+  flex: 1;
+  min-width: 250px;
+}
+
+.completion-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: var(--color-primary);
+  color: white;
+  border-radius: $radius-xl;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: $shadow-sm;
+  white-space: nowrap;
+}
+
+// Main Description
+.problem-description {
+  margin-bottom: 2rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  font-size: $font-size-base;
+
   :deep(p) {
-    line-height: 1.6;
     margin-bottom: 1rem;
-    color: var(--text-color-secondary, #555);
+    line-height: 1.7;
   }
-  
-  :deep(ul), :deep(ol) {
-    margin-bottom: 1rem;
-    padding-left: 2rem;
-    color: var(--text-color, #333);
-    
-    li {
-      margin-bottom: 0.5rem;
-      line-height: 1.5;
-      color: var(--text-color, #333);
-    }
-  }
-  
+
   :deep(code) {
-    background-color: var(--surface-100, #f1f3f4);
-    padding: 2px 6px;
-    border-radius: 3px;
+    background-color: var(--color-bg-secondary);
+    padding: 2px 8px;
+    border-radius: $radius-sm;
     font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
     font-size: 0.9em;
-    color: var(--primary-color, #d73a49);
+    color: var(--color-primary);
+    border: 1px solid var(--color-border);
   }
 
-  
-  .no-content {
-    color: var(--text-color-secondary, #888);
-    font-style: italic;
+  :deep(ul), :deep(ol) {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+
+    li {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
   }
 }
 
-// Dark mode overrides
-:host-context(.dark-mode) .description-container {
-  background: var(--surface-card, #2a2a2a) !important;
-  color: var(--text-color, #ffffff) !important;
+// Section Heading
+.section-heading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 2rem 0 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  .icon {
+    font-size: 1.5rem;
+  }
 }
 
-:host-context(.dark-mode) .description-container :deep(h1),
-:host-context(.dark-mode) .description-container :deep(h2),
-:host-context(.dark-mode) .description-container :deep(h3) {
-  color: var(--text-color, #ffffff) !important;
+// Examples Section
+.examples-section {
+  margin: 2rem 0;
 }
 
-:host-context(.dark-mode) .description-container :deep(p) {
-  color: var(--text-color-secondary, #cccccc) !important;
+.examples-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-:host-context(.dark-mode) .description-container :deep(ul),
-:host-context(.dark-mode) .description-container :deep(ol) {
-  color: var(--text-color, #ffffff) !important;
+.example-box {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
 }
 
-:host-context(.dark-mode) .description-container :deep(li) {
-  color: var(--text-color, #ffffff) !important;
+.example-header {
+  background: var(--color-bg-secondary);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
+  font-size: $font-size-sm;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-:host-context(.dark-mode) .description-container :deep(code) {
-  background-color: var(--surface-200, #333333) !important;
-  color: var(--primary-300, #ff6b9d) !important;
+.example-content {
+  padding: 1.25rem;
 }
 
-:host-context(.dark-mode) .description-container .no-content {
-  color: var(--text-color-secondary, #aaaaaa) !important;
+.io-block {
+  margin-bottom: 1rem;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 }
 
-@media (prefers-color-scheme: dark) {
+.io-label {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  font-size: $font-size-sm;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
+}
+
+.io-value {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-md;
+  padding: 0.75rem 1rem;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: $font-size-sm;
+
+  code {
+    background: transparent;
+    padding: 0;
+    border: none;
+    color: var(--color-primary);
+    font-size: inherit;
+  }
+}
+
+.explanation {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--color-bg-primary);
+  border-radius: $radius-sm;
+  font-size: $font-size-sm;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+
+  :deep(strong) {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+
+  :deep(code) {
+    background-color: var(--color-bg-secondary);
+    padding: 2px 6px;
+    border-radius: $radius-sm;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9em;
+    color: var(--color-primary);
+  }
+}
+
+// Constraints Section
+.constraints-section {
+  margin: 2rem 0;
+}
+
+.constraints-container {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+}
+
+.constraint-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.constraint-bullet {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  margin-top: 0.5rem;
+}
+
+.constraint-text {
+  flex: 1;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  font-size: $font-size-sm;
+
+  :deep(code) {
+    background-color: var(--color-bg-primary);
+    padding: 2px 8px;
+    border-radius: $radius-sm;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9em;
+    color: var(--color-primary);
+    border: 1px solid var(--color-border);
+  }
+}
+
+// No content message
+.no-content {
+  color: var(--color-text-secondary);
+  font-style: italic;
+  text-align: center;
+  padding: 3rem;
+}
+
+// Responsive
+@media (max-width: 768px) {
   .description-container {
-    background: var(--surface-card, #2a2a2a) !important;
-    color: var(--text-color, #ffffff) !important;
+    padding: 1rem;
   }
-  
-  .description-container :deep(h1),
-  .description-container :deep(h2),
-  .description-container :deep(h3) {
-    color: var(--text-color, #ffffff) !important;
+
+  .problem-title {
+    font-size: 1.5rem;
   }
-  
-  .description-container :deep(p) {
-    color: var(--text-color-secondary, #cccccc) !important;
+
+  .section-heading {
+    font-size: 1.1rem;
   }
-  
-  .description-container :deep(ul),
-  .description-container :deep(ol),
-  .description-container :deep(li) {
-    color: var(--text-color, #ffffff) !important;
-  }
-  
-  .description-container :deep(code) {
-    background-color: var(--surface-200, #333333) !important;
-    color: var(--primary-300, #ff6b9d) !important;
-  }
-  
-  .description-container .no-content {
-    color: var(--text-color-secondary, #aaaaaa) !important;
+
+  .example-header {
+    font-size: 0.75rem;
   }
 }

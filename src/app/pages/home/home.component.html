@@ -1,138 +1,134 @@
-<div class="landing-container">
-  <!-- Hero Section -->
-  <section class="hero-section">
+<div class="home-page">
 
-    <div class="hero-content">
-  <h1 class="hero-title">
-    Master Algorithms & 
-    <span class="gradient-text">Data Structures</span>
-  </h1>
+  <!-- Hero Section - Interactive & Benefit-Driven -->
+  <section class="hero">
+    <div class="hero-container">
 
-  <p class="hero-subtitle">
-    Practice coding interviews with interactive challenges, real-time execution, 
-    and detailed solutions. Join thousands of developers improving their skills.
-  </p>
-
-  <div class="hero-buttons">
-    <button class="hero-cta-primary" (click)="navigateToRandomQuestion()">
-      <span class="button-icon">💻</span>
-      Random Question
-    </button>
-    <button class="hero-cta-secondary" (click)="navigateToRandomCourse()">
-      <span class="button-icon">📚</span>
-      Random Course
-    </button>
-  </div>
-
-  <div class="hero-stats">
-    <div class="stat-item">
-      <div class="stat-number">500+</div>
-      <div class="stat-label">Challenges</div>
-    </div>
-    <div class="stat-divider"></div>
-    <div class="stat-item">
-      <div class="stat-number">10K+</div>
-      <div class="stat-label">Solutions</div>
-    </div>
-    <div class="stat-divider"></div>
-    <div class="stat-item">
-      <div class="stat-number">4</div>
-      <div class="stat-label">Languages</div>
-    </div>
-  </div>
-</div>
-    <div class="hero-visual">
-      <div class="code-preview">
-        <div class="code-header">
-          <div class="code-dots">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-          </div>
-          <span class="code-title">two_sum.py</span>
+      <div class="hero-main">
+        <div class="welcome-badge">
+          <span class="badge-divider">|</span>
+          <span class="badge-text">Welcome</span>
+          <span class="badge-divider">|</span>
         </div>
-        <div class="code-content">
-          <div class="code-line">
-            <span class="line-number">1</span>
-            <span class="code-text"><span class="keyword">def</span>&nbsp;<span class="function">twoSum</span>(<span class="param">nums, target</span>):</span>
+
+        <h1 class="hero-headline">
+          Master Algorithms With<br>
+          <span class="headline-accent">Hands-On Practice</span>
+        </h1>
+
+        <p class="hero-subtext">
+          A modern coding platform designed for developers who learn by doing. Practice real algorithmic challenges with instant feedback across multiple languages, all in your browser.
+        </p>
+
+        <button class="btn-start" (click)="navigateToQuestions()">
+          <span class="btn-text">Start Practicing Free</span>
+          <span class="btn-arrow">→</span>
+        </button>
+      </div>
+
+      <div class="hero-visual">
+        <div class="ide-demo">
+          <div class="ide-header">
+            <span class="ide-title">Two Sum - Array Problem</span>
+            <span class="ide-difficulty">Easy</span>
           </div>
-          <div class="code-line">
-            <span class="line-number">2</span>
-            <span class="code-text">&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">seen</span>&nbsp;=&nbsp;{{ '{' }}{{ '}' }}</span>
+          <div class="ide-code">
+            <div class="code-line">
+              <span class="kw">def</span> <span class="fn">twoSum</span>(<span class="pr">nums</span>, <span class="pr">target</span>):
+            </div>
+            <div class="code-line">
+              <span class="indent"></span><span class="vr">seen</span> = {{ '{' }}{{ '}' }}
+            </div>
+            <div class="code-line">
+              <span class="indent"></span><span class="kw">for</span> <span class="vr">i</span>, <span class="vr">n</span> <span class="kw">in</span> <span class="fn">enumerate</span>(<span class="pr">nums</span>):
+            </div>
+            <div class="code-line">
+              <span class="indent"></span><span class="indent"></span><span class="kw">if</span> <span class="pr">target</span> - <span class="vr">n</span> <span class="kw">in</span> <span class="vr">seen</span>:
+            </div>
+            <div class="code-line">
+              <span class="indent"></span><span class="indent"></span><span class="indent"></span><span class="kw">return</span> [<span class="vr">seen</span>[<span class="pr">target</span> - <span class="vr">n</span>], <span class="vr">i</span>]
+            </div>
+            <div class="code-line typing-animation">
+              <span class="indent"></span><span class="indent"></span><span class="vr">seen</span>[<span class="vr">n</span>] = <span class="vr">i</span>
+            </div>
           </div>
-          <div class="code-line">
-            <span class="line-number">3</span>
-            <span class="code-text">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span>&nbsp;<span class="variable">i</span>,&nbsp;<span class="variable">num</span>&nbsp;<span class="keyword">in</span>&nbsp;<span class="function">enumerate</span>(<span class="param">nums</span>):</span>
-          </div>
-          <div class="code-line">
-            <span class="line-number">4</span>
-            <span class="code-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">diff</span>&nbsp;=&nbsp;<span class="param">target</span>&nbsp;-&nbsp;<span class="variable">num</span></span>
-          </div>
-          <div class="code-line">
-            <span class="line-number">5</span>
-            <span class="code-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span>&nbsp;<span class="variable">diff</span>&nbsp;<span class="keyword">in</span>&nbsp;<span class="variable">seen</span>:</span>
-          </div>
-          <div class="code-line">
-            <span class="line-number">6</span>
-            <span class="code-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;&#91;<span class="variable">seen</span>&#91;<span class="variable">diff</span>&#93;,&nbsp;<span class="variable">i</span>&#93;</span>
-          </div>
-          <div class="code-line">
-            <span class="line-number">7</span>
-            <span class="code-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="variable">seen</span>&#91;<span class="variable">num</span>&#93;&nbsp;=&nbsp;<span class="variable">i</span></span>
+          <div class="ide-result success">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+            <span>All tests passed</span>
+            <span class="result-time">Solved in 4:23</span>
           </div>
         </div>
       </div>
+
     </div>
   </section>
 
-  <!-- Features Section -->
-  <section class="features-section">
-    <div class="section-header">
-      <h2 class="section-title">Why Choose AlgoLounge?</h2>
-      <p class="section-subtitle">Everything you need to ace your coding interviews</p>
-    </div>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">⚡</div>
-        <h3 class="feature-title">Real-time Execution</h3>
-        <p class="feature-description">Test your solutions instantly with our integrated code editor and execution environment.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🎯</div>
-        <h3 class="feature-title">Interview-focused</h3>
-        <p class="feature-description">Practice problems commonly asked at top tech companies like Google, Amazon, and Microsoft.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📈</div>
-        <h3 class="feature-title">Track Progress</h3>
-        <p class="feature-description">Monitor your improvement with detailed analytics and completion tracking.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🔧</div>
-        <h3 class="feature-title">Multiple Languages</h3>
-        <p class="feature-description">Code in Python, JavaScript, TypeScript, and Java with full syntax highlighting.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">💡</div>
-        <h3 class="feature-title">Detailed Solutions</h3>
-        <p class="feature-description">Learn from comprehensive explanations and optimized solutions for every problem.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🚀</div>
-        <h3 class="feature-title">Structured Learning</h3>
-        <p class="feature-description">Follow curated courses that build your skills from basics to advanced concepts.</p>
-      </div>
+  <!-- Trusted By Section -->
+  <section class="trusted-by">
+    <p class="trusted-label">Trusted by interns at</p>
+    <div class="company-logos">
+      <span class="company-logo">National Bank</span>
+      <span class="company-logo">KPMG</span>
+      <span class="company-logo">Coveo</span>
+      <span class="company-logo">Intact Insurance</span>
+      <span class="company-logo">Autodesk</span>
+      <span class="company-logo">Consoltec</span>
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="cta-section">
-    <div class="cta-content">
-      <h2 class="cta-title">Ready to Level Up Your Coding Skills?</h2>
-      <p class="cta-subtitle">Join thousands of developers who've improved their problem-solving abilities</p>
-      <button class="cta-final" (click)="navigateToCourses()">
-        Discover Courses
-      </button>
+  <!-- Social Proof -->
+  <section class="social-proof">
+    <p class="proof-label">Join many developers preparing for interviews</p>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="benefits">
+    <div class="benefits-grid">
+
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+        </div>
+        <h3 class="benefit-title">Practice anywhere, instantly</h3>
+        <p class="benefit-text">Browser-based IDE. No downloads, no config. Just code.</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 6l0 6 4 4"/>
+          </svg>
+        </div>
+        <h3 class="benefit-title">Problems from actual interviews</h3>
+        <p class="benefit-text">Google, Amazon, Meta questions. The ones that actually matter.</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="16 18 22 12 16 6"/>
+            <polyline points="8 6 2 12 8 18"/>
+          </svg>
+        </div>
+        <h3 class="benefit-title">Your language, your choice</h3>
+        <p class="benefit-text">Python, Java, TypeScript, JavaScript. Same problem, any stack.</p>
+      </div>
+
     </div>
   </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <h2 class="cta-headline">Ready to level up?</h2>
+    <button class="btn-primary-large" (click)="navigateToQuestions()">
+      <span>Browse 200+ Problems</span>
+    </button>
+    <a class="cta-link" (click)="navigateToRandomQuestion()">or start with a random question</a>
+  </section>
+
 </div>

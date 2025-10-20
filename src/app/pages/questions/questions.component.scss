@@ -1,9 +1,11 @@
+@use '../../../styles/variables' as *;
+
 :host {
   display: block;
   height: 100%;
   width: 100%;
-  background: var(--surface-50, #f1f3f4);
-  padding: 4px;
+  background: var(--color-bg-secondary);
+  padding: $spacing-xs;
   box-sizing: border-box;
 }
 
@@ -18,10 +20,10 @@
 }
 
 ::ng-deep .p-splitter-gutter-handle {
-  background: var(--surface-400, #94a3b8) !important;
-  border-radius: 2px !important;
+  background: var(--color-border) !important;
+  border-radius: $radius-sm !important;
   opacity: 0.6;
-  transition: opacity 0.2s ease;
+  transition: opacity $transition-base;
 }
 
 ::ng-deep .p-splitter-gutter:hover .p-splitter-gutter-handle {
@@ -56,23 +58,4 @@
 // Remove any default PrimeNG borders
 ::ng-deep .p-component {
   border: none !important;
-}
-
-// Dark mode overrides
-:host-context(.dark-mode) {
-  background: #1a1a1a !important;
-}
-
-:host-context(.dark-mode) ::ng-deep .p-splitter-gutter-handle {
-  background: var(--surface-500, #64748b) !important;
-}
-
-@media (prefers-color-scheme: dark) {
-  :host {
-    background: #1a1a1a !important;
-  }
-  
-  ::ng-deep .p-splitter-gutter-handle {
-    background: var(--surface-500, #64748b) !important;
-  }
 }

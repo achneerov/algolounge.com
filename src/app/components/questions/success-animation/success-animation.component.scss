@@ -1,0 +1,6 @@
+// Minimal styles - confetti is rendered via canvas-confetti library
+// Component exists only to trigger the animation and manage lifecycle
+
+:host {
+  display: none; // Hide the component itself since confetti renders on canvas
+}

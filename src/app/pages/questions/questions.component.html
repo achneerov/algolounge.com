@@ -1,4 +1,3 @@
-
 <ng-container *ngIf="!notFound; else notFoundTpl">
   <p-splitter
     [style]="{ height: 'calc(100%)', margin: '0' }"
@@ -28,11 +27,17 @@
           ></app-ide>
         </ng-template>
         <ng-template pTemplate="panel2">
-          <app-console [result]="executionResult"></app-console>
+          <app-console [result]="executionResult" [isRunning]="isRunning"></app-console>
         </ng-template>
       </p-splitter>
     </ng-template>
   </p-splitter>
+
+  <!-- Success Animation -->
+  <app-success-animation
+    *ngIf="showSuccessAnimation()"
+    (animationComplete)="onSuccessAnimationComplete()">
+  </app-success-animation>
 </ng-container>
 <ng-template #notFoundTpl>
   <app-not-found></app-not-found>

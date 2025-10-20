@@ -64,6 +64,58 @@ The platform executes code entirely in the browser:
 - **Course System**: Structured learning paths with unit organization
 - **Dark Mode**: Supported throughout the application
 
+## Design System
+
+### 8pt Grid Spacing System
+ALL spacing must use multiples of 8 to maintain consistency and rhythm:
+- **Spacing Scale**: 8px, 16px, 24px, 32px, 40px, 48px, 64px, 96px
+- **Core Rule**: Internal spacing ≤ External spacing (padding inside elements ≤ margins between elements)
+- **Section Padding**: 96px vertical, 64px horizontal (desktop), 64px/24px (mobile)
+- **Card Padding**: 40px internal
+- **Element Gaps**: 32px (large), 24px (medium), 16px (small), 8px (tight)
+
+### Typography Scale (Golden Ratio)
+Use a consistent type scale with limited font weights:
+- **Headlines**: 64px (hero), 48px (sections), 24px (subsections)
+- **Body Text**: 18px (large/intro), 16px (normal)
+- **Line Heights**: 1.1 (large headlines), 1.2-1.3 (titles), 1.6 (body text)
+- **Font Weights**: 400 (regular), 600 (semibold), 700 (bold) - ONLY use these 3
+- **Max Line Length**: 70-80 characters (~480px at 16px) for optimal readability
+
+### Visual Hierarchy Principles
+- **Size Creates Importance**: Use dramatic size contrast (64px vs 16px = 4x ratio), not just bold/color
+- **F-Pattern Layout**: Left-align content for natural scanning (top-left → right → down)
+- **Whitespace**: Aim for 40-60% whitespace on pages for premium feel
+- **One Focal Point**: Each section should have one clear visual priority
+- **Breathing Room**: 96px between major sections
+
+### Theme & Styling
+- **Colors**: Use theme variables exclusively (var(--color-primary), var(--color-text-primary), etc.)
+  - Primary: #3B82F6 (blue)
+  - Accent: #F59E0B (gold)
+  - NO random color additions or purple gradients
+- **Border Radius**: $radius-lg (0.75rem), $radius-xl (1rem)
+- **Shadows**: $shadow-sm (subtle), $shadow-md (medium), $shadow-lg (prominent)
+- **Borders**: 1px solid var(--color-border) for all cards/containers
+
+### UI Component Standards
+- **Icons**: NO emojis → use minimal SVG icons only (32px standard size)
+- **Cards**:
+  - Max 3 feature cards per section (not 6+)
+  - Hover state: `transform: translateY(-4px)` + `box-shadow: $shadow-lg`
+  - Border color changes to primary on hover
+- **Buttons**:
+  - Primary: filled background (var(--color-primary))
+  - Secondary: outlined with border
+  - Padding: 16px vertical, 32px horizontal
+  - Hover: `translateY(-2px)` with enhanced shadow
+- **Layout**: F-pattern (left-aligned) except for final CTAs (centered)
+
+### Page Structure Guidelines
+- **Home Page**: Hero (F-pattern) → Features (3 cards) → CTA (centered)
+- **Questions Page**: Follows existing split-pane layout with rounded cards
+- **Visual Continuity**: All pages should feel cohesive using same card styles, shadows, and spacing
+
 ## Development Guidelines
 
 ### Adding New Questions
@@ -88,6 +140,11 @@ The platform executes code entirely in the browser:
 - Follow existing patterns for dependency injection
 - Implement proper lifecycle management for resource cleanup
 - Use PrimeNG components for consistent UI
+- **Follow 8pt grid spacing system** for all layouts and components
+- **Use typography scale** defined in Design System section
+- **Maintain visual continuity** with questions page aesthetic (same card styles, shadows, borders)
+- **Test all interactive states**: hover, active, focus, disabled
+- **NO emojis** in production UI (use SVG icons)
 
 ## Testing
 

@@ -33,6 +33,21 @@
       ]
     },
     {
+      "filename": "accounts-merge",
+      "title": "Accounts Merge",
+      "keywords": [
+        "union-find",
+        "disjoint-set",
+        "graph",
+        "merge",
+        "accounts",
+        "email",
+        "connected-components",
+        "grouping",
+        "dsu"
+      ]
+    },
+    {
       "filename": "add-binary",
       "title": "Add Binary",
       "keywords": [

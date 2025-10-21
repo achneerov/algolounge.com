@@ -9,6 +9,7 @@ import { HttpClient } from "@angular/common/http";
 import { NotFoundComponent } from "../not-found/not-found.component";
 import { CodeExecutionService } from "../../services/code-execution.service";
 import { LocalStorageService } from "../../services/local-storage.service";
+import { QuestionCompletionService } from "../../services/question-completion.service";
 import { SuccessAnimationComponent } from "../../components/questions/success-animation/success-animation.component";
 
 @Component({
@@ -47,18 +48,28 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private http: HttpClient,
     private codeExecutionService: CodeExecutionService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private questionCompletionService: QuestionCompletionService
   ) {}
 
   ngOnInit() {
     // Add questions-page class to body
     document.body.classList.add('questions-page');
-    
+
     this.route.paramMap.subscribe((params) => {
       const name = params.get("name");
       if (name) {
         this.currentQuestionFilename = name;
-        this.isCompleted = this.localStorageService.isQuestionCompleted(name);
+        // Check completion status from backend
+        this.questionCompletionService.isQuestionCompleted(name).subscribe({
+          next: (completed) => {
+            this.isCompleted = completed;
+          },
+          error: () => {
+            // Fallback to local storage if API fails
+            this.isCompleted = this.localStorageService.isQuestionCompleted(name);
+          }
+        });
         this.loadQuestion(name);
       }
     });
@@ -99,8 +110,19 @@ export class QuestionsComponent implements OnInit, OnDestroy {
       if (this.executionResult.passedCount === this.executionResult.totalCount && this.executionResult.totalCount > 0) {
         // Mark as completed if not already
         if (!this.isCompleted) {
-          this.localStorageService.addCompletedQuestion(this.currentQuestionFilename);
-          this.isCompleted = true;
+          // Mark completion in both local storage and backend
+          this.questionCompletionService.markQuestionComplete(this.currentQuestionFilename).subscribe({
+            next: () => {
+              console.log('Question marked as complete in backend');
+              this.isCompleted = true;
+            },
+            error: (err) => {
+              console.error('Failed to mark question as complete in backend:', err);
+              // Still mark as completed locally
+              this.localStorageService.addCompletedQuestion(this.currentQuestionFilename);
+              this.isCompleted = true;
+            }
+          });
         }
         // Trigger success animation every time all tests pass
         console.log('All tests passed! Triggering success animation');

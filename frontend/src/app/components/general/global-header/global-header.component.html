@@ -36,5 +36,15 @@
       </svg>
       GitHub
     </a>
+
+    <div class="auth-buttons" *ngIf="!authService.isAuthenticated()">
+      <a routerLink="/login" class="btn-secondary">Login</a>
+      <a routerLink="/register" class="btn-primary">Register</a>
+    </div>
+
+    <div class="user-menu" *ngIf="authService.isAuthenticated()">
+      <span class="username">{{ authService.getCurrentUser()?.username }}</span>
+      <button class="btn-secondary" (click)="logout()">Logout</button>
+    </div>
   </div>
 </nav>

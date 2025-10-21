@@ -5,9 +5,13 @@ import { HomeComponent } from "./pages/home/home.component";
 import { CoursesComponent } from "./pages/courses/courses.component";
 import { CourseDetailComponent } from "./pages/course-detail/course-detail.component";
 import { UnitDetailComponent } from "./pages/unit-detail/unit-detail.component";
+import { LoginComponent } from "./components/auth/login/login.component";
+import { RegisterComponent } from "./components/auth/register/register.component";
 
 export const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
+  { path: "login", component: LoginComponent },
+  { path: "register", component: RegisterComponent },
   { path: "questions/:name", component: QuestionsComponent },
   { path: "questions", redirectTo: "questions/two-sum", pathMatch: "full" },
   { path: "home", component: HomeComponent },

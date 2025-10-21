@@ -6,6 +6,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FormsModule } from '@angular/forms';
 import { QuestionSearchService, QuestionSearchResult } from '../../services/question-search.service';
 import { LocalStorageService } from '../../services/local-storage.service';
+import { QuestionCompletionService } from '../../services/question-completion.service';
 
 @Component({
   selector: 'app-content-tabs',
@@ -201,7 +202,8 @@ export class ContentTabsComponent implements OnInit {
 
   constructor(
     private questionSearchService: QuestionSearchService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private questionCompletionService: QuestionCompletionService
   ) {}
 
   ngOnInit(): void {
@@ -245,6 +247,8 @@ export class ContentTabsComponent implements OnInit {
   }
 
   isQuestionCompleted(filename: string): boolean {
-    return this.localStorageService.isQuestionCompleted(filename);
+    // Check from the completion service's cache
+    const completedQuestions = this.questionCompletionService.getCompletedQuestions();
+    return completedQuestions[filename] || false;
   }
 }

@@ -1,4 +1,5 @@
 {
+  "index": 77,
   "filename": "two-sum",
   "title": "Two Sum",
   "keywords": [
@@ -18,11 +19,8 @@
   "template": "def twoSum(nums, target):\n  ",
   "solution_text": "<h3>Two Sum</h3><p><strong>Algorithm:</strong></p><ol><li>Use a hash map to store previously seen numbers and their indices</li><li>For each number, calculate its complement (target - current number)</li><li>Check if complement exists in hash map</li><li>If found, return the stored index and current index</li><li>Otherwise, store current number and index in hash map</li></ol><p><strong>Time Complexity:</strong> O(n) - single pass through array</p><p><strong>Space Complexity:</strong> O(n) - hash map storage</p><p><strong>Key Insights:</strong></p><ul><li>Hash map provides O(1) lookup time</li><li>One-pass solution vs brute force O(n²)</li><li>Store complement lookups for future iterations</li><li>Handles duplicate values correctly</li></ul>",
   "solution_code": "def twoSum(nums, target):\n    seen = {}\n    \n    for i, num in enumerate(nums):\n        complement = target - num\n        \n        if complement in seen:\n            return [seen[complement], i]\n        \n        seen[num] = i\n    \n    return []",
-
   "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for twoSum function\"\"\"\n    return (test_case_input['nums'], test_case_input['target'])",
-
   "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the two sum result\"\"\"\n    def list_to_string(lst):\n        if not lst:\n            return '[]'\n        return '[' + ', '.join(str(x) for x in lst) + ']'\n    \n    # Check if output is valid (should be list of 2 indices)\n    if not actual_output or len(actual_output) != 2:\n        return [False, list_to_string(actual_output)]\n    \n    # For two sum, we need to check if\n    # the indices form a valid pair regardless of order\n    actual_set = set(actual_output)\n    expected_set = set(expected_output)\n    \n    passed = actual_set == expected_set\n    output_str = list_to_string(actual_output)\n    \n    return [passed, output_str]",
-
   "test_cases": [
     {
       "id": 1,

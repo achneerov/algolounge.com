@@ -1,4 +1,5 @@
 {
+  "index": 82,
   "filename": "word-search-ii",
   "title": "Word Search II",
   "keywords": [
@@ -19,91 +20,313 @@
   "template": "# Definition for a Trie node.\n# class TrieNode:\n#     def __init__(self):\n#         self.children = {}\n#         self.word = None\n\ndef findWords(board, words):\n    ",
   "solution_text": "<h3>Word Search II - Trie + Backtracking</h3>\n\n<p><strong>Algorithm:</strong></p>\n<ol>\n<li>Build a Trie (prefix tree) from the word list</li>\n<li>For each cell in the board, start DFS/backtracking</li>\n<li>During DFS, follow the Trie to check valid prefixes</li>\n<li>Mark cells as visited during current path</li>\n<li>When reaching a word end in Trie, add to results</li>\n<li>Backtrack by unmarking cells and trying other paths</li>\n</ol>\n\n<p><strong>Time Complexity:</strong> O(M * N * 4^L) where M*N is board size, L is max word length</p>\n<p><strong>Space Complexity:</strong> O(K * L) where K is number of words, L is average length</p>\n\n<p><strong>Key Insights:</strong></p>\n<ul>\n<li>Trie enables efficient prefix checking for multiple words</li>\n<li>Backtracking explores all possible paths</li>\n<li>Mark visited cells to prevent reuse in same path</li>\n<li>Remove found words from Trie to avoid duplicates</li>\n</ul>",
   "solution_code": "def findWords(board, words):\n    # Build Trie\n    root = TrieNode()\n    for word in words:\n        node = root\n        for char in word:\n            if char not in node.children:\n                node.children[char] = TrieNode()\n            node = node.children[char]\n        node.word = word\n    \n    result = []\n    rows, cols = len(board), len(board[0])\n    \n    def dfs(r, c, node):\n        char = board[r][c]\n        if char not in node.children:\n            return\n        \n        next_node = node.children[char]\n        \n        # Found a word\n        if next_node.word:\n            result.append(next_node.word)\n            next_node.word = None  # Avoid duplicates\n        \n        # Mark as visited\n        board[r][c] = '#'\n        \n        # Explore neighbors\n        for dr, dc in [(0, 1), (1, 0), (0, -1), (-1, 0)]:\n            nr, nc = r + dr, c + dc\n            if 0 <= nr < rows and 0 <= nc < cols and board[nr][nc] != '#':\n                dfs(nr, nc, next_node)\n        \n        # Backtrack\n        board[r][c] = char\n    \n    # Start DFS from each cell\n    for r in range(rows):\n        for c in range(cols):\n            if board[r][c] in root.children:\n                dfs(r, c, root)\n    \n    return result",
-
   "prepare": "class TrieNode:\n    def __init__(self):\n        self.children = {}\n        self.word = None\n\ndef prepare(test_case_input):\n    \"\"\"Prepare arguments for findWords function\"\"\"\n    return (test_case_input['board'], test_case_input['words'])",
-
   "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the word search result\"\"\"\n    def list_to_string(lst):\n        if not lst:\n            return '[]'\n        sorted_lst = sorted(lst)\n        return '[' + ', '.join('\"' + str(x) + '\"' for x in sorted_lst) + ']'\n    \n    # Sort both lists for comparison (order doesn't matter)\n    actual_sorted = sorted(actual_output) if actual_output else []\n    expected_sorted = sorted(expected_output) if expected_output else []\n    \n    passed = actual_sorted == expected_sorted\n    output_str = list_to_string(actual_output)\n    \n    return [passed, output_str]",
-
   "test_cases": [
     {
       "id": 1,
       "input": {
-        "board": [["o","a","a","n"],["e","t","a","e"],["i","h","k","r"],["i","f","l","v"]],
-        "words": ["oath","pea","eat","rain"]
+        "board": [
+          [
+            "o",
+            "a",
+            "a",
+            "n"
+          ],
+          [
+            "e",
+            "t",
+            "a",
+            "e"
+          ],
+          [
+            "i",
+            "h",
+            "k",
+            "r"
+          ],
+          [
+            "i",
+            "f",
+            "l",
+            "v"
+          ]
+        ],
+        "words": [
+          "oath",
+          "pea",
+          "eat",
+          "rain"
+        ]
       },
-      "output": ["eat","oath"]
+      "output": [
+        "eat",
+        "oath"
+      ]
     },
     {
       "id": 2,
       "input": {
-        "board": [["a","b"],["c","d"]],
-        "words": ["abcb"]
+        "board": [
+          [
+            "a",
+            "b"
+          ],
+          [
+            "c",
+            "d"
+          ]
+        ],
+        "words": [
+          "abcb"
+        ]
       },
       "output": []
     },
     {
       "id": 3,
       "input": {
-        "board": [["a","a"]],
-        "words": ["aaa"]
+        "board": [
+          [
+            "a",
+            "a"
+          ]
+        ],
+        "words": [
+          "aaa"
+        ]
       },
       "output": []
     },
     {
       "id": 4,
       "input": {
-        "board": [["a"]],
-        "words": ["a"]
+        "board": [
+          [
+            "a"
+          ]
+        ],
+        "words": [
+          "a"
+        ]
       },
-      "output": ["a"]
+      "output": [
+        "a"
+      ]
     },
     {
       "id": 5,
       "input": {
-        "board": [["a","b"],["c","d"]],
-        "words": ["ab","cb","ad","bd","ac","ca","da","bc","db","adcb","dabc"]
+        "board": [
+          [
+            "a",
+            "b"
+          ],
+          [
+            "c",
+            "d"
+          ]
+        ],
+        "words": [
+          "ab",
+          "cb",
+          "ad",
+          "bd",
+          "ac",
+          "ca",
+          "da",
+          "bc",
+          "db",
+          "adcb",
+          "dabc"
+        ]
       },
-      "output": ["ab","ac","bd","ca","db"]
+      "output": [
+        "ab",
+        "ac",
+        "bd",
+        "ca",
+        "db"
+      ]
     },
     {
       "id": 6,
       "input": {
-        "board": [["o","a","b","n"],["o","t","a","e"],["a","h","k","r"],["a","f","l","v"]],
-        "words": ["oa","oaa"]
+        "board": [
+          [
+            "o",
+            "a",
+            "b",
+            "n"
+          ],
+          [
+            "o",
+            "t",
+            "a",
+            "e"
+          ],
+          [
+            "a",
+            "h",
+            "k",
+            "r"
+          ],
+          [
+            "a",
+            "f",
+            "l",
+            "v"
+          ]
+        ],
+        "words": [
+          "oa",
+          "oaa"
+        ]
       },
-      "output": ["oa","oaa"]
+      "output": [
+        "oa",
+        "oaa"
+      ]
     },
     {
       "id": 7,
       "input": {
-        "board": [["a","a","a"],["a","a","a"],["a","a","a"]],
-        "words": ["aaa","aaaa","aaaaa","aaaaaa","aaaaaaa","aaaaaaaa"]
+        "board": [
+          [
+            "a",
+            "a",
+            "a"
+          ],
+          [
+            "a",
+            "a",
+            "a"
+          ],
+          [
+            "a",
+            "a",
+            "a"
+          ]
+        ],
+        "words": [
+          "aaa",
+          "aaaa",
+          "aaaaa",
+          "aaaaaa",
+          "aaaaaaa",
+          "aaaaaaaa"
+        ]
       },
-      "output": ["aaa","aaaa","aaaaa","aaaaaa","aaaaaaa","aaaaaaaa"]
+      "output": [
+        "aaa",
+        "aaaa",
+        "aaaaa",
+        "aaaaaa",
+        "aaaaaaa",
+        "aaaaaaaa"
+      ]
     },
     {
       "id": 8,
       "input": {
-        "board": [["a","b","c"],["a","e","d"],["a","f","g"]],
-        "words": ["abcdefg","gfedcbaaa","eaabcdgfa","befa","dgc","ade"]
+        "board": [
+          [
+            "a",
+            "b",
+            "c"
+          ],
+          [
+            "a",
+            "e",
+            "d"
+          ],
+          [
+            "a",
+            "f",
+            "g"
+          ]
+        ],
+        "words": [
+          "abcdefg",
+          "gfedcbaaa",
+          "eaabcdgfa",
+          "befa",
+          "dgc",
+          "ade"
+        ]
       },
-      "output": ["abcdefg","befa","eaabcdgfa","gfedcbaaa"]
+      "output": [
+        "abcdefg",
+        "befa",
+        "eaabcdgfa",
+        "gfedcbaaa"
+      ]
     },
     {
       "id": 9,
       "input": {
-        "board": [["m","b","c","d"],["a","a","a","a"],["a","a","a","a"],["a","a","a","a"]],
-        "words": ["aaaaaaaaaaaaaa"]
+        "board": [
+          [
+            "m",
+            "b",
+            "c",
+            "d"
+          ],
+          [
+            "a",
+            "a",
+            "a",
+            "a"
+          ],
+          [
+            "a",
+            "a",
+            "a",
+            "a"
+          ],
+          [
+            "a",
+            "a",
+            "a",
+            "a"
+          ]
+        ],
+        "words": [
+          "aaaaaaaaaaaaaa"
+        ]
       },
       "output": []
     },
     {
       "id": 10,
       "input": {
-        "board": [["a","b"],["a","a"]],
-        "words": ["aba","baa","bab","aaab","aaa","aaaa","aaba"]
+        "board": [
+          [
+            "a",
+            "b"
+          ],
+          [
+            "a",
+            "a"
+          ]
+        ],
+        "words": [
+          "aba",
+          "baa",
+          "bab",
+          "aaab",
+          "aaa",
+          "aaaa",
+          "aaba"
+        ]
       },
-      "output": ["aaa","aaab","aaba","aba","baa"]
+      "output": [
+        "aaa",
+        "aaab",
+        "aaba",
+        "aba",
+        "baa"
+      ]
     }
   ]
 }

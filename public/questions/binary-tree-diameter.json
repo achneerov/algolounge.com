@@ -1,4 +1,5 @@
 {
+  "index": 15,
   "filename": "binary-tree-diameter",
   "title": "Diameter of Binary Tree",
   "keywords": [
@@ -25,70 +26,157 @@
     {
       "id": 1,
       "input": {
-        "root": [1, 2, 3]
+        "root": [
+          1,
+          2,
+          3
+        ]
       },
       "output": 2
     },
     {
       "id": 2,
       "input": {
-        "root": [1, 2]
+        "root": [
+          1,
+          2
+        ]
       },
       "output": 1
     },
     {
       "id": 3,
       "input": {
-        "root": [1]
+        "root": [
+          1
+        ]
       },
       "output": 0
     },
     {
       "id": 4,
       "input": {
-        "root": [1, 2, 3, 4, 5]
+        "root": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
       },
       "output": 3
     },
     {
       "id": 5,
       "input": {
-        "root": [1, 2, null, 4, null, 5]
+        "root": [
+          1,
+          2,
+          null,
+          4,
+          null,
+          5
+        ]
       },
       "output": 3
     },
     {
       "id": 6,
       "input": {
-        "root": [1, null, 2, null, 3, null, 4]
+        "root": [
+          1,
+          null,
+          2,
+          null,
+          3,
+          null,
+          4
+        ]
       },
       "output": 3
     },
     {
       "id": 7,
       "input": {
-        "root": [1, 2, 3, 4, 5, 6, 7]
+        "root": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
       },
       "output": 4
     },
     {
       "id": 8,
       "input": {
-        "root": [-10, 9, 20, null, null, 15, 7]
+        "root": [
+          -10,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ]
       },
       "output": 3
     },
     {
       "id": 9,
       "input": {
-        "root": [1, 2, 3, 4, 5, null, null, 6, 7]
+        "root": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          null,
+          null,
+          6,
+          7
+        ]
       },
       "output": 4
     },
     {
       "id": 10,
       "input": {
-        "root": [4, -7, -3, null, null, -9, -3, 9, -7, -4, null, 6, null, -6, -6, null, null, 0, 6, 5, null, 9, null, null, -1, -4, null, null, null, -2]
+        "root": [
+          4,
+          -7,
+          -3,
+          null,
+          null,
+          -9,
+          -3,
+          9,
+          -7,
+          -4,
+          null,
+          6,
+          null,
+          -6,
+          -6,
+          null,
+          null,
+          0,
+          6,
+          5,
+          null,
+          9,
+          null,
+          null,
+          -1,
+          -4,
+          null,
+          null,
+          null,
+          -2
+        ]
       },
       "output": 8
     }

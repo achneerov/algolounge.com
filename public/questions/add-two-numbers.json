@@ -1,4 +1,5 @@
 {
+  "index": 4,
   "filename": "add-two-numbers",
   "title": "Add Two Numbers",
   "keywords": [
@@ -18,91 +19,253 @@
   "template": "# Definition for singly-linked list.\n# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\ndef addTwoNumbers(l1, l2):\n    ",
   "solution_text": "<h3>Add Two Numbers - Digit-by-Digit Addition</h3>\n\n<p><strong>Algorithm:</strong></p>\n<ol>\n<li>Initialize dummy head and carry variable</li>\n<li>Traverse both linked lists simultaneously</li>\n<li>Add values with carry at each position</li>\n<li>Create new nodes for the result</li>\n<li>Handle remaining carry</li>\n</ol>\n\n<p><strong>Time Complexity:</strong> O(max(m, n)) where m, n are lengths of input lists</p>\n<p><strong>Space Complexity:</strong> O(max(m, n)) for the result list</p>\n\n<p><strong>Key Insights:</strong></p>\n<ul>\n<li>Process digits from least to most significant (reverse order)</li>\n<li>Handle carry propagation carefully</li>\n<li>Create new linked list for result</li>\n<li>Continue while either list has nodes or carry exists</li>\n</ul>",
   "solution_code": "def addTwoNumbers(l1, l2):\n    dummy = ListNode(0)\n    current = dummy\n    carry = 0\n    \n    while l1 or l2 or carry:\n        val1 = l1.val if l1 else 0\n        val2 = l2.val if l2 else 0\n        \n        total = val1 + val2 + carry\n        carry = total // 10\n        digit = total % 10\n        \n        current.next = ListNode(digit)\n        current = current.next\n        \n        l1 = l1.next if l1 else None\n        l2 = l2.next if l2 else None\n    \n    return dummy.next",
-
   "prepare": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n    \n    def __repr__(self):\n        return f'ListNode({self.val})'\n\ndef prepare(test_case_input):\n    \"\"\"Convert array representation to ListNode structure\"\"\"\n    def build_list(arr):\n        if not arr:\n            return None\n        head = ListNode(arr[0])\n        current = head\n        for val in arr[1:]:\n            current.next = ListNode(val)\n            current = current.next\n        return head\n    \n    l1 = build_list(test_case_input['l1'])\n    l2 = build_list(test_case_input['l2'])\n    return (l1, l2)",
-
   "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the sum linked list result\"\"\"\n    def list_to_array(node):\n        result = []\n        while node:\n            result.append(node.val)\n            node = node.next\n        return result\n    \n    def list_to_string(lst):\n        if not lst:\n            return '[]'\n        return '[' + ', '.join(str(x) for x in lst) + ']'\n    \n    actual_array = list_to_array(actual_output)\n    passed = actual_array == expected_output\n    output_str = list_to_string(actual_array)\n    \n    return [passed, output_str]",
-
   "test_cases": [
     {
       "id": 1,
       "input": {
-        "l1": [2, 4, 3],
-        "l2": [5, 6, 4]
+        "l1": [
+          2,
+          4,
+          3
+        ],
+        "l2": [
+          5,
+          6,
+          4
+        ]
       },
-      "output": [7, 0, 8]
+      "output": [
+        7,
+        0,
+        8
+      ]
     },
     {
       "id": 2,
       "input": {
-        "l1": [0],
-        "l2": [0]
+        "l1": [
+          0
+        ],
+        "l2": [
+          0
+        ]
       },
-      "output": [0]
+      "output": [
+        0
+      ]
     },
     {
       "id": 3,
       "input": {
-        "l1": [9, 9, 9, 9, 9, 9, 9],
-        "l2": [9, 9, 9, 9]
+        "l1": [
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9
+        ],
+        "l2": [
+          9,
+          9,
+          9,
+          9
+        ]
       },
-      "output": [8, 9, 9, 9, 0, 0, 0, 1]
+      "output": [
+        8,
+        9,
+        9,
+        9,
+        0,
+        0,
+        0,
+        1
+      ]
     },
     {
       "id": 4,
       "input": {
-        "l1": [9],
-        "l2": [9]
+        "l1": [
+          9
+        ],
+        "l2": [
+          9
+        ]
       },
-      "output": [8, 1]
+      "output": [
+        8,
+        1
+      ]
     },
     {
       "id": 5,
       "input": {
-        "l1": [1, 8],
-        "l2": [0]
+        "l1": [
+          1,
+          8
+        ],
+        "l2": [
+          0
+        ]
       },
-      "output": [1, 8]
+      "output": [
+        1,
+        8
+      ]
     },
     {
       "id": 6,
       "input": {
-        "l1": [2, 4, 9],
-        "l2": [5, 6, 4, 9]
+        "l1": [
+          2,
+          4,
+          9
+        ],
+        "l2": [
+          5,
+          6,
+          4,
+          9
+        ]
       },
-      "output": [7, 0, 4, 0, 1]
+      "output": [
+        7,
+        0,
+        4,
+        0,
+        1
+      ]
     },
     {
       "id": 7,
       "input": {
-        "l1": [1],
-        "l2": [9, 9, 9]
+        "l1": [
+          1
+        ],
+        "l2": [
+          9,
+          9,
+          9
+        ]
       },
-      "output": [0, 0, 0, 1]
+      "output": [
+        0,
+        0,
+        0,
+        1
+      ]
     },
     {
       "id": 8,
       "input": {
-        "l1": [5],
-        "l2": [5]
+        "l1": [
+          5
+        ],
+        "l2": [
+          5
+        ]
       },
-      "output": [0, 1]
+      "output": [
+        0,
+        1
+      ]
     },
     {
       "id": 9,
       "input": {
-        "l1": [9, 9],
-        "l2": [1]
+        "l1": [
+          9,
+          9
+        ],
+        "l2": [
+          1
+        ]
       },
-      "output": [0, 0, 1]
+      "output": [
+        0,
+        0,
+        1
+      ]
     },
     {
       "id": 10,
       "input": {
-        "l1": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        "l2": [5, 6, 4]
+        "l1": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "l2": [
+          5,
+          6,
+          4
+        ]
       },
-      "output": [6, 6, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+      "output": [
+        6,
+        6,
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
     }
   ]
 }

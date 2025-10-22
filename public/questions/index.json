@@ -1,6 +1,7 @@
 {
   "questions": [
     {
+      "index": 1,
       "filename": "3sum",
       "title": "3Sum",
       "keywords": [
@@ -17,6 +18,7 @@
       ]
     },
     {
+      "index": 2,
       "filename": "4sum",
       "title": "4Sum",
       "keywords": [
@@ -33,6 +35,7 @@
       ]
     },
     {
+      "index": 3,
       "filename": "add-binary",
       "title": "Add Binary",
       "keywords": [
@@ -49,6 +52,7 @@
       ]
     },
     {
+      "index": 4,
       "filename": "add-two-numbers",
       "title": "Add Two Numbers",
       "keywords": [
@@ -65,6 +69,7 @@
       ]
     },
     {
+      "index": 5,
       "filename": "alice-typing-problem",
       "title": "Alice Typing Problem",
       "keywords": [
@@ -76,6 +81,7 @@
       ]
     },
     {
+      "index": 6,
       "filename": "alphabetical-order-checker",
       "title": "Alphabetical Order Checker",
       "keywords": [
@@ -87,6 +93,7 @@
       ]
     },
     {
+      "index": 7,
       "filename": "anagram-groups",
       "title": "Group Anagrams",
       "keywords": [
@@ -103,6 +110,7 @@
       ]
     },
     {
+      "index": 8,
       "filename": "asteroid-collision",
       "title": "Asteroid Collision",
       "keywords": [
@@ -119,6 +127,7 @@
       ]
     },
     {
+      "index": 9,
       "filename": "balanced-binary-tree",
       "title": "Balanced Binary Tree",
       "keywords": [
@@ -135,6 +144,7 @@
       ]
     },
     {
+      "index": 10,
       "filename": "baseball-game",
       "title": "Baseball Game",
       "keywords": [
@@ -151,6 +161,24 @@
       ]
     },
     {
+      "index": 11,
+      "filename": "best-time-to-buy-and-sell-stock-ii",
+      "title": "Best Time to Buy and Sell Stock II",
+      "keywords": [
+        "best",
+        "time",
+        "buy",
+        "sell",
+        "stock",
+        "leetcode",
+        "122",
+        "given",
+        "integer",
+        "array"
+      ]
+    },
+    {
+      "index": 12,
       "filename": "best-time-to-buy-and-sell-stock",
       "title": "Best Time to Buy and Sell Stock",
       "keywords": [
@@ -172,22 +200,7 @@
       ]
     },
     {
-      "filename": "best-time-to-buy-and-sell-stock-ii",
-      "title": "Best Time to Buy and Sell Stock II",
-      "keywords": [
-        "best",
-        "time",
-        "buy",
-        "sell",
-        "stock",
-        "leetcode",
-        "122",
-        "given",
-        "integer",
-        "array"
-      ]
-    },
-    {
+      "index": 13,
       "filename": "binary-representation",
       "title": "Binary Representation",
       "keywords": [
@@ -199,6 +212,7 @@
       ]
     },
     {
+      "index": 14,
       "filename": "binary-search",
       "title": "Binary Search",
       "keywords": [
@@ -215,6 +229,7 @@
       ]
     },
     {
+      "index": 15,
       "filename": "binary-tree-diameter",
       "title": "Diameter of Binary Tree",
       "keywords": [
@@ -231,6 +246,7 @@
       ]
     },
     {
+      "index": 16,
       "filename": "binary-tree-from-preorder-and-inorder-traversal",
       "title": "Construct Binary Tree from Preorder and Inorder Traversal",
       "keywords": [
@@ -247,6 +263,7 @@
       ]
     },
     {
+      "index": 17,
       "filename": "binary-tree-inorder-traversal",
       "title": "Binary Tree Inorder Traversal",
       "keywords": [
@@ -263,6 +280,7 @@
       ]
     },
     {
+      "index": 18,
       "filename": "binary-tree-maximum-path-sum",
       "title": "Binary Tree Maximum Path Sum",
       "keywords": [
@@ -279,6 +297,7 @@
       ]
     },
     {
+      "index": 19,
       "filename": "binary-tree-postorder-traversal",
       "title": "Binary Tree Postorder Traversal",
       "keywords": [
@@ -295,6 +314,7 @@
       ]
     },
     {
+      "index": 20,
       "filename": "binary-tree-preorder-traversal",
       "title": "Binary Tree Preorder Traversal",
       "keywords": [
@@ -311,6 +331,7 @@
       ]
     },
     {
+      "index": 21,
       "filename": "binary-tree-right-side-view",
       "title": "Binary Tree Right Side View",
       "keywords": [
@@ -327,6 +348,7 @@
       ]
     },
     {
+      "index": 22,
       "filename": "bitwise-and-of-numbers-range",
       "title": "Bitwise AND of Numbers Range",
       "keywords": [
@@ -343,6 +365,7 @@
       ]
     },
     {
+      "index": 23,
       "filename": "boats-to-save-people",
       "title": "Boats to Save People",
       "keywords": [
@@ -359,6 +382,7 @@
       ]
     },
     {
+      "index": 24,
       "filename": "burst-balloons",
       "title": "Burst Balloons",
       "keywords": [
@@ -375,6 +399,7 @@
       ]
     },
     {
+      "index": 25,
       "filename": "caffeine-calculator",
       "title": "Caffeine Calculator",
       "keywords": [
@@ -386,6 +411,7 @@
       ]
     },
     {
+      "index": 26,
       "filename": "canadian-province-validator",
       "title": "Canadian Province Validator",
       "keywords": [
@@ -397,6 +423,7 @@
       ]
     },
     {
+      "index": 27,
       "filename": "candy",
       "title": "Candy",
       "keywords": [
@@ -413,6 +440,7 @@
       ]
     },
     {
+      "index": 28,
       "filename": "car-fleet",
       "title": "Car Fleet",
       "keywords": [
@@ -429,22 +457,7 @@
       ]
     },
     {
-      "filename": "car-pooling",
-      "title": "Car Pooling",
-      "keywords": [
-        "car",
-        "pooling",
-        "leetcode",
-        "1094",
-        "there",
-        "capacity",
-        "empty",
-        "seats",
-        "vehicle",
-        "only"
-      ]
-    },
-    {
+      "index": 30,
       "filename": "climbing-stairs",
       "title": "Climbing Stairs",
       "keywords": [
@@ -461,6 +474,7 @@
       ]
     },
     {
+      "index": 31,
       "filename": "coffee-production-scheduler",
       "title": "HW13 - Coffee Production Scheduler",
       "keywords": [
@@ -472,6 +486,7 @@
       ]
     },
     {
+      "index": 32,
       "filename": "coffee-sales-projection",
       "title": "Coffee Sales Projection",
       "keywords": [
@@ -483,6 +498,7 @@
       ]
     },
     {
+      "index": 33,
       "filename": "coffee-shop-billing",
       "title": "Alex's Brew Coffee Shop Billing",
       "keywords": [
@@ -494,6 +510,7 @@
       ]
     },
     {
+      "index": 34,
       "filename": "coin-change",
       "title": "Coin Change",
       "keywords": [
@@ -513,6 +530,7 @@
       ]
     },
     {
+      "index": 35,
       "filename": "container-with-most-water",
       "title": "Container With Most Water",
       "keywords": [
@@ -529,6 +547,7 @@
       ]
     },
     {
+      "index": 36,
       "filename": "contains-duplicate",
       "title": "Contains Duplicate",
       "keywords": [
@@ -545,6 +564,7 @@
       ]
     },
     {
+      "index": 37,
       "filename": "copy-list-with-random-pointer",
       "title": "Copy List with Random Pointer",
       "keywords": [
@@ -564,6 +584,7 @@
       ]
     },
     {
+      "index": 38,
       "filename": "count-vowels",
       "title": "Count Vowels",
       "keywords": [
@@ -575,6 +596,7 @@
       ]
     },
     {
+      "index": 39,
       "filename": "daily-temperatures",
       "title": "Daily Temperatures",
       "keywords": [
@@ -591,6 +613,7 @@
       ]
     },
     {
+      "index": 40,
       "filename": "dice-ways",
       "title": "Dice Ways",
       "keywords": [
@@ -602,6 +625,7 @@
       ]
     },
     {
+      "index": 41,
       "filename": "evaluate-reverse-polish-notation",
       "title": "Evaluate Reverse Polish Notation",
       "keywords": [
@@ -618,6 +642,7 @@
       ]
     },
     {
+      "index": 42,
       "filename": "find-median-from-data-stream",
       "title": "Find Median From Data Stream",
       "keywords": [
@@ -634,6 +659,7 @@
       ]
     },
     {
+      "index": 43,
       "filename": "generate-parentheses",
       "title": "Generate Parentheses",
       "keywords": [
@@ -651,6 +677,7 @@
       ]
     },
     {
+      "index": 44,
       "filename": "greatest-common-divisor",
       "title": "Greatest Common Divisor (GCD)",
       "keywords": [
@@ -663,6 +690,7 @@
       ]
     },
     {
+      "index": 45,
       "filename": "hello-world",
       "title": "Hello World",
       "keywords": [
@@ -678,6 +706,7 @@
       ]
     },
     {
+      "index": 46,
       "filename": "house-robber",
       "title": "House Robber",
       "keywords": [
@@ -694,6 +723,7 @@
       ]
     },
     {
+      "index": 47,
       "filename": "invert-binary-tree",
       "title": "Invert Binary Tree",
       "keywords": [
@@ -710,6 +740,7 @@
       ]
     },
     {
+      "index": 48,
       "filename": "largest-rectangle-in-histogram",
       "title": "Largest Rectangle In Histogram",
       "keywords": [
@@ -726,6 +757,7 @@
       ]
     },
     {
+      "index": 49,
       "filename": "last-even-index",
       "title": "Last Even Index",
       "keywords": [
@@ -738,6 +770,7 @@
       ]
     },
     {
+      "index": 50,
       "filename": "last-stone-weight",
       "title": "Last Stone Weight",
       "keywords": [
@@ -755,6 +788,7 @@
       ]
     },
     {
+      "index": 51,
       "filename": "linked-list-cycle",
       "title": "Linked List Cycle Detection",
       "keywords": [
@@ -771,6 +805,7 @@
       ]
     },
     {
+      "index": 52,
       "filename": "longest-common-subsequence",
       "title": "Longest Common Subsequence",
       "keywords": [
@@ -787,6 +822,7 @@
       ]
     },
     {
+      "index": 53,
       "filename": "longest-consecutive-sequence",
       "title": "Longest Consecutive Sequence",
       "keywords": [
@@ -803,6 +839,7 @@
       ]
     },
     {
+      "index": 54,
       "filename": "longest-increasing-path-in-a-matrix",
       "title": "Longest Increasing Path in a Matrix",
       "keywords": [
@@ -823,6 +860,7 @@
       ]
     },
     {
+      "index": 55,
       "filename": "longest-palindromic-substring",
       "title": "Longest Palindromic Substring",
       "keywords": [
@@ -839,6 +877,7 @@
       ]
     },
     {
+      "index": 56,
       "filename": "maximum-depth-of-binary-tree",
       "title": "Maximum Depth of Binary Tree",
       "keywords": [
@@ -855,6 +894,7 @@
       ]
     },
     {
+      "index": 57,
       "filename": "maximum-subarray",
       "title": "Maximum Subarray",
       "keywords": [
@@ -871,6 +911,7 @@
       ]
     },
     {
+      "index": 58,
       "filename": "median-of-two-sorted-arrays",
       "title": "Median of Two Sorted Arrays",
       "keywords": [
@@ -887,6 +928,7 @@
       ]
     },
     {
+      "index": 59,
       "filename": "merge-two-sorted-lists",
       "title": "Merge Two Sorted Linked Lists",
       "keywords": [
@@ -903,6 +945,7 @@
       ]
     },
     {
+      "index": 60,
       "filename": "most-frequent-element",
       "title": "Most Frequent Element",
       "keywords": [
@@ -914,6 +957,7 @@
       ]
     },
     {
+      "index": 61,
       "filename": "multiple-check",
       "title": "Multiple Check",
       "keywords": [
@@ -927,6 +971,7 @@
       ]
     },
     {
+      "index": 62,
       "filename": "n-queens",
       "title": "N-Queens",
       "keywords": [
@@ -942,6 +987,7 @@
       ]
     },
     {
+      "index": 63,
       "filename": "palindrome-checker",
       "title": "Palindrome Checker",
       "keywords": [
@@ -953,6 +999,7 @@
       ]
     },
     {
+      "index": 64,
       "filename": "product-of-array-except-self",
       "title": "Product of Array Except Self",
       "keywords": [
@@ -969,6 +1016,7 @@
       ]
     },
     {
+      "index": 65,
       "filename": "remove-nth-node-from-end-of-list",
       "title": "Remove Nth Node From End of List",
       "keywords": [
@@ -987,6 +1035,7 @@
       ]
     },
     {
+      "index": 66,
       "filename": "reorder-list",
       "title": "Reorder Linked List",
       "keywords": [
@@ -1003,6 +1052,7 @@
       ]
     },
     {
+      "index": 67,
       "filename": "reverse-linked-list",
       "title": "Reverse Linked List",
       "keywords": [
@@ -1019,6 +1069,7 @@
       ]
     },
     {
+      "index": 68,
       "filename": "serialize-and-deserialize-binary-tree",
       "title": "Serialize and Deserialize Binary Tree",
       "keywords": [
@@ -1035,6 +1086,7 @@
       ]
     },
     {
+      "index": 69,
       "filename": "string-comparison",
       "title": "String Comparison",
       "keywords": [
@@ -1048,6 +1100,7 @@
       ]
     },
     {
+      "index": 70,
       "filename": "string-matching",
       "title": "String Matching",
       "keywords": [
@@ -1059,6 +1112,7 @@
       ]
     },
     {
+      "index": 71,
       "filename": "string-reversal",
       "title": "String Reversal",
       "keywords": [
@@ -1069,6 +1123,7 @@
       ]
     },
     {
+      "index": 72,
       "filename": "sum-of-digits-times-seven",
       "title": "Sum of Digits Times Seven",
       "keywords": [
@@ -1081,6 +1136,7 @@
       ]
     },
     {
+      "index": 73,
       "filename": "sum-two-integers",
       "title": "Sum Two Integers",
       "keywords": [
@@ -1095,6 +1151,7 @@
       ]
     },
     {
+      "index": 74,
       "filename": "trapping-rain-water",
       "title": "Trapping Rain Water",
       "keywords": [
@@ -1112,6 +1169,7 @@
       ]
     },
     {
+      "index": 75,
       "filename": "tribonacci-sequence",
       "title": "Tribonacci Sequence",
       "keywords": [
@@ -1124,22 +1182,7 @@
       ]
     },
     {
-      "filename": "two-sum",
-      "title": "Two Sum",
-      "keywords": [
-        "two",
-        "sum",
-        "array",
-        "integer",
-        "target",
-        "indices",
-        "add",
-        "numbers",
-        "hash",
-        "map"
-      ]
-    },
-    {
+      "index": 76,
       "filename": "two-sum-ii-input-array-is-sorted",
       "title": "Two Sum II - Input Array Is Sorted",
       "keywords": [
@@ -1156,6 +1199,24 @@
       ]
     },
     {
+      "index": 77,
+      "filename": "two-sum",
+      "title": "Two Sum",
+      "keywords": [
+        "two",
+        "sum",
+        "array",
+        "integer",
+        "target",
+        "indices",
+        "add",
+        "numbers",
+        "hash",
+        "map"
+      ]
+    },
+    {
+      "index": 78,
       "filename": "valid-anagram",
       "title": "Valid Anagram",
       "keywords": [
@@ -1172,6 +1233,7 @@
       ]
     },
     {
+      "index": 79,
       "filename": "valid-parentheses",
       "title": "Valid Parentheses",
       "keywords": [
@@ -1188,6 +1250,7 @@
       ]
     },
     {
+      "index": 80,
       "filename": "valid-sudoku",
       "title": "Valid Sudoku",
       "keywords": [
@@ -1204,6 +1267,7 @@
       ]
     },
     {
+      "index": 81,
       "filename": "word-ladder",
       "title": "Word Ladder",
       "keywords": [
@@ -1222,6 +1286,7 @@
       ]
     },
     {
+      "index": 82,
       "filename": "word-search-ii",
       "title": "Word Search II",
       "keywords": [
@@ -1237,8 +1302,25 @@
         "strings",
         "trie"
       ]
+    },
+    {
+      "index": 83,
+      "filename": "car-pooling",
+      "title": "Car Pooling",
+      "keywords": [
+        "car",
+        "pooling",
+        "leetcode",
+        "1094",
+        "there",
+        "capacity",
+        "empty",
+        "seats",
+        "vehicle",
+        "only"
+      ]
     }
   ],
-  "lastUpdated": "2025-10-22T01:14:25.581Z",
+  "lastUpdated": "2025-10-22T01:38:39.207Z",
   "totalQuestions": 82
 }

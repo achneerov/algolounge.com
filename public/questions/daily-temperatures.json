@@ -1,4 +1,5 @@
 {
+  "index": 39,
   "filename": "daily-temperatures",
   "title": "Daily Temperatures",
   "keywords": [
@@ -25,79 +26,227 @@
     {
       "id": 1,
       "input": {
-        "temperatures": [30, 38, 30, 36, 35, 40, 28]
+        "temperatures": [
+          30,
+          38,
+          30,
+          36,
+          35,
+          40,
+          28
+        ]
       },
-      "output": [1, 4, 1, 2, 1, 0, 0]
+      "output": [
+        1,
+        4,
+        1,
+        2,
+        1,
+        0,
+        0
+      ]
     },
     {
       "id": 2,
       "input": {
-        "temperatures": [22, 21, 20]
+        "temperatures": [
+          22,
+          21,
+          20
+        ]
       },
-      "output": [0, 0, 0]
+      "output": [
+        0,
+        0,
+        0
+      ]
     },
     {
       "id": 3,
       "input": {
-        "temperatures": [89, 62, 70, 58, 47, 47, 46, 76, 100, 70]
+        "temperatures": [
+          89,
+          62,
+          70,
+          58,
+          47,
+          47,
+          46,
+          76,
+          100,
+          70
+        ]
       },
-      "output": [8, 1, 5, 4, 3, 2, 1, 1, 0, 0]
+      "output": [
+        8,
+        1,
+        5,
+        4,
+        3,
+        2,
+        1,
+        1,
+        0,
+        0
+      ]
     },
     {
       "id": 4,
       "input": {
-        "temperatures": [73, 74, 75, 71, 69, 72, 76, 73]
+        "temperatures": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ]
       },
-      "output": [1, 1, 4, 2, 1, 1, 0, 0]
+      "output": [
+        1,
+        1,
+        4,
+        2,
+        1,
+        1,
+        0,
+        0
+      ]
     },
     {
       "id": 5,
       "input": {
-        "temperatures": [55]
+        "temperatures": [
+          55
+        ]
       },
-      "output": [0]
+      "output": [
+        0
+      ]
     },
     {
       "id": 6,
       "input": {
-        "temperatures": [30, 40, 50, 60]
+        "temperatures": [
+          30,
+          40,
+          50,
+          60
+        ]
       },
-      "output": [1, 1, 1, 0]
+      "output": [
+        1,
+        1,
+        1,
+        0
+      ]
     },
     {
       "id": 7,
       "input": {
-        "temperatures": [60, 50, 40, 30]
+        "temperatures": [
+          60,
+          50,
+          40,
+          30
+        ]
       },
-      "output": [0, 0, 0, 0]
+      "output": [
+        0,
+        0,
+        0,
+        0
+      ]
     },
     {
       "id": 8,
       "input": {
-        "temperatures": [75, 71, 76, 73, 68, 72, 77]
+        "temperatures": [
+          75,
+          71,
+          76,
+          73,
+          68,
+          72,
+          77
+        ]
       },
-      "output": [2, 1, 4, 3, 1, 1, 0]
+      "output": [
+        2,
+        1,
+        4,
+        3,
+        1,
+        1,
+        0
+      ]
     },
     {
       "id": 9,
       "input": {
-        "temperatures": [90, 80, 70, 85, 95]
+        "temperatures": [
+          90,
+          80,
+          70,
+          85,
+          95
+        ]
       },
-      "output": [4, 2, 1, 1, 0]
+      "output": [
+        4,
+        2,
+        1,
+        1,
+        0
+      ]
     },
     {
       "id": 10,
       "input": {
-        "temperatures": [34, 80, 80, 34, 34, 80, 80, 80, 80, 34]
+        "temperatures": [
+          34,
+          80,
+          80,
+          34,
+          34,
+          80,
+          80,
+          80,
+          80,
+          34
+        ]
       },
-      "output": [1, 0, 0, 2, 1, 0, 0, 0, 0, 0]
+      "output": [
+        1,
+        0,
+        0,
+        2,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
     },
     {
       "id": 11,
       "input": {
-        "temperatures": [50, 50, 50, 60]
+        "temperatures": [
+          50,
+          50,
+          50,
+          60
+        ]
       },
-      "output": [3, 2, 1, 0]
+      "output": [
+        3,
+        2,
+        1,
+        0
+      ]
     }
   ]
 }

@@ -1,4 +1,5 @@
 {
+  "index": 12,
   "filename": "best-time-to-buy-and-sell-stock",
   "title": "Best Time to Buy and Sell Stock",
   "keywords": [
@@ -29,70 +30,120 @@
     {
       "id": 1,
       "input": {
-        "prices": [7, 1, 5, 3, 6, 4]
+        "prices": [
+          7,
+          1,
+          5,
+          3,
+          6,
+          4
+        ]
       },
       "output": 5
     },
     {
       "id": 2,
       "input": {
-        "prices": [7, 6, 4, 3, 1]
+        "prices": [
+          7,
+          6,
+          4,
+          3,
+          1
+        ]
       },
       "output": 0
     },
     {
       "id": 3,
       "input": {
-        "prices": [1, 2]
+        "prices": [
+          1,
+          2
+        ]
       },
       "output": 1
     },
     {
       "id": 4,
       "input": {
-        "prices": [2, 1]
+        "prices": [
+          2,
+          1
+        ]
       },
       "output": 0
     },
     {
       "id": 5,
       "input": {
-        "prices": [1]
+        "prices": [
+          1
+        ]
       },
       "output": 0
     },
     {
       "id": 6,
       "input": {
-        "prices": [1, 2, 3, 4, 5]
+        "prices": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
       },
       "output": 4
     },
     {
       "id": 7,
       "input": {
-        "prices": [5, 4, 3, 2, 1]
+        "prices": [
+          5,
+          4,
+          3,
+          2,
+          1
+        ]
       },
       "output": 0
     },
     {
       "id": 8,
       "input": {
-        "prices": [3, 3, 5, 0, 0, 3, 1, 4]
+        "prices": [
+          3,
+          3,
+          5,
+          0,
+          0,
+          3,
+          1,
+          4
+        ]
       },
       "output": 4
     },
     {
       "id": 9,
       "input": {
-        "prices": [1, 4, 2]
+        "prices": [
+          1,
+          4,
+          2
+        ]
       },
       "output": 3
     },
     {
       "id": 10,
       "input": {
-        "prices": [2, 4, 1]
+        "prices": [
+          2,
+          4,
+          1
+        ]
       },
       "output": 2
     }

@@ -457,23 +457,6 @@
       ]
     },
     {
-      "index": 29,
-      "filename": "car-pooling",
-      "title": "Car Pooling",
-      "keywords": [
-        "car",
-        "pooling",
-        "leetcode",
-        "1094",
-        "there",
-        "capacity",
-        "empty",
-        "seats",
-        "vehicle",
-        "only"
-      ]
-    },
-    {
       "index": 30,
       "filename": "climbing-stairs",
       "title": "Climbing Stairs",
@@ -1319,8 +1302,25 @@
         "strings",
         "trie"
       ]
+    },
+    {
+      "index": 83,
+      "filename": "car-pooling",
+      "title": "Car Pooling",
+      "keywords": [
+        "car",
+        "pooling",
+        "leetcode",
+        "1094",
+        "there",
+        "capacity",
+        "empty",
+        "seats",
+        "vehicle",
+        "only"
+      ]
     }
   ],
-  "lastUpdated": "2025-10-21T00:51:57.204Z",
+  "lastUpdated": "2025-10-22T01:38:39.207Z",
   "totalQuestions": 82
 }

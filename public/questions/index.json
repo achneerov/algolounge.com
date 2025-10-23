@@ -18,6 +18,42 @@
       ]
     },
     {
+      "index": 1,
+      "filename": "minimum-interval-to-include-each-query",
+      "title": "Minimum Interval to Include Each Query",
+      "keywords": [
+        "minimum",
+        "interval",
+        "query",
+        "intervals",
+        "sorting",
+        "heap",
+        "priority",
+        "queue",
+        "binary",
+        "search",
+        "leetcode"
+      ]
+    },
+    {
+      "index": 1,
+      "filename": "reconstruct-itinerary",
+      "title": "Reconstruct Itinerary",
+      "keywords": [
+        "reconstruct",
+        "itinerary",
+        "flights",
+        "graph",
+        "euler",
+        "path",
+        "dfs",
+        "backtracking",
+        "lexical",
+        "order",
+        "leetcode"
+      ]
+    },
+    {
       "index": 2,
       "filename": "4sum",
       "title": "4Sum",
@@ -1321,6 +1357,6 @@
       ]
     }
   ],
-  "lastUpdated": "2025-10-22T01:38:39.207Z",
-  "totalQuestions": 82
+  "lastUpdated": "2025-10-23T22:55:52.716Z",
+  "totalQuestions": 84
 }

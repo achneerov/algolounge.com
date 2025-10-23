@@ -452,6 +452,28 @@
             { "text": "Medium", "color": "#f59e0b" },
             { "text": "Two Pointers", "color": "#a855f7" }
           ]
+        },
+        {
+          "filename": "minimum-interval-to-include-each-query",
+          "urls": [
+            { "url": "https://leetcode.com/problems/minimum-interval-to-include-each-query/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/minimum-interval-to-include-each-query", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Intervals", "color": "#06b6d4" }
+          ]
+        },
+        {
+          "filename": "reconstruct-itinerary",
+          "urls": [
+            { "url": "https://leetcode.com/problems/reconstruct-itinerary/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/reconstruct-itinerary", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Advanced Graphs", "color": "#ec4899" }
+          ]
         }
       ]
     },

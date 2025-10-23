@@ -1,0 +1,83 @@
+{
+  "index": 1,
+  "filename": "reconstruct-itinerary",
+  "title": "Reconstruct Itinerary",
+  "keywords": [
+    "reconstruct",
+    "itinerary",
+    "flights",
+    "graph",
+    "euler",
+    "path",
+    "dfs",
+    "backtracking",
+    "lexical",
+    "order",
+    "leetcode"
+  ],
+  "description": "<h2>Reconstruct Itinerary</h2><p>You are given a list of airline tickets where <code>tickets[i] = [fromi, toi]</code> represent the departure and the arrival airports of one flight. Reconstruct the itinerary in order and return it.</p><p>All of the tickets belong to a man who departs from \"JFK\", thus, the itinerary must begin with \"JFK\". If there are multiple valid itineraries, you should return the itinerary that has the smallest lexical order when read as a single string.</p><p>For example, the itinerary [\"JFK\", \"LGA\"] has a smaller lexical order than [\"JFK\", \"LGB\"].</p><p>You may assume all tickets form at least one valid itinerary. You must use all the tickets once and only once.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> tickets = [[\"MUC\",\"LHR\"],[\"JFK\",\"MUC\"],[\"SFO\",\"SJC\"],[\"LHR\",\"SFO\"]]<br><strong>Output:</strong> [\"JFK\",\"MUC\",\"LHR\",\"SFO\",\"SJC\"]</li><li><strong>Input:</strong> tickets = [[\"JFK\",\"SFO\"],[\"JFK\",\"ATL\"],[\"SFO\",\"ATL\"],[\"ATL\",\"JFK\"],[\"ATL\",\"SFO\"]]<br><strong>Output:</strong> [\"JFK\",\"ATL\",\"JFK\",\"SFO\",\"ATL\",\"SFO\"]<br><strong>Explanation:</strong> Another possible reconstruction is [\"JFK\",\"SFO\",\"ATL\",\"JFK\",\"ATL\",\"SFO\"] but it is larger in lexical order.</li></ul><h3>Constraints:</h3><ul><li><code>1 &lt;= tickets.length &lt;= 300</code></li><li><code>tickets[i].length == 2</code></li><li><code>fromi.length == 3</code></li><li><code>toi.length == 3</code></li><li><code>fromi</code> and <code>toi</code> consist of uppercase English letters.</li><li><code>fromi != toi</code></li></ul>",
+  "entry_function": "findItinerary",
+  "template": "def findItinerary(tickets):\n    ",
+  "solution_text": "<h3>Reconstruct Itinerary</h3><p><strong>Algorithm:</strong></p><ol><li>Build an adjacency list (graph) from the tickets</li><li>Sort destinations lexicographically for each airport</li><li>Use DFS (Hierholzer's algorithm) to find Eulerian path starting from JFK</li><li>When backtracking, add airports to result (post-order processing)</li><li>Reverse the result to get the correct order</li></ol><p><strong>Time Complexity:</strong> O(E log E) where E is the number of edges (tickets)</p><p><strong>Space Complexity:</strong> O(E + V) for the graph and recursion stack</p><p><strong>Key Insights:</strong></p><ul><li>This is an Eulerian path problem where we must use all edges exactly once</li><li>Sorting destinations ensures lexical order</li><li>Hierholzer's algorithm finds Eulerian paths efficiently</li><li>Post-order DFS naturally produces the correct itinerary when reversed</li></ul>",
+  "solution_code": "from collections import defaultdict\n\ndef findItinerary(tickets):\n    # Build graph\n    graph = defaultdict(list)\n    for src, dst in tickets:\n        graph[src].append(dst)\n    \n    # Sort destinations for lexical order\n    for airport in graph:\n        graph[airport].sort()\n    \n    result = []\n    \n    def dfs(airport):\n        while graph[airport]:\n            next_airport = graph[airport].pop(0)\n            dfs(next_airport)\n        result.append(airport)\n    \n    dfs(\"JFK\")\n    return result[::-1]",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for findItinerary function\"\"\"\n    return (test_case_input['tickets'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the itinerary result\"\"\"\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "tickets": [
+          ["MUC", "LHR"],
+          ["JFK", "MUC"],
+          ["SFO", "SJC"],
+          ["LHR", "SFO"]
+        ]
+      },
+      "output": ["JFK", "MUC", "LHR", "SFO", "SJC"]
+    },
+    {
+      "id": 2,
+      "input": {
+        "tickets": [
+          ["JFK", "SFO"],
+          ["JFK", "ATL"],
+          ["SFO", "ATL"],
+          ["ATL", "JFK"],
+          ["ATL", "SFO"]
+        ]
+      },
+      "output": ["JFK", "ATL", "JFK", "SFO", "ATL", "SFO"]
+    },
+    {
+      "id": 3,
+      "input": {
+        "tickets": [
+          ["JFK", "KUL"],
+          ["JFK", "NRT"],
+          ["NRT", "JFK"]
+        ]
+      },
+      "output": ["JFK", "NRT", "JFK", "KUL"]
+    },
+    {
+      "id": 4,
+      "input": {
+        "tickets": [
+          ["JFK", "NRT"],
+          ["NRT", "JFK"]
+        ]
+      },
+      "output": ["JFK", "NRT", "JFK"]
+    },
+    {
+      "id": 5,
+      "input": {
+        "tickets": [
+          ["JFK", "ATL"],
+          ["ATL", "JFK"]
+        ]
+      },
+      "output": ["JFK", "ATL", "JFK"]
+    }
+  ]
+}

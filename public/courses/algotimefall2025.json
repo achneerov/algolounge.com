@@ -441,6 +441,17 @@
             { "text": "Medium", "color": "#f59e0b" },
             { "text": "Two Pointers", "color": "#a855f7" }
           ]
+        },
+        {
+          "filename": "4sum",
+          "urls": [
+            { "url": "https://leetcode.com/problems/4sum/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/4sum", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Two Pointers", "color": "#a855f7" }
+          ]
         }
       ]
     },

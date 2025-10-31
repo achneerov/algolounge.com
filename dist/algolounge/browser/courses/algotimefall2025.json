@@ -1,0 +1,588 @@
+{
+  "filename": "algotimefall2025",
+  "course_name": "AlgoTime Fall 2025",
+  "course_description": "Welcome to Algotime, we look over cool coding questions here.",
+  "keywords": ["algorithms", "data structures", "technical interviews", "problem solving", "fall", "comprehensive", "progressive learning", "competitive programming"],
+  "units": {
+    "week1": {
+      "title": "Week 1",
+      "description": "These are the questions that will be looked at in week 1.",
+      "questions": []
+    },
+    "week2": {
+      "title": "Week 2",
+      "description": "These are the questions that will be looked at in week 2.",
+      "questions": []
+    },
+    "week3": {
+      "title": "Week 3",
+      "description": "These are the questions that will be looked at in week 3.",
+      "questions": [
+        {
+          "filename": "valid-parentheses",
+          "urls": [
+            { "url": "https://leetcode.com/problems/valid-parentheses/", "tooltip": "LeetCode Problem", "color": "#2563eb", "visibleString": "🔗" },
+            { "url": "https://www.youtube.com/watch?v=WTzjTskDFMg", "tooltip": "Video Solution", "color": "#dc2626", "visibleString": "📹" },
+            { "url": "https://github.com/neetcode-gh/leetcode/blob/main/python/0020-valid-parentheses.py", "tooltip": "Code Solution", "color": "#16a34a", "visibleString": "💻" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Alex's Favorite", "color": "#ffd700" }
+          ]
+        },
+        {
+          "filename": "binary-search",
+          "urls": [
+            { "url": "https://leetcode.com/problems/binary-search/", "tooltip": "LeetCode Problem", "color": "#2563eb", "visibleString": "🔗" },
+            { "url": "https://www.youtube.com/watch?v=s4DPM8ct1pI", "tooltip": "Video Tutorial", "color": "#dc2626", "visibleString": "📹" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" }
+          ]
+        },
+        {
+          "filename": "product-of-array-except-self",
+          "urls": [
+            { "url": "https://leetcode.com/problems/product-of-array-except-self/", "tooltip": "LeetCode Problem", "color": "#2563eb", "visibleString": "🔗" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" }
+          ]
+        },
+        {
+          "filename": "valid-sudoku",
+          "urls": [
+            { "url": "https://leetcode.com/problems/valid-sudoku/", "tooltip": "LeetCode Problem", "color": "#2563eb", "visibleString": "🔗" },
+            { "url": "https://www.youtube.com/watch?v=TjFXEUCMqI8", "tooltip": "Video Explanation", "color": "#dc2626", "visibleString": "📹" },
+            { "url": "https://en.wikipedia.org/wiki/Sudoku", "tooltip": "Sudoku Rules", "color": "#7c3aed", "visibleString": "📖" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Alex's Favorite", "color": "#ffd700" }
+          ]
+        },
+        {
+          "filename": "median-of-two-sorted-arrays",
+          "urls": [
+            { "url": "https://leetcode.com/problems/median-of-two-sorted-arrays/", "tooltip": "LeetCode Problem", "color": "#2563eb", "visibleString": "🔗" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" }
+          ]
+        },
+        {
+          "filename": "binary-tree-maximum-path-sum",
+          "urls": [
+            { "url": "https://leetcode.com/problems/binary-tree-maximum-path-sum/", "tooltip": "LeetCode Problem", "color": "#2563eb", "visibleString": "🔗" },
+            { "url": "https://www.youtube.com/watch?v=Hr5cWUld4vU", "tooltip": "Video Solution", "color": "#dc2626", "visibleString": "📹" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" }
+          ]
+        }
+      ]
+    },
+    "week4": {
+      "title": "Week 4",
+      "description": "These are the questions that will be looked at in week 4.",
+      "questions": [
+        {
+          "filename": "best-time-to-buy-and-sell-stock",
+          "urls": [
+            { "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/best-time-to-buy-and-sell-stock", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Sliding Window", "color": "#3b82f6" }
+          ]
+        },
+        {
+          "filename": "reverse-linked-list",
+          "urls": [
+            { "url": "https://leetcode.com/problems/reverse-linked-list/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/reverse-linked-list", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Linked List", "color": "#8b5cf6" }
+          ]
+        },
+        {
+          "filename": "remove-nth-node-from-end-of-list",
+          "urls": [
+            { "url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/remove-nth-node-from-end-of-list", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Linked List", "color": "#8b5cf6" }
+          ]
+        },
+        {
+          "filename": "copy-list-with-random-pointer",
+          "urls": [
+            { "url": "https://leetcode.com/problems/copy-list-with-random-pointer/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/copy-list-with-random-pointer", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Linked List", "color": "#8b5cf6" }
+          ]
+        },
+        {
+          "filename": "word-ladder",
+          "urls": [
+            { "url": "https://leetcode.com/problems/word-ladder/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/word-ladder", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Graph", "color": "#ec4899" }
+          ]
+        },
+        {
+          "filename": "longest-increasing-path-in-a-matrix",
+          "urls": [
+            { "url": "https://leetcode.com/problems/longest-increasing-path-in-a-matrix/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/longest-increasing-path-in-a-matrix", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "2D Dynamic Programming", "color": "#06b6d4" }
+          ]
+        }
+      ]
+    },
+    "week5": {
+      "title": "Week 5",
+      "description": "These are the questions that will be looked at in week 5.",
+      "questions": [
+        {
+          "filename": "merge-two-sorted-lists",
+          "urls": [
+            { "url": "https://leetcode.com/problems/merge-two-sorted-lists/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/merge-two-sorted-lists", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Linked List", "color": "#8b5cf6" }
+          ]
+        },
+        {
+          "filename": "linked-list-cycle",
+          "urls": [
+            { "url": "https://leetcode.com/problems/linked-list-cycle/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/linked-list-cycle", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Linked List", "color": "#8b5cf6" }
+          ]
+        },
+        {
+          "filename": "reorder-list",
+          "urls": [
+            { "url": "https://leetcode.com/problems/reorder-list/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/reorder-list", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Linked List", "color": "#8b5cf6" }
+          ]
+        },
+        {
+          "filename": "add-two-numbers",
+          "urls": [
+            { "url": "https://leetcode.com/problems/add-two-numbers/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/add-two-numbers", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Linked List", "color": "#8b5cf6" }
+          ]
+        },
+        {
+          "filename": "serialize-and-deserialize-binary-tree",
+          "urls": [
+            { "url": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/serialize-and-deserialize-binary-tree", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Trees", "color": "#10b981" }
+          ]
+        },
+        {
+          "filename": "word-search-ii",
+          "urls": [
+            { "url": "https://leetcode.com/problems/word-search-ii/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/word-search-ii", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Tries", "color": "#f97316" }
+          ]
+        }
+      ]
+    },
+    "week6": {
+      "title": "Week 6",
+      "description": "These are the questions that will be looked at in week 6.",
+      "questions": [
+        {
+          "filename": "invert-binary-tree",
+          "urls": [
+            { "url": "https://leetcode.com/problems/invert-binary-tree/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/invert-binary-tree", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Trees", "color": "#10b981" }
+          ]
+        },
+        {
+          "filename": "maximum-depth-of-binary-tree",
+          "urls": [
+            { "url": "https://leetcode.com/problems/maximum-depth-of-binary-tree/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/maximum-depth-of-binary-tree", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Trees", "color": "#10b981" }
+          ]
+        },
+        {
+          "filename": "longest-consecutive-sequence",
+          "urls": [
+            { "url": "https://leetcode.com/problems/longest-consecutive-sequence/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/longest-consecutive-sequence", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Arrays and Hashing", "color": "#3b82f6" }
+          ]
+        },
+        {
+          "filename": "two-sum-ii-input-array-is-sorted",
+          "urls": [
+            { "url": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/two-sum-ii-input-array-is-sorted", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Two Pointers", "color": "#a855f7" }
+          ]
+        },
+        {
+          "filename": "trapping-rain-water",
+          "urls": [
+            { "url": "https://leetcode.com/problems/trapping-rain-water/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/trapping-rain-water", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Two Pointers", "color": "#a855f7" }
+          ]
+        },
+        {
+          "filename": "largest-rectangle-in-histogram",
+          "urls": [
+            { "url": "https://leetcode.com/problems/largest-rectangle-in-histogram/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/largest-rectangle-in-histogram", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Stack", "color": "#eab308" }
+          ]
+        }
+      ]
+    },
+    "week7": {
+      "title": "Week 7",
+      "description": "These are the questions that will be looked at in week 7.",
+      "questions": [
+        {
+          "filename": "last-stone-weight",
+          "urls": [
+            { "url": "https://leetcode.com/problems/last-stone-weight/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/last-stone-weight", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Heap / Priority Queue", "color": "#ec4899" }
+          ]
+        },
+        {
+          "filename": "contains-duplicate",
+          "urls": [
+            { "url": "https://leetcode.com/problems/contains-duplicate/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/contains-duplicate", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Arrays and Hashing", "color": "#3b82f6" }
+          ]
+        },
+        {
+          "filename": "two-sum",
+          "urls": [
+            { "url": "https://leetcode.com/problems/two-sum/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/two-sum", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Arrays and Hashing", "color": "#3b82f6" }
+          ]
+        },
+        {
+          "filename": "valid-sudoku",
+          "urls": [
+            { "url": "https://leetcode.com/problems/valid-sudoku/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/valid-sudoku", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Arrays and Hashing", "color": "#3b82f6" },
+            { "text": "Alex's Favorite", "color": "#ffd700" }
+          ]
+        },
+        {
+          "filename": "longest-consecutive-sequence",
+          "urls": [
+            { "url": "https://leetcode.com/problems/longest-consecutive-sequence/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/longest-consecutive-sequence", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Arrays and Hashing", "color": "#3b82f6" }
+          ]
+        },
+        {
+          "filename": "coin-change",
+          "urls": [
+            { "url": "https://leetcode.com/problems/coin-change/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/coin-change", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "HW20", "color": "#8b5cf6" },
+            { "text": "Dynamic Programming", "color": "#06b6d4" }
+          ]
+        },
+        {
+          "filename": "n-queens",
+          "urls": [
+            { "url": "https://leetcode.com/problems/n-queens/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/n-queens", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Backtracking", "color": "#f59e0b" }
+          ]
+        },
+        {
+          "filename": "find-median-from-data-stream",
+          "urls": [
+            { "url": "https://leetcode.com/problems/find-median-from-data-stream/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/find-median-from-data-stream", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Heap / Priority Queue", "color": "#ec4899" }
+          ]
+        }
+      ]
+    },
+    "week8": {
+      "title": "Week 8",
+      "description": "These are the questions that will be looked at in week 8.",
+      "questions": [
+        {
+          "filename": "binary-tree-diameter",
+          "urls": [
+            { "url": "https://leetcode.com/problems/diameter-of-binary-tree/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/diameter-of-binary-tree", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Trees", "color": "#10b981" }
+          ]
+        },
+        {
+          "filename": "balanced-binary-tree",
+          "urls": [
+            { "url": "https://leetcode.com/problems/balanced-binary-tree/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/balanced-binary-tree", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Trees", "color": "#10b981" }
+          ]
+        },
+        {
+          "filename": "3sum",
+          "urls": [
+            { "url": "https://leetcode.com/problems/3sum/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/3sum", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Two Pointers", "color": "#a855f7" }
+          ]
+        },
+        {
+          "filename": "container-with-most-water",
+          "urls": [
+            { "url": "https://leetcode.com/problems/container-with-most-water/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/container-with-most-water", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Two Pointers", "color": "#a855f7" }
+          ]
+        },
+        {
+          "filename": "4sum",
+          "urls": [
+            { "url": "https://leetcode.com/problems/4sum/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/4sum", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Two Pointers", "color": "#a855f7" }
+          ]
+        },
+        {
+          "filename": "minimum-interval-to-include-each-query",
+          "urls": [
+            { "url": "https://leetcode.com/problems/minimum-interval-to-include-each-query/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/minimum-interval-to-include-each-query", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Intervals", "color": "#06b6d4" }
+          ]
+        },
+        {
+          "filename": "reconstruct-itinerary",
+          "urls": [
+            { "url": "https://leetcode.com/problems/reconstruct-itinerary/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/reconstruct-itinerary", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Advanced Graphs", "color": "#ec4899" }
+          ]
+        }
+      ]
+    },
+    "week9": {
+      "title": "Week 9",
+      "description": "These are the questions that will be looked at in week 9.",
+      "questions": [
+        {
+          "filename": "same-tree",
+          "urls": [
+            { "url": "https://leetcode.com/problems/same-tree/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/same-tree", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Trees", "color": "#10b981" }
+          ]
+        },
+        {
+          "filename": "subtree-of-another-tree",
+          "urls": [
+            { "url": "https://leetcode.com/problems/subtree-of-another-tree/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/subtree-of-another-tree", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Trees", "color": "#10b981" }
+          ]
+        },
+        {
+          "filename": "min-stack",
+          "urls": [
+            { "url": "https://leetcode.com/problems/min-stack/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/min-stack", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Stack", "color": "#eab308" }
+          ]
+        },
+        {
+          "filename": "evaluate-reverse-polish-notation",
+          "urls": [
+            { "url": "https://leetcode.com/problems/evaluate-reverse-polish-notation/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/evaluate-reverse-polish-notation", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Stack", "color": "#eab308" }
+          ]
+        },
+        {
+          "filename": "swim-in-rising-water",
+          "urls": [
+            { "url": "https://leetcode.com/problems/swim-in-rising-water/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/swim-in-rising-water", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Advanced Graphs", "color": "#ec4899" }
+          ]
+        },
+        {
+          "filename": "alien-dictionary",
+          "urls": [
+            { "url": "https://leetcode.com/problems/alien-dictionary/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/alien-dictionary", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Advanced Graphs", "color": "#ec4899" }
+          ]
+        }
+      ]
+    },
+    "week10": {
+      "title": "Week 10",
+      "description": "These are the questions that will be looked at in week 10.",
+      "questions": []
+    },
+    "week11": {
+      "title": "Week 11",
+      "description": "These are the questions that will be looked at in week 11.",
+      "questions": []
+    },
+    "week12": {
+      "title": "Week 12",
+      "description": "These are the questions that will be looked at in week 12.",
+      "questions": []
+    },
+    "week13": {
+      "title": "Week 13",
+      "description": "These are the questions that will be looked at in week 13.",
+      "questions": []
+    },
+    "week14": {
+      "title": "Week 14",
+      "description": "These are the questions that will be looked at in week 14.",
+      "questions": []
+    },
+    "week15": {
+      "title": "Week 15",
+      "description": "These are the questions that will be looked at in week 15.",
+      "questions": []
+    },
+    "week16": {
+      "title": "Week 16",
+      "description": "These are the questions that will be looked at in week 16.",
+      "questions": []
+    }
+  }
+}

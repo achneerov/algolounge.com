@@ -1,0 +1,112 @@
+{
+  "filename": "longest-common-prefix",
+  "title": "Longest Common Prefix",
+  "keywords": [
+    "longest",
+    "common",
+    "prefix",
+    "leetcode",
+    "given",
+    "array",
+    "strings",
+    "strs",
+    "return",
+    "all"
+  ],
+  "description": "<h2>Longest Common Prefix</h2><p>Leetcode 14. Longest Common Prefix</p><p></p><p>You are given an array of strings `strs`. Return the **longest common prefix** of all the strings.</p><p></p><p>If there is no longest common prefix, return an empty string `\"\"`.</p><h3>Examples:</h3><ul><li>Input: strs = [\"bat\",\"bag\",\"bank\",\"band\"]<br><br>Output: \"ba\"</li><li>Input: strs = [\"dance\",\"dag\",\"danger\",\"damage\"]<br><br>Output: \"da\"</li><li>Input: strs = [\"neet\",\"feet\"]<br><br>Output: \"\"</li></ul><h3>Constraints:</h3><ul><li> `1 <= strs.length <= 200`</li><li> `0 <= strs[i].length <= 200`</li><li> `strs[i]` is made up of lowercase English letters if it is non-empty.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def longestCommonPrefix(strs):\n    ",
+      "solution_text": "<h3>Longest Common Prefix - Vertical Scanning</h3>\n\n<p><strong>Algorithm:</strong></p>\n<ol>\n<li>Compare characters at the same position across all strings</li>\n<li>Stop when we find a mismatch or reach end of any string</li>\n<li>Return the prefix found so far</li>\n</ol>\n\n<p><strong>Time Complexity:</strong> O(S) where S is sum of all string lengths</p>\n<p><strong>Space Complexity:</strong> O(1) - only using variables for comparison</p>\n\n<p><strong>Key Insights:</strong></p>\n<ul>\n<li>Vertical scanning compares character by character across strings</li>\n<li>Early termination when mismatch found</li>\n<li>Handle edge cases like empty array or empty strings</li>\n</ul>",
+      "solution_code": "def longestCommonPrefix(strs):\n    if not strs:\n        return \"\"\n    \n    # Take first string as reference\n    prefix = strs[0]\n    \n    for i in range(1, len(strs)):\n        # Compare current string with prefix\n        j = 0\n        while j < len(prefix) and j < len(strs[i]) and prefix[j] == strs[i][j]:\n            j += 1\n        \n        # Update prefix to common part\n        prefix = prefix[:j]\n        \n        # Early termination if no common prefix\n        if not prefix:\n            break\n    \n    return prefix"
+    },
+    "javascript": {
+      "template": "function longestCommonPrefix(strs) {\n  \n}",
+      "solution_text": "<h3>Longest Common Prefix - Vertical Scanning</h3>\n\n<p><strong>Algorithm:</strong></p>\n<ol>\n<li>Compare characters at the same position across all strings</li>\n<li>Stop when we find a mismatch or reach end of any string</li>\n<li>Return the prefix found so far</li>\n</ol>\n\n<p><strong>Time Complexity:</strong> O(S) where S is sum of all string lengths</p>\n<p><strong>Space Complexity:</strong> O(1) - only using variables for comparison</p>\n\n<p><strong>Key Insights:</strong></p>\n<ul>\n<li>Vertical scanning compares character by character across strings</li>\n<li>Early termination when mismatch found</li>\n<li>Handle edge cases like empty array or empty strings</li>\n</ul>",
+      "solution_code": "function longestCommonPrefix(strs) {\n    if (!strs || strs.length === 0) {\n        return \"\";\n    }\n    \n    // Take first string as reference\n    let prefix = strs[0];\n    \n    for (let i = 1; i < strs.length; i++) {\n        // Compare current string with prefix\n        let j = 0;\n        while (j < prefix.length && j < strs[i].length && prefix[j] === strs[i][j]) {\n            j++;\n        }\n        \n        // Update prefix to common part\n        prefix = prefix.substring(0, j);\n        \n        // Early termination if no common prefix\n        if (prefix === \"\") {\n            break;\n        }\n    }\n    \n    return prefix;\n}"
+    },
+    "typescript": {
+      "template": "function longestCommonPrefix(strs: string[]): string {\n  \n}",
+      "solution_text": "<h3>Longest Common Prefix - Vertical Scanning</h3>\n\n<p><strong>Algorithm:</strong></p>\n<ol>\n<li>Compare characters at the same position across all strings</li>\n<li>Stop when we find a mismatch or reach end of any string</li>\n<li>Return the prefix found so far</li>\n</ol>\n\n<p><strong>Time Complexity:</strong> O(S) where S is sum of all string lengths</p>\n<p><strong>Space Complexity:</strong> O(1) - only using variables for comparison</p>\n\n<p><strong>Key Insights:</strong></p>\n<ul>\n<li>Vertical scanning compares character by character across strings</li>\n<li>Early termination when mismatch found</li>\n<li>Handle edge cases like empty array or empty strings</li>\n</ul>",
+      "solution_code": "function longestCommonPrefix(strs: string[]): string {\n    if (!strs || strs.length === 0) {\n        return \"\";\n    }\n    \n    // Take first string as reference\n    let prefix = strs[0];\n    \n    for (let i = 1; i < strs.length; i++) {\n        // Compare current string with prefix\n        let j = 0;\n        while (j < prefix.length && j < strs[i].length && prefix[j] === strs[i][j]) {\n            j++;\n        }\n        \n        // Update prefix to common part\n        prefix = prefix.substring(0, j);\n        \n        // Early termination if no common prefix\n        if (prefix === \"\") {\n            break;\n        }\n    }\n    \n    return prefix;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public String longestCommonPrefix(String[] strs) {\n        \n    }\n}",
+      "solution_text": "<h3>Longest Common Prefix - Vertical Scanning</h3>\n\n<p><strong>Algorithm:</strong></p>\n<ol>\n<li>Compare characters at the same position across all strings</li>\n<li>Stop when we find a mismatch or reach end of any string</li>\n<li>Return the prefix found so far</li>\n</ol>\n\n<p><strong>Time Complexity:</strong> O(S) where S is sum of all string lengths</p>\n<p><strong>Space Complexity:</strong> O(1) - only using variables for comparison</p>\n\n<p><strong>Key Insights:</strong></p>\n<ul>\n<li>Vertical scanning compares character by character across strings</li>\n<li>Early termination when mismatch found</li>\n<li>Handle edge cases like empty array or empty strings</li>\n</ul>",
+      "solution_code": "class Solution {\n    public String longestCommonPrefix(String[] strs) {\n        if (strs == null || strs.length == 0) {\n            return \"\";\n        }\n        \n        // Take first string as reference\n        String prefix = strs[0];\n        \n        for (int i = 1; i < strs.length; i++) {\n            // Compare current string with prefix\n            int j = 0;\n            while (j < prefix.length() && j < strs[i].length() && \n                   prefix.charAt(j) == strs[i].charAt(j)) {\n                j++;\n            }\n            \n            // Update prefix to common part\n            prefix = prefix.substring(0, j);\n            \n            // Early termination if no common prefix\n            if (prefix.isEmpty()) {\n                break;\n            }\n        }\n        \n        return prefix;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "strs": ["bat", "bag", "bank", "band"]
+      },
+      "output": "ba"
+    },
+    {
+      "id": 2,
+      "input": {
+        "strs": ["dance", "dag", "danger", "damage"]
+      },
+      "output": "da"
+    },
+    {
+      "id": 3,
+      "input": {
+        "strs": ["neet", "feet"]
+      },
+      "output": ""
+    },
+    {
+      "id": 4,
+      "input": {
+        "strs": ["flower", "flow", "flight"]
+      },
+      "output": "fl"
+    },
+    {
+      "id": 5,
+      "input": {
+        "strs": ["dog", "racecar", "car"]
+      },
+      "output": ""
+    },
+    {
+      "id": 6,
+      "input": {
+        "strs": ["interspecies", "interstellar", "interstate"]
+      },
+      "output": "inters"
+    },
+    {
+      "id": 7,
+      "input": {
+        "strs": ["throne", "throne"]
+      },
+      "output": "throne"
+    },
+    {
+      "id": 8,
+      "input": {
+        "strs": [""]
+      },
+      "output": ""
+    },
+    {
+      "id": 9,
+      "input": {
+        "strs": ["single"]
+      },
+      "output": "single"
+    },
+    {
+      "id": 10,
+      "input": {
+        "strs": ["prefix", "pre", "preliminary"]
+      },
+      "output": "pre"
+    }
+  ]
+}

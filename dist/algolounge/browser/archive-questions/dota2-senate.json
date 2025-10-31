@@ -1,0 +1,112 @@
+{
+  "filename": "dota2-senate",
+  "title": "Dota2 Senate",
+  "keywords": [
+    "dota2",
+    "senate",
+    "leetcode",
+    "649",
+    "world",
+    "there",
+    "two",
+    "parties",
+    "radiant",
+    "dire"
+  ],
+  "description": "<h2>Dota2 Senate</h2><p>Leetcode 649. Dota2 Senate</p><p></p><p>In the world of Dota2, there are two parties: the **Radiant** and the **Dire**.</p><p></p><p>The Dota2 senate consists of senators coming from two parties. Now the Senate wants to decide on a change in the Dota2 game. The voting for this change is a round-based procedure. In each round, each senator can exercise one of the two rights:</p><p></p><p>- **Ban one senator's right:** A senator can make another senator lose all his rights in this and all the following rounds.</p><p></p><p>- **Announce the victory:** If this senator found the senators who still have rights to vote are all from the same party, he can announce the victory and decide on the change in the game.</p><p></p><p>You are given a string `senate` representing each senator's party belonging. The character `'R'` and `'D'` represent the Radiant party and the Dire party. Then if there are `n` senators, the size of the given string will be `n`.</p><p></p><p>The round-based procedure starts from the first senator to the last senator in the given order. This procedure will last until the end of voting. All the senators who have lost their rights will be skipped during the procedure.</p><p></p><p>Suppose every senator is smart enough and will play the best strategy for his own party. Predict which party will finally announce the victory and change the Dota2 game. The output should be `\"Radiant\"` or `\"Dire\"`.</p><h3>Examples:</h3><ul><li>Input: senate = \"RRDDD\"<br><br>Output: \"Radiant\"<br>- The first 'R' takes the rights of the first 'D'.\n- THe second 'R' takes the rights of the second 'D'.\n- The next two 'D's have lost their rights.\n- The last 'D' takes the rights of the first 'R'.\n- The last remaining 'R' takes the rights of the last 'D'.\n- As only 'R' is left, he announces the victory.</li><li>Input: senate = \"RDD\"<br><br>Output: \"Dire\"</li></ul><h3>Constraints:</h3><ul><li> `1 <= senate.length <= 10,000`</li><li> `senate[i]` is either `'R'` or `'D'`.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def dota2Senate(senate):\n    ",
+      "solution_text": "<p><strong>Queue-Based Solution for Dota2 Senate:</strong></p><p>Simulate the voting process using two queues to track senator positions.</p><p><strong>Algorithm:</strong></p><ol><li>Use two queues to store positions of R and D senators</li><li>In each round, compare front senators from both queues</li><li>Earlier position wins and bans the later one</li><li>Winner goes to back of queue with updated position</li><li>Continue until one queue is empty</li></ol><p><strong>Time Complexity:</strong> O(n) - each senator processed at most once per round</p><p><strong>Space Complexity:</strong> O(n) - for storing senator positions in queues</p>",
+      "solution_code": "def dota2Senate(senate):\n    from collections import deque\n    \n    # Queues to store positions of R and D senators\n    radiant = deque()\n    dire = deque()\n    n = len(senate)\n    \n    # Fill queues with initial positions\n    for i, party in enumerate(senate):\n        if party == 'R':\n            radiant.append(i)\n        else:\n            dire.append(i)\n    \n    # Simulate the voting process\n    while radiant and dire:\n        r_pos = radiant.popleft()\n        d_pos = dire.popleft()\n        \n        # Earlier position wins\n        if r_pos < d_pos:\n            # Radiant wins, gets to vote in next round\n            radiant.append(r_pos + n)\n        else:\n            # Dire wins, gets to vote in next round\n            dire.append(d_pos + n)\n    \n    # Winner is the party with remaining senators\n    return \"Radiant\" if radiant else \"Dire\""
+    },
+    "javascript": {
+      "template": "function dota2Senate(senate) {\n  \n}",
+      "solution_text": "<p><strong>Queue-Based Solution for Dota2 Senate:</strong></p><p>Simulate the voting process using two queues to track senator positions.</p><p><strong>Algorithm:</strong></p><ol><li>Use two queues to store positions of R and D senators</li><li>In each round, compare front senators from both queues</li><li>Earlier position wins and bans the later one</li><li>Winner goes to back of queue with updated position</li><li>Continue until one queue is empty</li></ol><p><strong>Time Complexity:</strong> O(n) - each senator processed at most once per round</p><p><strong>Space Complexity:</strong> O(n) - for storing senator positions in queues</p>",
+      "solution_code": "function dota2Senate(senate) {\n    // Queues to store positions of R and D senators\n    const radiant = [];\n    const dire = [];\n    const n = senate.length;\n    \n    // Fill queues with initial positions\n    for (let i = 0; i < n; i++) {\n        if (senate[i] === 'R') {\n            radiant.push(i);\n        } else {\n            dire.push(i);\n        }\n    }\n    \n    // Simulate the voting process\n    while (radiant.length > 0 && dire.length > 0) {\n        const rPos = radiant.shift();\n        const dPos = dire.shift();\n        \n        // Earlier position wins\n        if (rPos < dPos) {\n            // Radiant wins, gets to vote in next round\n            radiant.push(rPos + n);\n        } else {\n            // Dire wins, gets to vote in next round\n            dire.push(dPos + n);\n        }\n    }\n    \n    // Winner is the party with remaining senators\n    return radiant.length > 0 ? \"Radiant\" : \"Dire\";\n}"
+    },
+    "typescript": {
+      "template": "function dota2Senate(senate: string): string {\n  \n}",
+      "solution_text": "<p><strong>Queue-Based Solution for Dota2 Senate:</strong></p><p>Simulate the voting process using two queues to track senator positions.</p><p><strong>Algorithm:</strong></p><ol><li>Use two queues to store positions of R and D senators</li><li>In each round, compare front senators from both queues</li><li>Earlier position wins and bans the later one</li><li>Winner goes to back of queue with updated position</li><li>Continue until one queue is empty</li></ol><p><strong>Time Complexity:</strong> O(n) - each senator processed at most once per round</p><p><strong>Space Complexity:</strong> O(n) - for storing senator positions in queues</p>",
+      "solution_code": "function dota2Senate(senate: string): string {\n    // Queues to store positions of R and D senators\n    const radiant: number[] = [];\n    const dire: number[] = [];\n    const n = senate.length;\n    \n    // Fill queues with initial positions\n    for (let i = 0; i < n; i++) {\n        if (senate[i] === 'R') {\n            radiant.push(i);\n        } else {\n            dire.push(i);\n        }\n    }\n    \n    // Simulate the voting process\n    while (radiant.length > 0 && dire.length > 0) {\n        const rPos = radiant.shift()!;\n        const dPos = dire.shift()!;\n        \n        // Earlier position wins\n        if (rPos < dPos) {\n            // Radiant wins, gets to vote in next round\n            radiant.push(rPos + n);\n        } else {\n            // Dire wins, gets to vote in next round\n            dire.push(dPos + n);\n        }\n    }\n    \n    // Winner is the party with remaining senators\n    return radiant.length > 0 ? \"Radiant\" : \"Dire\";\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public String dota2Senate(String senate) {\n        \n    }\n}",
+      "solution_text": "<p><strong>Queue-Based Solution for Dota2 Senate:</strong></p><p>Simulate the voting process using two queues to track senator positions.</p><p><strong>Algorithm:</strong></p><ol><li>Use two queues to store positions of R and D senators</li><li>In each round, compare front senators from both queues</li><li>Earlier position wins and bans the later one</li><li>Winner goes to back of queue with updated position</li><li>Continue until one queue is empty</li></ol><p><strong>Time Complexity:</strong> O(n) - each senator processed at most once per round</p><p><strong>Space Complexity:</strong> O(n) - for storing senator positions in queues</p>",
+      "solution_code": "class Solution {\n    public String dota2Senate(String senate) {\n        Queue<Integer> radiant = new LinkedList<>();\n        Queue<Integer> dire = new LinkedList<>();\n        int n = senate.length();\n        \n        // Fill queues with initial positions\n        for (int i = 0; i < n; i++) {\n            if (senate.charAt(i) == 'R') {\n                radiant.offer(i);\n            } else {\n                dire.offer(i);\n            }\n        }\n        \n        // Simulate the voting process\n        while (!radiant.isEmpty() && !dire.isEmpty()) {\n            int rPos = radiant.poll();\n            int dPos = dire.poll();\n            \n            // Earlier position wins\n            if (rPos < dPos) {\n                // Radiant wins, gets to vote in next round\n                radiant.offer(rPos + n);\n            } else {\n                // Dire wins, gets to vote in next round\n                dire.offer(dPos + n);\n            }\n        }\n        \n        // Winner is the party with remaining senators\n        return !radiant.isEmpty() ? \"Radiant\" : \"Dire\";\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "senate": "RRDDD"
+      },
+      "output": "Radiant"
+    },
+    {
+      "id": 2,
+      "input": {
+        "senate": "RDD"
+      },
+      "output": "Dire"
+    },
+    {
+      "id": 3,
+      "input": {
+        "senate": "RD"
+      },
+      "output": "Radiant"
+    },
+    {
+      "id": 4,
+      "input": {
+        "senate": "DR"
+      },
+      "output": "Dire"
+    },
+    {
+      "id": 5,
+      "input": {
+        "senate": "R"
+      },
+      "output": "Radiant"
+    },
+    {
+      "id": 6,
+      "input": {
+        "senate": "D"
+      },
+      "output": "Dire"
+    },
+    {
+      "id": 7,
+      "input": {
+        "senate": "DDRRR"
+      },
+      "output": "Dire"
+    },
+    {
+      "id": 8,
+      "input": {
+        "senate": "RRDDDD"
+      },
+      "output": "Dire"
+    },
+    {
+      "id": 9,
+      "input": {
+        "senate": "DRDRDR"
+      },
+      "output": "Dire"
+    },
+    {
+      "id": 10,
+      "input": {
+        "senate": "RDRDRD"
+      },
+      "output": "Radiant"
+    }
+  ]
+}

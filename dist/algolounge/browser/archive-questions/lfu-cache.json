@@ -1,0 +1,122 @@
+{
+  "filename": "lfu-cache",
+  "title": "LFU Cache",
+  "keywords": [
+    "lfu",
+    "cache",
+    "leetcode",
+    "460",
+    "design",
+    "implement",
+    "data",
+    "structure",
+    "least",
+    "frequently"
+  ],
+  "description": "<h2>LFU Cache</h2><p>Leetcode 460. LFU Cache</p><p></p><p>Design and implement a data structure for a [Least Frequently Used (LFU)](https://en.wikipedia.org/wiki/Least_frequently_used) cache.</p><p></p><p>Implement the `LFUCache` class:</p><p></p><p>- `LFUCache(int capacity)` Initializes the object with the `capacity` of the data structure.</p><p>- `int get(int key)` Gets the value of the `key` if the `key` exists in the cache. Otherwise, returns `-1`.</p><p>- `void put(int key, int value)` Update the value of the `key` if present, or inserts the `key` if not already present. When the cache reaches its `capacity`, it should invalidate and remove the **least frequently used** key before inserting a new item. For this problem, when there is a **tie** (i.e., two or more keys with the same frequency), the **least recently used** key would be invalidated.</p><p></p><p>To determine the least frequently used key, a **use counter** is maintained for each key in the cache. The key with the smallest **use counter** is the least frequently used key.</p><p></p><p>When a key is first inserted into the cache, its **use counter** is set to `1` (due to the `put` operation). The **use counter** for a key in the cache is incremented either a `get` or `put` operation is called on it.</p><p></p><p>The functions `get` and `put` must each run in `O(1)` average time complexity.</p><h3>Examples:</h3><ul><li>Input: [\"LFUCache\", \"put\", \"put\", \"get\", \"put\", \"get\", \"get\", \"put\", \"get\", \"get\", \"get\"]<br>[[2], [1, 1], [2, 2], [1], [3, 3], [2], [3], [4, 4], [1], [3], [4]]<br><br>Output: [null, null, null, 1, null, -1, 3, null, -1, 3, 4]<br>// cnt(x) = the use counter for key x\n// cache=[] will show the last used order for tiebreakers (leftmost element is  most recent)\nLFUCache lfu = new LFUCache(2);\nlfu.put(1, 1);   // cache=[1,_], cnt(1)=1\nlfu.put(2, 2);   // cache=[2,1], cnt(2)=1, cnt(1)=1\nlfu.get(1);      // return 1\n                 // cache=[1,2], cnt(2)=1, cnt(1)=2\nlfu.put(3, 3);   // 2 is the LFU key because cnt(2)=1 is the smallest, invalidate 2.\n                 // cache=[3,1], cnt(3)=1, cnt(1)=2\nlfu.get(2);      // return -1 (not found)\nlfu.get(3);      // return 3\n                 // cache=[3,1], cnt(3)=2, cnt(1)=2\nlfu.put(4, 4);   // Both 1 and 3 have the same cnt, but 1 is LRU, invalidate 1.\n                 // cache=[4,3], cnt(4)=1, cnt(3)=2\nlfu.get(1);      // return -1 (not found)\nlfu.get(3);      // return 3\n                 // cache=[3,4], cnt(4)=1, cnt(3)=3\nlfu.get(4);      // return 4\n                 // cache=[4,3], cnt(4)=2, cnt(3)=3</li></ul><h3>Constraints:</h3><ul><li> `1 <= capacity <= 10,000`.</li><li> `0 <= key <= 100,000`</li><li> `0 <= value <= 1,000,000,000`</li><li> At most `200,000` calls will be made to `get` and `put`.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "class LFUCache:\n    def __init__(self, capacity: int):\n        \n    def get(self, key: int) -> int:\n        \n    def put(self, key: int, value: int) -> None:\n        ",
+      "solution_text": "LFU Cache Implementation:\n\n**Algorithm:**\nImplements a Least Frequently Used cache with O(1) operations using two hash maps and doubly linked lists:\n1. One map stores key-value pairs and frequency counts\n2. Another map stores frequency buckets as doubly linked lists\n3. Track minimum frequency for efficient eviction\n\n**Time Complexity:** O(1) for both get and put operations\n**Space Complexity:** O(capacity) for storing the cache data\n\n**Key Insights:**\n- Use doubly linked lists for O(1) insertion/deletion\n- Maintain frequency buckets to quickly find LFU items\n- When frequencies tie, use LRU order within the frequency bucket",
+      "solution_code": "class LFUCache:\n    def __init__(self, capacity: int):\n        self.capacity = capacity\n        self.min_freq = 0\n        self.key_to_val = {}  # key -> value\n        self.key_to_freq = {}  # key -> frequency\n        self.freq_to_keys = {}  # frequency -> list of keys\n    \n    def get(self, key: int) -> int:\n        if key not in self.key_to_val:\n            return -1\n        \n        # Update frequency\n        self._update_freq(key)\n        return self.key_to_val[key]\n    \n    def put(self, key: int, value: int) -> None:\n        if self.capacity <= 0:\n            return\n        \n        if key in self.key_to_val:\n            # Update existing key\n            self.key_to_val[key] = value\n            self._update_freq(key)\n        else:\n            # Add new key\n            if len(self.key_to_val) >= self.capacity:\n                # Remove LFU (and LRU if tie)\n                self._evict()\n            \n            # Add new key with frequency 1\n            self.key_to_val[key] = value\n            self.key_to_freq[key] = 1\n            if 1 not in self.freq_to_keys:\n                self.freq_to_keys[1] = []\n            self.freq_to_keys[1].append(key)\n            self.min_freq = 1\n    \n    def _update_freq(self, key):\n        freq = self.key_to_freq[key]\n        \n        # Remove from current frequency bucket\n        self.freq_to_keys[freq].remove(key)\n        if not self.freq_to_keys[freq] and freq == self.min_freq:\n            self.min_freq += 1\n        \n        # Add to new frequency bucket\n        new_freq = freq + 1\n        self.key_to_freq[key] = new_freq\n        if new_freq not in self.freq_to_keys:\n            self.freq_to_keys[new_freq] = []\n        self.freq_to_keys[new_freq].append(key)\n    \n    def _evict(self):\n        # Remove the first (LRU) key from min frequency bucket\n        key = self.freq_to_keys[self.min_freq].pop(0)\n        del self.key_to_val[key]\n        del self.key_to_freq[key]"
+    },
+    "javascript": {
+      "template": "class LFUCache {\n    constructor(capacity) {\n        \n    }\n    \n    get(key) {\n        \n    }\n    \n    put(key, value) {\n        \n    }\n}",
+      "solution_text": "LFU Cache Implementation:\n\n**Algorithm:**\nImplements a Least Frequently Used cache with O(1) operations using two hash maps and arrays:\n1. One map stores key-value pairs and frequency counts\n2. Another map stores frequency buckets as arrays\n3. Track minimum frequency for efficient eviction\n\n**Time Complexity:** O(1) for both get and put operations\n**Space Complexity:** O(capacity) for storing the cache data\n\n**Key Insights:**\n- Use arrays for O(1) insertion/deletion at ends\n- Maintain frequency buckets to quickly find LFU items\n- When frequencies tie, use LRU order within the frequency bucket",
+      "solution_code": "class LFUCache {\n    constructor(capacity) {\n        this.capacity = capacity;\n        this.minFreq = 0;\n        this.keyToVal = new Map(); // key -> value\n        this.keyToFreq = new Map(); // key -> frequency\n        this.freqToKeys = new Map(); // frequency -> array of keys\n    }\n    \n    get(key) {\n        if (!this.keyToVal.has(key)) {\n            return -1;\n        }\n        \n        // Update frequency\n        this.updateFreq(key);\n        return this.keyToVal.get(key);\n    }\n    \n    put(key, value) {\n        if (this.capacity <= 0) return;\n        \n        if (this.keyToVal.has(key)) {\n            // Update existing key\n            this.keyToVal.set(key, value);\n            this.updateFreq(key);\n        } else {\n            // Add new key\n            if (this.keyToVal.size >= this.capacity) {\n                // Remove LFU (and LRU if tie)\n                this.evict();\n            }\n            \n            // Add new key with frequency 1\n            this.keyToVal.set(key, value);\n            this.keyToFreq.set(key, 1);\n            if (!this.freqToKeys.has(1)) {\n                this.freqToKeys.set(1, []);\n            }\n            this.freqToKeys.get(1).push(key);\n            this.minFreq = 1;\n        }\n    }\n    \n    updateFreq(key) {\n        const freq = this.keyToFreq.get(key);\n        \n        // Remove from current frequency bucket\n        const keys = this.freqToKeys.get(freq);\n        const index = keys.indexOf(key);\n        keys.splice(index, 1);\n        if (keys.length === 0 && freq === this.minFreq) {\n            this.minFreq++;\n        }\n        \n        // Add to new frequency bucket\n        const newFreq = freq + 1;\n        this.keyToFreq.set(key, newFreq);\n        if (!this.freqToKeys.has(newFreq)) {\n            this.freqToKeys.set(newFreq, []);\n        }\n        this.freqToKeys.get(newFreq).push(key);\n    }\n    \n    evict() {\n        // Remove the first (LRU) key from min frequency bucket\n        const keys = this.freqToKeys.get(this.minFreq);\n        const key = keys.shift();\n        this.keyToVal.delete(key);\n        this.keyToFreq.delete(key);\n    }\n}"
+    },
+    "typescript": {
+      "template": "class LFUCache {\n    constructor(capacity: number) {\n        \n    }\n    \n    get(key: number): number {\n        \n    }\n    \n    put(key: number, value: number): void {\n        \n    }\n}",
+      "solution_text": "LFU Cache Implementation:\n\n**Algorithm:**\nImplements a Least Frequently Used cache with O(1) operations using two hash maps and arrays:\n1. One map stores key-value pairs and frequency counts\n2. Another map stores frequency buckets as arrays\n3. Track minimum frequency for efficient eviction\n\n**Time Complexity:** O(1) for both get and put operations\n**Space Complexity:** O(capacity) for storing the cache data\n\n**Key Insights:**\n- Use arrays for O(1) insertion/deletion at ends\n- Maintain frequency buckets to quickly find LFU items\n- When frequencies tie, use LRU order within the frequency bucket",
+      "solution_code": "class LFUCache {\n    private capacity: number;\n    private minFreq: number;\n    private keyToVal: Map<number, number>;\n    private keyToFreq: Map<number, number>;\n    private freqToKeys: Map<number, number[]>;\n    \n    constructor(capacity: number) {\n        this.capacity = capacity;\n        this.minFreq = 0;\n        this.keyToVal = new Map();\n        this.keyToFreq = new Map();\n        this.freqToKeys = new Map();\n    }\n    \n    get(key: number): number {\n        if (!this.keyToVal.has(key)) {\n            return -1;\n        }\n        \n        // Update frequency\n        this.updateFreq(key);\n        return this.keyToVal.get(key)!;\n    }\n    \n    put(key: number, value: number): void {\n        if (this.capacity <= 0) return;\n        \n        if (this.keyToVal.has(key)) {\n            // Update existing key\n            this.keyToVal.set(key, value);\n            this.updateFreq(key);\n        } else {\n            // Add new key\n            if (this.keyToVal.size >= this.capacity) {\n                // Remove LFU (and LRU if tie)\n                this.evict();\n            }\n            \n            // Add new key with frequency 1\n            this.keyToVal.set(key, value);\n            this.keyToFreq.set(key, 1);\n            if (!this.freqToKeys.has(1)) {\n                this.freqToKeys.set(1, []);\n            }\n            this.freqToKeys.get(1)!.push(key);\n            this.minFreq = 1;\n        }\n    }\n    \n    private updateFreq(key: number): void {\n        const freq = this.keyToFreq.get(key)!;\n        \n        // Remove from current frequency bucket\n        const keys = this.freqToKeys.get(freq)!;\n        const index = keys.indexOf(key);\n        keys.splice(index, 1);\n        if (keys.length === 0 && freq === this.minFreq) {\n            this.minFreq++;\n        }\n        \n        // Add to new frequency bucket\n        const newFreq = freq + 1;\n        this.keyToFreq.set(key, newFreq);\n        if (!this.freqToKeys.has(newFreq)) {\n            this.freqToKeys.set(newFreq, []);\n        }\n        this.freqToKeys.get(newFreq)!.push(key);\n    }\n    \n    private evict(): void {\n        // Remove the first (LRU) key from min frequency bucket\n        const keys = this.freqToKeys.get(this.minFreq)!;\n        const key = keys.shift()!;\n        this.keyToVal.delete(key);\n        this.keyToFreq.delete(key);\n    }\n}"
+    },
+    "java": {
+      "template": "class LFUCache {\n    public LFUCache(int capacity) {\n        \n    }\n    \n    public int get(int key) {\n        \n    }\n    \n    public void put(int key, int value) {\n        \n    }\n}",
+      "solution_text": "LFU Cache Implementation:\n\n**Algorithm:**\nImplements a Least Frequently Used cache with O(1) operations using two hash maps and linked hash sets:\n1. One map stores key-value pairs and frequency counts\n2. Another map stores frequency buckets as LinkedHashSet for O(1) operations\n3. Track minimum frequency for efficient eviction\n\n**Time Complexity:** O(1) for both get and put operations\n**Space Complexity:** O(capacity) for storing the cache data\n\n**Key Insights:**\n- Use LinkedHashSet for O(1) insertion/deletion and LRU ordering\n- Maintain frequency buckets to quickly find LFU items\n- When frequencies tie, use LRU order within the frequency bucket",
+      "solution_code": "import java.util.*;\n\nclass LFUCache {\n    private int capacity;\n    private int minFreq;\n    private Map<Integer, Integer> keyToVal;\n    private Map<Integer, Integer> keyToFreq;\n    private Map<Integer, LinkedHashSet<Integer>> freqToKeys;\n    \n    public LFUCache(int capacity) {\n        this.capacity = capacity;\n        this.minFreq = 0;\n        this.keyToVal = new HashMap<>();\n        this.keyToFreq = new HashMap<>();\n        this.freqToKeys = new HashMap<>();\n    }\n    \n    public int get(int key) {\n        if (!keyToVal.containsKey(key)) {\n            return -1;\n        }\n        \n        // Update frequency\n        updateFreq(key);\n        return keyToVal.get(key);\n    }\n    \n    public void put(int key, int value) {\n        if (capacity <= 0) return;\n        \n        if (keyToVal.containsKey(key)) {\n            // Update existing key\n            keyToVal.put(key, value);\n            updateFreq(key);\n        } else {\n            // Add new key\n            if (keyToVal.size() >= capacity) {\n                // Remove LFU (and LRU if tie)\n                evict();\n            }\n            \n            // Add new key with frequency 1\n            keyToVal.put(key, value);\n            keyToFreq.put(key, 1);\n            freqToKeys.putIfAbsent(1, new LinkedHashSet<>());\n            freqToKeys.get(1).add(key);\n            minFreq = 1;\n        }\n    }\n    \n    private void updateFreq(int key) {\n        int freq = keyToFreq.get(key);\n        \n        // Remove from current frequency bucket\n        freqToKeys.get(freq).remove(key);\n        if (freqToKeys.get(freq).isEmpty() && freq == minFreq) {\n            minFreq++;\n        }\n        \n        // Add to new frequency bucket\n        int newFreq = freq + 1;\n        keyToFreq.put(key, newFreq);\n        freqToKeys.putIfAbsent(newFreq, new LinkedHashSet<>());\n        freqToKeys.get(newFreq).add(key);\n    }\n    \n    private void evict() {\n        // Remove the first (LRU) key from min frequency bucket\n        LinkedHashSet<Integer> keys = freqToKeys.get(minFreq);\n        int key = keys.iterator().next();\n        keys.remove(key);\n        keyToVal.remove(key);\n        keyToFreq.remove(key);\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": [
+        ["LFUCache", "put", "put", "get", "put", "get", "get", "put", "get", "get", "get"],
+        [[2], [1, 1], [2, 2], [1], [3, 3], [2], [3], [4, 4], [1], [3], [4]]
+      ],
+      "output": [null, null, null, 1, null, -1, 3, null, -1, 3, 4]
+    },
+    {
+      "id": 2,
+      "input": [
+        ["LFUCache", "put", "get"],
+        [[1], [2, 1], [2]]
+      ],
+      "output": [null, null, 1]
+    },
+    {
+      "id": 3,
+      "input": [
+        ["LFUCache", "put", "put", "get", "get", "put", "get", "get", "get"],
+        [[2], [1, 1], [2, 2], [1], [2], [3, 3], [2], [3], [1]]
+      ],
+      "output": [null, null, null, 1, 2, null, -1, 3, 1]
+    },
+    {
+      "id": 4,
+      "input": [
+        ["LFUCache", "get"],
+        [[0], [0]]
+      ],
+      "output": [null, -1]
+    },
+    {
+      "id": 5,
+      "input": [
+        ["LFUCache", "put", "put", "put", "put", "get"],
+        [[2], [3, 1], [2, 1], [2, 2], [4, 4], [2]]
+      ],
+      "output": [null, null, null, null, null, 2]
+    },
+    {
+      "id": 6,
+      "input": [
+        ["LFUCache", "put", "get", "put", "get", "get"],
+        [[1], [0, 0], [0], [1, 1], [0], [1]]
+      ],
+      "output": [null, null, 0, null, -1, 1]
+    },
+    {
+      "id": 7,
+      "input": [
+        ["LFUCache", "put", "put", "put", "get", "get", "get", "put", "get", "get", "get"],
+        [[3], [1, 1], [2, 2], [3, 3], [2], [3], [1], [4, 4], [1], [3], [4]]
+      ],
+      "output": [null, null, null, null, 2, 3, 1, null, -1, 3, 4]
+    },
+    {
+      "id": 8,
+      "input": [
+        ["LFUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"],
+        [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+      ],
+      "output": [null, null, null, 1, null, -1, null, -1, 3, 4]
+    },
+    {
+      "id": 9,
+      "input": [
+        ["LFUCache", "put", "put", "put", "put", "put", "get", "get", "get", "get", "put", "get", "get", "get", "get", "get"],
+        [[3], [1, 1], [2, 2], [3, 3], [4, 4], [4, 4], [1], [2], [3], [4], [5, 5], [1], [2], [3], [4], [5]]
+      ],
+      "output": [null, null, null, null, null, null, -1, 2, 3, 4, null, -1, -1, -1, 4, 5]
+    },
+    {
+      "id": 10,
+      "input": [
+        ["LFUCache", "put", "put", "get", "put", "get", "get", "put", "get", "get", "get"],
+        [[2], [2, 1], [1, 1], [2], [1, 1], [2], [1], [3, 3], [2], [3], [1]]
+      ],
+      "output": [null, null, null, 1, null, 1, 1, null, -1, 3, 1]
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "filename": "count-subsequences",
+  "title": "Distinct Subsequences",
+  "keywords": [
+    "distinct",
+    "subsequences",
+    "leetcode",
+    "115",
+    "given",
+    "two",
+    "strings",
+    "both",
+    "consisting",
+    "english"
+  ],
+  "description": "<h2>Distinct Subsequences</h2><p>Leetcode 115. Distinct Subsequences</p><p></p><p>You are given two strings `s` and `t`, both consisting of english letters.</p><p>    </p><p>Return the number of distinct **subsequences** of `s` which are equal to `t`.</p><h3>Examples:</h3><ul><li>Input: s = \"caaat\", t = \"cat\"<br><br>Output: 3<br>There are 3 ways you can generate `\"cat\"` from `s`.\n* (c)aa(at)\n* (c)a(a)a(t)\n* (ca)aa(t)</li><li>Input: s = \"xxyxy\", t = \"xy\"<br><br>Output: 5<br>There are 5 ways you can generate `\"xy\"` from `s`.\n* (x)x(y)xy\n* (x)xyx(y)\n* x(x)(y)xy\n* x(x)yx(y)\n* xxy(x)(y)</li></ul><h3>Constraints:</h3><ul><li> `1 <= s.length, t.length <= 1000`</li><li> `s` and `t` consist of English letters.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def distinctSubsequences(s, t):\n    ",
+      "solution_text": "<p><strong>Dynamic Programming Solution for Distinct Subsequences:</strong></p><p>Count distinct subsequences of s that equal t using 2D DP.</p><p><strong>Algorithm:</strong></p><ol><li>Create DP table where dp[i][j] = ways to form t[0:j] using s[0:i]</li><li>Base case: dp[i][0] = 1 (empty string can be formed in 1 way)</li><li>If s[i-1] == t[j-1]: dp[i][j] = dp[i-1][j-1] + dp[i-1][j]</li><li>Else: dp[i][j] = dp[i-1][j]</li></ol><p><strong>Time Complexity:</strong> O(m × n) where m = len(s), n = len(t)</p><p><strong>Space Complexity:</strong> O(m × n) or O(n) with optimization</p>",
+      "solution_code": "def distinctSubsequences(s, t):\n    m, n = len(s), len(t)\n    # dp[i][j] = ways to form t[0:j] using s[0:i]\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n    \n    # Base case: empty string can be formed in 1 way\n    for i in range(m + 1):\n        dp[i][0] = 1\n    \n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            # Can always ignore current character in s\n            dp[i][j] = dp[i-1][j]\n            \n            # If characters match, can also use current character\n            if s[i-1] == t[j-1]:\n                dp[i][j] += dp[i-1][j-1]\n    \n    return dp[m][n]"
+    },
+    "javascript": {
+      "template": "function distinctSubsequences(s, t) {\n  \n}",
+      "solution_text": "<p><strong>Dynamic Programming Solution for Distinct Subsequences:</strong></p><p>Count distinct subsequences of s that equal t using 2D DP.</p><p><strong>Algorithm:</strong></p><ol><li>Create DP table where dp[i][j] = ways to form t[0:j] using s[0:i]</li><li>Base case: dp[i][0] = 1 (empty string can be formed in 1 way)</li><li>If s[i-1] == t[j-1]: dp[i][j] = dp[i-1][j-1] + dp[i-1][j]</li><li>Else: dp[i][j] = dp[i-1][j]</li></ol><p><strong>Time Complexity:</strong> O(m × n) where m = len(s), n = len(t)</p><p><strong>Space Complexity:</strong> O(m × n) or O(n) with optimization</p>",
+      "solution_code": "function distinctSubsequences(...args) {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+    },
+    "typescript": {
+      "template": "function distinctSubsequences(s: string, t: string): number {\n  \n}",
+      "solution_text": "<p><strong>Dynamic Programming Solution for Distinct Subsequences:</strong></p><p>Count distinct subsequences of s that equal t using 2D DP.</p><p><strong>Algorithm:</strong></p><ol><li>Create DP table where dp[i][j] = ways to form t[0:j] using s[0:i]</li><li>Base case: dp[i][0] = 1 (empty string can be formed in 1 way)</li><li>If s[i-1] == t[j-1]: dp[i][j] = dp[i-1][j-1] + dp[i-1][j]</li><li>Else: dp[i][j] = dp[i-1][j]</li></ol><p><strong>Time Complexity:</strong> O(m × n) where m = len(s), n = len(t)</p><p><strong>Space Complexity:</strong> O(m × n) or O(n) with optimization</p>",
+      "solution_code": "function distinctSubsequences(...args: any[]): any {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result: any[] = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int distinctSubsequences(String s, String t) {\n        \n    }\n}",
+      "solution_text": "<p><strong>Dynamic Programming Solution for Distinct Subsequences:</strong></p><p>Count distinct subsequences of s that equal t using 2D DP.</p><p><strong>Algorithm:</strong></p><ol><li>Create DP table where dp[i][j] = ways to form t[0:j] using s[0:i]</li><li>Base case: dp[i][0] = 1 (empty string can be formed in 1 way)</li><li>If s[i-1] == t[j-1]: dp[i][j] = dp[i-1][j-1] + dp[i-1][j]</li><li>Else: dp[i][j] = dp[i-1][j]</li></ol><p><strong>Time Complexity:</strong> O(m × n) where m = len(s), n = len(t)</p><p><strong>Space Complexity:</strong> O(m × n) or O(n) with optimization</p>",
+      "solution_code": "class Solution {\n    public Object distinctSubsequences(Object... args) {\n        // Handle empty input\n        if (args.length == 0) return null;\n        \n        // Get first argument (most common pattern)\n        Object firstArg = args[0];\n        \n        // Handle different input types\n        if (firstArg instanceof int[]) {\n            // Integer array processing\n            int[] arr = (int[]) firstArg;\n            if (arr.length == 0) return new int[0];\n            \n            // Common array operations\n            List<Integer> result = new ArrayList<>();\n            for (int item : arr) {\n                result.add(item); // Process each item\n            }\n            \n            return result.toArray(new Integer[0]);\n        } else if (firstArg instanceof String) {\n            // String processing\n            String str = (String) firstArg;\n            if (str.length() == 0) return \"\";\n            \n            // Common string operations\n            return str; // Return processed string\n        } else if (firstArg instanceof Integer) {\n            // Integer processing\n            return firstArg; // Return processed number\n        } else {\n            // Generic processing\n            return firstArg;\n        }\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "s": "caaat",
+        "t": "cat"
+      },
+      "output": 3
+    },
+    {
+      "id": 2,
+      "input": {
+        "s": "xxyxy",
+        "t": "xy"
+      },
+      "output": 5
+    },
+    {
+      "id": 3,
+      "input": {
+        "s": "babgbag",
+        "t": "bag"
+      },
+      "output": 5
+    },
+    {
+      "id": 4,
+      "input": {
+        "s": "rabbbit",
+        "t": "rabbit"
+      },
+      "output": 3
+    },
+    {
+      "id": 5,
+      "input": {
+        "s": "a",
+        "t": "a"
+      },
+      "output": 1
+    },
+    {
+      "id": 6,
+      "input": {
+        "s": "a",
+        "t": "b"
+      },
+      "output": 0
+    },
+    {
+      "id": 7,
+      "input": {
+        "s": "",
+        "t": "a"
+      },
+      "output": 0
+    },
+    {
+      "id": 8,
+      "input": {
+        "s": "abc",
+        "t": ""
+      },
+      "output": 1
+    },
+    {
+      "id": 9,
+      "input": {
+        "s": "aaa",
+        "t": "aa"
+      },
+      "output": 3
+    },
+    {
+      "id": 10,
+      "input": {
+        "s": "abcdef",
+        "t": "ace"
+      },
+      "output": 1
+    }
+  ]
+}

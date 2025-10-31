@@ -1,0 +1,63 @@
+{
+  "filename": "valid-palindrome-ii",
+  "title": "Valid Palindrome II",
+  "keywords": [
+    "valid",
+    "palindrome",
+    "leetcode",
+    "680",
+    "given",
+    "string",
+    "return",
+    "true",
+    "after",
+    "deleting"
+  ],
+  "description": "<h2>Valid Palindrome II</h2><p>Leetcode 680. Valid Palindrome II</p><p></p><p>You are given a string `s`, return true if the `s` can be a palindrome after deleting at most one character from it.</p><p>    </p><p>A **palindrome** is a string that reads the same forward and backward.</p><p></p><p>**Note:** Alphanumeric characters consist of letters `(A-Z, a-z)` and numbers `(0-9)`.</p><h3>Examples:</h3><ul><li>Input: s = \"aca\"<br><br>Output: true<br>\"aca\" is already a palindrome.</li><li>Input: s = \"abbadc\"<br><br>Output: false<br>\"abbadc\" is not a palindrome and can't be made a palindrome after deleting at most one character.</li><li>Input: s = \"abbda\"<br><br>Output: true<br>\"We can delete the character 'd'.</li></ul><h3>Constraints:</h3><ul><li> `1 <= s.length <= 100,000`</li><li> `s` is made up of only lowercase English letters.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def validPalindromeIi(s):\n    ",
+      "solution_text": "Palindrome detection using two pointers:\n\n**Algorithm:**\n1. Use two pointers from start and end of string\n2. Compare characters while moving pointers inward\n3. Skip non-alphanumeric characters if needed\n4. Return false if any mismatch found\n\n**Time Complexity:** O(n) - single pass through string\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Two pointers technique for efficient comparison\n- Handle case sensitivity and special characters\n- Early termination on first mismatch",
+      "solution_code": "def validPalindromeIi(s):\n    if not s:\n        return True\n    \n    # Convert to lowercase and keep only alphanumeric\n    cleaned = ''.join(char.lower() for char in s if char.isalnum())\n    \n    left, right = 0, len(cleaned) - 1\n    \n    while left < right:\n        if cleaned[left] != cleaned[right]:\n            return False\n        left += 1\n        right -= 1\n    \n    return True"
+    },
+    "javascript": {
+      "template": "function validPalindromeIi(s) {\n  \n}",
+      "solution_text": "Palindrome detection using two pointers:\n\n**Algorithm:**\n1. Use two pointers from start and end of string\n2. Compare characters while moving pointers inward\n3. Skip non-alphanumeric characters if needed\n4. Return false if any mismatch found\n\n**Time Complexity:** O(n) - single pass through string\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Two pointers technique for efficient comparison\n- Handle case sensitivity and special characters\n- Early termination on first mismatch",
+      "solution_code": "function validPalindromeIi(s) {\n    if (!s) return true;\n    \n    // Convert to lowercase and keep only alphanumeric\n    const cleaned = s.toLowerCase().replace(/[^a-z0-9]/g, '');\n    \n    let left = 0, right = cleaned.length - 1;\n    \n    while (left < right) {\n        if (cleaned[left] !== cleaned[right]) {\n            return false;\n        }\n        left++;\n        right--;\n    }\n    \n    return true;\n}"
+    },
+    "typescript": {
+      "template": "function validPalindromeIi(s: string): string {\n  \n}",
+      "solution_text": "Palindrome detection using two pointers:\n\n**Algorithm:**\n1. Use two pointers from start and end of string\n2. Compare characters while moving pointers inward\n3. Skip non-alphanumeric characters if needed\n4. Return false if any mismatch found\n\n**Time Complexity:** O(n) - single pass through string\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Two pointers technique for efficient comparison\n- Handle case sensitivity and special characters\n- Early termination on first mismatch",
+      "solution_code": "function validPalindromeIi(s: string): boolean {\n    if (!s) return true;\n    \n    // Convert to lowercase and keep only alphanumeric\n    const cleaned = s.toLowerCase().replace(/[^a-z0-9]/g, '');\n    \n    let left = 0, right = cleaned.length - 1;\n    \n    while (left < right) {\n        if (cleaned[left] !== cleaned[right]) {\n            return false;\n        }\n        left++;\n        right--;\n    }\n    \n    return true;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public String validPalindromeIi(String s) {\n        \n    }\n}",
+      "solution_text": "Palindrome detection using two pointers:\n\n**Algorithm:**\n1. Use two pointers from start and end of string\n2. Compare characters while moving pointers inward\n3. Skip non-alphanumeric characters if needed\n4. Return false if any mismatch found\n\n**Time Complexity:** O(n) - single pass through string\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Two pointers technique for efficient comparison\n- Handle case sensitivity and special characters\n- Early termination on first mismatch",
+      "solution_code": "class Solution {\n    public boolean validPalindromeIi(String s) {\n        if (s == null || s.length() <= 1) return true;\n        \n        int left = 0, right = s.length() - 1;\n        \n        while (left < right) {\n            // Skip non-alphanumeric characters\n            while (left < right && !Character.isLetterOrDigit(s.charAt(left))) {\n                left++;\n            }\n            while (left < right && !Character.isLetterOrDigit(s.charAt(right))) {\n                right--;\n            }\n            \n            // Compare characters (case insensitive)\n            if (Character.toLowerCase(s.charAt(left)) != \n                Character.toLowerCase(s.charAt(right))) {\n                return false;\n            }\n            \n            left++;\n            right--;\n        }\n        \n        return true;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "s": "aca"
+      },
+      "output": "true"
+    },
+    {
+      "id": 2,
+      "input": {
+        "s": "abbadc"
+      },
+      "output": "false"
+    },
+    {
+      "id": 3,
+      "input": {
+        "s": "abbda"
+      },
+      "output": "true"
+    }
+  ]
+}

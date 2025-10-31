@@ -1,0 +1,133 @@
+{
+  "filename": "evaluate-division",
+  "title": "Evaluate Division",
+  "keywords": [
+    "evaluate",
+    "division",
+    "leetcode",
+    "399",
+    "given",
+    "array",
+    "variable",
+    "pairs",
+    "equations",
+    "real"
+  ],
+  "description": "<h2>Evaluate Division</h2><p>Leetcode 399. Evaluate Division</p><p></p><p>You are given an array of variable pairs `equations` and an array of real numbers `values`, where `equations[i] = [Ai, Bi]` and `values[i]` represent the equation `Ai / Bi = values[i]`. Each `Ai` or `Bi` is a string that represents a single variable.</p><p></p><p>You are also given some `queries`, where `queries[j] = [Cj, Dj]` represents the `jth` query where you must find the answer for `Cj / Dj = ?`.</p><p></p><p>Return the answers to all queries. If a single answer cannot be determined, return `-1.0`.</p><p></p><p>**Note:** The input is always valid. You may assume that evaluating the queries will not result in division by zero and that there is no contradiction.</p><p></p><p>**Note:** The variables that do not occur in the list of equations are undefined, so the answer cannot be determined for them.</p><h3>Examples:</h3><ul><li>Input: equations = [[\"a\",\"b\"], [\"b\",\"c\"], [\"ab\",\"bc\"]], values = [4.0,1.0,3.25], queries = [[\"a\",\"c\"], [\"b\",\"a\"], [\"c\",\"c\"], [\"ab\",\"a\"], [\"d\",\"d\"]]<br><br>Output: [4.00000,0.25000,1.00000,-1.00000,-1.00000]</li><li>Input: equations = [[\"a\",\"b\"]], values = [0.5], queries = [[\"a\",\"b\"], [\"b\",\"a\"]]<br><br>Output: [0.50000,2.00000]</li></ul><h3>Constraints:</h3><ul><li> `1 <= equations.length, queries.length <= 20`</li><li> `equations[i].length == queries[i].length == 2`</li><li> `1 <= Ai.length, Bi.length, Cj.length, Dj.length <= 5`</li><li> `values.length == equations.length`</li><li> `0.0 < values[i] <= 20.0`</li><li> `Ai, Bi, Cj, Dj` consist of lower case English letters and digits.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def evaluateDivision(equations, values, queries):\n    ",
+      "solution_text": "<p><strong>Graph (DFS) based Solution for Evaluate Division:</strong></p><p>This problem can be modeled as finding paths in a weighted directed graph. The variables are the nodes, and an equation `A / B = k` represents a directed edge from `A` to `B` with weight `k`, and an edge from `B` to `A` with weight `1/k`.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Build Graph:</strong><br>   - Create an adjacency list (a dictionary in Python) where keys are variables and values are lists of `(neighbor, weight)` tuples. <br>   - For each equation `A / B = k`, add an edge from `A` to `B` with weight `k` and an edge from `B` to `A` with weight `1/k`.</li><li><strong>Process Queries with DFS:</strong><br>   - For each query `C / D`, we need to find the product of weights along a path from `C` to `D` in the graph.<br>   - We can use Depth First Search (DFS) to find this path. The DFS function will take the current node, target node, and a set of visited nodes to avoid cycles.</li><li><strong>DFS Helper Function `_dfs(start, end, visited)`:</strong><br>   - If `start` or `end` is not in our graph, no path exists, so return -1.0.<br>   - The search starts at `start` with a current product of 1.0.<br>   - We use a queue for BFS (or a stack for DFS) and a set to keep track of visited nodes to avoid infinite loops in case of cycles.<br>   - In each step of the search, we explore the neighbors of the current node. For each neighbor, we calculate the new product and if the neighbor is the `end` node, we have found our answer.<br>   - If we explore all reachable nodes and don't find the `end`, no path exists, and we return -1.0.</li></ol><p><strong>Time Complexity:</strong> O(E + Q * V), where E is the number of equations, Q is the number of queries, and V is the number of unique variables. Building the graph takes O(E), and each query can take up to O(V) in the worst case for the DFS traversal.</p><p><strong>Space Complexity:</strong> O(E) to store the graph.</p>",
+      "solution_code": "from collections import defaultdict, deque\n\ndef evaluateDivision(equations, values, queries):\n    graph = defaultdict(dict)\n    for (u, v), val in zip(equations, values):\n        graph[u][v] = val\n        graph[v][u] = 1.0 / val\n\n    def _bfs(start, end):\n        if start not in graph or end not in graph:\n            return -1.0\n        \n        queue = deque([(start, 1.0)])\n        visited = {start}\n        \n        for node, val in queue:\n            if node == end:\n                return val\n            for neighbor, multiplier in graph[node].items():\n                if neighbor not in visited:\n                    visited.add(neighbor)\n                    queue.append((neighbor, val * multiplier))\n        return -1.0\n\n    return [_bfs(q[0], q[1]) for q in queries]"
+    },
+    "javascript": {
+      "template": "function evaluateDivision(equations, values, queries) {\n  \n}",
+      "solution_text": "<p><strong>Graph (DFS) based Solution for Evaluate Division:</strong></p><p>This problem can be modeled as finding paths in a weighted directed graph. The variables are the nodes, and an equation `A / B = k` represents a directed edge from `A` to `B` with weight `k`, and an edge from `B` to `A` with weight `1/k`.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Build Graph:</strong><br>   - Create an adjacency list (a Map in JavaScript) where keys are variables and values are Maps of `(neighbor, weight)` pairs. <br>   - For each equation `A / B = k`, add an edge from `A` to `B` with weight `k` and an edge from `B` to `A` with weight `1/k`.</li><li><strong>Process Queries with DFS:</strong><br>   - For each query `C / D`, we need to find the product of weights along a path from `C` to `D` in the graph.<br>   - We can use Depth First Search (DFS) to find this path. The DFS function will take the current node, target node, and a set of visited nodes to avoid cycles.</li><li><strong>DFS Helper Function `dfs(start, end, visited)`:</strong><br>   - If `start` or `end` is not in our graph, no path exists, so return -1.0.<br>   - The search starts at `start` with a current product of 1.0.<br>   - We use a stack for DFS and a set to keep track of visited nodes to avoid infinite loops in case of cycles.<br>   - In each step of the search, we explore the neighbors of the current node. For each neighbor, we calculate the new product and if the neighbor is the `end` node, we have found our answer.<br>   - If we explore all reachable nodes and don't find the `end`, no path exists, and we return -1.0.</li></ol><p><strong>Time Complexity:</strong> O(E + Q * V), where E is the number of equations, Q is the number of queries, and V is the number of unique variables. Building the graph takes O(E), and each query can take up to O(V) in the worst case for the DFS traversal.</p><p><strong>Space Complexity:</strong> O(E) to store the graph.</p>",
+      "solution_code": "function evaluateDivision(equations, values, queries) {\n    const graph = new Map();\n\n    for (let i = 0; i < equations.length; i++) {\n        const [u, v] = equations[i];\n        const val = values[i];\n        if (!graph.has(u)) graph.set(u, new Map());\n        if (!graph.has(v)) graph.set(v, new Map());\n        graph.get(u).set(v, val);\n        graph.get(v).set(u, 1.0 / val);\n    }\n\n    const bfs = (start, end) => {\n        if (!graph.has(start) || !graph.has(end)) return -1.0;\n\n        const queue = [[start, 1.0]];\n        const visited = new Set([start]);\n\n        for (const [node, val] of queue) {\n            if (node === end) return val;\n            const neighbors = graph.get(node);\n            if (neighbors) {\n                for (const [neighbor, multiplier] of neighbors.entries()) {\n                    if (!visited.has(neighbor)) {\n                        visited.add(neighbor);\n                        queue.push([neighbor, val * multiplier]);\n                    }\n                }\n            }\n        }\n        return -1.0;\n    };\n\n    return queries.map(q => bfs(q[0], q[1]));\n}"
+    },
+    "typescript": {
+      "template": "function evaluateDivision(equations: string[][], values: number[], queries: string[][]): number[] {\n  \n}",
+      "solution_text": "<p><strong>Graph (DFS) based Solution for Evaluate Division:</strong></p><p>This problem can be modeled as finding paths in a weighted directed graph. The variables are the nodes, and an equation `A / B = k` represents a directed edge from `A` to `B` with weight `k`, and an edge from `B` to `A` with weight `1/k`.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Build Graph:</strong><br>   - Create an adjacency list (a Map in TypeScript) where keys are variables and values are Maps of `(neighbor, weight)` pairs. <br>   - For each equation `A / B = k`, add an edge from `A` to `B` with weight `k` and an edge from `B` to `A` with weight `1/k`.</li><li><strong>Process Queries with DFS:</strong><br>   - For each query `C / D`, we need to find the product of weights along a path from `C` to `D` in the graph.<br>   - We can use Depth First Search (DFS) to find this path. The DFS function will take the current node, target node, and a set of visited nodes to avoid cycles.</li><li><strong>DFS Helper Function `dfs(start, end, visited)`:</strong><br>   - If `start` or `end` is not in our graph, no path exists, so return -1.0.<br>   - The search starts at `start` with a current product of 1.0.<br>   - We use a stack for DFS and a set to keep track of visited nodes to avoid infinite loops in case of cycles.<br>   - In each step of the search, we explore the neighbors of the current node. For each neighbor, we calculate the new product and if the neighbor is the `end` node, we have found our answer.<br>   - If we explore all reachable nodes and don't find the `end`, no path exists, and we return -1.0.</li></ol><p><strong>Time Complexity:</strong> O(E + Q * V), where E is the number of equations, Q is the number of queries, and V is the number of unique variables. Building the graph takes O(E), and each query can take up to O(V) in the worst case for the DFS traversal.</p><p><strong>Space Complexity:</strong> O(E) to store the graph.</p>",
+      "solution_code": "function evaluateDivision(equations: string[][], values: number[], queries: string[][]): number[] {\n    const graph: Map<string, Map<string, number>> = new Map();\n\n    for (let i = 0; i < equations.length; i++) {\n        const [u, v] = equations[i];\n        const val = values[i];\n        if (!graph.has(u)) graph.set(u, new Map());\n        if (!graph.has(v)) graph.set(v, new Map());\n        graph.get(u)!.set(v, val);\n        graph.get(v)!.set(u, 1.0 / val);\n    }\n\n    const bfs = (start: string, end: string): number => {\n        if (!graph.has(start) || !graph.has(end)) return -1.0;\n\n        const queue: [string, number][] = [[start, 1.0]];\n        const visited: Set<string> = new Set([start]);\n\n        for (const [node, val] of queue) {\n            if (node === end) return val;\n            const neighbors = graph.get(node);\n            if (neighbors) {\n                for (const [neighbor, multiplier] of neighbors.entries()) {\n                    if (!visited.has(neighbor)) {\n                        visited.add(neighbor);\n                        queue.push([neighbor, val * multiplier]);\n                    }\n                }\n            }\n        }\n        return -1.0;\n    };\n\n    return queries.map(q => bfs(q[0], q[1]));\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public double[] evaluateDivision(List<List<String>> equations, double[] values, List<List<String>> queries) {\n        \n    }\n}",
+      "solution_text": "<p><strong>Graph (DFS) based Solution for Evaluate Division:</strong></p><p>This problem can be modeled as finding paths in a weighted directed graph. The variables are the nodes, and an equation `A / B = k` represents a directed edge from `A` to `B` with weight `k`, and an edge from `B` to `A` with weight `1/k`.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Build Graph:</strong><br>   - Create an adjacency list (a Map in Java) where keys are variables and values are Maps of `(neighbor, weight)` pairs. <br>   - For each equation `A / B = k`, add an edge from `A` to `B` with weight `k` and an edge from `B` to `A` with weight `1/k`.</li><li><strong>Process Queries with DFS:</strong><br>   - For each query `C / D`, we need to find the product of weights along a path from `C` to `D` in the graph.<br>   - We can use Depth First Search (DFS) to find this path. The DFS function will take the current node, target node, and a set of visited nodes to avoid cycles.</li><li><strong>DFS Helper Function `dfs(start, end, visited)`:</strong><br>   - If `start` or `end` is not in our graph, no path exists, so return -1.0.<br>   - The search starts at `start` with a current product of 1.0.<br>   - We use a stack for DFS and a set to keep track of visited nodes to avoid infinite loops in case of cycles.<br>   - In each step of the search, we explore the neighbors of the current node. For each neighbor, we calculate the new product and if the neighbor is the `end` node, we have found our answer.<br>   - If we explore all reachable nodes and don't find the `end`, no path exists, and we return -1.0.</li></ol><p><strong>Time Complexity:</strong> O(E + Q * V), where E is the number of equations, Q is the number of queries, and V is the number of unique variables. Building the graph takes O(E), and each query can take up to O(V) in the worst case for the DFS traversal.</p><p><strong>Space Complexity:</strong> O(E) to store the graph.</p>",
+      "solution_code": "import java.util.*;\n\nclass Solution {\n    public double[] evaluateDivision(List<List<String>> equations, double[] values, List<List<String>> queries) {\n        Map<String, Map<String, Double>> graph = new HashMap<>();\n\n        for (int i = 0; i < equations.size(); i++) {\n            String u = equations.get(i).get(0);\n            String v = equations.get(i).get(1);\n            double val = values[i];\n            graph.computeIfAbsent(u, k -> new HashMap<>()).put(v, val);\n            graph.computeIfAbsent(v, k -> new HashMap<>()).put(u, 1.0 / val);\n        }\n\n        double[] results = new double[queries.size()];\n        for (int i = 0; i < queries.size(); i++) {\n            results[i] = bfs(queries.get(i).get(0), queries.get(i).get(1), graph);\n        }\n        return results;\n    }\n\n    private double bfs(String start, String end, Map<String, Map<String, Double>> graph) {\n        if (!graph.containsKey(start) || !graph.containsKey(end)) {\n            return -1.0;\n        }\
+\n        Queue<Map.Entry<String, Double>> queue = new LinkedList<>();\n        queue.offer(new AbstractMap.SimpleEntry<>(start, 1.0));\n        Set<String> visited = new HashSet<>();\n        visited.add(start);\n\n        while (!queue.isEmpty()) {\n            Map.Entry<String, Double> entry = queue.poll();\n            String node = entry.getKey();\n            double val = entry.getValue();\n\n            if (node.equals(end)) {\n                return val;\n            }\n\n            Map<String, Double> neighbors = graph.get(node);\n            if (neighbors != null) {\n                for (Map.Entry<String, Double> neighbor : neighbors.entrySet()) {\n                    if (!visited.contains(neighbor.getKey())) {\n                        visited.add(neighbor.getKey());\n                        queue.offer(new AbstractMap.SimpleEntry<>(neighbor.getKey(), val * neighbor.getValue()));\n                    }\n                }\n            }\n        }\n        return -1.0;\n    }\n}"
+    }
+  },
+  "order_matters": true,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "equations": [["a", "b"], ["b", "c"]],
+        "values": [2.0, 3.0],
+        "queries": [["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"]]
+      },
+      "output": [6.0, 0.5, -1.0, 1.0, -1.0]
+    },
+    {
+      "id": 2,
+      "input": {
+        "equations": [["a", "b"], ["b", "c"], ["bc", "cd"]],
+        "values": [1.5, 2.5, 5.0],
+        "queries": [["a", "c"], ["c", "b"], ["bc", "cd"], ["cd", "bc"]]
+      },
+      "output": [3.75, 0.4, 5.0, 0.2]
+    },
+    {
+      "id": 3,
+      "input": {
+        "equations": [["a", "b"]],
+        "values": [0.5],
+        "queries": [["a", "b"], ["b", "a"], ["a", "c"], ["x", "y"]]
+      },
+      "output": [0.5, 2.0, -1.0, -1.0]
+    },
+    {
+      "id": 4,
+      "input": {
+        "equations": [["x1", "x2"], ["x2", "x3"], ["x3", "x4"], ["x4", "x5"]],
+        "values": [3.0, 4.0, 5.0, 6.0],
+        "queries": [["x1", "x5"], ["x5", "x2"], ["x2", "x4"], ["x2", "x2"], ["x2", "x9"], ["x9", "x9"]]
+      },
+      "output": [360.0, 0.00833, 20.0, 1.0, -1.0, -1.0]
+    },
+    {
+      "id": 5,
+      "input": {
+        "equations": [["a", "b"], ["c", "d"]],
+        "values": [1.0, 1.0],
+        "queries": [["a", "c"], ["b", "d"], ["a", "d"], ["b", "c"], ["d", "a"]]
+      },
+      "output": [-1.0, -1.0, -1.0, -1.0, -1.0]
+    },
+    {
+      "id": 6,
+      "input": {
+        "equations": [["a", "e"], ["b", "e"]],
+        "values": [4.0, 3.0],
+        "queries": [["a", "b"], ["e", "e"], ["x", "x"]]
+      },
+      "output": [1.33333, 1.0, -1.0]
+    },
+    {
+      "id": 7,
+      "input": {
+        "equations": [["a", "b"], ["b", "c"], ["a", "c"]],
+        "values": [2.0, 3.0, 6.0],
+        "queries": [["a", "c"]]
+      },
+      "output": [6.0]
+    },
+    {
+      "id": 8,
+      "input": {
+        "equations": [["a", "b"]],
+        "values": [10.0],
+        "queries": [["a", "b"], ["b", "a"]]
+      },
+      "output": [10.0, 0.1]
+    },
+    {
+      "id": 9,
+      "input": {
+        "equations": [["a","b"],["c","d"],["e","f"],["g","h"]],
+        "values": [1.0,2.0,3.0,4.0],
+        "queries": [["a","h"],["b","g"],["c","f"],["d","e"]]
+      },
+      "output": [-1.0, -1.0, -1.0, -1.0]
+    },
+    {
+      "id": 10,
+      "input": {
+        "equations": [["a", "b"], ["b", "c"], ["c", "d"]],
+        "values": [2.0, 3.0, 4.0],
+        "queries": [["a", "d"]]
+      },
+      "output": [24.0]
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "index": 32,
+  "filename": "coffee-sales-projection",
+  "title": "Coffee Sales Projection",
+  "keywords": [
+    "array",
+    "math",
+    "percentage",
+    "calculation",
+    "medium"
+  ],
+  "description": "<h2>Coffee Sales Projection</h2><p>Calculate coffee sales forecast where varieties representing more than 5% of total sales get a 15% increase, while varieties at or below 5% are discontinued (forecast = 0).</p><h3>Example:</h3><ul><li>Input: [100, 200, 10]<br>Output: [115, 230, 0]<br>Explanation:<br>- Total sales = 310<br>- 100/310 ≈ 32.3% → 100 × 1.15 = 115<br>- 200/310 ≈ 64.5% → 200 × 1.15 = 230<br>- 10/310 ≈ 3.2% → 0 (discontinued)</li></ul><h3>Constraints:</h3><ul><li>All sales figures are positive integers</li><li>Return forecast as integer array</li></ul>",
+  "entry_function": "forecastSales",
+  "template": "def forecastSales(sales):\n  ",
+  "solution_text": "<h3>Coffee Sales Projection</h3><p><strong>Algorithm:</strong></p><ol><li>Calculate the total sales once</li><li>For each variety, use integer math to check if <code>sale</code> is strictly more than five percent of the total (<code>sale * 100 &gt; 5 * total</code>)</li><li>If it stays, compute the boosted value with <code>(sale * 115) // 100</code> to avoid floating-point rounding issues; otherwise record 0</li></ol><p><strong>Time Complexity:</strong> O(n) - iterate through sales</p><p><strong>Space Complexity:</strong> O(n) - result array</p><p><strong>Key Insights:</strong></p><ul><li>Use integer arithmetic (sale * 100 > 5 * total) to avoid floating-point precision errors</li><li>Threshold is strict (>5%), so exactly 5% gets discontinued</li><li>Integer division (sale * 115) // 100 correctly rounds down and avoids float inaccuracy</li><li>Each variety is evaluated independently based on its percentage of total</li></ul>",
+  "solution_code": "def forecastSales(sales):\n    total = sum(sales)\n    forecast = []\n\n    for sale in sales:\n        if sale * 100 > 5 * total:\n            forecast.append((sale * 115) // 100)\n        else:\n            forecast.append(0)\n\n    return forecast",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for forecastSales function\"\"\"\n    return (test_case_input['sales'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the forecast result\"\"\"\n    def list_to_string(lst):\n        return '[' + ', '.join(str(x) for x in lst) + ']'\n    \n    passed = actual_output == expected_output\n    return [passed, list_to_string(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "sales": [
+          100,
+          200,
+          10
+        ]
+      },
+      "output": [
+        115,
+        230,
+        0
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "sales": [
+          50,
+          50
+        ]
+      },
+      "output": [
+        57,
+        57
+      ]
+    },
+    {
+      "id": 3,
+      "input": {
+        "sales": [
+          100
+        ]
+      },
+      "output": [
+        115
+      ]
+    },
+    {
+      "id": 4,
+      "input": {
+        "sales": [
+          1000,
+          10,
+          20
+        ]
+      },
+      "output": [
+        1150,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 5,
+      "input": {
+        "sales": [
+          60,
+          60,
+          60,
+          60
+        ]
+      },
+      "output": [
+        69,
+        69,
+        69,
+        69
+      ]
+    },
+    {
+      "id": 6,
+      "input": {
+        "sales": [
+          200,
+          150,
+          100,
+          5,
+          5
+        ]
+      },
+      "output": [
+        230,
+        172,
+        115,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 7,
+      "input": {
+        "sales": [
+          500,
+          100
+        ]
+      },
+      "output": [
+        575,
+        115
+      ]
+    },
+    {
+      "id": 8,
+      "input": {
+        "sales": [
+          20,
+          20,
+          20,
+          20,
+          20
+        ]
+      },
+      "output": [
+        23,
+        23,
+        23,
+        23,
+        23
+      ]
+    },
+    {
+      "id": 9,
+      "input": {
+        "sales": [
+          95,
+          5
+        ]
+      },
+      "output": [
+        109,
+        0
+      ]
+    },
+    {
+      "id": 10,
+      "input": {
+        "sales": [
+          1000,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "output": [
+        1150,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

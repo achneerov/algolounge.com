@@ -1,0 +1,112 @@
+{
+  "filename": "meeting-schedule",
+  "title": "Meeting Rooms",
+  "keywords": [
+    "meeting",
+    "rooms",
+    "leetcode",
+    "252",
+    "given",
+    "array",
+    "time",
+    "interval",
+    "objects",
+    "consisting"
+  ],
+  "description": "<h2>Meeting Rooms</h2><p>Leetcode 252. Meeting Rooms</p><p></p><p>Given an array of meeting time interval objects consisting of start and end times `[[start_1,end_1],[start_2,end_2],...] (start_i < end_i)`, determine if a person could add all meetings to their schedule without any conflicts.</p><h3>Examples:</h3><ul><li>Input: intervals = [(0,30),(5,10),(15,20)]<br><br>Output: false<br>* `(0,30)` and `(5,10)` will conflict\n* `(0,30)` and `(15,20)` will conflict</li><li>Input: intervals = [(5,8),(9,15)]<br><br>Output: true</li></ul><h3>Constraints:</h3><ul><li> `0 <= intervals.length <= 500`</li><li> `0 <= intervals[i].start < intervals[i].end <= 1,000,000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def meetingRooms(intervals):\n    ",
+      "solution_text": "<h2>Solution: Sort and Check Overlaps</h2>\n\n<h3>Algorithm:</h3>\n<ul>\n<li>Sort intervals by start time</li>\n<li>Check adjacent intervals for overlaps</li>\n<li>Two intervals overlap if the end of first > start of second</li>\n<li>Return false if any overlap is found, true otherwise</li>\n</ul>\n\n<h3>Time Complexity:</h3>\n<p>O(n log n) - dominated by sorting step</p>\n\n<h3>Space Complexity:</h3>\n<p>O(1) - only using constant extra space</p>\n\n<h3>Key Insights:</h3>\n<ul>\n<li>Sorting makes overlap detection linear</li>\n<li>Only need to check adjacent intervals after sorting</li>\n<li>Edge case: empty list returns true</li>\n</ul>",
+      "solution_code": "def meetingRooms(intervals):\n    # Handle empty input\n    if not intervals:\n        return True\n    \n    # Sort intervals by start time\n    intervals.sort(key=lambda x: x[0])\n    \n    # Check for overlaps\n    for i in range(1, len(intervals)):\n        # If previous end time > current start time, there's overlap\n        if intervals[i-1][1] > intervals[i][0]:\n            return False\n    \n    return True"
+    },
+    "javascript": {
+      "template": "function meetingRooms(intervals) {\n  \n}",
+      "solution_text": "<h2>Solution: Sort and Check Overlaps</h2>\n\n<h3>Algorithm:</h3>\n<ul>\n<li>Sort intervals by start time</li>\n<li>Check adjacent intervals for overlaps</li>\n<li>Two intervals overlap if the end of first > start of second</li>\n<li>Return false if any overlap is found, true otherwise</li>\n</ul>\n\n<h3>Time Complexity:</h3>\n<p>O(n log n) - dominated by sorting step</p>\n\n<h3>Space Complexity:</h3>\n<p>O(1) - only using constant extra space</p>\n\n<h3>Key Insights:</h3>\n<ul>\n<li>Sorting makes overlap detection linear</li>\n<li>Only need to check adjacent intervals after sorting</li>\n<li>Edge case: empty list returns true</li>\n</ul>",
+      "solution_code": "function meetingRooms(intervals) {\n    // Handle empty input\n    if (!intervals || intervals.length === 0) {\n        return true;\n    }\n    \n    // Sort intervals by start time\n    intervals.sort((a, b) => a[0] - b[0]);\n    \n    // Check for overlaps\n    for (let i = 1; i < intervals.length; i++) {\n        // If previous end time > current start time, there's overlap\n        if (intervals[i - 1][1] > intervals[i][0]) {\n            return false;\n        }\n    }\n    \n    return true;\n}"
+    },
+    "typescript": {
+      "template": "function meetingRooms(intervals: number[][]): boolean {\n  \n}",
+      "solution_text": "<h2>Solution: Sort and Check Overlaps</h2>\n\n<h3>Algorithm:</h3>\n<ul>\n<li>Sort intervals by start time</li>\n<li>Check adjacent intervals for overlaps</li>\n<li>Two intervals overlap if the end of first > start of second</li>\n<li>Return false if any overlap is found, true otherwise</li>\n</ul>\n\n<h3>Time Complexity:</h3>\n<p>O(n log n) - dominated by sorting step</p>\n\n<h3>Space Complexity:</h3>\n<p>O(1) - only using constant extra space</p>\n\n<h3>Key Insights:</h3>\n<ul>\n<li>Sorting makes overlap detection linear</li>\n<li>Only need to check adjacent intervals after sorting</li>\n<li>Edge case: empty list returns true</li>\n</ul>",
+      "solution_code": "function meetingRooms(intervals: number[][]): boolean {\n    // Handle empty input\n    if (!intervals || intervals.length === 0) {\n        return true;\n    }\n    \n    // Sort intervals by start time\n    intervals.sort((a, b) => a[0] - b[0]);\n    \n    // Check for overlaps\n    for (let i = 1; i < intervals.length; i++) {\n        // If previous end time > current start time, there's overlap\n        if (intervals[i - 1][1] > intervals[i][0]) {\n            return false;\n        }\n    }\n    \n    return true;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public boolean meetingRooms(int[][] intervals) {\n        \n    }\n}",
+      "solution_text": "<h2>Solution: Sort and Check Overlaps</h2>\n\n<h3>Algorithm:</h3>\n<ul>\n<li>Sort intervals by start time</li>\n<li>Check adjacent intervals for overlaps</li>\n<li>Two intervals overlap if the end of first > start of second</li>\n<li>Return false if any overlap is found, true otherwise</li>\n</ul>\n\n<h3>Time Complexity:</h3>\n<p>O(n log n) - dominated by sorting step</p>\n\n<h3>Space Complexity:</h3>\n<p>O(1) - only using constant extra space</p>\n\n<h3>Key Insights:</h3>\n<ul>\n<li>Sorting makes overlap detection linear</li>\n<li>Only need to check adjacent intervals after sorting</li>\n<li>Edge case: empty list returns true</li>\n</ul>",
+      "solution_code": "import java.util.Arrays;\n\nclass Solution {\n    public boolean meetingRooms(int[][] intervals) {\n        // Handle empty input\n        if (intervals == null || intervals.length == 0) {\n            return true;\n        }\n        \n        // Sort intervals by start time\n        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));\n        \n        // Check for overlaps\n        for (int i = 1; i < intervals.length; i++) {\n            // If previous end time > current start time, there's overlap\n            if (intervals[i - 1][1] > intervals[i][0]) {\n                return false;\n            }\n        }\n        \n        return true;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "intervals": [[0, 30], [5, 10], [15, 20]]
+      },
+      "output": false
+    },
+    {
+      "id": 2,
+      "input": {
+        "intervals": [[7, 10], [2, 4]]
+      },
+      "output": true
+    },
+    {
+      "id": 3,
+      "input": {
+        "intervals": []
+      },
+      "output": true
+    },
+    {
+      "id": 4,
+      "input": {
+        "intervals": [[1, 5]]
+      },
+      "output": true
+    },
+    {
+      "id": 5,
+      "input": {
+        "intervals": [[1, 2], [2, 3]]
+      },
+      "output": false
+    },
+    {
+      "id": 6,
+      "input": {
+        "intervals": [[1, 2], [3, 4]]
+      },
+      "output": true
+    },
+    {
+      "id": 7,
+      "input": {
+        "intervals": [[9, 10], [4, 9], [4, 17]]
+      },
+      "output": false
+    },
+    {
+      "id": 8,
+      "input": {
+        "intervals": [[6, 7], [2, 4], [8, 12]]
+      },
+      "output": true
+    },
+    {
+      "id": 9,
+      "input": {
+        "intervals": [[1, 5], [8, 9], [8, 9]]
+      },
+      "output": false
+    },
+    {
+      "id": 10,
+      "input": {
+        "intervals": [[0, 1000000], [999999, 1000000]]
+      },
+      "output": false
+    }
+  ]
+}

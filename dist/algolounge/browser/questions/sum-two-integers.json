@@ -1,0 +1,104 @@
+{
+  "index": 73,
+  "filename": "sum-two-integers",
+  "title": "Sum Two Integers",
+  "keywords": [
+    "sum",
+    "addition",
+    "integers",
+    "beginner",
+    "math",
+    "basic",
+    "arithmetic",
+    "easy"
+  ],
+  "description": "<h2>Sum Two Integers</h2><p>Given two integers, return their sum <strong>without using the + or - operators</strong>.</p><p><strong>Note:</strong> While a simple solution using + works technically, this problem is meant to teach bitwise operations. Avoid using +, -, or built-in addition functions. Use bitwise XOR and AND operations instead.</p><h3>Example:</h3><ul><li>Input: a = 5, b = 3<br>Output: 8</li></ul><h3>Constraints:</h3><ul><li>Standard integer range</li><li>You may not use + or - operators</li></ul>",
+  "entry_function": "sumTwo",
+  "template": "def sumTwo(a, b):\n  ",
+  "solution_text": "<h3>Sum Two Integers - Bitwise Solution</h3><p><strong>Algorithm:</strong></p><ol><li>Use XOR (^) to compute sum without carry: a ^ b</li><li>Use AND (&) followed by left shift (<<) to compute carry: (a & b) << 1</li><li>Update a to the sum without carry</li><li>Update b to the carry value</li><li>Repeat steps 1-4 until carry (b) becomes 0</li><li>Handle negative results using two's complement masking</li></ol><p><strong>How It Works:</strong></p><ul><li>XOR adds each bit independently without considering carries (5 ^ 3 = 6)</li><li>AND finds positions where both bits are 1 (carry positions): 5 & 3 = 1</li><li>Left shift moves carry to correct position: 1 << 1 = 2</li><li>Repeat process with new sum (6) and carry (2) until carry is 0</li></ul><p><strong>Time Complexity:</strong> O(1) - maximum 32 iterations for 32-bit integers</p><p><strong>Space Complexity:</strong> O(1) - only use two variables</p><p><strong>Key Insights:</strong></p><ul><li>This mimics how CPU hardware performs addition at the circuit level</li><li>XOR (^) and AND (&) are the fundamental building blocks</li><li>Left shift (<<) positions the carry correctly for next iteration</li><li>Loop continues as long as there are bits to carry over</li><li>Python's arbitrary precision requires masking to simulate 32-bit overflow</li></ul>",
+  "solution_code": "def sumTwo(a, b):\n    # Mask for 32-bit integers\n    mask = 0xFFFFFFFF\n    \n    while b != 0:\n        # Calculate sum without carry using XOR\n        sum_without_carry = (a ^ b) & mask\n        # Calculate carry using AND and left shift\n        carry = ((a & b) << 1) & mask\n        \n        # Update a and b for next iteration\n        a = sum_without_carry\n        b = carry\n    \n    # Handle negative numbers in Python's two's complement\n    return a if a <= 0x7FFFFFFF else ~(a ^ mask)",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for sumTwo function\"\"\"\n    return (test_case_input['a'], test_case_input['b'])",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the sum result\"\"\"\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "a": 5,
+        "b": 3
+      },
+      "output": 8
+    },
+    {
+      "id": 2,
+      "input": {
+        "a": 0,
+        "b": 0
+      },
+      "output": 0
+    },
+    {
+      "id": 3,
+      "input": {
+        "a": -5,
+        "b": 10
+      },
+      "output": 5
+    },
+    {
+      "id": 4,
+      "input": {
+        "a": 100,
+        "b": 200
+      },
+      "output": 300
+    },
+    {
+      "id": 5,
+      "input": {
+        "a": -15,
+        "b": -25
+      },
+      "output": -40
+    },
+    {
+      "id": 6,
+      "input": {
+        "a": 1000,
+        "b": 2000
+      },
+      "output": 3000
+    },
+    {
+      "id": 7,
+      "input": {
+        "a": -100,
+        "b": 100
+      },
+      "output": 0
+    },
+    {
+      "id": 8,
+      "input": {
+        "a": 1,
+        "b": 1
+      },
+      "output": 2
+    },
+    {
+      "id": 9,
+      "input": {
+        "a": -50,
+        "b": 25
+      },
+      "output": -25
+    },
+    {
+      "id": 10,
+      "input": {
+        "a": 999,
+        "b": 1
+      },
+      "output": 1000
+    }
+  ]
+}

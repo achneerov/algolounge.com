@@ -1,0 +1,284 @@
+{
+  "index": 2,
+  "filename": "4sum",
+  "title": "4Sum",
+  "keywords": [
+    "4sum",
+    "leetcode",
+    "array",
+    "integer",
+    "quadruplets",
+    "target",
+    "two-pointers",
+    "sorting",
+    "combination",
+    "unique"
+  ],
+  "description": "<h2>4Sum</h2><p>Given an array of integers <code>nums</code> and an integer <code>target</code>, return an array of all the unique quadruplets <code>[nums[a], nums[b], nums[c], nums[d]]</code> such that:</p><ul><li><code>0 <= a, b, c, d < n</code></li><li><code>a, b, c,</code> and <code>d</code> are <strong>distinct</strong>.</li><li><code>nums[a] + nums[b] + nums[c] + nums[d] == target</code></li></ul><p>You may return the answer in <strong>any order</strong>.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> nums = [3,2,3,-3,1,0], target = 3<br><strong>Output:</strong> [[-3,0,3,3],[-3,1,2,3]]</li><li><strong>Input:</strong> nums = [1,-1,1,-1,1,-1], target = 2<br><strong>Output:</strong> [[-1,1,1,1]]</li><li><strong>Input:</strong> nums = [1,0,-1,0,-2,2], target = 0<br><strong>Output:</strong> [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]</li></ul><h3>Constraints:</h3><ul><li><code>1 <= nums.length <= 200</code></li><li><code>-1,000,000,000 <= nums[i] <= 1,000,000,000</code></li><li><code>-1,000,000,000 <= target <= 1,000,000,000</code></li></ul>",
+  "entry_function": "fourSum",
+  "template": "def fourSum(nums, target):\n    ",
+  "solution_text": "<h3>4Sum</h3><p><strong>Algorithm:</strong></p><ol><li>Sort the input array to enable two-pointers technique</li><li>Use nested loops with early termination for efficiency</li><li>Apply two-pointers to find remaining sum combinations</li><li>Skip duplicates to ensure unique quadruplets</li></ol><p><strong>Time Complexity:</strong> O(n³) - three nested loops with two-pointer inner logic</p><p><strong>Space Complexity:</strong> O(1) - excluding output array</p><p><strong>Key Insights:</strong></p><ul><li>Sorting enables duplicate skipping and two-pointers optimization</li><li>Early termination when current sum is too large/small improves performance</li><li>Careful duplicate handling prevents redundant results</li><li>Similar pattern can be applied to 3Sum, 2Sum variants</li></ul>",
+  "solution_code": "def fourSum(nums, target):\n    if len(nums) < 4:\n        return []\n    \n    nums.sort()\n    result = []\n    n = len(nums)\n    \n    for i in range(n - 3):\n        # Skip duplicates for first number\n        if i > 0 and nums[i] == nums[i - 1]:\n            continue\n        \n        for j in range(i + 1, n - 2):\n            # Skip duplicates for second number\n            if j > i + 1 and nums[j] == nums[j - 1]:\n                continue\n            \n            # Two pointers for remaining two numbers\n            left, right = j + 1, n - 1\n            \n            while left < right:\n                current_sum = nums[i] + nums[j] + nums[left] + nums[right]\n                \n                if current_sum == target:\n                    result.append([nums[i], nums[j], nums[left], nums[right]])\n                    \n                    # Skip duplicates\n                    while left < right and nums[left] == nums[left + 1]:\n                        left += 1\n                    while left < right and nums[right] == nums[right - 1]:\n                        right -= 1\n                    \n                    left += 1\n                    right -= 1\n                elif current_sum < target:\n                    left += 1\n                else:\n                    right -= 1\n    \n    return result",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for fourSum function\"\"\"\n    return (test_case_input['nums'], test_case_input['target'])",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the 4sum result\"\"\"\n    def list_to_string(lst):\n        if not lst:\n            return '[]'\n        # Sort inner lists and outer list for comparison\n        sorted_lst = sorted([sorted(inner) for inner in lst])\n        return '[' + ', '.join('[' + ', '.join(str(x) for x in inner) + ']' for inner in sorted_lst) + ']'\n    \n    # Sort both actual and expected for order-independent comparison\n    actual_sorted = sorted([sorted(quad) for quad in actual_output])\n    expected_sorted = sorted([sorted(quad) for quad in expected_output])\n    \n    passed = actual_sorted == expected_sorted\n    output_str = list_to_string(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [
+          3,
+          2,
+          3,
+          -3,
+          1,
+          0
+        ],
+        "target": 3
+      },
+      "output": [
+        [
+          -3,
+          0,
+          3,
+          3
+        ],
+        [
+          -3,
+          1,
+          2,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [
+          1,
+          -1,
+          1,
+          -1,
+          1,
+          -1
+        ],
+        "target": 2
+      },
+      "output": [
+        [
+          -1,
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "input": {
+        "nums": [
+          1,
+          0,
+          -1,
+          0,
+          -2,
+          2
+        ],
+        "target": 0
+      },
+      "output": [
+        [
+          -2,
+          -1,
+          1,
+          2
+        ],
+        [
+          -2,
+          0,
+          0,
+          2
+        ],
+        [
+          -1,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 4,
+      "input": {
+        "nums": [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "target": 8
+      },
+      "output": [
+        [
+          2,
+          2,
+          2,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 5,
+      "input": {
+        "nums": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "target": 10
+      },
+      "output": [
+        [
+          1,
+          2,
+          3,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "input": {
+        "nums": [
+          -3,
+          -2,
+          -1,
+          0,
+          0,
+          1,
+          2,
+          3
+        ],
+        "target": 0
+      },
+      "output": [
+        [
+          -3,
+          -2,
+          2,
+          3
+        ],
+        [
+          -3,
+          -1,
+          1,
+          3
+        ],
+        [
+          -3,
+          0,
+          0,
+          3
+        ],
+        [
+          -3,
+          0,
+          1,
+          2
+        ],
+        [
+          -2,
+          -1,
+          0,
+          3
+        ],
+        [
+          -2,
+          -1,
+          1,
+          2
+        ],
+        [
+          -2,
+          0,
+          0,
+          2
+        ],
+        [
+          -1,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 7,
+      "input": {
+        "nums": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "target": 4
+      },
+      "output": [
+        [
+          1,
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 8,
+      "input": {
+        "nums": [
+          0
+        ],
+        "target": 0
+      },
+      "output": []
+    },
+    {
+      "id": 9,
+      "input": {
+        "nums": [
+          1,
+          -2,
+          -5,
+          -4,
+          -3,
+          3,
+          3,
+          5
+        ],
+        "target": -11
+      },
+      "output": [
+        [
+          -5,
+          -4,
+          -3,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 10,
+      "input": {
+        "nums": [
+          1000000000,
+          1000000000,
+          1000000000,
+          1000000000
+        ],
+        "target": -294967268
+      },
+      "output": []
+    }
+  ]
+}

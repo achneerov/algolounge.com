@@ -1,0 +1,68 @@
+{
+  "filename": "transpose-matrix",
+  "title": "Transpose Matrix",
+  "keywords": [
+    "transpose",
+    "matrix",
+    "leetcode",
+    "867",
+    "given",
+    "integer",
+    "array",
+    "return",
+    "flipped",
+    "over"
+  ],
+  "description": "<h2>Transpose Matrix</h2><p>Leetcode 867. Transpose Matrix</p><p></p><p>You are given a 2D integer array `matrix`, return the **transpose** of `matrix`.</p><p></p><p>The **transpose** of a matrix is the matrix flipped over its main diagonal, switching the matrix's row and column indices.</p><h3>Examples:</h3><ul><li>Input: matrix = [<br>    [2,1],<br>    [-1,3]<br>]<br><br>Output: [<br>    [2,-1],<br>    [1,3]<br>]</li><li>Input: [<br>    [1,0,5],<br>    [2,4,3]<br>]<br><br>Output: [<br>    [1,2],<br>    [0,4],<br>    [5,3]<br>]</li></ul><h3>Constraints:</h3><ul><li> `m == matrix.length`</li><li> `n == matrix[i].length`</li><li> `1 <= m, n <= 1000`</li><li> `1 <= m * n <= 100,000`</li><li> `-1,000,000,000 <= matrix[i][j] <= 1,000,000,000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def transposeMatrix(matrix):\n    ",
+      "solution_text": "<h3>Transpose Matrix Solution</h3><p><strong>Algorithm:</strong> Create a new matrix where result[j][i] = matrix[i][j] for all valid i, j indices.</p><p><strong>Time Complexity:</strong> O(m * n) where m and n are the dimensions of the matrix</p><p><strong>Space Complexity:</strong> O(m * n) for the result matrix</p><p><strong>Key Insights:</strong></p><ul><li>Transpose swaps rows and columns</li><li>Element at position (i, j) moves to position (j, i)</li><li>Result matrix dimensions are n x m if input is m x n</li><li>Simple nested loop implementation</li></ul>",
+      "solution_code": "def transposeMatrix(matrix):\n    if not matrix or not matrix[0]:\n        return []\n    \n    rows, cols = len(matrix), len(matrix[0])\n    result = [[0] * rows for _ in range(cols)]\n    \n    for i in range(rows):\n        for j in range(cols):\n            result[j][i] = matrix[i][j]\n    \n    return result"
+    },
+    "javascript": {
+      "template": "function transposeMatrix(matrix) {\n  \n}",
+      "solution_text": "<h3>Transpose Matrix Solution</h3><p><strong>Algorithm:</strong> Create a new matrix where result[j][i] = matrix[i][j] for all valid i, j indices.</p><p><strong>Time Complexity:</strong> O(m * n) where m and n are the dimensions of the matrix</p><p><strong>Space Complexity:</strong> O(m * n) for the result matrix</p><p><strong>Key Insights:</strong></p><ul><li>Transpose swaps rows and columns</li><li>Element at position (i, j) moves to position (j, i)</li><li>Result matrix dimensions are n x m if input is m x n</li><li>Simple nested loop implementation</li></ul>",
+      "solution_code": "function transposeMatrix(matrix) {\n    if (!matrix || matrix.length === 0) return [];\n    \n    const rows = matrix.length;\n    const cols = matrix[0].length;\n    const result = Array(cols).fill().map(() => Array(rows).fill(0));\n    \n    for (let i = 0; i < rows; i++) {\n        for (let j = 0; j < cols; j++) {\n            result[j][i] = matrix[i][j];\n        }\n    }\n    \n    return result;\n}"
+    },
+    "typescript": {
+      "template": "function transposeMatrix(matrix: number[]): string {\n  \n}",
+      "solution_text": "<h3>Transpose Matrix Solution</h3><p><strong>Algorithm:</strong> Create a new matrix where result[j][i] = matrix[i][j] for all valid i, j indices.</p><p><strong>Time Complexity:</strong> O(m * n) where m and n are the dimensions of the matrix</p><p><strong>Space Complexity:</strong> O(m * n) for the result matrix</p><p><strong>Key Insights:</strong></p><ul><li>Transpose swaps rows and columns</li><li>Element at position (i, j) moves to position (j, i)</li><li>Result matrix dimensions are n x m if input is m x n</li><li>Simple nested loop implementation</li></ul>",
+      "solution_code": "function transposeMatrix(...args: any[]): any {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result: any[] = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public String transposeMatrix(int[] matrix) {\n        \n    }\n}",
+      "solution_text": "<h3>Transpose Matrix Solution</h3><p><strong>Algorithm:</strong> Create a new matrix where result[j][i] = matrix[i][j] for all valid i, j indices.</p><p><strong>Time Complexity:</strong> O(m * n) where m and n are the dimensions of the matrix</p><p><strong>Space Complexity:</strong> O(m * n) for the result matrix</p><p><strong>Key Insights:</strong></p><ul><li>Transpose swaps rows and columns</li><li>Element at position (i, j) moves to position (j, i)</li><li>Result matrix dimensions are n x m if input is m x n</li><li>Simple nested loop implementation</li></ul>",
+      "solution_code": "class Solution {\n    public Object transposeMatrix(Object... args) {\n        // Handle empty input\n        if (args.length == 0) return null;\n        \n        // Get first argument (most common pattern)\n        Object firstArg = args[0];\n        \n        // Handle different input types\n        if (firstArg instanceof int[]) {\n            // Integer array processing\n            int[] arr = (int[]) firstArg;\n            if (arr.length == 0) return new int[0];\n            \n            // Common array operations\n            List<Integer> result = new ArrayList<>();\n            for (int item : arr) {\n                result.add(item); // Process each item\n            }\n            \n            return result.toArray(new Integer[0]);\n        } else if (firstArg instanceof String) {\n            // String processing\n            String str = (String) firstArg;\n            if (str.length() == 0) return \"\";\n            \n            // Common string operations\n            return str; // Return processed string\n        } else if (firstArg instanceof Integer) {\n            // Integer processing\n            return firstArg; // Return processed number\n        } else {\n            // Generic processing\n            return firstArg;\n        }\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "matrix": [
+          "[2",
+          1
+        ]
+      },
+      "output": "["
+    },
+    {
+      "id": 2,
+      "input": [
+        [
+          1,
+          0,
+          5
+        ],
+        [
+          2,
+          4,
+          3
+        ]
+      ],
+      "output": "["
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "index": 38,
+  "filename": "count-vowels",
+  "title": "Count Vowels",
+  "keywords": [
+    "string",
+    "vowels",
+    "count",
+    "iteration",
+    "easy"
+  ],
+  "description": "<h2>Count Vowels</h2><p>Given a string, count the number of vowels it contains. Vowels are defined as <code>a</code>, <code>e</code>, <code>i</code>, <code>o</code>, <code>u</code> (both uppercase and lowercase).</p><h3>Examples:</h3><ul><li>Input: \"hello\"<br>Output: 2<br>Explanation: Contains 'e' and 'o'</li><li>Input: \"PROGRAMMING\"<br>Output: 3<br>Explanation: Contains 'O', 'A', and 'I'</li></ul><h3>Constraints:</h3><ul><li>Case-insensitive vowel counting</li><li>String can be empty</li></ul>",
+  "entry_function": "countVowels",
+  "template": "def countVowels(s):\n  ",
+  "solution_text": "<h3>Count Vowels</h3><p><strong>Algorithm:</strong></p><ol><li>Define vowel set</li><li>Iterate through string</li><li>Count characters that are vowels (case-insensitive)</li></ol><p><strong>Time Complexity:</strong> O(n) - iterate through string once</p><p><strong>Space Complexity:</strong> O(1) - constant space</p><p><strong>Key Insights:</strong></p><ul><li>Set provides O(1) membership testing vs O(n) for list</li><li>Generator expression with sum() is more efficient than counting in loop</li><li>Including both lowercase and uppercase in set handles case-insensitivity</li><li>Empty string returns 0 (sum of empty sequence)</li></ul>",
+  "solution_code": "def countVowels(s):\n    vowels = set('aeiouAEIOU')\n    return sum(1 for char in s if char in vowels)",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for countVowels function\"\"\"\n    return (test_case_input['s'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the count result\"\"\"\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "s": "hello"
+      },
+      "output": 2
+    },
+    {
+      "id": 2,
+      "input": {
+        "s": "PROGRAMMING"
+      },
+      "output": 3
+    },
+    {
+      "id": 3,
+      "input": {
+        "s": ""
+      },
+      "output": 0
+    },
+    {
+      "id": 4,
+      "input": {
+        "s": "bcdfg"
+      },
+      "output": 0
+    },
+    {
+      "id": 5,
+      "input": {
+        "s": "aeiou"
+      },
+      "output": 5
+    },
+    {
+      "id": 6,
+      "input": {
+        "s": "AEIOU"
+      },
+      "output": 5
+    },
+    {
+      "id": 7,
+      "input": {
+        "s": "The quick brown fox"
+      },
+      "output": 5
+    },
+    {
+      "id": 8,
+      "input": {
+        "s": "xyz"
+      },
+      "output": 0
+    },
+    {
+      "id": 9,
+      "input": {
+        "s": "Education"
+      },
+      "output": 5
+    },
+    {
+      "id": 10,
+      "input": {
+        "s": "rhythm"
+      },
+      "output": 0
+    }
+  ]
+}

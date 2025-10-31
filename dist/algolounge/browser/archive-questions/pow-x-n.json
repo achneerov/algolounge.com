@@ -1,0 +1,66 @@
+{
+  "filename": "pow-x-n",
+  "title": "Pow(x, n)",
+  "keywords": [
+    "pow",
+    "leetcode",
+    "mathematical",
+    "function",
+    "calculate",
+    "value",
+    "raised",
+    "power",
+    "given",
+    "floating"
+  ],
+  "description": "<h2>Pow(x, n)</h2><p>Leetcode 50. Pow(x, n)</p><p></p><p>`Pow(x, n)` is a mathematical function to calculate the value of `x` raised to the power of `n` (i.e., `x^n`).</p><p>    </p><p>Given a floating-point value `x` and an integer value `n`, implement the `myPow(x, n)` function, which calculates `x` raised to the power `n`.</p><p></p><p>You may **not** use any built-in library functions.</p><h3>Examples:</h3><ul><li>Input: x = 2.00000, n = 5<br><br>Output: 32.00000</li><li>Input: x = 1.10000, n = 10<br><br>Output: 2.59374</li><li>Input: x = 2.00000, n = -3<br><br>Output: 0.12500</li></ul><h3>Constraints:</h3><ul><li> `-100.0 < x < 100.0`</li><li> `-1000 <= n <= 1000`</li><li> `n` is an integer.</li><li> If `x = 0`, then `n` will be positive.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def myPow(x, n):\n    ",
+      "solution_text": "Power function using Fast Exponentiation (Binary Exponentiation):\n\n**Algorithm:**\n1. Handle negative exponent by taking reciprocal\n2. Use binary representation of exponent for efficiency\n3. Square base and halve exponent in each iteration\n4. Multiply result when exponent bit is 1\n\n**Time Complexity:** O(log n) - Binary exponentiation\n**Space Complexity:** O(1) - Iterative approach with constant space\n\n**Key Insights:**\n- x^n = (x^2)^(n/2) when n is even\n- x^n = x * (x^2)^((n-1)/2) when n is odd\n- Handle negative exponents by computing 1/x^|n|",
+      "solution_code": "def myPow(x, n):\n    if n == 0:\n        return 1.0\n    \n    # Handle negative exponent\n    if n < 0:\n        x = 1 / x\n        n = -n\n    \n    result = 1.0\n    current_power = x\n    \n    while n > 0:\n        # If n is odd, multiply result by current power\n        if n % 2 == 1:\n            result *= current_power\n        \n        # Square the current power and halve n\n        current_power *= current_power\n        n //= 2\n    \n    return result"
+    },
+    "javascript": {
+      "template": "function myPow(x, n) {\n  \n}",
+      "solution_text": "Power function using Fast Exponentiation (Binary Exponentiation):\n\n**Algorithm:**\n1. Handle negative exponent by taking reciprocal\n2. Use binary representation of exponent for efficiency\n3. Square base and halve exponent in each iteration\n4. Multiply result when exponent bit is 1\n\n**Time Complexity:** O(log n) - Binary exponentiation\n**Space Complexity:** O(1) - Iterative approach with constant space\n\n**Key Insights:**\n- x^n = (x^2)^(n/2) when n is even\n- x^n = x * (x^2)^((n-1)/2) when n is odd\n- Handle negative exponents by computing 1/x^|n|",
+      "solution_code": "function myPow(x, n) {\n    if (n === 0) return 1.0;\n    \n    // Handle negative exponent\n    if (n < 0) {\n        x = 1 / x;\n        n = -n;\n    }\n    \n    let result = 1.0;\n    let currentPower = x;\n    \n    while (n > 0) {\n        // If n is odd, multiply result by current power\n        if (n % 2 === 1) {\n            result *= currentPower;\n        }\n        \n        // Square the current power and halve n\n        currentPower *= currentPower;\n        n = Math.floor(n / 2);\n    }\n    \n    return result;\n}"
+    },
+    "typescript": {
+      "template": "function myPow(x: number, n: number): number {\n  \n}",
+      "solution_text": "Power function using Fast Exponentiation (Binary Exponentiation):\n\n**Algorithm:**\n1. Handle negative exponent by taking reciprocal\n2. Use binary representation of exponent for efficiency\n3. Square base and halve exponent in each iteration\n4. Multiply result when exponent bit is 1\n\n**Time Complexity:** O(log n) - Binary exponentiation\n**Space Complexity:** O(1) - Iterative approach with constant space\n\n**Key Insights:**\n- x^n = (x^2)^(n/2) when n is even\n- x^n = x * (x^2)^((n-1)/2) when n is odd\n- Handle negative exponents by computing 1/x^|n|",
+      "solution_code": "function myPow(x: number, n: number): number {\n    if (n === 0) return 1.0;\n    \n    // Handle negative exponent\n    if (n < 0) {\n        x = 1 / x;\n        n = -n;\n    }\n    \n    let result = 1.0;\n    let currentPower = x;\n    \n    while (n > 0) {\n        // If n is odd, multiply result by current power\n        if (n % 2 === 1) {\n            result *= currentPower;\n        }\n        \n        // Square the current power and halve n\n        currentPower *= currentPower;\n        n = Math.floor(n / 2);\n    }\n    \n    return result;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public double myPow(double x, int n) {\n        \n    }\n}",
+      "solution_text": "Power function using Fast Exponentiation (Binary Exponentiation):\n\n**Algorithm:**\n1. Handle negative exponent by taking reciprocal\n2. Use binary representation of exponent for efficiency\n3. Square base and halve exponent in each iteration\n4. Multiply result when exponent bit is 1\n\n**Time Complexity:** O(log n) - Binary exponentiation\n**Space Complexity:** O(1) - Iterative approach with constant space\n\n**Key Insights:**\n- x^n = (x^2)^(n/2) when n is even\n- x^n = x * (x^2)^((n-1)/2) when n is odd\n- Handle negative exponents by computing 1/x^|n|",
+      "solution_code": "class Solution {\n    public double myPow(double x, int n) {\n        if (n == 0) return 1.0;\n        \n        long N = n; // Use long to handle Integer.MIN_VALUE\n        \n        // Handle negative exponent\n        if (N < 0) {\n            x = 1 / x;\n            N = -N;\n        }\n        \n        double result = 1.0;\n        double currentPower = x;\n        \n        while (N > 0) {\n            // If N is odd, multiply result by current power\n            if (N % 2 == 1) {\n                result *= currentPower;\n            }\n            \n            // Square the current power and halve N\n            currentPower *= currentPower;\n            N /= 2;\n        }\n        \n        return result;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "x": "2.00000,",
+        "n": 5
+      },
+      "output": 32
+    },
+    {
+      "id": 2,
+      "input": {
+        "x": "1.10000,",
+        "n": 10
+      },
+      "output": 2
+    },
+    {
+      "id": 3,
+      "input": {
+        "x": "2.00000,",
+        "n": -3
+      },
+      "output": 0
+    }
+  ]
+}

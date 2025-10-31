@@ -1,0 +1,183 @@
+{
+  "index": 85,
+  "filename": "subtree-of-another-tree",
+  "title": "Subtree of Another Tree",
+  "keywords": [
+    "subtree",
+    "binary",
+    "tree",
+    "recursion",
+    "dfs",
+    "comparison",
+    "structure",
+    "matching",
+    "identical",
+    "descendant"
+  ],
+  "description": "<h2>Subtree of Another Tree</h2><p>LeetCode 572. Subtree of Another Tree</p><p>Given the roots of two binary trees <code>root</code> and <code>subRoot</code>, return <code>true</code> if there is a subtree of <code>root</code> with the same structure and node values of <code>subRoot</code> and <code>false</code> otherwise.</p><p>A subtree of a binary tree <code>tree</code> is a tree that consists of a node in <code>tree</code> and all of this node's descendants. The tree <code>tree</code> could also be considered as a subtree of itself.</p><h3>Examples:</h3><ul><li>Input: root = [3,4,5,1,2], subRoot = [4,1,2]<br>Output: <code>true</code></li><li>Input: root = [3,4,5,1,2,null,null,null,null,0], subRoot = [4,1,2]<br>Output: <code>false</code></li><li>Input: root = [1,1], subRoot = [1]<br>Output: <code>true</code></li></ul><h3>Constraints:</h3><ul><li><code>0 &lt;= number of nodes in both trees &lt;= 2000</code></li><li><code>-10^4 &lt;= root.val, subRoot.val &lt;= 10^4</code></li></ul>",
+  "entry_function": "isSubtree",
+  "template": "# Definition for a binary tree node.\n# class TreeNode:\n#     def __init__(self, val=0, left=None, right=None):\n#         self.val = val\n#         self.left = left\n#         self.right = right\n\ndef isSubtree(root, subRoot):\n    ",
+  "solution_text": "<h3>Subtree of Another Tree</h3><p><strong>Algorithm:</strong></p><ol><li>Base case: If subRoot is null, it's always a subtree (empty tree)</li><li>If root is null but subRoot is not, cannot be a subtree</li><li>Check if current root matches subRoot using isSameTree helper</li><li>If not, recursively check left subtree</li><li>If not, recursively check right subtree</li><li>Return true if any match is found</li></ol><p><strong>Time Complexity:</strong> O(n * m) - where n is nodes in root, m is nodes in subRoot</p><p><strong>Space Complexity:</strong> O(h) - recursion stack depth, where h is height of root tree</p><p><strong>Key Insights:</strong></p><ul><li>Reuse same tree comparison logic for each node</li><li>Check every node in main tree as potential subtree root</li><li>Early termination when match found</li><li>Tree equality check is separate from subtree traversal</li></ul>",
+  "solution_code": "def isSubtree(root, subRoot):\n    # Helper function to check if two trees are identical\n    def isSameTree(p, q):\n        if not p and not q:\n            return True\n        if not p or not q:\n            return False\n        if p.val != q.val:\n            return False\n        return isSameTree(p.left, q.left) and isSameTree(p.right, q.right)\n    \n    # Base cases\n    if not subRoot:\n        return True\n    if not root:\n        return False\n    \n    # Check if current root matches subRoot\n    if isSameTree(root, subRoot):\n        return True\n    \n    # Check left and right subtrees\n    return isSubtree(root.left, subRoot) or isSubtree(root.right, subRoot)",
+  "prepare": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef prepare(test_case_input):\n    \"\"\"Convert array representation to TreeNode structure\"\"\"\n    def build_tree(arr):\n        if not arr or arr[0] is None:\n            return None\n        \n        from collections import deque\n        root = TreeNode(arr[0])\n        queue = deque([root])\n        i = 1\n        \n        while queue and i < len(arr):\n            node = queue.popleft()\n            \n            # Add left child\n            if i < len(arr) and arr[i] is not None:\n                node.left = TreeNode(arr[i])\n                queue.append(node.left)\n            i += 1\n            \n            # Add right child\n            if i < len(arr) and arr[i] is not None:\n                node.right = TreeNode(arr[i])\n                queue.append(node.right)\n            i += 1\n        \n        return root\n    \n    root = build_tree(test_case_input['root'])\n    subRoot = build_tree(test_case_input['subRoot'])\n    return (root, subRoot)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the subtree result\"\"\"\n    def bool_to_string(val):\n        return 'true' if val else 'false'\n    \n    # Convert expected output string to boolean for comparison if needed\n    expected_bool = expected_output == 'true' if isinstance(expected_output, str) else expected_output\n    \n    passed = actual_output == expected_bool\n    output_str = bool_to_string(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "root": [
+          3,
+          4,
+          5,
+          1,
+          2
+        ],
+        "subRoot": [
+          4,
+          1,
+          2
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 2,
+      "input": {
+        "root": [
+          3,
+          4,
+          5,
+          1,
+          2,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "subRoot": [
+          4,
+          1,
+          2
+        ]
+      },
+      "output": "false"
+    },
+    {
+      "id": 3,
+      "input": {
+        "root": [
+          1,
+          1
+        ],
+        "subRoot": [
+          1
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 4,
+      "input": {
+        "root": [
+          1,
+          2,
+          3
+        ],
+        "subRoot": [
+          2
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 5,
+      "input": {
+        "root": [
+          1,
+          2,
+          3
+        ],
+        "subRoot": [
+          1,
+          2,
+          3
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 6,
+      "input": {
+        "root": [
+          12
+        ],
+        "subRoot": [
+          2
+        ]
+      },
+      "output": "false"
+    },
+    {
+      "id": 7,
+      "input": {
+        "root": [
+          3,
+          4,
+          5,
+          1,
+          null,
+          2
+        ],
+        "subRoot": [
+          3,
+          1,
+          2
+        ]
+      },
+      "output": "false"
+    },
+    {
+      "id": 8,
+      "input": {
+        "root": [
+          1,
+          1
+        ],
+        "subRoot": [
+          1,
+          1
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 9,
+      "input": {
+        "root": [],
+        "subRoot": []
+      },
+      "output": "true"
+    },
+    {
+      "id": 10,
+      "input": {
+        "root": [
+          10,
+          5,
+          15,
+          1,
+          8,
+          12,
+          20
+        ],
+        "subRoot": [
+          5,
+          1,
+          8
+        ]
+      },
+      "output": "true"
+    }
+  ]
+}

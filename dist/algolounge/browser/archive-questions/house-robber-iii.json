@@ -1,0 +1,112 @@
+{
+  "filename": "house-robber-iii",
+  "title": "House Robber III",
+  "keywords": [
+    "house",
+    "robber",
+    "iii",
+    "leetcode",
+    "337",
+    "thief",
+    "found",
+    "himself",
+    "new",
+    "place"
+  ],
+  "description": "<h2>House Robber III</h2><p>Leetcode 337. House Robber III</p><p></p><p>The thief has found himself a new place for his thievery again. There is only one entrance to this area, called `root`.</p><p></p><p>In this new place, there are houses and each house has its only one parent house. All houses in this place form a **binary tree**. It will automatically contact the police if **two directly-linked houses were broken**.</p><p></p><p>You are given the `root` of the binary tree, return the **maximum** amount of money the thief can rob **without alerting the police**.</p><h3>Constraints:</h3><ul><li> `1 <= The number of nodes in the tree <= 10,000`.</li><li> `0 <= Node.val <= 10,000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def houseRobberIii(root):\n    ",
+      "solution_text": "<p><strong>Tree DP Solution for House Robber III:</strong></p><p>Use post-order traversal with DP to find maximum money from binary tree houses.</p><p><strong>Algorithm:</strong></p><ol><li>For each node, return two values: [rob_current, skip_current]</li><li>If we rob current node: add node.val + skip_left + skip_right</li><li>If we skip current node: add max(left) + max(right)</li><li>Return maximum of the two choices for the current subtree</li></ol><p><strong>Time Complexity:</strong> O(n) - visit each node once</p><p><strong>Space Complexity:</strong> O(h) - recursion stack height</p>",
+      "solution_code": "def houseRobberIii(root):\n    def rob_subtree(node):\n        if not node:\n            return [0, 0]  # [rob_current, skip_current]\n        \n        left = rob_subtree(node.left)\n        right = rob_subtree(node.right)\n        \n        # Rob current node: add node value + skip children\n        rob_current = node.val + left[1] + right[1]\n        \n        # Skip current node: take max from each child\n        skip_current = max(left) + max(right)\n        \n        return [rob_current, skip_current]\n    \n    return max(rob_subtree(root))"
+    },
+    "javascript": {
+      "template": "function houseRobberIii(root) {\n  \n}",
+      "solution_text": "<p><strong>Tree DP Solution for House Robber III:</strong></p><p>Use post-order traversal with DP to find maximum money from binary tree houses.</p><p><strong>Algorithm:</strong></p><ol><li>For each node, return two values: [rob_current, skip_current]</li><li>If we rob current node: add node.val + skip_left + skip_right</li><li>If we skip current node: add max(left) + max(right)</li><li>Return maximum of the two choices for the current subtree</li></ol><p><strong>Time Complexity:</strong> O(n) - visit each node once</p><p><strong>Space Complexity:</strong> O(h) - recursion stack height</p>",
+      "solution_code": "function houseRobberIii(root) {\n    function robSubtree(node) {\n        if (!node) {\n            return [0, 0];  // [rob_current, skip_current]\n        }\n        \n        const left = robSubtree(node.left);\n        const right = robSubtree(node.right);\n        \n        // Rob current node: add node value + skip children\n        const robCurrent = node.val + left[1] + right[1];\n        \n        // Skip current node: take max from each child\n        const skipCurrent = Math.max(...left) + Math.max(...right);\n        \n        return [robCurrent, skipCurrent];\n    }\n    \n    const result = robSubtree(root);\n    return Math.max(...result);\n}"
+    },
+    "typescript": {
+      "template": "function houseRobberIii(root: TreeNode | null): number {\n  \n}",
+      "solution_text": "<p><strong>Tree DP Solution for House Robber III:</strong></p><p>Use post-order traversal with DP to find maximum money from binary tree houses.</p><p><strong>Algorithm:</strong></p><ol><li>For each node, return two values: [rob_current, skip_current]</li><li>If we rob current node: add node.val + skip_left + skip_right</li><li>If we skip current node: add max(left) + max(right)</li><li>Return maximum of the two choices for the current subtree</li></ol><p><strong>Time Complexity:</strong> O(n) - visit each node once</p><p><strong>Space Complexity:</strong> O(h) - recursion stack height</p>",
+      "solution_code": "function houseRobberIii(root: TreeNode | null): number {\n    function robSubtree(node: TreeNode | null): [number, number] {\n        if (!node) {\n            return [0, 0];  // [rob_current, skip_current]\n        }\n        \n        const left: [number, number] = robSubtree(node.left);\n        const right: [number, number] = robSubtree(node.right);\n        \n        // Rob current node: add node value + skip children\n        const robCurrent: number = node.val + left[1] + right[1];\n        \n        // Skip current node: take max from each child\n        const skipCurrent: number = Math.max(...left) + Math.max(...right);\n        \n        return [robCurrent, skipCurrent];\n    }\n    \n    const result: [number, number] = robSubtree(root);\n    return Math.max(...result);\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int houseRobberIii(TreeNode root) {\n        \n    }\n}",
+      "solution_text": "<p><strong>Tree DP Solution for House Robber III:</strong></p><p>Use post-order traversal with DP to find maximum money from binary tree houses.</p><p><strong>Algorithm:</strong></p><ol><li>For each node, return two values: [rob_current, skip_current]</li><li>If we rob current node: add node.val + skip_left + skip_right</li><li>If we skip current node: add max(left) + max(right)</li><li>Return maximum of the two choices for the current subtree</li></ol><p><strong>Time Complexity:</strong> O(n) - visit each node once</p><p><strong>Space Complexity:</strong> O(h) - recursion stack height</p>",
+      "solution_code": "class Solution {\n    public int houseRobberIii(TreeNode root) {\n        int[] result = robSubtree(root);\n        return Math.max(result[0], result[1]);\n    }\n    \n    private int[] robSubtree(TreeNode node) {\n        if (node == null) {\n            return new int[]{0, 0};  // [rob_current, skip_current]\n        }\n        \n        int[] left = robSubtree(node.left);\n        int[] right = robSubtree(node.right);\n        \n        // Rob current node: add node value + skip children\n        int robCurrent = node.val + left[1] + right[1];\n        \n        // Skip current node: take max from each child\n        int skipCurrent = Math.max(left[0], left[1]) + Math.max(right[0], right[1]);\n        \n        return new int[]{robCurrent, skipCurrent};\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "root": [3, 2, 3, null, 3, null, 1]
+      },
+      "output": 7
+    },
+    {
+      "id": 2,
+      "input": {
+        "root": [3, 4, 5, 1, 3, null, 1]
+      },
+      "output": 9
+    },
+    {
+      "id": 3,
+      "input": {
+        "root": [1]
+      },
+      "output": 1
+    },
+    {
+      "id": 4,
+      "input": {
+        "root": [2, 1, 3, null, 4]
+      },
+      "output": 7
+    },
+    {
+      "id": 5,
+      "input": {
+        "root": [5, 4, 8, 11, null, 13, 4, 7, 2, null, null, null, 1]
+      },
+      "output": 19
+    },
+    {
+      "id": 6,
+      "input": {
+        "root": [1, 2, 3, 4, 5, 6, 7]
+      },
+      "output": 18
+    },
+    {
+      "id": 7,
+      "input": {
+        "root": [100, 1, 1, 1, 1]
+      },
+      "output": 101
+    },
+    {
+      "id": 8,
+      "input": {
+        "root": [1, 100, 100]
+      },
+      "output": 200
+    },
+    {
+      "id": 9,
+      "input": {
+        "root": [2, 1, 3, 1, 1, 1, 1]
+      },
+      "output": 6
+    },
+    {
+      "id": 10,
+      "input": {
+        "root": [4, 1, null, 2, null, 3]
+      },
+      "output": 7
+    }
+  ]
+}

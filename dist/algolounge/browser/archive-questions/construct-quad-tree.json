@@ -1,0 +1,76 @@
+{
+  "filename": "construct-quad-tree",
+  "title": "Construct Quad Tree",
+  "keywords": [
+    "construct",
+    "quad",
+    "tree",
+    "leetcode",
+    "427",
+    "given",
+    "binary",
+    "matrix",
+    "grid",
+    "want"
+  ],
+  "description": "<h2>Construct Quad Tree</h2><p>Leetcode 427. Construct Quad Tree</p><p></p><p>You are given a `n * n` binary matrix `grid`. We want to represent `grid` with a Quad-Tree.</p><p></p><p>Return the root of the Quad-Tree representing `grid`.</p><p></p><p>A Quad-Tree is a tree data structure in which each internal node has exactly four children. Besides, each node has two attributes:</p><p></p><p>- `isLeaf`: True if the node is a leaf node on the tree or False if the node has four children.</p><p></p><p>- `val`: True if the node represents a grid cell of `1's` or False if the node represents a grid cell of `0's`. Notice that you can assign the `val` to True or False when `isLeaf` is False, and both are accepted in the answer.</p><p></p><p>```java</p><p>class Node {</p><p>    public boolean val;</p><p>    public boolean isLeaf;</p><p>    public Node topLeft;</p><p>    public Node topRight;</p><p>    public Node bottomLeft;</p><p>    public Node bottomRight;</p><p>}</p><p>```</p><p></p><p>We can construct a Quad-Tree from a two-dimensional grid using the following steps:</p><p></p><p>1. If the current grid has the same value (i.e all `1's` or all `0's`), set `isLeaf` True and set `val` to the value of the grid and set the four children to Null and stop.</p><p></p><p>2. If the current grid has different values, set `isLeaf` to False and set `val` to any value and divide the current grid into four sub-grids representing the four childrens of the current node.</p><p></p><p>3. Recurse the steps for every children of the current node.</p><h3>Examples:</h3><ul><li>Input: grid = [[1,1],[1,1]]<br><br>Output: [[1,1]]</li><li>Input: grid = [<br>    [1,1,1,1],<br>    [0,0,0,0],<br>    [1,1,1,1],<br>    [1,1,1,1]<br>]<br><br>Output: [[0,0],[0,0],[0,0],[1,1],[1,1],[1,1],[1,1],[1,0],[1,0],[1,1],[1,1],[1,0],[1,0]]</li></ul><h3>Constraints:</h3><ul><li> `n == grid.length == grid[i].length`</li><li> `n == (2^x)` where `0 <= x <= 6`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def constructQuadTree(grid):\n    ",
+      "solution_text": "<h3>Construct Quad Tree</h3><p><strong>Algorithm:</strong></p><ol><li>Check if current grid region has all same values (all 0s or all 1s)</li><li>If uniform, create leaf node with that value</li><li>If not uniform, create internal node and recursively divide into 4 quadrants</li><li>Divide grid into: top-left, top-right, bottom-left, bottom-right</li><li>Recursively construct quad tree for each quadrant</li></ol><p><strong>Time Complexity:</strong> O(n² log n) - divide grid recursively</p><p><strong>Space Complexity:</strong> O(log n) - recursion depth for balanced quad tree</p><p><strong>Key Insights:</strong></p><ul><li>Leaf nodes represent uniform regions of the grid</li><li>Internal nodes have exactly 4 children representing quadrants</li><li>Recursively divide until all regions are uniform</li></ul>",
+      "solution_code": "def constructQuadTree(grid):\n    def isUniform(x, y, length):\n        # Check if all cells in the region have the same value\n        val = grid[x][y]\n        for i in range(x, x + length):\n            for j in range(y, y + length):\n                if grid[i][j] != val:\n                    return False\n        return True\n    \n    def construct(x, y, length):\n        # If the region is uniform, create a leaf node\n        if isUniform(x, y, length):\n            return Node(grid[x][y] == 1, True)\n        \n        # Otherwise, create an internal node and recurse on quadrants\n        half = length // 2\n        node = Node(True, False)  # val can be anything for internal nodes\n        \n        node.topLeft = construct(x, y, half)\n        node.topRight = construct(x, y + half, half)\n        node.bottomLeft = construct(x + half, y, half)\n        node.bottomRight = construct(x + half, y + half, half)\n        \n        return node\n    \n    return construct(0, 0, len(grid))"
+    },
+    "javascript": {
+      "template": "function constructQuadTree(grid) {\n  \n}",
+      "solution_text": "<h3>Construct Quad Tree</h3><p><strong>Algorithm:</strong></p><ol><li>Check if current grid region has all same values (all 0s or all 1s)</li><li>If uniform, create leaf node with that value</li><li>If not uniform, create internal node and recursively divide into 4 quadrants</li><li>Divide grid into: top-left, top-right, bottom-left, bottom-right</li><li>Recursively construct quad tree for each quadrant</li></ol><p><strong>Time Complexity:</strong> O(n² log n) - divide grid recursively</p><p><strong>Space Complexity:</strong> O(log n) - recursion depth for balanced quad tree</p><p><strong>Key Insights:</strong></p><ul><li>Leaf nodes represent uniform regions of the grid</li><li>Internal nodes have exactly 4 children representing quadrants</li><li>Recursively divide until all regions are uniform</li></ul>",
+      "solution_code": "function constructQuadTree(grid) {\n    function isUniform(x, y, length) {\n        // Check if all cells in the region have the same value\n        const val = grid[x][y];\n        for (let i = x; i < x + length; i++) {\n            for (let j = y; j < y + length; j++) {\n                if (grid[i][j] !== val) {\n                    return false;\n                }\n            }\n        }\n        return true;\n    }\n    \n    function construct(x, y, length) {\n        // If the region is uniform, create a leaf node\n        if (isUniform(x, y, length)) {\n            return new Node(grid[x][y] === 1, true);\n        }\n        \n        // Otherwise, create an internal node and recurse on quadrants\n        const half = Math.floor(length / 2);\n        const node = new Node(true, false); // val can be anything for internal nodes\n        \n        node.topLeft = construct(x, y, half);\n        node.topRight = construct(x, y + half, half);\n        node.bottomLeft = construct(x + half, y, half);\n        node.bottomRight = construct(x + half, y + half, half);\n        \n        return node;\n    }\n    \n    return construct(0, 0, grid.length);\n}"
+    },
+    "typescript": {
+      "template": "function constructQuadTree(grid: number[][]): Node | null {\n  \n}",
+      "solution_text": "<h3>Construct Quad Tree</h3><p><strong>Algorithm:</strong></p><ol><li>Check if current grid region has all same values (all 0s or all 1s)</li><li>If uniform, create leaf node with that value</li><li>If not uniform, create internal node and recursively divide into 4 quadrants</li><li>Divide grid into: top-left, top-right, bottom-left, bottom-right</li><li>Recursively construct quad tree for each quadrant</li></ol><p><strong>Time Complexity:</strong> O(n² log n) - divide grid recursively</p><p><strong>Space Complexity:</strong> O(log n) - recursion depth for balanced quad tree</p><p><strong>Key Insights:</strong></p><ul><li>Leaf nodes represent uniform regions of the grid</li><li>Internal nodes have exactly 4 children representing quadrants</li><li>Recursively divide until all regions are uniform</li></ul>",
+      "solution_code": "function constructQuadTree(grid: number[][]): Node | null {\n    function isUniform(x: number, y: number, length: number): boolean {\n        // Check if all cells in the region have the same value\n        const val = grid[x][y];\n        for (let i = x; i < x + length; i++) {\n            for (let j = y; j < y + length; j++) {\n                if (grid[i][j] !== val) {\n                    return false;\n                }\n            }\n        }\n        return true;\n    }\n    \n    function construct(x: number, y: number, length: number): Node {\n        // If the region is uniform, create a leaf node\n        if (isUniform(x, y, length)) {\n            return new Node(grid[x][y] === 1, true);\n        }\n        \n        // Otherwise, create an internal node and recurse on quadrants\n        const half = Math.floor(length / 2);\n        const node = new Node(true, false); // val can be anything for internal nodes\n        \n        node.topLeft = construct(x, y, half);\n        node.topRight = construct(x, y + half, half);\n        node.bottomLeft = construct(x + half, y, half);\n        node.bottomRight = construct(x + half, y + half, half);\n        \n        return node;\n    }\n    \n    return construct(0, 0, grid.length);\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public Node constructQuadTree(int[][] grid) {\n        \n    }\n}",
+      "solution_text": "<h3>Construct Quad Tree</h3><p><strong>Algorithm:</strong></p><ol><li>Check if current grid region has all same values (all 0s or all 1s)</li><li>If uniform, create leaf node with that value</li><li>If not uniform, create internal node and recursively divide into 4 quadrants</li><li>Divide grid into: top-left, top-right, bottom-left, bottom-right</li><li>Recursively construct quad tree for each quadrant</li></ol><p><strong>Time Complexity:</strong> O(n² log n) - divide grid recursively</p><p><strong>Space Complexity:</strong> O(log n) - recursion depth for balanced quad tree</p><p><strong>Key Insights:</strong></p><ul><li>Leaf nodes represent uniform regions of the grid</li><li>Internal nodes have exactly 4 children representing quadrants</li><li>Recursively divide until all regions are uniform</li></ul>",
+      "solution_code": "class Solution {\n    public Node constructQuadTree(int[][] grid) {\n        return construct(grid, 0, 0, grid.length);\n    }\n    \n    private boolean isUniform(int[][] grid, int x, int y, int length) {\n        // Check if all cells in the region have the same value\n        int val = grid[x][y];\n        for (int i = x; i < x + length; i++) {\n            for (int j = y; j < y + length; j++) {\n                if (grid[i][j] != val) {\n                    return false;\n                }\n            }\n        }\n        return true;\n    }\n    \n    private Node construct(int[][] grid, int x, int y, int length) {\n        // If the region is uniform, create a leaf node\n        if (isUniform(grid, x, y, length)) {\n            return new Node(grid[x][y] == 1, true);\n        }\n        \n        // Otherwise, create an internal node and recurse on quadrants\n        int half = length / 2;\n        Node node = new Node(true, false); // val can be anything for internal nodes\n        \n        node.topLeft = construct(grid, x, y, half);\n        node.topRight = construct(grid, x, y + half, half);\n        node.bottomLeft = construct(grid, x + half, y, half);\n        node.bottomRight = construct(grid, x + half, y + half, half);\n        \n        return node;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "grid": [
+          [1, 1],
+          [1, 1]
+        ]
+      },
+      "output": [[1, 1]]
+    },
+    {
+      "id": 2,
+      "input": {
+        "grid": [
+          [1, 1, 1, 1],
+          [0, 0, 0, 0],
+          [1, 1, 1, 1],
+          [1, 1, 1, 1]
+        ]
+      },
+      "output": [[0, 0], [0, 0], [0, 0], [1, 1], [1, 1], [1, 1], [1, 1], [1, 0], [1, 0], [1, 1], [1, 1], [1, 0], [1, 0]]
+    },
+    {
+      "id": 3,
+      "input": {
+        "grid": [
+          [1, 1, 0, 0],
+          [1, 1, 0, 0],
+          [1, 1, 1, 1],
+          [1, 1, 1, 1]
+        ]
+      },
+      "output": [[0, 0], [1, 1], [0, 1], [1, 1], [1, 1]]
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "filename": "validate-parentheses",
+  "title": "Valid Parentheses",
+  "keywords": [
+    "valid",
+    "parentheses",
+    "leetcode",
+    "given",
+    "string",
+    "consisting",
+    "following",
+    "characters",
+    "input",
+    "only"
+  ],
+  "description": "<h2>Valid Parentheses</h2><p>Leetcode 20. Valid Parentheses</p><p></p><p>You are given a string `s` consisting of the following characters: `'('`, `')'`, `'{'`, `'}'`, `'['` and `']'`.</p><p></p><p>The input string `s` is valid if and only if:</p><p></p><p>1. Every open bracket is closed by the same type of close bracket.</p><p>2. Open brackets are closed in the correct order.</p><p>3. Every close bracket has a corresponding open bracket of the same type.</p><p></p><p>Return `true` if `s` is a valid string, and `false` otherwise.</p><h3>Examples:</h3><ul><li>Input: s = \"[]\"<br><br>Output: true</li><li>Input: s = \"([{}])\"<br><br>Output: true</li><li>Input: s = \"[(])\"<br><br>Output: false<br>The brackets are not closed in the correct order.</li></ul><h3>Constraints:</h3><ul><li> `1 <= s.length <= 1000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def validParentheses(s):\n    ",
+      "solution_text": "Parentheses validation using stack data structure:\n\n**Algorithm:**\n1. Use stack to track opening brackets\n2. For each character, if opening bracket, push to stack\n3. If closing bracket, check if matches top of stack\n4. String is valid if stack is empty at end\n\n**Time Complexity:** O(n) - single pass through string\n**Space Complexity:** O(n) - stack storage in worst case\n\n**Key Insights:**\n- Stack naturally handles nested structure\n- Early return false for unmatched closing brackets\n- Must check stack emptiness at end",
+      "solution_code": "def validateParentheses(s):\n    stack = []\n    mapping = {')': '(', '}': '{', ']': '['}\n    \n    for char in s:\n        if char in mapping:\n            # Closing bracket\n            if not stack or stack.pop() != mapping[char]:\n                return False\n        else:\n            # Opening bracket\n            stack.append(char)\n    \n    return len(stack) == 0"
+    },
+    "javascript": {
+      "template": "function validParentheses(s) {\n  \n}",
+      "solution_text": "Parentheses validation using stack data structure:\n\n**Algorithm:**\n1. Use stack to track opening brackets\n2. For each character, if opening bracket, push to stack\n3. If closing bracket, check if matches top of stack\n4. String is valid if stack is empty at end\n\n**Time Complexity:** O(n) - single pass through string\n**Space Complexity:** O(n) - stack storage in worst case\n\n**Key Insights:**\n- Stack naturally handles nested structure\n- Early return false for unmatched closing brackets\n- Must check stack emptiness at end",
+      "solution_code": "function validateParentheses(s) {\n    const stack = [];\n    const mapping = {')': '(', '}': '{', ']': '['};\n    \n    for (const char of s) {\n        if (char in mapping) {\n            // Closing bracket\n            if (stack.length === 0 || stack.pop() !== mapping[char]) {\n                return false;\n            }\n        } else {\n            // Opening bracket\n            stack.push(char);\n        }\n    }\n    \n    return stack.length === 0;\n}"
+    },
+    "typescript": {
+      "template": "function validParentheses(s: string): string {\n  \n}",
+      "solution_text": "Parentheses validation using stack data structure:\n\n**Algorithm:**\n1. Use stack to track opening brackets\n2. For each character, if opening bracket, push to stack\n3. If closing bracket, check if matches top of stack\n4. String is valid if stack is empty at end\n\n**Time Complexity:** O(n) - single pass through string\n**Space Complexity:** O(n) - stack storage in worst case\n\n**Key Insights:**\n- Stack naturally handles nested structure\n- Early return false for unmatched closing brackets\n- Must check stack emptiness at end",
+      "solution_code": "function validateParentheses(s: string): boolean {\n    const stack: string[] = [];\n    const mapping: {[key: string]: string} = {')': '(', '}': '{', ']': '['};\n    \n    for (const char of s) {\n        if (char in mapping) {\n            // Closing bracket\n            if (stack.length === 0 || stack.pop() !== mapping[char]) {\n                return false;\n            }\n        } else {\n            // Opening bracket\n            stack.push(char);\n        }\n    }\n    \n    return stack.length === 0;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public String validParentheses(String s) {\n        \n    }\n}",
+      "solution_text": "Parentheses validation using stack data structure:\n\n**Algorithm:**\n1. Use stack to track opening brackets\n2. For each character, if opening bracket, push to stack\n3. If closing bracket, check if matches top of stack\n4. String is valid if stack is empty at end\n\n**Time Complexity:** O(n) - single pass through string\n**Space Complexity:** O(n) - stack storage in worst case\n\n**Key Insights:**\n- Stack naturally handles nested structure\n- Early return false for unmatched closing brackets\n- Must check stack emptiness at end",
+      "solution_code": "class Solution {\n    public boolean validateParentheses(String s) {\n        Stack<Character> stack = new Stack<>();\n        Map<Character, Character> mapping = new HashMap<>();\n        mapping.put(')', '(');\n        mapping.put('}', '{');\n        mapping.put(']', '[');\n        \n        for (char c : s.toCharArray()) {\n            if (mapping.containsKey(c)) {\n                // Closing bracket\n                if (stack.isEmpty() || stack.pop() != mapping.get(c)) {\n                    return false;\n                }\n            } else {\n                // Opening bracket\n                stack.push(c);\n            }\n        }\n        \n        return stack.isEmpty();\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "s": "[]"
+      },
+      "output": "true"
+    },
+    {
+      "id": 2,
+      "input": {
+        "s": "([{}])"
+      },
+      "output": "true"
+    },
+    {
+      "id": 3,
+      "input": {
+        "s": "[(])"
+      },
+      "output": "false"
+    }
+  ]
+}

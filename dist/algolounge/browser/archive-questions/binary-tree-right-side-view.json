@@ -1,0 +1,233 @@
+{
+  "filename": "binary-tree-right-side-view",
+  "title": "Binary Tree Right Side View",
+  "keywords": [
+    "binary",
+    "tree",
+    "right",
+    "side",
+    "view",
+    "leetcode",
+    "199",
+    "given",
+    "root",
+    "return"
+  ],
+  "description": "<h2>Binary Tree Right Side View</h2><p>Given the <code>root</code> of a binary tree, return the values of the nodes you can see ordered from top to bottom when looking at the tree from the right side.</p><h3>Examples</h3><p><strong>Example 1:</strong></p><ul><li><strong>Input:</strong> root = [1,2,3,null,5,null,4]</li><li><strong>Output:</strong> [1,3,4]</li><li><strong>Explanation:</strong> The right side view shows nodes 1 (level 0), 3 (level 1), and 4 (level 2).</li></ul><p><strong>Example 2:</strong></p><ul><li><strong>Input:</strong> root = [1,null,3]</li><li><strong>Output:</strong> [1,3]</li></ul><p><strong>Example 3:</strong></p><ul><li><strong>Input:</strong> root = []</li><li><strong>Output:</strong> []</li></ul><h3>Constraints</h3><ul><li>The number of nodes in the tree is in the range <code>[0, 100]</code></li><li><code>-100 <= Node.val <= 100</code></li></ul>",
+  "entry_function": "binaryTreeRightSideView",
+  "template": "def binaryTreeRightSideView(root):\n    ",
+  "solution_text": "<h3>Binary Tree Right Side View</h3><p><strong>Algorithm:</strong></p><ol><li>Use level-order traversal (BFS) to process nodes level by level</li><li>For each level, only keep the rightmost node value</li><li>Alternative: Use DFS with depth tracking, prioritize right subtree</li></ol><p><strong>Time Complexity:</strong> O(n) - visit each node once</p><p><strong>Space Complexity:</strong> O(h) - queue size for BFS or recursion depth for DFS</p><p><strong>Key Insights:</strong></p><ul><li>Right side view means rightmost node at each level</li><li>BFS naturally processes nodes level by level</li><li>DFS approach: visit right subtree first, track depth</li></ul>",
+  "solution_code": "def binaryTreeRightSideView(root):\n    if not root:\n        return []\n    \n    result = []\n    queue = [root]\n    \n    while queue:\n        level_size = len(queue)\n        \n        for i in range(level_size):\n            node = queue.pop(0)\n            \n            # If this is the rightmost node in current level\n            if i == level_size - 1:\n                result.append(node.val)\n            \n            # Add children to queue\n            if node.left:\n                queue.append(node.left)\n            if node.right:\n                queue.append(node.right)\n    \n    return result",
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "root": [
+          1,
+          2,
+          3,
+          null,
+          5,
+          null,
+          4
+        ]
+      },
+      "output": [
+        1,
+        3,
+        4
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "root": [
+          1,
+          null,
+          3
+        ]
+      },
+      "output": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": 3,
+      "input": {
+        "root": []
+      },
+      "output": []
+    },
+    {
+      "id": 4,
+      "input": {
+        "root": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "output": [
+        1,
+        3,
+        4
+      ]
+    },
+    {
+      "id": 5,
+      "input": {
+        "root": [
+          1
+        ]
+      },
+      "output": [
+        1
+      ]
+    },
+    {
+      "id": 6,
+      "input": {
+        "root": [
+          1,
+          2,
+          null,
+          4,
+          null,
+          6
+        ]
+      },
+      "output": [
+        1,
+        2,
+        4,
+        6
+      ]
+    },
+    {
+      "id": 7,
+      "input": {
+        "root": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "output": [
+        1,
+        3,
+        7
+      ]
+    },
+    {
+      "id": 8,
+      "input": {
+        "root": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          null,
+          6,
+          7,
+          8
+        ]
+      },
+      "output": [
+        1,
+        3,
+        6,
+        8
+      ]
+    },
+    {
+      "id": 9,
+      "input": {
+        "root": [
+          1,
+          null,
+          2,
+          null,
+          3,
+          null,
+          4
+        ]
+      },
+      "output": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": 10,
+      "input": {
+        "root": [
+          -100,
+          -50,
+          100,
+          null,
+          -25,
+          75,
+          null,
+          null,
+          50
+        ]
+      },
+      "output": [
+        -100,
+        100,
+        50
+      ]
+    },
+    {
+      "id": 11,
+      "input": {
+        "root": [
+          0,
+          -1,
+          1,
+          -2,
+          null,
+          null,
+          2
+        ]
+      },
+      "output": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": 12,
+      "input": {
+        "root": [
+          5,
+          3,
+          7,
+          1,
+          4,
+          6,
+          8,
+          null,
+          2
+        ]
+      },
+      "output": [
+        5,
+        7,
+        8,
+        2
+      ]
+    }
+  ]
+}

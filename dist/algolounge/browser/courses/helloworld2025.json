@@ -1,0 +1,380 @@
+{
+  "filename": "helloworld2025",
+  "course_name": "Hello World 2025",
+  "course_description": "Problems from the SCS Hello World 2025 competition.",
+  "keywords": [
+    "beginner",
+    "tutorial",
+    "algorithms",
+    "data structures",
+    "progressive learning",
+    "competitive programming",
+    "interview prep"
+  ],
+  "units": {
+    "tutorial": {
+      "title": "Tutorial",
+      "description": "",
+      "questions": [
+        {
+          "filename": "hello-world",
+          "urls": [],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW00",
+              "color": "#8b5cf6"
+            }
+          ]
+        }
+      ]
+    },
+    "beginner": {
+      "title": "",
+      "description": "",
+      "questions": [
+        {
+          "filename": "sum-two-integers",
+          "urls": [],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW01",
+              "color": "#8b5cf6"
+            }
+          ]
+        },
+        {
+          "filename": "string-comparison",
+          "urls": [],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW02",
+              "color": "#8b5cf6"
+            }
+          ]
+        },
+        {
+          "filename": "multiple-check",
+          "urls": [],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW03",
+              "color": "#8b5cf6"
+            }
+          ]
+        }
+      ]
+    },
+    "easy": {
+      "title": "",
+      "description": "",
+      "questions": [
+        {
+          "filename": "last-even-index",
+          "urls": [],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW04",
+              "color": "#8b5cf6"
+            }
+          ]
+        },
+        {
+          "filename": "sum-of-digits-times-seven",
+          "urls": [],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW05",
+              "color": "#8b5cf6"
+            }
+          ]
+        },
+        {
+          "filename": "count-vowels",
+          "urls": [],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW06",
+              "color": "#8b5cf6"
+            }
+          ]
+        },
+        {
+          "filename": "coffee-shop-billing",
+          "urls": [],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW07",
+              "color": "#8b5cf6"
+            }
+          ]
+        },
+        {
+          "filename": "greatest-common-divisor",
+          "urls": [],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW08",
+              "color": "#8b5cf6"
+            }
+          ]
+        },
+        {
+          "filename": "canadian-province-validator",
+          "urls": [],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW09",
+              "color": "#8b5cf6"
+            }
+          ]
+        },
+        {
+          "filename": "string-reversal",
+          "urls": [],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW10",
+              "color": "#8b5cf6"
+            }
+          ]
+        },
+        {
+          "filename": "caffeine-calculator",
+          "urls": [],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW11",
+              "color": "#8b5cf6"
+            }
+          ]
+        }
+      ]
+    },
+    "medium": {
+      "title": "Medium",
+      "description": "",
+      "questions": [
+        {
+          "filename": "palindrome-checker",
+          "urls": [],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW12",
+              "color": "#8b5cf6"
+            }
+          ]
+        },
+        {
+          "filename": "coffee-production-scheduler",
+          "urls": [],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            },
+            {
+              "text": "HW13",
+              "color": "#8b5cf6"
+            }
+          ]
+        },
+        {
+          "filename": "alice-typing-problem",
+          "urls": [],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            },
+            {
+              "text": "HW14",
+              "color": "#8b5cf6"
+            }
+          ]
+        },
+        {
+          "filename": "binary-representation",
+          "urls": [],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW15",
+              "color": "#8b5cf6"
+            }
+          ]
+        },
+        {
+          "filename": "most-frequent-element",
+          "urls": [],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW16",
+              "color": "#8b5cf6"
+            }
+          ]
+        },
+        {
+          "filename": "string-matching",
+          "urls": [],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW17",
+              "color": "#8b5cf6"
+            }
+          ]
+        },
+        {
+          "filename": "alphabetical-order-checker",
+          "urls": [],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#3b82f6"
+            },
+            {
+              "text": "HW18",
+              "color": "#8b5cf6"
+            }
+          ]
+        },
+        {
+          "filename": "coffee-sales-projection",
+          "urls": [],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            },
+            {
+              "text": "HW19",
+              "color": "#8b5cf6"
+            }
+          ]
+        }
+      ]
+    },
+    "hard": {
+      "title": "Hard",
+      "description": "",
+      "questions": [
+        {
+          "filename": "coin-change",
+          "urls": [],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            },
+            {
+              "text": "HW20",
+              "color": "#8b5cf6"
+            },
+            {
+              "text": "Dynamic Programming",
+              "color": "#06b6d4"
+            }
+          ]
+        },
+        {
+          "filename": "tribonacci-sequence",
+          "urls": [],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            },
+            {
+              "text": "HW21",
+              "color": "#8b5cf6"
+            },
+            {
+              "text": "Dynamic Programming",
+              "color": "#06b6d4"
+            }
+          ]
+        },
+        {
+          "filename": "dice-ways",
+          "urls": [],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            },
+            {
+              "text": "HW22",
+              "color": "#8b5cf6"
+            },
+            {
+              "text": "Dynamic Programming",
+              "color": "#06b6d4"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

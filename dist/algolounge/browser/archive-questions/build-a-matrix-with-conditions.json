@@ -1,0 +1,522 @@
+{
+  "filename": "build-a-matrix-with-conditions",
+  "title": "Build a Matrix With Conditions",
+  "keywords": [
+    "build",
+    "matrix",
+    "conditions",
+    "leetcode",
+    "2392",
+    "given",
+    "positive",
+    "integer",
+    "also",
+    "array"
+  ],
+  "description": "<h2>Build a Matrix With Conditions</h2><p>You are given a positive integer <code>k</code>. You are also given:</p><ul><li>A 2D integer array <code>rowConditions</code> of size <code>n</code> where <code>rowConditions[i] = [above[i], below[i]]</code></li><li>A 2D integer array <code>colConditions</code> of size <code>m</code> where <code>colConditions[i] = [left[i], right[i]]</code></li></ul><p>The two arrays contain integers from <code>1</code> to <code>k</code>.</p><p>You have to build a <code>k x k</code> matrix that contains each of the numbers from <code>1</code> to <code>k</code> exactly once. The remaining cells should have the value <code>0</code>.</p><p>The matrix should also satisfy the following conditions:</p><ul><li>The number <code>above[i]</code> should appear in a row that is strictly above the row at which the number <code>below[i]</code> appears for all <code>i</code> from <code>0</code> to <code>n - 1</code>.</li><li>The number <code>left[i]</code> should appear in a column that is strictly left of the column at which the number <code>right[i]</code> appears for all <code>i</code> from <code>0</code> to <code>m - 1</code>.</li></ul><p>Return any matrix that satisfies the conditions. If no answer exists, return an empty matrix.</p><h3>Examples</h3><p><strong>Example 1:</strong></p><ul><li><strong>Input:</strong> k = 3, rowConditions = [[1,2],[3,2]], colConditions = [[2,1],[3,2]]</li><li><strong>Output:</strong> [[3,0,0],[0,0,0],[0,2,1]]</li><li><strong>Explanation:</strong> The 3x3 matrix contains numbers 1, 2, 3 exactly once. Number 3 appears above number 2, and number 1 appears above number 2. Number 2 appears left of number 1, and number 3 appears left of number 2.</li></ul><p><strong>Example 2:</strong></p><ul><li><strong>Input:</strong> k = 3, rowConditions = [[1,2],[2,3],[3,1]], colConditions = [[2,1]]</li><li><strong>Output:</strong> []</li><li><strong>Explanation:</strong> The row conditions form a cycle: 1→2→3→1, making it impossible to satisfy all conditions.</li></ul><h3>Constraints</h3><ul><li><code>2 <= k <= 400</code></li><li><code>1 <= rowConditions.length, colConditions.length <= 10^4</code></li><li><code>rowConditions[i].length == colConditions[i].length == 2</code></li><li><code>1 <= above[i], below[i], left[i], right[i] <= k</code></li><li><code>above[i] != below[i]</code></li><li><code>left[i] != right[i]</code></li></ul>",
+  "entry_function": "buildAMatrixWithConditions",
+  "template": "def buildAMatrixWithConditions(k, rowConditions, colConditions):\n    ",
+  "solution_text": "<h3>Build a Matrix With Conditions</h3><p><strong>Algorithm:</strong></p><ol><li>Use topological sorting to determine valid row and column orderings</li><li>Build graphs from row and column conditions</li><li>Check for cycles using DFS - if cycle exists, return empty matrix</li><li>Get topological order for both rows and columns</li><li>Place numbers 1 to k in the matrix based on their positions in sorted orders</li></ol><p><strong>Time Complexity:</strong> O(k + n + m) - where n and m are condition counts</p><p><strong>Space Complexity:</strong> O(k²) - for the result matrix and auxiliary data structures</p><p><strong>Key Insights:</strong></p><ul><li>Each condition creates a directed edge in the respective graph</li><li>Topological sort ensures all constraints are satisfied</li><li>Cycle detection prevents impossible cases</li></ul>",
+  "solution_code": "def buildAMatrixWithConditions(k, rowConditions, colConditions):\n    def topological_sort(conditions, k):\n        # Build adjacency list and in-degree count\n        graph = {i: [] for i in range(1, k + 1)}\n        in_degree = {i: 0 for i in range(1, k + 1)}\n        \n        for before, after in conditions:\n            graph[before].append(after)\n            in_degree[after] += 1\n        \n        # Kahn's algorithm for topological sorting\n        queue = [node for node in range(1, k + 1) if in_degree[node] == 0]\n        result = []\n        \n        while queue:\n            node = queue.pop(0)\n            result.append(node)\n            \n            for neighbor in graph[node]:\n                in_degree[neighbor] -= 1\n                if in_degree[neighbor] == 0:\n                    queue.append(neighbor)\n        \n        # Check if all nodes are processed (no cycle)\n        if len(result) != k:\n            return None\n        return result\n    \n    # Get topological order for rows and columns\n    row_order = topological_sort(rowConditions, k)\n    col_order = topological_sort(colConditions, k)\n    \n    # If either has a cycle, return empty matrix\n    if row_order is None or col_order is None:\n        return []\n    \n    # Create position mappings\n    row_pos = {num: i for i, num in enumerate(row_order)}\n    col_pos = {num: i for i, num in enumerate(col_order)}\n    \n    # Build the result matrix\n    matrix = [[0] * k for _ in range(k)]\n    for num in range(1, k + 1):\n        matrix[row_pos[num]][col_pos[num]] = num\n    \n    return matrix",
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "k": 3,
+        "rowConditions": [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            2
+          ]
+        ],
+        "colConditions": [
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            2
+          ]
+        ]
+      },
+      "output": [
+        [
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "k": 3,
+        "rowConditions": [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            1
+          ]
+        ],
+        "colConditions": [
+          [
+            2,
+            1
+          ]
+        ]
+      },
+      "output": []
+    },
+    {
+      "id": 3,
+      "input": {
+        "k": 2,
+        "rowConditions": [
+          [
+            1,
+            2
+          ]
+        ],
+        "colConditions": [
+          [
+            2,
+            1
+          ]
+        ]
+      },
+      "output": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 4,
+      "input": {
+        "k": 4,
+        "rowConditions": [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "colConditions": [
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            1
+          ]
+        ]
+      },
+      "output": [
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          2,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 5,
+      "input": {
+        "k": 2,
+        "rowConditions": [],
+        "colConditions": []
+      },
+      "output": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "input": {
+        "k": 3,
+        "rowConditions": [
+          [
+            1,
+            3
+          ]
+        ],
+        "colConditions": [
+          [
+            3,
+            1
+          ]
+        ]
+      },
+      "output": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          3,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 7,
+      "input": {
+        "k": 4,
+        "rowConditions": [
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            1,
+            4
+          ]
+        ],
+        "colConditions": [
+          [
+            4,
+            3
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            2,
+            1
+          ]
+        ]
+      },
+      "output": [
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          3,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 8,
+      "input": {
+        "k": 3,
+        "rowConditions": [
+          [
+            2,
+            3
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "colConditions": [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            1
+          ]
+        ]
+      },
+      "output": [
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          1,
+          0,
+          3
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 9,
+      "input": {
+        "k": 5,
+        "rowConditions": [
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            2
+          ]
+        ],
+        "colConditions": [
+          [
+            5,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            1,
+            2
+          ]
+        ]
+      },
+      "output": [
+        [
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          5,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 10,
+      "input": {
+        "k": 2,
+        "rowConditions": [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "colConditions": []
+      },
+      "output": []
+    },
+    {
+      "id": 11,
+      "input": {
+        "k": 4,
+        "rowConditions": [
+          [
+            4,
+            3
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "colConditions": [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      },
+      "output": [
+        [
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 12,
+      "input": {
+        "k": 3,
+        "rowConditions": [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "colConditions": [
+          [
+            3,
+            2
+          ],
+          [
+            1,
+            3
+          ]
+        ]
+      },
+      "output": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          1
+        ],
+        [
+          0,
+          3,
+          0
+        ]
+      ]
+    }
+  ]
+}

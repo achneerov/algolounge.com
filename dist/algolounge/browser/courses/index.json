@@ -1,0 +1,33 @@
+{
+  "courses": [
+    {
+      "filename": "algotimefall2025",
+      "title": "AlgoTime Fall 2025",
+      "keywords": [
+        "algorithms",
+        "data structures",
+        "technical interviews",
+        "problem solving",
+        "fall",
+        "comprehensive",
+        "progressive learning",
+        "competitive programming"
+      ]
+    },
+    {
+      "filename": "helloworld2025",
+      "title": "Hello World 2025",
+      "keywords": [
+        "beginner",
+        "tutorial",
+        "algorithms",
+        "data structures",
+        "progressive learning",
+        "competitive programming",
+        "interview prep"
+      ]
+    }
+  ],
+  "lastUpdated": "2025-10-30T23:52:34.558Z",
+  "totalCourses": 2
+}

@@ -1,0 +1,76 @@
+{
+  "filename": "find-k-closest-elements",
+  "title": "Find K Closest Elements",
+  "keywords": [
+    "find",
+    "closest",
+    "elements",
+    "leetcode",
+    "658",
+    "given",
+    "sorted",
+    "integer",
+    "array",
+    "arr"
+  ],
+  "description": "<h2>Find K Closest Elements</h2><p>Leetcode 658. Find K Closest Elements</p><p></p><p>You are given a sorted integer array `arr`, two integers `k` and `x`, return the `k` closest integers to `x` in the array. The result should also be sorted in ascending order.</p><p></p><p>An integer `a` is closer to `x` than an integer `b` if:</p><p></p><p>- `|a - x| < |b - x|`, or</p><p>- `|a - x| == |b - x|` and `a < b`</p><h3>Examples:</h3><ul><li>Input: arr = [2,4,5,8], k = 2, x = 6<br><br>Output: [4,5]</li><li>Input: arr = [2,3,4], k = 3, x = 1<br><br>Output: [2,3,4]</li></ul><h3>Constraints:</h3><ul><li> `1 <= k <= arr.length <= 10,000`.</li><li> `-10,000 <= arr[i], x <= 10,000`</li><li> `arr` is sorted in **ascending** order.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def findKClosestElements(arr, k, x):\n    ",
+      "solution_text": "<h3>Find K Closest Elements</h3><p><strong>Algorithm:</strong></p><ol><li>Use binary search to find the optimal left boundary for k elements</li><li>The key insight: we need to find the leftmost index of k consecutive elements</li><li>Compare arr[mid] and arr[mid + k] to determine search direction</li><li>If x - arr[mid] > arr[mid + k] - x, move left boundary right</li><li>Return the k elements starting from the found left boundary</li></ol><p><strong>Time Complexity:</strong> O(log(n-k) + k) - binary search + extracting k elements</p><p><strong>Space Complexity:</strong> O(k) - space for the result array</p><p><strong>Key Insights:</strong></p><ul><li>Binary search on the left boundary, not on target position</li><li>Compare distances of boundary elements to determine search direction</li><li>Leverages sorted array property for optimal search</li></ul>",
+      "solution_code": "def findKClosestElements(arr, k, x):\n    left, right = 0, len(arr) - k\n    \n    # Binary search for the optimal left boundary\n    while left < right:\n        mid = (left + right) // 2\n        \n        # Compare distances: x to arr[mid] vs arr[mid + k] to x\n        # If x is closer to arr[mid + k], move left boundary right\n        if x - arr[mid] > arr[mid + k] - x:\n            left = mid + 1\n        else:\n            right = mid\n    \n    # Return k elements starting from the optimal left boundary\n    return arr[left:left + k]"
+    },
+    "javascript": {
+      "template": "function findKClosestElements(arr, k, x) {\n  \n}",
+      "solution_text": "<h3>Find K Closest Elements</h3><p><strong>Algorithm:</strong></p><ol><li>Use binary search to find the optimal left boundary for k elements</li><li>The key insight: we need to find the leftmost index of k consecutive elements</li><li>Compare arr[mid] and arr[mid + k] to determine search direction</li><li>If x - arr[mid] > arr[mid + k] - x, move left boundary right</li><li>Return the k elements starting from the found left boundary</li></ol><p><strong>Time Complexity:</strong> O(log(n-k) + k) - binary search + extracting k elements</p><p><strong>Space Complexity:</strong> O(k) - space for the result array</p><p><strong>Key Insights:</strong></p><ul><li>Binary search on the left boundary, not on target position</li><li>Compare distances of boundary elements to determine search direction</li><li>Leverages sorted array property for optimal search</li></ul>",
+      "solution_code": "function findKClosestElements(arr, k, x) {\n    let left = 0;\n    let right = arr.length - k;\n    \n    // Binary search for the optimal left boundary\n    while (left < right) {\n        const mid = Math.floor((left + right) / 2);\n        \n        // Compare distances: x to arr[mid] vs arr[mid + k] to x\n        // If x is closer to arr[mid + k], move left boundary right\n        if (x - arr[mid] > arr[mid + k] - x) {\n            left = mid + 1;\n        } else {\n            right = mid;\n        }\n    }\n    \n    // Return k elements starting from the optimal left boundary\n    return arr.slice(left, left + k);\n}"
+    },
+    "typescript": {
+      "template": "function findKClosestElements(arr: number[], k: number, x: number): number[] {\n  \n}",
+      "solution_text": "<h3>Find K Closest Elements</h3><p><strong>Algorithm:</strong></p><ol><li>Use binary search to find the optimal left boundary for k elements</li><li>The key insight: we need to find the leftmost index of k consecutive elements</li><li>Compare arr[mid] and arr[mid + k] to determine search direction</li><li>If x - arr[mid] > arr[mid + k] - x, move left boundary right</li><li>Return the k elements starting from the found left boundary</li></ol><p><strong>Time Complexity:</strong> O(log(n-k) + k) - binary search + extracting k elements</p><p><strong>Space Complexity:</strong> O(k) - space for the result array</p><p><strong>Key Insights:</strong></p><ul><li>Binary search on the left boundary, not on target position</li><li>Compare distances of boundary elements to determine search direction</li><li>Leverages sorted array property for optimal search</li></ul>",
+      "solution_code": "function findKClosestElements(arr: number[], k: number, x: number): number[] {\n    let left = 0;\n    let right = arr.length - k;\n    \n    // Binary search for the optimal left boundary\n    while (left < right) {\n        const mid = Math.floor((left + right) / 2);\n        \n        // Compare distances: x to arr[mid] vs arr[mid + k] to x\n        // If x is closer to arr[mid + k], move left boundary right\n        if (x - arr[mid] > arr[mid + k] - x) {\n            left = mid + 1;\n        } else {\n            right = mid;\n        }\n    }\n    \n    // Return k elements starting from the optimal left boundary\n    return arr.slice(left, left + k);\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public List<Integer> findKClosestElements(int[] arr, int k, int x) {\n        \n    }\n}",
+      "solution_text": "<h3>Find K Closest Elements</h3><p><strong>Algorithm:</strong></p><ol><li>Use binary search to find the optimal left boundary for k elements</li><li>The key insight: we need to find the leftmost index of k consecutive elements</li><li>Compare arr[mid] and arr[mid + k] to determine search direction</li><li>If x - arr[mid] > arr[mid + k] - x, move left boundary right</li><li>Return the k elements starting from the found left boundary</li></ol><p><strong>Time Complexity:</strong> O(log(n-k) + k) - binary search + extracting k elements</p><p><strong>Space Complexity:</strong> O(k) - space for the result array</p><p><strong>Key Insights:</strong></p><ul><li>Binary search on the left boundary, not on target position</li><li>Compare distances of boundary elements to determine search direction</li><li>Leverages sorted array property for optimal search</li></ul>",
+      "solution_code": "class Solution {\n    public List<Integer> findKClosestElements(int[] arr, int k, int x) {\n        int left = 0;\n        int right = arr.length - k;\n        \n        // Binary search for the optimal left boundary\n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            \n            // Compare distances: x to arr[mid] vs arr[mid + k] to x\n            // If x is closer to arr[mid + k], move left boundary right\n            if (x - arr[mid] > arr[mid + k] - x) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        \n        // Return k elements starting from the optimal left boundary\n        List<Integer> result = new ArrayList<>();\n        for (int i = left; i < left + k; i++) {\n            result.add(arr[i]);\n        }\n        return result;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "arr": [
+          2,
+          4,
+          5,
+          8
+        ],
+        "k": 2,
+        "x": 6
+      },
+      "output": [
+        4,
+        5
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "arr": [
+          2,
+          3,
+          4
+        ],
+        "k": 3,
+        "x": 1
+      },
+      "output": [
+        2,
+        3,
+        4
+      ]
+    }
+  ]
+}

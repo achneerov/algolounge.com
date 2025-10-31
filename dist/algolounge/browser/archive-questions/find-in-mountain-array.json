@@ -1,0 +1,71 @@
+{
+  "filename": "find-in-mountain-array",
+  "title": "Find in Mountain Array",
+  "keywords": [
+    "find",
+    "mountain",
+    "array",
+    "leetcode",
+    "1095",
+    "problem",
+    "interactive",
+    "arr",
+    "called",
+    "only"
+  ],
+  "description": "<h2>Find in Mountain Array</h2><p>Leetcode 1095. Find in Mountain Array</p><p></p><p>(This problem is an **interactive problem**.)</p><p></p><p>An array `arr` is called a **mountain array** if and only if:</p><p></p><p>- `arr.length >= 3`</p><p>- There exists some index `i` with `0 < i < arr.length - 1` such that:</p><p>    - `arr[0] < arr[1] < ... < arr[i - 1] < arr[i]`</p><p>    - `arr[i] > arr[i + 1] > ... > arr[arr.length - 1]`</p><p></p><p>You are given a mountain array `mountainArr` and an integer `target`, return the **minimum** index such that `mountainArr.get(index) == target`. If such an `index` does not exist, return `-1`.</p><p></p><p>You cannot access the mountain array directly. You may only access the array using a `MountainArray` interface:</p><p></p><p>- `MountainArray.get(k)` returns the element of the array at index `k` (0-indexed).</p><p>- `MountainArray.length()` returns the length of the array.</p><p></p><p>You can only make **at most** `100` calls to the function `get()`. Submissions making more than `100` calls will be judged as **Wrong Answer**. Also, any solutions that attempt to circumvent the judge will result in disqualification.</p><h3>Examples:</h3><ul><li>Input: mountainArr = [2,4,5,2,1], target = 2<br><br>Output: 0</li><li>Input: mountainArr = [1,2,3,4,2,1], target = 6<br><br>Output: -1</li></ul><h3>Constraints:</h3><ul><li> `3 <= mountainArr.length() <= 10,000`</li><li> `0 <= target, mountainArr.get(index) <= 1,000,000,000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def findInMountainArray(mountainArr, target):\n    ",
+      "solution_text": "<h3>Find in Mountain Array</h3><p><strong>Algorithm:</strong></p><ol><li>Find the peak of the mountain array using binary search</li><li>Binary search for target in the ascending part (left of peak)</li><li>If not found, binary search for target in descending part (right of peak)</li><li>Return the minimum index if found, otherwise -1</li><li>Use at most 100 calls to get() method</li></ol><p><strong>Time Complexity:</strong> O(log n) - three binary searches</p><p><strong>Space Complexity:</strong> O(1) - only using constant extra space</p><p><strong>Key Insights:</strong></p><ul><li>Three-phase binary search: find peak, search left, search right</li><li>Mountain array has exactly one peak</li><li>Must respect the 100 call limit to get() method</li></ul>",
+      "solution_code": "def findInMountainArray(target, mountain_arr):\n    def find_peak(mountain_arr):\n        left, right = 0, mountain_arr.length() - 1\n        while left < right:\n            mid = (left + right) // 2\n            if mountain_arr.get(mid) < mountain_arr.get(mid + 1):\n                left = mid + 1\n            else:\n                right = mid\n        return left\n    \n    def binary_search_asc(mountain_arr, target, left, right):\n        while left <= right:\n            mid = (left + right) // 2\n            val = mountain_arr.get(mid)\n            if val == target:\n                return mid\n            elif val < target:\n                left = mid + 1\n            else:\n                right = mid - 1\n        return -1\n    \n    def binary_search_desc(mountain_arr, target, left, right):\n        while left <= right:\n            mid = (left + right) // 2\n            val = mountain_arr.get(mid)\n            if val == target:\n                return mid\n            elif val > target:\n                left = mid + 1\n            else:\n                right = mid - 1\n        return -1\n    \n    # Step 1: Find the peak\n    peak = find_peak(mountain_arr)\n    \n    # Step 2: Search in the ascending part\n    result = binary_search_asc(mountain_arr, target, 0, peak)\n    if result != -1:\n        return result\n    \n    # Step 3: Search in the descending part\n    return binary_search_desc(mountain_arr, target, peak + 1, mountain_arr.length() - 1)"
+    },
+    "javascript": {
+      "template": "function findInMountainArray(target, mountainArr) {\n  \n}",
+      "solution_text": "<h3>Find in Mountain Array</h3><p><strong>Algorithm:</strong></p><ol><li>Find the peak of the mountain array using binary search</li><li>Binary search for target in the ascending part (left of peak)</li><li>If not found, binary search for target in descending part (right of peak)</li><li>Return the minimum index if found, otherwise -1</li><li>Use at most 100 calls to get() method</li></ol><p><strong>Time Complexity:</strong> O(log n) - three binary searches</p><p><strong>Space Complexity:</strong> O(1) - only using constant extra space</p><p><strong>Key Insights:</strong></p><ul><li>Three-phase binary search: find peak, search left, search right</li><li>Mountain array has exactly one peak</li><li>Must respect the 100 call limit to get() method</li></ul>",
+      "solution_code": "function findInMountainArray(target, mountainArr) {\n    function findPeak(mountainArr) {\n        let left = 0, right = mountainArr.length() - 1;\n        while (left < right) {\n            const mid = Math.floor((left + right) / 2);\n            if (mountainArr.get(mid) < mountainArr.get(mid + 1)) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        return left;\n    }\n    \n    function binarySearchAsc(mountainArr, target, left, right) {\n        while (left <= right) {\n            const mid = Math.floor((left + right) / 2);\n            const val = mountainArr.get(mid);\n            if (val === target) {\n                return mid;\n            } else if (val < target) {\n                left = mid + 1;\n            } else {\n                right = mid - 1;\n            }\n        }\n        return -1;\n    }\n    \n    function binarySearchDesc(mountainArr, target, left, right) {\n        while (left <= right) {\n            const mid = Math.floor((left + right) / 2);\n            const val = mountainArr.get(mid);\n            if (val === target) {\n                return mid;\n            } else if (val > target) {\n                left = mid + 1;\n            } else {\n                right = mid - 1;\n            }\n        }\n        return -1;\n    }\n    \n    // Step 1: Find the peak\n    const peak = findPeak(mountainArr);\n    \n    // Step 2: Search in the ascending part\n    const result = binarySearchAsc(mountainArr, target, 0, peak);\n    if (result !== -1) {\n        return result;\n    }\n    \n    // Step 3: Search in the descending part\n    return binarySearchDesc(mountainArr, target, peak + 1, mountainArr.length() - 1);\n}"
+    },
+    "typescript": {
+      "template": "function findInMountainArray(target: number, mountainArr: MountainArray): number {\n  \n}",
+      "solution_text": "<h3>Find in Mountain Array</h3><p><strong>Algorithm:</strong></p><ol><li>Find the peak of the mountain array using binary search</li><li>Binary search for target in the ascending part (left of peak)</li><li>If not found, binary search for target in descending part (right of peak)</li><li>Return the minimum index if found, otherwise -1</li><li>Use at most 100 calls to get() method</li></ol><p><strong>Time Complexity:</strong> O(log n) - three binary searches</p><p><strong>Space Complexity:</strong> O(1) - only using constant extra space</p><p><strong>Key Insights:</strong></p><ul><li>Three-phase binary search: find peak, search left, search right</li><li>Mountain array has exactly one peak</li><li>Must respect the 100 call limit to get() method</li></ul>",
+      "solution_code": "function findInMountainArray(target: number, mountainArr: MountainArray): number {\n    function findPeak(mountainArr: MountainArray): number {\n        let left = 0, right = mountainArr.length() - 1;\n        while (left < right) {\n            const mid = Math.floor((left + right) / 2);\n            if (mountainArr.get(mid) < mountainArr.get(mid + 1)) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        return left;\n    }\n    \n    function binarySearchAsc(mountainArr: MountainArray, target: number, left: number, right: number): number {\n        while (left <= right) {\n            const mid = Math.floor((left + right) / 2);\n            const val = mountainArr.get(mid);\n            if (val === target) {\n                return mid;\n            } else if (val < target) {\n                left = mid + 1;\n            } else {\n                right = mid - 1;\n            }\n        }\n        return -1;\n    }\n    \n    function binarySearchDesc(mountainArr: MountainArray, target: number, left: number, right: number): number {\n        while (left <= right) {\n            const mid = Math.floor((left + right) / 2);\n            const val = mountainArr.get(mid);\n            if (val === target) {\n                return mid;\n            } else if (val > target) {\n                left = mid + 1;\n            } else {\n                right = mid - 1;\n            }\n        }\n        return -1;\n    }\n    \n    // Step 1: Find the peak\n    const peak = findPeak(mountainArr);\n    \n    // Step 2: Search in the ascending part\n    const result = binarySearchAsc(mountainArr, target, 0, peak);\n    if (result !== -1) {\n        return result;\n    }\n    \n    // Step 3: Search in the descending part\n    return binarySearchDesc(mountainArr, target, peak + 1, mountainArr.length() - 1);\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int findInMountainArray(int target, MountainArray mountainArr) {\n        \n    }\n}",
+      "solution_text": "<h3>Find in Mountain Array</h3><p><strong>Algorithm:</strong></p><ol><li>Find the peak of the mountain array using binary search</li><li>Binary search for target in the ascending part (left of peak)</li><li>If not found, binary search for target in descending part (right of peak)</li><li>Return the minimum index if found, otherwise -1</li><li>Use at most 100 calls to get() method</li></ol><p><strong>Time Complexity:</strong> O(log n) - three binary searches</p><p><strong>Space Complexity:</strong> O(1) - only using constant extra space</p><p><strong>Key Insights:</strong></p><ul><li>Three-phase binary search: find peak, search left, search right</li><li>Mountain array has exactly one peak</li><li>Must respect the 100 call limit to get() method</li></ul>",
+      "solution_code": "class Solution {\n    public int findInMountainArray(int target, MountainArray mountainArr) {\n        // Step 1: Find the peak\n        int peak = findPeak(mountainArr);\n        \n        // Step 2: Search in the ascending part\n        int result = binarySearchAsc(mountainArr, target, 0, peak);\n        if (result != -1) {\n            return result;\n        }\n        \n        // Step 3: Search in the descending part\n        return binarySearchDesc(mountainArr, target, peak + 1, mountainArr.length() - 1);\n    }\n    \n    private int findPeak(MountainArray mountainArr) {\n        int left = 0, right = mountainArr.length() - 1;\n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            if (mountainArr.get(mid) < mountainArr.get(mid + 1)) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        return left;\n    }\n    \n    private int binarySearchAsc(MountainArray mountainArr, int target, int left, int right) {\n        while (left <= right) {\n            int mid = left + (right - left) / 2;\n            int val = mountainArr.get(mid);\n            if (val == target) {\n                return mid;\n            } else if (val < target) {\n                left = mid + 1;\n            } else {\n                right = mid - 1;\n            }\n        }\n        return -1;\n    }\n    \n    private int binarySearchDesc(MountainArray mountainArr, int target, int left, int right) {\n        while (left <= right) {\n            int mid = left + (right - left) / 2;\n            int val = mountainArr.get(mid);\n            if (val == target) {\n                return mid;\n            } else if (val > target) {\n                left = mid + 1;\n            } else {\n                right = mid - 1;\n            }\n        }\n        return -1;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "mountainArr": [
+          2,
+          4,
+          5,
+          2,
+          1
+        ],
+        "target": 2
+      },
+      "output": 0
+    },
+    {
+      "id": 2,
+      "input": {
+        "mountainArr": [
+          1,
+          2,
+          3,
+          4,
+          2,
+          1
+        ],
+        "target": 6
+      },
+      "output": -1
+    }
+  ]
+}

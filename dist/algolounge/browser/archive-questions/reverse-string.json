@@ -1,0 +1,82 @@
+{
+  "filename": "reverse-string",
+  "title": "Reverse String",
+  "keywords": [
+    "reverse",
+    "string",
+    "leetcode",
+    "344",
+    "given",
+    "array",
+    "characters",
+    "which",
+    "represents",
+    "write"
+  ],
+  "description": "<h2>Reverse String</h2><p>Leetcode 344. Reverse String</p><p></p><p>You are given an array of characters which represents a string `s`. Write a function which reverses a string.</p><p></p><p>You must do this by modifying the input array in-place with `O(1)` extra memory.</p><h3>Examples:</h3><ul><li>Input: s = [\"n\",\"e\",\"e\",\"t\"]<br><br>Output: [\"t\",\"e\",\"e\",\"n\"]</li><li>Input: s = [\"r\",\"a\",\"c\",\"e\",\"c\",\"a\",\"r\"]<br><br>Output: [\"r\",\"a\",\"c\",\"e\",\"c\",\"a\",\"r\"]</li></ul><h3>Constraints:</h3><ul><li> `0 <= s.length < 100,000`</li><li> `s[i]` is a <a href=\"https://en.wikipedia.org/wiki/ASCII#Printable_characters\" target=\"_blank\" rel=\"noopener noreferrer\">printable ascii character</a>.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def reverseString(s):\n    ",
+      "solution_text": "Reverse string using two pointers technique:\n\n**Algorithm:**\n1. Use two pointers from start and end\n2. Swap characters while moving pointers toward center\n3. Continue until pointers meet in middle\n\n**Time Complexity:** O(n) - single pass through string\n**Space Complexity:** O(1) - in-place reversal\n\n**Key Insights:**\n- Two pointers technique for in-place operations\n- Works for both arrays and strings\n- Handles odd and even length inputs correctly",
+      "solution_code": "def reverseString(s):\n    if not s:\n        return s\n    \n    # Convert to list for in-place modification\n    chars = list(s)\n    left, right = 0, len(chars) - 1\n    \n    while left < right:\n        chars[left], chars[right] = chars[right], chars[left]\n        left += 1\n        right -= 1\n    \n    return ''.join(chars)"
+    },
+    "javascript": {
+      "template": "function reverseString(s) {\n  \n}",
+      "solution_text": "Reverse string using two pointers technique:\n\n**Algorithm:**\n1. Use two pointers from start and end\n2. Swap characters while moving pointers toward center\n3. Continue until pointers meet in middle\n\n**Time Complexity:** O(n) - single pass through string\n**Space Complexity:** O(1) - in-place reversal\n\n**Key Insights:**\n- Two pointers technique for in-place operations\n- Works for both arrays and strings\n- Handles odd and even length inputs correctly",
+      "solution_code": "function reverseString(s) {\n    if (!s) return s;\n    \n    const chars = s.split('');\n    let left = 0, right = chars.length - 1;\n    \n    while (left < right) {\n        [chars[left], chars[right]] = [chars[right], chars[left]];\n        left++;\n        right--;\n    }\n    \n    return chars.join('');\n}"
+    },
+    "typescript": {
+      "template": "function reverseString(s: number[]): number[] {\n  \n}",
+      "solution_text": "Reverse string using two pointers technique:\n\n**Algorithm:**\n1. Use two pointers from start and end\n2. Swap characters while moving pointers toward center\n3. Continue until pointers meet in middle\n\n**Time Complexity:** O(n) - single pass through string\n**Space Complexity:** O(1) - in-place reversal\n\n**Key Insights:**\n- Two pointers technique for in-place operations\n- Works for both arrays and strings\n- Handles odd and even length inputs correctly",
+      "solution_code": "function reverseString(s: string): string {\n    if (!s) return s;\n    \n    const chars = s.split('');\n    let left = 0, right = chars.length - 1;\n    \n    while (left < right) {\n        [chars[left], chars[right]] = [chars[right], chars[left]];\n        left++;\n        right--;\n    }\n    \n    return chars.join('');\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int[] reverseString(int[] s) {\n        \n    }\n}",
+      "solution_text": "Reverse string using two pointers technique:\n\n**Algorithm:**\n1. Use two pointers from start and end\n2. Swap characters while moving pointers toward center\n3. Continue until pointers meet in middle\n\n**Time Complexity:** O(n) - single pass through string\n**Space Complexity:** O(1) - in-place reversal\n\n**Key Insights:**\n- Two pointers technique for in-place operations\n- Works for both arrays and strings\n- Handles odd and even length inputs correctly",
+      "solution_code": "class Solution {\n    public String reverseString(String s) {\n        if (s == null || s.length() <= 1) return s;\n        \n        char[] chars = s.toCharArray();\n        int left = 0, right = chars.length - 1;\n        \n        while (left < right) {\n            char temp = chars[left];\n            chars[left] = chars[right];\n            chars[right] = temp;\n            left++;\n            right--;\n        }\n        \n        return new String(chars);\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "s": [
+          "n",
+          "e",
+          "e",
+          "t"
+        ]
+      },
+      "output": [
+        "t",
+        "e",
+        "e",
+        "n"
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "s": [
+          "r",
+          "a",
+          "c",
+          "e",
+          "c",
+          "a",
+          "r"
+        ]
+      },
+      "output": [
+        "r",
+        "a",
+        "c",
+        "e",
+        "c",
+        "a",
+        "r"
+      ]
+    }
+  ]
+}

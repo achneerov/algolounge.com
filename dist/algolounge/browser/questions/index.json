@@ -1,0 +1,1449 @@
+{
+  "questions": [
+    {
+      "index": 1,
+      "filename": "3sum",
+      "title": "3Sum",
+      "keywords": [
+        "3sum",
+        "three",
+        "sum",
+        "array",
+        "triplets",
+        "two",
+        "pointers",
+        "sorting",
+        "integer",
+        "leetcode"
+      ]
+    },
+    {
+      "index": 1,
+      "filename": "minimum-interval-to-include-each-query",
+      "title": "Minimum Interval to Include Each Query",
+      "keywords": [
+        "minimum",
+        "interval",
+        "query",
+        "intervals",
+        "sorting",
+        "heap",
+        "priority",
+        "queue",
+        "binary",
+        "search",
+        "leetcode"
+      ]
+    },
+    {
+      "index": 1,
+      "filename": "reconstruct-itinerary",
+      "title": "Reconstruct Itinerary",
+      "keywords": [
+        "reconstruct",
+        "itinerary",
+        "flights",
+        "graph",
+        "euler",
+        "path",
+        "dfs",
+        "backtracking",
+        "lexical",
+        "order",
+        "leetcode"
+      ]
+    },
+    {
+      "index": 2,
+      "filename": "4sum",
+      "title": "4Sum",
+      "keywords": [
+        "4sum",
+        "leetcode",
+        "array",
+        "integer",
+        "quadruplets",
+        "target",
+        "two-pointers",
+        "sorting",
+        "combination",
+        "unique"
+      ]
+    },
+    {
+      "index": 3,
+      "filename": "add-binary",
+      "title": "Add Binary",
+      "keywords": [
+        "add",
+        "binary",
+        "leetcode",
+        "given",
+        "two",
+        "strings",
+        "return",
+        "their",
+        "sum",
+        "string"
+      ]
+    },
+    {
+      "index": 4,
+      "filename": "add-two-numbers",
+      "title": "Add Two Numbers",
+      "keywords": [
+        "add",
+        "two",
+        "numbers",
+        "leetcode",
+        "given",
+        "non",
+        "empty",
+        "linked",
+        "lists",
+        "where"
+      ]
+    },
+    {
+      "index": 5,
+      "filename": "alice-typing-problem",
+      "title": "Alice Typing Problem",
+      "keywords": [
+        "string",
+        "counting",
+        "grouping",
+        "consecutive",
+        "medium"
+      ]
+    },
+    {
+      "index": 6,
+      "filename": "alphabetical-order-checker",
+      "title": "Alphabetical Order Checker",
+      "keywords": [
+        "string",
+        "sorting",
+        "validation",
+        "comparison",
+        "easy"
+      ]
+    },
+    {
+      "index": 7,
+      "filename": "anagram-groups",
+      "title": "Group Anagrams",
+      "keywords": [
+        "group",
+        "anagrams",
+        "leetcode",
+        "given",
+        "array",
+        "strings",
+        "strs",
+        "all",
+        "together",
+        "into"
+      ]
+    },
+    {
+      "index": 8,
+      "filename": "asteroid-collision",
+      "title": "Asteroid Collision",
+      "keywords": [
+        "asteroid",
+        "collision",
+        "leetcode",
+        "735",
+        "given",
+        "array",
+        "asteroids",
+        "integers",
+        "representing",
+        "row"
+      ]
+    },
+    {
+      "index": 9,
+      "filename": "balanced-binary-tree",
+      "title": "Balanced Binary Tree",
+      "keywords": [
+        "balanced",
+        "binary",
+        "tree",
+        "leetcode",
+        "110",
+        "given",
+        "return",
+        "true",
+        "height",
+        "false"
+      ]
+    },
+    {
+      "index": 10,
+      "filename": "baseball-game",
+      "title": "Baseball Game",
+      "keywords": [
+        "baseball",
+        "game",
+        "leetcode",
+        "682",
+        "keeping",
+        "scores",
+        "strange",
+        "rules",
+        "beginning",
+        "start"
+      ]
+    },
+    {
+      "index": 11,
+      "filename": "best-time-to-buy-and-sell-stock-ii",
+      "title": "Best Time to Buy and Sell Stock II",
+      "keywords": [
+        "best",
+        "time",
+        "buy",
+        "sell",
+        "stock",
+        "leetcode",
+        "122",
+        "given",
+        "integer",
+        "array"
+      ]
+    },
+    {
+      "index": 12,
+      "filename": "best-time-to-buy-and-sell-stock",
+      "title": "Best Time to Buy and Sell Stock",
+      "keywords": [
+        "best",
+        "time",
+        "buy",
+        "sell",
+        "stock",
+        "array",
+        "profit",
+        "maximum",
+        "sliding",
+        "window",
+        "leetcode",
+        "121",
+        "greedy",
+        "dynamic",
+        "programming"
+      ]
+    },
+    {
+      "index": 13,
+      "filename": "binary-representation",
+      "title": "Binary Representation",
+      "keywords": [
+        "binary",
+        "conversion",
+        "bit-manipulation",
+        "string",
+        "easy"
+      ]
+    },
+    {
+      "index": 14,
+      "filename": "binary-search",
+      "title": "Binary Search",
+      "keywords": [
+        "binary",
+        "search",
+        "leetcode",
+        "704",
+        "given",
+        "array",
+        "distinct",
+        "integers",
+        "nums",
+        "sorted"
+      ]
+    },
+    {
+      "index": 15,
+      "filename": "binary-tree-diameter",
+      "title": "Diameter of Binary Tree",
+      "keywords": [
+        "diameter",
+        "binary",
+        "tree",
+        "leetcode",
+        "543",
+        "defined",
+        "length",
+        "longest",
+        "path",
+        "between"
+      ]
+    },
+    {
+      "index": 16,
+      "filename": "binary-tree-from-preorder-and-inorder-traversal",
+      "title": "Construct Binary Tree from Preorder and Inorder Traversal",
+      "keywords": [
+        "construct",
+        "binary",
+        "tree",
+        "preorder",
+        "inorder",
+        "traversal",
+        "leetcode",
+        "105",
+        "given",
+        "two"
+      ]
+    },
+    {
+      "index": 17,
+      "filename": "binary-tree-inorder-traversal",
+      "title": "Binary Tree Inorder Traversal",
+      "keywords": [
+        "binary",
+        "tree",
+        "inorder",
+        "traversal",
+        "leetcode",
+        "given",
+        "root",
+        "return",
+        "its",
+        "nodes"
+      ]
+    },
+    {
+      "index": 18,
+      "filename": "binary-tree-maximum-path-sum",
+      "title": "Binary Tree Maximum Path Sum",
+      "keywords": [
+        "binary",
+        "tree",
+        "maximum",
+        "path",
+        "sum",
+        "leetcode",
+        "124",
+        "given",
+        "root",
+        "non"
+      ]
+    },
+    {
+      "index": 19,
+      "filename": "binary-tree-postorder-traversal",
+      "title": "Binary Tree Postorder Traversal",
+      "keywords": [
+        "binary",
+        "tree",
+        "postorder",
+        "traversal",
+        "leetcode",
+        "145",
+        "given",
+        "root",
+        "return",
+        "its"
+      ]
+    },
+    {
+      "index": 20,
+      "filename": "binary-tree-preorder-traversal",
+      "title": "Binary Tree Preorder Traversal",
+      "keywords": [
+        "binary",
+        "tree",
+        "preorder",
+        "traversal",
+        "leetcode",
+        "144",
+        "given",
+        "root",
+        "return",
+        "its"
+      ]
+    },
+    {
+      "index": 21,
+      "filename": "binary-tree-right-side-view",
+      "title": "Binary Tree Right Side View",
+      "keywords": [
+        "binary",
+        "tree",
+        "right",
+        "side",
+        "view",
+        "leetcode",
+        "199",
+        "given",
+        "root",
+        "return"
+      ]
+    },
+    {
+      "index": 22,
+      "filename": "bitwise-and-of-numbers-range",
+      "title": "Bitwise AND of Numbers Range",
+      "keywords": [
+        "bitwise",
+        "numbers",
+        "range",
+        "leetcode",
+        "201",
+        "given",
+        "two",
+        "integers",
+        "left",
+        "right"
+      ]
+    },
+    {
+      "index": 23,
+      "filename": "boats-to-save-people",
+      "title": "Boats to Save People",
+      "keywords": [
+        "boats",
+        "save",
+        "people",
+        "leetcode",
+        "881",
+        "given",
+        "integer",
+        "array",
+        "where",
+        "weight"
+      ]
+    },
+    {
+      "index": 24,
+      "filename": "burst-balloons",
+      "title": "Burst Balloons",
+      "keywords": [
+        "burst",
+        "balloons",
+        "leetcode",
+        "312",
+        "given",
+        "array",
+        "integers",
+        "nums",
+        "size",
+        "ith"
+      ]
+    },
+    {
+      "index": 25,
+      "filename": "caffeine-calculator",
+      "title": "Caffeine Calculator",
+      "keywords": [
+        "math",
+        "ceiling",
+        "division",
+        "calculation",
+        "easy"
+      ]
+    },
+    {
+      "index": 26,
+      "filename": "canadian-province-validator",
+      "title": "Canadian Province Validator",
+      "keywords": [
+        "string",
+        "validation",
+        "canada",
+        "set",
+        "easy"
+      ]
+    },
+    {
+      "index": 27,
+      "filename": "candy",
+      "title": "Candy",
+      "keywords": [
+        "candy",
+        "leetcode",
+        "135",
+        "there",
+        "children",
+        "standing",
+        "line",
+        "each",
+        "child",
+        "assigned"
+      ]
+    },
+    {
+      "index": 28,
+      "filename": "car-fleet",
+      "title": "Car Fleet",
+      "keywords": [
+        "car",
+        "fleet",
+        "leetcode",
+        "853",
+        "there",
+        "cars",
+        "traveling",
+        "same",
+        "destination",
+        "one"
+      ]
+    },
+    {
+      "index": 30,
+      "filename": "climbing-stairs",
+      "title": "Climbing Stairs",
+      "keywords": [
+        "climbing",
+        "stairs",
+        "dynamic",
+        "programming",
+        "fibonacci",
+        "recursion",
+        "memoization",
+        "iteration",
+        "combination",
+        "optimization"
+      ]
+    },
+    {
+      "index": 31,
+      "filename": "coffee-production-scheduler",
+      "title": "HW13 - Coffee Production Scheduler",
+      "keywords": [
+        "simulation",
+        "string",
+        "state-machine",
+        "counter",
+        "medium"
+      ]
+    },
+    {
+      "index": 32,
+      "filename": "coffee-sales-projection",
+      "title": "Coffee Sales Projection",
+      "keywords": [
+        "array",
+        "math",
+        "percentage",
+        "calculation",
+        "medium"
+      ]
+    },
+    {
+      "index": 33,
+      "filename": "coffee-shop-billing",
+      "title": "Alex's Brew Coffee Shop Billing",
+      "keywords": [
+        "array",
+        "math",
+        "tax",
+        "calculation",
+        "easy"
+      ]
+    },
+    {
+      "index": 34,
+      "filename": "coin-change",
+      "title": "Coin Change",
+      "keywords": [
+        "coin",
+        "change",
+        "dynamic",
+        "programming",
+        "dp",
+        "minimum",
+        "optimization",
+        "unbounded",
+        "knapsack",
+        "greedy",
+        "hw20",
+        "hello world 2025",
+        "medium"
+      ]
+    },
+    {
+      "index": 35,
+      "filename": "container-with-most-water",
+      "title": "Container With Most Water",
+      "keywords": [
+        "container",
+        "most",
+        "water",
+        "array",
+        "two",
+        "pointers",
+        "area",
+        "max",
+        "height",
+        "leetcode"
+      ]
+    },
+    {
+      "index": 36,
+      "filename": "contains-duplicate",
+      "title": "Contains Duplicate",
+      "keywords": [
+        "contains",
+        "duplicate",
+        "array",
+        "hash",
+        "set",
+        "integer",
+        "leetcode",
+        "217",
+        "unique",
+        "validation"
+      ]
+    },
+    {
+      "index": 37,
+      "filename": "copy-list-with-random-pointer",
+      "title": "Copy List with Random Pointer",
+      "keywords": [
+        "copy",
+        "linked",
+        "list",
+        "random",
+        "pointer",
+        "leetcode",
+        "138",
+        "given",
+        "head",
+        "deep",
+        "clone",
+        "hash",
+        "map"
+      ]
+    },
+    {
+      "index": 38,
+      "filename": "count-vowels",
+      "title": "Count Vowels",
+      "keywords": [
+        "string",
+        "vowels",
+        "count",
+        "iteration",
+        "easy"
+      ]
+    },
+    {
+      "index": 39,
+      "filename": "daily-temperatures",
+      "title": "Daily Temperatures",
+      "keywords": [
+        "daily",
+        "temperatures",
+        "leetcode",
+        "739",
+        "given",
+        "array",
+        "integers",
+        "where",
+        "represents",
+        "ith"
+      ]
+    },
+    {
+      "index": 40,
+      "filename": "dice-ways",
+      "title": "Dice Ways",
+      "keywords": [
+        "dynamic",
+        "programming",
+        "combinatorics",
+        "counting",
+        "medium"
+      ]
+    },
+    {
+      "index": 41,
+      "filename": "evaluate-reverse-polish-notation",
+      "title": "Evaluate Reverse Polish Notation",
+      "keywords": [
+        "evaluate",
+        "reverse",
+        "polish",
+        "notation",
+        "leetcode",
+        "150",
+        "given",
+        "array",
+        "strings",
+        "tokens"
+      ]
+    },
+    {
+      "index": 42,
+      "filename": "find-median-from-data-stream",
+      "title": "Find Median From Data Stream",
+      "keywords": [
+        "find",
+        "median",
+        "data",
+        "stream",
+        "heap",
+        "priority",
+        "queue",
+        "class",
+        "design",
+        "leetcode"
+      ]
+    },
+    {
+      "index": 43,
+      "filename": "generate-parentheses",
+      "title": "Generate Parentheses",
+      "keywords": [
+        "generate",
+        "parentheses",
+        "leetcode",
+        "22",
+        "given",
+        "integer",
+        "return",
+        "all",
+        "well",
+        "formed",
+        "strings"
+      ]
+    },
+    {
+      "index": 44,
+      "filename": "greatest-common-divisor",
+      "title": "Greatest Common Divisor (GCD)",
+      "keywords": [
+        "gcd",
+        "math",
+        "euclidean",
+        "algorithm",
+        "recursion",
+        "easy"
+      ]
+    },
+    {
+      "index": 45,
+      "filename": "hello-world",
+      "title": "Hello World",
+      "keywords": [
+        "hello",
+        "world",
+        "beginner",
+        "tutorial",
+        "string",
+        "return",
+        "function",
+        "basic",
+        "easy"
+      ]
+    },
+    {
+      "index": 46,
+      "filename": "house-robber",
+      "title": "House Robber",
+      "keywords": [
+        "house",
+        "robber",
+        "dynamic",
+        "programming",
+        "dp",
+        "maximum",
+        "adjacent",
+        "optimization",
+        "decision",
+        "problem"
+      ]
+    },
+    {
+      "index": 47,
+      "filename": "invert-binary-tree",
+      "title": "Invert Binary Tree",
+      "keywords": [
+        "invert",
+        "binary",
+        "tree",
+        "leetcode",
+        "226",
+        "given",
+        "root",
+        "return",
+        "mirror",
+        "recursive"
+      ]
+    },
+    {
+      "index": 48,
+      "filename": "largest-rectangle-in-histogram",
+      "title": "Largest Rectangle In Histogram",
+      "keywords": [
+        "largest",
+        "rectangle",
+        "histogram",
+        "leetcode",
+        "84",
+        "given",
+        "array",
+        "integers",
+        "heights",
+        "stack"
+      ]
+    },
+    {
+      "index": 49,
+      "filename": "last-even-index",
+      "title": "Last Even Index",
+      "keywords": [
+        "array",
+        "even",
+        "index",
+        "iteration",
+        "modulo",
+        "easy"
+      ]
+    },
+    {
+      "index": 50,
+      "filename": "last-stone-weight",
+      "title": "Last Stone Weight",
+      "keywords": [
+        "last",
+        "stone",
+        "weight",
+        "heap",
+        "priority",
+        "queue",
+        "max",
+        "heap",
+        "simulation",
+        "leetcode",
+        "1046"
+      ]
+    },
+    {
+      "index": 51,
+      "filename": "linked-list-cycle",
+      "title": "Linked List Cycle Detection",
+      "keywords": [
+        "linked",
+        "list",
+        "cycle",
+        "detection",
+        "leetcode",
+        "141",
+        "given",
+        "beginning",
+        "head",
+        "return"
+      ]
+    },
+    {
+      "index": 52,
+      "filename": "longest-common-subsequence",
+      "title": "Longest Common Subsequence",
+      "keywords": [
+        "longest",
+        "common",
+        "subsequence",
+        "lcs",
+        "dynamic",
+        "programming",
+        "dp",
+        "string",
+        "table",
+        "2d"
+      ]
+    },
+    {
+      "index": 53,
+      "filename": "longest-consecutive-sequence",
+      "title": "Longest Consecutive Sequence",
+      "keywords": [
+        "longest",
+        "consecutive",
+        "sequence",
+        "leetcode",
+        "128",
+        "given",
+        "array",
+        "integers",
+        "nums",
+        "hashset"
+      ]
+    },
+    {
+      "index": 54,
+      "filename": "longest-increasing-path-in-a-matrix",
+      "title": "Longest Increasing Path in a Matrix",
+      "keywords": [
+        "longest",
+        "increasing",
+        "path",
+        "matrix",
+        "leetcode",
+        "329",
+        "dfs",
+        "memoization",
+        "dynamic",
+        "programming",
+        "grid",
+        "depth",
+        "first",
+        "search"
+      ]
+    },
+    {
+      "index": 55,
+      "filename": "longest-palindromic-substring",
+      "title": "Longest Palindromic Substring",
+      "keywords": [
+        "longest",
+        "palindrome",
+        "substring",
+        "string",
+        "expand",
+        "center",
+        "two-pointers",
+        "dynamic",
+        "programming",
+        "pattern"
+      ]
+    },
+    {
+      "index": 56,
+      "filename": "maximum-depth-of-binary-tree",
+      "title": "Maximum Depth of Binary Tree",
+      "keywords": [
+        "maximum",
+        "depth",
+        "binary",
+        "tree",
+        "leetcode",
+        "104",
+        "given",
+        "root",
+        "return",
+        "height"
+      ]
+    },
+    {
+      "index": 57,
+      "filename": "maximum-subarray",
+      "title": "Maximum Subarray",
+      "keywords": [
+        "maximum",
+        "subarray",
+        "kadane",
+        "algorithm",
+        "dynamic",
+        "programming",
+        "array",
+        "sum",
+        "contiguous",
+        "optimization"
+      ]
+    },
+    {
+      "index": 58,
+      "filename": "median-of-two-sorted-arrays",
+      "title": "Median of Two Sorted Arrays",
+      "keywords": [
+        "median",
+        "two",
+        "sorted",
+        "arrays",
+        "binary",
+        "search",
+        "logarithmic",
+        "time",
+        "partition",
+        "divide"
+      ]
+    },
+    {
+      "index": 59,
+      "filename": "merge-two-sorted-lists",
+      "title": "Merge Two Sorted Linked Lists",
+      "keywords": [
+        "merge",
+        "two",
+        "sorted",
+        "linked",
+        "lists",
+        "leetcode",
+        "given",
+        "heads",
+        "list1",
+        "list2"
+      ]
+    },
+    {
+      "index": 60,
+      "filename": "most-frequent-element",
+      "title": "Most Frequent Element",
+      "keywords": [
+        "array",
+        "frequency",
+        "hash-map",
+        "counting",
+        "easy"
+      ]
+    },
+    {
+      "index": 61,
+      "filename": "multiple-check",
+      "title": "Multiple Check",
+      "keywords": [
+        "multiple",
+        "modulo",
+        "divisibility",
+        "beginner",
+        "math",
+        "integer",
+        "easy"
+      ]
+    },
+    {
+      "index": 62,
+      "filename": "n-queens",
+      "title": "N-Queens",
+      "keywords": [
+        "n",
+        "queens",
+        "backtracking",
+        "chessboard",
+        "puzzle",
+        "recursion",
+        "constraint",
+        "satisfaction",
+        "leetcode"
+      ]
+    },
+    {
+      "index": 63,
+      "filename": "palindrome-checker",
+      "title": "Palindrome Checker",
+      "keywords": [
+        "palindrome",
+        "string",
+        "two-pointers",
+        "alphanumeric",
+        "easy"
+      ]
+    },
+    {
+      "index": 64,
+      "filename": "product-of-array-except-self",
+      "title": "Product of Array Except Self",
+      "keywords": [
+        "product",
+        "array",
+        "except",
+        "self",
+        "prefix",
+        "suffix",
+        "multiplication",
+        "division",
+        "algorithm",
+        "optimization"
+      ]
+    },
+    {
+      "index": 65,
+      "filename": "remove-nth-node-from-end-of-list",
+      "title": "Remove Nth Node From End of List",
+      "keywords": [
+        "remove",
+        "node",
+        "end",
+        "linked",
+        "list",
+        "leetcode",
+        "nth",
+        "given",
+        "beginning",
+        "head",
+        "two",
+        "pointers"
+      ]
+    },
+    {
+      "index": 66,
+      "filename": "reorder-list",
+      "title": "Reorder Linked List",
+      "keywords": [
+        "reorder",
+        "linked",
+        "list",
+        "leetcode",
+        "143",
+        "given",
+        "head",
+        "singly",
+        "positions",
+        "length"
+      ]
+    },
+    {
+      "index": 67,
+      "filename": "reverse-linked-list",
+      "title": "Reverse Linked List",
+      "keywords": [
+        "reverse",
+        "linked",
+        "list",
+        "leetcode",
+        "206",
+        "given",
+        "beginning",
+        "singly",
+        "head",
+        "return"
+      ]
+    },
+    {
+      "index": 68,
+      "filename": "serialize-and-deserialize-binary-tree",
+      "title": "Serialize and Deserialize Binary Tree",
+      "keywords": [
+        "serialize",
+        "deserialize",
+        "binary",
+        "tree",
+        "leetcode",
+        "297",
+        "implement",
+        "algorithm",
+        "serialization",
+        "process"
+      ]
+    },
+    {
+      "index": 69,
+      "filename": "string-comparison",
+      "title": "String Comparison",
+      "keywords": [
+        "string",
+        "comparison",
+        "equality",
+        "beginner",
+        "boolean",
+        "case-sensitive",
+        "easy"
+      ]
+    },
+    {
+      "index": 70,
+      "filename": "string-matching",
+      "title": "String Matching",
+      "keywords": [
+        "string",
+        "hash-map",
+        "frequency",
+        "counter",
+        "easy"
+      ]
+    },
+    {
+      "index": 71,
+      "filename": "string-reversal",
+      "title": "String Reversal",
+      "keywords": [
+        "string",
+        "reverse",
+        "slicing",
+        "easy"
+      ]
+    },
+    {
+      "index": 72,
+      "filename": "sum-of-digits-times-seven",
+      "title": "Sum of Digits Times Seven",
+      "keywords": [
+        "digits",
+        "sum",
+        "multiplication",
+        "math",
+        "string",
+        "easy"
+      ]
+    },
+    {
+      "index": 73,
+      "filename": "sum-two-integers",
+      "title": "Sum Two Integers",
+      "keywords": [
+        "sum",
+        "addition",
+        "integers",
+        "beginner",
+        "math",
+        "basic",
+        "arithmetic",
+        "easy"
+      ]
+    },
+    {
+      "index": 74,
+      "filename": "trapping-rain-water",
+      "title": "Trapping Rain Water",
+      "keywords": [
+        "trapping",
+        "rain",
+        "water",
+        "leetcode",
+        "42",
+        "given",
+        "array",
+        "non-negative",
+        "integers",
+        "height",
+        "two-pointers"
+      ]
+    },
+    {
+      "index": 75,
+      "filename": "tribonacci-sequence",
+      "title": "Tribonacci Sequence",
+      "keywords": [
+        "dynamic",
+        "programming",
+        "recursion",
+        "fibonacci",
+        "sequence",
+        "medium"
+      ]
+    },
+    {
+      "index": 76,
+      "filename": "two-sum-ii-input-array-is-sorted",
+      "title": "Two Sum II - Input Array Is Sorted",
+      "keywords": [
+        "two",
+        "sum",
+        "leetcode",
+        "167",
+        "input",
+        "array",
+        "sorted",
+        "given",
+        "integers",
+        "two-pointers"
+      ]
+    },
+    {
+      "index": 77,
+      "filename": "two-sum",
+      "title": "Two Sum",
+      "keywords": [
+        "two",
+        "sum",
+        "array",
+        "integer",
+        "target",
+        "indices",
+        "add",
+        "numbers",
+        "hash",
+        "map"
+      ]
+    },
+    {
+      "index": 78,
+      "filename": "valid-anagram",
+      "title": "Valid Anagram",
+      "keywords": [
+        "valid",
+        "anagram",
+        "string",
+        "hash",
+        "map",
+        "frequency",
+        "counter",
+        "sorting",
+        "characters",
+        "comparison"
+      ]
+    },
+    {
+      "index": 79,
+      "filename": "valid-parentheses",
+      "title": "Valid Parentheses",
+      "keywords": [
+        "valid",
+        "parentheses",
+        "stack",
+        "brackets",
+        "string",
+        "matching",
+        "pairs",
+        "nested",
+        "structure",
+        "validation"
+      ]
+    },
+    {
+      "index": 80,
+      "filename": "valid-sudoku",
+      "title": "Valid Sudoku",
+      "keywords": [
+        "valid",
+        "sudoku",
+        "matrix",
+        "board",
+        "validation",
+        "rules",
+        "duplicates",
+        "constraints",
+        "game",
+        "puzzle"
+      ]
+    },
+    {
+      "index": 81,
+      "filename": "word-ladder",
+      "title": "Word Ladder",
+      "keywords": [
+        "word",
+        "ladder",
+        "leetcode",
+        "127",
+        "given",
+        "two",
+        "words",
+        "beginword",
+        "endword",
+        "transformation",
+        "bfs",
+        "graph"
+      ]
+    },
+    {
+      "index": 82,
+      "filename": "word-search-ii",
+      "title": "Word Search II",
+      "keywords": [
+        "word",
+        "search",
+        "leetcode",
+        "212",
+        "given",
+        "grid",
+        "characters",
+        "board",
+        "list",
+        "strings",
+        "trie"
+      ]
+    },
+    {
+      "index": 83,
+      "filename": "car-pooling",
+      "title": "Car Pooling",
+      "keywords": [
+        "car",
+        "pooling",
+        "leetcode",
+        "1094",
+        "there",
+        "capacity",
+        "empty",
+        "seats",
+        "vehicle",
+        "only"
+      ]
+    },
+    {
+      "index": 84,
+      "filename": "same-tree",
+      "title": "Same Tree",
+      "keywords": [
+        "same",
+        "tree",
+        "binary",
+        "tree",
+        "comparison",
+        "recursion",
+        "dfs",
+        "structure",
+        "values",
+        "equivalent"
+      ]
+    },
+    {
+      "index": 85,
+      "filename": "subtree-of-another-tree",
+      "title": "Subtree of Another Tree",
+      "keywords": [
+        "subtree",
+        "binary",
+        "tree",
+        "recursion",
+        "dfs",
+        "comparison",
+        "structure",
+        "matching",
+        "identical",
+        "descendant"
+      ]
+    },
+    {
+      "index": 86,
+      "filename": "swim-in-rising-water",
+      "title": "Swim in Rising Water",
+      "keywords": [
+        "swim",
+        "rising",
+        "water",
+        "grid",
+        "matrix",
+        "dijkstra",
+        "heap",
+        "priority",
+        "queue",
+        "path",
+        "minimum",
+        "time"
+      ]
+    },
+    {
+      "index": 87,
+      "filename": "alien-dictionary",
+      "title": "Alien Dictionary",
+      "keywords": [
+        "alien",
+        "dictionary",
+        "topological",
+        "sort",
+        "graph",
+        "dfs",
+        "order",
+        "lexicographic",
+        "characters",
+        "language"
+      ]
+    },
+    {
+      "index": 88,
+      "filename": "min-stack",
+      "title": "Min Stack",
+      "keywords": [
+        "min",
+        "stack",
+        "design",
+        "data",
+        "structure",
+        "minimum",
+        "push",
+        "pop",
+        "top",
+        "getMin"
+      ]
+    }
+  ],
+  "lastUpdated": "2025-10-30T23:52:34.548Z",
+  "totalQuestions": 89
+}

@@ -1,0 +1,75 @@
+{
+  "filename": "search-in-rotated-sorted-array-ii",
+  "title": "Search in Rotated Sorted Array II",
+  "keywords": [
+    "search",
+    "rotated",
+    "sorted",
+    "array",
+    "leetcode",
+    "given",
+    "length",
+    "which",
+    "originally",
+    "non"
+  ],
+  "description": "<h2>Search in Rotated Sorted Array II</h2><p>Leetcode 81. Search In Rotated Sorted Array II</p><p></p><p>You are given an array of length `n` which was originally sorted in non-decreasing order (not necessarily with **distinct** values). It has now been **rotated** between `1` and `n` times. For example, the array `nums = [1,2,3,4,5,6]` might become:</p><p></p><p>* `[3,4,5,6,1,2]` if it was rotated `4` times.</p><p>* `[1,2,3,4,5,6]` if it was rotated `6` times.</p><p></p><p>Given the rotated sorted array `nums` and an integer `target`, return `true` if `target` is in `nums`, or `false` if it is not present.</p><p></p><p>You must decrease the overall operation steps as much as possible.</p><h3>Examples:</h3><ul><li>Input: nums = [3,4,4,5,6,1,2,2], target = 1<br><br>Output: true</li><li>Input: nums = [3,5,6,0,0,1,2], target = 4<br><br>Output: false</li></ul><h3>Constraints:</h3><ul><li> `1 <= nums.length <= 5000`</li><li> `-10,000 <= target, nums[i] <= 10,000`</li><li> `nums` is guaranteed to be rotated at some pivot.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def searchInRotatedSortedArrayIi(nums, target):\n    ",
+      "solution_text": "Classic Binary Search implementation:\n\n**Algorithm:**\n1. Initialize left and right pointers to array bounds\n2. While left <= right, calculate middle index\n3. Compare middle element with target\n4. Adjust search space based on comparison\n\n**Time Complexity:** O(log n) - halves search space each iteration\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Requires sorted input array\n- Avoids integer overflow with left + (right - left) // 2\n- Returns -1 if target not found",
+      "solution_code": "def searchInRotatedSortedArrayIi(nums, target):\n    left, right = 0, len(nums) - 1\n    \n    while left <= right:\n        # Avoid integer overflow\n        mid = left + (right - left) // 2\n        \n        if nums[mid] == target:\n            return mid\n        elif nums[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    \n    return -1"
+    },
+    "javascript": {
+      "template": "function searchInRotatedSortedArrayIi(nums, target) {\n  \n}",
+      "solution_text": "Classic Binary Search implementation:\n\n**Algorithm:**\n1. Initialize left and right pointers to array bounds\n2. While left <= right, calculate middle index\n3. Compare middle element with target\n4. Adjust search space based on comparison\n\n**Time Complexity:** O(log n) - halves search space each iteration\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Requires sorted input array\n- Avoids integer overflow with left + (right - left) // 2\n- Returns -1 if target not found",
+      "solution_code": "function searchInRotatedSortedArrayIi(nums, target) {\n    let left = 0, right = nums.length - 1;\n    \n    while (left <= right) {\n        // Avoid integer overflow\n        const mid = left + Math.floor((right - left) / 2);\n        \n        if (nums[mid] === target) {\n            return mid;\n        } else if (nums[mid] < target) {\n            left = mid + 1;\n        } else {\n            right = mid - 1;\n        }\n    }\n    \n    return -1;\n}"
+    },
+    "typescript": {
+      "template": "function searchInRotatedSortedArrayIi(nums: number[], target: number): string {\n  \n}",
+      "solution_text": "Classic Binary Search implementation:\n\n**Algorithm:**\n1. Initialize left and right pointers to array bounds\n2. While left <= right, calculate middle index\n3. Compare middle element with target\n4. Adjust search space based on comparison\n\n**Time Complexity:** O(log n) - halves search space each iteration\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Requires sorted input array\n- Avoids integer overflow with left + (right - left) // 2\n- Returns -1 if target not found",
+      "solution_code": "function searchInRotatedSortedArrayIi(nums: number[], target: number): number {\n    let left = 0, right = nums.length - 1;\n    \n    while (left <= right) {\n        // Avoid integer overflow\n        const mid = left + Math.floor((right - left) / 2);\n        \n        if (nums[mid] === target) {\n            return mid;\n        } else if (nums[mid] < target) {\n            left = mid + 1;\n        } else {\n            right = mid - 1;\n        }\n    }\n    \n    return -1;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public String searchInRotatedSortedArrayIi(int[] nums, int target) {\n        \n    }\n}",
+      "solution_text": "Classic Binary Search implementation:\n\n**Algorithm:**\n1. Initialize left and right pointers to array bounds\n2. While left <= right, calculate middle index\n3. Compare middle element with target\n4. Adjust search space based on comparison\n\n**Time Complexity:** O(log n) - halves search space each iteration\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Requires sorted input array\n- Avoids integer overflow with left + (right - left) // 2\n- Returns -1 if target not found",
+      "solution_code": "class Solution {\n    public int searchInRotatedSortedArrayIi(int[] nums, int target) {\n        int left = 0, right = nums.length - 1;\n        \n        while (left <= right) {\n            // Avoid integer overflow\n            int mid = left + (right - left) / 2;\n            \n            if (nums[mid] == target) {\n                return mid;\n            } else if (nums[mid] < target) {\n                left = mid + 1;\n            } else {\n                right = mid - 1;\n            }\n        }\n        \n        return -1;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [
+          3,
+          4,
+          4,
+          5,
+          6,
+          1,
+          2,
+          2
+        ],
+        "target": 1
+      },
+      "output": "true"
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [
+          3,
+          5,
+          6,
+          0,
+          0,
+          1,
+          2
+        ],
+        "target": 4
+      },
+      "output": "false"
+    }
+  ]
+}

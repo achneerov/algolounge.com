@@ -1,0 +1,78 @@
+{
+  "filename": "remove-duplicates-from-sorted-array",
+  "title": "Remove Duplicates From Sorted Array",
+  "keywords": [
+    "remove",
+    "duplicates",
+    "sorted",
+    "array",
+    "leetcode",
+    "given",
+    "integer",
+    "nums",
+    "non",
+    "decreasing"
+  ],
+  "description": "<h2>Remove Duplicates From Sorted Array</h2><p>Leetcode 26. Remove Duplicates From Sorted Array</p><p></p><p>You are given an integer array `nums` sorted in **non-decreasing order**. Your task is to remove **duplicates** from `nums` **in-place** so that each element appears only once.</p><p></p><p>After removing the duplicates, return the number of unique elements, denoted as `k`, such that the **first `k` elements** of `nums` contain the unique elements.</p><p></p><p>Note:</p><p>- The order of the unique elements should remain the same as in the original array.</p><p>- It is not necessary to consider elements beyond the first `k` positions of the array.</p><p>- To be accepted, the first `k` elements of `nums` must contain all the unique elements.</p><p></p><p>Return `k` as the final result.</p><h3>Examples:</h3><ul><li>Input: nums = [1,1,2,3,4]<br><br>Output: [1,2,3,4]<br>You should return `k = 4` as we have four unique elements.</li><li>Input: nums = [2,10,10,30,30,30]<br><br>Output: [2,10,30]<br>You should return `k = 3` as we have three unique elements.</li></ul><h3>Constraints:</h3><ul><li> `1 <= nums.length <= 30,000`</li><li> `-100 <= nums[i] <= 100`</li><li> `nums` is sorted in **non-decreasing** order.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def removeDuplicatesFromSortedArray(nums):\n    ",
+      "solution_text": "Classic Binary Search implementation:\n\n**Algorithm:**\n1. Initialize left and right pointers to array bounds\n2. While left <= right, calculate middle index\n3. Compare middle element with target\n4. Adjust search space based on comparison\n\n**Time Complexity:** O(log n) - halves search space each iteration\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Requires sorted input array\n- Avoids integer overflow with left + (right - left) // 2\n- Returns -1 if target not found",
+      "solution_code": "def removeDuplicatesFromSortedArray(nums, target):\n    left, right = 0, len(nums) - 1\n    \n    while left <= right:\n        # Avoid integer overflow\n        mid = left + (right - left) // 2\n        \n        if nums[mid] == target:\n            return mid\n        elif nums[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    \n    return -1"
+    },
+    "javascript": {
+      "template": "function removeDuplicatesFromSortedArray(nums) {\n  \n}",
+      "solution_text": "Classic Binary Search implementation:\n\n**Algorithm:**\n1. Initialize left and right pointers to array bounds\n2. While left <= right, calculate middle index\n3. Compare middle element with target\n4. Adjust search space based on comparison\n\n**Time Complexity:** O(log n) - halves search space each iteration\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Requires sorted input array\n- Avoids integer overflow with left + (right - left) // 2\n- Returns -1 if target not found",
+      "solution_code": "function removeDuplicatesFromSortedArray(nums, target) {\n    let left = 0, right = nums.length - 1;\n    \n    while (left <= right) {\n        // Avoid integer overflow\n        const mid = left + Math.floor((right - left) / 2);\n        \n        if (nums[mid] === target) {\n            return mid;\n        } else if (nums[mid] < target) {\n            left = mid + 1;\n        } else {\n            right = mid - 1;\n        }\n    }\n    \n    return -1;\n}"
+    },
+    "typescript": {
+      "template": "function removeDuplicatesFromSortedArray(nums: number[]): number[] {\n  \n}",
+      "solution_text": "Classic Binary Search implementation:\n\n**Algorithm:**\n1. Initialize left and right pointers to array bounds\n2. While left <= right, calculate middle index\n3. Compare middle element with target\n4. Adjust search space based on comparison\n\n**Time Complexity:** O(log n) - halves search space each iteration\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Requires sorted input array\n- Avoids integer overflow with left + (right - left) // 2\n- Returns -1 if target not found",
+      "solution_code": "function removeDuplicatesFromSortedArray(nums: number[], target: number): number {\n    let left = 0, right = nums.length - 1;\n    \n    while (left <= right) {\n        // Avoid integer overflow\n        const mid = left + Math.floor((right - left) / 2);\n        \n        if (nums[mid] === target) {\n            return mid;\n        } else if (nums[mid] < target) {\n            left = mid + 1;\n        } else {\n            right = mid - 1;\n        }\n    }\n    \n    return -1;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int[] removeDuplicatesFromSortedArray(int[] nums) {\n        \n    }\n}",
+      "solution_text": "Classic Binary Search implementation:\n\n**Algorithm:**\n1. Initialize left and right pointers to array bounds\n2. While left <= right, calculate middle index\n3. Compare middle element with target\n4. Adjust search space based on comparison\n\n**Time Complexity:** O(log n) - halves search space each iteration\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Requires sorted input array\n- Avoids integer overflow with left + (right - left) // 2\n- Returns -1 if target not found",
+      "solution_code": "class Solution {\n    public int removeDuplicatesFromSortedArray(int[] nums, int target) {\n        int left = 0, right = nums.length - 1;\n        \n        while (left <= right) {\n            // Avoid integer overflow\n            int mid = left + (right - left) / 2;\n            \n            if (nums[mid] == target) {\n                return mid;\n            } else if (nums[mid] < target) {\n                left = mid + 1;\n            } else {\n                right = mid - 1;\n            }\n        }\n        \n        return -1;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [
+          1,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "output": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [
+          2,
+          10,
+          10,
+          30,
+          30,
+          30
+        ]
+      },
+      "output": [
+        2,
+        10,
+        30
+      ]
+    }
+  ]
+}

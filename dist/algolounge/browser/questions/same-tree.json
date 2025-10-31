@@ -1,0 +1,180 @@
+{
+  "index": 84,
+  "filename": "same-tree",
+  "title": "Same Tree",
+  "keywords": [
+    "same",
+    "tree",
+    "binary",
+    "tree",
+    "comparison",
+    "recursion",
+    "dfs",
+    "structure",
+    "values",
+    "equivalent"
+  ],
+  "description": "<h2>Same Tree</h2><p>LeetCode 100. Same Tree</p><p>Given the roots of two binary trees <code>p</code> and <code>q</code>, return <code>true</code> if the trees are <strong>equivalent</strong>, otherwise return <code>false</code>.</p><p>Two binary trees are considered <strong>equivalent</strong> if they share the exact same structure and the nodes have the same values.</p><h3>Examples:</h3><ul><li>Input: p = [1,2,3], q = [1,2,3]<br>Output: <code>true</code></li><li>Input: p = [1,2], q = [1,null,2]<br>Output: <code>false</code></li><li>Input: p = [1,2,1], q = [1,1,2]<br>Output: <code>false</code></li></ul><h3>Constraints:</h3><ul><li><code>0 &lt;= number of nodes in both trees &lt;= 100</code></li><li><code>-100 &lt;= Node.val &lt;= 100</code></li></ul>",
+  "entry_function": "isSameTree",
+  "template": "# Definition for a binary tree node.\n# class TreeNode:\n#     def __init__(self, val=0, left=None, right=None):\n#         self.val = val\n#         self.left = left\n#         self.right = right\n\ndef isSameTree(p, q):\n    ",
+  "solution_text": "<h3>Same Tree</h3><p><strong>Algorithm:</strong></p><ol><li>Base case: If both trees are empty, they are the same</li><li>If one tree is empty and the other is not, they are different</li><li>If the values of the current nodes differ, trees are different</li><li>Recursively check if left subtrees are the same</li><li>Recursively check if right subtrees are the same</li><li>Return true only if both subtrees match</li></ol><p><strong>Time Complexity:</strong> O(min(n, m)) - where n and m are the number of nodes in each tree</p><p><strong>Space Complexity:</strong> O(min(h1, h2)) - recursion stack depth, where h1 and h2 are the heights</p><p><strong>Key Insights:</strong></p><ul><li>DFS recursive approach naturally matches tree structure</li><li>Early termination when mismatch found</li><li>Both structure and values must match</li><li>Null nodes handled explicitly in base case</li></ul>",
+  "solution_code": "def isSameTree(p, q):\n    # Base case: both trees are empty\n    if not p and not q:\n        return True\n    \n    # One tree is empty, the other is not\n    if not p or not q:\n        return False\n    \n    # Values don't match\n    if p.val != q.val:\n        return False\n    \n    # Recursively check left and right subtrees\n    return isSameTree(p.left, q.left) and isSameTree(p.right, q.right)",
+  "prepare": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef prepare(test_case_input):\n    \"\"\"Convert array representation to TreeNode structure\"\"\"\n    def build_tree(arr):\n        if not arr or arr[0] is None:\n            return None\n        \n        from collections import deque\n        root = TreeNode(arr[0])\n        queue = deque([root])\n        i = 1\n        \n        while queue and i < len(arr):\n            node = queue.popleft()\n            \n            # Add left child\n            if i < len(arr) and arr[i] is not None:\n                node.left = TreeNode(arr[i])\n                queue.append(node.left)\n            i += 1\n            \n            # Add right child\n            if i < len(arr) and arr[i] is not None:\n                node.right = TreeNode(arr[i])\n                queue.append(node.right)\n            i += 1\n        \n        return root\n    \n    p = build_tree(test_case_input['p'])\n    q = build_tree(test_case_input['q'])\n    return (p, q)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the same tree result\"\"\"\n    def bool_to_string(val):\n        return 'true' if val else 'false'\n    \n    # Convert expected output string to boolean for comparison if needed\n    expected_bool = expected_output == 'true' if isinstance(expected_output, str) else expected_output\n    \n    passed = actual_output == expected_bool\n    output_str = bool_to_string(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "p": [
+          1,
+          2,
+          3
+        ],
+        "q": [
+          1,
+          2,
+          3
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 2,
+      "input": {
+        "p": [
+          1,
+          2
+        ],
+        "q": [
+          1,
+          null,
+          2
+        ]
+      },
+      "output": "false"
+    },
+    {
+      "id": 3,
+      "input": {
+        "p": [
+          1,
+          2,
+          1
+        ],
+        "q": [
+          1,
+          1,
+          2
+        ]
+      },
+      "output": "false"
+    },
+    {
+      "id": 4,
+      "input": {
+        "p": [],
+        "q": []
+      },
+      "output": "true"
+    },
+    {
+      "id": 5,
+      "input": {
+        "p": [
+          1
+        ],
+        "q": [
+          1
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 6,
+      "input": {
+        "p": [
+          1
+        ],
+        "q": [
+          2
+        ]
+      },
+      "output": "false"
+    },
+    {
+      "id": 7,
+      "input": {
+        "p": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "q": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 8,
+      "input": {
+        "p": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "q": [
+          1,
+          2,
+          3,
+          null,
+          4
+        ]
+      },
+      "output": "false"
+    },
+    {
+      "id": 9,
+      "input": {
+        "p": [
+          10,
+          5,
+          15
+        ],
+        "q": [
+          10,
+          5,
+          15
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 10,
+      "input": {
+        "p": [
+          1,
+          null,
+          2,
+          null,
+          3
+        ],
+        "q": [
+          1,
+          null,
+          2,
+          null,
+          3
+        ]
+      },
+      "output": "true"
+    }
+  ]
+}

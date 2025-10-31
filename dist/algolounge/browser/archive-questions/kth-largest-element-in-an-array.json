@@ -1,0 +1,122 @@
+{
+  "filename": "kth-largest-element-in-an-array",
+  "title": "Kth Largest Element in an Array",
+  "keywords": [
+    "kth",
+    "largest",
+    "element",
+    "array",
+    "leetcode",
+    "215",
+    "given",
+    "unsorted",
+    "integers",
+    "nums"
+  ],
+  "description": "<h2>Kth Largest Element in an Array</h2><p>Leetcode 215. Kth Largest Element In An Array</p><p></p><p>Given an unsorted array of integers `nums` and an integer `k`, return the `kth` largest element in the array.</p><p></p><p>By `kth` largest element, we mean the `kth` largest element in the sorted order, not the `kth` distinct element.</p><p></p><p>Follow-up: Can you solve it without sorting?</p><h3>Examples:</h3><ul><li>Input: nums = [2,3,1,5,4], k = 2<br><br>Output: 4</li><li>Input: nums = [2,3,1,1,5,5,4], k = 3<br><br>Output: 4</li></ul><h3>Constraints:</h3><ul><li> `1 <= k <= nums.length <= 10000`</li><li> `-1000 <= nums[i] <= 1000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def kthLargestElementInAnArray(nums, k):\n    ",
+      "solution_text": "<p><strong>Kth Largest Element - Min Heap Approach:</strong></p><p>Find kth largest element using a min heap of size k.</p><p><strong>Algorithm:</strong></p><ol><li>Create a min heap and maintain size k</li><li>For each element, add to heap if heap size < k</li><li>If heap is full and current element > heap top, replace</li><li>The root of heap is the kth largest element</li></ol><p><strong>Time Complexity:</strong> O(n log k) - heap operations</p><p><strong>Space Complexity:</strong> O(k) - heap storage</p>",
+      "solution_code": "def kthLargestElementInAnArray(nums, k):\n    import heapq\n    \n    # Create min heap of size k\n    heap = []\n    \n    for num in nums:\n        if len(heap) < k:\n            heapq.heappush(heap, num)\n        elif num > heap[0]:\n            heapq.heapreplace(heap, num)\n    \n    # The root of min heap is kth largest\n    return heap[0]"
+    },
+    "javascript": {
+      "template": "function kthLargestElementInAnArray(nums, k) {\n  \n}",
+      "solution_text": "<p><strong>Kth Largest Element - Min Heap Approach:</strong></p><p>Find kth largest element using a min heap of size k.</p><p><strong>Algorithm:</strong></p><ol><li>Create a min heap and maintain size k</li><li>For each element, add to heap if heap size < k</li><li>If heap is full and current element > heap top, replace</li><li>The root of heap is the kth largest element</li></ol><p><strong>Time Complexity:</strong> O(n log k) - heap operations</p><p><strong>Space Complexity:</strong> O(k) - heap storage</p>",
+      "solution_code": "function kthLargestElementInAnArray(nums, k) {\n    // Simple approach: sort and return kth largest\n    // For efficiency, we could use a min heap of size k\n    nums.sort((a, b) => b - a); // Sort in descending order\n    return nums[k - 1]; // Return kth largest (0-indexed)\n}"
+    },
+    "typescript": {
+      "template": "function kthLargestElementInAnArray(nums: number[], k: number): number {\n  \n}",
+      "solution_text": "<p><strong>Kth Largest Element - Min Heap Approach:</strong></p><p>Find kth largest element using a min heap of size k.</p><p><strong>Algorithm:</strong></p><ol><li>Create a min heap and maintain size k</li><li>For each element, add to heap if heap size < k</li><li>If heap is full and current element > heap top, replace</li><li>The root of heap is the kth largest element</li></ol><p><strong>Time Complexity:</strong> O(n log k) - heap operations</p><p><strong>Space Complexity:</strong> O(k) - heap storage</p>",
+      "solution_code": "function kthLargestElementInAnArray(nums: number[], k: number): number {\n    // Simple approach: sort and return kth largest\n    // For efficiency, we could use a min heap of size k\n    nums.sort((a, b) => b - a); // Sort in descending order\n    return nums[k - 1]; // Return kth largest (0-indexed)\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int kthLargestElementInAnArray(int[] nums, int k) {\n        \n    }\n}",
+      "solution_text": "<p><strong>Kth Largest Element - Min Heap Approach:</strong></p><p>Find kth largest element using a min heap of size k.</p><p><strong>Algorithm:</strong></p><ol><li>Create a min heap and maintain size k</li><li>For each element, add to heap if heap size < k</li><li>If heap is full and current element > heap top, replace</li><li>The root of heap is the kth largest element</li></ol><p><strong>Time Complexity:</strong> O(n log k) - heap operations</p><p><strong>Space Complexity:</strong> O(k) - heap storage</p>",
+      "solution_code": "class Solution {\n    public int kthLargestElementInAnArray(int[] nums, int k) {\n        // Use min heap of size k\n        PriorityQueue<Integer> heap = new PriorityQueue<>();\n        \n        for (int num : nums) {\n            if (heap.size() < k) {\n                heap.offer(num);\n            } else if (num > heap.peek()) {\n                heap.poll();\n                heap.offer(num);\n            }\n        }\n        \n        // The root of min heap is kth largest\n        return heap.peek();\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [2, 3, 1, 5, 4],
+        "k": 2
+      },
+      "output": 4
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [2, 3, 1, 1, 5, 5, 4],
+        "k": 3
+      },
+      "output": 4
+    },
+    {
+      "id": 3,
+      "input": {
+        "nums": [1],
+        "k": 1
+      },
+      "output": 1
+    },
+    {
+      "id": 4,
+      "input": {
+        "nums": [3, 2, 1, 5, 6, 4],
+        "k": 2
+      },
+      "output": 5
+    },
+    {
+      "id": 5,
+      "input": {
+        "nums": [7, 10, 4, 3, 20, 15],
+        "k": 3
+      },
+      "output": 10
+    },
+    {
+      "id": 6,
+      "input": {
+        "nums": [1, 2, 3, 4, 5],
+        "k": 1
+      },
+      "output": 5
+    },
+    {
+      "id": 7,
+      "input": {
+        "nums": [5, 4, 3, 2, 1],
+        "k": 5
+      },
+      "output": 1
+    },
+    {
+      "id": 8,
+      "input": {
+        "nums": [2, 1, 3, 1, 2],
+        "k": 4
+      },
+      "output": 1
+    },
+    {
+      "id": 9,
+      "input": {
+        "nums": [3, 3, 3, 3, 3],
+        "k": 2
+      },
+      "output": 3
+    },
+    {
+      "id": 10,
+      "input": {
+        "nums": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        "k": 6
+      },
+      "output": 5
+    }
+  ]
+}

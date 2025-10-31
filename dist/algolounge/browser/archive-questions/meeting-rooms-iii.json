@@ -1,0 +1,122 @@
+{
+  "filename": "meeting-rooms-iii",
+  "title": "Meeting Rooms III",
+  "keywords": [
+    "meeting",
+    "rooms",
+    "iii",
+    "leetcode",
+    "2402",
+    "there",
+    "numbered",
+    "given",
+    "integer",
+    "array"
+  ],
+  "description": "<h2>Meeting Rooms III</h2><p>Leetcode 2402. Meeting Rooms III</p><p></p><p>There are `n` rooms numbered from `0` to `n - 1`. You are given a 2D integer array `meetings` where `meetings[i] = [start[i], end[i]]` means that a meeting will be held during the half-closed time interval `[start[i], end[i])`. All the values of `start[i]` are **unique**.</p><p></p><p>Meetings are allocated to rooms in the following manner:</p><p></p><p>1. Each meeting will take place in the unused room with the **lowest** number.</p><p></p><p>2. If there are no available rooms, the meeting will be delayed until a room becomes free. The delayed meeting should have the **same** duration as the original meeting.</p><p></p><p>3. When a room becomes unused, meetings that have an earlier original **start** time should be given the room.</p><p></p><p>Return the **number** of the room that held the most meetings. If there are multiple rooms, return the room with the **lowest** number.</p><p></p><p>A half-closed interval `[a, b)` is the interval between `a` and `b` including `a` and not including `b`.</p><h3>Examples:</h3><ul><li>Input: n = 2, meetings = [[1,10],[2,10],[3,10],[4,10]]<br><br>Output: 0<br>- At time 1, the room with number 0 is available, the first meeting is allocated to it.\n- At time 2, the room with number 1 is available, the second meeting is allocated to it.\n- At time 10, the rooms with numbers 0 and 1 becomes unused, the third meeting is allocated to room number 0 and fourth meeting is allocated to room number 1.\n\nThe room with most meetings held and have lowest number is 0.</li><li>Input: n = 3, meetings = [[1,20],[2,10],[3,5],[6,8],[4,9]]<br><br>Output: 1<br>- At time 1, all three rooms are not being used. The first meeting starts in room 0.\n- At time 2, rooms 1 and 2 are not being used. The second meeting starts in room 1.\n- At time 3, only room 2 is not being used. The third meeting starts in room 2.\n- At time 4, all three rooms are being used. The fourth meeting is delayed.\n- At time 5, the meeting in room 2 finishes. The fourth meeting starts in room 2 for the time period [5,10).\n- At time 6, all three rooms are being used. The fifth meeting is delayed.\n- At time 10, the meetings in rooms 1 and 2 finish. The fifth meeting starts in room 1 for the time period [10,12).\n\nRoom 0 held 1 meeting while rooms 1 and 2 each held 2 meetings, so we return 1 as it is lowest.</li></ul><h3>Constraints:</h3><ul><li> `1 <= n <= 100`</li><li> `1 <= meetings.length <= 100,000`</li><li> `meetings[i].length == 2`</li><li> `0 <= start[i] < end[i] <= 500,000`</li><li> All the values of `start[i]` are **unique**.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def meetingRoomsIii(n, meetings):\n    ",
+      "solution_text": "<h2>Meeting Rooms III - Priority Queue Solution</h2><p>This problem requires simulating the meeting allocation process using priority queues to track available rooms and ongoing meetings.</p><h3>Algorithm:</h3><ul><li>Sort meetings by start time</li><li>Use a min-heap for available rooms (by room number)</li><li>Use a min-heap for busy rooms (by end time, then room number)</li><li>For each meeting: free up rooms that have finished, allocate to lowest numbered available room</li><li>Track meeting counts per room and return the room with most meetings</li></ul><h3>Time & Space Complexity:</h3><ul><li><strong>Time Complexity:</strong> O(M log N) where M is meetings and N is rooms</li><li><strong>Space Complexity:</strong> O(N) for priority queues</li></ul><h3>Key Insights:</h3><ul><li>Delayed meetings maintain original duration</li><li>Always choose lowest numbered available room</li><li>Priority queues efficiently manage room allocation</li></ul>",
+      "solution_code": "import heapq\n\ndef meetingRoomsIii(n, meetings):\n    if not meetings:\n        return 0\n    \n    # Sort meetings by start time\n    meetings.sort()\n    \n    # Available rooms (min-heap by room number)\n    available_rooms = list(range(n))\n    heapq.heapify(available_rooms)\n    \n    # Busy rooms (min-heap by end time, then room number)\n    busy_rooms = []\n    \n    # Count meetings per room\n    meeting_count = [0] * n\n    \n    for start, end in meetings:\n        # Free up rooms that have finished\n        while busy_rooms and busy_rooms[0][0] <= start:\n            _, room = heapq.heappop(busy_rooms)\n            heapq.heappush(available_rooms, room)\n        \n        if available_rooms:\n            # Assign to available room with lowest number\n            room = heapq.heappop(available_rooms)\n            meeting_count[room] += 1\n            heapq.heappush(busy_rooms, (end, room))\n        else:\n            # All rooms busy, delay meeting\n            earliest_end, room = heapq.heappop(busy_rooms)\n            meeting_count[room] += 1\n            # Delayed meeting keeps same duration\n            new_end = earliest_end + (end - start)\n            heapq.heappush(busy_rooms, (new_end, room))\n    \n    # Find room with maximum meetings (lowest number in case of tie)\n    max_meetings = max(meeting_count)\n    for i in range(n):\n        if meeting_count[i] == max_meetings:\n            return i\n    \n    return 0"
+    },
+    "javascript": {
+      "template": "function meetingRoomsIii(n, meetings) {\n  \n}",
+      "solution_text": "<h2>Meeting Rooms III - Priority Queue Solution</h2><p>This problem requires simulating the meeting allocation process using priority queues to track available rooms and ongoing meetings.</p><h3>Algorithm:</h3><ul><li>Sort meetings by start time</li><li>Use a min-heap for available rooms (by room number)</li><li>Use a min-heap for busy rooms (by end time, then room number)</li><li>For each meeting: free up rooms that have finished, allocate to lowest numbered available room</li><li>Track meeting counts per room and return the room with most meetings</li></ul><h3>Time & Space Complexity:</h3><ul><li><strong>Time Complexity:</strong> O(M log N) where M is meetings and N is rooms</li><li><strong>Space Complexity:</strong> O(N) for priority queues</li></ul><h3>Key Insights:</h3><ul><li>Delayed meetings maintain original duration</li><li>Always choose lowest numbered available room</li><li>Priority queues efficiently manage room allocation</li></ul>",
+      "solution_code": "function meetingRoomsIii(n, meetings) {\n    if (!meetings || meetings.length === 0) return 0;\n    \n    // Sort meetings by start time\n    meetings.sort((a, b) => a[0] - b[0]);\n    \n    // Available rooms (min-heap by room number)\n    const availableRooms = [];\n    for (let i = 0; i < n; i++) {\n        availableRooms.push(i);\n    }\n    \n    // Busy rooms (min-heap by end time, then room number)\n    const busyRooms = [];\n    \n    // Count meetings per room\n    const meetingCount = new Array(n).fill(0);\n    \n    // Helper functions for min-heap operations\n    const heapify = (arr, cmp) => {\n        for (let i = Math.floor(arr.length / 2) - 1; i >= 0; i--) {\n            heapifyDown(arr, i, cmp);\n        }\n    };\n    \n    const heapifyDown = (arr, idx, cmp) => {\n        const left = 2 * idx + 1;\n        const right = 2 * idx + 2;\n        let smallest = idx;\n        \n        if (left < arr.length && cmp(arr[left], arr[smallest])) {\n            smallest = left;\n        }\n        if (right < arr.length && cmp(arr[right], arr[smallest])) {\n            smallest = right;\n        }\n        \n        if (smallest !== idx) {\n            [arr[idx], arr[smallest]] = [arr[smallest], arr[idx]];\n            heapifyDown(arr, smallest, cmp);\n        }\n    };\n    \n    const heapPush = (arr, val, cmp) => {\n        arr.push(val);\n        let idx = arr.length - 1;\n        while (idx > 0) {\n            const parent = Math.floor((idx - 1) / 2);\n            if (!cmp(arr[idx], arr[parent])) break;\n            [arr[idx], arr[parent]] = [arr[parent], arr[idx]];\n            idx = parent;\n        }\n    };\n    \n    const heapPop = (arr, cmp) => {\n        if (arr.length === 0) return null;\n        const result = arr[0];\n        arr[0] = arr[arr.length - 1];\n        arr.pop();\n        if (arr.length > 0) {\n            heapifyDown(arr, 0, cmp);\n        }\n        return result;\n    };\n    \n    for (const [start, end] of meetings) {\n        // Free up rooms that have finished\n        while (busyRooms.length > 0 && busyRooms[0][0] <= start) {\n            const [, room] = heapPop(busyRooms, (a, b) => a[0] < b[0] || (a[0] === b[0] && a[1] < b[1]));\n            heapPush(availableRooms, room, (a, b) => a < b);\n        }\n        \n        if (availableRooms.length > 0) {\n            // Assign to available room with lowest number\n            const room = heapPop(availableRooms, (a, b) => a < b);\n            meetingCount[room]++;\n            heapPush(busyRooms, [end, room], (a, b) => a[0] < b[0] || (a[0] === b[0] && a[1] < b[1]));\n        } else {\n            // All rooms busy, delay meeting\n            const [earliestEnd, room] = heapPop(busyRooms, (a, b) => a[0] < b[0] || (a[0] === b[0] && a[1] < b[1]));\n            meetingCount[room]++;\n            // Delayed meeting keeps same duration\n            const newEnd = earliestEnd + (end - start);\n            heapPush(busyRooms, [newEnd, room], (a, b) => a[0] < b[0] || (a[0] === b[0] && a[1] < b[1]));\n        }\n    }\n    \n    // Find room with maximum meetings (lowest number in case of tie)\n    const maxMeetings = Math.max(...meetingCount);\n    for (let i = 0; i < n; i++) {\n        if (meetingCount[i] === maxMeetings) {\n            return i;\n        }\n    }\n    \n    return 0;\n}"
+    },
+    "typescript": {
+      "template": "function meetingRoomsIii(n: number, meetings: number[][]): number {\n  \n}",
+      "solution_text": "<h2>Meeting Rooms III - Priority Queue Solution</h2><p>This problem requires simulating the meeting allocation process using priority queues to track available rooms and ongoing meetings.</p><h3>Algorithm:</h3><ul><li>Sort meetings by start time</li><li>Use a min-heap for available rooms (by room number)</li><li>Use a min-heap for busy rooms (by end time, then room number)</li><li>For each meeting: free up rooms that have finished, allocate to lowest numbered available room</li><li>Track meeting counts per room and return the room with most meetings</li></ul><h3>Time & Space Complexity:</h3><ul><li><strong>Time Complexity:</strong> O(M log N) where M is meetings and N is rooms</li><li><strong>Space Complexity:</strong> O(N) for priority queues</li></ul><h3>Key Insights:</h3><ul><li>Delayed meetings maintain original duration</li><li>Always choose lowest numbered available room</li><li>Priority queues efficiently manage room allocation</li></ul>",
+      "solution_code": "function meetingRoomsIii(n: number, meetings: number[][]): number {\n    if (!meetings || meetings.length === 0) return 0;\n    \n    // Sort meetings by start time\n    meetings.sort((a, b) => a[0] - b[0]);\n    \n    // Available rooms (min-heap by room number)\n    const availableRooms: number[] = [];\n    for (let i = 0; i < n; i++) {\n        availableRooms.push(i);\n    }\n    \n    // Busy rooms (min-heap by end time, then room number)\n    const busyRooms: [number, number][] = [];\n    \n    // Count meetings per room\n    const meetingCount: number[] = new Array(n).fill(0);\n    \n    // Helper functions for min-heap operations\n    const heapify = <T>(arr: T[], cmp: (a: T, b: T) => boolean) => {\n        for (let i = Math.floor(arr.length / 2) - 1; i >= 0; i--) {\n            heapifyDown(arr, i, cmp);\n        }\n    };\n    \n    const heapifyDown = <T>(arr: T[], idx: number, cmp: (a: T, b: T) => boolean) => {\n        const left = 2 * idx + 1;\n        const right = 2 * idx + 2;\n        let smallest = idx;\n        \n        if (left < arr.length && cmp(arr[left], arr[smallest])) {\n            smallest = left;\n        }\n        if (right < arr.length && cmp(arr[right], arr[smallest])) {\n            smallest = right;\n        }\n        \n        if (smallest !== idx) {\n            [arr[idx], arr[smallest]] = [arr[smallest], arr[idx]];\n            heapifyDown(arr, smallest, cmp);\n        }\n    };\n    \n    const heapPush = <T>(arr: T[], val: T, cmp: (a: T, b: T) => boolean) => {\n        arr.push(val);\n        let idx = arr.length - 1;\n        while (idx > 0) {\n            const parent = Math.floor((idx - 1) / 2);\n            if (!cmp(arr[idx], arr[parent])) break;\n            [arr[idx], arr[parent]] = [arr[parent], arr[idx]];\n            idx = parent;\n        }\n    };\n    \n    const heapPop = <T>(arr: T[], cmp: (a: T, b: T) => boolean): T | null => {\n        if (arr.length === 0) return null;\n        const result = arr[0];\n        arr[0] = arr[arr.length - 1];\n        arr.pop();\n        if (arr.length > 0) {\n            heapifyDown(arr, 0, cmp);\n        }\n        return result;\n    };\n    \n    for (const [start, end] of meetings) {\n        // Free up rooms that have finished\n        while (busyRooms.length > 0 && busyRooms[0][0] <= start) {\n            const room = heapPop(busyRooms, (a, b) => a[0] < b[0] || (a[0] === b[0] && a[1] < b[1]))![1];\n            heapPush(availableRooms, room, (a, b) => a < b);\n        }\n        \n        if (availableRooms.length > 0) {\n            // Assign to available room with lowest number\n            const room = heapPop(availableRooms, (a, b) => a < b)!;\n            meetingCount[room]++;\n            heapPush(busyRooms, [end, room], (a, b) => a[0] < b[0] || (a[0] === b[0] && a[1] < b[1]));\n        } else {\n            // All rooms busy, delay meeting\n            const [earliestEnd, room] = heapPop(busyRooms, (a, b) => a[0] < b[0] || (a[0] === b[0] && a[1] < b[1]))!;\n            meetingCount[room]++;\n            // Delayed meeting keeps same duration\n            const newEnd = earliestEnd + (end - start);\n            heapPush(busyRooms, [newEnd, room], (a, b) => a[0] < b[0] || (a[0] === b[0] && a[1] < b[1]));\n        }\n    }\n    \n    // Find room with maximum meetings (lowest number in case of tie)\n    const maxMeetings = Math.max(...meetingCount);\n    for (let i = 0; i < n; i++) {\n        if (meetingCount[i] === maxMeetings) {\n            return i;\n        }\n    }\n    \n    return 0;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int meetingRoomsIii(int n, int[][] meetings) {\n        \n    }\n}",
+      "solution_text": "<h2>Meeting Rooms III - Priority Queue Solution</h2><p>This problem requires simulating the meeting allocation process using priority queues to track available rooms and ongoing meetings.</p><h3>Algorithm:</h3><ul><li>Sort meetings by start time</li><li>Use a min-heap for available rooms (by room number)</li><li>Use a min-heap for busy rooms (by end time, then room number)</li><li>For each meeting: free up rooms that have finished, allocate to lowest numbered available room</li><li>Track meeting counts per room and return the room with most meetings</li></ul><h3>Time & Space Complexity:</h3><ul><li><strong>Time Complexity:</strong> O(M log N) where M is meetings and N is rooms</li><li><strong>Space Complexity:</strong> O(N) for priority queues</li></ul><h3>Key Insights:</h3><ul><li>Delayed meetings maintain original duration</li><li>Always choose lowest numbered available room</li><li>Priority queues efficiently manage room allocation</li></ul>",
+      "solution_code": "import java.util.*;\n\nclass Solution {\n    public int meetingRoomsIii(int n, int[][] meetings) {\n        if (meetings == null || meetings.length == 0) return 0;\n        \n        // Sort meetings by start time\n        Arrays.sort(meetings, (a, b) -> Integer.compare(a[0], b[0]));\n        \n        // Available rooms (min-heap by room number)\n        PriorityQueue<Integer> availableRooms = new PriorityQueue<>();\n        for (int i = 0; i < n; i++) {\n            availableRooms.offer(i);\n        }\n        \n        // Busy rooms (min-heap by end time, then room number)\n        PriorityQueue<int[]> busyRooms = new PriorityQueue<>((a, b) -> {\n            if (a[0] != b[0]) return Integer.compare(a[0], b[0]);\n            return Integer.compare(a[1], b[1]);\n        });\n        \n        // Count meetings per room\n        int[] meetingCount = new int[n];\n        \n        for (int[] meeting : meetings) {\n            int start = meeting[0], end = meeting[1];\n            \n            // Free up rooms that have finished\n            while (!busyRooms.isEmpty() && busyRooms.peek()[0] <= start) {\n                int room = busyRooms.poll()[1];\n                availableRooms.offer(room);\n            }\n            \n            if (!availableRooms.isEmpty()) {\n                // Assign to available room with lowest number\n                int room = availableRooms.poll();\n                meetingCount[room]++;\n                busyRooms.offer(new int[]{end, room});\n            } else {\n                // All rooms busy, delay meeting\n                int[] earliest = busyRooms.poll();\n                int earliestEnd = earliest[0], room = earliest[1];\n                meetingCount[room]++;\n                // Delayed meeting keeps same duration\n                int newEnd = earliestEnd + (end - start);\n                busyRooms.offer(new int[]{newEnd, room});\n            }\n        }\n        \n        // Find room with maximum meetings (lowest number in case of tie)\n        int maxMeetings = Arrays.stream(meetingCount).max().getAsInt();\n        for (int i = 0; i < n; i++) {\n            if (meetingCount[i] == maxMeetings) {\n                return i;\n            }\n        }\n        \n        return 0;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "n": 2,
+        "meetings": [[1, 10], [2, 10], [3, 10], [4, 10]]
+      },
+      "output": 0
+    },
+    {
+      "id": 2,
+      "input": {
+        "n": 3,
+        "meetings": [[1, 20], [2, 10], [3, 5], [6, 8], [4, 9]]
+      },
+      "output": 1
+    },
+    {
+      "id": 3,
+      "input": {
+        "n": 1,
+        "meetings": [[1, 5], [2, 7], [3, 6]]
+      },
+      "output": 0
+    },
+    {
+      "id": 4,
+      "input": {
+        "n": 4,
+        "meetings": [[18, 19], [3, 12], [17, 19], [2, 13], [7, 10]]
+      },
+      "output": 0
+    },
+    {
+      "id": 5,
+      "input": {
+        "n": 2,
+        "meetings": [[0, 10], [1, 5], [2, 7], [3, 4]]
+      },
+      "output": 1
+    },
+    {
+      "id": 6,
+      "input": {
+        "n": 3,
+        "meetings": [[1, 5], [2, 3], [3, 4], [4, 6], [5, 7]]
+      },
+      "output": 0
+    },
+    {
+      "id": 7,
+      "input": {
+        "n": 1,
+        "meetings": [[0, 1]]
+      },
+      "output": 0
+    },
+    {
+      "id": 8,
+      "input": {
+        "n": 5,
+        "meetings": [[1, 3], [2, 4], [3, 6], [4, 7], [5, 8], [6, 10]]
+      },
+      "output": 1
+    },
+    {
+      "id": 9,
+      "input": {
+        "n": 2,
+        "meetings": [[19, 20], [14, 15], [13, 14], [11, 20]]
+      },
+      "output": 1
+    },
+    {
+      "id": 10,
+      "input": {
+        "n": 3,
+        "meetings": [[0, 10], [1, 2], [12, 14], [13, 15]]
+      },
+      "output": 0
+    }
+  ]
+}

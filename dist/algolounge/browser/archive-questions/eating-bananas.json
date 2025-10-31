@@ -1,0 +1,132 @@
+{
+  "filename": "eating-bananas",
+  "title": "Koko Eating Bananas",
+  "keywords": [
+    "koko",
+    "eating",
+    "bananas",
+    "leetcode",
+    "875",
+    "given",
+    "integer",
+    "array",
+    "piles",
+    "where"
+  ],
+  "description": "<h2>Koko Eating Bananas</h2><p>Leetcode 875. Koko Eating Bananas</p><p></p><p>You are given an integer array `piles` where `piles[i]` is the number of bananas in the `ith` pile. You are also given an integer `h`, which represents the number of hours you have to eat all the bananas.</p><p></p><p>You may decide your bananas-per-hour eating rate of `k`. Each hour, you may choose a pile of bananas and eats `k` bananas from that pile. If the pile has less than `k` bananas, you may finish eating the pile but you can not eat from another pile in the same hour.</p><p></p><p>Return the minimum integer `k` such that you can eat all the bananas within `h` hours.</p><h3>Examples:</h3><ul><li>Input: piles = [1,4,3,2], h = 9<br><br>Output: 2<br>With an eating rate of 2, you can eat the bananas in 6 hours. With an eating rate of 1, you would need 10 hours to eat all the bananas (which exceeds h=9), thus the minimum eating rate is 2.</li><li>Input: piles = [25,10,23,4], h = 4<br><br>Output: 25</li></ul><h3>Constraints:</h3><ul><li> `1 <= piles.length <= 1,000`</li><li> `piles.length <= h <= 1,000,000`</li><li> `1 <= piles[i] <= 1,000,000,000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def kokoEatingBananas(piles, h):\n    ",
+      "solution_text": "<p><strong>Binary Search Solution for Koko Eating Bananas:</strong></p><p>Find minimum eating rate using binary search on answer space.</p><p><strong>Algorithm:</strong></p><ol><li>Binary search on eating rate k from 1 to max(piles)</li><li>For each k, calculate total hours needed</li><li>If hours ≤ h, try smaller k (move right boundary)</li><li>If hours > h, need larger k (move left boundary)</li></ol><p><strong>Time Complexity:</strong> O(n log m) where n = len(piles), m = max(piles)</p><p><strong>Space Complexity:</strong> O(1) - only use constant extra space</p>",
+      "solution_code": "def kokoEatingBananas(piles, h):\n    import math\n    \n    def hours_needed(k):\n        # Calculate total hours needed with eating rate k\n        total_hours = 0\n        for pile in piles:\n            total_hours += math.ceil(pile / k)\n        return total_hours\n    \n    # Binary search on eating rate\n    left, right = 1, max(piles)\n    \n    while left < right:\n        mid = (left + right) // 2\n        \n        if hours_needed(mid) <= h:\n            # Can finish in time, try smaller rate\n            right = mid\n        else:\n            # Need higher rate\n            left = mid + 1\n    \n    return left"
+    },
+    "javascript": {
+      "template": "function kokoEatingBananas(piles, h) {\n  \n}",
+      "solution_text": "<p><strong>Binary Search Solution for Koko Eating Bananas:</strong></p><p>Find minimum eating rate using binary search on answer space.</p><p><strong>Algorithm:</strong></p><ol><li>Binary search on eating rate k from 1 to max(piles)</li><li>For each k, calculate total hours needed</li><li>If hours ≤ h, try smaller k (move right boundary)</li><li>If hours > h, need larger k (move left boundary)</li></ol><p><strong>Time Complexity:</strong> O(n log m) where n = len(piles), m = max(piles)</p><p><strong>Space Complexity:</strong> O(1) - only use constant extra space</p>",
+      "solution_code": "function kokoEatingBananas(piles, h) {\n    function hoursNeeded(k) {\n        // Calculate total hours needed with eating rate k\n        let totalHours = 0;\n        for (const pile of piles) {\n            totalHours += Math.ceil(pile / k);\n        }\n        return totalHours;\n    }\n    \n    // Binary search on eating rate\n    let left = 1;\n    let right = Math.max(...piles);\n    \n    while (left < right) {\n        const mid = Math.floor((left + right) / 2);\n        \n        if (hoursNeeded(mid) <= h) {\n            // Can finish in time, try smaller rate\n            right = mid;\n        } else {\n            // Need higher rate\n            left = mid + 1;\n        }\n    }\n    \n    return left;\n}"
+    },
+    "typescript": {
+      "template": "function kokoEatingBananas(piles: number[], h: number): number {\n  \n}",
+      "solution_text": "<p><strong>Binary Search Solution for Koko Eating Bananas:</strong></p><p>Find minimum eating rate using binary search on answer space.</p><p><strong>Algorithm:</strong></p><ol><li>Binary search on eating rate k from 1 to max(piles)</li><li>For each k, calculate total hours needed</li><li>If hours ≤ h, try smaller k (move right boundary)</li><li>If hours > h, need larger k (move left boundary)</li></ol><p><strong>Time Complexity:</strong> O(n log m) where n = len(piles), m = max(piles)</p><p><strong>Space Complexity:</strong> O(1) - only use constant extra space</p>",
+      "solution_code": "function kokoEatingBananas(piles: number[], h: number): number {\n    function hoursNeeded(k: number): number {\n        // Calculate total hours needed with eating rate k\n        let totalHours = 0;\n        for (const pile of piles) {\n            totalHours += Math.ceil(pile / k);\n        }\n        return totalHours;\n    }\n    \n    // Binary search on eating rate\n    let left = 1;\n    let right = Math.max(...piles);\n    \n    while (left < right) {\n        const mid = Math.floor((left + right) / 2);\n        \n        if (hoursNeeded(mid) <= h) {\n            // Can finish in time, try smaller rate\n            right = mid;\n        } else {\n            // Need higher rate\n            left = mid + 1;\n        }\n    }\n    \n    return left;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int kokoEatingBananas(int[] piles, int h) {\n        \n    }\n}",
+      "solution_text": "<p><strong>Binary Search Solution for Koko Eating Bananas:</strong></p><p>Find minimum eating rate using binary search on answer space.</p><p><strong>Algorithm:</strong></p><ol><li>Binary search on eating rate k from 1 to max(piles)</li><li>For each k, calculate total hours needed</li><li>If hours ≤ h, try smaller k (move right boundary)</li><li>If hours > h, need larger k (move left boundary)</li></ol><p><strong>Time Complexity:</strong> O(n log m) where n = len(piles), m = max(piles)</p><p><strong>Space Complexity:</strong> O(1) - only use constant extra space</p>",
+      "solution_code": "class Solution {\n    private int hoursNeeded(int[] piles, int k) {\n        // Calculate total hours needed with eating rate k\n        int totalHours = 0;\n        for (int pile : piles) {\n            totalHours += (int) Math.ceil((double) pile / k);\n        }\n        return totalHours;\n    }\n    \n    public int kokoEatingBananas(int[] piles, int h) {\n        // Binary search on eating rate\n        int left = 1;\n        int right = 0;\n        \n        // Find maximum pile size for right boundary\n        for (int pile : piles) {\n            right = Math.max(right, pile);\n        }\n        \n        while (left < right) {\n            int mid = left + (right - left) / 2;\n            \n            if (hoursNeeded(piles, mid) <= h) {\n                // Can finish in time, try smaller rate\n                right = mid;\n            } else {\n                // Need higher rate\n                left = mid + 1;\n            }\n        }\n        \n        return left;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "piles": [
+          1,
+          4,
+          3,
+          2
+        ],
+        "h": 9
+      },
+      "output": 2
+    },
+    {
+      "id": 2,
+      "input": {
+        "piles": [
+          25,
+          10,
+          23,
+          4
+        ],
+        "h": 4
+      },
+      "output": 25
+    },
+    {
+      "id": 3,
+      "input": {
+        "piles": [3, 6, 7, 11],
+        "h": 8
+      },
+      "output": 4
+    },
+    {
+      "id": 4,
+      "input": {
+        "piles": [30, 11, 23, 4, 20],
+        "h": 5
+      },
+      "output": 30
+    },
+    {
+      "id": 5,
+      "input": {
+        "piles": [30, 11, 23, 4, 20],
+        "h": 6
+      },
+      "output": 23
+    },
+    {
+      "id": 6,
+      "input": {
+        "piles": [1000000000],
+        "h": 2
+      },
+      "output": 500000000
+    },
+    {
+      "id": 7,
+      "input": {
+        "piles": [1, 1, 1, 1],
+        "h": 4
+      },
+      "output": 1
+    },
+    {
+      "id": 8,
+      "input": {
+        "piles": [5, 4, 3, 2, 1],
+        "h": 10
+      },
+      "output": 2
+    },
+    {
+      "id": 9,
+      "input": {
+        "piles": [100, 50, 25],
+        "h": 6
+      },
+      "output": 50
+    },
+    {
+      "id": 10,
+      "input": {
+        "piles": [2, 2],
+        "h": 1
+      },
+      "output": 4
+    }
+  ]
+}

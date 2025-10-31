@@ -1,0 +1,98 @@
+{
+  "index": 5,
+  "filename": "alice-typing-problem",
+  "title": "Alice Typing Problem",
+  "keywords": [
+    "string",
+    "counting",
+    "grouping",
+    "consecutive",
+    "medium"
+  ],
+  "description": "<h2>Alice Typing Problem</h2><p>Alice may have held a key too long at most once while typing. Count the number of possible original strings she could have intended.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> \"aaa\"<br><strong>Output:</strong> 3<br><strong>Explanation:</strong> Could have intended \"a\", \"aa\", or \"aaa\"</li><li><strong>Input:</strong> \"abc\"<br><strong>Output:</strong> 1<br><strong>Explanation:</strong> No consecutive duplicates, so only \"abc\" is possible</li><li><strong>Input:</strong> \"aaaabb\"<br><strong>Output:</strong> 5<br><strong>Explanation:</strong> One group can shrink (first group: 3 options, second group: 1 option) or no mistake</li></ul><h3>Constraints:</h3><ul><li>At most one typing mistake occurred</li><li>Groups of identical chars indicate possible mistakes</li></ul>",
+  "entry_function": "countPossibleStrings",
+  "template": "def countPossibleStrings(typed):\n  ",
+  "solution_text": "<h3>Alice Typing Problem</h3><p><strong>Algorithm:</strong></p><ol><li>Walk through the string and measure the length of each run of identical characters</li><li>A run of length <code>L</code> can shrink to any length from 1 to <code>L</code>, but at most one run can shrink overall</li><li>Add up <code>(L - 1)</code> for every run and include one extra for the \"no mistake\" possibility</li></ol><p><strong>Time Complexity:</strong> O(n) - iterate through string once</p><p><strong>Space Complexity:</strong> O(1) - constant extra space</p><p><strong>Key Insights:</strong></p><ul><li>Each run of consecutive identical characters contributes (L - 1) possible mistakes (reducing by 1 to L characters)</li><li>Always include the \"no mistake\" case (1 possibility)</li><li>Single-character runs contribute 0 extra possibilities</li><li>Use run-length encoding technique to identify groups</li></ul>",
+  "solution_code": "def countPossibleStrings(typed):\n    if not typed:\n        return 1\n\n    total = 1  # no mistake case\n    current_len = 1\n\n    for i in range(1, len(typed)):\n        if typed[i] == typed[i - 1]:\n            current_len += 1\n        else:\n            total += current_len - 1\n            current_len = 1\n\n    total += current_len - 1\n    return total",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for countPossibleStrings function\"\"\"\n    return (test_case_input['typed'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the count result\"\"\"\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "typed": "aaa"
+      },
+      "output": 3
+    },
+    {
+      "id": 2,
+      "input": {
+        "typed": "abc"
+      },
+      "output": 1
+    },
+    {
+      "id": 3,
+      "input": {
+        "typed": "aabbcc"
+      },
+      "output": 4
+    },
+    {
+      "id": 4,
+      "input": {
+        "typed": "aaaa"
+      },
+      "output": 4
+    },
+    {
+      "id": 5,
+      "input": {
+        "typed": "abcccde"
+      },
+      "output": 3
+    },
+    {
+      "id": 6,
+      "input": {
+        "typed": "aaaabbbc"
+      },
+      "output": 6
+    },
+    {
+      "id": 7,
+      "input": {
+        "typed": "a"
+      },
+      "output": 1
+    },
+    {
+      "id": 8,
+      "input": {
+        "typed": "aabbccdd"
+      },
+      "output": 5
+    },
+    {
+      "id": 9,
+      "input": {
+        "typed": "zzzzz"
+      },
+      "output": 5
+    },
+    {
+      "id": 10,
+      "input": {
+        "typed": "abcdef"
+      },
+      "output": 1
+    },
+    {
+      "id": 11,
+      "input": {
+        "typed": "aaaabb"
+      },
+      "output": 5
+    }
+  ]
+}

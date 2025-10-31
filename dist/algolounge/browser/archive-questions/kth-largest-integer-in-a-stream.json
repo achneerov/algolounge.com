@@ -1,0 +1,112 @@
+{
+  "filename": "kth-largest-integer-in-a-stream",
+  "title": "Kth Largest Element in a Stream",
+  "keywords": [
+    "kth",
+    "largest",
+    "element",
+    "stream",
+    "leetcode",
+    "703",
+    "design",
+    "class",
+    "find",
+    "integer"
+  ],
+  "description": "<h2>Kth Largest Element in a Stream</h2><p>Leetcode 703. Kth Largest Element In a Stream</p><p></p><p>Design a class to find the `kth` largest integer in a stream of values, including duplicates. E.g. the `2nd` largest from [1, 2, 3, 3] is `3`. The stream is not necessarily sorted.</p><p></p><p>Implement the following methods:</p><p>* `constructor(int k, int[] nums)` Initializes the object given an integer `k` and the stream of integers `nums`.</p><p>* `int add(int val)` Adds the integer `val` to the stream and returns the `kth` largest integer in the stream.</p><h3>Examples:</h3><ul><li>Input:<br>[\"KthLargest\", [3, [1, 2, 3, 3]], \"add\", [3], \"add\", [5], \"add\", [6], \"add\", [7], \"add\", [8]]<br><br>Output:<br>[null, 3, 3, 3, 5, 6]<br><br>Explanation:<br>KthLargest kthLargest = new KthLargest(3, [1, 2, 3, 3]);<br>kthLargest.add(3);   // return 3<br>kthLargest.add(5);   // return 3<br>kthLargest.add(6);   // return 3<br>kthLargest.add(7);   // return 5<br>kthLargest.add(8);   // return 6</li></ul><h3>Constraints:</h3><ul><li> `1 <= k <= 1000`</li><li> `0 <= nums.length <= 1000`</li><li> `-1000 <= nums[i] <= 1000`</li><li> `-1000 <= val <= 1000`</li><li> There will always be at least `k` integers in the stream when you search for the `kth` integer.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def kthLargestElementInAStream(input):\n    ",
+      "solution_text": "<p><strong>Kth Largest Element in Stream - Min Heap Design:</strong></p><p>Design a class using min heap to efficiently track kth largest element.</p><p><strong>Algorithm:</strong></p><ol><li>Use min heap to maintain k largest elements</li><li>Initialize heap with first k elements from initial array</li><li>For add operations, compare with heap top and replace if larger</li><li>Root of heap is always the kth largest element</li></ol><p><strong>Time Complexity:</strong> O(log k) per add operation</p><p><strong>Space Complexity:</strong> O(k) - heap storage</p>",
+      "solution_code": "def kthLargestElementInAStream(input):\n    import heapq\n    \n    operations = input\n    result = []\n    heap = None\n    k = None\n    \n    for i, op in enumerate(operations):\n        if isinstance(op, str) and op == \"KthLargest\":\n            # Constructor call\n            k, nums = operations[i + 1]\n            heap = []\n            for num in nums:\n                if len(heap) < k:\n                    heapq.heappush(heap, num)\n                elif num > heap[0]:\n                    heapq.heapreplace(heap, num)\n            result.append(None)\n        elif isinstance(op, str) and op == \"add\":\n            # Add operation\n            val = operations[i + 1][0]\n            if len(heap) < k:\n                heapq.heappush(heap, val)\n            elif val > heap[0]:\n                heapq.heapreplace(heap, val)\n            result.append(heap[0])\n    \n    return result"
+    },
+    "javascript": {
+      "template": "function kthLargestElementInAStream(input) {\n  \n}",
+      "solution_text": "<p><strong>Kth Largest Element in Stream - Min Heap Design:</strong></p><p>Design a class using min heap to efficiently track kth largest element.</p><p><strong>Algorithm:</strong></p><ol><li>Use min heap to maintain k largest elements</li><li>Initialize heap with first k elements from initial array</li><li>For add operations, compare with heap top and replace if larger</li><li>Root of heap is always the kth largest element</li></ol><p><strong>Time Complexity:</strong> O(log k) per add operation</p><p><strong>Space Complexity:</strong> O(k) - heap storage</p>",
+      "solution_code": "function kthLargestElementInAStream(input) {\n    class MinHeap {\n        constructor() { this.heap = []; }\n        push(val) {\n            this.heap.push(val);\n            this.bubbleUp(this.heap.length - 1);\n        }\n        pop() {\n            if (this.heap.length === 0) return null;\n            if (this.heap.length === 1) return this.heap.pop();\n            const top = this.heap[0];\n            this.heap[0] = this.heap.pop();\n            this.bubbleDown(0);\n            return top;\n        }\n        bubbleUp(idx) {\n            if (idx === 0) return;\n            const parentIdx = Math.floor((idx - 1) / 2);\n            if (this.heap[parentIdx] > this.heap[idx]) {\n                [this.heap[parentIdx], this.heap[idx]] = [this.heap[idx], this.heap[parentIdx]];\n                this.bubbleUp(parentIdx);\n            }\n        }\n        bubbleDown(idx) {\n            const leftIdx = 2 * idx + 1;\n            const rightIdx = 2 * idx + 2;\n            let smallest = idx;\n            if (leftIdx < this.heap.length && this.heap[leftIdx] < this.heap[smallest]) {\n                smallest = leftIdx;\n            }\n            if (rightIdx < this.heap.length && this.heap[rightIdx] < this.heap[smallest]) {\n                smallest = rightIdx;\n            }\n            if (smallest !== idx) {\n                [this.heap[smallest], this.heap[idx]] = [this.heap[idx], this.heap[smallest]];\n                this.bubbleDown(smallest);\n            }\n        }\n        size() { return this.heap.length; }\n        peek() { return this.heap.length > 0 ? this.heap[0] : null; }\n    }\n    \n    const operations = input;\n    const result = [];\n    let heap = null;\n    let k = null;\n    \n    for (let i = 0; i < operations.length; i++) {\n        const op = operations[i];\n        if (typeof op === 'string' && op === 'KthLargest') {\n            [k, nums] = operations[i + 1];\n            heap = new MinHeap();\n            for (const num of nums) {\n                if (heap.size() < k) {\n                    heap.push(num);\n                } else if (num > heap.peek()) {\n                    heap.pop();\n                    heap.push(num);\n                }\n            }\n            result.push(null);\n        } else if (typeof op === 'string' && op === 'add') {\n            const val = operations[i + 1][0];\n            if (heap.size() < k) {\n                heap.push(val);\n            } else if (val > heap.peek()) {\n                heap.pop();\n                heap.push(val);\n            }\n            result.push(heap.peek());\n        }\n    }\n    \n    return result;\n}"
+    },
+    "typescript": {
+      "template": "function kthLargestElementInAStream(input: any[]): any[] {\n  \n}",
+      "solution_text": "<p><strong>Kth Largest Element in Stream - Min Heap Design:</strong></p><p>Design a class using min heap to efficiently track kth largest element.</p><p><strong>Algorithm:</strong></p><ol><li>Use min heap to maintain k largest elements</li><li>Initialize heap with first k elements from initial array</li><li>For add operations, compare with heap top and replace if larger</li><li>Root of heap is always the kth largest element</li></ol><p><strong>Time Complexity:</strong> O(log k) per add operation</p><p><strong>Space Complexity:</strong> O(k) - heap storage</p>",
+      "solution_code": "function kthLargestElementInAStream(input: any[]): any[] {\n    class MinHeap {\n        private heap: number[] = [];\n        \n        push(val: number): void {\n            this.heap.push(val);\n            this.bubbleUp(this.heap.length - 1);\n        }\n        \n        pop(): number | null {\n            if (this.heap.length === 0) return null;\n            if (this.heap.length === 1) return this.heap.pop()!;\n            const top = this.heap[0];\n            this.heap[0] = this.heap.pop()!;\n            this.bubbleDown(0);\n            return top;\n        }\n        \n        private bubbleUp(idx: number): void {\n            if (idx === 0) return;\n            const parentIdx = Math.floor((idx - 1) / 2);\n            if (this.heap[parentIdx] > this.heap[idx]) {\n                [this.heap[parentIdx], this.heap[idx]] = [this.heap[idx], this.heap[parentIdx]];\n                this.bubbleUp(parentIdx);\n            }\n        }\n        \n        private bubbleDown(idx: number): void {\n            const leftIdx = 2 * idx + 1;\n            const rightIdx = 2 * idx + 2;\n            let smallest = idx;\n            if (leftIdx < this.heap.length && this.heap[leftIdx] < this.heap[smallest]) {\n                smallest = leftIdx;\n            }\n            if (rightIdx < this.heap.length && this.heap[rightIdx] < this.heap[smallest]) {\n                smallest = rightIdx;\n            }\n            if (smallest !== idx) {\n                [this.heap[smallest], this.heap[idx]] = [this.heap[idx], this.heap[smallest]];\n                this.bubbleDown(smallest);\n            }\n        }\n        \n        size(): number { return this.heap.length; }\n        peek(): number | null { return this.heap.length > 0 ? this.heap[0] : null; }\n    }\n    \n    const operations = input;\n    const result: any[] = [];\n    let heap: MinHeap | null = null;\n    let k: number = 0;\n    \n    for (let i = 0; i < operations.length; i++) {\n        const op = operations[i];\n        if (typeof op === 'string' && op === 'KthLargest') {\n            [k, nums] = operations[i + 1];\n            heap = new MinHeap();\n            for (const num of nums) {\n                if (heap.size() < k) {\n                    heap.push(num);\n                } else if (num > heap.peek()!) {\n                    heap.pop();\n                    heap.push(num);\n                }\n            }\n            result.push(null);\n        } else if (typeof op === 'string' && op === 'add') {\n            const val = operations[i + 1][0];\n            if (heap!.size() < k) {\n                heap!.push(val);\n            } else if (val > heap!.peek()!) {\n                heap!.pop();\n                heap!.push(val);\n            }\n            result.push(heap!.peek());\n        }\n    }\n    \n    return result;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public List<Integer> kthLargestElementInAStream(List<Object> input) {\n        \n    }\n}",
+      "solution_text": "<p><strong>Kth Largest Element in Stream - Min Heap Design:</strong></p><p>Design a class using min heap to efficiently track kth largest element.</p><p><strong>Algorithm:</strong></p><ol><li>Use min heap to maintain k largest elements</li><li>Initialize heap with first k elements from initial array</li><li>For add operations, compare with heap top and replace if larger</li><li>Root of heap is always the kth largest element</li></ol><p><strong>Time Complexity:</strong> O(log k) per add operation</p><p><strong>Space Complexity:</strong> O(k) - heap storage</p>",
+      "solution_code": "class Solution {\n    public List<Integer> kthLargestElementInAStream(List<Object> input) {\n        List<Integer> result = new ArrayList<>();\n        PriorityQueue<Integer> heap = null;\n        int k = 0;\n        \n        for (int i = 0; i < input.size(); i++) {\n            Object op = input.get(i);\n            if (op instanceof String && op.equals(\"KthLargest\")) {\n                // Constructor call\n                List<Object> params = (List<Object>) input.get(i + 1);\n                k = (Integer) params.get(0);\n                int[] nums = (int[]) params.get(1);\n                heap = new PriorityQueue<>();\n                \n                for (int num : nums) {\n                    if (heap.size() < k) {\n                        heap.offer(num);\n                    } else if (num > heap.peek()) {\n                        heap.poll();\n                        heap.offer(num);\n                    }\n                }\n                result.add(null);\n            } else if (op instanceof String && op.equals(\"add\")) {\n                // Add operation\n                List<Object> params = (List<Object>) input.get(i + 1);\n                int val = (Integer) params.get(0);\n                \n                if (heap.size() < k) {\n                    heap.offer(val);\n                } else if (val > heap.peek()) {\n                    heap.poll();\n                    heap.offer(val);\n                }\n                result.add(heap.peek());\n            }\n        }\n        \n        return result;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "input": [["KthLargest", [3, [1, 2, 3, 3]]], ["add", [3]], ["add", [5]], ["add", [6]], ["add", [7]], ["add", [8]]]
+      },
+      "output": [null, 3, 3, 3, 5, 6]
+    },
+    {
+      "id": 2,
+      "input": {
+        "input": [["KthLargest", [1, [1]]], ["add", [2]], ["add", [3]], ["add", [4]]]
+      },
+      "output": [null, 2, 3, 4]
+    },
+    {
+      "id": 3,
+      "input": {
+        "input": [["KthLargest", [2, [0]]], ["add", [-1]], ["add", [1]], ["add", [-2]], ["add", [-4]], ["add", [3]]]
+      },
+      "output": [null, -1, 0, 0, 0, 1]
+    },
+    {
+      "id": 4,
+      "input": {
+        "input": [["KthLargest", [3, [5, -1]]], ["add", [2]], ["add", [1]], ["add", [-1]], ["add", [3]], ["add", [4]]]
+      },
+      "output": [null, -1, 1, 1, 2, 3]
+    },
+    {
+      "id": 5,
+      "input": {
+        "input": [["KthLargest", [4, [7, 7, 7, 7, 8, 3, 4]]], ["add", [2]], ["add", [10]], ["add", [9]], ["add", [9]]]
+      },
+      "output": [null, 7, 7, 7, 8]
+    },
+    {
+      "id": 6,
+      "input": {
+        "input": [["KthLargest", [1, []]], ["add", [3]], ["add", [5]], ["add", [10]], ["add", [9]], ["add", [4]]]
+      },
+      "output": [null, 3, 5, 10, 10, 10]
+    },
+    {
+      "id": 7,
+      "input": {
+        "input": [["KthLargest", [2, [1, 2]]], ["add", [3]], ["add", [4]], ["add", [5]]]
+      },
+      "output": [null, 2, 3, 4]
+    },
+    {
+      "id": 8,
+      "input": {
+        "input": [["KthLargest", [5, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]]], ["add", [11]], ["add", [12]]]
+      },
+      "output": [null, 7, 8]
+    },
+    {
+      "id": 9,
+      "input": {
+        "input": [["KthLargest", [3, [1, 1, 1, 1]]], ["add", [2]], ["add", [2]], ["add", [2]]]
+      },
+      "output": [null, 1, 2, 2]
+    },
+    {
+      "id": 10,
+      "input": {
+        "input": [["KthLargest", [6, [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]]], ["add", [15]], ["add", [14]], ["add", [13]]]
+      },
+      "output": [null, 6, 7, 8]
+    }
+  ]
+}

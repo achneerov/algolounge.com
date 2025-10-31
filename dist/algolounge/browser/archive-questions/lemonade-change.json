@@ -1,0 +1,112 @@
+{
+  "filename": "lemonade-change",
+  "title": "Lemonade Change",
+  "keywords": [
+    "lemonade",
+    "change",
+    "leetcode",
+    "860",
+    "stand",
+    "each",
+    "costs",
+    "customers",
+    "standing",
+    "queue"
+  ],
+  "description": "<h2>Lemonade Change</h2><p>Leetcode 860. Lemonade Change</p><p></p><p>At a lemonade stand, each lemonade costs `$5`. Customers are standing in a queue to buy from you and order one at a time (in the order specified by bills). Each customer will only buy one lemonade and pay with either a `$5`, `$10`, or `$20` bill. You must provide the correct change to each customer so that the net transaction is that the customer pays `$5`.</p><p></p><p>Note that you do not have any change in hand at first.</p><p></p><p>You are given an integer array `bills` where `bills[i]` is the bill the `ith` customer pays, return `true` if you can provide every customer with the correct change, or `false` otherwise.</p><h3>Examples:</h3><ul><li>Input: bills = [5,10,5,5,20]<br><br>Output: true<br>From first customer, we collect one `$5` bill.\nFrom second customer, we collect `$10` bill and give back `$5` bill.\nFrom third and fourth customers, we collect two `$5` bills.\nFrom fifth customer, we collect `$20` bill and give back one `$10` bill and `$5` bill.</li><li>Input: bills = [5,20,10,5]<br><br>Output: false</li></ul><h3>Constraints:</h3><ul><li> `1 <= bills.length <= 100,000`</li><li> `bills[i]` is either `5`, `10`, or `20`.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def lemonadeChange(bills):\n    ",
+      "solution_text": "<h3>Lemonade Change - Greedy Algorithm</h3>\n\n<p><strong>Algorithm:</strong></p>\n<ol>\n<li>Keep count of $5 and $10 bills</li>\n<li>For $5 bill: just add to count</li>\n<li>For $10 bill: need one $5 as change</li>\n<li>For $20 bill: prefer giving one $10 + one $5, otherwise three $5</li>\n</ol>\n\n<p><strong>Time Complexity:</strong> O(n) - single pass through bills</p>\n<p><strong>Space Complexity:</strong> O(1) - only tracking counts</p>\n\n<p><strong>Key Insights:</strong></p>\n<ul>\n<li>Greedy: always prefer larger denominations for change</li>\n<li>$5 bills are most valuable as they can make any change</li>\n<li>For $20, prefer $10+$5 over three $5 bills</li>\n</ul>",
+      "solution_code": "def lemonadeChange(bills):\n    five_count = 0\n    ten_count = 0\n    \n    for bill in bills:\n        if bill == 5:\n            five_count += 1\n        elif bill == 10:\n            # Need $5 change\n            if five_count > 0:\n                five_count -= 1\n                ten_count += 1\n            else:\n                return False\n        else:  # bill == 20\n            # Need $15 change - prefer $10 + $5\n            if ten_count > 0 and five_count > 0:\n                ten_count -= 1\n                five_count -= 1\n            elif five_count >= 3:\n                five_count -= 3\n            else:\n                return False\n    \n    return True"
+    },
+    "javascript": {
+      "template": "function lemonadeChange(bills) {\n  \n}",
+      "solution_text": "<h3>Lemonade Change - Greedy Algorithm</h3>\n\n<p><strong>Algorithm:</strong></p>\n<ol>\n<li>Keep count of $5 and $10 bills</li>\n<li>For $5 bill: just add to count</li>\n<li>For $10 bill: need one $5 as change</li>\n<li>For $20 bill: prefer giving one $10 + one $5, otherwise three $5</li>\n</ol>\n\n<p><strong>Time Complexity:</strong> O(n) - single pass through bills</p>\n<p><strong>Space Complexity:</strong> O(1) - only tracking counts</p>\n\n<p><strong>Key Insights:</strong></p>\n<ul>\n<li>Greedy: always prefer larger denominations for change</li>\n<li>$5 bills are most valuable as they can make any change</li>\n<li>For $20, prefer $10+$5 over three $5 bills</li>\n</ul>",
+      "solution_code": "function lemonadeChange(bills) {\n    let fiveCount = 0;\n    let tenCount = 0;\n    \n    for (const bill of bills) {\n        if (bill === 5) {\n            fiveCount++;\n        } else if (bill === 10) {\n            // Need $5 change\n            if (fiveCount > 0) {\n                fiveCount--;\n                tenCount++;\n            } else {\n                return false;\n            }\n        } else { // bill === 20\n            // Need $15 change - prefer $10 + $5\n            if (tenCount > 0 && fiveCount > 0) {\n                tenCount--;\n                fiveCount--;\n            } else if (fiveCount >= 3) {\n                fiveCount -= 3;\n            } else {\n                return false;\n            }\n        }\n    }\n    \n    return true;\n}"
+    },
+    "typescript": {
+      "template": "function lemonadeChange(bills: number[]): boolean {\n  \n}",
+      "solution_text": "<h3>Lemonade Change - Greedy Algorithm</h3>\n\n<p><strong>Algorithm:</strong></p>\n<ol>\n<li>Keep count of $5 and $10 bills</li>\n<li>For $5 bill: just add to count</li>\n<li>For $10 bill: need one $5 as change</li>\n<li>For $20 bill: prefer giving one $10 + one $5, otherwise three $5</li>\n</ol>\n\n<p><strong>Time Complexity:</strong> O(n) - single pass through bills</p>\n<p><strong>Space Complexity:</strong> O(1) - only tracking counts</p>\n\n<p><strong>Key Insights:</strong></p>\n<ul>\n<li>Greedy: always prefer larger denominations for change</li>\n<li>$5 bills are most valuable as they can make any change</li>\n<li>For $20, prefer $10+$5 over three $5 bills</li>\n</ul>",
+      "solution_code": "function lemonadeChange(bills: number[]): boolean {\n    let fiveCount = 0;\n    let tenCount = 0;\n    \n    for (const bill of bills) {\n        if (bill === 5) {\n            fiveCount++;\n        } else if (bill === 10) {\n            // Need $5 change\n            if (fiveCount > 0) {\n                fiveCount--;\n                tenCount++;\n            } else {\n                return false;\n            }\n        } else { // bill === 20\n            // Need $15 change - prefer $10 + $5\n            if (tenCount > 0 && fiveCount > 0) {\n                tenCount--;\n                fiveCount--;\n            } else if (fiveCount >= 3) {\n                fiveCount -= 3;\n            } else {\n                return false;\n            }\n        }\n    }\n    \n    return true;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public boolean lemonadeChange(int[] bills) {\n        \n    }\n}",
+      "solution_text": "<h3>Lemonade Change - Greedy Algorithm</h3>\n\n<p><strong>Algorithm:</strong></p>\n<ol>\n<li>Keep count of $5 and $10 bills</li>\n<li>For $5 bill: just add to count</li>\n<li>For $10 bill: need one $5 as change</li>\n<li>For $20 bill: prefer giving one $10 + one $5, otherwise three $5</li>\n</ol>\n\n<p><strong>Time Complexity:</strong> O(n) - single pass through bills</p>\n<p><strong>Space Complexity:</strong> O(1) - only tracking counts</p>\n\n<p><strong>Key Insights:</strong></p>\n<ul>\n<li>Greedy: always prefer larger denominations for change</li>\n<li>$5 bills are most valuable as they can make any change</li>\n<li>For $20, prefer $10+$5 over three $5 bills</li>\n</ul>",
+      "solution_code": "class Solution {\n    public boolean lemonadeChange(int[] bills) {\n        int fiveCount = 0;\n        int tenCount = 0;\n        \n        for (int bill : bills) {\n            if (bill == 5) {\n                fiveCount++;\n            } else if (bill == 10) {\n                // Need $5 change\n                if (fiveCount > 0) {\n                    fiveCount--;\n                    tenCount++;\n                } else {\n                    return false;\n                }\n            } else { // bill == 20\n                // Need $15 change - prefer $10 + $5\n                if (tenCount > 0 && fiveCount > 0) {\n                    tenCount--;\n                    fiveCount--;\n                } else if (fiveCount >= 3) {\n                    fiveCount -= 3;\n                } else {\n                    return false;\n                }\n            }\n        }\n        \n        return true;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "bills": [5, 10, 5, 5, 20]
+      },
+      "output": true
+    },
+    {
+      "id": 2,
+      "input": {
+        "bills": [5, 20, 10, 5]
+      },
+      "output": false
+    },
+    {
+      "id": 3,
+      "input": {
+        "bills": [5, 5, 5, 10, 20]
+      },
+      "output": true
+    },
+    {
+      "id": 4,
+      "input": {
+        "bills": [10, 10]
+      },
+      "output": false
+    },
+    {
+      "id": 5,
+      "input": {
+        "bills": [5, 5, 10, 10, 20]
+      },
+      "output": false
+    },
+    {
+      "id": 6,
+      "input": {
+        "bills": [5, 5, 5, 5, 20, 20, 20]
+      },
+      "output": true
+    },
+    {
+      "id": 7,
+      "input": {
+        "bills": [5]
+      },
+      "output": true
+    },
+    {
+      "id": 8,
+      "input": {
+        "bills": [20]
+      },
+      "output": false
+    },
+    {
+      "id": 9,
+      "input": {
+        "bills": [5, 10, 10, 20]
+      },
+      "output": false
+    },
+    {
+      "id": 10,
+      "input": {
+        "bills": [5, 5, 10, 5, 5, 5, 20]
+      },
+      "output": true
+    }
+  ]
+}

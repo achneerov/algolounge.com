@@ -1,0 +1,122 @@
+{
+  "filename": "design-hashset",
+  "title": "Design HashSet",
+  "keywords": [
+    "design",
+    "hashset",
+    "leetcode",
+    "705",
+    "without",
+    "using",
+    "any",
+    "built",
+    "hash",
+    "table"
+  ],
+  "description": "<h2>Design HashSet</h2><p>Leetcode 705. Design HashSet</p><p></p><p>Design a HashSet without using any built-in hash table libraries.</p><p></p><p>Implement `MyHashSet` class:</p><p></p><p>- `void add(key)` Inserts the value `key` into the HashSet.</p><p>- `bool contains(key)` Returns whether the value `key` exists in the HashSet or not.</p><p>- `void remove(key)` Removes the value `key` in the HashSet. If `key` does not exist in the HashSet, do nothing.</p><h3>Examples:</h3><ul><li>Input: ["MyHashSet", "add", "add", "contains", "contains", "add", "contains", "remove", "contains"]<br>[[], [1], [2], [1], [3], [2], [2], [2], [2]]<br><br>Output: [null, null, null, true, false, null, true, null, false]<br>MyHashSet myHashSet = new MyHashSet();\nmyHashSet.add(1);      // set = [1]\nmyHashSet.add(2);      // set = [1, 2]\nmyHashSet.contains(1); // return True\nmyHashSet.contains(3); // return False, (not found)\nmyHashSet.add(2);      // set = [1, 2]\nmyHashSet.contains(2); // return True\nmyHashSet.remove(2);   // set = [1]\nmyHashSet.contains(2); // return False, (already removed)</li></ul><h3>Constraints:</h3><ul><li> `0 <= key <= 1,000,000`</li><li> At most `10,000` calls will be made to `add`, `remove`, and `contains`.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "class MyHashSet:\n\n    def __init__(self):\n        \n\n    def add(self, key: int) -> None:\n        \n\n    def remove(self, key: int) -> None:\n        \n\n    def contains(self, key: int) -> bool:\n        \n",
+      "solution_text": "<p><strong>Array-based HashSet with Chaining:</strong></p><p>This solution implements a HashSet using an array of buckets, where each bucket is a list (or linked list) to handle collisions. This is a common way to implement hash sets and hash maps.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Initialization:<br>   - We choose a size for our internal array (the number of buckets). A prime number is often a good choice to help with hash distribution, so let's use 1000.<br>   - We initialize `self.buckets` as a list of empty lists.</li><li><strong>Hash Function:<br>   - A simple modulo operation `key % self.size` is used to map a key to a bucket index.</li><li><strong>`add(key)`:<br>   - First, we calculate the bucket index for the given `key`.<br>   - We then check if the `key` already exists in the corresponding bucket. If it does, we do nothing.<br>   - If it doesn't, we append the `key` to the list at that bucket index.</li><li><strong>`remove(key)`:<br>   - We calculate the bucket index for the `key`.<br>   - We then try to remove the `key` from the list at that bucket index. We use a `try-except` block to handle the case where the key is not present, in which case we do nothing, as per the problem description.</li><li><strong>`contains(key)`:<br>   - We calculate the bucket index for the `key`.<br>   - We then check if the `key` is present in the list at that bucket index and return the result.</li></ol><p><strong>Time Complexity:<br> - Average Case: O(1), assuming a good hash function and key distribution.<br> - Worst Case: O(N/K), where N is the number of keys and K is the number of buckets. This occurs if many keys hash to the same bucket.</p><p><strong>Space Complexity:</strong> O(K + N), for the K buckets and N stored keys.</p>",
+      "solution_code": "class MyHashSet:\n\n    def __init__(self):\n        self.size = 1000\n        self.buckets = [[] for _ in range(self.size)]\n\n    def _hash(self, key: int) -> int:\n        return key % self.size\n\n    def add(self, key: int) -> None:\n        hash_key = self._hash(key)\n        bucket = self.buckets[hash_key]\n        if key not in bucket:\n            bucket.append(key)\n\n    def remove(self, key: int) -> None:\n        hash_key = self._hash(key)\n        bucket = self.buckets[hash_key]\n        if key in bucket:\n            bucket.remove(key)\n\n    def contains(self, key: int) -> bool:\n        hash_key = self._hash(key)\n        return key in self.buckets[hash_key]"
+    },
+    "javascript": {
+      "template": "var MyHashSet = function() {\n    \n};\n\nMyHashSet.prototype.add = function(key) {\n    \n};\n\nMyHashSet.prototype.remove = function(key) {\n    \n};\n\nMyHashSet.prototype.contains = function(key) {\n    \n};",
+      "solution_text": "<p><strong>Array-based HashSet with Chaining:</strong></p><p>This solution implements a HashSet using an array of buckets, where each bucket is a list (or linked list) to handle collisions. This is a common way to implement hash sets and hash maps.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Initialization:<br>   - We choose a size for our internal array (the number of buckets). A prime number is often a good choice to help with hash distribution, so let's use 1000.<br>   - We initialize `this.buckets` as an array of empty lists.</li><li><strong>Hash Function:<br>   - A simple modulo operation `key % this.size` is used to map a key to a bucket index.</li><li><strong>`add(key)`:<br>   - First, we calculate the bucket index for the given `key`.<br>   - We then check if the `key` already exists in the corresponding bucket. If it does, we do nothing.<br>   - If it doesn't, we push the `key` to the list at that bucket index.</li><li><strong>`remove(key)`:<br>   - We calculate the bucket index for the `key`.<br>   - We find the index of the key in the bucket. If found, we remove it using `splice`.</li><li><strong>`contains(key)`:<br>   - We calculate the bucket index for the `key`.<br>   - We then check if the `key` is present in the list at that bucket index using `includes` and return the result.</li></ol><p><strong>Time Complexity:<br> - Average Case: O(1), assuming a good hash function and key distribution.<br> - Worst Case: O(N/K), where N is the number of keys and K is the number of buckets. This occurs if many keys hash to the same bucket.</p><p><strong>Space Complexity:</strong> O(K + N), for the K buckets and N stored keys.</p>",
+      "solution_code": "var MyHashSet = function() {\n    this.size = 1000;\n    this.buckets = new Array(this.size).fill(null).map(() => []);\n};\n\nMyHashSet.prototype._hash = function(key) {\n    return key % this.size;\n};\n\nMyHashSet.prototype.add = function(key) {\n    const hashKey = this._hash(key);\n    const bucket = this.buckets[hashKey];\n    if (!bucket.includes(key)) {\n        bucket.push(key);\n    }\n};\n\nMyHashSet.prototype.remove = function(key) {\n    const hashKey = this._hash(key);\n    const bucket = this.buckets[hashKey];\n    const index = bucket.indexOf(key);\n    if (index !== -1) {\n        bucket.splice(index, 1);\n    }\n};\n\nMyHashSet.prototype.contains = function(key) {\n    const hashKey = this._hash(key);\n    return this.buckets[hashKey].includes(key);\n};"
+    },
+    "typescript": {
+      "template": "class MyHashSet {\n    constructor() {\n\n    }\n\n    add(key: number): void {\n\n    }\n\n    remove(key: number): void {\n\n    }\n\n    contains(key: number): boolean {\n\n    }\n}",
+      "solution_text": "<p><strong>Array-based HashSet with Chaining:</strong></p><p>This solution implements a HashSet using an array of buckets, where each bucket is a list (or linked list) to handle collisions. This is a common way to implement hash sets and hash maps.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Initialization:<br>   - We choose a size for our internal array (the number of buckets). A prime number is often a good choice to help with hash distribution, so let's use 1000.<br>   - We initialize `this.buckets` as an array of empty lists.</li><li><strong>Hash Function:<br>   - A simple modulo operation `key % this.size` is used to map a key to a bucket index.</li><li><strong>`add(key)`:<br>   - First, we calculate the bucket index for the given `key`.<br>   - We then check if the `key` already exists in the corresponding bucket. If it does, we do nothing.<br>   - If it doesn't, we push the `key` to the list at that bucket index.</li><li><strong>`remove(key)`:<br>   - We calculate the bucket index for the `key`.<br>   - We find the index of the key in the bucket. If found, we remove it using `splice`.</li><li><strong>`contains(key)`:<br>   - We calculate the bucket index for the `key`.<br>   - We then check if the `key` is present in the list at that bucket index using `includes` and return the result.</li></ol><p><strong>Time Complexity:<br> - Average Case: O(1), assuming a good hash function and key distribution.<br> - Worst Case: O(N/K), where N is the number of keys and K is the number of buckets. This occurs if many keys hash to the same bucket.</p><p><strong>Space Complexity:</strong> O(K + N), for the K buckets and N stored keys.</p>",
+      "solution_code": "class MyHashSet {\n    private size: number;\n    private buckets: number[][];\n\n    constructor() {\n        this.size = 1000;\n        this.buckets = new Array(this.size).fill(null).map(() => []);\n    }\n\n    private _hash(key: number): number {\n        return key % this.size;\n    }\n\n    add(key: number): void {\n        const hashKey = this._hash(key);\n        const bucket = this.buckets[hashKey];\n        if (!bucket.includes(key)) {\n            bucket.push(key);\n        }\n    }\n\n    remove(key: number): void {\n        const hashKey = this._hash(key);\n        const bucket = this.buckets[hashKey];\n        const index = bucket.indexOf(key);\n        if (index !== -1) {\n            bucket.splice(index, 1);\n        }\n    }\n\n    contains(key: number): boolean {\n        const hashKey = this._hash(key);\n        return this.buckets[hashKey].includes(key);\n    }\n}"
+    },
+    "java": {
+      "template": "class MyHashSet {\n\n    public MyHashSet() {\n        \n    }\n    \n    public void add(int key) {\n        \n    }\n    \n    public void remove(int key) {\n        \n    }\n    \n    public boolean contains(int key) {\n        \n    }\n}",
+      "solution_text": "<p><strong>Array-based HashSet with Chaining:</strong></p><p>This solution implements a HashSet using an array of buckets, where each bucket is a list (or linked list) to handle collisions. This is a common way to implement hash sets and hash maps.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Initialization:<br>   - We choose a size for our internal array (the number of buckets). A prime number is often a good choice to help with hash distribution, so let's use 1000.<br>   - We initialize `buckets` as an array of `LinkedLists`.</li><li><strong>Hash Function:<br>   - A simple modulo operation `key % size` is used to map a key to a bucket index.</li><li><strong>`add(key)`:<br>   - First, we calculate the bucket index for the given `key`.<br>   - If the bucket at that index is `null`, we create a new `LinkedList`.<br>   - We check if the `key` already exists in the bucket. If not, we add it.</li><li><strong>`remove(key)`:<br>   - We calculate the bucket index for the `key`.<br>   - If the bucket is not `null`, we remove the key from the list. `Integer.valueOf(key)` is used to ensure we're removing the object, not an element at an index.</li><li><strong>`contains(key)`:<br>   - We calculate the bucket index for the `key`.<br>   - If the bucket is not `null`, we check if it contains the key and return the result. Otherwise, we return `false`.</li></ol><p><strong>Time Complexity:<br> - Average Case: O(1), assuming a good hash function and key distribution.<br> - Worst Case: O(N/K), where N is the number of keys and K is the number of buckets. This occurs if many keys hash to the same bucket.</p><p><strong>Space Complexity:</strong> O(K + N), for the K buckets and N stored keys.</p>",
+      "solution_code": "import java.util.LinkedList;\n\nclass MyHashSet {\n    private int size = 1000;\n    private LinkedList<Integer>[] buckets;\n\n    public MyHashSet() {\n        buckets = new LinkedList[size];\n    }\n\n    private int hash(int key) {\n        return key % size;\n    }\n\n    public void add(int key) {\n        int hashKey = hash(key);\n        if (buckets[hashKey] == null) {\n            buckets[hashKey] = new LinkedList<>();\n        }\n        if (!buckets[hashKey].contains(key)) {\n            buckets[hashKey].add(key);\n        }\n    }\n\n    public void remove(int key) {\n        int hashKey = hash(key);\n        if (buckets[hashKey] != null) {\n            buckets[hashKey].remove(Integer.valueOf(key));\n        }\n    }\n\n    public boolean contains(int key) {\n        int hashKey = hash(key);\n        return buckets[hashKey] != null && buckets[hashKey].contains(key);\n    }\n}"
+    }
+  },
+  "order_matters": true,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "commands": ["MyHashSet", "add", "add", "contains", "contains", "add", "contains", "remove", "contains"],
+        "args": [[], [1], [2], [1], [3], [2], [2], [2], [2]]
+      },
+      "output": [null, null, null, true, false, null, true, null, false]
+    },
+    {
+      "id": 2,
+      "input": {
+        "commands": ["MyHashSet", "add", "remove", "contains"],
+        "args": [[], [1], [1], [1]]
+      },
+      "output": [null, null, null, false]
+    },
+    {
+      "id": 3,
+      "input": {
+        "commands": ["MyHashSet", "contains", "add", "contains", "remove", "contains"],
+        "args": [[], [10], [10], [10], [10], [10]]
+      },
+      "output": [null, false, null, true, null, false]
+    },
+    {
+      "id": 4,
+      "input": {
+        "commands": ["MyHashSet", "add", "add", "add", "contains", "contains", "contains"],
+        "args": [[], [0], [1000000], [500], [0], [1000000], [999]]
+      },
+      "output": [null, null, null, null, true, true, false]
+    },
+    {
+      "id": 5,
+      "input": {
+        "commands": ["MyHashSet", "add", "add", "remove", "remove", "contains", "contains"],
+        "args": [[], [1], [1], [1], [2], [1], [2]]
+      },
+      "output": [null, null, null, null, null, false, false]
+    },
+    {
+      "id": 6,
+      "input": {
+        "commands": ["MyHashSet", "add", "add", "add", "add", "add", "add", "add", "add", "add", "add"],
+        "args": [[], [1], [2], [3], [4], [5], [6], [7], [8], [9], [10]]
+      },
+      "output": [null, null, null, null, null, null, null, null, null, null, null]
+    },
+    {
+      "id": 7,
+      "input": {
+        "commands": ["MyHashSet", "add", "contains", "add", "contains"],
+        "args": [[], [1], [1], [1001], [1001]]
+      },
+      "output": [null, null, true, null, true]
+    },
+    {
+      "id": 8,
+      "input": {
+        "commands": ["MyHashSet", "remove", "contains"],
+        "args": [[], [14], [14]]
+      },
+      "output": [null, null, false]
+    },
+    {
+      "id": 9,
+      "input": {
+        "commands": ["MyHashSet", "add", "add", "contains", "remove", "contains"],
+        "args": [[], [1], [1], [1], [1], [1]]
+      },
+      "output": [null, null, null, true, null, false]
+    },
+    {
+      "id": 10,
+      "input": {
+        "commands": ["MyHashSet", "add", "get"],
+        "args": [[], [1], [1]]
+      },
+      "output": [null, null, true]
+    }
+  ]
+}

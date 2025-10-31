@@ -1,0 +1,197 @@
+{
+  "index": 41,
+  "filename": "evaluate-reverse-polish-notation",
+  "title": "Evaluate Reverse Polish Notation",
+  "keywords": [
+    "evaluate",
+    "reverse",
+    "polish",
+    "notation",
+    "leetcode",
+    "150",
+    "given",
+    "array",
+    "strings",
+    "tokens"
+  ],
+  "description": "<h2>Evaluate Reverse Polish Notation</h2><p>Leetcode 150. Evaluate Reverse Polish Notation</p><p>You are given an array of strings <code>tokens</code> that represents a <strong>valid</strong> arithmetic expression in <a href='https://en.wikipedia.org/wiki/Reverse_Polish_notation'>Reverse Polish Notation</a>.</p><p>Return the integer that represents the evaluation of the expression.</p><p>The operands may be integers or the results of other operations.</p><p>The operators include <code>'+'</code>, <code>'-'</code>, <code>'*'</code>, and <code>'/'</code>.</p><p>Assume that division between integers always <strong>truncates toward zero</strong>.</p><h3>Examples:</h3><ul><li>Input: tokens = [\"1\",\"2\",\"+\",\"3\",\"*\",\"4\",\"-\"]<br><br>Output: 5<br><br>Explanation: ((1 + 2) * 3) - 4 = 5</li></ul><h3>Constraints:</h3><ul><li><code>1 <= tokens.length <= 1000</code></li><li>tokens[i] is <code>\"+\"</code>, <code>\"-\"</code>, <code>\"*\"</code>, or <code>\"/\"</code>, or a string representing an integer in the range <code>[-100, 100]</code></li></ul>",
+  "entry_function": "evaluateReversePolishNotation",
+  "template": "def evaluateReversePolishNotation(tokens):\n    ",
+  "solution_text": "<h3>Evaluate Reverse Polish Notation</h3><p><strong>Algorithm:</strong></p><ol><li>Use a stack to store operands</li><li>Iterate through tokens from left to right</li><li>If token is number, push to stack</li><li>If token is operator, pop two operands, perform operation, push result</li><li>Final stack element is the result</li></ol><p><strong>Time Complexity:</strong> O(n) - single pass through tokens</p><p><strong>Space Complexity:</strong> O(n) - stack space for operands</p><p><strong>Key Insights:</strong></p><ul><li>Stack naturally handles the postfix evaluation order</li><li>Pop order matters: second operand, then first operand</li><li>Use int(a / b) for division truncating toward zero</li></ul>",
+  "solution_code": "def evaluateReversePolishNotation(tokens):\n    stack = []\n    operators = {'+', '-', '*', '/'}\n    \n    for token in tokens:\n        if token in operators:\n            # Pop two operands (order matters!)\n            b = stack.pop()  # Second operand\n            a = stack.pop()  # First operand\n            \n            # Perform operation\n            if token == '+':\n                result = a + b\n            elif token == '-':\n                result = a - b\n            elif token == '*':\n                result = a * b\n            elif token == '/':\n                # Integer division truncating toward zero\n                result = int(a / b)\n            \n            stack.append(result)\n        else:\n            # Token is a number, push to stack\n            stack.append(int(token))\n    \n    # Final result is the only element left in stack\n    return stack[0]",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['tokens'],)",
+  "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    return [passed, output_str]",
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "tokens": [
+          "1",
+          "2",
+          "+",
+          "3",
+          "*",
+          "4",
+          "-"
+        ]
+      },
+      "output": 5
+    },
+    {
+      "id": 2,
+      "input": {
+        "tokens": [
+          "4",
+          "13",
+          "5",
+          "/",
+          "+"
+        ]
+      },
+      "output": 6
+    },
+    {
+      "id": 3,
+      "input": {
+        "tokens": [
+          "10",
+          "6",
+          "9",
+          "3",
+          "+",
+          "-11",
+          "*",
+          "/",
+          "*",
+          "17",
+          "+",
+          "5",
+          "+"
+        ]
+      },
+      "output": 22
+    },
+    {
+      "id": 4,
+      "input": {
+        "tokens": [
+          "2",
+          "1",
+          "+",
+          "3",
+          "*"
+        ]
+      },
+      "output": 9
+    },
+    {
+      "id": 5,
+      "input": {
+        "tokens": [
+          "4",
+          "2",
+          "/"
+        ]
+      },
+      "output": 2
+    },
+    {
+      "id": 6,
+      "input": {
+        "tokens": [
+          "5",
+          "1",
+          "2",
+          "+",
+          "4",
+          "*",
+          "+",
+          "3",
+          "-"
+        ]
+      },
+      "output": 14
+    },
+    {
+      "id": 7,
+      "input": {
+        "tokens": [
+          "3",
+          "4",
+          "+",
+          "2",
+          "*",
+          "7",
+          "/"
+        ]
+      },
+      "output": 2
+    },
+    {
+      "id": 8,
+      "input": {
+        "tokens": [
+          "15",
+          "7",
+          "1",
+          "1",
+          "+",
+          "-",
+          "/",
+          "3",
+          "*",
+          "2",
+          "1",
+          "1",
+          "+",
+          "+",
+          "-"
+        ]
+      },
+      "output": 5
+    },
+    {
+      "id": 9,
+      "input": {
+        "tokens": [
+          "-5",
+          "10",
+          "+"
+        ]
+      },
+      "output": 5
+    },
+    {
+      "id": 10,
+      "input": {
+        "tokens": [
+          "18"
+        ]
+      },
+      "output": 18
+    },
+    {
+      "id": 11,
+      "input": {
+        "tokens": [
+          "-3",
+          "-2",
+          "*"
+        ]
+      },
+      "output": 6
+    },
+    {
+      "id": 12,
+      "input": {
+        "tokens": [
+          "10",
+          "-3",
+          "/"
+        ]
+      },
+      "output": -3
+    }
+  ]
+}

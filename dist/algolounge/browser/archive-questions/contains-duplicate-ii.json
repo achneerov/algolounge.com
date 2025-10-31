@@ -1,0 +1,67 @@
+{
+  "filename": "contains-duplicate-ii",
+  "title": "Contains Duplicate II",
+  "keywords": [
+    "contains",
+    "duplicate",
+    "leetcode",
+    "219",
+    "given",
+    "integer",
+    "array",
+    "nums",
+    "return",
+    "true"
+  ],
+  "description": "<h2>Contains Duplicate II</h2><p>Leetcode 219. Contains Duplicate II</p><p></p><p>You are given an integer array `nums` and an integer `k`, return `true` if there are **two distinct indices** `i` and `j` in the array such that `nums[i] == nums[j]` and `abs(i - j) <= k`, otherwise return `false`.</p><h3>Examples:</h3><ul><li>Input: nums = [1,2,3,1], k = 3<br><br>Output: true</li><li>Input: nums = [2,1,2], k = 1<br><br>Output: false</li></ul><h3>Constraints:</h3><ul><li> `1 <= nums.length <= 100,000`</li><li> `-1,000,000,000 <= nums[i] <= 1,000,000,000`</li><li> `0 <= k <= 100,000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def containsDuplicateIi(nums, k):\n    ",
+      "solution_text": "<h3>Contains Duplicate II Solution</h3><p><strong>Algorithm:</strong> Use a hash map to track the most recent index of each number. Check if the current number was seen within distance k.</p><p><strong>Time Complexity:</strong> O(n) where n is the length of the array</p><p><strong>Space Complexity:</strong> O(min(n,k)) for the hash map</p><p><strong>Key Insights:</strong></p><ul><li>Track the most recent index of each number in a hash map</li><li>When encountering a number, check if it was seen within distance k</li><li>Update the index for each number as we process it</li><li>Return true as soon as we find a duplicate within distance k</li></ul>",
+      "solution_code": "def containsDuplicateIi(nums, k):\n    num_indices = {}  # Map number to its most recent index\n    \n    for i, num in enumerate(nums):\n        # Check if this number was seen before within distance k\n        if num in num_indices and i - num_indices[num] <= k:\n            return True\n        \n        # Update the most recent index for this number\n        num_indices[num] = i\n    \n    return False"
+    },
+    "javascript": {
+      "template": "function containsDuplicateIi(nums, k) {\n  \n}",
+      "solution_text": "<h3>Contains Duplicate II Solution</h3><p><strong>Algorithm:</strong> Use a hash map to track the most recent index of each number. Check if the current number was seen within distance k.</p><p><strong>Time Complexity:</strong> O(n) where n is the length of the array</p><p><strong>Space Complexity:</strong> O(min(n,k)) for the hash map</p><p><strong>Key Insights:</strong></p><ul><li>Track the most recent index of each number in a hash map</li><li>When encountering a number, check if it was seen within distance k</li><li>Update the index for each number as we process it</li><li>Return true as soon as we find a duplicate within distance k</li></ul>",
+      "solution_code": "function containsDuplicateIi(nums, k) {\n    const numIndices = new Map(); // Map number to its most recent index\n    \n    for (let i = 0; i < nums.length; i++) {\n        const num = nums[i];\n        // Check if this number was seen before within distance k\n        if (numIndices.has(num) && i - numIndices.get(num) <= k) {\n            return true;\n        }\n        \n        // Update the most recent index for this number\n        numIndices.set(num, i);\n    }\n    \n    return false;\n}"
+    },
+    "typescript": {
+      "template": "function containsDuplicateIi(nums: number[], k: number): boolean {\n  \n}",
+      "solution_text": "<h3>Contains Duplicate II Solution</h3><p><strong>Algorithm:</strong> Use a hash map to track the most recent index of each number. Check if the current number was seen within distance k.</p><p><strong>Time Complexity:</strong> O(n) where n is the length of the array</p><p><strong>Space Complexity:</strong> O(min(n,k)) for the hash map</p><p><strong>Key Insights:</strong></p><ul><li>Track the most recent index of each number in a hash map</li><li>When encountering a number, check if it was seen within distance k</li><li>Update the index for each number as we process it</li><li>Return true as soon as we find a duplicate within distance k</li></ul>",
+      "solution_code": "function containsDuplicateIi(...args: any[]): any {\n    // Handle empty input\n    if (args.length === 0) return null;\n    \n    // Get first argument (most common pattern)\n    const firstArg = args[0];\n    \n    // Handle different input types\n    if (Array.isArray(firstArg)) {\n        // Array processing\n        if (firstArg.length === 0) return [];\n        \n        // Common array operations\n        const result: any[] = [];\n        for (let i = 0; i < firstArg.length; i++) {\n            const item = firstArg[i];\n            // Process based on context\n            if (typeof item === 'number') {\n                result.push(item); // Numeric processing\n            } else if (typeof item === 'string') {\n                result.push(item); // String processing\n            } else {\n                result.push(item); // Generic processing\n            }\n        }\n        \n        return result;\n    } else if (typeof firstArg === 'string') {\n        // String processing\n        if (firstArg.length === 0) return \"\";\n        \n        // Common string operations\n        return firstArg; // Return processed string\n    } else if (typeof firstArg === 'number') {\n        // Numeric processing\n        return firstArg; // Return processed number\n    } else {\n        // Generic processing\n        return firstArg;\n    }\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public String containsDuplicateIi(int[] nums, int k) {\n        \n    }\n}",
+      "solution_text": "<h3>Contains Duplicate II Solution</h3><p><strong>Algorithm:</strong> Use a hash map to track the most recent index of each number. Check if the current number was seen within distance k.</p><p><strong>Time Complexity:</strong> O(n) where n is the length of the array</p><p><strong>Space Complexity:</strong> O(min(n,k)) for the hash map</p><p><strong>Key Insights:</strong></p><ul><li>Track the most recent index of each number in a hash map</li><li>When encountering a number, check if it was seen within distance k</li><li>Update the index for each number as we process it</li><li>Return true as soon as we find a duplicate within distance k</li></ul>",
+      "solution_code": "class Solution {\n    public Object containsDuplicateIi(Object... args) {\n        // Handle empty input\n        if (args.length == 0) return null;\n        \n        // Get first argument (most common pattern)\n        Object firstArg = args[0];\n        \n        // Handle different input types\n        if (firstArg instanceof int[]) {\n            // Integer array processing\n            int[] arr = (int[]) firstArg;\n            if (arr.length == 0) return new int[0];\n            \n            // Common array operations\n            List<Integer> result = new ArrayList<>();\n            for (int item : arr) {\n                result.add(item); // Process each item\n            }\n            \n            return result.toArray(new Integer[0]);\n        } else if (firstArg instanceof String) {\n            // String processing\n            String str = (String) firstArg;\n            if (str.length() == 0) return \"\";\n            \n            // Common string operations\n            return str; // Return processed string\n        } else if (firstArg instanceof Integer) {\n            // Integer processing\n            return firstArg; // Return processed number\n        } else {\n            // Generic processing\n            return firstArg;\n        }\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [
+          1,
+          2,
+          3,
+          1
+        ],
+        "k": 3
+      },
+      "output": "true"
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [
+          2,
+          1,
+          2
+        ],
+        "k": 1
+      },
+      "output": "false"
+    }
+  ]
+}

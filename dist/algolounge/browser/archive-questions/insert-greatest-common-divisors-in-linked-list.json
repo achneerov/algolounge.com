@@ -1,0 +1,92 @@
+{
+  "filename": "insert-greatest-common-divisors-in-linked-list",
+  "title": "Insert Greatest Common Divisors in Linked List",
+  "keywords": [
+    "insert",
+    "greatest",
+    "common",
+    "divisors",
+    "linked",
+    "list",
+    "leetcode",
+    "2807",
+    "given",
+    "head"
+  ],
+  "description": "<h2>Insert Greatest Common Divisors in Linked List</h2><p>Leetcode 2807. Insert Greatest Common Divisors in Linked List</p><p></p><p>You are given the head of a linked list `head`, in which each node contains an integer value.</p><p></p><p>Between every pair of adjacent nodes, insert a new node with a value equal to the **greatest common divisor** of them.</p><p></p><p>Return the head of the linked list after insertion.</p><p></p><p>The **greatest common divisor** of two numbers is the largest positive integer that evenly divides both numbers.</p><h3>Examples:</h3><ul><li>Input: head = [12,3,4,6]<br><br>Output: [12,3,3,1,4,2,6]</li><li>Input: head = [2,1]<br><br>Output: [2,1,1]</li></ul><h3>Constraints:</h3><ul><li> `1 <= The length of the list <= 5000`.</li><li> `1 <= Node.val <= 1000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def insertGreatestCommonDivisorsInLinkedList(head):\n    ",
+      "solution_text": "<h3>Solution Approach</h3><p><strong>Algorithm:</strong><br/>We traverse the linked list and insert GCD nodes between every pair of adjacent nodes. Since we're working with arrays representing linked lists, we build the result by inserting GCD values between consecutive elements.</p><p><strong>Strategy:</strong><br/>1. Handle edge case: single node (return as-is)<br/>2. For each pair of adjacent nodes, calculate their GCD<br/>3. Insert the GCD value between them in the result<br/>4. Use Euclidean algorithm for efficient GCD calculation</p><p><strong>Time Complexity:</strong> O(n * log(min(a,b))) where n is the number of nodes and log(min(a,b)) is for GCD calculation</p><p><strong>Space Complexity:</strong> O(n) for the result array (in-place modification would be O(1) for actual linked list)</p><p><strong>Key Insights:</strong><br/>- GCD can be computed efficiently using the Euclidean algorithm<br/>- We need to maintain the order of original nodes while inserting GCD values<br/>- The result will have 2n-1 nodes where n is the original list length</p>",
+      "solution_code": "def insertGreatestCommonDivisorsInLinkedList(head):\n    import math\n    \n    if not head or len(head) <= 1:\n        return head\n    \n    result = [head[0]]\n    \n    for i in range(1, len(head)):\n        # Calculate GCD of current and previous elements\n        gcd_value = math.gcd(head[i-1], head[i])\n        # Insert GCD value\n        result.append(gcd_value)\n        # Insert current element\n        result.append(head[i])\n    \n    return result"
+    },
+    "javascript": {
+      "template": "function insertGreatestCommonDivisorsInLinkedList(head) {\n  \n}",
+      "solution_text": "<h3>Solution Approach</h3><p><strong>Algorithm:</strong><br/>We traverse the linked list and insert GCD nodes between every pair of adjacent nodes. Since we're working with arrays representing linked lists, we build the result by inserting GCD values between consecutive elements.</p><p><strong>Strategy:</strong><br/>1. Handle edge case: single node (return as-is)<br/>2. For each pair of adjacent nodes, calculate their GCD<br/>3. Insert the GCD value between them in the result<br/>4. Use Euclidean algorithm for efficient GCD calculation</p><p><strong>Time Complexity:</strong> O(n * log(min(a,b))) where n is the number of nodes and log(min(a,b)) is for GCD calculation</p><p><strong>Space Complexity:</strong> O(n) for the result array (in-place modification would be O(1) for actual linked list)</p><p><strong>Key Insights:</strong><br/>- GCD can be computed efficiently using the Euclidean algorithm<br/>- We need to maintain the order of original nodes while inserting GCD values<br/>- The result will have 2n-1 nodes where n is the original list length</p>",
+      "solution_code": "function insertGreatestCommonDivisorsInLinkedList(head) {\n    function gcd(a, b) {\n        while (b !== 0) {\n            let temp = b;\n            b = a % b;\n            a = temp;\n        }\n        return a;\n    }\n    \n    if (!head || head.length <= 1) {\n        return head;\n    }\n    \n    const result = [head[0]];\n    \n    for (let i = 1; i < head.length; i++) {\n        // Calculate GCD of current and previous elements\n        const gcdValue = gcd(head[i-1], head[i]);\n        // Insert GCD value\n        result.push(gcdValue);\n        // Insert current element\n        result.push(head[i]);\n    }\n    \n    return result;\n}"
+    },
+    "typescript": {
+      "template": "function insertGreatestCommonDivisorsInLinkedList(head: number[]): number[] {\n  \n}",
+      "solution_text": "<h3>Solution Approach</h3><p><strong>Algorithm:</strong><br/>We traverse the linked list and insert GCD nodes between every pair of adjacent nodes. Since we're working with arrays representing linked lists, we build the result by inserting GCD values between consecutive elements.</p><p><strong>Strategy:</strong><br/>1. Handle edge case: single node (return as-is)<br/>2. For each pair of adjacent nodes, calculate their GCD<br/>3. Insert the GCD value between them in the result<br/>4. Use Euclidean algorithm for efficient GCD calculation</p><p><strong>Time Complexity:</strong> O(n * log(min(a,b))) where n is the number of nodes and log(min(a,b)) is for GCD calculation</p><p><strong>Space Complexity:</strong> O(n) for the result array (in-place modification would be O(1) for actual linked list)</p><p><strong>Key Insights:</strong><br/>- GCD can be computed efficiently using the Euclidean algorithm<br/>- We need to maintain the order of original nodes while inserting GCD values<br/>- The result will have 2n-1 nodes where n is the original list length</p>",
+      "solution_code": "function insertGreatestCommonDivisorsInLinkedList(head: number[]): number[] {\n    function gcd(a: number, b: number): number {\n        while (b !== 0) {\n            const temp = b;\n            b = a % b;\n            a = temp;\n        }\n        return a;\n    }\n    \n    if (!head || head.length <= 1) {\n        return head;\n    }\n    \n    const result: number[] = [head[0]];\n    \n    for (let i = 1; i < head.length; i++) {\n        // Calculate GCD of current and previous elements\n        const gcdValue = gcd(head[i-1], head[i]);\n        // Insert GCD value\n        result.push(gcdValue);\n        // Insert current element\n        result.push(head[i]);\n    }\n    \n    return result;\n}"
+    },
+    "java": {
+      "template": "import java.util.*;\n\nclass Solution {\n    public int[] insertGreatestCommonDivisorsInLinkedList(int[] head) {\n        \n    }\n}",
+      "solution_text": "<h3>Solution Approach</h3><p><strong>Algorithm:</strong><br/>We traverse the linked list and insert GCD nodes between every pair of adjacent nodes. Since we're working with arrays representing linked lists, we build the result by inserting GCD values between consecutive elements.</p><p><strong>Strategy:</strong><br/>1. Handle edge case: single node (return as-is)<br/>2. For each pair of adjacent nodes, calculate their GCD<br/>3. Insert the GCD value between them in the result<br/>4. Use Euclidean algorithm for efficient GCD calculation</p><p><strong>Time Complexity:</strong> O(n * log(min(a,b))) where n is the number of nodes and log(min(a,b)) is for GCD calculation</p><p><strong>Space Complexity:</strong> O(n) for the result array (in-place modification would be O(1) for actual linked list)</p><p><strong>Key Insights:</strong><br/>- GCD can be computed efficiently using the Euclidean algorithm<br/>- We need to maintain the order of original nodes while inserting GCD values<br/>- The result will have 2n-1 nodes where n is the original list length</p>",
+      "solution_code": "import java.util.*;\n\nclass Solution {\n    public int[] insertGreatestCommonDivisorsInLinkedList(int[] head) {\n        if (head == null || head.length <= 1) {\n            return head;\n        }\n        \n        List<Integer> result = new ArrayList<>();\n        result.add(head[0]);\n        \n        for (int i = 1; i < head.length; i++) {\n            // Calculate GCD of current and previous elements\n            int gcdValue = gcd(head[i-1], head[i]);\n            // Insert GCD value\n            result.add(gcdValue);\n            // Insert current element\n            result.add(head[i]);\n        }\n        \n        return result.stream().mapToInt(Integer::intValue).toArray();\n    }\n    \n    private int gcd(int a, int b) {\n        while (b != 0) {\n            int temp = b;\n            b = a % b;\n            a = temp;\n        }\n        return a;\n    }\n}"
+    }
+  },
+  "order_matters": true,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": [12, 3, 4, 6],
+      "output": [12, 3, 3, 1, 4, 2, 6]
+    },
+    {
+      "id": 2,
+      "input": [2, 1],
+      "output": [2, 1, 1]
+    },
+    {
+      "id": 3,
+      "input": [18, 6, 10, 3],
+      "output": [18, 6, 6, 2, 10, 1, 3]
+    },
+    {
+      "id": 4,
+      "input": [7],
+      "output": [7]
+    },
+    {
+      "id": 5,
+      "input": [5, 15, 20, 100],
+      "output": [5, 5, 15, 5, 20, 20, 100]
+    },
+    {
+      "id": 6,
+      "input": [8, 12, 16],
+      "output": [8, 4, 12, 4, 16]
+    },
+    {
+      "id": 7,
+      "input": [9, 27, 81],
+      "output": [9, 9, 27, 27, 81]
+    },
+    {
+      "id": 8,
+      "input": [11, 13, 17, 19],
+      "output": [11, 1, 13, 1, 17, 1, 19]
+    },
+    {
+      "id": 9,
+      "input": [24, 48, 72, 96],
+      "output": [24, 24, 48, 24, 72, 24, 96]
+    },
+    {
+      "id": 10,
+      "input": [14, 21, 35, 70],
+      "output": [14, 7, 21, 7, 35, 35, 70]
+    }
+  ]
+}

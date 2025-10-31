@@ -1,0 +1,86 @@
+{
+  "filename": "rotate-array",
+  "title": "Rotate Array",
+  "keywords": [
+    "rotate",
+    "array",
+    "leetcode",
+    "189",
+    "given",
+    "integer",
+    "nums",
+    "right",
+    "steps",
+    "where"
+  ],
+  "description": "<h2>Rotate Array</h2><p>Leetcode 189. Rotate Array</p><p></p><p>You are given an integer array `nums`, rotate the array to the right by `k` steps, where `k` is non-negative.</p><h3>Examples:</h3><ul><li>Input: nums = [1,2,3,4,5,6,7,8], k = 4<br><br>Output: [5,6,7,8,1,2,3,4]<br>rotate 1 steps to the right: [8,1,2,3,4,5,6,7]\nrotate 2 steps to the right: [7,8,1,2,3,4,5,6]\nrotate 3 steps to the right: [6,7,8,1,2,3,4,5]\nrotate 4 steps to the right: [5,6,7,8,1,2,3,4]</li><li>Input: nums = [1000,2,4,-3], k = 2<br><br>Output: [4,-3,1000,2]<br>rotate 1 steps to the right: [-3,1000,2,4]\nrotate 2 steps to the right: [4,-3,1000,2]</li></ul><h3>Constraints:</h3><ul><li> `1 <= nums.length <= 100,000`</li><li> `-(2^31) <= nums[i] <= ((2^31)-1)`</li><li> `0 <= k <= 100,000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def rotateArray(nums, k):\n    ",
+      "solution_text": "Rotate Array using Three Reversals approach:\n\n**Algorithm:**\n1. Handle edge case where k >= len(nums) using modulo\n2. Reverse the entire array\n3. Reverse the first k elements\n4. Reverse the remaining elements\n\n**Time Complexity:** O(n) - Three passes through array\n**Space Complexity:** O(1) - In-place rotation\n\n**Key Insights:**\n- Three reversals achieve the rotation without extra space\n- k = k % n handles cases where k > array length\n- Reversal pattern: [1,2,3,4,5] -> [5,4,3,2,1] -> [4,5,3,2,1] -> [4,5,1,2,3]",
+      "solution_code": "def rotateArray(nums, k):\n    n = len(nums)\n    k = k % n  # Handle k > n\n    \n    if k == 0:\n        return\n    \n    def reverse(start, end):\n        while start < end:\n            nums[start], nums[end] = nums[end], nums[start]\n            start += 1\n            end -= 1\n    \n    # Step 1: Reverse entire array\n    reverse(0, n - 1)\n    \n    # Step 2: Reverse first k elements\n    reverse(0, k - 1)\n    \n    # Step 3: Reverse remaining elements\n    reverse(k, n - 1)"
+    },
+    "javascript": {
+      "template": "function rotateArray(nums, k) {\n  \n}",
+      "solution_text": "Rotate Array using Three Reversals approach:\n\n**Algorithm:**\n1. Handle edge case where k >= len(nums) using modulo\n2. Reverse the entire array\n3. Reverse the first k elements\n4. Reverse the remaining elements\n\n**Time Complexity:** O(n) - Three passes through array\n**Space Complexity:** O(1) - In-place rotation\n\n**Key Insights:**\n- Three reversals achieve the rotation without extra space\n- k = k % n handles cases where k > array length\n- Reversal pattern: [1,2,3,4,5] -> [5,4,3,2,1] -> [4,5,3,2,1] -> [4,5,1,2,3]",
+      "solution_code": "function rotateArray(nums, k) {\n    const n = nums.length;\n    k = k % n; // Handle k > n\n    \n    if (k === 0) return;\n    \n    function reverse(start, end) {\n        while (start < end) {\n            [nums[start], nums[end]] = [nums[end], nums[start]];\n            start++;\n            end--;\n        }\n    }\n    \n    // Step 1: Reverse entire array\n    reverse(0, n - 1);\n    \n    // Step 2: Reverse first k elements\n    reverse(0, k - 1);\n    \n    // Step 3: Reverse remaining elements\n    reverse(k, n - 1);\n}"
+    },
+    "typescript": {
+      "template": "function rotateArray(nums: number[], k: number): void {\n  \n}",
+      "solution_text": "Rotate Array using Three Reversals approach:\n\n**Algorithm:**\n1. Handle edge case where k >= len(nums) using modulo\n2. Reverse the entire array\n3. Reverse the first k elements\n4. Reverse the remaining elements\n\n**Time Complexity:** O(n) - Three passes through array\n**Space Complexity:** O(1) - In-place rotation\n\n**Key Insights:**\n- Three reversals achieve the rotation without extra space\n- k = k % n handles cases where k > array length\n- Reversal pattern: [1,2,3,4,5] -> [5,4,3,2,1] -> [4,5,3,2,1] -> [4,5,1,2,3]",
+      "solution_code": "function rotateArray(nums: number[], k: number): void {\n    const n = nums.length;\n    k = k % n; // Handle k > n\n    \n    if (k === 0) return;\n    \n    function reverse(start: number, end: number): void {\n        while (start < end) {\n            [nums[start], nums[end]] = [nums[end], nums[start]];\n            start++;\n            end--;\n        }\n    }\n    \n    // Step 1: Reverse entire array\n    reverse(0, n - 1);\n    \n    // Step 2: Reverse first k elements\n    reverse(0, k - 1);\n    \n    // Step 3: Reverse remaining elements\n    reverse(k, n - 1);\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public void rotateArray(int[] nums, int k) {\n        \n    }\n}",
+      "solution_text": "Rotate Array using Three Reversals approach:\n\n**Algorithm:**\n1. Handle edge case where k >= len(nums) using modulo\n2. Reverse the entire array\n3. Reverse the first k elements\n4. Reverse the remaining elements\n\n**Time Complexity:** O(n) - Three passes through array\n**Space Complexity:** O(1) - In-place rotation\n\n**Key Insights:**\n- Three reversals achieve the rotation without extra space\n- k = k % n handles cases where k > array length\n- Reversal pattern: [1,2,3,4,5] -> [5,4,3,2,1] -> [4,5,3,2,1] -> [4,5,1,2,3]",
+      "solution_code": "class Solution {\n    public void rotateArray(int[] nums, int k) {\n        int n = nums.length;\n        k = k % n; // Handle k > n\n        \n        if (k == 0) return;\n        \n        // Step 1: Reverse entire array\n        reverse(nums, 0, n - 1);\n        \n        // Step 2: Reverse first k elements\n        reverse(nums, 0, k - 1);\n        \n        // Step 3: Reverse remaining elements\n        reverse(nums, k, n - 1);\n    }\n    \n    private void reverse(int[] nums, int start, int end) {\n        while (start < end) {\n            int temp = nums[start];\n            nums[start] = nums[end];\n            nums[end] = temp;\n            start++;\n            end--;\n        }\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "k": 4
+      },
+      "output": [
+        5,
+        6,
+        7,
+        8,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [
+          1000,
+          2,
+          4,
+          -3
+        ],
+        "k": 2
+      },
+      "output": [
+        4,
+        -3,
+        1000,
+        2
+      ]
+    }
+  ]
+}

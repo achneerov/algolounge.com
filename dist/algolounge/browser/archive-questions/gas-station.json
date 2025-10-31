@@ -1,0 +1,230 @@
+{
+  "filename": "gas-station",
+  "title": "Gas Station",
+  "keywords": [
+    "gas",
+    "station",
+    "leetcode",
+    "134",
+    "there",
+    "stations",
+    "along",
+    "circular",
+    "route",
+    "given"
+  ],
+  "description": "<h2>Gas Station</h2><p>Leetcode 134. Gas Station</p><p></p><p>There are `n` gas stations along a circular route. You are given two integer arrays `gas` and `cost` where:</p><p></p><p>* `gas[i]` is the amount of gas at the `ith` station.</p><p>* `cost[i]` is the amount of gas needed to travel from the `ith` station to the `(i + 1)th` station. (The last station is connected to the first station)</p><p></p><p>You have a car that can store an unlimited amount of gas, but you begin the journey with an empty tank at one of the gas stations.</p><p></p><p>Return the starting gas station's index such that you can travel around the circuit once in the clockwise direction. If it's impossible, then return `-1`.</p><p></p><p>It's guaranteed that at most one solution exists.</p><h3>Examples:</h3><ul><li>Input: gas = [1,2,3,4], cost = [2,2,4,1]<br><br>Output: 3<br>Start at station 3 (index 3) and fill up with 4 unit of gas. Your tank = 0 + 4 = 4\nTravel to station 0. Your tank = 4 - 1 + 1 = 4\nTravel to station 1. Your tank = 4 - 2 + 2 = 4\nTravel to station 2. Your tank = 4 - 2 + 3 = 5\nTravel to station 3. Your tank = 5 - 4 + 4 = 5</li><li>Input: gas = [1,2,3], cost = [2,3,2]<br><br>Output: -1<br>You can't start at station 0 or 1, since there isn't enough gas to travel to the next station.\nIf you start at station 2, you can move to station 0, and then station 1. \nAt station 1 your tank = 0 + 3 - 2 + 1 - 2 = 0.\nYou're stuck at station 1, so you can't travel around the circuit.</li></ul><h3>Constraints:</h3><ul><li> `1 <= gas.length == cost.length <= 1000`</li><li> `0 <= gas[i], cost[i] <= 1000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def gasStation(gas, cost):\n    ",
+      "solution_text": "Gas Station using Greedy approach:\n\n**Algorithm:**\n1. Check if total gas >= total cost (necessary condition)\n2. Find starting point where we can complete the circuit\n3. If current tank goes negative, reset start to next position\n4. Key insight: if we fail at position i, any position before i cannot be the answer\n\n**Time Complexity:** O(n) - Single pass through arrays\n**Space Complexity:** O(1) - Only using constant variables\n\n**Key Insights:**\n- If total gas < total cost, no solution exists\n- Greedy choice: when tank goes negative, next position is potential start\n- If we can start from any position, we can complete the circuit",
+      "solution_code": "def gasStation(gas, cost):\n    # Check if solution is possible\n    if sum(gas) < sum(cost):\n        return -1\n    \n    start = 0\n    tank = 0\n    \n    for i in range(len(gas)):\n        tank += gas[i] - cost[i]\n        \n        # If tank goes negative, reset start point\n        if tank < 0:\n            start = i + 1\n            tank = 0\n    \n    return start"
+    },
+    "javascript": {
+      "template": "function gasStation(gas, cost) {\n  \n}",
+      "solution_text": "Gas Station using Greedy approach:\n\n**Algorithm:**\n1. Check if total gas >= total cost (necessary condition)\n2. Find starting point where we can complete the circuit\n3. If current tank goes negative, reset start to next position\n4. Key insight: if we fail at position i, any position before i cannot be the answer\n\n**Time Complexity:** O(n) - Single pass through arrays\n**Space Complexity:** O(1) - Only using constant variables\n\n**Key Insights:**\n- If total gas < total cost, no solution exists\n- Greedy choice: when tank goes negative, next position is potential start\n- If we can start from any position, we can complete the circuit",
+      "solution_code": "function gasStation(gas, cost) {\n    // Check if solution is possible\n    const totalGas = gas.reduce((sum, g) => sum + g, 0);\n    const totalCost = cost.reduce((sum, c) => sum + c, 0);\n    \n    if (totalGas < totalCost) {\n        return -1;\n    }\n    \n    let start = 0;\n    let tank = 0;\n    \n    for (let i = 0; i < gas.length; i++) {\n        tank += gas[i] - cost[i];\n        \n        // If tank goes negative, reset start point\n        if (tank < 0) {\n            start = i + 1;\n            tank = 0;\n        }\n    }\n    \n    return start;\n}"
+    },
+    "typescript": {
+      "template": "function gasStation(gas: number[], cost: number[]): number {\n  \n}",
+      "solution_text": "Gas Station using Greedy approach:\n\n**Algorithm:**\n1. Check if total gas >= total cost (necessary condition)\n2. Find starting point where we can complete the circuit\n3. If current tank goes negative, reset start to next position\n4. Key insight: if we fail at position i, any position before i cannot be the answer\n\n**Time Complexity:** O(n) - Single pass through arrays\n**Space Complexity:** O(1) - Only using constant variables\n\n**Key Insights:**\n- If total gas < total cost, no solution exists\n- Greedy choice: when tank goes negative, next position is potential start\n- If we can start from any position, we can complete the circuit",
+      "solution_code": "function gasStation(gas: number[], cost: number[]): number {\n    // Check if solution is possible\n    const totalGas = gas.reduce((sum, g) => sum + g, 0);\n    const totalCost = cost.reduce((sum, c) => sum + c, 0);\n    \n    if (totalGas < totalCost) {\n        return -1;\n    }\n    \n    let start = 0;\n    let tank = 0;\n    \n    for (let i = 0; i < gas.length; i++) {\n        tank += gas[i] - cost[i];\n        \n        // If tank goes negative, reset start point\n        if (tank < 0) {\n            start = i + 1;\n            tank = 0;\n        }\n    }\n    \n    return start;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int gasStation(int[] gas, int[] cost) {\n        \n    }\n}",
+      "solution_text": "Gas Station using Greedy approach:\n\n**Algorithm:**\n1. Check if total gas >= total cost (necessary condition)\n2. Find starting point where we can complete the circuit\n3. If current tank goes negative, reset start to next position\n4. Key insight: if we fail at position i, any position before i cannot be the answer\n\n**Time Complexity:** O(n) - Single pass through arrays\n**Space Complexity:** O(1) - Only using constant variables\n\n**Key Insights:**\n- If total gas < total cost, no solution exists\n- Greedy choice: when tank goes negative, next position is potential start\n- If we can start from any position, we can complete the circuit",
+      "solution_code": "class Solution {\n    public int gasStation(int[] gas, int[] cost) {\n        // Check if solution is possible\n        int totalGas = 0, totalCost = 0;\n        for (int i = 0; i < gas.length; i++) {\n            totalGas += gas[i];\n            totalCost += cost[i];\n        }\n        \n        if (totalGas < totalCost) {\n            return -1;\n        }\n        \n        int start = 0;\n        int tank = 0;\n        \n        for (int i = 0; i < gas.length; i++) {\n            tank += gas[i] - cost[i];\n            \n            // If tank goes negative, reset start point\n            if (tank < 0) {\n                start = i + 1;\n                tank = 0;\n            }\n        }\n        \n        return start;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "gas": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "cost": [
+          2,
+          2,
+          4,
+          1
+        ]
+      },
+      "output": 3
+    },
+    {
+      "id": 2,
+      "input": {
+        "gas": [
+          1,
+          2,
+          3
+        ],
+        "cost": [
+          2,
+          3,
+          2
+        ]
+      },
+      "output": -1
+    },
+    {
+      "id": 3,
+      "input": {
+        "gas": [
+          2,
+          3,
+          4
+        ],
+        "cost": [
+          3,
+          4,
+          3
+        ]
+      },
+      "output": -1
+    },
+    {
+      "id": 4,
+      "input": {
+        "gas": [
+          5,
+          1,
+          2,
+          4,
+          3
+        ],
+        "cost": [
+          3,
+          6,
+          1,
+          2,
+          4
+        ]
+      },
+      "output": 3
+    },
+    {
+      "id": 5,
+      "input": {
+        "gas": [
+          4,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cost": [
+          0,
+          0,
+          0,
+          0,
+          5
+        ]
+      },
+      "output": -1
+    },
+    {
+      "id": 6,
+      "input": {
+        "gas": [
+          5,
+          8,
+          2,
+          8
+        ],
+        "cost": [
+          6,
+          5,
+          6,
+          6
+        ]
+      },
+      "output": 3
+    },
+    {
+      "id": 7,
+      "input": {
+        "gas": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "cost": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "output": 0
+    },
+    {
+      "id": 8,
+      "input": {
+        "gas": [
+          6,
+          1,
+          4,
+          3,
+          5
+        ],
+        "cost": [
+          3,
+          8,
+          2,
+          4,
+          2
+        ]
+      },
+      "output": 2
+    },
+    {
+      "id": 9,
+      "input": {
+        "gas": [
+          7,
+          1,
+          0,
+          11,
+          4
+        ],
+        "cost": [
+          5,
+          9,
+          0,
+          1,
+          9
+        ]
+      },
+      "output": 3
+    },
+    {
+      "id": 10,
+      "input": {
+        "gas": [
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        "cost": [
+          10,
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "output": 0
+    }
+  ]
+}

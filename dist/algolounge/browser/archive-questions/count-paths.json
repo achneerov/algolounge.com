@@ -1,0 +1,122 @@
+{
+  "filename": "count-paths",
+  "title": "Unique Paths",
+  "keywords": [
+    "unique",
+    "paths",
+    "leetcode",
+    "there",
+    "grid",
+    "where",
+    "allowed",
+    "move",
+    "either",
+    "down"
+  ],
+  "description": "<h2>Unique Paths</h2><p>Leetcode 62. Unique Paths</p><p></p><p>There is an `m x n` grid where you are allowed to move either down or to the right at any point in time.</p><p></p><p>Given the two integers `m` and `n`, return the number of possible unique paths that can be taken from the top-left corner of the grid (`grid[0][0]`) to the bottom-right corner (`grid[m - 1][n - 1]`).</p><p></p><p>You may assume the output will fit in a **32-bit** integer.</p><h3>Examples:</h3><ul><li>Input: m = 3, n = 3<br><br>Output: 6</li></ul><h3>Constraints:</h3><ul><li> `1 <= m, n <= 100`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def uniquePaths(m, n):\n    ",
+      "solution_text": "<p><strong>Dynamic Programming Solution for Unique Paths:</strong></p><p>Count unique paths from top-left to bottom-right in grid.</p><p><strong>Algorithm:</strong></p><ol><li>Use 2D DP array where dp[i][j] = paths to reach (i,j)</li><li>Base case: dp[0][j] = dp[i][0] = 1 (one path along edges)</li><li>Recurrence: dp[i][j] = dp[i-1][j] + dp[i][j-1]</li></ol><p><strong>Optimization:</strong> Use 1D array since we only need previous row</p><p><strong>Time Complexity:</strong> O(m × n)</p><p><strong>Space Complexity:</strong> O(n) with optimization</p>",
+      "solution_code": "def uniquePaths(m, n):\n    # Space-optimized DP using 1D array\n    dp = [1] * n  # Initialize first row with 1s\n    \n    for i in range(1, m):\n        for j in range(1, n):\n            dp[j] += dp[j-1]  # Add paths from left\n    \n    return dp[n-1]"
+    },
+    "javascript": {
+      "template": "function uniquePaths(m, n) {\n  \n}",
+      "solution_text": "<p><strong>Dynamic Programming Solution for Unique Paths:</strong></p><p>Count unique paths from top-left to bottom-right in grid.</p><p><strong>Algorithm:</strong></p><ol><li>Use 2D DP array where dp[i][j] = paths to reach (i,j)</li><li>Base case: dp[0][j] = dp[i][0] = 1 (one path along edges)</li><li>Recurrence: dp[i][j] = dp[i-1][j] + dp[i][j-1]</li></ol><p><strong>Optimization:</strong> Use 1D array since we only need previous row</p><p><strong>Time Complexity:</strong> O(m × n)</p><p><strong>Space Complexity:</strong> O(n) with optimization</p>",
+      "solution_code": "function uniquePaths(m, n) {\n    // Space-optimized DP using 1D array\n    const dp = new Array(n).fill(1); // Initialize first row with 1s\n    \n    for (let i = 1; i < m; i++) {\n        for (let j = 1; j < n; j++) {\n            dp[j] += dp[j-1]; // Add paths from left\n        }\n    }\n    \n    return dp[n-1];\n}"
+    },
+    "typescript": {
+      "template": "function uniquePaths(m: number, n: number): number {\n  \n}",
+      "solution_text": "<p><strong>Dynamic Programming Solution for Unique Paths:</strong></p><p>Count unique paths from top-left to bottom-right in grid.</p><p><strong>Algorithm:</strong></p><ol><li>Use 2D DP array where dp[i][j] = paths to reach (i,j)</li><li>Base case: dp[0][j] = dp[i][0] = 1 (one path along edges)</li><li>Recurrence: dp[i][j] = dp[i-1][j] + dp[i][j-1]</li></ol><p><strong>Optimization:</strong> Use 1D array since we only need previous row</p><p><strong>Time Complexity:</strong> O(m × n)</p><p><strong>Space Complexity:</strong> O(n) with optimization</p>",
+      "solution_code": "function uniquePaths(m: number, n: number): number {\n    // Space-optimized DP using 1D array\n    const dp: number[] = new Array(n).fill(1); // Initialize first row with 1s\n    \n    for (let i = 1; i < m; i++) {\n        for (let j = 1; j < n; j++) {\n            dp[j] += dp[j-1]; // Add paths from left\n        }\n    }\n    \n    return dp[n-1];\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int uniquePaths(int m, int n) {\n        \n    }\n}",
+      "solution_text": "<p><strong>Dynamic Programming Solution for Unique Paths:</strong></p><p>Count unique paths from top-left to bottom-right in grid.</p><p><strong>Algorithm:</strong></p><ol><li>Use 2D DP array where dp[i][j] = paths to reach (i,j)</li><li>Base case: dp[0][j] = dp[i][0] = 1 (one path along edges)</li><li>Recurrence: dp[i][j] = dp[i-1][j] + dp[i][j-1]</li></ol><p><strong>Optimization:</strong> Use 1D array since we only need previous row</p><p><strong>Time Complexity:</strong> O(m × n)</p><p><strong>Space Complexity:</strong> O(n) with optimization</p>",
+      "solution_code": "class Solution {\n    public int uniquePaths(int m, int n) {\n        // Space-optimized DP using 1D array\n        int[] dp = new int[n];\n        // Initialize first row with 1s\n        for (int i = 0; i < n; i++) {\n            dp[i] = 1;\n        }\n        \n        for (int i = 1; i < m; i++) {\n            for (int j = 1; j < n; j++) {\n                dp[j] += dp[j-1]; // Add paths from left\n            }\n        }\n        \n        return dp[n-1];\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "m": 3,
+        "n": 3
+      },
+      "output": 6
+    },
+    {
+      "id": 2,
+      "input": {
+        "m": 3,
+        "n": 7
+      },
+      "output": 28
+    },
+    {
+      "id": 3,
+      "input": {
+        "m": 1,
+        "n": 1
+      },
+      "output": 1
+    },
+    {
+      "id": 4,
+      "input": {
+        "m": 1,
+        "n": 10
+      },
+      "output": 1
+    },
+    {
+      "id": 5,
+      "input": {
+        "m": 10,
+        "n": 1
+      },
+      "output": 1
+    },
+    {
+      "id": 6,
+      "input": {
+        "m": 2,
+        "n": 2
+      },
+      "output": 2
+    },
+    {
+      "id": 7,
+      "input": {
+        "m": 3,
+        "n": 2
+      },
+      "output": 3
+    },
+    {
+      "id": 8,
+      "input": {
+        "m": 7,
+        "n": 3
+      },
+      "output": 28
+    },
+    {
+      "id": 9,
+      "input": {
+        "m": 4,
+        "n": 4
+      },
+      "output": 20
+    },
+    {
+      "id": 10,
+      "input": {
+        "m": 5,
+        "n": 5
+      },
+      "output": 70
+    }
+  ]
+}

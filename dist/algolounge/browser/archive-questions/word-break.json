@@ -1,0 +1,79 @@
+{
+  "filename": "word-break",
+  "title": "Word Break",
+  "keywords": [
+    "word",
+    "break",
+    "leetcode",
+    "139",
+    "given",
+    "string",
+    "dictionary",
+    "strings",
+    "worddict",
+    "return"
+  ],
+  "description": "<h2>Word Break</h2><p>Leetcode 139. Word Break</p><p></p><p>Given a string `s` and a dictionary of strings `wordDict`, return `true` if `s` can be segmented into a space-separated sequence of dictionary words.</p><p></p><p>You are allowed to reuse words in the dictionary an unlimited number of times. You may assume all dictionary words are unique.</p><h3>Examples:</h3><ul><li>Input: s = \"neetcode\", wordDict = [\"neet\",\"code\"]<br><br>Output: true<br>Return true because \"neetcode\" can be split into \"neet\" and \"code\".</li><li>Input: s = \"applepenapple\", wordDict = [\"apple\",\"pen\",\"ape\"]<br><br>Output: true<br>Return true because \"applepenapple\" can be split into \"apple\", \"pen\" and \"apple\". Notice that we can reuse words and also not use all the words.</li><li>Input: s = \"catsincars\", wordDict = [\"cats\",\"cat\",\"sin\",\"in\",\"car\"]<br><br>Output: false</li></ul><h3>Constraints:</h3><ul><li> `1 <= s.length <= 200`</li><li> `1 <= wordDict.length <= 100`</li><li> `1 <= wordDict[i].length <= 20`</li><li> `s` and `wordDict[i]` consist of only lowercase English letters.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def wordBreak(s, wordDict):\n    ",
+      "solution_text": "Word Break using Dynamic Programming:\n\n**Algorithm:**\n1. Convert wordDict to set for O(1) lookup\n2. Create DP array where dp[i] = True if s[0:i] can be segmented\n3. For each position i, check all possible word endings\n4. If s[j:i] is in wordDict and dp[j] is True, then dp[i] = True\n\n**Time Complexity:** O(n^2 + m*k) where n=len(s), m=len(wordDict), k=avg word length\n**Space Complexity:** O(n + m*k) for DP array and word set\n\n**Key Insights:**\n- DP[i] represents if substring s[0:i] can be segmented\n- Check all possible splits ending at position i\n- Set lookup makes word checking O(1)",
+      "solution_code": "def wordBreak(s, wordDict):\n    word_set = set(wordDict)\n    n = len(s)\n    \n    # dp[i] = True if s[0:i] can be segmented\n    dp = [False] * (n + 1)\n    dp[0] = True  # Empty string can always be segmented\n    \n    for i in range(1, n + 1):\n        for j in range(i):\n            # Check if s[j:i] is a valid word and s[0:j] can be segmented\n            if dp[j] and s[j:i] in word_set:\n                dp[i] = True\n                break\n    \n    return dp[n]"
+    },
+    "javascript": {
+      "template": "function wordBreak(s, wordDict) {\n  \n}",
+      "solution_text": "Word Break using Dynamic Programming:\n\n**Algorithm:**\n1. Convert wordDict to set for O(1) lookup\n2. Create DP array where dp[i] = True if s[0:i] can be segmented\n3. For each position i, check all possible word endings\n4. If s[j:i] is in wordDict and dp[j] is True, then dp[i] = True\n\n**Time Complexity:** O(n^2 + m*k) where n=len(s), m=len(wordDict), k=avg word length\n**Space Complexity:** O(n + m*k) for DP array and word set\n\n**Key Insights:**\n- DP[i] represents if substring s[0:i] can be segmented\n- Check all possible splits ending at position i\n- Set lookup makes word checking O(1)",
+      "solution_code": "function wordBreak(s, wordDict) {\n    const wordSet = new Set(wordDict);\n    const n = s.length;\n    \n    // dp[i] = true if s[0:i] can be segmented\n    const dp = new Array(n + 1).fill(false);\n    dp[0] = true; // Empty string can always be segmented\n    \n    for (let i = 1; i <= n; i++) {\n        for (let j = 0; j < i; j++) {\n            // Check if s[j:i] is a valid word and s[0:j] can be segmented\n            if (dp[j] && wordSet.has(s.substring(j, i))) {\n                dp[i] = true;\n                break;\n            }\n        }\n    }\n    \n    return dp[n];\n}"
+    },
+    "typescript": {
+      "template": "function wordBreak(s: string, wordDict: string[]): boolean {\n  \n}",
+      "solution_text": "Word Break using Dynamic Programming:\n\n**Algorithm:**\n1. Convert wordDict to set for O(1) lookup\n2. Create DP array where dp[i] = True if s[0:i] can be segmented\n3. For each position i, check all possible word endings\n4. If s[j:i] is in wordDict and dp[j] is True, then dp[i] = True\n\n**Time Complexity:** O(n^2 + m*k) where n=len(s), m=len(wordDict), k=avg word length\n**Space Complexity:** O(n + m*k) for DP array and word set\n\n**Key Insights:**\n- DP[i] represents if substring s[0:i] can be segmented\n- Check all possible splits ending at position i\n- Set lookup makes word checking O(1)",
+      "solution_code": "function wordBreak(s: string, wordDict: string[]): boolean {\n    const wordSet = new Set(wordDict);\n    const n = s.length;\n    \n    // dp[i] = true if s[0:i] can be segmented\n    const dp: boolean[] = new Array(n + 1).fill(false);\n    dp[0] = true; // Empty string can always be segmented\n    \n    for (let i = 1; i <= n; i++) {\n        for (let j = 0; j < i; j++) {\n            // Check if s[j:i] is a valid word and s[0:j] can be segmented\n            if (dp[j] && wordSet.has(s.substring(j, i))) {\n                dp[i] = true;\n                break;\n            }\n        }\n    }\n    \n    return dp[n];\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public boolean wordBreak(String s, List<String> wordDict) {\n        \n    }\n}",
+      "solution_text": "Word Break using Dynamic Programming:\n\n**Algorithm:**\n1. Convert wordDict to set for O(1) lookup\n2. Create DP array where dp[i] = True if s[0:i] can be segmented\n3. For each position i, check all possible word endings\n4. If s[j:i] is in wordDict and dp[j] is True, then dp[i] = True\n\n**Time Complexity:** O(n^2 + m*k) where n=len(s), m=len(wordDict), k=avg word length\n**Space Complexity:** O(n + m*k) for DP array and word set\n\n**Key Insights:**\n- DP[i] represents if substring s[0:i] can be segmented\n- Check all possible splits ending at position i\n- Set lookup makes word checking O(1)",
+      "solution_code": "class Solution {\n    public boolean wordBreak(String s, List<String> wordDict) {\n        Set<String> wordSet = new HashSet<>(wordDict);\n        int n = s.length();\n        \n        // dp[i] = true if s[0:i] can be segmented\n        boolean[] dp = new boolean[n + 1];\n        dp[0] = true; // Empty string can always be segmented\n        \n        for (int i = 1; i <= n; i++) {\n            for (int j = 0; j < i; j++) {\n                // Check if s[j:i] is a valid word and s[0:j] can be segmented\n                if (dp[j] && wordSet.contains(s.substring(j, i))) {\n                    dp[i] = true;\n                    break;\n                }\n            }\n        }\n        \n        return dp[n];\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "s": "\"neetcode\",",
+        "wordDict": [
+          "neet",
+          "code"
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 2,
+      "input": {
+        "s": "\"applepenapple\",",
+        "wordDict": [
+          "apple",
+          "pen",
+          "ape"
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 3,
+      "input": {
+        "s": "\"catsincars\",",
+        "wordDict": [
+          "cats",
+          "cat",
+          "sin",
+          "in",
+          "car"
+        ]
+      },
+      "output": "false"
+    }
+  ]
+}

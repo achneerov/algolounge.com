@@ -1,0 +1,56 @@
+{
+  "filename": "sqrtx",
+  "title": "Sqrt(x)",
+  "keywords": [
+    "sqrt",
+    "leetcode",
+    "given",
+    "non",
+    "negative",
+    "integer",
+    "return",
+    "square",
+    "root",
+    "rounded"
+  ],
+  "description": "<h2>Sqrt(x)</h2><p>Leetcode 69. Sqrt(x)</p><p></p><p>You are given a non-negative integer `x`, return the **square root** of `x` **rounded down** to the nearest integer. The returned integer should be non-negative as well.</p><p></p><p>You **must not use** any built-in exponent function or operator.</p><p></p><p>- For example, do not use `pow(x, 0.5)` in `c++` or `x ** 0.5` in `python`.</p><h3>Examples:</h3><ul><li>Input: x = 9<br><br>Output: 3</li><li>Input: x = 13<br><br>Output: 3</li></ul><h3>Constraints:</h3><ul><li> `0 <= x <= ((2^31)-1)`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def mySqrt(x):\n    ",
+      "solution_text": "Integer Square Root using Binary Search:\n\n**Algorithm:**\n1. Handle edge cases (x = 0, 1)\n2. Binary search in range [2, x//2]\n3. Check if mid*mid <= x and (mid+1)*(mid+1) > x\n4. Return the largest integer whose square is <= x\n\n**Time Complexity:** O(log x) - Binary search\n**Space Complexity:** O(1) - Constant space\n\n**Key Insights:**\n- Square root of x is at most x//2 for x >= 4\n- Binary search finds exact point where mid^2 <= x\n- No built-in functions needed, just integer arithmetic",
+      "solution_code": "def mySqrt(x):\n    if x < 2:\n        return x\n    \n    left, right = 2, x // 2\n    \n    while left <= right:\n        mid = (left + right) // 2\n        square = mid * mid\n        \n        if square == x:\n            return mid\n        elif square < x:\n            left = mid + 1\n        else:\n            right = mid - 1\n    \n    # Return the largest integer whose square is <= x\n    return right"
+    },
+    "javascript": {
+      "template": "function mySqrt(x) {\n  \n}",
+      "solution_text": "Integer Square Root using Binary Search:\n\n**Algorithm:**\n1. Handle edge cases (x = 0, 1)\n2. Binary search in range [2, x//2]\n3. Check if mid*mid <= x and (mid+1)*(mid+1) > x\n4. Return the largest integer whose square is <= x\n\n**Time Complexity:** O(log x) - Binary search\n**Space Complexity:** O(1) - Constant space\n\n**Key Insights:**\n- Square root of x is at most x//2 for x >= 4\n- Binary search finds exact point where mid^2 <= x\n- No built-in functions needed, just integer arithmetic",
+      "solution_code": "function mySqrt(x) {\n    if (x < 2) return x;\n    \n    let left = 2, right = Math.floor(x / 2);\n    \n    while (left <= right) {\n        const mid = Math.floor((left + right) / 2);\n        const square = mid * mid;\n        \n        if (square === x) {\n            return mid;\n        } else if (square < x) {\n            left = mid + 1;\n        } else {\n            right = mid - 1;\n        }\n    }\n    \n    // Return the largest integer whose square is <= x\n    return right;\n}"
+    },
+    "typescript": {
+      "template": "function mySqrt(x: number): number {\n  \n}",
+      "solution_text": "Integer Square Root using Binary Search:\n\n**Algorithm:**\n1. Handle edge cases (x = 0, 1)\n2. Binary search in range [2, x//2]\n3. Check if mid*mid <= x and (mid+1)*(mid+1) > x\n4. Return the largest integer whose square is <= x\n\n**Time Complexity:** O(log x) - Binary search\n**Space Complexity:** O(1) - Constant space\n\n**Key Insights:**\n- Square root of x is at most x//2 for x >= 4\n- Binary search finds exact point where mid^2 <= x\n- No built-in functions needed, just integer arithmetic",
+      "solution_code": "function mySqrt(x: number): number {\n    if (x < 2) return x;\n    \n    let left = 2, right = Math.floor(x / 2);\n    \n    while (left <= right) {\n        const mid = Math.floor((left + right) / 2);\n        const square = mid * mid;\n        \n        if (square === x) {\n            return mid;\n        } else if (square < x) {\n            left = mid + 1;\n        } else {\n            right = mid - 1;\n        }\n    }\n    \n    // Return the largest integer whose square is <= x\n    return right;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int mySqrt(int x) {\n        \n    }\n}",
+      "solution_text": "Integer Square Root using Binary Search:\n\n**Algorithm:**\n1. Handle edge cases (x = 0, 1)\n2. Binary search in range [2, x//2]\n3. Check if mid*mid <= x and (mid+1)*(mid+1) > x\n4. Return the largest integer whose square is <= x\n\n**Time Complexity:** O(log x) - Binary search\n**Space Complexity:** O(1) - Constant space\n\n**Key Insights:**\n- Square root of x is at most x//2 for x >= 4\n- Binary search finds exact point where mid^2 <= x\n- No built-in functions needed, just integer arithmetic",
+      "solution_code": "class Solution {\n    public int mySqrt(int x) {\n        if (x < 2) return x;\n        \n        int left = 2, right = x / 2;\n        \n        while (left <= right) {\n            int mid = left + (right - left) / 2;\n            long square = (long) mid * mid; // Use long to avoid overflow\n            \n            if (square == x) {\n                return mid;\n            } else if (square < x) {\n                left = mid + 1;\n            } else {\n                right = mid - 1;\n            }\n        }\n        \n        // Return the largest integer whose square is <= x\n        return right;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "x": 9
+      },
+      "output": 3
+    },
+    {
+      "id": 2,
+      "input": {
+        "x": 13
+      },
+      "output": 3
+    }
+  ]
+}

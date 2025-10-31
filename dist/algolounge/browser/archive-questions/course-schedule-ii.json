@@ -1,0 +1,123 @@
+{
+  "filename": "course-schedule-ii",
+  "title": "Course Schedule II",
+  "keywords": [
+    "course",
+    "schedule",
+    "leetcode",
+    "210",
+    "given",
+    "array",
+    "prerequisites",
+    "where",
+    "indicates",
+    "take"
+  ],
+  "description": "<h2>Course Schedule II</h2><p>Leetcode 210. Course Schedule II</p><p></p><p>You are given an array `prerequisites` where `prerequisites[i] = [a, b]` indicates that you **must** take course `b` first if you want to take course `a`.</p><p></p><p>* For example, the pair `[0, 1]`, indicates that to take course `0` you have to first take course `1`.</p><p></p><p>There are a total of `numCourses` courses you are required to take, labeled from `0` to `numCourses - 1`. </p><p></p><p>Return a valid ordering of courses you can take to finish all courses. If there are many valid answers, return **any** of them. If it's not possible to finish all courses, return an **empty array**.</p><h3>Examples:</h3><ul><li>Input: numCourses = 3, prerequisites = [[1,0]]<br><br>Output: [0,1,2]<br>We must ensure that course 0 is taken before course 1.</li><li>Input: numCourses = 3, prerequisites = [[0,1],[1,2],[2,0]]<br><br>Output: []<br>It's impossible to finish all courses.</li></ul><h3>Constraints:</h3><ul><li> `1 <= numCourses <= 2000`</li><li> `0 <= prerequisites.length <= numCourses * (numCourses - 1)`</li><li> `prerequisites[i].length == 2`</li><li> `0 <= ai, bi < numCourses`</li><li> `ai != bi`</li><li> All `prerequisite` pairs are **unique**.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def courseScheduleIi(numCourses, prerequisites):\n    ",
+      "solution_text": "<p><strong>Topological Sort (Kahn's Algorithm) for Course Schedule II:</strong></p><p>This problem is equivalent to finding a topological ordering of a directed graph. The courses are the nodes, and the prerequisites define the directed edges. A cycle in the graph means it's impossible to finish all courses.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Graph Representation:</strong> Build a directed graph from the prerequisites. An adjacency list `adj` is a good choice, where `adj[u]` stores a list of courses that have `u` as a prerequisite. We also need an `in_degree` array to store the number of incoming edges for each course.</li><li><strong>Initialization:</strong> Populate the adjacency list and the `in_degree` array based on the `prerequisites`. For each prerequisite `[a, b]` (meaning `b` -> `a`), add an edge from `b` to `a` in the graph and increment `in_degree[a]`.</li><li><strong>Find Starting Points:</strong> Initialize a queue with all courses that have an in-degree of 0. These are the courses with no prerequisites.</li><li><strong>Topological Sort:</strong><ol><li>While the queue is not empty, dequeue a course `u`.</li><li>Add `u` to our result list, `topological_order`.</li><li>For each neighbor `v` of `u` (i.e., for each course that has `u` as a prerequisite):<ol><li>Decrement `inDegree[v]`.</li><li>If `inDegree[v]` becomes 0, it means all its prerequisites are now met. Enqueue `v`.</li></ol></li></ol></li><li><strong>Validation:</strong> After the loop, if the number of courses in `topological_order` is equal to `numCourses`, we have a valid ordering. Return `topological_order`. Otherwise, the graph has a cycle, and it's impossible to finish all courses, so return an empty list.</li></ol><p><strong>Time Complexity:</strong> O(V + E), where V is the number of courses (`numCourses`) and E is the number of prerequisites. We visit each node and edge once.</p><p><strong>Space Complexity:</strong> O(V + E) to store the adjacency list, in-degree array, queue, and the result.</p>",
+      "solution_code": "from collections import deque\n\ndef courseScheduleIi(numCourses, prerequisites):\n    adj = {i: [] for i in range(numCourses)}\n    in_degree = [0] * numCourses\n\n    for course, prereq in prerequisites:\n        adj[prereq].append(course)\n        in_degree[course] += 1\n\n    queue = deque([i for i in range(numCourses) if in_degree[i] == 0])\n    topological_order = []\n\n    while queue:\n        u = queue.popleft()\n        topological_order.append(u)\n        for v in adj[u]:\n            in_degree[v] -= 1\n            if in_degree[v] == 0:\n                queue.append(v)\n\n    if len(topological_order) == numCourses:\n        return topological_order\n    else:\n        return []"
+    },
+    "javascript": {
+      "template": "function courseScheduleIi(numCourses, prerequisites) {\n  \n}",
+      "solution_text": "<p><strong>Topological Sort (Kahn's Algorithm) for Course Schedule II:</strong></p><p>This problem is equivalent to finding a topological ordering of a directed graph. The courses are the nodes, and the prerequisites define the directed edges. A cycle in the graph means it's impossible to finish all courses.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Graph Representation:</strong> Build a directed graph from the prerequisites. An adjacency list `adj` is a good choice, where `adj[u]` stores a list of courses that have `u` as a prerequisite. We also need an `inDegree` array to store the number of incoming edges for each course.</li><li><strong>Initialization:</strong> Populate the adjacency list and the `inDegree` array based on the `prerequisites`. For each prerequisite `[a, b]` (meaning `b` -> `a`), add an edge from `b` to `a` in the graph and increment `inDegree[a]`.</li><li><strong>Find Starting Points:</strong> Initialize a queue with all courses that have an in-degree of 0. These are the courses with no prerequisites.</li><li><strong>Topological Sort:</strong><ol><li>While the queue is not empty, dequeue a course `u`.</li><li>Add `u` to our result array, `topologicalOrder`.</li><li>For each neighbor `v` of `u` (i.e., for each course that has `u` as a prerequisite):<ol><li>Decrement `inDegree[v]`.</li><li>If `inDegree[v]` becomes 0, it means all its prerequisites are now met. Enqueue `v`.</li></ol></li></ol></li><li><strong>Validation:</strong> After the loop, if the number of courses in `topologicalOrder` is equal to `numCourses`, we have a valid ordering. Return `topologicalOrder`. Otherwise, the graph has a cycle, and it's impossible to finish all courses, so return an empty array.</li></ol><p><strong>Time Complexity:</strong> O(V + E), where V is the number of courses (`numCourses`) and E is the number of prerequisites. We visit each node and edge once.</p><p><strong>Space Complexity:</strong> O(V + E) to store the adjacency list, in-degree array, queue, and the result.</p>",
+      "solution_code": "function courseScheduleIi(numCourses, prerequisites) {\n    const adj = new Array(numCourses).fill(0).map(() => []);\n    const inDegree = new Array(numCourses).fill(0);\n\n    for (const [course, prereq] of prerequisites) {\n        adj[prereq].push(course);\n        inDegree[course]++;\n    }\n\n    const queue = [];\n    for (let i = 0; i < numCourses; i++) {\n        if (inDegree[i] === 0) {\n            queue.push(i);\n        }\n    }\n\n    const topologicalOrder = [];\n    while (queue.length > 0) {\n        const u = queue.shift();\n        topologicalOrder.push(u);\n        for (const v of adj[u]) {\n            inDegree[v]--;\n            if (inDegree[v] === 0) {\n                queue.push(v);\n            }\n        }\n    }\n\n    if (topologicalOrder.length === numCourses) {\n        return topologicalOrder;\n    } else {\n        return [];\n    }\n}"
+    },
+    "typescript": {
+      "template": "function courseScheduleIi(numCourses: number, prerequisites: number[][]): number[] {\n  \n}",
+      "solution_text": "<p><strong>Topological Sort (Kahn's Algorithm) for Course Schedule II:</strong></p><p>This problem is equivalent to finding a topological ordering of a directed graph. The courses are the nodes, and the prerequisites define the directed edges. A cycle in the graph means it's impossible to finish all courses.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Graph Representation:</strong> Build a directed graph from the prerequisites. An adjacency list `adj` is a good choice, where `adj[u]` stores a list of courses that have `u` as a prerequisite. We also need an `inDegree` array to store the number of incoming edges for each course.</li><li><strong>Initialization:</strong> Populate the adjacency list and the `inDegree` array based on the `prerequisites`. For each prerequisite `[a, b]` (meaning `b` -> `a`), add an edge from `b` to `a` in the graph and increment `inDegree[a]`.</li><li><strong>Find Starting Points:</strong> Initialize a queue with all courses that have an in-degree of 0. These are the courses with no prerequisites.</li><li><strong>Topological Sort:</strong><ol><li>While the queue is not empty, dequeue a course `u`.</li><li>Add `u` to our result array, `topologicalOrder`.</li><li>For each neighbor `v` of `u` (i.e., for each course that has `u` as a prerequisite):<ol><li>Decrement `inDegree[v]`.</li><li>If `inDegree[v]` becomes 0, it means all its prerequisites are now met. Enqueue `v`.</li></ol></li></ol></li><li><strong>Validation:</strong> After the loop, if the number of courses in `topologicalOrder` is equal to `numCourses`, we have a valid ordering. Return `topologicalOrder`. Otherwise, the graph has a cycle, and it's impossible to finish all courses, so return an empty array.</li></ol><p><strong>Time Complexity:</strong> O(V + E), where V is the number of courses (`numCourses`) and E is the number of prerequisites. We visit each node and edge once.</p><p><strong>Space Complexity:</strong> O(V + E) to store the adjacency list, in-degree array, queue, and the result.</p>",
+      "solution_code": "function courseScheduleIi(numCourses: number, prerequisites: number[][]): number[] {\n    const adj: number[][] = new Array(numCourses).fill(0).map(() => []);\n    const inDegree: number[] = new Array(numCourses).fill(0);\n\n    for (const [course, prereq] of prerequisites) {\n        adj[prereq].push(course);\n        inDegree[course]++;\n    }\n\n    const queue: number[] = [];\n    for (let i = 0; i < numCourses; i++) {\n        if (inDegree[i] === 0) {\n            queue.push(i);\n        }\n    }\n\n    const topologicalOrder: number[] = [];\n    while (queue.length > 0) {\n        const u = queue.shift()!\n        topologicalOrder.push(u);\n        for (const v of adj[u]) {\n            inDegree[v]--;\n            if (inDegree[v] === 0) {\n                queue.push(v);\n            }\n        }\n    }\n\n    if (topologicalOrder.length === numCourses) {\n        return topologicalOrder;\n    } else {\n        return [];\n    }\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int[] courseScheduleIi(int numCourses, int[][] prerequisites) {\n        \n    }\n}",
+      "solution_text": "<p><strong>Topological Sort (Kahn's Algorithm) for Course Schedule II:</strong></p><p>This problem is equivalent to finding a topological ordering of a directed graph. The courses are the nodes, and the prerequisites define the directed edges. A cycle in the graph means it's impossible to finish all courses.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Graph Representation:</strong> Build a directed graph from the prerequisites. An adjacency list `adj` is a good choice, where `adj.get(u)` stores a list of courses that have `u` as a prerequisite. We also need an `inDegree` array to store the number of incoming edges for each course.</li><li><strong>Initialization:</strong> Populate the adjacency list and the `inDegree` array based on the `prerequisites`. For each prerequisite `[a, b]` (meaning `b` -> `a`), add an edge from `b` to `a` in the graph and increment `inDegree[a]`.</li><li><strong>Find Starting Points:</strong> Initialize a queue with all courses that have an in-degree of 0. These are the courses with no prerequisites.</li><li><strong>Topological Sort:</strong><ol><li>While the queue is not empty, dequeue a course `u`.</li><li>Add `u` to our result list, `topologicalOrder`.</li><li>For each neighbor `v` of `u` (i.e., for each course that has `u` as a prerequisite):<ol><li>Decrement `inDegree[v]`.</li><li>If `inDegree[v]` becomes 0, it means all its prerequisites are now met. Enqueue `v`.</li></ol></li></ol></li><li><strong>Validation:</strong> After the loop, if the number of courses in `topologicalOrder` is equal to `numCourses`, we have a valid ordering. Convert the result list to an array and return it. Otherwise, the graph has a cycle, and it's impossible to finish all courses, so return an empty array.</li></ol><p><strong>Time Complexity:</strong> O(V + E), where V is the number of courses (`numCourses`) and E is the number of prerequisites. We visit each node and edge once.</p><p><strong>Space Complexity:</strong> O(V + E) to store the adjacency list, in-degree array, queue, and the result.</p>",
+      "solution_code": "import java.util.*;\n\nclass Solution {\n    public int[] courseScheduleIi(int numCourses, int[][] prerequisites) {\n        List<List<Integer>> adj = new ArrayList<>();\n        for (int i = 0; i < numCourses; i++) {\n            adj.add(new ArrayList<>());\n        }\n        int[] inDegree = new int[numCourses];\n\n        for (int[] prerequisite : prerequisites) {\n            adj.get(prerequisite[1]).add(prerequisite[0]);\n            inDegree[prerequisite[0]]++;\n        }\n\n        Queue<Integer> queue = new LinkedList<>();\n        for (int i = 0; i < numCourses; i++) {\n            if (inDegree[i] == 0) {\n                queue.offer(i);\n            }\n        }\
+\n        List<Integer> topologicalOrder = new ArrayList<>();\n        while (!queue.isEmpty()) {\n            int u = queue.poll();\n            topologicalOrder.add(u);\n            for (int v : adj.get(u)) {\n                inDegree[v]--;\n                if (inDegree[v] == 0) {\n                    queue.offer(v);\n                }\n            }\n        }\n\n        if (topologicalOrder.size() == numCourses) {\n            int[] result = new int[numCourses];\n            for (int i = 0; i < numCourses; i++) {\n                result[i] = topologicalOrder.get(i);\n            }\n            return result;\n        } else {\n            return new int[0];\n        }\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "numCourses": 2,
+        "prerequisites": [[1, 0]]
+      },
+      "output": [0, 1]
+    },
+    {
+      "id": 2,
+      "input": {
+        "numCourses": 4,
+        "prerequisites": [[1, 0], [2, 0], [3, 1], [3, 2]]
+      },
+      "output": [0, 1, 2, 3]
+    },
+    {
+      "id": 3,
+      "input": {
+        "numCourses": 1,
+        "prerequisites": []
+      },
+      "output": [0]
+    },
+    {
+      "id": 4,
+      "input": {
+        "numCourses": 2,
+        "prerequisites": [[0, 1], [1, 0]]
+      },
+      "output": []
+    },
+    {
+      "id": 5,
+      "input": {
+        "numCourses": 3,
+        "prerequisites": [[1,0],[1,2],[0,1]]
+      },
+      "output": []
+    },
+    {
+      "id": 6,
+      "input": {
+        "numCourses": 5,
+        "prerequisites": []
+      },
+      "output": [0, 1, 2, 3, 4]
+    },
+    {
+      "id": 7,
+      "input": {
+        "numCourses": 7,
+        "prerequisites": [[1,0],[0,3],[0,2],[3,2],[2,5],[4,5],[5,6],[2,4]]
+      },
+      "output": []
+    },
+    {
+      "id": 8,
+      "input": {
+        "numCourses": 6,
+        "prerequisites": [[1,0],[2,0],[3,1],[4,1],[5,2],[5,4]]
+      },
+      "output": [0, 1, 2, 3, 4, 5]
+    },
+    {
+      "id": 9,
+      "input": {
+        "numCourses": 3,
+        "prerequisites": [[0,1],[0,2],[1,2]]
+      },
+      "output": [2,1,0]
+    },
+    {
+      "id": 10,
+      "input": {
+        "numCourses": 4,
+        "prerequisites": [[1,0],[2,1],[3,2]]
+      },
+      "output": [0,1,2,3]
+    }
+  ]
+}

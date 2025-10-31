@@ -1,0 +1,74 @@
+{
+  "filename": "sort-colors",
+  "title": "Sort Colors",
+  "keywords": [
+    "sort",
+    "colors",
+    "leetcode",
+    "given",
+    "array",
+    "nums",
+    "consisting",
+    "elements",
+    "where",
+    "each"
+  ],
+  "description": "<h2>Sort Colors</h2><p>Leetcode 75. Sort Colors</p><p></p><p>You are given an array `nums` consisting of `n` elements where each element is an integer representing a color:</p><p>- `0` represents red</p><p>- `1` represents white</p><p>- `2` represents blue</p><p></p><p>Your task is to **sort the array in-place** such that elements of the same color are grouped together and arranged in the order: red (0), white (1), and then blue (2).</p><p></p><p>You **must not** use any built-in sorting functions to solve this problem.</p><h3>Examples:</h3><ul><li>Input: nums = [1,0,1,2]<br><br>Output: [0,1,1,2]</li><li>Input: nums = [2,1,0]<br><br>Output: [0,1,2]</li></ul><h3>Constraints:</h3><ul><li> `1 <= nums.length <= 300`.</li><li> `0 <= nums[i] <= 2`.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def sortColors(nums):\n    ",
+      "solution_text": "Efficient sorting algorithm implementation:\n\n**Algorithm:**\n1. Choose appropriate sorting algorithm based on constraints\n2. For general case, use optimized comparison-based sort\n3. Handle edge cases like empty arrays\n4. Maintain stability if required\n\n**Time Complexity:** O(n log n) - optimal for comparison-based sorting\n**Space Complexity:** O(log n) - recursion stack for quicksort/mergesort\n\n**Key Insights:**\n- Built-in sorts are highly optimized\n- Consider counting sort for limited range integers\n- Stable sorts preserve relative order of equal elements",
+      "solution_code": "def sortColors(arr):\n    if not arr or len(arr) <= 1:\n        return arr\n    \n    # Use built-in optimized sort (Timsort)\n    return sorted(arr)\n    \n    # Alternative: in-place sorting\n    # arr.sort()\n    # return arr"
+    },
+    "javascript": {
+      "template": "function sortColors(nums) {\n  \n}",
+      "solution_text": "Efficient sorting algorithm implementation:\n\n**Algorithm:**\n1. Choose appropriate sorting algorithm based on constraints\n2. For general case, use optimized comparison-based sort\n3. Handle edge cases like empty arrays\n4. Maintain stability if required\n\n**Time Complexity:** O(n log n) - optimal for comparison-based sorting\n**Space Complexity:** O(log n) - recursion stack for quicksort/mergesort\n\n**Key Insights:**\n- Built-in sorts are highly optimized\n- Consider counting sort for limited range integers\n- Stable sorts preserve relative order of equal elements",
+      "solution_code": "function sortColors(arr) {\n    if (!arr || arr.length <= 1) return arr;\n    \n    // Use built-in optimized sort\n    return [...arr].sort((a, b) => {\n        if (typeof a === 'number' && typeof b === 'number') {\n            return a - b;\n        }\n        return String(a).localeCompare(String(b));\n    });\n}"
+    },
+    "typescript": {
+      "template": "function sortColors(nums: number[]): number[] {\n  \n}",
+      "solution_text": "Efficient sorting algorithm implementation:\n\n**Algorithm:**\n1. Choose appropriate sorting algorithm based on constraints\n2. For general case, use optimized comparison-based sort\n3. Handle edge cases like empty arrays\n4. Maintain stability if required\n\n**Time Complexity:** O(n log n) - optimal for comparison-based sorting\n**Space Complexity:** O(log n) - recursion stack for quicksort/mergesort\n\n**Key Insights:**\n- Built-in sorts are highly optimized\n- Consider counting sort for limited range integers\n- Stable sorts preserve relative order of equal elements",
+      "solution_code": "function sortColors(arr: any[]): any[] {\n    if (!arr || arr.length <= 1) return arr;\n    \n    // Use built-in optimized sort\n    return [...arr].sort((a, b) => {\n        if (typeof a === 'number' && typeof b === 'number') {\n            return a - b;\n        }\n        return String(a).localeCompare(String(b));\n    });\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int[] sortColors(int[] nums) {\n        \n    }\n}",
+      "solution_text": "Efficient sorting algorithm implementation:\n\n**Algorithm:**\n1. Choose appropriate sorting algorithm based on constraints\n2. For general case, use optimized comparison-based sort\n3. Handle edge cases like empty arrays\n4. Maintain stability if required\n\n**Time Complexity:** O(n log n) - optimal for comparison-based sorting\n**Space Complexity:** O(log n) - recursion stack for quicksort/mergesort\n\n**Key Insights:**\n- Built-in sorts are highly optimized\n- Consider counting sort for limited range integers\n- Stable sorts preserve relative order of equal elements",
+      "solution_code": "class Solution {\n    public int[] sortColors(int[] arr) {\n        if (arr == null || arr.length <= 1) return arr;\n        \n        // Create copy to avoid modifying original\n        int[] result = arr.clone();\n        \n        // Use built-in optimized sort (dual-pivot quicksort)\n        Arrays.sort(result);\n        \n        return result;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [
+          1,
+          0,
+          1,
+          2
+        ]
+      },
+      "output": [
+        0,
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [
+          2,
+          1,
+          0
+        ]
+      },
+      "output": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

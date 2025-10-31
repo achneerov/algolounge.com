@@ -1,0 +1,110 @@
+{
+  "filename": "maximum-product-subarray",
+  "title": "Maximum Product Subarray",
+  "keywords": [
+    "maximum",
+    "product",
+    "subarray",
+    "leetcode",
+    "152",
+    "dynamic",
+    "programming",
+    "kadane"
+  ],
+  "description": "<h2>Maximum Product Subarray</h2><p>Leetcode 152. Maximum Product Subarray</p><p>Given an integer array <code>nums</code>, find a <strong>subarray</strong> that has the largest product within the array and return <em>the product</em>.</p><p>A <strong>subarray</strong> is a contiguous non-empty sequence of elements within an array.</p><p>The test cases are generated so that the answer will fit in a <strong>32-bit</strong> integer.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> nums = [2,3,-2,4]<br><strong>Output:</strong> 6<br><strong>Explanation:</strong> [2,3] has the largest product 6.</li><li><strong>Input:</strong> nums = [-2,0,-1]<br><strong>Output:</strong> 0<br><strong>Explanation:</strong> The result cannot be 2, because [-2,-1] is not a subarray.</li></ul><h3>Constraints:</h3><ul><li><code>1 <= nums.length <= 2 × 10<sup>4</sup></code></li><li><code>-10 <= nums[i] <= 10</code></li><li>The product of any prefix or suffix of <code>nums</code> is <strong>guaranteed</strong> to fit in a <strong>32-bit</strong> integer.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def maximumProductSubarray(nums):\n    ",
+      "solution_text": "<h3>Dynamic Programming Solution for Maximum Product Subarray</h3><p>Track both maximum and minimum products at each position since negative numbers can flip min/max values.</p><h4>Algorithm:</h4><ol><li>Keep track of maximum and minimum product ending at current position</li><li>For each element, calculate new max and min considering the current element</li><li>Handle negative numbers by swapping max and min when current element is negative</li><li>Update global maximum with current maximum</li></ol><h4>Time Complexity:</h4><p>O(n) - single pass through array</p><h4>Space Complexity:</h4><p>O(1) - only using constant extra variables</p><h4>Key Insights:</h4><ul><li>Negative numbers can turn minimum into maximum</li><li>Need to track both min and max products at each step</li><li>Zero resets both min and max products</li></ul>",
+      "solution_code": "def maximumProductSubarray(nums):\n    if not nums:\n        return 0\n    \n    max_ending_here = min_ending_here = result = nums[0]\n    \n    for i in range(1, len(nums)):\n        # If current number is negative, swap max and min\n        if nums[i] < 0:\n            max_ending_here, min_ending_here = min_ending_here, max_ending_here\n        \n        # Update max and min products ending at current position\n        max_ending_here = max(nums[i], max_ending_here * nums[i])\n        min_ending_here = min(nums[i], min_ending_here * nums[i])\n        \n        # Update result\n        result = max(result, max_ending_here)\n    \n    return result"
+    },
+    "javascript": {
+      "template": "function maximumProductSubarray(nums) {\n  \n}",
+      "solution_text": "<h3>Dynamic Programming Solution for Maximum Product Subarray</h3><p>Track both maximum and minimum products at each position since negative numbers can flip min/max values.</p><h4>Algorithm:</h4><ol><li>Keep track of maximum and minimum product ending at current position</li><li>For each element, calculate new max and min considering the current element</li><li>Handle negative numbers by swapping max and min when current element is negative</li><li>Update global maximum with current maximum</li></ol><h4>Time Complexity:</h4><p>O(n) - single pass through array</p><h4>Space Complexity:</h4><p>O(1) - only using constant extra variables</p><h4>Key Insights:</h4><ul><li>Negative numbers can turn minimum into maximum</li><li>Need to track both min and max products at each step</li><li>Zero resets both min and max products</li></ul>",
+      "solution_code": "function maximumProductSubarray(nums) {\n    if (!nums || nums.length === 0) {\n        return 0;\n    }\n    \n    let maxEndingHere = nums[0];\n    let minEndingHere = nums[0];\n    let result = nums[0];\n    \n    for (let i = 1; i < nums.length; i++) {\n        // If current number is negative, swap max and min\n        if (nums[i] < 0) {\n            [maxEndingHere, minEndingHere] = [minEndingHere, maxEndingHere];\n        }\n        \n        // Update max and min products ending at current position\n        maxEndingHere = Math.max(nums[i], maxEndingHere * nums[i]);\n        minEndingHere = Math.min(nums[i], minEndingHere * nums[i]);\n        \n        // Update result\n        result = Math.max(result, maxEndingHere);\n    }\n    \n    return result;\n}"
+    },
+    "typescript": {
+      "template": "function maximumProductSubarray(nums: number[]): number {\n  \n}",
+      "solution_text": "<h3>Dynamic Programming Solution for Maximum Product Subarray</h3><p>Track both maximum and minimum products at each position since negative numbers can flip min/max values.</p><h4>Algorithm:</h4><ol><li>Keep track of maximum and minimum product ending at current position</li><li>For each element, calculate new max and min considering the current element</li><li>Handle negative numbers by swapping max and min when current element is negative</li><li>Update global maximum with current maximum</li></ol><h4>Time Complexity:</h4><p>O(n) - single pass through array</p><h4>Space Complexity:</h4><p>O(1) - only using constant extra variables</p><h4>Key Insights:</h4><ul><li>Negative numbers can turn minimum into maximum</li><li>Need to track both min and max products at each step</li><li>Zero resets both min and max products</li></ul>",
+      "solution_code": "function maximumProductSubarray(nums: number[]): number {\n    if (!nums || nums.length === 0) {\n        return 0;\n    }\n    \n    let maxEndingHere = nums[0];\n    let minEndingHere = nums[0];\n    let result = nums[0];\n    \n    for (let i = 1; i < nums.length; i++) {\n        // If current number is negative, swap max and min\n        if (nums[i] < 0) {\n            [maxEndingHere, minEndingHere] = [minEndingHere, maxEndingHere];\n        }\n        \n        // Update max and min products ending at current position\n        maxEndingHere = Math.max(nums[i], maxEndingHere * nums[i]);\n        minEndingHere = Math.min(nums[i], minEndingHere * nums[i]);\n        \n        // Update result\n        result = Math.max(result, maxEndingHere);\n    }\n    \n    return result;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int maximumProductSubarray(int[] nums) {\n        \n    }\n}",
+      "solution_text": "<h3>Dynamic Programming Solution for Maximum Product Subarray</h3><p>Track both maximum and minimum products at each position since negative numbers can flip min/max values.</p><h4>Algorithm:</h4><ol><li>Keep track of maximum and minimum product ending at current position</li><li>For each element, calculate new max and min considering the current element</li><li>Handle negative numbers by swapping max and min when current element is negative</li><li>Update global maximum with current maximum</li></ol><h4>Time Complexity:</h4><p>O(n) - single pass through array</p><h4>Space Complexity:</h4><p>O(1) - only using constant extra variables</p><h4>Key Insights:</h4><ul><li>Negative numbers can turn minimum into maximum</li><li>Need to track both min and max products at each step</li><li>Zero resets both min and max products</li></ul>",
+      "solution_code": "class Solution {\n    public int maximumProductSubarray(int[] nums) {\n        if (nums == null || nums.length == 0) {\n            return 0;\n        }\n        \n        int maxEndingHere = nums[0];\n        int minEndingHere = nums[0];\n        int result = nums[0];\n        \n        for (int i = 1; i < nums.length; i++) {\n            // If current number is negative, swap max and min\n            if (nums[i] < 0) {\n                int temp = maxEndingHere;\n                maxEndingHere = minEndingHere;\n                minEndingHere = temp;\n            }\n            \n            // Update max and min products ending at current position\n            maxEndingHere = Math.max(nums[i], maxEndingHere * nums[i]);\n            minEndingHere = Math.min(nums[i], minEndingHere * nums[i]);\n            \n            // Update result\n            result = Math.max(result, maxEndingHere);\n        }\n        \n        return result;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [2,3,-2,4]
+      },
+      "output": 6
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [-2,0,-1]
+      },
+      "output": 0
+    },
+    {
+      "id": 3,
+      "input": {
+        "nums": [-2,3,-4]
+      },
+      "output": 24
+    },
+    {
+      "id": 4,
+      "input": {
+        "nums": [2,3,0,4,5]
+      },
+      "output": 20
+    },
+    {
+      "id": 5,
+      "input": {
+        "nums": [-1,-2,-3]
+      },
+      "output": 6
+    },
+    {
+      "id": 6,
+      "input": {
+        "nums": [0,2,3,-2,4]
+      },
+      "output": 6
+    },
+    {
+      "id": 7,
+      "input": {
+        "nums": [-4,-3,-2]
+      },
+      "output": 12
+    },
+    {
+      "id": 8,
+      "input": {
+        "nums": [1]
+      },
+      "output": 1
+    },
+    {
+      "id": 9,
+      "input": {
+        "nums": [-1]
+      },
+      "output": -1
+    },
+    {
+      "id": 10,
+      "input": {
+        "nums": [0,10,10,10,10,10,10,10,10,10,-10,10,10,10,10,10,10,10,10,10,0]
+      },
+      "output": 1000000000
+    }
+  ]
+}

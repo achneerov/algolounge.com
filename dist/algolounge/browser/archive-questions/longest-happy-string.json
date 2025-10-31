@@ -1,0 +1,149 @@
+{
+  "filename": "longest-happy-string",
+  "title": "Longest Happy String",
+  "keywords": [
+    "greedy",
+    "heap",
+    "priority-queue",
+    "string",
+    "construction",
+    "frequency",
+    "pattern",
+    "consecutive",
+    "characters"
+  ],
+  "description": "<h2>Longest Happy String</h2><p>Leetcode 1405. Longest Happy String</p><p></p><p>A string `s` is called **happy** if it satisfies the following conditions:</p><p></p><p>- `s` only contains the letters `'a'`, `'b'`, and `'c'`.</p><p>- `s` does not contain any of `\"aaa\"`, `\"bbb\"`, or `\"ccc\"` as a **substring**.</p><p>- `s` contains at most `a` occurrences of the letter `'a'`.</p><p>- `s` contains at most `b` occurrences of the letter `'b'`.</p><p>- `s` contains at most `c` occurrences of the letter `'c'`.</p><p></p><p>You are given three integers `a`, `b`, and `c`, return the **longest possible happy** string. If there are multiple longest happy strings, return any of them. If there is no such string, return the empty string `\"\"`.</p><p></p><p>A **substring** is a contiguous sequence of characters within a string.</p><h3>Examples:</h3><ul><li>Input: a = 3, b = 4, c = 2<br><br>Output: \"bababcabc\"</li><li>Input: a = 0, b = 1, c = 5<br><br>Output: \"ccbcc\"</li></ul><h3>Constraints:</h3><ul><li> `0 <= a, b, c <= 100`</li><li> `a + b + c > 0`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def longestHappyString(a, b, c):\n    ",
+      "solution_text": "**Algorithm: Greedy with Priority Queue**\n\nThis problem requires constructing the longest possible string with letters 'a', 'b', 'c' such that no three consecutive characters are the same.\n\n**Approach:**\n1. Use a max heap (priority queue) to always prioritize the character with the highest remaining count\n2. At each step, try to add the character with the most remaining count\n3. If the last two characters are the same as the current max character, choose the second most frequent character instead\n4. Add up to 2 characters at a time when one character is significantly more frequent than others\n\n**Time Complexity:** O((a+b+c) * log 3) = O(a+b+c) since we only have 3 characters\n**Space Complexity:** O(1) - only using a small priority queue of size 3\n\n**Key Insights:**\n- Greedy approach works because we always want to use the most frequent character when possible\n- Adding 2 characters at once helps balance frequencies and create longer strings\n- Must check last 2 characters to avoid creating 3 consecutive identical characters",
+      "solution_code": "import heapq\n\ndef longestHappyString(a, b, c):\n    # Create max heap with (negative count, character) pairs\n    heap = []\n    if a > 0:\n        heapq.heappush(heap, (-a, 'a'))\n    if b > 0:\n        heapq.heappush(heap, (-b, 'b'))\n    if c > 0:\n        heapq.heappush(heap, (-c, 'c'))\n    \n    result = []\n    \n    while heap:\n        # Get the character with highest count\n        first_count, first_char = heapq.heappop(heap)\n        first_count = -first_count\n        \n        # If last two characters are the same as current, use second most frequent\n        if len(result) >= 2 and result[-1] == result[-2] == first_char:\n            if not heap:\n                break  # No other character available\n            \n            second_count, second_char = heapq.heappop(heap)\n            second_count = -second_count\n            \n            # Add the second character\n            result.append(second_char)\n            second_count -= 1\n            \n            # Put characters back if they still have count\n            if second_count > 0:\n                heapq.heappush(heap, (-second_count, second_char))\n            heapq.heappush(heap, (-first_count, first_char))\n        else:\n            # Add the most frequent character\n            # Add 2 characters if this char is much more frequent than others\n            chars_to_add = 1\n            if heap and first_count > -heap[0][0] and first_count > 1:\n                chars_to_add = 2\n            \n            chars_to_add = min(chars_to_add, first_count)\n            for _ in range(chars_to_add):\n                result.append(first_char)\n            first_count -= chars_to_add\n            \n            # Put back if count remaining\n            if first_count > 0:\n                heapq.heappush(heap, (-first_count, first_char))\n    \n    return ''.join(result)"
+    },
+    "javascript": {
+      "template": "function longestHappyString(a, b, c) {\n  \n}",
+      "solution_text": "**Algorithm: Greedy with Priority Queue**\n\nThis problem requires constructing the longest possible string with letters 'a', 'b', 'c' such that no three consecutive characters are the same.\n\n**Approach:**\n1. Use a max heap (priority queue) to always prioritize the character with the highest remaining count\n2. At each step, try to add the character with the most remaining count\n3. If the last two characters are the same as the current max character, choose the second most frequent character instead\n4. Add up to 2 characters at a time when one character is significantly more frequent than others\n\n**Time Complexity:** O((a+b+c) * log 3) = O(a+b+c) since we only have 3 characters\n**Space Complexity:** O(1) - only using a small priority queue of size 3\n\n**Key Insights:**\n- Greedy approach works because we always want to use the most frequent character when possible\n- Adding 2 characters at once helps balance frequencies and create longer strings\n- Must check last 2 characters to avoid creating 3 consecutive identical characters",
+      "solution_code": "function longestHappyString(a, b, c) {\n    // Create max heap using array and manual sorting\n    const heap = [];\n    if (a > 0) heap.push([a, 'a']);\n    if (b > 0) heap.push([b, 'b']);\n    if (c > 0) heap.push([c, 'c']);\n    \n    const result = [];\n    \n    while (heap.length > 0) {\n        // Sort to get max element at index 0\n        heap.sort((x, y) => y[0] - x[0]);\n        \n        let first = heap.shift();\n        \n        // If last two characters are the same as current, use second most frequent\n        if (result.length >= 2 && result[result.length - 1] === result[result.length - 2] && result[result.length - 1] === first[1]) {\n            if (heap.length === 0) break; // No other character available\n            \n            let second = heap.shift();\n            \n            // Add the second character\n            result.push(second[1]);\n            second[0]--;\n            \n            // Put characters back if they still have count\n            if (second[0] > 0) heap.push(second);\n            heap.push(first);\n        } else {\n            // Add the most frequent character\n            // Add 2 characters if this char is much more frequent than others\n            let charsToAdd = 1;\n            if (heap.length > 0 && first[0] > heap[0][0] && first[0] > 1) {\n                charsToAdd = 2;\n            }\n            \n            charsToAdd = Math.min(charsToAdd, first[0]);\n            for (let i = 0; i < charsToAdd; i++) {\n                result.push(first[1]);\n            }\n            first[0] -= charsToAdd;\n            \n            // Put back if count remaining\n            if (first[0] > 0) heap.push(first);\n        }\n    }\n    \n    return result.join('');\n}"
+    },
+    "typescript": {
+      "template": "function longestHappyString(a: number, b: number, c: number): string {\n  \n}",
+      "solution_text": "**Algorithm: Greedy with Priority Queue**\n\nThis problem requires constructing the longest possible string with letters 'a', 'b', 'c' such that no three consecutive characters are the same.\n\n**Approach:**\n1. Use a max heap (priority queue) to always prioritize the character with the highest remaining count\n2. At each step, try to add the character with the most remaining count\n3. If the last two characters are the same as the current max character, choose the second most frequent character instead\n4. Add up to 2 characters at a time when one character is significantly more frequent than others\n\n**Time Complexity:** O((a+b+c) * log 3) = O(a+b+c) since we only have 3 characters\n**Space Complexity:** O(1) - only using a small priority queue of size 3\n\n**Key Insights:**\n- Greedy approach works because we always want to use the most frequent character when possible\n- Adding 2 characters at once helps balance frequencies and create longer strings\n- Must check last 2 characters to avoid creating 3 consecutive identical characters",
+      "solution_code": "function longestHappyString(a: number, b: number, c: number): string {\n    // Create max heap using array and manual sorting\n    const heap: [number, string][] = [];\n    if (a > 0) heap.push([a, 'a']);\n    if (b > 0) heap.push([b, 'b']);\n    if (c > 0) heap.push([c, 'c']);\n    \n    const result: string[] = [];\n    \n    while (heap.length > 0) {\n        // Sort to get max element at index 0\n        heap.sort((x, y) => y[0] - x[0]);\n        \n        let first = heap.shift()!;\n        \n        // If last two characters are the same as current, use second most frequent\n        if (result.length >= 2 && result[result.length - 1] === result[result.length - 2] && result[result.length - 1] === first[1]) {\n            if (heap.length === 0) break; // No other character available\n            \n            let second = heap.shift()!;\n            \n            // Add the second character\n            result.push(second[1]);\n            second[0]--;\n            \n            // Put characters back if they still have count\n            if (second[0] > 0) heap.push(second);\n            heap.push(first);\n        } else {\n            // Add the most frequent character\n            // Add 2 characters if this char is much more frequent than others\n            let charsToAdd = 1;\n            if (heap.length > 0 && first[0] > heap[0][0] && first[0] > 1) {\n                charsToAdd = 2;\n            }\n            \n            charsToAdd = Math.min(charsToAdd, first[0]);\n            for (let i = 0; i < charsToAdd; i++) {\n                result.push(first[1]);\n            }\n            first[0] -= charsToAdd;\n            \n            // Put back if count remaining\n            if (first[0] > 0) heap.push(first);\n        }\n    }\n    \n    return result.join('');\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public String longestHappyString(int a, int b, int c) {\n        \n    }\n}",
+      "solution_text": "**Algorithm: Greedy with Priority Queue**\n\nThis problem requires constructing the longest possible string with letters 'a', 'b', 'c' such that no three consecutive characters are the same.\n\n**Approach:**\n1. Use a max heap (priority queue) to always prioritize the character with the highest remaining count\n2. At each step, try to add the character with the most remaining count\n3. If the last two characters are the same as the current max character, choose the second most frequent character instead\n4. Add up to 2 characters at a time when one character is significantly more frequent than others\n\n**Time Complexity:** O((a+b+c) * log 3) = O(a+b+c) since we only have 3 characters\n**Space Complexity:** O(1) - only using a small priority queue of size 3\n\n**Key Insights:**\n- Greedy approach works because we always want to use the most frequent character when possible\n- Adding 2 characters at once helps balance frequencies and create longer strings\n- Must check last 2 characters to avoid creating 3 consecutive identical characters",
+      "solution_code": "import java.util.*;\n\nclass Solution {\n    public String longestHappyString(int a, int b, int c) {\n        // Create max heap with (count, character) pairs\n        PriorityQueue<int[]> heap = new PriorityQueue<>((x, y) -> y[0] - x[0]);\n        \n        if (a > 0) heap.offer(new int[]{a, 'a'});\n        if (b > 0) heap.offer(new int[]{b, 'b'});\n        if (c > 0) heap.offer(new int[]{c, 'c'});\n        \n        StringBuilder result = new StringBuilder();\n        \n        while (!heap.isEmpty()) {\n            // Get the character with highest count\n            int[] first = heap.poll();\n            \n            // If last two characters are the same as current, use second most frequent\n            if (result.length() >= 2 && \n                result.charAt(result.length() - 1) == result.charAt(result.length() - 2) && \n                result.charAt(result.length() - 1) == (char) first[1]) {\n                \n                if (heap.isEmpty()) break; // No other character available\n                \n                int[] second = heap.poll();\n                \n                // Add the second character\n                result.append((char) second[1]);\n                second[0]--;\n                \n                // Put characters back if they still have count\n                if (second[0] > 0) heap.offer(second);\n                heap.offer(first);\n            } else {\n                // Add the most frequent character\n                // Add 2 characters if this char is much more frequent than others\n                int charsToAdd = 1;\n                if (!heap.isEmpty() && first[0] > heap.peek()[0] && first[0] > 1) {\n                    charsToAdd = 2;\n                }\n                \n                charsToAdd = Math.min(charsToAdd, first[0]);\n                for (int i = 0; i < charsToAdd; i++) {\n                    result.append((char) first[1]);\n                }\n                first[0] -= charsToAdd;\n                \n                // Put back if count remaining\n                if (first[0] > 0) heap.offer(first);\n            }\n        }\n        \n        return result.toString();\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "a": 1,
+        "b": 1,
+        "c": 7
+      },
+      "output": "ccaccbcc"
+    },
+    {
+      "id": 2,
+      "input": {
+        "a": 0,
+        "b": 2,
+        "c": 1
+      },
+      "output": "bbc"
+    },
+    {
+      "id": 3,
+      "input": {
+        "a": 7,
+        "b": 1,
+        "c": 0
+      },
+      "output": "aabaa"
+    },
+    {
+      "id": 4,
+      "input": {
+        "a": 2,
+        "b": 2,
+        "c": 1
+      },
+      "output": "aabbc"
+    },
+    {
+      "id": 5,
+      "input": {
+        "a": 0,
+        "b": 0,
+        "c": 0
+      },
+      "output": ""
+    },
+    {
+      "id": 6,
+      "input": {
+        "a": 1,
+        "b": 0,
+        "c": 0
+      },
+      "output": "a"
+    },
+    {
+      "id": 7,
+      "input": {
+        "a": 0,
+        "b": 1,
+        "c": 0
+      },
+      "output": "b"
+    },
+    {
+      "id": 8,
+      "input": {
+        "a": 0,
+        "b": 0,
+        "c": 1
+      },
+      "output": "c"
+    },
+    {
+      "id": 9,
+      "input": {
+        "a": 2,
+        "b": 4,
+        "c": 1
+      },
+      "output": "bbabbc"
+    },
+    {
+      "id": 10,
+      "input": {
+        "a": 5,
+        "b": 5,
+        "c": 5
+      },
+      "output": "aabbaaccbbccaa"
+    },
+    {
+      "id": 11,
+      "input": {
+        "a": 1,
+        "b": 4,
+        "c": 5
+      },
+      "output": "ccbbccbba"
+    },
+    {
+      "id": 12,
+      "input": {
+        "a": 10,
+        "b": 1,
+        "c": 1
+      },
+      "output": "aabacaa"
+    }
+  ]
+}

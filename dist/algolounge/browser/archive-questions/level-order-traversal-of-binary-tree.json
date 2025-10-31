@@ -1,0 +1,126 @@
+{
+  "filename": "level-order-traversal-of-binary-tree",
+  "title": "Binary Tree Level Order Traversal",
+  "keywords": [
+    "binary",
+    "tree",
+    "level",
+    "order",
+    "traversal",
+    "leetcode",
+    "102",
+    "given",
+    "root",
+    "return"
+  ],
+  "description": "<h2>Binary Tree Level Order Traversal</h2><p>Given the root of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).</p><h3>Examples</h3><ul><li><strong>Example 1:</strong><br><code>Input: root = [3,9,20,null,null,15,7]</code><br><pre>    3<br>   / \\<br>  9  20<br>    /  \\<br>   15   7</pre><br><code>Output: [[3],[9,20],[15,7]]</code></li><li><strong>Example 2:</strong><br><code>Input: root = [1]</code><br><code>Output: [[1]]</code></li><li><strong>Example 3:</strong><br><code>Input: root = []</code><br><code>Output: []</code></li></ul><h3>Constraints</h3><ul><li>The number of nodes in the tree is in the range <code>[0, 2000]</code></li><li><code>-1000 <= Node.val <= 1000</code></li></ul>",
+  "languages": {
+    "python": {
+      "template": "def levelOrderTraversal(root):\n    ",
+      "solution_text": "Binary Tree Level Order Traversal implementation:\n\n**Algorithm:**\n1. Use BFS (Breadth-First Search) with a queue\n2. Process nodes level by level from left to right\n3. For each level, add all node values to a sublist\n4. Return list of sublists representing each level\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(w) - maximum width of tree for queue storage\n\n**Key Insights:**\n- Level order traversal visits nodes by depth level\n- Use queue data structure for BFS implementation\n- Track level boundaries to group nodes correctly",
+      "solution_code": "def levelOrderTraversal(root):\n    if not root:\n        return []\n    \n    result = []\n    queue = [root]\n    \n    while queue:\n        level_size = len(queue)\n        level_values = []\n        \n        # Process all nodes at current level\n        for _ in range(level_size):\n            node = queue.pop(0)  # Dequeue from front\n            level_values.append(node.val)\n            \n            # Add children to queue for next level\n            if node.left:\n                queue.append(node.left)\n            if node.right:\n                queue.append(node.right)\n        \n        result.append(level_values)\n    \n    return result"
+    },
+    "javascript": {
+      "template": "function levelOrderTraversal(root) {\n  \n}",
+      "solution_text": "Binary Tree Level Order Traversal implementation:\n\n**Algorithm:**\n1. Use BFS (Breadth-First Search) with a queue\n2. Process nodes level by level from left to right\n3. For each level, add all node values to a sublist\n4. Return list of sublists representing each level\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(w) - maximum width of tree for queue storage\n\n**Key Insights:**\n- Level order traversal visits nodes by depth level\n- Use queue data structure for BFS implementation\n- Track level boundaries to group nodes correctly",
+      "solution_code": "function levelOrderTraversal(root) {\n    if (!root) return [];\n    \n    const result = [];\n    const queue = [root];\n    \n    while (queue.length > 0) {\n        const levelSize = queue.length;\n        const levelValues = [];\n        \n        // Process all nodes at current level\n        for (let i = 0; i < levelSize; i++) {\n            const node = queue.shift(); // Dequeue from front\n            levelValues.push(node.val);\n            \n            // Add children to queue for next level\n            if (node.left) queue.push(node.left);\n            if (node.right) queue.push(node.right);\n        }\n        \n        result.push(levelValues);\n    }\n    \n    return result;\n}"
+    },
+    "typescript": {
+      "template": "function levelOrderTraversal(root: TreeNode | null): number[][] {\n  \n}",
+      "solution_text": "Binary Tree Level Order Traversal implementation:\n\n**Algorithm:**\n1. Use BFS (Breadth-First Search) with a queue\n2. Process nodes level by level from left to right\n3. For each level, add all node values to a sublist\n4. Return list of sublists representing each level\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(w) - maximum width of tree for queue storage\n\n**Key Insights:**\n- Level order traversal visits nodes by depth level\n- Use queue data structure for BFS implementation\n- Track level boundaries to group nodes correctly",
+      "solution_code": "function levelOrderTraversal(root: TreeNode | null): number[][] {\n    if (!root) return [];\n    \n    const result: number[][] = [];\n    const queue: TreeNode[] = [root];\n    \n    while (queue.length > 0) {\n        const levelSize = queue.length;\n        const levelValues: number[] = [];\n        \n        // Process all nodes at current level\n        for (let i = 0; i < levelSize; i++) {\n            const node = queue.shift()!; // Dequeue from front\n            levelValues.push(node.val);\n            \n            // Add children to queue for next level\n            if (node.left) queue.push(node.left);\n            if (node.right) queue.push(node.right);\n        }\n        \n        result.push(levelValues);\n    }\n    \n    return result;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public List<List<Integer>> levelOrderTraversal(TreeNode root) {\n        \n    }\n}",
+      "solution_text": "Binary Tree Level Order Traversal implementation:\n\n**Algorithm:**\n1. Use BFS (Breadth-First Search) with a queue\n2. Process nodes level by level from left to right\n3. For each level, add all node values to a sublist\n4. Return list of sublists representing each level\n\n**Time Complexity:** O(n) - visit each node once\n**Space Complexity:** O(w) - maximum width of tree for queue storage\n\n**Key Insights:**\n- Level order traversal visits nodes by depth level\n- Use queue data structure for BFS implementation\n- Track level boundaries to group nodes correctly",
+      "solution_code": "class Solution {\n    public List<List<Integer>> levelOrderTraversal(TreeNode root) {\n        List<List<Integer>> result = new ArrayList<>();\n        if (root == null) return result;\n        \n        Queue<TreeNode> queue = new LinkedList<>();\n        queue.offer(root);\n        \n        while (!queue.isEmpty()) {\n            int levelSize = queue.size();\n            List<Integer> levelValues = new ArrayList<>();\n            \n            // Process all nodes at current level\n            for (int i = 0; i < levelSize; i++) {\n                TreeNode node = queue.poll();\n                levelValues.add(node.val);\n                \n                // Add children to queue for next level\n                if (node.left != null) queue.offer(node.left);\n                if (node.right != null) queue.offer(node.right);\n            }\n            \n            result.add(levelValues);\n        }\n        \n        return result;\n    }\n}"
+    }
+  },
+  "order_matters": true,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "root": []
+      },
+      "output": []
+    },
+    {
+      "id": 2,
+      "input": {
+        "root": [1]
+      },
+      "output": [[1]]
+    },
+    {
+      "id": 3,
+      "input": {
+        "root": [3, 9, 20, null, null, 15, 7]
+      },
+      "output": [[3], [9, 20], [15, 7]]
+    },
+    {
+      "id": 4,
+      "input": {
+        "root": [1, 2, 3, 4, 5, 6, 7]
+      },
+      "output": [[1], [2, 3], [4, 5, 6, 7]]
+    },
+    {
+      "id": 5,
+      "input": {
+        "root": [1, null, 2, null, 3, null, 4]
+      },
+      "output": [[1], [2], [3], [4]]
+    },
+    {
+      "id": 6,
+      "input": {
+        "root": [1, 2, null, 3, null, 4, null]
+      },
+      "output": [[1], [2], [3], [4]]
+    },
+    {
+      "id": 7,
+      "input": {
+        "root": [5, 3, 8, 2, 4, 7, 9, 1]
+      },
+      "output": [[5], [3, 8], [2, 4, 7, 9], [1]]
+    },
+    {
+      "id": 8,
+      "input": {
+        "root": [-10, -3, 0, -2, null, 5, null, null, 2, null, 6]
+      },
+      "output": [[-10], [-3, 0], [-2, 5], [2, 6]]
+    },
+    {
+      "id": 9,
+      "input": {
+        "root": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+      },
+      "output": [[1], [2, 3], [4, 5, 6, 7], [8, 9, 10, 11, 12, 13, 14, 15]]
+    },
+    {
+      "id": 10,
+      "input": {
+        "root": [0, -1, 1, -2, null, null, 2, -3, null, null, 3]
+      },
+      "output": [[0], [-1, 1], [-2, 2], [-3, 3]]
+    },
+    {
+      "id": 11,
+      "input": {
+        "root": [100, 50, 150, 25, 75, 125, 175]
+      },
+      "output": [[100], [50, 150], [25, 75, 125, 175]]
+    },
+    {
+      "id": 12,
+      "input": {
+        "root": [1, 2, 2, 3, 3, 3, 3]
+      },
+      "output": [[1], [2, 2], [3, 3, 3, 3]]
+    }
+  ]
+}

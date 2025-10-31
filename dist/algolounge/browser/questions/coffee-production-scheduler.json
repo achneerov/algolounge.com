@@ -1,0 +1,56 @@
+{
+  "index": 31,
+  "filename": "coffee-production-scheduler",
+  "title": "HW13 - Coffee Production Scheduler",
+  "keywords": [
+    "simulation",
+    "string",
+    "state-machine",
+    "counter",
+    "medium"
+  ],
+  "description": "<h2>HW13 - Coffee Production Scheduler</h2><p>Calculate total coffees produced based on work/break schedule with fatigue rules.</p><p><strong>Rules:</strong></p><ul><li><code>w</code> = work block (produces 5 coffees normally)</li><li><code>b</code> = break block (produces 0 coffees, resets fatigue)</li><li>After 4 consecutive work blocks, fatigue sets in (0 coffees until break)</li></ul><h3>Examples:</h3><ul><li>Input: \"wwww\"<br>Output: 15<br>Explanation: 5 + 5 + 5 + 0 (fatigue after 4th consecutive work)</li><li>Input: \"wwbw\"<br>Output: 15<br>Explanation: 5 + 5 + 0 + 5 (break resets fatigue)</li></ul><h3>Constraints:</h3><ul><li>Track consecutive work blocks</li><li>Breaks reset fatigue counter</li></ul>",
+  "entry_function": "calculateCoffees",
+  "template": "def calculateCoffees(schedule):\n  ",
+  "solution_text": "<h3>Coffee Production Scheduler</h3><p><strong>Algorithm:</strong></p><ol><li>Track consecutive work blocks</li><li>For each 'w': if consecutive < 4, add 5 coffees</li><li>For each 'b': reset consecutive counter</li></ol><p><strong>Time Complexity:</strong> O(n) - iterate through schedule</p><p><strong>Space Complexity:</strong> O(1) - constant space</p><p><strong>Key Insights:</strong></p><ul><li>Fatigue kicks in on the 4th consecutive work block (when consecutive_work == 4)</li><li>Breaks completely reset fatigue counter (set to 0)</li><li>Only first 3 consecutive work blocks produce 5 coffees each</li><li>This is a finite state machine pattern with 2 states: working, fatigued</li></ul>",
+  "solution_code": "def calculateCoffees(schedule):\n    total = 0\n    consecutive_work = 0\n    \n    for block in schedule:\n        if block == 'w':\n            consecutive_work += 1\n            if consecutive_work <= 3:\n                total += 5\n        else:  # block == 'b'\n            consecutive_work = 0\n    \n    return total",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for calculateCoffees function\"\"\"\n    return (test_case_input['schedule'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the coffee count\"\"\"\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "schedule": "wwww"
+      },
+      "output": 15
+    },
+    {
+      "id": 2,
+      "input": {
+        "schedule": "wwbw"
+      },
+      "output": 15
+    },
+    {
+      "id": 3,
+      "input": {
+        "schedule": "wwwbwww"
+      },
+      "output": 30
+    },
+    {
+      "id": 4,
+      "input": {
+        "schedule": "wwwww"
+      },
+      "output": 15
+    },
+    {
+      "id": 5,
+      "input": {
+        "schedule": "bbbwww"
+      },
+      "output": 15
+    }
+  ]
+}

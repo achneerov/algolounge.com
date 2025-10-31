@@ -1,0 +1,228 @@
+{
+  "filename": "anagram-groups",
+  "title": "Group Anagrams",
+  "keywords": [
+    "group",
+    "anagrams",
+    "leetcode",
+    "given",
+    "array",
+    "strings",
+    "strs",
+    "all",
+    "together",
+    "into"
+  ],
+  "description": "<h2>Group Anagrams</h2><p>Leetcode 49. Group Anagrams</p><p>Given an array of strings <code>strs</code>, group all <em>anagrams</em> together into sublists. You may return the output in <strong>any order</strong>.</p><p>An <strong>anagram</strong> is a string that contains the exact same characters as another string, but the order of the characters can be different.</p><h3>Examples</h3><ul><li><strong>Input:</strong> strs = [\"act\",\"pots\",\"tops\",\"cat\",\"stop\",\"hat\"]<br><strong>Output:</strong> [[\"hat\"],[\"act\", \"cat\"],[\"stop\", \"pots\", \"tops\"]]</li><li><strong>Input:</strong> strs = [\"x\"]<br><strong>Output:</strong> [[\"x\"]]</li><li><strong>Input:</strong> strs = [\"\"]<br><strong>Output:</strong> [[\"\"]]</li></ul><h3>Constraints</h3><ul><li><code>1 <= strs.length <= 1000</code></li><li><code>0 <= strs[i].length <= 100</code></li><li><code>strs[i]</code> is made up of lowercase English letters</li></ul>",
+  "entry_function": "groupAnagrams",
+  "template": "def groupAnagrams(strs):\n    ",
+  "solution_text": "Group anagrams using sorted string as key:\n\n**Algorithm:**\n1. Create a hash map with sorted string as key\n2. For each string, sort its characters to create key\n3. Group strings with the same sorted key\n4. Return all groups as result\n\n**Time Complexity:** O(N * M log M) where N = number of strings, M = max string length\n**Space Complexity:** O(N * M) for storing the groups\n\n**Key Insights:**\n- Sorted characters form unique key for anagrams\n- Hash map efficiently groups anagrams\n- All anagrams will have same sorted key",
+  "solution_code": "def groupAnagrams(strs):\n    from collections import defaultdict\n    \n    groups = defaultdict(list)\n    \n    for s in strs:\n        # Sort characters to create key\n        key = ''.join(sorted(s))\n        groups[key].append(s)\n    \n    return list(groups.values())",
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "strs": [
+          "act",
+          "pots",
+          "tops",
+          "cat",
+          "stop",
+          "hat"
+        ]
+      },
+      "output": [
+        [
+          "hat"
+        ],
+        [
+          "act",
+          "cat"
+        ],
+        [
+          "stop",
+          "pots",
+          "tops"
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "strs": [
+          "x"
+        ]
+      },
+      "output": [
+        [
+          "x"
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "input": {
+        "strs": [
+          ""
+        ]
+      },
+      "output": [
+        [
+          ""
+        ]
+      ]
+    },
+    {
+      "id": 4,
+      "input": {
+        "strs": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ]
+      },
+      "output": [
+        [
+          "bat"
+        ],
+        [
+          "nat",
+          "tan"
+        ],
+        [
+          "ate",
+          "eat",
+          "tea"
+        ]
+      ]
+    },
+    {
+      "id": 5,
+      "input": {
+        "strs": [
+          "a"
+        ]
+      },
+      "output": [
+        [
+          "a"
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "input": {
+        "strs": [
+          "ab",
+          "ba"
+        ]
+      },
+      "output": [
+        [
+          "ab",
+          "ba"
+        ]
+      ]
+    },
+    {
+      "id": 7,
+      "input": {
+        "strs": [
+          "abc",
+          "def",
+          "ghi"
+        ]
+      },
+      "output": [
+        [
+          "abc"
+        ],
+        [
+          "def"
+        ],
+        [
+          "ghi"
+        ]
+      ]
+    },
+    {
+      "id": 8,
+      "input": {
+        "strs": [
+          "listen",
+          "silent",
+          "elbow",
+          "below"
+        ]
+      },
+      "output": [
+        [
+          "listen",
+          "silent"
+        ],
+        [
+          "elbow",
+          "below"
+        ]
+      ]
+    },
+    {
+      "id": 9,
+      "input": {
+        "strs": [
+          "aab",
+          "aba",
+          "baa",
+          "abc",
+          "acb",
+          "bac",
+          "bca",
+          "cab",
+          "cba"
+        ]
+      },
+      "output": [
+        [
+          "aab",
+          "aba",
+          "baa"
+        ],
+        [
+          "abc",
+          "acb",
+          "bac",
+          "bca",
+          "cab",
+          "cba"
+        ]
+      ]
+    },
+    {
+      "id": 10,
+      "input": {
+        "strs": [
+          "race",
+          "care",
+          "acre",
+          "god",
+          "dog"
+        ]
+      },
+      "output": [
+        [
+          "race",
+          "care",
+          "acre"
+        ],
+        [
+          "god",
+          "dog"
+        ]
+      ]
+    }
+  ]
+}

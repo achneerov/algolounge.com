@@ -1,0 +1,106 @@
+{
+  "index": 65,
+  "filename": "remove-nth-node-from-end-of-list",
+  "title": "Remove Nth Node From End of List",
+  "keywords": [
+    "remove",
+    "node",
+    "end",
+    "linked",
+    "list",
+    "leetcode",
+    "nth",
+    "given",
+    "beginning",
+    "head",
+    "two",
+    "pointers"
+  ],
+  "description": "<h2>Remove Nth Node From End of List</h2><p>You are given the beginning of a linked list <code>head</code>, and an integer <code>n</code>.</p><p>Remove the <code>nth</code> node from the end of the list and return the beginning of the list.</p><h3>Examples:</h3><ul><li>Input: head = [1,2,3,4], n = 2<br><br>Output: [1,2,4]</li><li>Input: head = [5], n = 1<br><br>Output: []</li><li>Input: head = [1,2], n = 2<br><br>Output: [2]</li></ul><h3>Constraints:</h3><ul><li>The number of nodes in the list is <code>sz</code></li><li><code>1 <= sz <= 30</code></li><li><code>0 <= Node.val <= 100</code></li><li><code>1 <= n <= sz</code></li></ul>",
+  "entry_function": "removeNthFromEnd",
+  "template": "def removeNthFromEnd(head, n):\n    ",
+  "solution_text": "<h3>Remove Nth Node From End of List</h3><p><strong>Algorithm:</strong></p><ol><li>Use two pointers technique with n+1 gap</li><li>Move first pointer n steps ahead</li><li>Move both pointers until first reaches end</li><li>Second pointer will be at node before target</li><li>Remove target node by adjusting pointers</li></ol><p><strong>Time Complexity:</strong> O(L) where L is length of list</p><p><strong>Space Complexity:</strong> O(1) - only using constant extra space</p><p><strong>Key Insights:</strong></p><ul><li>Two pointers maintain constant gap</li><li>Use dummy node to handle edge cases</li><li>One pass solution</li><li>Handle removing head node correctly</li></ul>",
+  "solution_code": "def removeNthFromEnd(head, n):\n    # Create dummy node to handle edge cases\n    dummy = ListNode(0)\n    dummy.next = head\n    \n    # Two pointers\n    first = dummy\n    second = dummy\n    \n    # Move first pointer n+1 steps ahead\n    for i in range(n + 1):\n        first = first.next\n    \n    # Move both pointers until first reaches end\n    while first is not None:\n        first = first.next\n        second = second.next\n    \n    # Remove the nth node from end\n    second.next = second.next.next\n    \n    return dummy.next",
+  "prepare": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n    \n    def __repr__(self):\n        return f'ListNode({self.val})'\n\ndef prepare(test_case_input):\n    \"\"\"Convert array representation to ListNode structure\"\"\"\n    head_array = test_case_input['head']\n    n = test_case_input['n']\n    \n    if not head_array:\n        return (None, n)\n\n    def build_list(arr):\n        if not arr:\n            return None\n        \n        head = ListNode(arr[0])\n        current = head\n        \n        for i in range(1, len(arr)):\n            current.next = ListNode(arr[i])\n            current = current.next\n        \n        return head\n\n    return (build_list(head_array), n)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the remove nth node result\"\"\"\n    def list_to_array(head):\n        result = []\n        current = head\n        while current:\n            result.append(current.val)\n            current = current.next\n        return result\n    \n    def list_to_string(lst):\n        if not lst:\n            return '[]'\n        return '[' + ', '.join(str(x) for x in lst) + ']'\n    \n    actual_array = list_to_array(actual_output)\n    passed = actual_array == expected_output\n    output_str = list_to_string(actual_array)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "head": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "n": 2
+      },
+      "output": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "head": [
+          5
+        ],
+        "n": 1
+      },
+      "output": []
+    },
+    {
+      "id": 3,
+      "input": {
+        "head": [
+          1,
+          2
+        ],
+        "n": 2
+      },
+      "output": [
+        2
+      ]
+    },
+    {
+      "id": 4,
+      "input": {
+        "head": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "n": 1
+      },
+      "output": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": 5,
+      "input": {
+        "head": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "n": 5
+      },
+      "output": [
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ]
+}

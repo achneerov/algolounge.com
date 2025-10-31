@@ -1,0 +1,106 @@
+{
+  "index": 78,
+  "filename": "valid-anagram",
+  "title": "Valid Anagram",
+  "keywords": [
+    "valid",
+    "anagram",
+    "string",
+    "hash",
+    "map",
+    "frequency",
+    "counter",
+    "sorting",
+    "characters",
+    "comparison"
+  ],
+  "description": "<h2>Valid Anagram</h2><p>Given two strings <code>s</code> and <code>t</code>, return <code>true</code> if the two strings are anagrams of each other, otherwise return <code>false</code>.</p><p>An <strong>anagram</strong> is a string that contains the exact same characters as another string, but the order of the characters can be different.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> s = \"racecar\", t = \"carrace\"<br><strong>Output:</strong> true</li><li><strong>Input:</strong> s = \"jar\", t = \"jam\"<br><strong>Output:</strong> false</li></ul><h3>Constraints:</h3><ul><li><code>s</code> and <code>t</code> consist of lowercase English letters</li></ul>",
+  "entry_function": "isAnagram",
+  "template": "def isAnagram(s, t):\n    ",
+  "solution_text": "<h3>Valid Anagram</h3><p><strong>Algorithm:</strong></p><ol><li>Check if strings have equal length (early return if not)</li><li>Count frequency of each character in first string</li><li>Decrement counts for characters in second string</li><li>If any character is not found or count goes negative, return false</li><li>Return true if all counts match</li></ol><p><strong>Time Complexity:</strong> O(n) - single pass through both strings</p><p><strong>Space Complexity:</strong> O(1) - fixed size character map (26 lowercase letters)</p><p><strong>Key Insights:</strong></p><ul><li>Character frequency comparison is reliable for anagram detection</li><li>Early length check avoids unnecessary work</li><li>Can use hash map or array (for fixed character set)</li><li>Alternative: sorting both strings and comparing (O(n log n))</li></ul>",
+  "solution_code": "def isAnagram(s, t):\n    if len(s) != len(t):\n        return False\n    \n    # Count character frequencies\n    char_count = {}\n    \n    for char in s:\n        char_count[char] = char_count.get(char, 0) + 1\n    \n    for char in t:\n        if char not in char_count:\n            return False\n        char_count[char] -= 1\n        if char_count[char] == 0:\n            del char_count[char]\n    \n    return len(char_count) == 0",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for isAnagram function\"\"\"\n    return (test_case_input['s'], test_case_input['t'])",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the anagram result\"\"\"\n    def bool_to_string(val):\n        return 'true' if val else 'false'\n    \n    # Convert expected output string to boolean for comparison\n    expected_bool = expected_output == 'true' if isinstance(expected_output, str) else expected_output\n    \n    passed = actual_output == expected_bool\n    output_str = bool_to_string(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "s": "racecar",
+        "t": "carrace"
+      },
+      "output": "true"
+    },
+    {
+      "id": 2,
+      "input": {
+        "s": "jar",
+        "t": "jam"
+      },
+      "output": "false"
+    },
+    {
+      "id": 3,
+      "input": {
+        "s": "listen",
+        "t": "silent"
+      },
+      "output": "true"
+    },
+    {
+      "id": 4,
+      "input": {
+        "s": "hello",
+        "t": "world"
+      },
+      "output": "false"
+    },
+    {
+      "id": 5,
+      "input": {
+        "s": "anagram",
+        "t": "nagaram"
+      },
+      "output": "true"
+    },
+    {
+      "id": 6,
+      "input": {
+        "s": "rat",
+        "t": "car"
+      },
+      "output": "false"
+    },
+    {
+      "id": 7,
+      "input": {
+        "s": "a",
+        "t": "a"
+      },
+      "output": "true"
+    },
+    {
+      "id": 8,
+      "input": {
+        "s": "ab",
+        "t": "ba"
+      },
+      "output": "true"
+    },
+    {
+      "id": 9,
+      "input": {
+        "s": "abc",
+        "t": "def"
+      },
+      "output": "false"
+    },
+    {
+      "id": 10,
+      "input": {
+        "s": "aabbcc",
+        "t": "ccbbaa"
+      },
+      "output": "true"
+    }
+  ]
+}

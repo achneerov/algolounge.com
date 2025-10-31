@@ -1,0 +1,112 @@
+{
+  "filename": "maximum-sum-circular-subarray",
+  "title": "Maximum Sum Circular Subarray",
+  "keywords": [
+    "maximum",
+    "sum",
+    "circular",
+    "subarray",
+    "leetcode",
+    "918",
+    "given",
+    "integer",
+    "array",
+    "nums"
+  ],
+  "description": "<h2>Maximum Sum Circular Subarray</h2><p>Leetcode 918. Maximum Sum Circular Subarray</p><p></p><p>You are given a circular integer array `nums` of length `n`, return the maximum possible sum of a non-empty **subarray** of `nums`.</p><p></p><p>A circular array means the end of the array connects to the beginning of the array. Formally, the next element of `nums[i]` is `nums[(i + 1) % n]` and the previous element of `nums[i]` is `nums[(i - 1 + n) % n]`.</p><p></p><p>A **subarray** may only include each element of the fixed buffer `nums` at most once. Formally, for a subarray `nums[i], nums[i + 1], ..., nums[j]`, there does not exist `i <= k1, k2 <= j` with `k1 % n == k2 % n`.</p><h3>Examples:</h3><ul><li>Input: nums = [-2,4,-5,4,-5,9,4]<br><br>Output: 15<br>Subarray [-2,4,9,4] has maximum sum 15.</li><li>Input: nums = [2,3,-4]<br><br>Output: 5</li></ul><h3>Constraints:</h3><ul><li> `n == nums.length`</li><li> `1 <= n <= 3 * 10,000`</li><li> `-30,000 <= nums[i] <= 30,000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def maximumSumCircularSubarray(nums):\n    ",
+      "solution_text": "<h2>Maximum Sum Circular Subarray Solution</h2><p>This problem requires considering two cases: the maximum subarray is either non-circular (normal) or circular (wraps around).</p><h3>Algorithm:</h3><ul><li><strong>Case 1:</strong> Maximum subarray is non-circular - use Kadane's algorithm</li><li><strong>Case 2:</strong> Maximum subarray is circular - find minimum subarray and subtract from total sum</li><li>Return the maximum of both cases, with special handling for all-negative arrays</li></ul><h3>Time & Space Complexity:</h3><ul><li><strong>Time Complexity:</strong> O(n) - two passes through array</li><li><strong>Space Complexity:</strong> O(1) - constant extra space</li></ul><h3>Key Insights:</h3><ul><li>Circular maximum = total sum - minimum subarray sum</li><li>Handle edge case where all elements are negative</li><li>Use modified Kadane's algorithm for both max and min subarrays</li></ul>",
+      "solution_code": "def maximumSumCircularSubarray(nums):\n    if not nums:\n        return 0\n    \n    def kadane_max(arr):\n        max_sum = current_sum = arr[0]\n        for num in arr[1:]:\n            current_sum = max(num, current_sum + num)\n            max_sum = max(max_sum, current_sum)\n        return max_sum\n    \n    def kadane_min(arr):\n        min_sum = current_sum = arr[0]\n        for num in arr[1:]:\n            current_sum = min(num, current_sum + num)\n            min_sum = min(min_sum, current_sum)\n        return min_sum\n    \n    # Case 1: Maximum subarray is non-circular\n    max_kadane = kadane_max(nums)\n    \n    # Case 2: Maximum subarray is circular\n    total_sum = sum(nums)\n    min_kadane = kadane_min(nums)\n    max_circular = total_sum - min_kadane\n    \n    # If all elements are negative, max_circular will be 0\n    # In this case, return the maximum single element\n    if max_circular == 0:\n        return max_kadane\n    \n    return max(max_kadane, max_circular)"
+    },
+    "javascript": {
+      "template": "function maximumSumCircularSubarray(nums) {\n  \n}",
+      "solution_text": "<h2>Maximum Sum Circular Subarray Solution</h2><p>This problem requires considering two cases: the maximum subarray is either non-circular (normal) or circular (wraps around).</p><h3>Algorithm:</h3><ul><li><strong>Case 1:</strong> Maximum subarray is non-circular - use Kadane's algorithm</li><li><strong>Case 2:</strong> Maximum subarray is circular - find minimum subarray and subtract from total sum</li><li>Return the maximum of both cases, with special handling for all-negative arrays</li></ul><h3>Time & Space Complexity:</h3><ul><li><strong>Time Complexity:</strong> O(n) - two passes through array</li><li><strong>Space Complexity:</strong> O(1) - constant extra space</li></ul><h3>Key Insights:</h3><ul><li>Circular maximum = total sum - minimum subarray sum</li><li>Handle edge case where all elements are negative</li><li>Use modified Kadane's algorithm for both max and min subarrays</li></ul>",
+      "solution_code": "function maximumSumCircularSubarray(nums) {\n    if (!nums || nums.length === 0) return 0;\n    \n    function kadaneMax(arr) {\n        let maxSum = arr[0], currentSum = arr[0];\n        for (let i = 1; i < arr.length; i++) {\n            currentSum = Math.max(arr[i], currentSum + arr[i]);\n            maxSum = Math.max(maxSum, currentSum);\n        }\n        return maxSum;\n    }\n    \n    function kadaneMin(arr) {\n        let minSum = arr[0], currentSum = arr[0];\n        for (let i = 1; i < arr.length; i++) {\n            currentSum = Math.min(arr[i], currentSum + arr[i]);\n            minSum = Math.min(minSum, currentSum);\n        }\n        return minSum;\n    }\n    \n    // Case 1: Maximum subarray is non-circular\n    const maxKadane = kadaneMax(nums);\n    \n    // Case 2: Maximum subarray is circular\n    const totalSum = nums.reduce((sum, num) => sum + num, 0);\n    const minKadane = kadaneMin(nums);\n    const maxCircular = totalSum - minKadane;\n    \n    // If all elements are negative, maxCircular will be 0\n    if (maxCircular === 0) {\n        return maxKadane;\n    }\n    \n    return Math.max(maxKadane, maxCircular);\n}"
+    },
+    "typescript": {
+      "template": "function maximumSumCircularSubarray(nums: number[]): number {\n  \n}",
+      "solution_text": "<h2>Maximum Sum Circular Subarray Solution</h2><p>This problem requires considering two cases: the maximum subarray is either non-circular (normal) or circular (wraps around).</p><h3>Algorithm:</h3><ul><li><strong>Case 1:</strong> Maximum subarray is non-circular - use Kadane's algorithm</li><li><strong>Case 2:</strong> Maximum subarray is circular - find minimum subarray and subtract from total sum</li><li>Return the maximum of both cases, with special handling for all-negative arrays</li></ul><h3>Time & Space Complexity:</h3><ul><li><strong>Time Complexity:</strong> O(n) - two passes through array</li><li><strong>Space Complexity:</strong> O(1) - constant extra space</li></ul><h3>Key Insights:</h3><ul><li>Circular maximum = total sum - minimum subarray sum</li><li>Handle edge case where all elements are negative</li><li>Use modified Kadane's algorithm for both max and min subarrays</li></ul>",
+      "solution_code": "function maximumSumCircularSubarray(nums: number[]): number {\n    if (!nums || nums.length === 0) return 0;\n    \n    function kadaneMax(arr: number[]): number {\n        let maxSum = arr[0], currentSum = arr[0];\n        for (let i = 1; i < arr.length; i++) {\n            currentSum = Math.max(arr[i], currentSum + arr[i]);\n            maxSum = Math.max(maxSum, currentSum);\n        }\n        return maxSum;\n    }\n    \n    function kadaneMin(arr: number[]): number {\n        let minSum = arr[0], currentSum = arr[0];\n        for (let i = 1; i < arr.length; i++) {\n            currentSum = Math.min(arr[i], currentSum + arr[i]);\n            minSum = Math.min(minSum, currentSum);\n        }\n        return minSum;\n    }\n    \n    // Case 1: Maximum subarray is non-circular\n    const maxKadane = kadaneMax(nums);\n    \n    // Case 2: Maximum subarray is circular\n    const totalSum = nums.reduce((sum, num) => sum + num, 0);\n    const minKadane = kadaneMin(nums);\n    const maxCircular = totalSum - minKadane;\n    \n    // If all elements are negative, maxCircular will be 0\n    if (maxCircular === 0) {\n        return maxKadane;\n    }\n    \n    return Math.max(maxKadane, maxCircular);\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int maximumSumCircularSubarray(int[] nums) {\n        \n    }\n}",
+      "solution_text": "<h2>Maximum Sum Circular Subarray Solution</h2><p>This problem requires considering two cases: the maximum subarray is either non-circular (normal) or circular (wraps around).</p><h3>Algorithm:</h3><ul><li><strong>Case 1:</strong> Maximum subarray is non-circular - use Kadane's algorithm</li><li><strong>Case 2:</strong> Maximum subarray is circular - find minimum subarray and subtract from total sum</li><li>Return the maximum of both cases, with special handling for all-negative arrays</li></ul><h3>Time & Space Complexity:</h3><ul><li><strong>Time Complexity:</strong> O(n) - two passes through array</li><li><strong>Space Complexity:</strong> O(1) - constant extra space</li></ul><h3>Key Insights:</h3><ul><li>Circular maximum = total sum - minimum subarray sum</li><li>Handle edge case where all elements are negative</li><li>Use modified Kadane's algorithm for both max and min subarrays</li></ul>",
+      "solution_code": "class Solution {\n    public int maximumSumCircularSubarray(int[] nums) {\n        if (nums == null || nums.length == 0) return 0;\n        \n        // Case 1: Maximum subarray is non-circular\n        int maxKadane = kadaneMax(nums);\n        \n        // Case 2: Maximum subarray is circular\n        int totalSum = 0;\n        for (int num : nums) {\n            totalSum += num;\n        }\n        int minKadane = kadaneMin(nums);\n        int maxCircular = totalSum - minKadane;\n        \n        // If all elements are negative, maxCircular will be 0\n        if (maxCircular == 0) {\n            return maxKadane;\n        }\n        \n        return Math.max(maxKadane, maxCircular);\n    }\n    \n    private int kadaneMax(int[] nums) {\n        int maxSum = nums[0], currentSum = nums[0];\n        for (int i = 1; i < nums.length; i++) {\n            currentSum = Math.max(nums[i], currentSum + nums[i]);\n            maxSum = Math.max(maxSum, currentSum);\n        }\n        return maxSum;\n    }\n    \n    private int kadaneMin(int[] nums) {\n        int minSum = nums[0], currentSum = nums[0];\n        for (int i = 1; i < nums.length; i++) {\n            currentSum = Math.min(nums[i], currentSum + nums[i]);\n            minSum = Math.min(minSum, currentSum);\n        }\n        return minSum;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [-2, 4, -5, 4, -5, 9, 4]
+      },
+      "output": 15
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [2, 3, -4]
+      },
+      "output": 5
+    },
+    {
+      "id": 3,
+      "input": {
+        "nums": [1, -2, 3, -2]
+      },
+      "output": 4
+    },
+    {
+      "id": 4,
+      "input": {
+        "nums": [-3, -2, -3]
+      },
+      "output": -2
+    },
+    {
+      "id": 5,
+      "input": {
+        "nums": [5, -3, 5]
+      },
+      "output": 10
+    },
+    {
+      "id": 6,
+      "input": {
+        "nums": [3, -1, 2, -1]
+      },
+      "output": 5
+    },
+    {
+      "id": 7,
+      "input": {
+        "nums": [3, -2, 2, -3]
+      },
+      "output": 3
+    },
+    {
+      "id": 8,
+      "input": {
+        "nums": [-2, -3, -1]
+      },
+      "output": -1
+    },
+    {
+      "id": 9,
+      "input": {
+        "nums": [2, -1, 4, -3, 1]
+      },
+      "output": 6
+    },
+    {
+      "id": 10,
+      "input": {
+        "nums": [1, 2, 3]
+      },
+      "output": 6
+    }
+  ]
+}

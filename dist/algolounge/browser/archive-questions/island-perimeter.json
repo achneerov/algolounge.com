@@ -1,0 +1,112 @@
+{
+  "filename": "island-perimeter",
+  "title": "Island Perimeter",
+  "keywords": [
+    "island",
+    "perimeter",
+    "leetcode",
+    "463",
+    "given",
+    "row",
+    "col",
+    "grid",
+    "representing",
+    "map"
+  ],
+  "description": "<h2>Island Perimeter</h2><p>Leetcode 463. Island Perimeter</p><p></p><p>You are given a `row x col` `grid` representing a map where `grid[i][j] = 1` represents land and `grid[i][j] = 0` represents water.</p><p></p><p>Grid cells are connected **horizontally/vertically** (not diagonally). The `grid` is completely surrounded by water, and there is **exactly one island** (i.e., one or more connected land cells).</p><p></p><p>The island doesn't have \"lakes\", meaning the water inside isn't connected to the water around the island. One cell is a square with side length `1`.</p><p></p><p>Return the **perimeter** of the island.</p><h3>Examples:</h3><ul><li>Input: grid = [[1,0]]<br><br>Output: 4</li></ul><h3>Constraints:</h3><ul><li> `row == grid.length`</li><li> `col == grid[i].length`</li><li> `1 <= row, col <= 100`</li><li> `grid[i][j]` is `0` or `1`.</li><li> There is exactly one island in `grid`.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def islandPerimeter(grid):\n    ",
+      "solution_text": "<p><strong>Island Perimeter Calculation:</strong></p><p>Count exposed edges of land cells in a 2D grid.</p><p><strong>Algorithm:</strong></p><ol><li>Iterate through each cell in the grid</li><li>For each land cell (value 1), start with 4 sides</li><li>Check 4 adjacent neighbors (up, down, left, right)</li><li>Subtract 1 from perimeter for each adjacent land cell</li><li>Sum total perimeter from all land cells</li></ol><p><strong>Time Complexity:</strong> O(m × n) - visit each cell once</p><p><strong>Space Complexity:</strong> O(1) - constant extra space</p>",
+      "solution_code": "def islandPerimeter(grid):\n    if not grid:\n        return 0\n    \n    rows, cols = len(grid), len(grid[0])\n    perimeter = 0\n    \n    for i in range(rows):\n        for j in range(cols):\n            if grid[i][j] == 1:  # Land cell\n                # Start with 4 sides\n                sides = 4\n                \n                # Check 4 neighbors and subtract shared edges\n                # Up\n                if i > 0 and grid[i-1][j] == 1:\n                    sides -= 1\n                # Down  \n                if i < rows - 1 and grid[i+1][j] == 1:\n                    sides -= 1\n                # Left\n                if j > 0 and grid[i][j-1] == 1:\n                    sides -= 1\n                # Right\n                if j < cols - 1 and grid[i][j+1] == 1:\n                    sides -= 1\n                \n                perimeter += sides\n    \n    return perimeter"
+    },
+    "javascript": {
+      "template": "function islandPerimeter(grid) {\n  \n}",
+      "solution_text": "<p><strong>Island Perimeter Calculation:</strong></p><p>Count exposed edges of land cells in a 2D grid.</p><p><strong>Algorithm:</strong></p><ol><li>Iterate through each cell in the grid</li><li>For each land cell (value 1), start with 4 sides</li><li>Check 4 adjacent neighbors (up, down, left, right)</li><li>Subtract 1 from perimeter for each adjacent land cell</li><li>Sum total perimeter from all land cells</li></ol><p><strong>Time Complexity:</strong> O(m × n) - visit each cell once</p><p><strong>Space Complexity:</strong> O(1) - constant extra space</p>",
+      "solution_code": "function islandPerimeter(grid) {\n    if (!grid || grid.length === 0) {\n        return 0;\n    }\n    \n    const rows = grid.length;\n    const cols = grid[0].length;\n    let perimeter = 0;\n    \n    for (let i = 0; i < rows; i++) {\n        for (let j = 0; j < cols; j++) {\n            if (grid[i][j] === 1) {  // Land cell\n                // Start with 4 sides\n                let sides = 4;\n                \n                // Check 4 neighbors and subtract shared edges\n                // Up\n                if (i > 0 && grid[i-1][j] === 1) {\n                    sides--;\n                }\n                // Down\n                if (i < rows - 1 && grid[i+1][j] === 1) {\n                    sides--;\n                }\n                // Left\n                if (j > 0 && grid[i][j-1] === 1) {\n                    sides--;\n                }\n                // Right\n                if (j < cols - 1 && grid[i][j+1] === 1) {\n                    sides--;\n                }\n                \n                perimeter += sides;\n            }\n        }\n    }\n    \n    return perimeter;\n}"
+    },
+    "typescript": {
+      "template": "function islandPerimeter(grid: number[][]): number {\n  \n}",
+      "solution_text": "<p><strong>Island Perimeter Calculation:</strong></p><p>Count exposed edges of land cells in a 2D grid.</p><p><strong>Algorithm:</strong></p><ol><li>Iterate through each cell in the grid</li><li>For each land cell (value 1), start with 4 sides</li><li>Check 4 adjacent neighbors (up, down, left, right)</li><li>Subtract 1 from perimeter for each adjacent land cell</li><li>Sum total perimeter from all land cells</li></ol><p><strong>Time Complexity:</strong> O(m × n) - visit each cell once</p><p><strong>Space Complexity:</strong> O(1) - constant extra space</p>",
+      "solution_code": "function islandPerimeter(grid: number[][]): number {\n    if (!grid || grid.length === 0) {\n        return 0;\n    }\n    \n    const rows: number = grid.length;\n    const cols: number = grid[0].length;\n    let perimeter: number = 0;\n    \n    for (let i = 0; i < rows; i++) {\n        for (let j = 0; j < cols; j++) {\n            if (grid[i][j] === 1) {  // Land cell\n                // Start with 4 sides\n                let sides: number = 4;\n                \n                // Check 4 neighbors and subtract shared edges\n                // Up\n                if (i > 0 && grid[i-1][j] === 1) {\n                    sides--;\n                }\n                // Down\n                if (i < rows - 1 && grid[i+1][j] === 1) {\n                    sides--;\n                }\n                // Left\n                if (j > 0 && grid[i][j-1] === 1) {\n                    sides--;\n                }\n                // Right\n                if (j < cols - 1 && grid[i][j+1] === 1) {\n                    sides--;\n                }\n                \n                perimeter += sides;\n            }\n        }\n    }\n    \n    return perimeter;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int islandPerimeter(int[][] grid) {\n        \n    }\n}",
+      "solution_text": "<p><strong>Island Perimeter Calculation:</strong></p><p>Count exposed edges of land cells in a 2D grid.</p><p><strong>Algorithm:</strong></p><ol><li>Iterate through each cell in the grid</li><li>For each land cell (value 1), start with 4 sides</li><li>Check 4 adjacent neighbors (up, down, left, right)</li><li>Subtract 1 from perimeter for each adjacent land cell</li><li>Sum total perimeter from all land cells</li></ol><p><strong>Time Complexity:</strong> O(m × n) - visit each cell once</p><p><strong>Space Complexity:</strong> O(1) - constant extra space</p>",
+      "solution_code": "class Solution {\n    public int islandPerimeter(int[][] grid) {\n        if (grid == null || grid.length == 0) {\n            return 0;\n        }\n        \n        int rows = grid.length;\n        int cols = grid[0].length;\n        int perimeter = 0;\n        \n        for (int i = 0; i < rows; i++) {\n            for (int j = 0; j < cols; j++) {\n                if (grid[i][j] == 1) {  // Land cell\n                    // Start with 4 sides\n                    int sides = 4;\n                    \n                    // Check 4 neighbors and subtract shared edges\n                    // Up\n                    if (i > 0 && grid[i-1][j] == 1) {\n                        sides--;\n                    }\n                    // Down\n                    if (i < rows - 1 && grid[i+1][j] == 1) {\n                        sides--;\n                    }\n                    // Left\n                    if (j > 0 && grid[i][j-1] == 1) {\n                        sides--;\n                    }\n                    // Right\n                    if (j < cols - 1 && grid[i][j+1] == 1) {\n                        sides--;\n                    }\n                    \n                    perimeter += sides;\n                }\n            }\n        }\n        \n        return perimeter;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "grid": [[1, 0]]
+      },
+      "output": 4
+    },
+    {
+      "id": 2,
+      "input": {
+        "grid": [[0, 1, 0, 0], [1, 1, 1, 0], [0, 1, 0, 0], [1, 1, 0, 0]]
+      },
+      "output": 16
+    },
+    {
+      "id": 3,
+      "input": {
+        "grid": [[1]]
+      },
+      "output": 4
+    },
+    {
+      "id": 4,
+      "input": {
+        "grid": [[1, 1], [1, 1]]
+      },
+      "output": 8
+    },
+    {
+      "id": 5,
+      "input": {
+        "grid": [[0]]
+      },
+      "output": 0
+    },
+    {
+      "id": 6,
+      "input": {
+        "grid": [[1, 1, 1], [1, 0, 1], [1, 1, 1]]
+      },
+      "output": 12
+    },
+    {
+      "id": 7,
+      "input": {
+        "grid": [[1, 0, 1], [0, 1, 0], [1, 0, 1]]
+      },
+      "output": 16
+    },
+    {
+      "id": 8,
+      "input": {
+        "grid": [[1, 1, 1, 1]]
+      },
+      "output": 10
+    },
+    {
+      "id": 9,
+      "input": {
+        "grid": [[1], [1], [1], [1]]
+      },
+      "output": 10
+    },
+    {
+      "id": 10,
+      "input": {
+        "grid": [[0, 0, 0], [0, 1, 0], [0, 0, 0]]
+      },
+      "output": 4
+    }
+  ]
+}

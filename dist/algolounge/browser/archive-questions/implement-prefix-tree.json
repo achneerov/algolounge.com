@@ -1,0 +1,122 @@
+{
+  "filename": "implement-prefix-tree",
+  "title": "Implement Trie (Prefix Tree)",
+  "keywords": [
+    "implement",
+    "trie",
+    "prefix",
+    "tree",
+    "leetcode",
+    "208",
+    "also",
+    "known",
+    "data",
+    "structure"
+  ],
+  "description": "<h2>Implement Trie (Prefix Tree)</h2><p>Leetcode 208. Implement Trie Prefix Tree</p><p></p><p>A **prefix tree** (also known as a trie) is a tree data structure used to efficiently store and retrieve keys in a set of strings. Some applications of this data structure include auto-complete and spell checker systems.</p><p></p><p>Implement the PrefixTree class:</p><p>* `PrefixTree()` Initializes the prefix tree object.</p><p>* `void insert(String word)` Inserts the string `word` into the prefix tree.</p><p>* `boolean search(String word)` Returns `true` if the string `word` is in the prefix tree (i.e., was inserted before), and `false` otherwise.</p><p>* `boolean startsWith(String prefix)` Returns `true` if there is a previously inserted string `word` that has the prefix `prefix`, and `false` otherwise.</p><h3>Examples:</h3><ul><li>Input: <br>[\"Trie\", \"insert\", \"dog\", \"search\", \"dog\", \"search\", \"do\", \"startsWith\", \"do\", \"insert\", \"do\", \"search\", \"do\"]<br><br>Output:<br>[null, null, true, false, true, null, true]<br><br>Explanation:<br>PrefixTree prefixTree = new PrefixTree();<br>prefixTree.insert(\"dog\");<br>prefixTree.search(\"dog\");    // return true<br>prefixTree.search(\"do\");     // return false<br>prefixTree.startsWith(\"do\"); // return true<br>prefixTree.insert(\"do\");<br>prefixTree.search(\"do\");     // return true</li></ul><h3>Constraints:</h3><ul><li> `1 <= word.length, prefix.length <= 1000`</li><li> `word` and `prefix` are made up of lowercase English letters.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "class PrefixTree:\n    def __init__(self):\n        \n    def insert(self, word):\n        \n    def search(self, word):\n        \n    def startsWith(self, prefix):\n        ",
+      "solution_text": "<p><strong>Trie (Prefix Tree) Implementation:</strong></p><p>Build efficient prefix tree data structure for string storage and retrieval.</p><p><strong>Algorithm:</strong></p><ol><li>Each TrieNode contains 26 children array for lowercase letters</li><li>isEnd flag marks complete word endings</li><li>Insert: traverse character by character, create nodes as needed</li><li>Search: traverse path, check isEnd at final node</li><li>StartsWith: traverse path, return true if path exists</li></ol><p><strong>Time Complexity:</strong> O(m) per operation where m is word length</p><p><strong>Space Complexity:</strong> O(ALPHABET_SIZE * N * M) where N is number of words</p>",
+      "solution_code": "class TrieNode:\n    def __init__(self):\n        self.children = [None] * 26  # for 'a' to 'z'\n        self.is_end_of_word = False\n\nclass PrefixTree:\n    def __init__(self):\n        self.root = TrieNode()\n    \n    def insert(self, word):\n        node = self.root\n        for char in word:\n            index = ord(char) - ord('a')\n            if node.children[index] is None:\n                node.children[index] = TrieNode()\n            node = node.children[index]\n        node.is_end_of_word = True\n    \n    def search(self, word):\n        node = self.root\n        for char in word:\n            index = ord(char) - ord('a')\n            if node.children[index] is None:\n                return False\n            node = node.children[index]\n        return node.is_end_of_word\n    \n    def startsWith(self, prefix):\n        node = self.root\n        for char in prefix:\n            index = ord(char) - ord('a')\n            if node.children[index] is None:\n                return False\n            node = node.children[index]\n        return True"
+    },
+    "javascript": {
+      "template": "class PrefixTree {\n    constructor() {\n        \n    }\n    \n    insert(word) {\n        \n    }\n    \n    search(word) {\n        \n    }\n    \n    startsWith(prefix) {\n        \n    }\n}",
+      "solution_text": "<p><strong>Trie (Prefix Tree) Implementation:</strong></p><p>Build efficient prefix tree data structure for string storage and retrieval.</p><p><strong>Algorithm:</strong></p><ol><li>Each TrieNode contains 26 children array for lowercase letters</li><li>isEnd flag marks complete word endings</li><li>Insert: traverse character by character, create nodes as needed</li><li>Search: traverse path, check isEnd at final node</li><li>StartsWith: traverse path, return true if path exists</li></ol><p><strong>Time Complexity:</strong> O(m) per operation where m is word length</p><p><strong>Space Complexity:</strong> O(ALPHABET_SIZE * N * M) where N is number of words</p>",
+      "solution_code": "class TrieNode {\n    constructor() {\n        this.children = new Array(26).fill(null);  // for 'a' to 'z'\n        this.isEndOfWord = false;\n    }\n}\n\nclass PrefixTree {\n    constructor() {\n        this.root = new TrieNode();\n    }\n    \n    insert(word) {\n        let node = this.root;\n        for (const char of word) {\n            const index = char.charCodeAt(0) - 'a'.charCodeAt(0);\n            if (node.children[index] === null) {\n                node.children[index] = new TrieNode();\n            }\n            node = node.children[index];\n        }\n        node.isEndOfWord = true;\n    }\n    \n    search(word) {\n        let node = this.root;\n        for (const char of word) {\n            const index = char.charCodeAt(0) - 'a'.charCodeAt(0);\n            if (node.children[index] === null) {\n                return false;\n            }\n            node = node.children[index];\n        }\n        return node.isEndOfWord;\n    }\n    \n    startsWith(prefix) {\n        let node = this.root;\n        for (const char of prefix) {\n            const index = char.charCodeAt(0) - 'a'.charCodeAt(0);\n            if (node.children[index] === null) {\n                return false;\n            }\n            node = node.children[index];\n        }\n        return true;\n    }\n}"
+    },
+    "typescript": {
+      "template": "class PrefixTree {\n    constructor() {\n        \n    }\n    \n    insert(word: string): void {\n        \n    }\n    \n    search(word: string): boolean {\n        \n    }\n    \n    startsWith(prefix: string): boolean {\n        \n    }\n}",
+      "solution_text": "<p><strong>Trie (Prefix Tree) Implementation:</strong></p><p>Build efficient prefix tree data structure for string storage and retrieval.</p><p><strong>Algorithm:</strong></p><ol><li>Each TrieNode contains 26 children array for lowercase letters</li><li>isEnd flag marks complete word endings</li><li>Insert: traverse character by character, create nodes as needed</li><li>Search: traverse path, check isEnd at final node</li><li>StartsWith: traverse path, return true if path exists</li></ol><p><strong>Time Complexity:</strong> O(m) per operation where m is word length</p><p><strong>Space Complexity:</strong> O(ALPHABET_SIZE * N * M) where N is number of words</p>",
+      "solution_code": "class TrieNode {\n    children: (TrieNode | null)[];\n    isEndOfWord: boolean;\n    \n    constructor() {\n        this.children = new Array(26).fill(null);  // for 'a' to 'z'\n        this.isEndOfWord = false;\n    }\n}\n\nclass PrefixTree {\n    private root: TrieNode;\n    \n    constructor() {\n        this.root = new TrieNode();\n    }\n    \n    insert(word: string): void {\n        let node = this.root;\n        for (const char of word) {\n            const index = char.charCodeAt(0) - 'a'.charCodeAt(0);\n            if (node.children[index] === null) {\n                node.children[index] = new TrieNode();\n            }\n            node = node.children[index]!;\n        }\n        node.isEndOfWord = true;\n    }\n    \n    search(word: string): boolean {\n        let node = this.root;\n        for (const char of word) {\n            const index = char.charCodeAt(0) - 'a'.charCodeAt(0);\n            if (node.children[index] === null) {\n                return false;\n            }\n            node = node.children[index]!;\n        }\n        return node.isEndOfWord;\n    }\n    \n    startsWith(prefix: string): boolean {\n        let node = this.root;\n        for (const char of prefix) {\n            const index = char.charCodeAt(0) - 'a'.charCodeAt(0);\n            if (node.children[index] === null) {\n                return false;\n            }\n            node = node.children[index]!;\n        }\n        return true;\n    }\n}"
+    },
+    "java": {
+      "template": "class PrefixTree {\n    public PrefixTree() {\n        \n    }\n    \n    public void insert(String word) {\n        \n    }\n    \n    public boolean search(String word) {\n        \n    }\n    \n    public boolean startsWith(String prefix) {\n        \n    }\n}",
+      "solution_text": "<p><strong>Trie (Prefix Tree) Implementation:</strong></p><p>Build efficient prefix tree data structure for string storage and retrieval.</p><p><strong>Algorithm:</strong></p><ol><li>Each TrieNode contains 26 children array for lowercase letters</li><li>isEnd flag marks complete word endings</li><li>Insert: traverse character by character, create nodes as needed</li><li>Search: traverse path, check isEnd at final node</li><li>StartsWith: traverse path, return true if path exists</li></ol><p><strong>Time Complexity:</strong> O(m) per operation where m is word length</p><p><strong>Space Complexity:</strong> O(ALPHABET_SIZE * N * M) where N is number of words</p>",
+      "solution_code": "class TrieNode {\n    TrieNode[] children;\n    boolean isEndOfWord;\n    \n    public TrieNode() {\n        children = new TrieNode[26];  // for 'a' to 'z'\n        isEndOfWord = false;\n    }\n}\n\nclass PrefixTree {\n    private TrieNode root;\n    \n    public PrefixTree() {\n        root = new TrieNode();\n    }\n    \n    public void insert(String word) {\n        TrieNode node = root;\n        for (char c : word.toCharArray()) {\n            int index = c - 'a';\n            if (node.children[index] == null) {\n                node.children[index] = new TrieNode();\n            }\n            node = node.children[index];\n        }\n        node.isEndOfWord = true;\n    }\n    \n    public boolean search(String word) {\n        TrieNode node = root;\n        for (char c : word.toCharArray()) {\n            int index = c - 'a';\n            if (node.children[index] == null) {\n                return false;\n            }\n            node = node.children[index];\n        }\n        return node.isEndOfWord;\n    }\n    \n    public boolean startsWith(String prefix) {\n        TrieNode node = root;\n        for (char c : prefix.toCharArray()) {\n            int index = c - 'a';\n            if (node.children[index] == null) {\n                return false;\n            }\n            node = node.children[index];\n        }\n        return true;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "operations": ["PrefixTree", "insert", "search", "search", "startsWith", "insert", "search"],
+        "values": [[], ["apple"], ["apple"], ["app"], ["app"], ["app"], ["app"]]
+      },
+      "output": [null, null, true, false, true, null, true]
+    },
+    {
+      "id": 2,
+      "input": {
+        "operations": ["PrefixTree", "insert", "insert", "search", "search", "startsWith", "startsWith"],
+        "values": [[], ["dog"], ["cat"], ["dog"], ["cat"], ["do"], ["ca"]]
+      },
+      "output": [null, null, null, true, true, true, true]
+    },
+    {
+      "id": 3,
+      "input": {
+        "operations": ["PrefixTree", "search", "startsWith"],
+        "values": [[], ["a"], ["a"]]
+      },
+      "output": [null, false, false]
+    },
+    {
+      "id": 4,
+      "input": {
+        "operations": ["PrefixTree", "insert", "search", "startsWith", "search"],
+        "values": [[], ["a"], ["a"], ["a"], ["aa"]]
+      },
+      "output": [null, null, true, true, false]
+    },
+    {
+      "id": 5,
+      "input": {
+        "operations": ["PrefixTree", "insert", "insert", "search", "search", "search"],
+        "values": [[], ["abc"], ["ab"], ["abc"], ["ab"], ["a"]]
+      },
+      "output": [null, null, null, true, true, false]
+    },
+    {
+      "id": 6,
+      "input": {
+        "operations": ["PrefixTree", "insert", "insert", "insert", "search", "startsWith"],
+        "values": [[], ["word"], ["world"], ["wor"], ["world"], ["wo"]]
+      },
+      "output": [null, null, null, null, true, true]
+    },
+    {
+      "id": 7,
+      "input": {
+        "operations": ["PrefixTree", "insert", "search", "search", "search"],
+        "values": [[], ["hello"], ["hell"], ["hello"], ["helloworld"]]
+      },
+      "output": [null, null, false, true, false]
+    },
+    {
+      "id": 8,
+      "input": {
+        "operations": ["PrefixTree", "insert", "insert", "startsWith", "startsWith", "startsWith"],
+        "values": [[], ["test"], ["testing"], ["tes"], ["test"], ["testing"]]
+      },
+      "output": [null, null, null, true, true, true]
+    },
+    {
+      "id": 9,
+      "input": {
+        "operations": ["PrefixTree", "insert", "insert", "search", "search", "search", "startsWith"],
+        "values": [[], ["car"], ["card"], ["car"], ["card"], ["care"], ["car"]]
+      },
+      "output": [null, null, null, true, true, false, true]
+    },
+    {
+      "id": 10,
+      "input": {
+        "operations": ["PrefixTree", "insert", "search", "startsWith", "insert", "search", "startsWith"],
+        "values": [[], ["prefix"], ["pre"], ["pre"], ["pre"], ["pre"], ["prefix"]]
+      },
+      "output": [null, null, false, true, null, true, true]
+    }
+  ]
+}

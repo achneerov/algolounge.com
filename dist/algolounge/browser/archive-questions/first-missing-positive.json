@@ -1,0 +1,128 @@
+{
+  "filename": "first-missing-positive",
+  "title": "First Missing Positive",
+  "keywords": [
+    "first",
+    "missing",
+    "positive",
+    "leetcode",
+    "given",
+    "unsorted",
+    "integer",
+    "array",
+    "nums",
+    "return"
+  ],
+  "description": "<h2>First Missing Positive</h2><p>Leetcode 41. First Missing Positive</p><p></p><p>You are given an unsorted integer array `nums`. Return the **smallest positive integer** that is not present in `nums`.</p><p></p><p>You must implement an algorithm that runs in `O(n)` time and uses `O(1)` auxiliary space.</p><h3>Examples:</h3><ul><li>Input: nums = [-2,-1,0]<br><br>Output: 1</li><li>Input: nums = [1,2,4]<br><br>Output: 3</li><li>Input: nums = [1,2,4,5,6,3,1]<br><br>Output: 7</li></ul><h3>Constraints:</h3><ul><li> `1 <= nums.length <= 100,000`</li><li> `-(2^31) <= nums[i] <= ((2^31)-1)`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def firstMissingPositive(nums):\n    ",
+      "solution_text": "<p><strong>Cyclic Sort Solution for First Missing Positive:</strong></p><p>Use array itself as hash map to mark presence of positive integers.</p><p><strong>Algorithm:</strong></p><ol><li>Place each positive integer x at index x-1 (if within bounds)</li><li>Use cyclic sort approach to swap elements to correct positions</li><li>Scan array to find first index i where nums[i] != i+1</li><li>Return i+1 as the first missing positive</li><li>If all positions correct, return n+1</li></ol><p><strong>Time Complexity:</strong> O(n) - each element moved at most once</p><p><strong>Space Complexity:</strong> O(1) - in-place modification</p>",
+      "solution_code": "def firstMissingPositive(nums):\n    n = len(nums)\n    \n    # Cyclic sort: place each positive integer x at position x-1\n    i = 0\n    while i < n:\n        # If current number is positive, within range, and not in correct position\n        if 1 <= nums[i] <= n and nums[nums[i] - 1] != nums[i]:\n            # Swap to correct position\n            correct_pos = nums[i] - 1\n            nums[i], nums[correct_pos] = nums[correct_pos], nums[i]\n        else:\n            i += 1\n    \n    # Find first missing positive\n    for i in range(n):\n        if nums[i] != i + 1:\n            return i + 1\n    \n    # All positions 1 to n are filled, so missing positive is n+1\n    return n + 1"
+    },
+    "javascript": {
+      "template": "function firstMissingPositive(nums) {\n  \n}",
+      "solution_text": "<p><strong>Cyclic Sort Solution for First Missing Positive:</strong></p><p>Use array itself as hash map to mark presence of positive integers.</p><p><strong>Algorithm:</strong></p><ol><li>Place each positive integer x at index x-1 (if within bounds)</li><li>Use cyclic sort approach to swap elements to correct positions</li><li>Scan array to find first index i where nums[i] != i+1</li><li>Return i+1 as the first missing positive</li><li>If all positions correct, return n+1</li></ol><p><strong>Time Complexity:</strong> O(n) - each element moved at most once</p><p><strong>Space Complexity:</strong> O(1) - in-place modification</p>",
+      "solution_code": "function firstMissingPositive(nums) {\n    const n = nums.length;\n    \n    // Cyclic sort: place each positive integer x at position x-1\n    let i = 0;\n    while (i < n) {\n        // If current number is positive, within range, and not in correct position\n        if (nums[i] >= 1 && nums[i] <= n && nums[nums[i] - 1] !== nums[i]) {\n            // Swap to correct position\n            const correctPos = nums[i] - 1;\n            [nums[i], nums[correctPos]] = [nums[correctPos], nums[i]];\n        } else {\n            i++;\n        }\n    }\n    \n    // Find first missing positive\n    for (let i = 0; i < n; i++) {\n        if (nums[i] !== i + 1) {\n            return i + 1;\n        }\n    }\n    \n    // All positions 1 to n are filled, so missing positive is n+1\n    return n + 1;\n}"
+    },
+    "typescript": {
+      "template": "function firstMissingPositive(nums: number[]): number {\n  \n}",
+      "solution_text": "<p><strong>Cyclic Sort Solution for First Missing Positive:</strong></p><p>Use array itself as hash map to mark presence of positive integers.</p><p><strong>Algorithm:</strong></p><ol><li>Place each positive integer x at index x-1 (if within bounds)</li><li>Use cyclic sort approach to swap elements to correct positions</li><li>Scan array to find first index i where nums[i] != i+1</li><li>Return i+1 as the first missing positive</li><li>If all positions correct, return n+1</li></ol><p><strong>Time Complexity:</strong> O(n) - each element moved at most once</p><p><strong>Space Complexity:</strong> O(1) - in-place modification</p>",
+      "solution_code": "function firstMissingPositive(nums: number[]): number {\n    const n = nums.length;\n    \n    // Cyclic sort: place each positive integer x at position x-1\n    let i = 0;\n    while (i < n) {\n        // If current number is positive, within range, and not in correct position\n        if (nums[i] >= 1 && nums[i] <= n && nums[nums[i] - 1] !== nums[i]) {\n            // Swap to correct position\n            const correctPos = nums[i] - 1;\n            [nums[i], nums[correctPos]] = [nums[correctPos], nums[i]];\n        } else {\n            i++;\n        }\n    }\n    \n    // Find first missing positive\n    for (let i = 0; i < n; i++) {\n        if (nums[i] !== i + 1) {\n            return i + 1;\n        }\n    }\n    \n    // All positions 1 to n are filled, so missing positive is n+1\n    return n + 1;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int firstMissingPositive(int[] nums) {\n        \n    }\n}",
+      "solution_text": "<p><strong>Cyclic Sort Solution for First Missing Positive:</strong></p><p>Use array itself as hash map to mark presence of positive integers.</p><p><strong>Algorithm:</strong></p><ol><li>Place each positive integer x at index x-1 (if within bounds)</li><li>Use cyclic sort approach to swap elements to correct positions</li><li>Scan array to find first index i where nums[i] != i+1</li><li>Return i+1 as the first missing positive</li><li>If all positions correct, return n+1</li></ol><p><strong>Time Complexity:</strong> O(n) - each element moved at most once</p><p><strong>Space Complexity:</strong> O(1) - in-place modification</p>",
+      "solution_code": "class Solution {\n    public int firstMissingPositive(int[] nums) {\n        int n = nums.length;\n        \n        // Cyclic sort: place each positive integer x at position x-1\n        int i = 0;\n        while (i < n) {\n            // If current number is positive, within range, and not in correct position\n            if (nums[i] >= 1 && nums[i] <= n && nums[nums[i] - 1] != nums[i]) {\n                // Swap to correct position\n                int correctPos = nums[i] - 1;\n                int temp = nums[i];\n                nums[i] = nums[correctPos];\n                nums[correctPos] = temp;\n            } else {\n                i++;\n            }\n        }\n        \n        // Find first missing positive\n        for (int j = 0; j < n; j++) {\n            if (nums[j] != j + 1) {\n                return j + 1;\n            }\n        }\n        \n        // All positions 1 to n are filled, so missing positive is n+1\n        return n + 1;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [
+          -2,
+          -1,
+          0
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [
+          1,
+          2,
+          4
+        ]
+      },
+      "output": 3
+    },
+    {
+      "id": 3,
+      "input": {
+        "nums": [
+          1,
+          2,
+          4,
+          5,
+          6,
+          3,
+          1
+        ]
+      },
+      "output": 7
+    },
+    {
+      "id": 4,
+      "input": {
+        "nums": [3, 4, -1, 1]
+      },
+      "output": 2
+    },
+    {
+      "id": 5,
+      "input": {
+        "nums": [7, 8, 9, 11, 12]
+      },
+      "output": 1
+    },
+    {
+      "id": 6,
+      "input": {
+        "nums": [1]
+      },
+      "output": 2
+    },
+    {
+      "id": 7,
+      "input": {
+        "nums": [2]
+      },
+      "output": 1
+    },
+    {
+      "id": 8,
+      "input": {
+        "nums": [1, 2, 3, 4, 5]
+      },
+      "output": 6
+    },
+    {
+      "id": 9,
+      "input": {
+        "nums": [1000, -1]
+      },
+      "output": 1
+    },
+    {
+      "id": 10,
+      "input": {
+        "nums": [0, 2, 2, 1, 1]
+      },
+      "output": 3
+    }
+  ]
+}

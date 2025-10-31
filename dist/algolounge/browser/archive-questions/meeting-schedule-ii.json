@@ -1,0 +1,112 @@
+{
+  "filename": "meeting-schedule-ii",
+  "title": "Meeting Rooms II",
+  "keywords": [
+    "meeting",
+    "rooms",
+    "leetcode",
+    "253",
+    "given",
+    "array",
+    "time",
+    "interval",
+    "objects",
+    "consisting"
+  ],
+  "description": "<h2>Meeting Rooms II</h2><p>Leetcode 253. Meeting Rooms II</p><p></p><p>Given an array of meeting time interval objects consisting of start and end times `[[start_1,end_1],[start_2,end_2],...] (start_i < end_i)`, find the minimum number of days required to schedule all meetings without any conflicts.</p><p></p><p>**Note:** (0,8),(8,10) is not considered a conflict at 8.</p><h3>Examples:</h3><ul><li>Input: intervals = [(0,40),(5,10),(15,20)]<br><br>Output: 2<br>day1: (0,40)\nday2: (5,10),(15,20)</li><li>Input: intervals = [(4,9)]<br><br>Output: 1</li></ul><h3>Constraints:</h3><ul><li> `0 <= intervals.length <= 500`</li><li> `0 <= intervals[i].start < intervals[i].end <= 1,000,000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def meetingRoomsIi(intervals):\n    ",
+      "solution_text": "<h2>Meeting Rooms II - Event Sweep Line Solution</h2><p>This problem can be solved efficiently using the sweep line algorithm to track the minimum number of concurrent meetings.</p><h3>Algorithm:</h3><ul><li>Create separate events for meeting starts (+1) and ends (-1)</li><li>Sort all events by time (process end events before start events for same time)</li><li>Sweep through events, tracking current active meetings</li><li>Keep track of maximum concurrent meetings encountered</li></ul><h3>Time & Space Complexity:</h3><ul><li><strong>Time Complexity:</strong> O(N log N) for sorting events</li><li><strong>Space Complexity:</strong> O(N) for storing events</li></ul><h3>Key Insights:</h3><ul><li>End events at time T should be processed before start events at time T</li><li>This ensures meetings ending exactly when another starts don't conflict</li><li>Maximum concurrent meetings equals minimum rooms needed</li></ul>",
+      "solution_code": "def meetingRoomsIi(intervals):\n    if not intervals:\n        return 0\n    \n    events = []\n    \n    # Create events for start (+1) and end (-1) times\n    for start, end in intervals:\n        events.append((start, 1))    # Meeting starts\n        events.append((end, -1))     # Meeting ends\n    \n    # Sort events by time, process end events before start events for same time\n    events.sort(key=lambda x: (x[0], x[1]))\n    \n    current_meetings = 0\n    max_meetings = 0\n    \n    # Sweep through events\n    for time, event_type in events:\n        current_meetings += event_type\n        max_meetings = max(max_meetings, current_meetings)\n    \n    return max_meetings"
+    },
+    "javascript": {
+      "template": "function meetingRoomsIi(intervals) {\n  \n}",
+      "solution_text": "<h2>Meeting Rooms II - Event Sweep Line Solution</h2><p>This problem can be solved efficiently using the sweep line algorithm to track the minimum number of concurrent meetings.</p><h3>Algorithm:</h3><ul><li>Create separate events for meeting starts (+1) and ends (-1)</li><li>Sort all events by time (process end events before start events for same time)</li><li>Sweep through events, tracking current active meetings</li><li>Keep track of maximum concurrent meetings encountered</li></ul><h3>Time & Space Complexity:</h3><ul><li><strong>Time Complexity:</strong> O(N log N) for sorting events</li><li><strong>Space Complexity:</strong> O(N) for storing events</li></ul><h3>Key Insights:</h3><ul><li>End events at time T should be processed before start events at time T</li><li>This ensures meetings ending exactly when another starts don't conflict</li><li>Maximum concurrent meetings equals minimum rooms needed</li></ul>",
+      "solution_code": "function meetingRoomsIi(intervals) {\n    if (!intervals || intervals.length === 0) return 0;\n    \n    const events = [];\n    \n    // Create events for start (+1) and end (-1) times\n    for (const [start, end] of intervals) {\n        events.push([start, 1]);    // Meeting starts\n        events.push([end, -1]);     // Meeting ends\n    }\n    \n    // Sort events by time, process end events before start events for same time\n    events.sort((a, b) => {\n        if (a[0] !== b[0]) return a[0] - b[0];\n        return a[1] - b[1];\n    });\n    \n    let currentMeetings = 0;\n    let maxMeetings = 0;\n    \n    // Sweep through events\n    for (const [time, eventType] of events) {\n        currentMeetings += eventType;\n        maxMeetings = Math.max(maxMeetings, currentMeetings);\n    }\n    \n    return maxMeetings;\n}"
+    },
+    "typescript": {
+      "template": "function meetingRoomsIi(intervals: number[][]): number {\n  \n}",
+      "solution_text": "<h2>Meeting Rooms II - Event Sweep Line Solution</h2><p>This problem can be solved efficiently using the sweep line algorithm to track the minimum number of concurrent meetings.</p><h3>Algorithm:</h3><ul><li>Create separate events for meeting starts (+1) and ends (-1)</li><li>Sort all events by time (process end events before start events for same time)</li><li>Sweep through events, tracking current active meetings</li><li>Keep track of maximum concurrent meetings encountered</li></ul><h3>Time & Space Complexity:</h3><ul><li><strong>Time Complexity:</strong> O(N log N) for sorting events</li><li><strong>Space Complexity:</strong> O(N) for storing events</li></ul><h3>Key Insights:</h3><ul><li>End events at time T should be processed before start events at time T</li><li>This ensures meetings ending exactly when another starts don't conflict</li><li>Maximum concurrent meetings equals minimum rooms needed</li></ul>",
+      "solution_code": "function meetingRoomsIi(intervals: number[][]): number {\n    if (!intervals || intervals.length === 0) return 0;\n    \n    const events: [number, number][] = [];\n    \n    // Create events for start (+1) and end (-1) times\n    for (const [start, end] of intervals) {\n        events.push([start, 1]);    // Meeting starts\n        events.push([end, -1]);     // Meeting ends\n    }\n    \n    // Sort events by time, process end events before start events for same time\n    events.sort((a, b) => {\n        if (a[0] !== b[0]) return a[0] - b[0];\n        return a[1] - b[1];\n    });\n    \n    let currentMeetings = 0;\n    let maxMeetings = 0;\n    \n    // Sweep through events\n    for (const [time, eventType] of events) {\n        currentMeetings += eventType;\n        maxMeetings = Math.max(maxMeetings, currentMeetings);\n    }\n    \n    return maxMeetings;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int meetingRoomsIi(int[][] intervals) {\n        \n    }\n}",
+      "solution_text": "<h2>Meeting Rooms II - Event Sweep Line Solution</h2><p>This problem can be solved efficiently using the sweep line algorithm to track the minimum number of concurrent meetings.</p><h3>Algorithm:</h3><ul><li>Create separate events for meeting starts (+1) and ends (-1)</li><li>Sort all events by time (process end events before start events for same time)</li><li>Sweep through events, tracking current active meetings</li><li>Keep track of maximum concurrent meetings encountered</li></ul><h3>Time & Space Complexity:</h3><ul><li><strong>Time Complexity:</strong> O(N log N) for sorting events</li><li><strong>Space Complexity:</strong> O(N) for storing events</li></ul><h3>Key Insights:</h3><ul><li>End events at time T should be processed before start events at time T</li><li>This ensures meetings ending exactly when another starts don't conflict</li><li>Maximum concurrent meetings equals minimum rooms needed</li></ul>",
+      "solution_code": "import java.util.*;\n\nclass Solution {\n    public int meetingRoomsIi(int[][] intervals) {\n        if (intervals == null || intervals.length == 0) return 0;\n        \n        List<int[]> events = new ArrayList<>();\n        \n        // Create events for start (+1) and end (-1) times\n        for (int[] interval : intervals) {\n            events.add(new int[]{interval[0], 1});    // Meeting starts\n            events.add(new int[]{interval[1], -1});   // Meeting ends\n        }\n        \n        // Sort events by time, process end events before start events for same time\n        events.sort((a, b) -> {\n            if (a[0] != b[0]) return Integer.compare(a[0], b[0]);\n            return Integer.compare(a[1], b[1]);\n        });\n        \n        int currentMeetings = 0;\n        int maxMeetings = 0;\n        \n        // Sweep through events\n        for (int[] event : events) {\n            currentMeetings += event[1];\n            maxMeetings = Math.max(maxMeetings, currentMeetings);\n        }\n        \n        return maxMeetings;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "intervals": [[0, 40], [5, 10], [15, 20]]
+      },
+      "output": 2
+    },
+    {
+      "id": 2,
+      "input": {
+        "intervals": [[4, 9]]
+      },
+      "output": 1
+    },
+    {
+      "id": 3,
+      "input": {
+        "intervals": [[2, 7], [1, 4], [8, 12]]
+      },
+      "output": 2
+    },
+    {
+      "id": 4,
+      "input": {
+        "intervals": [[9, 10], [4, 9], [4, 17]]
+      },
+      "output": 2
+    },
+    {
+      "id": 5,
+      "input": {
+        "intervals": [[1, 5], [8, 9], [8, 9]]
+      },
+      "output": 2
+    },
+    {
+      "id": 6,
+      "input": {
+        "intervals": [[0, 30], [5, 10], [15, 20]]
+      },
+      "output": 2
+    },
+    {
+      "id": 7,
+      "input": {
+        "intervals": [[1, 2], [2, 3], [3, 4], [4, 5]]
+      },
+      "output": 1
+    },
+    {
+      "id": 8,
+      "input": {
+        "intervals": [[1, 4], [2, 3], [4, 6], [8, 9]]
+      },
+      "output": 2
+    },
+    {
+      "id": 9,
+      "input": {
+        "intervals": [[6, 7], [2, 4], [8, 12]]
+      },
+      "output": 1
+    },
+    {
+      "id": 10,
+      "input": {
+        "intervals": [[1, 3], [3, 6], [6, 8], [9, 12], [12, 15]]
+      },
+      "output": 1
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "filename": "decode-string",
+  "title": "Decode String",
+  "keywords": [
+    "decode",
+    "string",
+    "leetcode",
+    "394",
+    "given",
+    "encoded",
+    "return",
+    "its",
+    "decoded",
+    "encoding"
+  ],
+  "description": "<h2>Decode String</h2><p>Leetcode 394. Decode String</p><p></p><p>You are given an encoded string `s`, return its decoded string.</p><p></p><p>The encoding rule is: `k[encoded_string]`, where the encoded_string inside the square brackets is being repeated exactly `k` times. Note that `k` is guaranteed to be a **positive integer**.</p><p></p><p>You may assume that the input string is always valid; there are no extra white spaces, square brackets are well-formed, etc. There will not be input like `3a`, `2[4]`, `a[a]` or `a[2]`.</p><p></p><p>The test cases are generated so that the length of the output will never exceed `100,000`.</p><h3>Examples:</h3><ul><li>Input: s = \"2[a3[b]]c\"<br><br>Output: \"abbbabbbc\"</li><li>Input: s = \"axb3[z]4[c]\"<br><br>Output: \"axbzzzcccc\"</li><li>Input: s = \"ab2[c]3[d]1[x]\"<br><br>Output: \"abccdddx\"</li></ul><h3>Constraints:</h3><ul><li> `1 <= s.length <= 30`</li><li> `s` is made up of lowercase English letters, digits, and square brackets `'[]'`.</li><li> All the integers in `s` are in the range `[1, 300]`.</li><li> `s` is guaranteed to be a valid input.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def decodeString(s):\n    ",
+      "solution_text": "<p><strong>Stack Solution for Decode String:</strong></p><p>Decode nested bracket expressions using stack to handle recursion.</p><p><strong>Algorithm:</strong></p><ol><li>Use two stacks: one for counts, one for strings</li><li>When encountering digit: parse full number</li><li>When encountering '[': push current count and string to stacks</li><li>When encountering ']': pop and repeat string count times</li><li>For letters: append to current string</li></ol><p><strong>Time Complexity:</strong> O(maxK × n) where maxK is maximum k value</p><p><strong>Space Complexity:</strong> O(m + n) where m is nesting depth</p>",
+      "solution_code": "def decodeString(s):\n    stack = []  # Stack to store (count, string) pairs\n    current_string = \"\"\n    current_num = 0\n    \n    for char in s:\n        if char.isdigit():\n            current_num = current_num * 10 + int(char)\n        elif char == '[':\n            # Push current state to stack\n            stack.append((current_num, current_string))\n            current_string = \"\"\n            current_num = 0\n        elif char == ']':\n            # Pop from stack and repeat string\n            num, prev_string = stack.pop()\n            current_string = prev_string + current_string * num\n        else:\n            # Regular character\n            current_string += char\n    \n    return current_string"
+    },
+    "javascript": {
+      "template": "function decodeString(s) {\n  \n}",
+      "solution_text": "<p><strong>Stack Solution for Decode String:</strong></p><p>Decode nested bracket expressions using stack to handle recursion.</p><p><strong>Algorithm:</strong></p><ol><li>Use two stacks: one for counts, one for strings</li><li>When encountering digit: parse full number</li><li>When encountering '[': push current count and string to stacks</li><li>When encountering ']': pop and repeat string count times</li><li>For letters: append to current string</li></ol><p><strong>Time Complexity:</strong> O(maxK × n) where maxK is maximum k value</p><p><strong>Space Complexity:</strong> O(m + n) where m is nesting depth</p>",
+      "solution_code": "function decodeString(s) {\n    const stack = []; // Stack to store [count, string] pairs\n    let currentString = \"\";\n    let currentNum = 0;\n    \n    for (const char of s) {\n        if (char >= '0' && char <= '9') {\n            currentNum = currentNum * 10 + parseInt(char);\n        } else if (char === '[') {\n            // Push current state to stack\n            stack.push([currentNum, currentString]);\n            currentString = \"\";\n            currentNum = 0;\n        } else if (char === ']') {\n            // Pop from stack and repeat string\n            const [num, prevString] = stack.pop();\n            currentString = prevString + currentString.repeat(num);\n        } else {\n            // Regular character\n            currentString += char;\n        }\n    }\n    \n    return currentString;\n}"
+    },
+    "typescript": {
+      "template": "function decodeString(s: string): string {\n  \n}",
+      "solution_text": "<p><strong>Stack Solution for Decode String:</strong></p><p>Decode nested bracket expressions using stack to handle recursion.</p><p><strong>Algorithm:</strong></p><ol><li>Use two stacks: one for counts, one for strings</li><li>When encountering digit: parse full number</li><li>When encountering '[': push current count and string to stacks</li><li>When encountering ']': pop and repeat string count times</li><li>For letters: append to current string</li></ol><p><strong>Time Complexity:</strong> O(maxK × n) where maxK is maximum k value</p><p><strong>Space Complexity:</strong> O(m + n) where m is nesting depth</p>",
+      "solution_code": "function decodeString(s: string): string {\n    const stack: [number, string][] = []; // Stack to store [count, string] pairs\n    let currentString = \"\";\n    let currentNum = 0;\n    \n    for (const char of s) {\n        if (char >= '0' && char <= '9') {\n            currentNum = currentNum * 10 + parseInt(char);\n        } else if (char === '[') {\n            // Push current state to stack\n            stack.push([currentNum, currentString]);\n            currentString = \"\";\n            currentNum = 0;\n        } else if (char === ']') {\n            // Pop from stack and repeat string\n            const [num, prevString] = stack.pop()!;\n            currentString = prevString + currentString.repeat(num);\n        } else {\n            // Regular character\n            currentString += char;\n        }\n    }\n    \n    return currentString;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public String decodeString(String s) {\n        \n    }\n}",
+      "solution_text": "<p><strong>Stack Solution for Decode String:</strong></p><p>Decode nested bracket expressions using stack to handle recursion.</p><p><strong>Algorithm:</strong></p><ol><li>Use two stacks: one for counts, one for strings</li><li>When encountering digit: parse full number</li><li>When encountering '[': push current count and string to stacks</li><li>When encountering ']': pop and repeat string count times</li><li>For letters: append to current string</li></ol><p><strong>Time Complexity:</strong> O(maxK × n) where maxK is maximum k value</p><p><strong>Space Complexity:</strong> O(m + n) where m is nesting depth</p>",
+      "solution_code": "class Solution {\n    public String decodeString(String s) {\n        Stack<Integer> countStack = new Stack<>();\n        Stack<StringBuilder> stringStack = new Stack<>();\n        StringBuilder currentString = new StringBuilder();\n        int currentNum = 0;\n        \n        for (char c : s.toCharArray()) {\n            if (Character.isDigit(c)) {\n                currentNum = currentNum * 10 + (c - '0');\n            } else if (c == '[') {\n                // Push current state to stacks\n                countStack.push(currentNum);\n                stringStack.push(currentString);\n                currentString = new StringBuilder();\n                currentNum = 0;\n            } else if (c == ']') {\n                // Pop from stacks and repeat string\n                int num = countStack.pop();\n                StringBuilder prevString = stringStack.pop();\n                StringBuilder temp = new StringBuilder();\n                for (int i = 0; i < num; i++) {\n                    temp.append(currentString);\n                }\n                currentString = prevString.append(temp);\n            } else {\n                // Regular character\n                currentString.append(c);\n            }\n        }\n        \n        return currentString.toString();\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "s": "2[a3[b]]c"
+      },
+      "output": "abbbabbbc"
+    },
+    {
+      "id": 2,
+      "input": {
+        "s": "axb3[z]4[c]"
+      },
+      "output": "axbzzzcccc"
+    },
+    {
+      "id": 3,
+      "input": {
+        "s": "ab2[c]3[d]1[x]"
+      },
+      "output": "abccdddx"
+    },
+    {
+      "id": 4,
+      "input": {
+        "s": "3[a]2[bc]"
+      },
+      "output": "aaabcbc"
+    },
+    {
+      "id": 5,
+      "input": {
+        "s": "2[abc]3[cd]ef"
+      },
+      "output": "abcabccdcdcdef"
+    },
+    {
+      "id": 6,
+      "input": {
+        "s": "abc"
+      },
+      "output": "abc"
+    },
+    {
+      "id": 7,
+      "input": {
+        "s": "100[leetcode]"
+      },
+      "output": "leetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcodeleetcode"
+    },
+    {
+      "id": 8,
+      "input": {
+        "s": "3[z]2[2[y]pq4[2[jk]e1[f]]]ef"
+      },
+      "output": "zzzyjkjkefefyjkjkefefpqyjkjkefefyjkjkefefpqef"
+    },
+    {
+      "id": 9,
+      "input": {
+        "s": "2[2[2[a]]]"
+      },
+      "output": "aaaaaaaa"
+    },
+    {
+      "id": 10,
+      "input": {
+        "s": "10[a]"
+      },
+      "output": "aaaaaaaaaa"
+    }
+  ]
+}

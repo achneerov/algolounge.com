@@ -1,0 +1,112 @@
+{
+  "filename": "jump-game-ii",
+  "title": "Jump Game II",
+  "keywords": [
+    "jump",
+    "game",
+    "leetcode",
+    "given",
+    "array",
+    "integers",
+    "nums",
+    "where",
+    "represents",
+    "maximum"
+  ],
+  "description": "<h2>Jump Game II</h2><p>Leetcode 45. Jump Game II</p><p></p><p>You are given an array of integers `nums`, where `nums[i]` represents the maximum length of a jump towards the right from index `i`. For example, if you are at `nums[i]`, you can jump to any index `i + j` where:</p><p></p><p>* `j <= nums[i]`</p><p>* `i + j < nums.length`</p><p></p><p>You are initially positioned at `nums[0]`.</p><p></p><p>Return the minimum number of jumps to reach the last position in the array (index `nums.length - 1`). You may assume there is always a valid answer.</p><h3>Examples:</h3><ul><li>Input: nums = [2,4,1,1,1,1]<br><br>Output: 2<br>Jump from index `0` to index `1`, then jump from index `1` to the last index.</li><li>Input: nums = [2,1,2,1,0]<br><br>Output: 2</li></ul><h3>Constraints:</h3><ul><li> `1 <= nums.length <= 1000`</li><li> `0 <= nums[i] <= 100`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def jumpGameIi(nums):\n    ",
+      "solution_text": "<p><strong>Jump Game II - Greedy Algorithm:</strong></p><p>Find minimum number of jumps to reach last index using greedy approach.</p><p><strong>Algorithm:</strong></p><ol><li>Track current jump range and farthest reachable position</li><li>When reaching end of current range, increment jumps</li><li>Update the range to the farthest reachable position</li><li>Continue until reaching the last index</li></ol><p><strong>Time Complexity:</strong> O(n) - single pass through array</p><p><strong>Space Complexity:</strong> O(1) - constant extra space</p>",
+      "solution_code": "def jumpGameIi(nums):\n    if len(nums) <= 1:\n        return 0\n    \n    jumps = 0\n    current_end = 0\n    farthest = 0\n    \n    # We don't need to jump from the last index\n    for i in range(len(nums) - 1):\n        # Update the farthest we can reach\n        farthest = max(farthest, i + nums[i])\n        \n        # If we've reached the end of current jump range\n        if i == current_end:\n            jumps += 1\n            current_end = farthest\n            \n            # Early termination if we can reach the end\n            if current_end >= len(nums) - 1:\n                break\n    \n    return jumps"
+    },
+    "javascript": {
+      "template": "function jumpGameIi(nums) {\n  \n}",
+      "solution_text": "<p><strong>Jump Game II - Greedy Algorithm:</strong></p><p>Find minimum number of jumps to reach last index using greedy approach.</p><p><strong>Algorithm:</strong></p><ol><li>Track current jump range and farthest reachable position</li><li>When reaching end of current range, increment jumps</li><li>Update the range to the farthest reachable position</li><li>Continue until reaching the last index</li></ol><p><strong>Time Complexity:</strong> O(n) - single pass through array</p><p><strong>Space Complexity:</strong> O(1) - constant extra space</p>",
+      "solution_code": "function jumpGameIi(nums) {\n    if (nums.length <= 1) {\n        return 0;\n    }\n    \n    let jumps = 0;\n    let currentEnd = 0;\n    let farthest = 0;\n    \n    // We don't need to jump from the last index\n    for (let i = 0; i < nums.length - 1; i++) {\n        // Update the farthest we can reach\n        farthest = Math.max(farthest, i + nums[i]);\n        \n        // If we've reached the end of current jump range\n        if (i === currentEnd) {\n            jumps++;\n            currentEnd = farthest;\n            \n            // Early termination if we can reach the end\n            if (currentEnd >= nums.length - 1) {\n                break;\n            }\n        }\n    }\n    \n    return jumps;\n}"
+    },
+    "typescript": {
+      "template": "function jumpGameIi(nums: number[]): number {\n  \n}",
+      "solution_text": "<p><strong>Jump Game II - Greedy Algorithm:</strong></p><p>Find minimum number of jumps to reach last index using greedy approach.</p><p><strong>Algorithm:</strong></p><ol><li>Track current jump range and farthest reachable position</li><li>When reaching end of current range, increment jumps</li><li>Update the range to the farthest reachable position</li><li>Continue until reaching the last index</li></ol><p><strong>Time Complexity:</strong> O(n) - single pass through array</p><p><strong>Space Complexity:</strong> O(1) - constant extra space</p>",
+      "solution_code": "function jumpGameIi(nums: number[]): number {\n    if (nums.length <= 1) {\n        return 0;\n    }\n    \n    let jumps: number = 0;\n    let currentEnd: number = 0;\n    let farthest: number = 0;\n    \n    // We don't need to jump from the last index\n    for (let i = 0; i < nums.length - 1; i++) {\n        // Update the farthest we can reach\n        farthest = Math.max(farthest, i + nums[i]);\n        \n        // If we've reached the end of current jump range\n        if (i === currentEnd) {\n            jumps++;\n            currentEnd = farthest;\n            \n            // Early termination if we can reach the end\n            if (currentEnd >= nums.length - 1) {\n                break;\n            }\n        }\n    }\n    \n    return jumps;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int jumpGameIi(int[] nums) {\n        \n    }\n}",
+      "solution_text": "<p><strong>Jump Game II - Greedy Algorithm:</strong></p><p>Find minimum number of jumps to reach last index using greedy approach.</p><p><strong>Algorithm:</strong></p><ol><li>Track current jump range and farthest reachable position</li><li>When reaching end of current range, increment jumps</li><li>Update the range to the farthest reachable position</li><li>Continue until reaching the last index</li></ol><p><strong>Time Complexity:</strong> O(n) - single pass through array</p><p><strong>Space Complexity:</strong> O(1) - constant extra space</p>",
+      "solution_code": "class Solution {\n    public int jumpGameIi(int[] nums) {\n        if (nums.length <= 1) {\n            return 0;\n        }\n        \n        int jumps = 0;\n        int currentEnd = 0;\n        int farthest = 0;\n        \n        // We don't need to jump from the last index\n        for (int i = 0; i < nums.length - 1; i++) {\n            // Update the farthest we can reach\n            farthest = Math.max(farthest, i + nums[i]);\n            \n            // If we've reached the end of current jump range\n            if (i == currentEnd) {\n                jumps++;\n                currentEnd = farthest;\n                \n                // Early termination if we can reach the end\n                if (currentEnd >= nums.length - 1) {\n                    break;\n                }\n            }\n        }\n        \n        return jumps;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [2, 4, 1, 1, 1, 1]
+      },
+      "output": 2
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [2, 1, 2, 1, 0]
+      },
+      "output": 2
+    },
+    {
+      "id": 3,
+      "input": {
+        "nums": [1]
+      },
+      "output": 0
+    },
+    {
+      "id": 4,
+      "input": {
+        "nums": [2, 3, 1, 1, 4]
+      },
+      "output": 2
+    },
+    {
+      "id": 5,
+      "input": {
+        "nums": [1, 1, 1, 1]
+      },
+      "output": 3
+    },
+    {
+      "id": 6,
+      "input": {
+        "nums": [1, 2, 3]
+      },
+      "output": 2
+    },
+    {
+      "id": 7,
+      "input": {
+        "nums": [5, 9, 3, 2, 1, 0, 2, 3, 3, 1, 0, 0]
+      },
+      "output": 3
+    },
+    {
+      "id": 8,
+      "input": {
+        "nums": [2, 0, 2, 0, 1]
+      },
+      "output": 2
+    },
+    {
+      "id": 9,
+      "input": {
+        "nums": [7, 0, 9, 6, 9, 6, 1, 7, 9, 0, 1, 2, 9, 0, 3]
+      },
+      "output": 2
+    },
+    {
+      "id": 10,
+      "input": {
+        "nums": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+      },
+      "output": 9
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "filename": "longest-repeating-substring-with-replacement",
+  "title": "Longest Repeating Character Replacement",
+  "keywords": [
+    "longest",
+    "repeating",
+    "character",
+    "replacement",
+    "leetcode",
+    "424",
+    "given",
+    "string",
+    "consisting",
+    "only"
+  ],
+  "description": "<h2>Longest Repeating Character Replacement</h2><p>Leetcode 424. Longest Repeating Character Replacement</p><p>You are given a string <code>s</code> consisting of only uppercase English characters and an integer <code>k</code>. You can choose up to <code>k</code> characters of the string and replace them with any other uppercase English character.</p><p>After performing at most <code>k</code> replacements, return the length of the longest substring which contains only one distinct character.</p><h3>Examples</h3><ul><li><strong>Example 1:</strong><br>Input: s = \"XYYX\", k = 2<br>Output: 4<br>Explanation: Either replace the 'X's with 'Y's, or replace the 'Y's with 'X's.</li><li><strong>Example 2:</strong><br>Input: s = \"AAABABB\", k = 1<br>Output: 5<br>Explanation: Replace either the first occurrence of 'B' to get \"AAAABBB\", or the last occurrence of 'A' to get \"AAABBBB\".</li></ul><h3>Constraints</h3><ul><li><code>1 <= s.length <= 1000</code></li><li><code>0 <= k <= s.length</code></li><li><code>s</code> consists of only uppercase English letters.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def longestRepeatingCharacterReplacement(s, k):\n    ",
+      "solution_text": "**Algorithm: Sliding Window with Character Frequency Tracking**\n\nThis problem uses the sliding window technique to find the longest substring that can be made to contain only one distinct character with at most k replacements.\n\n**Approach:**\n1. Use two pointers (left and right) to maintain a sliding window\n2. Track character frequencies in the current window\n3. Keep track of the maximum frequency of any character in the current window\n4. If window_size - max_frequency > k, shrink the window from the left\n5. Update the maximum length found so far\n\n**Time Complexity:** O(n) - single pass through the string\n**Space Complexity:** O(1) - constant space for character counting (26 uppercase letters)\n\n**Key Insights:**\n- The sliding window only needs to shrink when replacements exceed k\n- We don't need to update max_count when shrinking (optimization)\n- The answer is the maximum window size we ever achieve",
+      "solution_code": "def longestRepeatingCharacterReplacement(s, k):\n    if not s:\n        return 0\n    \n    char_count = {}\n    left = 0\n    max_count = 0\n    max_length = 0\n    \n    for right in range(len(s)):\n        # Add current character to window\n        char_count[s[right]] = char_count.get(s[right], 0) + 1\n        \n        # Update max_count (most frequent character in current window)\n        max_count = max(max_count, char_count[s[right]])\n        \n        # Current window size\n        window_size = right - left + 1\n        \n        # If characters to replace exceed k, shrink window\n        if window_size - max_count > k:\n            char_count[s[left]] -= 1\n            left += 1\n        \n        # Update maximum length\n        max_length = max(max_length, right - left + 1)\n    \n    return max_length"
+    },
+    "javascript": {
+      "template": "function longestRepeatingCharacterReplacement(s, k) {\n  \n}",
+      "solution_text": "**Algorithm: Sliding Window with Character Frequency Tracking**\n\nThis problem uses the sliding window technique to find the longest substring that can be made to contain only one distinct character with at most k replacements.\n\n**Approach:**\n1. Use two pointers (left and right) to maintain a sliding window\n2. Track character frequencies in the current window\n3. Keep track of the maximum frequency of any character in the current window\n4. If window_size - max_frequency > k, shrink the window from the left\n5. Update the maximum length found so far\n\n**Time Complexity:** O(n) - single pass through the string\n**Space Complexity:** O(1) - constant space for character counting (26 uppercase letters)\n\n**Key Insights:**\n- The sliding window only needs to shrink when replacements exceed k\n- We don't need to update max_count when shrinking (optimization)\n- The answer is the maximum window size we ever achieve",
+      "solution_code": "function longestRepeatingCharacterReplacement(s, k) {\n    if (!s || s.length === 0) {\n        return 0;\n    }\n    \n    const charCount = new Map();\n    let left = 0;\n    let maxCount = 0;\n    let maxLength = 0;\n    \n    for (let right = 0; right < s.length; right++) {\n        // Add current character to window\n        const char = s[right];\n        charCount.set(char, (charCount.get(char) || 0) + 1);\n        \n        // Update max_count (most frequent character in current window)\n        maxCount = Math.max(maxCount, charCount.get(char));\n        \n        // Current window size\n        const windowSize = right - left + 1;\n        \n        // If characters to replace exceed k, shrink window\n        if (windowSize - maxCount > k) {\n            const leftChar = s[left];\n            charCount.set(leftChar, charCount.get(leftChar) - 1);\n            left++;\n        }\n        \n        // Update maximum length\n        maxLength = Math.max(maxLength, right - left + 1);\n    }\n    \n    return maxLength;\n}"
+    },
+    "typescript": {
+      "template": "function longestRepeatingCharacterReplacement(s: string, k: number): number {\n  \n}",
+      "solution_text": "**Algorithm: Sliding Window with Character Frequency Tracking**\n\nThis problem uses the sliding window technique to find the longest substring that can be made to contain only one distinct character with at most k replacements.\n\n**Approach:**\n1. Use two pointers (left and right) to maintain a sliding window\n2. Track character frequencies in the current window\n3. Keep track of the maximum frequency of any character in the current window\n4. If window_size - max_frequency > k, shrink the window from the left\n5. Update the maximum length found so far\n\n**Time Complexity:** O(n) - single pass through the string\n**Space Complexity:** O(1) - constant space for character counting (26 uppercase letters)\n\n**Key Insights:**\n- The sliding window only needs to shrink when replacements exceed k\n- We don't need to update max_count when shrinking (optimization)\n- The answer is the maximum window size we ever achieve",
+      "solution_code": "function longestRepeatingCharacterReplacement(s: string, k: number): number {\n    if (!s || s.length === 0) {\n        return 0;\n    }\n    \n    const charCount: Map<string, number> = new Map();\n    let left: number = 0;\n    let maxCount: number = 0;\n    let maxLength: number = 0;\n    \n    for (let right = 0; right < s.length; right++) {\n        // Add current character to window\n        const char: string = s[right];\n        charCount.set(char, (charCount.get(char) || 0) + 1);\n        \n        // Update max_count (most frequent character in current window)\n        maxCount = Math.max(maxCount, charCount.get(char)!);\n        \n        // Current window size\n        const windowSize: number = right - left + 1;\n        \n        // If characters to replace exceed k, shrink window\n        if (windowSize - maxCount > k) {\n            const leftChar: string = s[left];\n            charCount.set(leftChar, charCount.get(leftChar)! - 1);\n            left++;\n        }\n        \n        // Update maximum length\n        maxLength = Math.max(maxLength, right - left + 1);\n    }\n    \n    return maxLength;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int longestRepeatingCharacterReplacement(String s, int k) {\n        \n    }\n}",
+      "solution_text": "**Algorithm: Sliding Window with Character Frequency Tracking**\n\nThis problem uses the sliding window technique to find the longest substring that can be made to contain only one distinct character with at most k replacements.\n\n**Approach:**\n1. Use two pointers (left and right) to maintain a sliding window\n2. Track character frequencies in the current window\n3. Keep track of the maximum frequency of any character in the current window\n4. If window_size - max_frequency > k, shrink the window from the left\n5. Update the maximum length found so far\n\n**Time Complexity:** O(n) - single pass through the string\n**Space Complexity:** O(1) - constant space for character counting (26 uppercase letters)\n\n**Key Insights:**\n- The sliding window only needs to shrink when replacements exceed k\n- We don't need to update max_count when shrinking (optimization)\n- The answer is the maximum window size we ever achieve",
+      "solution_code": "class Solution {\n    public int longestRepeatingCharacterReplacement(String s, int k) {\n        if (s == null || s.length() == 0) {\n            return 0;\n        }\n        \n        int[] charCount = new int[26]; // For uppercase English letters A-Z\n        int left = 0;\n        int maxCount = 0;\n        int maxLength = 0;\n        \n        for (int right = 0; right < s.length(); right++) {\n            // Add current character to window\n            int charIndex = s.charAt(right) - 'A';\n            charCount[charIndex]++;\n            \n            // Update max_count (most frequent character in current window)\n            maxCount = Math.max(maxCount, charCount[charIndex]);\n            \n            // Current window size\n            int windowSize = right - left + 1;\n            \n            // If characters to replace exceed k, shrink window\n            if (windowSize - maxCount > k) {\n                int leftCharIndex = s.charAt(left) - 'A';\n                charCount[leftCharIndex]--;\n                left++;\n            }\n            \n            // Update maximum length\n            maxLength = Math.max(maxLength, right - left + 1);\n        }\n        \n        return maxLength;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "s": "XYYX",
+        "k": 2
+      },
+      "output": 4
+    },
+    {
+      "id": 2,
+      "input": {
+        "s": "AAABABB",
+        "k": 1
+      },
+      "output": 5
+    },
+    {
+      "id": 3,
+      "input": {
+        "s": "ABAB",
+        "k": 2
+      },
+      "output": 4
+    },
+    {
+      "id": 4,
+      "input": {
+        "s": "AABABBA",
+        "k": 1
+      },
+      "output": 4
+    },
+    {
+      "id": 5,
+      "input": {
+        "s": "A",
+        "k": 0
+      },
+      "output": 1
+    },
+    {
+      "id": 6,
+      "input": {
+        "s": "A",
+        "k": 1
+      },
+      "output": 1
+    },
+    {
+      "id": 7,
+      "input": {
+        "s": "AAAA",
+        "k": 0
+      },
+      "output": 4
+    },
+    {
+      "id": 8,
+      "input": {
+        "s": "ABCDE",
+        "k": 4
+      },
+      "output": 5
+    },
+    {
+      "id": 9,
+      "input": {
+        "s": "ABCDE",
+        "k": 1
+      },
+      "output": 2
+    },
+    {
+      "id": 10,
+      "input": {
+        "s": "BAAAB",
+        "k": 2
+      },
+      "output": 5
+    }
+  ]
+}

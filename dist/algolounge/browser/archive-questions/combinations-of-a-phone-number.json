@@ -1,0 +1,66 @@
+{
+  "filename": "combinations-of-a-phone-number",
+  "title": "Letter Combinations of a Phone Number",
+  "keywords": [
+    "letter",
+    "combinations",
+    "phone",
+    "number",
+    "leetcode",
+    "given",
+    "string",
+    "digits",
+    "made",
+    "through"
+  ],
+  "description": "<h2>Letter Combinations of a Phone Number</h2><p>Leetcode 17. Letter Combinations of a Phone Number</p><p></p><p>You are given a string `digits` made up of digits from `2` through `9` inclusive.</p><p></p><p>Each digit (not including 1) is mapped to a set of characters as shown below:</p><p></p><p>A digit could represent any one of the characters it maps to.</p><p></p><p>Return all possible letter combinations that `digits` could represent. You may return the answer in **any order**.</p><p></p><p>![](https://imagedelivery.net/CLfkmk9Wzy8_9HRyug4EVA/796a0dc1-2fcd-4ebb-0686-28f9007ec800/public)</p><h3>Examples:</h3><ul><li>Input: digits = \"34\"<br><br>Output: [\"dg\",\"dh\",\"di\",\"eg\",\"eh\",\"ei\",\"fg\",\"fh\",\"fi\"]</li><li>Input: digits = \"\"<br><br>Output: []</li></ul><h3>Constraints:</h3><ul><li> `0 <= digits.length <= 4`</li><li> `2 <= digits[i] <= 9`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def letterCombinationsOfAPhoneNumber(digits):\n    ",
+      "solution_text": "<h3>Letter Combinations of a Phone Number Solution</h3><p><strong>Algorithm:</strong> Backtracking approach that explores all possible combinations of letters for the given digits.</p><p><strong>Time Complexity:</strong> O(4^n) where n is the length of digits (worst case when digits map to 4 letters)</p><p><strong>Space Complexity:</strong> O(n) for recursion depth</p><p><strong>Key Insights:</strong></p><ul><li>Map each digit to its corresponding letters using a dictionary/map</li><li>Use backtracking to generate all combinations recursively</li><li>Handle empty input by returning empty array</li><li>Build combinations character by character</li></ul>",
+      "solution_code": "def letterCombinationsOfAPhoneNumber(digits):\n    if not digits:\n        return []\n    \n    # Mapping of digits to letters\n    phone_map = {\n        '2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl',\n        '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz'\n    }\n    \n    result = []\n    \n    def backtrack(index, current_combination):\n        # Base case: we've processed all digits\n        if index == len(digits):\n            result.append(current_combination)\n            return\n        \n        # Get the letters for the current digit\n        digit = digits[index]\n        letters = phone_map[digit]\n        \n        # Try each letter for the current digit\n        for letter in letters:\n            backtrack(index + 1, current_combination + letter)\n    \n    backtrack(0, '')\n    return result"
+    },
+    "javascript": {
+      "template": "function letterCombinationsOfAPhoneNumber(digits) {\n  \n}",
+      "solution_text": "<h3>Letter Combinations of a Phone Number Solution</h3><p><strong>Algorithm:</strong> Backtracking approach that explores all possible combinations of letters for the given digits.</p><p><strong>Time Complexity:</strong> O(4^n) where n is the length of digits (worst case when digits map to 4 letters)</p><p><strong>Space Complexity:</strong> O(n) for recursion depth</p><p><strong>Key Insights:</strong></p><ul><li>Map each digit to its corresponding letters using a dictionary/map</li><li>Use backtracking to generate all combinations recursively</li><li>Handle empty input by returning empty array</li><li>Build combinations character by character</li></ul>",
+      "solution_code": "function letterCombinationsOfAPhoneNumber(digits) {\n    if (digits.length === 0) return [];\n    \n    // Mapping of digits to letters\n    const phoneMap = {\n        '2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl',\n        '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz'\n    };\n    \n    const result = [];\n    \n    function backtrack(index, currentCombination) {\n        // Base case: we've processed all digits\n        if (index === digits.length) {\n            result.push(currentCombination);\n            return;\n        }\n        \n        // Get the letters for the current digit\n        const digit = digits[index];\n        const letters = phoneMap[digit];\n        \n        // Try each letter for the current digit\n        for (let letter of letters) {\n            backtrack(index + 1, currentCombination + letter);\n        }\n    }\n    \n    backtrack(0, '');\n    return result;\n}"
+    },
+    "typescript": {
+      "template": "function letterCombinationsOfAPhoneNumber(digits: string): string[] {\n  \n}",
+      "solution_text": "<h3>Letter Combinations of a Phone Number Solution</h3><p><strong>Algorithm:</strong> Backtracking approach that explores all possible combinations of letters for the given digits.</p><p><strong>Time Complexity:</strong> O(4^n) where n is the length of digits (worst case when digits map to 4 letters)</p><p><strong>Space Complexity:</strong> O(n) for recursion depth</p><p><strong>Key Insights:</strong></p><ul><li>Map each digit to its corresponding letters using a dictionary/map</li><li>Use backtracking to generate all combinations recursively</li><li>Handle empty input by returning empty array</li><li>Build combinations character by character</li></ul>",
+      "solution_code": "function letterCombinationsOfAPhoneNumber(digits: string): string[] {\n    if (digits.length === 0) return [];\n    \n    // Mapping of digits to letters\n    const phoneMap: { [key: string]: string } = {\n        '2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl',\n        '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz'\n    };\n    \n    const result: string[] = [];\n    \n    function backtrack(index: number, currentCombination: string): void {\n        // Base case: we've processed all digits\n        if (index === digits.length) {\n            result.push(currentCombination);\n            return;\n        }\n        \n        // Get the letters for the current digit\n        const digit = digits[index];\n        const letters = phoneMap[digit];\n        \n        // Try each letter for the current digit\n        for (let letter of letters) {\n            backtrack(index + 1, currentCombination + letter);\n        }\n    }\n    \n    backtrack(0, '');\n    return result;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public List<String> letterCombinationsOfAPhoneNumber(String digits) {\n        \n    }\n}",
+      "solution_text": "<h3>Letter Combinations of a Phone Number Solution</h3><p><strong>Algorithm:</strong> Backtracking approach that explores all possible combinations of letters for the given digits.</p><p><strong>Time Complexity:</strong> O(4^n) where n is the length of digits (worst case when digits map to 4 letters)</p><p><strong>Space Complexity:</strong> O(n) for recursion depth</p><p><strong>Key Insights:</strong></p><ul><li>Map each digit to its corresponding letters using a dictionary/map</li><li>Use backtracking to generate all combinations recursively</li><li>Handle empty input by returning empty array</li><li>Build combinations character by character</li></ul>",
+      "solution_code": "class Solution {\n    public List<String> letterCombinationsOfAPhoneNumber(String digits) {\n        List<String> result = new ArrayList<>();\n        if (digits.length() == 0) return result;\n        \n        // Mapping of digits to letters\n        Map<Character, String> phoneMap = new HashMap<>();\n        phoneMap.put('2', \"abc\");\n        phoneMap.put('3', \"def\");\n        phoneMap.put('4', \"ghi\");\n        phoneMap.put('5', \"jkl\");\n        phoneMap.put('6', \"mno\");\n        phoneMap.put('7', \"pqrs\");\n        phoneMap.put('8', \"tuv\");\n        phoneMap.put('9', \"wxyz\");\n        \n        backtrack(result, phoneMap, digits, 0, new StringBuilder());\n        return result;\n    }\n    \n    private void backtrack(List<String> result, Map<Character, String> phoneMap, \n                          String digits, int index, StringBuilder currentCombination) {\n        // Base case: we've processed all digits\n        if (index == digits.length()) {\n            result.add(currentCombination.toString());\n            return;\n        }\n        \n        // Get the letters for the current digit\n        char digit = digits.charAt(index);\n        String letters = phoneMap.get(digit);\n        \n        // Try each letter for the current digit\n        for (char letter : letters.toCharArray()) {\n            currentCombination.append(letter);\n            backtrack(result, phoneMap, digits, index + 1, currentCombination);\n            currentCombination.deleteCharAt(currentCombination.length() - 1);\n        }\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "digits": "34"
+      },
+      "output": [
+        "dg",
+        "dh",
+        "di",
+        "eg",
+        "eh",
+        "ei",
+        "fg",
+        "fh",
+        "fi"
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "digits": ""
+      },
+      "output": []
+    }
+  ]
+}

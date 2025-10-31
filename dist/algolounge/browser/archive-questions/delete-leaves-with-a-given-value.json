@@ -1,0 +1,122 @@
+{
+  "filename": "delete-leaves-with-a-given-value",
+  "title": "Delete Leaves With a Given Value",
+  "keywords": [
+    "delete",
+    "leaves",
+    "given",
+    "value",
+    "leetcode",
+    "1325",
+    "binary",
+    "tree",
+    "root",
+    "integer"
+  ],
+  "description": "<h2>Delete Leaves With a Given Value</h2><p>Leetcode 1325. Delete Leaves With a Given Value</p><p></p><p>You are given a binary tree `root` and an integer `target`, delete all the **leaf nodes** with value `target`.</p><p></p><p>Note that once you delete a leaf node with value `target`, if its parent node becomes a leaf node and has the value `target`, it should also be deleted (you need to continue doing that until you cannot).</p><h3>Constraints:</h3><ul><li> `1 <= number of nodes in the tree <= 3000`</li><li> `1 <= Node.val, target <= 1000`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def deleteLeavesWithAGivenValue(root, target):\n    ",
+      "solution_text": "<p><strong>Post-Order Traversal Solution:</strong></p><p>A post-order traversal is a natural fit for this problem. We need to process a node's children before the node itself. This ensures that when we are at a parent node, any leaf nodes with the target value in its subtrees have already been removed.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Base Case:</strong> If the current node is `None`, we simply return `None`.</li><li><strong>Recursive Calls:</strong> Recursively call the function on the left and right children. This will process the subtrees first. The results of these calls update the `left` and `right` pointers of the current node.</li><li><strong>Process Current Node:</strong> After the recursive calls return, we check the current node. If it has become a leaf node (i.e., its `left` and `right` children are now `None`) and its value is equal to the `target`, we want to delete it. We do this by returning `None`.</li><li><strong>Return Node:</strong> If the current node is not a leaf node to be deleted, we return the node itself.</li></ol><p>This process effectively prunes the tree from the bottom up. When a parent node is considered, its children have already been potentially removed, so it can correctly determine if it has now become a leaf node with the target value.</p><p><strong>Time Complexity:</strong> O(N), where N is the number of nodes in the tree, as we visit each node once.</p><p><strong>Space Complexity:</strong> O(H), where H is the height of the tree, due to the recursion stack. In the worst case (a skewed tree), this can be O(N).</p>",
+      "solution_code": "# Definition for a binary tree node.\n# class TreeNode:\n#     def __init__(self, val=0, left=None, right=None):\n#         self.val = val\n#         self.left = left\n#         self.right = right\nclass Solution:\n    def removeLeafNodes(self, root, target):\n        if not root:\n            return None\n\n        root.left = self.removeLeafNodes(root.left, target)\n        root.right = self.removeLeafNodes(root.right, target)\n\n        if not root.left and not root.right and root.val == target:\n            return None\n\n        return root"
+    },
+    "javascript": {
+      "template": "function deleteLeavesWithAGivenValue(root, target) {\n  \n}",
+      "solution_text": "<p><strong>Post-Order Traversal Solution:</strong></p><p>A post-order traversal is a natural fit for this problem. We need to process a node's children before the node itself. This ensures that when we are at a parent node, any leaf nodes with the target value in its subtrees have already been removed.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Base Case:</strong> If the current node is `null`, we simply return `null`.</li><li><strong>Recursive Calls:</strong> Recursively call the function on the left and right children. This will process the subtrees first. The results of these calls update the `left` and `right` pointers of the current node.</li><li><strong>Process Current Node:</strong> After the recursive calls return, we check the current node. If it has become a leaf node (i.e., its `left` and `right` children are now `null`) and its value is equal to the `target`, we want to delete it. We do this by returning `null`.</li><li><strong>Return Node:</strong> If the current node is not a leaf node to be deleted, we return the node itself.</li></ol><p>This process effectively prunes the tree from the bottom up. When a parent node is considered, its children have already been potentially removed, so it can correctly determine if it has now become a leaf node with the target value.</p><p><strong>Time Complexity:</strong> O(N), where N is the number of nodes in the tree, as we visit each node once.</p><p><strong>Space Complexity:</strong> O(H), where H is the height of the tree, due to the recursion stack. In the worst case (a skewed tree), this can be O(N).</p>",
+      "solution_code": "/**\n * Definition for a binary tree node.\n * function TreeNode(val, left, right) {\n *     this.val = (val===undefined ? 0 : val)\n *     this.left = (left===undefined ? null : left)\n *     this.right = (right===undefined ? null : right)\n * }\n */\n/**\n * @param {TreeNode} root\n * @param {number} target\n * @return {TreeNode}\n */\nvar removeLeafNodes = function(root, target) {\n    if (!root) {\n        return null;\n    }\n\n    root.left = removeLeafNodes(root.left, target);\n    root.right = removeLeafNodes(root.right, target);\n\n    if (!root.left && !root.right && root.val === target) {\n        return null;\n    }\n\n    return root;\n};"
+    },
+    "typescript": {
+      "template": "function deleteLeavesWithAGivenValue(root: TreeNode | null, target: number): TreeNode | null {\n  \n}",
+      "solution_text": "<p><strong>Post-Order Traversal Solution:</strong></p><p>A post-order traversal is a natural fit for this problem. We need to process a node's children before the node itself. This ensures that when we are at a parent node, any leaf nodes with the target value in its subtrees have already been removed.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Base Case:</strong> If the current node is `null`, we simply return `null`.</li><li><strong>Recursive Calls:</strong> Recursively call the function on the left and right children. This will process the subtrees first. The results of these calls update the `left` and `right` pointers of the current node.</li><li><strong>Process Current Node:</strong> After the recursive calls return, we check the current node. If it has become a leaf node (i.e., its `left` and `right` children are now `null`) and its value is equal to the `target`, we want to delete it. We do this by returning `null`.</li><li><strong>Return Node:</strong> If the current node is not a leaf node to be deleted, we return the node itself.</li></ol><p>This process effectively prunes the tree from the bottom up. When a parent node is considered, its children have already been potentially removed, so it can correctly determine if it has now become a leaf node with the target value.</p><p><strong>Time Complexity:</strong> O(N), where N is the number of nodes in the tree, as we visit each node once.</p><p><strong>Space Complexity:</strong> O(H), where H is the height of the tree, due to the recursion stack. In the worst case (a skewed tree), this can be O(N).</p>",
+      "solution_code": "/**\n * Definition for a binary tree node.\n * class TreeNode {\n *     val: number\n *     left: TreeNode | null\n *     right: TreeNode | null\n *     constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {\n *         this.val = (val===undefined ? 0 : val)\n *         this.left = (left===undefined ? null : left)\n *         this.right = (right===undefined ? null : right)\n *     }\n * }\n */\n\nfunction removeLeafNodes(root: TreeNode | null, target: number): TreeNode | null {\n    if (!root) {\n        return null;\n    }\n\n    root.left = removeLeafNodes(root.left, target);\n    root.right = removeLeafNodes(root.right, target);\n\n    if (!root.left && !root.right && root.val === target) {\n        return null;\n    }\n\n    return root;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public TreeNode removeLeafNodes(TreeNode root, int target) {\n        \n    }\n}",
+      "solution_text": "<p><strong>Post-Order Traversal Solution:</strong></p><p>A post-order traversal is a natural fit for this problem. We need to process a node's children before the node itself. This ensures that when we are at a parent node, any leaf nodes with the target value in its subtrees have already been removed.</p><p><strong>Algorithm:</strong></p><ol><li><strong>Base Case:</strong> If the current node is `null`, we simply return `null`.</li><li><strong>Recursive Calls:</strong> Recursively call the function on the left and right children. This will process the subtrees first. The results of these calls update the `left` and `right` pointers of the current node.</li><li><strong>Process Current Node:</strong> After the recursive calls return, we check the current node. If it has become a leaf node (i.e., its `left` and `right` children are now `null`) and its value is equal to the `target`, we want to delete it. We do this by returning `null`.</li><li><strong>Return Node:</strong> If the current node is not a leaf node to be deleted, we return the node itself.</li></ol><p>This process effectively prunes the tree from the bottom up. When a parent node is considered, its children have already been potentially removed, so it can correctly determine if it has now become a leaf node with the target value.</p><p><strong>Time Complexity:</strong> O(N), where N is the number of nodes in the tree, as we visit each node once.</p><p><strong>Space Complexity:</strong> O(H), where H is the height of the tree, due to the recursion stack. In the worst case (a skewed tree), this can be O(N).</p>",
+      "solution_code": "/**\n * Definition for a binary tree node.\n * public class TreeNode {\n *     int val;\n *     TreeNode left;\n *     TreeNode right;\n *     TreeNode() {}\n *     TreeNode(int val) { this.val = val; }\n *     TreeNode(int val, TreeNode left, TreeNode right) {\n *         this.val = val;\n *         this.left = left;\n *         this.right = right;\n *     }\n * }\n */\nclass Solution {\n    public TreeNode removeLeafNodes(TreeNode root, int target) {\n        if (root == null) {\n            return null;\n        }\n\n        root.left = removeLeafNodes(root.left, target);\n        root.right = removeLeafNodes(root.right, target);\n\n        if (root.left == null && root.right == null && root.val == target) {\n            return null;\n        }\n\n        return root;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "root": [1, 2, 3, 2, null, 2, 4],
+        "target": 2
+      },
+      "output": [1, null, 3, null, 4]
+    },
+    {
+      "id": 2,
+      "input": {
+        "root": [1, 3, 3, 3, 2],
+        "target": 3
+      },
+      "output": [1, 3, null, null, 2]
+    },
+    {
+      "id": 3,
+      "input": {
+        "root": [1, 2, null, 2, null, 2],
+        "target": 2
+      },
+      "output": [1]
+    },
+    {
+      "id": 4,
+      "input": {
+        "root": [1, 1, 1],
+        "target": 1
+      },
+      "output": []
+    },
+    {
+      "id": 5,
+      "input": {
+        "root": [5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1],
+        "target": 5
+      },
+      "output": [5, 4, 8, 11, null, 13, 4, 7, 2, null, null, null, 1]
+    },
+    {
+      "id": 6,
+      "input": {
+        "root": [1, 2, 3],
+        "target": 1
+      },
+      "output": [1, 2, 3]
+    },
+    {
+      "id": 7,
+      "input": {
+        "root": [1, 2, 3],
+        "target": 4
+      },
+      "output": [1, 2, 3]
+    },
+    {
+      "id": 8,
+      "input": {
+        "root": [1],
+        "target": 1
+      },
+      "output": []
+    },
+    {
+      "id": 9,
+      "input": {
+        "root": [1, 2, null, 3, null, 4, null, 5],
+        "target": 3
+      },
+      "output": [1, 2, null, 3, null, 4, null, 5]
+    },
+    {
+      "id": 10,
+      "input": {
+        "root": [1, 2, 2, 2, 2, 2, 2],
+        "target": 2
+      },
+      "output": [1]
+    }
+  ]
+}

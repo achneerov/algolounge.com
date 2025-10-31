@@ -1,0 +1,64 @@
+{
+  "filename": "sliding-window-maximum",
+  "title": "Sliding Window Maximum",
+  "keywords": [
+    "sliding",
+    "window",
+    "maximum",
+    "leetcode",
+    "239",
+    "given",
+    "array",
+    "integers",
+    "nums",
+    "integer"
+  ],
+  "description": "<h2>Sliding Window Maximum</h2><p>Leetcode 239. Sliding Window Maximum</p><p></p><p>You are given an array of integers `nums` and an integer `k`. There is a sliding window of size `k` that starts at the left edge of the array. The window slides one position to the right until it reaches the right edge of the array.</p><p></p><p>Return a list that contains the maximum element in the window at each step.</p><h3>Examples:</h3><ul><li>Input: nums = [1,2,1,0,4,2,6], k = 3<br><br>Output: [2,2,4,4,6]<br><br>Explanation: <br>Window position            Max<br>---------------           -----<br>[1  2  1] 0  4  2  6        2<br> 1 [2  1  0] 4  2  6        2<br> 1  2 [1  0  4] 2  6        4<br> 1  2  1 [0  4  2] 6        4<br> 1  2  1  0 [4  2  6]       6</li></ul><h3>Constraints:</h3><ul><li> `1 <= nums.length <= 1000`</li><li> `-1000 <= nums[i] <= 1000`</li><li> `1 <= k <= nums.length`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def slidingWindowMaximum(nums, k):\n    ",
+      "solution_text": "Sliding Window technique for subarray problems:\n\n**Algorithm:**\n1. Use two pointers (left and right) to maintain window\n2. Expand window by moving right pointer\n3. Contract window by moving left pointer when needed\n4. Track optimal result during window movements\n\n**Time Complexity:** O(n) - each element visited at most twice\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Efficient for contiguous subarray problems\n- Maintains window invariant\n- Avoids nested loops for better performance",
+      "solution_code": "def slidingWindowMaximum(arr, k):\n    if not arr or len(arr) < k:\n        return 0\n    \n    left = 0\n    window_sum = 0\n    max_sum = float('-inf')\n    \n    # Sliding window approach\n    for right in range(len(arr)):\n        # Expand window\n        window_sum += arr[right]\n        \n        # Contract window if size exceeds k\n        while right - left + 1 > k:\n            window_sum -= arr[left]\n            left += 1\n        \n        # Update result when window size equals k\n        if right - left + 1 == k:\n            max_sum = max(max_sum, window_sum)\n    \n    return max_sum if max_sum != float('-inf') else 0"
+    },
+    "javascript": {
+      "template": "function slidingWindowMaximum(nums, k) {\n  \n}",
+      "solution_text": "Sliding Window technique for subarray problems:\n\n**Algorithm:**\n1. Use two pointers (left and right) to maintain window\n2. Expand window by moving right pointer\n3. Contract window by moving left pointer when needed\n4. Track optimal result during window movements\n\n**Time Complexity:** O(n) - each element visited at most twice\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Efficient for contiguous subarray problems\n- Maintains window invariant\n- Avoids nested loops for better performance",
+      "solution_code": "function slidingWindowMaximum(arr, k) {\n    if (!arr || arr.length < k) return 0;\n    \n    let left = 0;\n    let windowSum = 0;\n    let maxSum = -Infinity;\n    \n    // Sliding window approach\n    for (let right = 0; right < arr.length; right++) {\n        // Expand window\n        windowSum += arr[right];\n        \n        // Contract window if size exceeds k\n        while (right - left + 1 > k) {\n            windowSum -= arr[left];\n            left++;\n        }\n        \n        // Update result when window size equals k\n        if (right - left + 1 === k) {\n            maxSum = Math.max(maxSum, windowSum);\n        }\n    }\n    \n    return maxSum === -Infinity ? 0 : maxSum;\n}"
+    },
+    "typescript": {
+      "template": "function slidingWindowMaximum(nums: number[], k: number): number[] {\n  \n}",
+      "solution_text": "Sliding Window technique for subarray problems:\n\n**Algorithm:**\n1. Use two pointers (left and right) to maintain window\n2. Expand window by moving right pointer\n3. Contract window by moving left pointer when needed\n4. Track optimal result during window movements\n\n**Time Complexity:** O(n) - each element visited at most twice\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Efficient for contiguous subarray problems\n- Maintains window invariant\n- Avoids nested loops for better performance",
+      "solution_code": "function slidingWindowMaximum(arr: number[], k: number): number {\n    if (!arr || arr.length < k) return 0;\n    \n    let left = 0;\n    let windowSum = 0;\n    let maxSum = -Infinity;\n    \n    // Sliding window approach\n    for (let right = 0; right < arr.length; right++) {\n        // Expand window\n        windowSum += arr[right];\n        \n        // Contract window if size exceeds k\n        while (right - left + 1 > k) {\n            windowSum -= arr[left];\n            left++;\n        }\n        \n        // Update result when window size equals k\n        if (right - left + 1 === k) {\n            maxSum = Math.max(maxSum, windowSum);\n        }\n    }\n    \n    return maxSum === -Infinity ? 0 : maxSum;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public int[] slidingWindowMaximum(int[] nums, int k) {\n        \n    }\n}",
+      "solution_text": "Sliding Window technique for subarray problems:\n\n**Algorithm:**\n1. Use two pointers (left and right) to maintain window\n2. Expand window by moving right pointer\n3. Contract window by moving left pointer when needed\n4. Track optimal result during window movements\n\n**Time Complexity:** O(n) - each element visited at most twice\n**Space Complexity:** O(1) - constant extra space\n\n**Key Insights:**\n- Efficient for contiguous subarray problems\n- Maintains window invariant\n- Avoids nested loops for better performance",
+      "solution_code": "class Solution {\n    public int slidingWindowMaximum(int[] arr, int k) {\n        if (arr == null || arr.length < k) return 0;\n        \n        int left = 0;\n        int windowSum = 0;\n        int maxSum = Integer.MIN_VALUE;\n        \n        // Sliding window approach\n        for (int right = 0; right < arr.length; right++) {\n            // Expand window\n            windowSum += arr[right];\n            \n            // Contract window if size exceeds k\n            while (right - left + 1 > k) {\n                windowSum -= arr[left];\n                left++;\n            }\n            \n            // Update result when window size equals k\n            if (right - left + 1 == k) {\n                maxSum = Math.max(maxSum, windowSum);\n            }\n        }\n        \n        return maxSum == Integer.MIN_VALUE ? 0 : maxSum;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [
+          1,
+          2,
+          1,
+          0,
+          4,
+          2,
+          6
+        ],
+        "k": 3
+      },
+      "output": [
+        2,
+        2,
+        4,
+        4,
+        6
+      ]
+    }
+  ]
+}

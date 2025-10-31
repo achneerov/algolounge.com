@@ -1,0 +1,122 @@
+{
+  "filename": "linked-list-cycle-detection",
+  "title": "Linked List Cycle Detection",
+  "keywords": [
+    "linked",
+    "list",
+    "cycle",
+    "detection",
+    "leetcode",
+    "141",
+    "given",
+    "beginning",
+    "head",
+    "return"
+  ],
+  "description": "<h2>Linked List Cycle Detection</h2><p>Leetcode 141. Linked List Cycle</p><p></p><p>Given the beginning of a linked list `head`, return `true` if there is a cycle in the linked list. Otherwise, return `false`.</p><p></p><p>There is a cycle in a linked list if at least one node in the list can be visited again by following the `next` pointer.</p><p></p><p>Internally, `index` determines the index of the beginning of the cycle, if it exists. The tail node of the list will set it's `next` pointer to the `index-th` node. If `index = -1`, then the tail node points to `null` and no cycle exists.</p><p></p><p>**Note:** `index` is **not** given to you as a parameter.</p><h3>Constraints:</h3><ul><li> `1 <= Length of the list <= 1000`.</li><li> `-1000 <= Node.val <= 1000`</li><li> `index` is `-1` or a valid index in the linked list.</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def linkedListCycleDetection(head):\n    ",
+      "solution_text": "<h3>Linked List Cycle Detection - Floyd's Tortoise and Hare</h3>\n\n<p><strong>Algorithm:</strong></p>\n<ol>\n<li>Use two pointers: slow (moves 1 step) and fast (moves 2 steps)</li>\n<li>If there's a cycle, fast pointer will eventually catch up to slow</li>\n<li>If fast reaches end (null), no cycle exists</li>\n</ol>\n\n<p><strong>Time Complexity:</strong> O(n) - visit each node at most once</p>\n<p><strong>Space Complexity:</strong> O(1) - only using two pointers</p>\n\n<p><strong>Key Insights:</strong></p>\n<ul>\n<li>Floyd's algorithm uses different speeds to detect cycles</li>\n<li>If cycle exists, pointers will meet inside the cycle</li>\n<li>No extra space needed unlike hash set approach</li>\n</ul>",
+      "solution_code": "def linkedListCycleDetection(head):\n    if not head or not head.next:\n        return False\n    \n    # Two pointers: slow moves 1 step, fast moves 2 steps\n    slow = head\n    fast = head\n    \n    while fast and fast.next:\n        slow = slow.next\n        fast = fast.next.next\n        \n        # If pointers meet, cycle detected\n        if slow == fast:\n            return True\n    \n    # Fast reached end, no cycle\n    return False"
+    },
+    "javascript": {
+      "template": "function linkedListCycleDetection(head) {\n  \n}",
+      "solution_text": "<h3>Linked List Cycle Detection - Floyd's Tortoise and Hare</h3>\n\n<p><strong>Algorithm:</strong></p>\n<ol>\n<li>Use two pointers: slow (moves 1 step) and fast (moves 2 steps)</li>\n<li>If there's a cycle, fast pointer will eventually catch up to slow</li>\n<li>If fast reaches end (null), no cycle exists</li>\n</ol>\n\n<p><strong>Time Complexity:</strong> O(n) - visit each node at most once</p>\n<p><strong>Space Complexity:</strong> O(1) - only using two pointers</p>\n\n<p><strong>Key Insights:</strong></p>\n<ul>\n<li>Floyd's algorithm uses different speeds to detect cycles</li>\n<li>If cycle exists, pointers will meet inside the cycle</li>\n<li>No extra space needed unlike hash set approach</li>\n</ul>",
+      "solution_code": "function linkedListCycleDetection(head) {\n    if (!head || !head.next) {\n        return false;\n    }\n    \n    // Two pointers: slow moves 1 step, fast moves 2 steps\n    let slow = head;\n    let fast = head;\n    \n    while (fast && fast.next) {\n        slow = slow.next;\n        fast = fast.next.next;\n        \n        // If pointers meet, cycle detected\n        if (slow === fast) {\n            return true;\n        }\n    }\n    \n    // Fast reached end, no cycle\n    return false;\n}"
+    },
+    "typescript": {
+      "template": "function linkedListCycleDetection(head: ListNode | null): boolean {\n  \n}",
+      "solution_text": "<h3>Linked List Cycle Detection - Floyd's Tortoise and Hare</h3>\n\n<p><strong>Algorithm:</strong></p>\n<ol>\n<li>Use two pointers: slow (moves 1 step) and fast (moves 2 steps)</li>\n<li>If there's a cycle, fast pointer will eventually catch up to slow</li>\n<li>If fast reaches end (null), no cycle exists</li>\n</ol>\n\n<p><strong>Time Complexity:</strong> O(n) - visit each node at most once</p>\n<p><strong>Space Complexity:</strong> O(1) - only using two pointers</p>\n\n<p><strong>Key Insights:</strong></p>\n<ul>\n<li>Floyd's algorithm uses different speeds to detect cycles</li>\n<li>If cycle exists, pointers will meet inside the cycle</li>\n<li>No extra space needed unlike hash set approach</li>\n</ul>",
+      "solution_code": "class ListNode {\n    val: number;\n    next: ListNode | null;\n    constructor(val?: number, next?: ListNode | null) {\n        this.val = (val === undefined ? 0 : val);\n        this.next = (next === undefined ? null : next);\n    }\n}\n\nfunction linkedListCycleDetection(head: ListNode | null): boolean {\n    if (!head || !head.next) {\n        return false;\n    }\n    \n    // Two pointers: slow moves 1 step, fast moves 2 steps\n    let slow: ListNode | null = head;\n    let fast: ListNode | null = head;\n    \n    while (fast && fast.next) {\n        slow = slow!.next;\n        fast = fast.next.next;\n        \n        // If pointers meet, cycle detected\n        if (slow === fast) {\n            return true;\n        }\n    }\n    \n    // Fast reached end, no cycle\n    return false;\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public boolean linkedListCycleDetection(ListNode head) {\n        \n    }\n}",
+      "solution_text": "<h3>Linked List Cycle Detection - Floyd's Tortoise and Hare</h3>\n\n<p><strong>Algorithm:</strong></p>\n<ol>\n<li>Use two pointers: slow (moves 1 step) and fast (moves 2 steps)</li>\n<li>If there's a cycle, fast pointer will eventually catch up to slow</li>\n<li>If fast reaches end (null), no cycle exists</li>\n</ol>\n\n<p><strong>Time Complexity:</strong> O(n) - visit each node at most once</p>\n<p><strong>Space Complexity:</strong> O(1) - only using two pointers</p>\n\n<p><strong>Key Insights:</strong></p>\n<ul>\n<li>Floyd's algorithm uses different speeds to detect cycles</li>\n<li>If cycle exists, pointers will meet inside the cycle</li>\n<li>No extra space needed unlike hash set approach</li>\n</ul>",
+      "solution_code": "class ListNode {\n    int val;\n    ListNode next;\n    ListNode(int x) {\n        val = x;\n        next = null;\n    }\n}\n\nclass Solution {\n    public boolean linkedListCycleDetection(ListNode head) {\n        if (head == null || head.next == null) {\n            return false;\n        }\n        \n        // Two pointers: slow moves 1 step, fast moves 2 steps\n        ListNode slow = head;\n        ListNode fast = head;\n        \n        while (fast != null && fast.next != null) {\n            slow = slow.next;\n            fast = fast.next.next;\n            \n            // If pointers meet, cycle detected\n            if (slow == fast) {\n                return true;\n            }\n        }\n        \n        // Fast reached end, no cycle\n        return false;\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "head": [3, 2, 0, -4],
+        "pos": 1
+      },
+      "output": true
+    },
+    {
+      "id": 2,
+      "input": {
+        "head": [1, 2],
+        "pos": 0
+      },
+      "output": true
+    },
+    {
+      "id": 3,
+      "input": {
+        "head": [1],
+        "pos": -1
+      },
+      "output": false
+    },
+    {
+      "id": 4,
+      "input": {
+        "head": [1, 2, 3, 4, 5],
+        "pos": -1
+      },
+      "output": false
+    },
+    {
+      "id": 5,
+      "input": {
+        "head": [1, 2, 3, 4, 5],
+        "pos": 2
+      },
+      "output": true
+    },
+    {
+      "id": 6,
+      "input": {
+        "head": [],
+        "pos": -1
+      },
+      "output": false
+    },
+    {
+      "id": 7,
+      "input": {
+        "head": [7, 8, 9, 10],
+        "pos": 3
+      },
+      "output": true
+    },
+    {
+      "id": 8,
+      "input": {
+        "head": [5, 6],
+        "pos": -1
+      },
+      "output": false
+    },
+    {
+      "id": 9,
+      "input": {
+        "head": [10, 20, 30],
+        "pos": 0
+      },
+      "output": true
+    },
+    {
+      "id": 10,
+      "input": {
+        "head": [100, 200, 300, 400, 500, 600],
+        "pos": 4
+      },
+      "output": true
+    }
+  ]
+}

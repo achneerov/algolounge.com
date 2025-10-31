@@ -1,0 +1,41 @@
+{
+  "filename": "reverse-nodes-in-k-group",
+  "title": "Reverse Nodes in K-Group",
+  "keywords": [
+    "reverse",
+    "nodes",
+    "group",
+    "leetcode",
+    "given",
+    "head",
+    "singly",
+    "linked",
+    "list",
+    "positive"
+  ],
+  "description": "<h2>Reverse Nodes in K-Group</h2><p>Leetcode 25. Reverse Nodes In K Group</p><p></p><p>You are given the head of a singly linked list `head` and a positive integer `k`.</p><p></p><p>You must reverse the first `k` nodes in the linked list, and then reverse the next `k` nodes, and so on. If there are fewer than `k` nodes left, leave the nodes as they are.</p><p></p><p>Return the modified list after reversing the nodes in each group of `k`.</p><p></p><p>You are only allowed to modify the nodes' `next` pointers, not the values of the nodes.</p><h3>Constraints:</h3><ul><li> The length of the linked list is `n`.</li><li> `1 <= k <= n <= 100`</li><li> `0 <= Node.val <= 100`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def reverseNodesInKGroup(input):\n    ",
+      "solution_text": "Reverse implementation using two pointers:\n\n**Algorithm:**\n1. Use two pointers from start and end\n2. Swap elements while moving pointers toward center\n3. Continue until pointers meet in middle\n\n**Time Complexity:** O(n) - single pass through array/string\n**Space Complexity:** O(1) - in-place reversal\n\n**Key Insights:**\n- Two pointers technique for in-place operations\n- Works for arrays, strings, and linked lists\n- Handles odd and even length inputs correctly",
+      "solution_code": "def reverseNodesInKGroup(s):\n    if not s:\n        return s\n    \n    # Convert to list for in-place modification\n    chars = list(s) if isinstance(s, str) else s\n    left, right = 0, len(chars) - 1\n    \n    while left < right:\n        chars[left], chars[right] = chars[right], chars[left]\n        left += 1\n        right -= 1\n    \n    return ''.join(chars) if isinstance(s, str) else chars"
+    },
+    "javascript": {
+      "template": "function reverseNodesInKGroup(input) {\n  \n}",
+      "solution_text": "Reverse implementation using two pointers:\n\n**Algorithm:**\n1. Use two pointers from start and end\n2. Swap elements while moving pointers toward center\n3. Continue until pointers meet in middle\n\n**Time Complexity:** O(n) - single pass through array/string\n**Space Complexity:** O(1) - in-place reversal\n\n**Key Insights:**\n- Two pointers technique for in-place operations\n- Works for arrays, strings, and linked lists\n- Handles odd and even length inputs correctly",
+      "solution_code": "function reverseNodesInKGroup(s) {\n    if (!s) return s;\n    \n    const chars = Array.isArray(s) ? s : s.split('');\n    let left = 0, right = chars.length - 1;\n    \n    while (left < right) {\n        [chars[left], chars[right]] = [chars[right], chars[left]];\n        left++;\n        right--;\n    }\n    \n    return Array.isArray(s) ? chars : chars.join('');\n}"
+    },
+    "typescript": {
+      "template": "function reverseNodesInKGroup(input: any): any {\n  \n}",
+      "solution_text": "Reverse implementation using two pointers:\n\n**Algorithm:**\n1. Use two pointers from start and end\n2. Swap elements while moving pointers toward center\n3. Continue until pointers meet in middle\n\n**Time Complexity:** O(n) - single pass through array/string\n**Space Complexity:** O(1) - in-place reversal\n\n**Key Insights:**\n- Two pointers technique for in-place operations\n- Works for arrays, strings, and linked lists\n- Handles odd and even length inputs correctly",
+      "solution_code": "function reverseNodesInKGroup(s: string | any[]): string | any[] {\n    if (!s) return s;\n    \n    const chars = Array.isArray(s) ? s : s.split('');\n    let left = 0, right = chars.length - 1;\n    \n    while (left < right) {\n        [chars[left], chars[right]] = [chars[right], chars[left]];\n        left++;\n        right--;\n    }\n    \n    return Array.isArray(s) ? chars : chars.join('');\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public Object reverseNodesInKGroup(Object input) {\n        \n    }\n}",
+      "solution_text": "Reverse implementation using two pointers:\n\n**Algorithm:**\n1. Use two pointers from start and end\n2. Swap elements while moving pointers toward center\n3. Continue until pointers meet in middle\n\n**Time Complexity:** O(n) - single pass through array/string\n**Space Complexity:** O(1) - in-place reversal\n\n**Key Insights:**\n- Two pointers technique for in-place operations\n- Works for arrays, strings, and linked lists\n- Handles odd and even length inputs correctly",
+      "solution_code": "class Solution {\n    public String reverseNodesInKGroup(String s) {\n        if (s == null || s.length() <= 1) return s;\n        \n        char[] chars = s.toCharArray();\n        int left = 0, right = chars.length - 1;\n        \n        while (left < right) {\n            char temp = chars[left];\n            chars[left] = chars[right];\n            chars[right] = temp;\n            left++;\n            right--;\n        }\n        \n        return new String(chars);\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": []
+}

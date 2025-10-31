@@ -1,0 +1,122 @@
+{
+  "filename": "merge-triplets-to-form-target",
+  "title": "Merge Triplets to Form Target",
+  "keywords": [
+    "merge",
+    "triplets",
+    "form",
+    "target",
+    "leetcode",
+    "1899",
+    "triplet",
+    "given",
+    "array",
+    "integers"
+  ],
+  "description": "<h2>Merge Triplets to Form Target</h2><p>Leetcode 1899. Merge Triplets to Form Target Triplet</p><p></p><p>You are given a 2D array of integers `triplets`, where `triplets[i] = [ai, bi, ci]` represents the `ith` **triplet**. You are also given an array of integers `target = [x, y, z]` which is the triplet we want to obtain.</p><p>    </p><p>To obtain `target`, you may apply the following operation on `triplets` zero or more times:</p><p></p><p>Choose two **different** triplets `triplets[i]` and `triplets[j]` and update `triplets[j]` to become `[max(ai, aj), max(bi, bj), max(ci, cj)]`.</p><p>    * E.g. if `triplets[i] = [1, 3, 1]` and `triplets[j] = [2, 1, 2]`, `triplets[j]` will be updated to `[max(1, 2), max(3, 1), max(1, 2)] = [2, 3, 2]`.</p><p></p><p>Return `true` if it is possible to obtain `target` as an **element** of `triplets`, or `false` otherwise.</p><h3>Examples:</h3><ul><li>Input: triplets = [[1,2,3],[7,1,1]], target = [7,2,3]<br><br>Output: true<br>Choose the first and second triplets, update the second triplet to be [max(1, 7), max(2, 1), max(3, 1)] = [7, 2, 3].</li><li>Input: triplets = [[2,5,6],[1,4,4],[5,7,5]], target = [5,4,6]<br><br>Output: false</li></ul><h3>Constraints:</h3><ul><li> `1 <= triplets.length <= 1000`</li><li> `1 <= ai, bi, ci, x, y, z <= 100`</li></ul>",
+  "languages": {
+    "python": {
+      "template": "def mergeTripletsToFormTarget(triplets, target):\n    ",
+      "solution_text": "<h2>Greedy Approach for Triplet Merging</h2>\n\n<p><strong>Algorithm:</strong></p>\n<ul>\n<li>Check which triplets can contribute to forming the target</li>\n<li>A triplet is good if no element exceeds the corresponding target element</li>\n<li>Track which positions of target can be achieved by combining good triplets</li>\n<li>Return true if all three positions can be achieved</li>\n</ul>\n\n<p><strong>Time Complexity:</strong> O(n) - single pass through triplets</p>\n<p><strong>Space Complexity:</strong> O(1) - constant extra space</p>\n\n<p><strong>Key Insights:</strong></p>\n<ul>\n<li>Greedy selection of valid triplets</li>\n<li>Track achievable target positions</li>\n<li>Max operation combines triplets effectively</li>\n</ul>",
+      "solution_code": "def mergeTripletsToFormTarget(triplets, target):\n    if not triplets or not target:\n        return False\n    \n    # Track which positions of target we can achieve\n    good = [False, False, False]\n    \n    for triplet in triplets:\n        # Skip triplets that have any element > corresponding target element\n        if triplet[0] > target[0] or triplet[1] > target[1] or triplet[2] > target[2]:\n            continue\n        \n        # Check if this triplet can contribute to any target position\n        if triplet[0] == target[0]:\n            good[0] = True\n        if triplet[1] == target[1]:\n            good[1] = True\n        if triplet[2] == target[2]:\n            good[2] = True\n    \n    # Return true if we can achieve all three positions\n    return good[0] and good[1] and good[2]"
+    },
+    "javascript": {
+      "template": "function mergeTripletsToFormTarget(triplets, target) {\n  \n}",
+      "solution_text": "<h2>Greedy Approach for Triplet Merging</h2>\n\n<p><strong>Algorithm:</strong></p>\n<ul>\n<li>Check which triplets can contribute to forming the target</li>\n<li>A triplet is good if no element exceeds the corresponding target element</li>\n<li>Track which positions of target can be achieved by combining good triplets</li>\n<li>Return true if all three positions can be achieved</li>\n</ul>\n\n<p><strong>Time Complexity:</strong> O(n) - single pass through triplets</p>\n<p><strong>Space Complexity:</strong> O(1) - constant extra space</p>\n\n<p><strong>Key Insights:</strong></p>\n<ul>\n<li>Greedy selection of valid triplets</li>\n<li>Track achievable target positions</li>\n<li>Max operation combines triplets effectively</li>\n</ul>",
+      "solution_code": "function mergeTripletsToFormTarget(triplets, target) {\n    if (!triplets || !target || triplets.length === 0) return false;\n    \n    // Track which positions of target we can achieve\n    const good = [false, false, false];\n    \n    for (const triplet of triplets) {\n        // Skip triplets that have any element > corresponding target element\n        if (triplet[0] > target[0] || triplet[1] > target[1] || triplet[2] > target[2]) {\n            continue;\n        }\n        \n        // Check if this triplet can contribute to any target position\n        if (triplet[0] === target[0]) {\n            good[0] = true;\n        }\n        if (triplet[1] === target[1]) {\n            good[1] = true;\n        }\n        if (triplet[2] === target[2]) {\n            good[2] = true;\n        }\n    }\n    \n    // Return true if we can achieve all three positions\n    return good[0] && good[1] && good[2];\n}"
+    },
+    "typescript": {
+      "template": "function mergeTripletsToFormTarget(triplets: number[][], target: number[]): boolean {\n  \n}",
+      "solution_text": "<h2>Greedy Approach for Triplet Merging</h2>\n\n<p><strong>Algorithm:</strong></p>\n<ul>\n<li>Check which triplets can contribute to forming the target</li>\n<li>A triplet is good if no element exceeds the corresponding target element</li>\n<li>Track which positions of target can be achieved by combining good triplets</li>\n<li>Return true if all three positions can be achieved</li>\n</ul>\n\n<p><strong>Time Complexity:</strong> O(n) - single pass through triplets</p>\n<p><strong>Space Complexity:</strong> O(1) - constant extra space</p>\n\n<p><strong>Key Insights:</strong></p>\n<ul>\n<li>Greedy selection of valid triplets</li>\n<li>Track achievable target positions</li>\n<li>Max operation combines triplets effectively</li>\n</ul>",
+      "solution_code": "function mergeTripletsToFormTarget(triplets: number[][], target: number[]): boolean {\n    if (!triplets || !target || triplets.length === 0) return false;\n    \n    // Track which positions of target we can achieve\n    const good: boolean[] = [false, false, false];\n    \n    for (const triplet of triplets) {\n        // Skip triplets that have any element > corresponding target element\n        if (triplet[0] > target[0] || triplet[1] > target[1] || triplet[2] > target[2]) {\n            continue;\n        }\n        \n        // Check if this triplet can contribute to any target position\n        if (triplet[0] === target[0]) {\n            good[0] = true;\n        }\n        if (triplet[1] === target[1]) {\n            good[1] = true;\n        }\n        if (triplet[2] === target[2]) {\n            good[2] = true;\n        }\n    }\n    \n    // Return true if we can achieve all three positions\n    return good[0] && good[1] && good[2];\n}"
+    },
+    "java": {
+      "template": "class Solution {\n    public boolean mergeTripletsToFormTarget(int[][] triplets, int[] target) {\n        \n    }\n}",
+      "solution_text": "<h2>Greedy Approach for Triplet Merging</h2>\n\n<p><strong>Algorithm:</strong></p>\n<ul>\n<li>Check which triplets can contribute to forming the target</li>\n<li>A triplet is good if no element exceeds the corresponding target element</li>\n<li>Track which positions of target can be achieved by combining good triplets</li>\n<li>Return true if all three positions can be achieved</li>\n</ul>\n\n<p><strong>Time Complexity:</strong> O(n) - single pass through triplets</p>\n<p><strong>Space Complexity:</strong> O(1) - constant extra space</p>\n\n<p><strong>Key Insights:</strong></p>\n<ul>\n<li>Greedy selection of valid triplets</li>\n<li>Track achievable target positions</li>\n<li>Max operation combines triplets effectively</li>\n</ul>",
+      "solution_code": "class Solution {\n    public boolean mergeTripletsToFormTarget(int[][] triplets, int[] target) {\n        if (triplets == null || target == null || triplets.length == 0) return false;\n        \n        // Track which positions of target we can achieve\n        boolean[] good = new boolean[3];\n        \n        for (int[] triplet : triplets) {\n            // Skip triplets that have any element > corresponding target element\n            if (triplet[0] > target[0] || triplet[1] > target[1] || triplet[2] > target[2]) {\n                continue;\n            }\n            \n            // Check if this triplet can contribute to any target position\n            if (triplet[0] == target[0]) {\n                good[0] = true;\n            }\n            if (triplet[1] == target[1]) {\n                good[1] = true;\n            }\n            if (triplet[2] == target[2]) {\n                good[2] = true;\n            }\n        }\n        \n        // Return true if we can achieve all three positions\n        return good[0] && good[1] && good[2];\n    }\n}"
+    }
+  },
+  "order_matters": false,
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "triplets": [[1,2,3],[7,1,1]],
+        "target": [7,2,3]
+      },
+      "output": true
+    },
+    {
+      "id": 2,
+      "input": {
+        "triplets": [[2,5,6],[1,4,4],[5,7,5]],
+        "target": [5,4,6]
+      },
+      "output": false
+    },
+    {
+      "id": 3,
+      "input": {
+        "triplets": [[1,1,1],[1,1,1],[1,1,1]],
+        "target": [1,1,1]
+      },
+      "output": true
+    },
+    {
+      "id": 4,
+      "input": {
+        "triplets": [[2,3,4]],
+        "target": [1,2,3]
+      },
+      "output": false
+    },
+    {
+      "id": 5,
+      "input": {
+        "triplets": [[1,2,3],[4,5,6]],
+        "target": [4,5,6]
+      },
+      "output": true
+    },
+    {
+      "id": 6,
+      "input": {
+        "triplets": [[3,1,5],[2,3,1]],
+        "target": [3,3,5]
+      },
+      "output": true
+    },
+    {
+      "id": 7,
+      "input": {
+        "triplets": [[1,1,2],[2,2,1]],
+        "target": [2,2,2]
+      },
+      "output": true
+    },
+    {
+      "id": 8,
+      "input": {
+        "triplets": [[5,3,3],[6,3,3]],
+        "target": [6,3,3]
+      },
+      "output": true
+    },
+    {
+      "id": 9,
+      "input": {
+        "triplets": [[1,2,3]],
+        "target": [4,5,6]
+      },
+      "output": false
+    },
+    {
+      "id": 10,
+      "input": {
+        "triplets": [[1,1,1],[2,2,2],[3,3,3]],
+        "target": [3,2,1]
+      },
+      "output": false
+    }
+  ]
+}

@@ -480,7 +480,74 @@
     "week9": {
       "title": "Week 9",
       "description": "These are the questions that will be looked at in week 9.",
-      "questions": []
+      "questions": [
+        {
+          "filename": "same-tree",
+          "urls": [
+            { "url": "https://leetcode.com/problems/same-tree/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/same-tree", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Trees", "color": "#10b981" }
+          ]
+        },
+        {
+          "filename": "subtree-of-another-tree",
+          "urls": [
+            { "url": "https://leetcode.com/problems/subtree-of-another-tree/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/subtree-of-another-tree", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Trees", "color": "#10b981" }
+          ]
+        },
+        {
+          "filename": "min-stack",
+          "urls": [
+            { "url": "https://leetcode.com/problems/min-stack/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/min-stack", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Stack", "color": "#eab308" }
+          ]
+        },
+        {
+          "filename": "evaluate-reverse-polish-notation",
+          "urls": [
+            { "url": "https://leetcode.com/problems/evaluate-reverse-polish-notation/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/evaluate-reverse-polish-notation", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Stack", "color": "#eab308" }
+          ]
+        },
+        {
+          "filename": "swim-in-rising-water",
+          "urls": [
+            { "url": "https://leetcode.com/problems/swim-in-rising-water/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/swim-in-rising-water", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Advanced Graphs", "color": "#ec4899" }
+          ]
+        },
+        {
+          "filename": "alien-dictionary",
+          "urls": [
+            { "url": "https://leetcode.com/problems/alien-dictionary/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/alien-dictionary", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Advanced Graphs", "color": "#ec4899" }
+          ]
+        }
+      ]
     },
     "week10": {
       "title": "Week 10",

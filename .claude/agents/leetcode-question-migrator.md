@@ -73,6 +73,20 @@ The `description` field MUST contain valid HTML, NOT markdown. Follow these stri
 "description": "<h2>Two Sum</h2><p>Given an array of integers <code>nums</code> and an integer <code>target</code>, return indices of the two numbers such that they add up to <code>target</code>.</p><h3>Constraints:</h3><ul><li><code>2 &lt;= nums.length &lt;= 10<sup>4</sup></code></li><li><code>-10<sup>9</sup> &lt;= nums[i] &lt;= 10<sup>9</sup></code></li></ul>"
 ```
 
+**CRITICAL: Remove LeetCode References**
+
+When migrating questions, you MUST:
+- Remove any mention of "LeetCode" from the title or description
+- Remove LeetCode problem numbers (e.g., "LeetCode 1", "269", etc.) from the description
+- Keep the problem name clean and simple (e.g., "Two Sum" instead of "LeetCode 1. Two Sum")
+- The description should focus on the problem itself, not its source
+
+Example:
+- ❌ Incorrect: `<h2>LeetCode 1. Two Sum</h2>`
+- ❌ Incorrect: `<p>LeetCode 1. Given an array...`
+- ✅ Correct: `<h2>Two Sum</h2>`
+- ✅ Correct: `<p>Given an array...`
+
 **CRITICAL: Solution Text HTML Formatting**
 
 The `solution_text` field MUST use the same HTML formatting rules as the description field. This is CRITICAL for proper display in the UI.

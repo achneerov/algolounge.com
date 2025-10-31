@@ -1355,8 +1355,95 @@
         "vehicle",
         "only"
       ]
+    },
+    {
+      "index": 84,
+      "filename": "same-tree",
+      "title": "Same Tree",
+      "keywords": [
+        "same",
+        "tree",
+        "binary",
+        "tree",
+        "comparison",
+        "recursion",
+        "dfs",
+        "structure",
+        "values",
+        "equivalent"
+      ]
+    },
+    {
+      "index": 85,
+      "filename": "subtree-of-another-tree",
+      "title": "Subtree of Another Tree",
+      "keywords": [
+        "subtree",
+        "binary",
+        "tree",
+        "recursion",
+        "dfs",
+        "comparison",
+        "structure",
+        "matching",
+        "identical",
+        "descendant"
+      ]
+    },
+    {
+      "index": 86,
+      "filename": "swim-in-rising-water",
+      "title": "Swim in Rising Water",
+      "keywords": [
+        "swim",
+        "rising",
+        "water",
+        "grid",
+        "matrix",
+        "dijkstra",
+        "heap",
+        "priority",
+        "queue",
+        "path",
+        "minimum",
+        "time"
+      ]
+    },
+    {
+      "index": 87,
+      "filename": "alien-dictionary",
+      "title": "Alien Dictionary",
+      "keywords": [
+        "alien",
+        "dictionary",
+        "topological",
+        "sort",
+        "graph",
+        "dfs",
+        "order",
+        "lexicographic",
+        "characters",
+        "language"
+      ]
+    },
+    {
+      "index": 88,
+      "filename": "min-stack",
+      "title": "Min Stack",
+      "keywords": [
+        "min",
+        "stack",
+        "design",
+        "data",
+        "structure",
+        "minimum",
+        "push",
+        "pop",
+        "top",
+        "getMin"
+      ]
     }
   ],
-  "lastUpdated": "2025-10-23T22:55:52.716Z",
-  "totalQuestions": 84
+  "lastUpdated": "2025-10-30T23:52:34.548Z",
+  "totalQuestions": 89
 }

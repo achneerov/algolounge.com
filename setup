@@ -1,0 +1,33 @@
+#!/bin/bash
+
+set -e
+
+echo "=== AlgoLounge Setup ==="
+echo ""
+
+# Git pull
+echo "Pulling latest changes..."
+git pull
+
+echo ""
+echo "Installing frontend dependencies..."
+cd frontend
+npm install
+cd ..
+
+echo ""
+echo "Installing backend dependencies..."
+cd backend
+npm install
+cd ..
+
+echo ""
+echo "Cleaning up database and running migrations..."
+cd backend
+rm -f *.db *.db-shm *.db-wal
+npm run db:push
+cd ..
+
+echo ""
+echo "=== Setup Complete ==="
+echo "Run './start' to start development servers"

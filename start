@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Check if environment variables are set (production mode)
+if [ -z "$PORT" ]; then
+  # Local development mode - use defaults
+  export FRONTEND_PORT=4200
+  export BACKEND_PORT=3000
+  echo "Local development mode"
+  echo "Frontend: http://localhost:$FRONTEND_PORT"
+  echo "Backend: http://localhost:$BACKEND_PORT"
+else
+  # Production mode - use environment variables
+  export FRONTEND_PORT=$PORT
+  export BACKEND_PORT=$BACKEND_PORT_API
+  echo "Production mode"
+fi
+
+echo ""
+echo "Starting AlgoLounge..."
+echo ""
+
+# Start backend in background
+cd backend
+PORT=$BACKEND_PORT npm run dev &
+BACKEND_PID=$!
+cd ..
+
+# Start frontend in background
+cd frontend
+ng serve --port $FRONTEND_PORT &
+FRONTEND_PID=$!
+cd ..
+
+echo "Backend PID: $BACKEND_PID"
+echo "Frontend PID: $FRONTEND_PID"
+echo ""
+echo "Press Ctrl+C to stop both servers"
+echo ""
+
+# Trap Ctrl+C to kill both processes
+trap "echo ''; echo 'Shutting down...'; kill $BACKEND_PID $FRONTEND_PID 2>/dev/null; exit 0" SIGINT
+
+# Wait for both processes
+wait

@@ -22,10 +22,10 @@ npm install
 cd ..
 
 echo ""
-echo "Cleaning up database and running migrations..."
+echo "Cleaning up database..."
 cd backend
 rm -f *.db *.db-shm *.db-wal
-npm run db:push
+echo "Note: Database migrations will be created on first run"
 cd ..
 
 echo ""

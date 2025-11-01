@@ -36,5 +36,30 @@
       </svg>
       GitHub
     </a>
+
+    <!-- Auth Section -->
+    <div class="auth-section">
+      <ng-container *ngIf="!isAuthenticated()">
+        <a routerLink="/auth/login" class="btn-auth btn-signin">Sign In</a>
+        <a routerLink="/auth/register" class="btn-auth btn-signup">Register</a>
+      </ng-container>
+
+      <ng-container *ngIf="isAuthenticated()">
+        <div class="user-menu-container">
+          <button class="user-menu-button" (click)="toggleUserMenu()">
+            <span class="user-email">{{ currentUser()?.email }}</span>
+            <svg class="dropdown-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+
+          <div class="user-menu" *ngIf="showUserMenu()">
+            <button class="menu-item logout-btn" (click)="logout()">
+              Sign Out
+            </button>
+          </div>
+        </div>
+      </ng-container>
+    </div>
   </div>
 </nav>

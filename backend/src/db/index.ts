@@ -1,11 +1,16 @@
-import Database from 'better-sqlite3';
-import { drizzle } from 'drizzle-orm/better-sqlite3';
+import { createClient } from '@libsql/client';
+import { drizzle } from 'drizzle-orm/libsql';
 import * as schema from '../models';
 
-const dbPath = process.env.DATABASE_URL || './algolounge.db';
-const sqlite = new Database(dbPath);
-sqlite.pragma('journal_mode = WAL');
+// For local development, use a file path. For production, use Turso
+const dbUrl = process.env.DATABASE_URL || 'file:./algolounge.db';
+const authToken = process.env.DATABASE_AUTH_TOKEN;
 
-export const db = drizzle(sqlite, { schema });
+const client = createClient({
+  url: dbUrl,
+  ...(authToken && { authToken }),
+});
+
+export const db = drizzle(client, { schema });
 
 export type DB = typeof db;

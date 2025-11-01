@@ -1,6 +1,7 @@
-import { Component, computed } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, computed, signal } from '@angular/core';
+import { RouterModule, Router } from '@angular/router';
 import { ThemeService } from '../../../services/theme.service';
+import { AuthService } from '../../../services/auth.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,12 +11,28 @@ import { CommonModule } from '@angular/common';
   styleUrl: './global-header.component.scss'
 })
 export class GlobalHeaderComponent {
-  // Get current theme
   isDarkMode = computed(() => this.themeService.activeTheme() === 'dark');
+  isAuthenticated = computed(() => this.authService.isAuthenticated());
+  currentUser = computed(() => this.authService.currentUser());
+  showUserMenu = signal(false);
 
-  constructor(private themeService: ThemeService) {}
+  constructor(
+    private themeService: ThemeService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   toggleTheme(): void {
     this.themeService.toggleTheme();
+  }
+
+  toggleUserMenu(): void {
+    this.showUserMenu.update(value => !value);
+  }
+
+  logout(): void {
+    this.authService.logout();
+    this.showUserMenu.set(false);
+    this.router.navigate(['/']);
   }
 }

@@ -1,0 +1,123 @@
+#!/bin/bash
+
+set -e
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+# Determine environment
+MODE=${1:-dev}
+if [ "$MODE" = "-prod" ]; then
+  NODE_ENV="production"
+  echo -e "${YELLOW}Setting up for PRODUCTION${NC}"
+else
+  NODE_ENV="development"
+  echo -e "${YELLOW}Setting up for DEVELOPMENT${NC}"
+fi
+
+# Function to print status
+print_status() {
+  echo -e "${GREEN}✓${NC} $1"
+}
+
+print_step() {
+  echo -e "\n${YELLOW}→${NC} $1"
+}
+
+# Check if git is available
+if ! command -v git &> /dev/null; then
+  echo -e "${RED}Error: git is not installed${NC}"
+  exit 1
+fi
+
+# Pull latest code
+print_step "Pulling latest code..."
+git pull origin main 2>/dev/null || true
+print_status "Latest code pulled"
+
+# Install frontend dependencies
+print_step "Installing frontend dependencies..."
+cd frontend
+npm install
+cd ..
+print_status "Frontend dependencies installed"
+
+# Install backend dependencies
+print_step "Installing backend dependencies..."
+cd backend
+npm install
+cd ..
+print_status "Backend dependencies installed"
+
+# Clear old database files
+print_step "Preparing database..."
+rm -f backend/database.db backend/database.db-shm backend/database.db-wal
+print_status "Database cleared"
+
+# Initialize database
+print_step "Initializing database..."
+cd backend
+npx tsx src/db/migrate.ts
+cd ..
+print_status "Database initialized"
+
+# Generate environment files
+print_step "Generating environment files..."
+
+# Generate JWT secret if it doesn't exist
+if [ ! -f "backend/.env.local" ] || ! grep -q "JWT_SECRET" "backend/.env.local"; then
+  JWT_SECRET=$(node -e "console.log(require('crypto').randomBytes(32).toString('base64'))")
+else
+  JWT_SECRET=$(grep "JWT_SECRET" "backend/.env.local" | cut -d '=' -f 2)
+fi
+
+# Create backend .env.local
+cat > backend/.env.local << EOF
+NODE_ENV=$NODE_ENV
+JWT_SECRET=$JWT_SECRET
+PORT=3000
+CORS_ORIGIN=${CORS_ORIGIN:-http://localhost:4200}
+EOF
+print_status "Backend environment file created"
+
+# Determine API URL based on environment
+if [ "$NODE_ENV" = "production" ]; then
+  API_URL=""
+else
+  API_URL="http://localhost:3000"
+fi
+
+# Create frontend environment.ts
+mkdir -p frontend/src/environments
+cat > frontend/src/environments/environment.ts << EOF
+export const environment = {
+  production: false,
+  apiUrl: '$API_URL'
+};
+EOF
+print_status "Frontend environment file created"
+
+# Build for production if requested
+if [ "$NODE_ENV" = "production" ]; then
+  print_step "Building Angular application..."
+  cd frontend
+  npm run build
+  cd ..
+
+  # Copy dist to backend public folder
+  print_step "Copying build to backend..."
+  rm -rf backend/public
+  mkdir -p backend/public
+  cp -r frontend/dist/algolounge/* backend/public/
+  print_status "Angular build deployed to backend"
+fi
+
+echo -e "\n${GREEN}✓ Setup complete!${NC}"
+if [ "$NODE_ENV" = "production" ]; then
+  echo -e "Run ${YELLOW}./start${NC} to start both servers (production mode)"
+else
+  echo -e "Run ${YELLOW}./start${NC} to start both servers (development mode)"
+fi

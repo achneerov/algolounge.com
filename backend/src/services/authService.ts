@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { db } from '../db';
+import { getDb } from '../db';
 import { users } from '../models';
 import { eq } from 'drizzle-orm';
 
@@ -28,6 +28,9 @@ export interface AuthResponse {
 }
 
 export async function signUp(data: SignUpData): Promise<AuthResponse> {
+  const db = getDb();
+  if (!db) throw new Error('Database not initialized');
+
   // Check if user exists
   const existingUser = await db
     .select()
@@ -70,6 +73,9 @@ export async function signUp(data: SignUpData): Promise<AuthResponse> {
 }
 
 export async function signIn(data: SignInData): Promise<AuthResponse> {
+  const db = getDb();
+  if (!db) throw new Error('Database not initialized');
+
   // Find user
   const userResults = await db
     .select()

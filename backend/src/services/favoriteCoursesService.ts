@@ -1,8 +1,11 @@
-import { db } from '../db';
+import { getDb } from '../db';
 import { favoriteCourses } from '../models';
 import { eq, and } from 'drizzle-orm';
 
 export async function getFavoriteCourses(userId: number): Promise<string[]> {
+  const db = getDb();
+  if (!db) throw new Error('Database not initialized');
+
   const results = await db
     .select({ courseFilename: favoriteCourses.courseFilename })
     .from(favoriteCourses)
@@ -15,6 +18,9 @@ export async function addFavoriteCourse(
   userId: number,
   courseFilename: string
 ): Promise<void> {
+  const db = getDb();
+  if (!db) throw new Error('Database not initialized');
+
   // Check if already favorited
   const existing = await db
     .select()
@@ -39,6 +45,9 @@ export async function removeFavoriteCourse(
   userId: number,
   courseFilename: string
 ): Promise<void> {
+  const db = getDb();
+  if (!db) throw new Error('Database not initialized');
+
   await db
     .delete(favoriteCourses)
     .where(

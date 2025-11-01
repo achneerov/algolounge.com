@@ -7,8 +7,8 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
   const token = authService.getToken();
 
-  // Add API URL if not present
-  if (!req.url.startsWith("http")) {
+  // Add API URL only to API requests (requests starting with /api)
+  if (!req.url.startsWith("http") && req.url.startsWith("/api")) {
     req = req.clone({
       url: environment.apiUrl + req.url,
     });

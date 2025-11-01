@@ -25,7 +25,8 @@ echo ""
 echo "Setting up database..."
 cd backend
 rm -f *.db *.db-shm *.db-wal
-npm run db:init
+npm run db:generate
+npm run db:push
 cd ..
 
 echo ""

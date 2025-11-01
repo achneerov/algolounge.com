@@ -8,7 +8,6 @@ import {
   handleRemoveFavorite,
 } from './controllers/favoriteCoursesController';
 import { authMiddleware } from './middleware/auth';
-import { initializeDb } from './db/index';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -35,13 +34,6 @@ app.get('*', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-
-// Initialize database and start server
-initializeDb().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-  });
-}).catch((err) => {
-  console.error('Failed to initialize database:', err);
-  process.exit(1);
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });

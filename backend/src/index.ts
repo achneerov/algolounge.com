@@ -1,4 +1,6 @@
+import 'dotenv/config';
 import express from 'express';
+import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { handleSignUp, handleSignIn } from './controllers/authController';
@@ -12,7 +14,17 @@ import { authMiddleware } from './middleware/auth';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 
+// Determine CORS origin based on environment
+const isProduction = process.env.NODE_ENV === 'production';
+const corsOrigin = isProduction
+  ? process.env.CORS_ORIGIN || ['localhost', 'yourdomain.com']
+  : 'http://localhost:4200';
+
 // Middleware
+app.use(cors({
+  origin: corsOrigin,
+  credentials: true
+}));
 app.use(express.json());
 
 // API Routes

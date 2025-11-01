@@ -2,7 +2,14 @@
 
 set -e
 
+# Check for -prod flag
+ENVIRONMENT="development"
+if [[ "$1" == "-prod" ]]; then
+  ENVIRONMENT="production"
+fi
+
 echo "=== AlgoLounge Setup ==="
+echo "Environment: $ENVIRONMENT"
 echo ""
 
 # Git pull
@@ -30,5 +37,29 @@ npm run db:push
 cd ..
 
 echo ""
+echo "Setting up environment configuration..."
+
+# Create frontend environment file
+mkdir -p frontend/src/environments
+if [[ "$ENVIRONMENT" == "production" ]]; then
+  cat > frontend/src/environments/environment.ts << 'EOF'
+export const environment = {
+  production: true,
+  apiUrl: ''
+};
+EOF
+  echo "NODE_ENV=production" > backend/.env.local
+else
+  cat > frontend/src/environments/environment.ts << 'EOF'
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:3000'
+};
+EOF
+  echo "NODE_ENV=development" > backend/.env.local
+fi
+
+echo ""
 echo "=== Setup Complete ==="
+echo "Environment: $ENVIRONMENT"
 echo "Run './start' to start development servers"

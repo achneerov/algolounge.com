@@ -66,9 +66,8 @@ export class FavoriteCoursesSyncService {
     if (this.authService.isAuthenticated()) {
       try {
         await firstValueFrom(
-          this.http.post<{ favorites: string[] }>(this.API_URL, {
-            courseFilename,
-            action: 'add'
+          this.http.post<{ success: boolean }>(this.API_URL, {
+            courseFilename
           })
         );
       } catch (error) {
@@ -89,7 +88,7 @@ export class FavoriteCoursesSyncService {
     if (this.authService.isAuthenticated()) {
       try {
         await firstValueFrom(
-          this.http.delete<{ favorites: string[] }>(this.API_URL, {
+          this.http.delete<{ success: boolean }>(this.API_URL, {
             body: { courseFilename }
           })
         );

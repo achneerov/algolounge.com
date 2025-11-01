@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CourseSearchService, CourseSearchResult } from '../../services/course-search.service';
-import { LocalStorageService } from '../../services/local-storage.service';
+import { FavoriteCoursesSyncService } from '../../services/favorite-courses-sync.service';
 
 @Component({
   selector: 'app-courses',
@@ -19,9 +19,9 @@ export class CoursesComponent implements OnInit {
   showingFavorites = false;
 
   constructor(
-    private courseSearchService: CourseSearchService, 
+    private courseSearchService: CourseSearchService,
     private router: Router,
-    private localStorageService: LocalStorageService
+    private favoriteCoursesSyncService: FavoriteCoursesSyncService
   ) {}
 
   ngOnInit() {
@@ -51,14 +51,14 @@ export class CoursesComponent implements OnInit {
     this.router.navigate(['/courses', course.filename]);
   }
 
-  toggleFavorite(course: CourseSearchResult, event: Event) {
+  async toggleFavorite(course: CourseSearchResult, event: Event) {
     event.stopPropagation();
-    this.localStorageService.toggleFavoriteCourse(course.filename);
+    await this.favoriteCoursesSyncService.toggleFavorite(course.filename);
     this.updateFavoriteCourses();
   }
 
   isFavorite(course: CourseSearchResult): boolean {
-    return this.localStorageService.isCourseInFavorites(course.filename);
+    return this.favoriteCoursesSyncService.isFavorite(course.filename);
   }
 
   showFavorites() {
@@ -74,8 +74,8 @@ export class CoursesComponent implements OnInit {
   }
 
   private updateFavoriteCourses() {
-    const favoriteFilenames = this.localStorageService.getFavoriteCourses();
-    this.favoriteCourses = this.allCourses.filter(course => 
+    const favoriteFilenames = this.favoriteCoursesSyncService.getFavoriteCourses();
+    this.favoriteCourses = this.allCourses.filter(course =>
       favoriteFilenames.includes(course.filename)
     );
   }

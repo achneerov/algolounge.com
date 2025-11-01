@@ -19,8 +19,6 @@ out-tsc/
 .DS_Store
 
 # Angular
-angular.json
-.angular.json
 .angular/
 
 # Environment

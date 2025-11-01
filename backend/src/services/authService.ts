@@ -4,7 +4,11 @@ import { db } from '../db';
 import { users } from '../models';
 import { eq } from 'drizzle-orm';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-prod';
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET) {
+  throw new Error('JWT_SECRET environment variable is not set. Run ./setup to initialize it.');
+}
+
 const JWT_EXPIRES_IN = '30d';
 
 export interface SignUpData {

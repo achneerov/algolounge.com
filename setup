@@ -48,7 +48,8 @@ export const environment = {
   apiUrl: ''
 };
 EOF
-  echo "NODE_ENV=production" > backend/.env.local
+  ENV_FILE="backend/.env.local"
+  echo "NODE_ENV=production" > "$ENV_FILE"
 else
   cat > frontend/src/environments/environment.ts << 'EOF'
 export const environment = {
@@ -56,7 +57,14 @@ export const environment = {
   apiUrl: 'http://localhost:3000'
 };
 EOF
-  echo "NODE_ENV=development" > backend/.env.local
+  ENV_FILE="backend/.env.local"
+  echo "NODE_ENV=development" > "$ENV_FILE"
+fi
+
+# Generate JWT_SECRET if not already set
+if ! grep -q "JWT_SECRET" "$ENV_FILE"; then
+  JWT_SECRET=$(openssl rand -base64 32)
+  echo "JWT_SECRET=$JWT_SECRET" >> "$ENV_FILE"
 fi
 
 echo ""

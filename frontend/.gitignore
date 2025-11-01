@@ -21,6 +21,7 @@ out-tsc/
 # Angular
 angular.json
 .angular.json
+.angular/
 
 # Environment
 src/environments/environment.ts

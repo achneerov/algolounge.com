@@ -162,34 +162,33 @@ export class CourseDetailComponent implements OnInit {
   }
 
   toggleFavorite(): void {
-    if (this.isAuthenticated()) {
-      this.isLoading = true;
-      const isFavorited = this.favoritesService.isFavorited(this.courseName);
+    if (!this.isAuthenticated()) {
+      return;
+    }
 
-      if (isFavorited) {
-        this.favoritesService.removeFavorite(this.courseName).subscribe({
-          next: () => {
-            this.isLoading = false;
-          },
-          error: (err) => {
-            console.error('Failed to remove favorite:', err);
-            this.isLoading = false;
-          }
-        });
-      } else {
-        this.favoritesService.addFavorite(this.courseName).subscribe({
-          next: () => {
-            this.isLoading = false;
-          },
-          error: (err) => {
-            console.error('Failed to add favorite:', err);
-            this.isLoading = false;
-          }
-        });
-      }
+    this.isLoading = true;
+    const isFavorited = this.favoritesService.isFavorited(this.courseName);
+
+    if (isFavorited) {
+      this.favoritesService.removeFavorite(this.courseName).subscribe({
+        next: () => {
+          this.isLoading = false;
+        },
+        error: (err) => {
+          console.error('Failed to remove favorite:', err);
+          this.isLoading = false;
+        }
+      });
     } else {
-      // Fallback to local storage when not authenticated
-      this.localStorageService.toggleFavoriteCourse(this.courseName);
+      this.favoritesService.addFavorite(this.courseName).subscribe({
+        next: () => {
+          this.isLoading = false;
+        },
+        error: (err) => {
+          console.error('Failed to add favorite:', err);
+          this.isLoading = false;
+        }
+      });
     }
   }
 
@@ -197,7 +196,7 @@ export class CourseDetailComponent implements OnInit {
     if (this.isAuthenticated()) {
       return this.isFavoritedBackend();
     }
-    return this.localStorageService.isCourseInFavorites(this.courseName);
+    return false;
   }
 
   isQuestionCompleted(questionFilename: string): boolean {

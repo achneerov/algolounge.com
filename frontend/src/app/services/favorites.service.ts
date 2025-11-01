@@ -7,8 +7,7 @@ import { tap } from "rxjs/operators";
   providedIn: "root",
 })
 export class FavoritesService {
-  private favoritesKey = "favorites_courses";
-  private favoritesSubject = new BehaviorSubject<string[]>(this.loadLocal());
+  private favoritesSubject = new BehaviorSubject<string[]>([]);
   public favorites$ = this.favoritesSubject.asObservable();
 
   constructor(private http: HttpClient) {}
@@ -17,7 +16,7 @@ export class FavoritesService {
   getFavorites(): Observable<{ favorites: string[] }> {
     return this.http.get<{ favorites: string[] }>("/api/favorites").pipe(
       tap((response) => {
-        this.setLocal(response.favorites);
+        this.favoritesSubject.next(response.favorites);
       })
     );
   }
@@ -27,7 +26,7 @@ export class FavoritesService {
     return this.http
       .post("/api/favorites", { courseFilename })
       .pipe(
-        tap(() => this.addLocal(courseFilename))
+        tap(() => this.updateLocal(courseFilename, 'add'))
       );
   }
 
@@ -38,7 +37,7 @@ export class FavoritesService {
         body: { courseFilename },
       })
       .pipe(
-        tap(() => this.removeLocal(courseFilename))
+        tap(() => this.updateLocal(courseFilename, 'remove'))
       );
   }
 
@@ -52,28 +51,21 @@ export class FavoritesService {
     return this.favoritesSubject.value;
   }
 
-  // Local storage helpers
-  private loadLocal(): string[] {
-    const stored = localStorage.getItem(this.favoritesKey);
-    return stored ? JSON.parse(stored) : [];
-  }
-
-  private setLocal(favorites: string[]): void {
-    localStorage.setItem(this.favoritesKey, JSON.stringify(favorites));
-    this.favoritesSubject.next(favorites);
-  }
-
-  private addLocal(courseFilename: string): void {
+  // Update in-memory state after API call
+  private updateLocal(courseFilename: string, action: 'add' | 'remove'): void {
     const current = this.favoritesSubject.value;
-    if (!current.includes(courseFilename)) {
-      const updated = [...current, courseFilename];
-      this.setLocal(updated);
+    let updated: string[];
+
+    if (action === 'add') {
+      if (!current.includes(courseFilename)) {
+        updated = [...current, courseFilename];
+      } else {
+        updated = current;
+      }
+    } else {
+      updated = current.filter((f) => f !== courseFilename);
     }
-  }
 
-  private removeLocal(courseFilename: string): void {
-    const current = this.favoritesSubject.value;
-    const updated = current.filter((f) => f !== courseFilename);
-    this.setLocal(updated);
+    this.favoritesSubject.next(updated);
   }
 }

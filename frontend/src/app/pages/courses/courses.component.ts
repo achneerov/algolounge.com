@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CourseSearchService, CourseSearchResult } from '../../services/course-search.service';
-import { LocalStorageService } from '../../services/local-storage.service';
+import { FavoritesService } from '../../services/favorites.service';
+import { AuthService } from '../../services/auth.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-courses',
@@ -11,27 +14,63 @@ import { LocalStorageService } from '../../services/local-storage.service';
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.scss'
 })
-export class CoursesComponent implements OnInit {
+export class CoursesComponent implements OnInit, OnDestroy {
   searchTerm = '';
   displayResults: CourseSearchResult[] = [];
   allCourses: CourseSearchResult[] = [];
   favoriteCourses: CourseSearchResult[] = [];
   showingFavorites = false;
+  isAuthenticated = false;
+  isFavoritesLoading = false;
+  private destroy$ = new Subject<void>();
 
   constructor(
-    private courseSearchService: CourseSearchService, 
+    private courseSearchService: CourseSearchService,
     private router: Router,
-    private localStorageService: LocalStorageService
+    private favoritesService: FavoritesService,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
-    this.courseSearchService.isIndexLoaded().subscribe(loaded => {
+    // Check authentication status and load favorites if authenticated
+    this.authService.isAuthenticated$.pipe(takeUntil(this.destroy$)).subscribe(isAuth => {
+      this.isAuthenticated = isAuth;
+      if (isAuth) {
+        // Load favorites from backend when authenticated
+        this.isFavoritesLoading = true;
+        this.favoritesService.getFavorites().pipe(takeUntil(this.destroy$)).subscribe({
+          next: () => {
+            this.isFavoritesLoading = false;
+            this.updateFavoriteCourses();
+          },
+          error: () => {
+            this.isFavoritesLoading = false;
+          }
+        });
+      } else {
+        this.isFavoritesLoading = false;
+        this.updateFavoriteCourses();
+      }
+    });
+
+    // Load courses
+    this.courseSearchService.isIndexLoaded().pipe(takeUntil(this.destroy$)).subscribe(loaded => {
       if (loaded) {
         this.allCourses = this.courseSearchService.getAllCourses();
         this.displayResults = this.allCourses;
         this.updateFavoriteCourses();
       }
     });
+
+    // Subscribe to favorites changes if authenticated
+    this.favoritesService.favorites$.pipe(takeUntil(this.destroy$)).subscribe(() => {
+      this.updateFavoriteCourses();
+    });
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   onSearchChange(event: any) {
@@ -53,12 +92,25 @@ export class CoursesComponent implements OnInit {
 
   toggleFavorite(course: CourseSearchResult, event: Event) {
     event.stopPropagation();
-    this.localStorageService.toggleFavoriteCourse(course.filename);
-    this.updateFavoriteCourses();
+
+    if (this.isAuthenticated && !this.isFavoritesLoading) {
+      if (this.favoritesService.isFavorited(course.filename)) {
+        this.favoritesService.removeFavorite(course.filename).pipe(takeUntil(this.destroy$)).subscribe({
+          error: (err) => console.error('Failed to remove favorite:', err)
+        });
+      } else {
+        this.favoritesService.addFavorite(course.filename).pipe(takeUntil(this.destroy$)).subscribe({
+          error: (err) => console.error('Failed to add favorite:', err)
+        });
+      }
+    }
   }
 
   isFavorite(course: CourseSearchResult): boolean {
-    return this.localStorageService.isCourseInFavorites(course.filename);
+    if (this.isAuthenticated) {
+      return this.favoritesService.isFavorited(course.filename);
+    }
+    return false;
   }
 
   showFavorites() {
@@ -74,9 +126,13 @@ export class CoursesComponent implements OnInit {
   }
 
   private updateFavoriteCourses() {
-    const favoriteFilenames = this.localStorageService.getFavoriteCourses();
-    this.favoriteCourses = this.allCourses.filter(course => 
-      favoriteFilenames.includes(course.filename)
-    );
+    if (this.isAuthenticated) {
+      const favoriteFilenames = this.favoritesService.getFavoritesSync();
+      this.favoriteCourses = this.allCourses.filter(course =>
+        favoriteFilenames.includes(course.filename)
+      );
+    } else {
+      this.favoriteCourses = [];
+    }
   }
 }

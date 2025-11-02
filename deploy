@@ -60,7 +60,7 @@ cat > backend/.env.local << EOF
 NODE_ENV=production
 JWT_SECRET=$JWT_SECRET
 PORT=3000
-CORS_ORIGIN=${CORS_ORIGIN:-http://localhost:3000}
+CORS_ORIGIN=${CORS_ORIGIN:-*}
 EOF
 print_status "Backend environment file created"
 

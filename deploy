@@ -85,7 +85,7 @@ print_status "Angular build complete"
 print_step "Deploying frontend to backend..."
 rm -rf backend/public
 mkdir -p backend/public
-cp -r frontend/dist/algolounge/* backend/public/
+cp -r frontend/dist/algolounge/browser/* backend/public/
 print_status "Frontend deployed to backend"
 
 # Kill any existing backend processes

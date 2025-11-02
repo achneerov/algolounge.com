@@ -109,5 +109,4 @@ echo -e "${GREEN}✓ Backend is running on port 3000${NC}"
 echo -e "Frontend is being served from backend\n"
 echo -e "App will be available at: http://localhost:3000 (or your domain via reverse proxy)\n"
 
-# Keep the deployment script running
-wait $BACKEND_PID
+echo -e "${GREEN}✓ Deployment successful!${NC}"

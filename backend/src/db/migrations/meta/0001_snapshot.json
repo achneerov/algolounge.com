@@ -1,8 +1,8 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "e8ec6816-cc63-437d-ba58-6f3d72609f3d",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "a260fe6e-a20f-4a46-9978-51a09319766f",
+  "prevId": "e8ec6816-cc63-437d-ba58-6f3d72609f3d",
   "tables": {
     "favorite_courses": {
       "name": "favorite_courses",
@@ -13,13 +13,6 @@
           "primaryKey": true,
           "notNull": true,
           "autoincrement": true
-        },
-        "idman": {
-          "name": "idman",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
         },
         "user_id": {
           "name": "user_id",

@@ -1,5 +1,4 @@
-import { db } from "../db";
-import { users } from "../db/schema";
+import { db, users } from "../db";
 import { eq } from "drizzle-orm";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";

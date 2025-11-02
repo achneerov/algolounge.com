@@ -1,5 +1,6 @@
 CREATE TABLE `favorite_courses` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+	`idman` integer NOT NULL,
 	`user_id` integer NOT NULL,
 	`course_filename` text NOT NULL,
 	`created_at` integer DEFAULT (unixepoch() * 1000) NOT NULL,

@@ -1,5 +1,4 @@
-import { db } from "../db";
-import { favoriteCourses } from "../db/schema";
+import { db, favoriteCourses } from "../db";
 import { eq, and } from "drizzle-orm";
 
 export async function addFavoriteCourse(userId: number, courseFilename: string) {

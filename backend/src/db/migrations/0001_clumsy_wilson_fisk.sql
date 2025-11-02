@@ -1,0 +1,1 @@
+ALTER TABLE `favorite_courses` DROP COLUMN `idman`;

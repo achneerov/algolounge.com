@@ -40,7 +40,7 @@ if (NODE_ENV === "production") {
   app.use(express.static(publicPath));
 
   // Serve index.html for all routes (SPA)
-  app.get("*", (req: Request, res: Response) => {
+  app.get("/*", (req: Request, res: Response) => {
     const indexPath = path.join(publicPath, "index.html");
     res.sendFile(indexPath, (err) => {
       if (err) {

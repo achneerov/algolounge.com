@@ -50,19 +50,25 @@ cd ..
 # Wait for backend to start
 sleep 2
 
-# Start frontend
-echo -e "${GREEN}Starting frontend dev server on port 4200...${NC}"
-cd frontend
-npm start > /tmp/frontend.log 2>&1 &
-FRONTEND_PID=$!
-cd ..
+# Start frontend only in development
+if [ "$NODE_ENV" = "development" ]; then
+  echo -e "${GREEN}Starting frontend dev server on port 4200...${NC}"
+  cd frontend
+  npm start > /tmp/frontend.log 2>&1 &
+  FRONTEND_PID=$!
+  cd ..
 
-# Wait for frontend to start
-sleep 3
+  # Wait for frontend to start
+  sleep 3
 
-echo -e "\n${GREEN}✓ Both servers are running!${NC}\n"
-echo -e "Frontend: ${BLUE}http://localhost:4200${NC}"
-echo -e "Backend:  ${BLUE}http://localhost:3000${NC}"
+  echo -e "\n${GREEN}✓ Both servers are running!${NC}\n"
+  echo -e "Frontend: ${BLUE}http://localhost:4200${NC}"
+  echo -e "Backend:  ${BLUE}http://localhost:3000${NC}"
+else
+  echo -e "\n${GREEN}✓ Backend server is running in production mode!${NC}\n"
+  echo -e "App:     ${BLUE}http://localhost:3000${NC}"
+  echo -e "(Frontend is served from backend)"
+fi
 echo -e "\nPress ${YELLOW}Ctrl+C${NC} to stop both servers\n"
 
 # Monitor processes

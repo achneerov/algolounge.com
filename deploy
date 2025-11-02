@@ -55,12 +55,16 @@ else
   JWT_SECRET=$(grep "JWT_SECRET" "backend/.env.local" | cut -d '=' -f 2)
 fi
 
-# Create backend .env.local for production
+if [ -z "$CORS_ORIGIN" ]; then
+  SERVER_IP=$(hostname -I 2>/dev/null | awk '{print $1}')
+  CORS_ORIGIN="http://${SERVER_IP}:3000"
+fi
+
 cat > backend/.env.local << EOF
 NODE_ENV=production
 JWT_SECRET=$JWT_SECRET
 PORT=3000
-CORS_ORIGIN=${CORS_ORIGIN:-*}
+CORS_ORIGIN=$CORS_ORIGIN
 EOF
 print_status "Backend environment file created"
 

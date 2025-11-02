@@ -1,0 +1,113 @@
+#!/bin/bash
+
+set -e
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+echo -e "${YELLOW}AlgoLounge - Production Deployment${NC}\n"
+
+# Function to print status
+print_status() {
+  echo -e "${GREEN}✓${NC} $1"
+}
+
+print_step() {
+  echo -e "\n${YELLOW}→${NC} $1"
+}
+
+# Pull latest code
+print_step "Pulling latest code from main..."
+git pull origin main
+print_status "Code updated"
+
+# Install frontend dependencies
+print_step "Installing frontend dependencies..."
+cd frontend
+npm install
+cd ..
+print_status "Frontend dependencies installed"
+
+# Install backend dependencies
+print_step "Installing backend dependencies..."
+cd backend
+npm install
+cd ..
+print_status "Backend dependencies installed"
+
+# Run database migrations
+print_step "Running database migrations..."
+cd backend
+npx tsx src/db/migrate.ts
+cd ..
+print_status "Database migrations complete"
+
+# Generate environment files for production
+print_step "Generating environment files..."
+
+# Generate JWT secret if it doesn't exist
+if [ ! -f "backend/.env.local" ] || ! grep -q "JWT_SECRET" "backend/.env.local"; then
+  JWT_SECRET=$(node -e "console.log(require('crypto').randomBytes(32).toString('base64'))")
+else
+  JWT_SECRET=$(grep "JWT_SECRET" "backend/.env.local" | cut -d '=' -f 2)
+fi
+
+# Create backend .env.local for production
+cat > backend/.env.local << EOF
+NODE_ENV=production
+JWT_SECRET=$JWT_SECRET
+PORT=3000
+CORS_ORIGIN=${CORS_ORIGIN:-http://localhost:3000}
+EOF
+print_status "Backend environment file created"
+
+# Create frontend environment.ts for production
+mkdir -p frontend/src/environments
+cat > frontend/src/environments/environment.ts << EOF
+export const environment = {
+  production: true,
+  apiUrl: '/api'
+};
+EOF
+print_status "Frontend environment file created"
+
+# Build Angular application
+print_step "Building Angular application..."
+cd frontend
+npm run build
+cd ..
+print_status "Angular build complete"
+
+# Copy dist to backend public folder
+print_step "Deploying frontend to backend..."
+rm -rf backend/public
+mkdir -p backend/public
+cp -r frontend/dist/algolounge/* backend/public/
+print_status "Frontend deployed to backend"
+
+# Kill any existing backend processes
+print_step "Stopping old backend processes..."
+pkill -f "node.*backend" || true
+sleep 2
+print_status "Old processes stopped"
+
+echo -e "\n${GREEN}✓ Deployment complete!${NC}"
+echo -e "Starting backend server...\n"
+
+# Start backend in production mode
+cd backend
+npm run build > /tmp/backend.log 2>&1 &
+BACKEND_PID=$!
+cd ..
+
+sleep 2
+
+echo -e "${GREEN}✓ Backend is running on port 3000${NC}"
+echo -e "Frontend is being served from backend\n"
+echo -e "App will be available at: http://localhost:3000 (or your domain via reverse proxy)\n"
+
+# Keep the deployment script running
+wait $BACKEND_PID

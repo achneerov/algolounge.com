@@ -12,7 +12,7 @@ export class HomeComponent {
   constructor(private router: Router, private http: HttpClient) {}
 
   navigateToQuestions() {
-    this.router.navigate(['/questions']);
+    this.navigateToRandomQuestion();
   }
 
   navigateToCourses() {

@@ -85,47 +85,22 @@
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
-  position: relative;
-  overflow: hidden;
 
   .btn-text {
     position: relative;
     z-index: 2;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .btn-arrow {
     position: relative;
     z-index: 2;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     font-size: 24px;
     line-height: 1;
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #2563eb;
-    transform: translateX(-100%);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1;
   }
 
   &:hover {
     transform: translateY(-3px);
     box-shadow: 0 20px 40px rgba(59, 130, 246, 0.5);
-
-    &::before {
-      transform: translateX(0);
-    }
-
-    .btn-arrow {
-      transform: translateX(6px);
-    }
   }
 
   &:active {
@@ -144,7 +119,6 @@
   border-radius: $radius-xl;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
   overflow: hidden;
-  animation: float 4s ease-in-out infinite;
   max-width: 500px;
   margin: 0 auto;
 }
@@ -404,34 +378,10 @@
   background: var(--color-primary);
   color: white;
   border: none;
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #2563eb;
-    transform: translateX(-100%);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1;
-  }
-
-  span {
-    position: relative;
-    z-index: 2;
-  }
 
   &:hover {
     transform: translateY(-3px);
     box-shadow: 0 20px 40px rgba(59, 130, 246, 0.5);
-
-    &::before {
-      transform: translateX(0);
-    }
   }
 
   &:active {

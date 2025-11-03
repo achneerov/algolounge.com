@@ -39,7 +39,7 @@ trap cleanup SIGINT SIGTERM
 # Start backend in development mode
 echo -e "${GREEN}Starting backend server on port 3000...${NC}"
 cd backend
-npm run dev > /tmp/backend.log 2>&1 &
+npm run dev &
 BACKEND_PID=$!
 cd ..
 
@@ -49,7 +49,7 @@ sleep 2
 # Start frontend dev server
 echo -e "${GREEN}Starting frontend dev server on port 4200...${NC}"
 cd frontend
-npm start > /tmp/frontend.log 2>&1 &
+npm start &
 FRONTEND_PID=$!
 cd ..
 

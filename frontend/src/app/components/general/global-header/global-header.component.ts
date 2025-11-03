@@ -19,9 +19,9 @@ export class GlobalHeaderComponent {
   // Get current theme
   isDarkMode = computed(() => this.themeService.activeTheme() === 'dark');
 
-  // Auth state
-  isAuthenticated = computed(() => this.authService.isAuthenticated());
-  currentUser = computed(() => this.authService.getCurrentUser());
+  // Auth state - use observables directly for reactivity
+  isAuthenticated$ = this.authService.isAuthenticated$;
+  currentUser$ = this.authService.currentUser$;
   showUserMenu = false;
 
   toggleTheme(): void {

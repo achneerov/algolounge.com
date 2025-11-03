@@ -42,19 +42,6 @@
         />
       </div>
 
-      <div class="form-group">
-        <label for="confirmPassword">Confirm Password</label>
-        <input
-          id="confirmPassword"
-          type="password"
-          [(ngModel)]="confirmPassword"
-          name="confirmPassword"
-          placeholder="Confirm your password"
-          [disabled]="isLoading"
-          required
-        />
-      </div>
-
       <div *ngIf="errorMessage" class="error-message">
         {{ errorMessage }}
       </div>

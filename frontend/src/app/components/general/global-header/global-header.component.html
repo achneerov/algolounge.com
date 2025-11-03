@@ -40,7 +40,7 @@
 
     <!-- Auth Section -->
     <div class="auth-section">
-      <ng-container *ngIf="!isAuthenticated(); else userMenuTemplate">
+      <ng-container *ngIf="!(isAuthenticated$ | async); else userMenuTemplate">
         <a routerLink="/auth/sign-in" class="auth-link sign-in">Sign In</a>
         <a routerLink="/auth/sign-up" class="auth-link sign-up">Sign Up</a>
       </ng-container>
@@ -56,8 +56,8 @@
 
           <div class="user-dropdown" *ngIf="showUserMenu">
             <div class="dropdown-item user-info">
-              <div class="user-name">{{ currentUser()?.username }}</div>
-              <div class="user-email">{{ currentUser()?.email }}</div>
+              <div class="user-name">{{ (currentUser$ | async)?.username }}</div>
+              <div class="user-email">{{ (currentUser$ | async)?.email }}</div>
             </div>
             <button class="dropdown-item logout-btn" (click)="logout()">
               Sign Out

@@ -18,19 +18,13 @@ export class SignUpComponent {
   username = '';
   email = '';
   password = '';
-  confirmPassword = '';
   isLoading = false;
   errorMessage = '';
 
   onSignUp(): void {
     // Validation
-    if (!this.username || !this.email || !this.password || !this.confirmPassword) {
+    if (!this.username || !this.email || !this.password) {
       this.errorMessage = 'Please fill in all fields';
-      return;
-    }
-
-    if (this.password !== this.confirmPassword) {
-      this.errorMessage = 'Passwords do not match';
       return;
     }
 

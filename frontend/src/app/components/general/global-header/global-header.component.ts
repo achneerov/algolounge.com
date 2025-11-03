@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, HostListener, ElementRef } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { ThemeService } from '../../../services/theme.service';
 import { AuthService } from '../../../services/auth.service';
@@ -14,6 +14,7 @@ export class GlobalHeaderComponent {
   private themeService = inject(ThemeService);
   private authService = inject(AuthService);
   private router = inject(Router);
+  private elementRef = inject(ElementRef);
 
   // Get current theme
   isDarkMode = computed(() => this.themeService.activeTheme() === 'dark');
@@ -35,5 +36,12 @@ export class GlobalHeaderComponent {
     this.authService.logout();
     this.showUserMenu = false;
     this.router.navigate(['/']);
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    if (!this.elementRef.nativeElement.contains(event.target)) {
+      this.showUserMenu = false;
+    }
   }
 }

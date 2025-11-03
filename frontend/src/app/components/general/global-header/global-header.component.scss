@@ -58,6 +58,14 @@
   display: flex;
   gap: $spacing-xl;
   align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
+.header-right {
+  display: flex;
+  gap: $spacing-md;
+  align-items: center;
 }
 
 .nav-links a:not(.github-link) {
@@ -182,26 +190,31 @@
 .user-button {
   display: flex;
   align-items: center;
-  gap: $spacing-sm;
-  padding: 8px 16px;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
   border: 2px solid var(--color-border);
-  border-radius: $radius-lg;
+  border-radius: $radius-md;
   background: transparent;
   color: var(--color-text-primary);
-  font-weight: $font-weight-medium;
   cursor: pointer;
   transition: all $transition-base;
+  padding: 0;
 
   &:hover {
     border-color: var(--color-primary);
     color: var(--color-primary);
-    transform: translateY(-2px);
     box-shadow: $shadow-md;
+
+    svg {
+      animation: iconWiggle 0.6s ease-in-out;
+    }
   }
 
   svg {
     width: 20px;
     height: 20px;
+    transition: transform $transition-slow;
   }
 }
 
@@ -268,14 +281,13 @@
 .github-link {
   display: flex;
   align-items: center;
-  gap: $spacing-sm;
+  justify-content: center;
   background: transparent;
   color: var(--color-text-primary);
-  padding: 0 $spacing-md;
+  width: 40px;
   height: 40px;
   border-radius: $radius-md;
   border: 2px solid var(--color-border);
-  font-weight: $font-weight-medium;
   transition: all $transition-base;
   text-decoration: none;
 
@@ -295,6 +307,31 @@
   }
 }
 
+// Animations
+@keyframes iconWiggle {
+  0%, 100% {
+    transform: rotateZ(0deg);
+  }
+  25% {
+    transform: rotateZ(-5deg);
+  }
+  75% {
+    transform: rotateZ(5deg);
+  }
+}
+
+@keyframes airplaneTilt {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
 // Responsive design
 @media (max-width: 768px) {
   .global-header {
@@ -307,15 +344,5 @@
 
   .logo-link {
     font-size: $font-size-xl;
-  }
-
-  .github-link span {
-    display: none;
-  }
-
-  .github-link {
-    padding: 0;
-    width: 40px;
-    justify-content: center;
   }
 }

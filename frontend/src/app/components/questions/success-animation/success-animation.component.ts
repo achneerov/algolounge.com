@@ -26,32 +26,18 @@ export class SuccessAnimationComponent implements OnInit, AfterViewInit {
   }
 
   private launchConfetti() {
-    // Find the IDE component container
-    const ideElement = document.querySelector('.ide-wrapper');
+    // Launch confetti from bottom-left corner
+    this.fireConfetti(0, 1);
 
-    if (!ideElement) {
-      // Fallback to bottom center if IDE not found
-      this.fireConfetti(0.5, 1);
-      return;
-    }
+    // Launch confetti from bottom-right corner
+    setTimeout(() => this.fireConfetti(1, 1), 150);
 
-    const ideRect = ideElement.getBoundingClientRect();
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
-
-    // Calculate positions - centered horizontally, at the bottom vertically
-    const originX = (ideRect.left + ideRect.width / 2) / windowWidth;
-    const originY = ideRect.bottom / windowHeight;
-
-    // Fire multiple bursts of confetti from the bottom
-    this.fireConfetti(originX, originY);
-
-    setTimeout(() => this.fireConfetti(originX - 0.1, originY), 150);
-    setTimeout(() => this.fireConfetti(originX + 0.1, originY), 300);
+    // Extra burst from bottom center
+    setTimeout(() => this.fireConfetti(0.5, 1), 300);
   }
 
   private fireConfetti(x: number, y: number) {
-    const count = 80;
+    const count = 100;
     const defaults = {
       origin: { x, y },
       disableForReducedMotion: true
@@ -60,9 +46,9 @@ export class SuccessAnimationComponent implements OnInit, AfterViewInit {
     confetti({
       ...defaults,
       particleCount: count,
-      spread: 60,
-      startVelocity: 45,
-      scalar: 1.2,
+      spread: 120,
+      startVelocity: 70,
+      scalar: 1.5,
       colors: ['#3B82F6', '#8B5CF6', '#10B981', '#F59E0B', '#EF4444']
     });
   }

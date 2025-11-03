@@ -15,13 +15,13 @@ export class SignInComponent {
   private authService = inject(AuthService);
   private router = inject(Router);
 
-  email = '';
+  emailOrUsername = '';
   password = '';
   isLoading = false;
   errorMessage = '';
 
   onSignIn(): void {
-    if (!this.email || !this.password) {
+    if (!this.emailOrUsername || !this.password) {
       this.errorMessage = 'Please fill in all fields';
       return;
     }
@@ -29,7 +29,7 @@ export class SignInComponent {
     this.isLoading = true;
     this.errorMessage = '';
 
-    this.authService.login(this.email, this.password).subscribe({
+    this.authService.login(this.emailOrUsername, this.password).subscribe({
       next: () => {
         this.router.navigate(['/']);
       },

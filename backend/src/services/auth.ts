@@ -69,16 +69,25 @@ export async function registerUser(
   };
 }
 
-export async function loginUser(email: string, password: string) {
-  // Find user by email
-  const result = await db
+export async function loginUser(emailOrUsername: string, password: string) {
+  // Find user by email or username
+  let result = await db
     .select()
     .from(users)
-    .where(eq(users.email, email))
+    .where(eq(users.email, emailOrUsername))
     .limit(1);
 
+  // If not found by email, try username
   if (result.length === 0) {
-    throw new Error("Invalid email or password");
+    result = await db
+      .select()
+      .from(users)
+      .where(eq(users.username, emailOrUsername))
+      .limit(1);
+  }
+
+  if (result.length === 0) {
+    throw new Error("Invalid email/username or password");
   }
 
   const user = result[0];
@@ -87,7 +96,7 @@ export async function loginUser(email: string, password: string) {
   const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
 
   if (!isPasswordValid) {
-    throw new Error("Invalid email or password");
+    throw new Error("Invalid email/username or password");
   }
 
   // Generate JWT

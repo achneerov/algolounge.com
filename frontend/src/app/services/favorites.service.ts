@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { tap } from "rxjs/operators";
+import { environment } from "../../environments/environment";
 
 @Injectable({
   providedIn: "root",
@@ -14,7 +15,7 @@ export class FavoritesService {
 
   // Get favorites from backend
   getFavorites(): Observable<{ favorites: string[] }> {
-    return this.http.get<{ favorites: string[] }>("/api/favorites").pipe(
+    return this.http.get<{ favorites: string[] }>(`${environment.apiUrl}/api/favorites`).pipe(
       tap((response) => {
         this.favoritesSubject.next(response.favorites);
       })
@@ -24,7 +25,7 @@ export class FavoritesService {
   // Add favorite to backend
   addFavorite(courseFilename: string): Observable<any> {
     return this.http
-      .post("/api/favorites", { courseFilename })
+      .post(`${environment.apiUrl}/api/favorites`, { courseFilename })
       .pipe(
         tap(() => this.updateLocal(courseFilename, 'add'))
       );
@@ -33,7 +34,7 @@ export class FavoritesService {
   // Remove favorite from backend
   removeFavorite(courseFilename: string): Observable<any> {
     return this.http
-      .delete("/api/favorites", {
+      .delete(`${environment.apiUrl}/api/favorites`, {
         body: { courseFilename },
       })
       .pipe(

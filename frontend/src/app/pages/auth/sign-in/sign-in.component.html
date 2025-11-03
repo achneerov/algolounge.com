@@ -4,13 +4,13 @@
 
     <form (ngSubmit)="onSignIn()" #signInForm="ngForm">
       <div class="form-group">
-        <label for="email">Email</label>
+        <label for="emailOrUsername">Email or Username</label>
         <input
-          id="email"
-          type="email"
-          [(ngModel)]="email"
-          name="email"
-          placeholder="Enter your email"
+          id="emailOrUsername"
+          type="text"
+          [(ngModel)]="emailOrUsername"
+          name="emailOrUsername"
+          placeholder="Enter your email or username"
           [disabled]="isLoading"
           required
         />

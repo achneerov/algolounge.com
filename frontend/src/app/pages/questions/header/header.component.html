@@ -15,7 +15,6 @@
       <ng-template let-question pTemplate="item">
         <div class="search-item">
           <div class="search-title">{{ question.title }}</div>
-          <div class="completion-status" *ngIf="isQuestionCompleted(question.filename)">✅</div>
         </div>
       </ng-template>
     </p-autoComplete>

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { LocalStorageService } from '../../services/local-storage.service';
+import { CompletionService } from '../../services/completion.service';
 import { FavoritesService } from '../../services/favorites.service';
 import { AuthService } from '../../services/auth.service';
 import { Subject } from 'rxjs';
@@ -51,6 +52,7 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
   private router = inject(Router);
   private http = inject(HttpClient);
   private localStorageService = inject(LocalStorageService);
+  private completionService = inject(CompletionService);
   private favoritesService = inject(FavoritesService);
   private authService = inject(AuthService);
   private destroy$ = new Subject<void>();
@@ -65,9 +67,15 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
       this.loadCourse();
     });
 
-    // Load favorites if authenticated
+    // Load favorites and completions if authenticated
     if (this.authService.isAuthenticated()) {
       this.favoritesService.getFavorites().pipe(takeUntil(this.destroy$)).subscribe({
+        error: () => {
+          // Silently fail if not authenticated or error occurs
+        }
+      });
+
+      this.completionService.getCompletions().pipe(takeUntil(this.destroy$)).subscribe({
         error: () => {
           // Silently fail if not authenticated or error occurs
         }
@@ -199,7 +207,11 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
   }
 
   isQuestionCompleted(questionFilename: string): boolean {
-    return this.localStorageService.isQuestionCompleted(questionFilename);
+    if (this.authService.isAuthenticated()) {
+      return this.completionService.isCompleted(questionFilename);
+    } else {
+      return this.localStorageService.isQuestionCompleted(questionFilename);
+    }
   }
 
   onUrlClick(event: Event, url: string) {

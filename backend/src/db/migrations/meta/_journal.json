@@ -15,6 +15,13 @@
       "when": 1762113517068,
       "tag": "0001_clumsy_wilson_fisk",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1762219162922,
+      "tag": "0002_outstanding_jazinda",
+      "breakpoints": true
     }
   ]
 }

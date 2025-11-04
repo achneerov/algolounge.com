@@ -9,7 +9,11 @@ import { HttpClient } from "@angular/common/http";
 import { NotFoundComponent } from "../not-found/not-found.component";
 import { CodeExecutionService } from "../../services/code-execution.service";
 import { LocalStorageService } from "../../services/local-storage.service";
+import { CompletionService } from "../../services/completion.service";
+import { AuthService } from "../../services/auth.service";
 import { SuccessAnimationComponent } from "../../components/questions/success-animation/success-animation.component";
+import { Subject } from "rxjs";
+import { takeUntil } from "rxjs/operators";
 
 @Component({
   selector: "app-questions",
@@ -41,24 +45,43 @@ export class QuestionsComponent implements OnInit, OnDestroy {
   currentQuestionFilename: string = "";
   isCompleted: boolean = false;
   showSuccessAnimation = signal(false);
+  private destroy$ = new Subject<void>();
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private http: HttpClient,
     private codeExecutionService: CodeExecutionService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private completionService: CompletionService,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
     // Add questions-page class to body
     document.body.classList.add('questions-page');
-    
-    this.route.paramMap.subscribe((params) => {
+
+    // Load completions if authenticated
+    if (this.authService.isAuthenticated()) {
+      this.completionService.getCompletions().pipe(takeUntil(this.destroy$)).subscribe({
+        next: () => {
+          // After completions loaded, check current question completion
+          if (this.currentQuestionFilename) {
+            this.checkCompletion(this.currentQuestionFilename);
+          }
+        },
+        error: () => {
+          // Fallback to local storage on error
+        }
+      });
+    }
+
+    this.route.paramMap.pipe(takeUntil(this.destroy$)).subscribe((params) => {
       const name = params.get("name");
       if (name) {
         this.currentQuestionFilename = name;
-        this.isCompleted = this.localStorageService.isQuestionCompleted(name);
+        // Check completion immediately (will be updated after backend loads)
+        this.checkCompletion(name);
         this.loadQuestion(name);
       }
     });
@@ -67,6 +90,17 @@ export class QuestionsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     // Remove questions-page class when leaving
     document.body.classList.remove('questions-page');
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  private checkCompletion(questionFilename: string) {
+    // Check backend first if authenticated, fallback to localStorage
+    if (this.authService.isAuthenticated()) {
+      this.isCompleted = this.completionService.isCompleted(questionFilename);
+    } else {
+      this.isCompleted = this.localStorageService.isQuestionCompleted(questionFilename);
+    }
   }
 
   onGo(name: string) {
@@ -99,8 +133,20 @@ export class QuestionsComponent implements OnInit, OnDestroy {
       if (this.executionResult.passedCount === this.executionResult.totalCount && this.executionResult.totalCount > 0) {
         // Mark as completed if not already
         if (!this.isCompleted) {
-          this.localStorageService.addCompletedQuestion(this.currentQuestionFilename);
           this.isCompleted = true;
+
+          // If authenticated, mark on backend; otherwise use local storage
+          if (this.authService.isAuthenticated()) {
+            this.completionService.markCompleted(this.currentQuestionFilename).pipe(takeUntil(this.destroy$)).subscribe({
+              error: (err) => {
+                console.error('Error marking question as completed:', err);
+                // Fallback to local storage on error
+                this.localStorageService.addCompletedQuestion(this.currentQuestionFilename);
+              }
+            });
+          } else {
+            this.localStorageService.addCompletedQuestion(this.currentQuestionFilename);
+          }
         }
         // Trigger success animation every time all tests pass
         console.log('All tests passed! Triggering success animation');

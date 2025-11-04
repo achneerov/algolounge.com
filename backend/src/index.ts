@@ -8,6 +8,7 @@ dotenv.config({ path: path.join(__dirname, "../.env.local") });
 
 import authRoutes from "./routes/auth";
 import favoritesRoutes from "./routes/favorites";
+import questionCompletionsRoutes from "./routes/question-completions";
 
 const app = express();
 const PORT = parseInt(process.env.PORT || "3000", 10);
@@ -33,6 +34,7 @@ app.use(cors(corsOptions));
 // API Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/favorites", favoritesRoutes);
+app.use("/api/question-completions", questionCompletionsRoutes);
 
 // Serve static files from built Angular app (production)
 if (NODE_ENV === "production") {

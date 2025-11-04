@@ -1,0 +1,351 @@
+{
+  "filename": "accounts-merge",
+  "title": "Accounts Merge",
+  "keywords": [
+    "union-find",
+    "disjoint-set",
+    "graph",
+    "merge",
+    "accounts",
+    "email",
+    "connected-components",
+    "grouping",
+    "dsu"
+  ],
+  "description": "<h2>Accounts Merge</h2><p>Given a list of accounts where each element <code>accounts[i]</code> is a list of strings, where the first element <code>accounts[i][0]</code> is a name, and the rest of the elements are emails representing emails of the account.</p><p>We want to merge these accounts. Two accounts definitely belong to the same person if there is some common email to both accounts. Note that even if two accounts have the same name, they may belong to different people as people could have the same name. A person can have any number of accounts initially, but all of their accounts definitely have the same name.</p><p>After merging the accounts, return the accounts in the following format: the first element of each account is the name, and the rest of the elements are emails in <strong>sorted order</strong>. The accounts themselves can be returned in <strong>any order</strong>.</p><h3>Examples</h3><ul><li><strong>Example 1:</strong><br><code>Input: accounts = [[\"neet\",\"neet@gmail.com\",\"neet_dsa@gmail.com\"],[\"alice\",\"alice@gmail.com\"],[\"neet\",\"bob@gmail.com\",\"neet@gmail.com\"],[\"neet\",\"neetcode@gmail.com\"]]</code><br><code>Output: [[\"neet\",\"bob@gmail.com\",\"neet@gmail.com\",\"neet_dsa@gmail.com\"],[\"alice\",\"alice@gmail.com\"],[\"neet\",\"neetcode@gmail.com\"]]</code><br>Explanation: The first and third neet accounts are merged because they share the common email \"neet@gmail.com\".</li><li><strong>Example 2:</strong><br><code>Input: accounts = [[\"James\",\"james@mail.com\"],[\"James\",\"james@mail.co\"]]</code><br><code>Output: [[\"James\",\"james@mail.com\"],[\"James\",\"james@mail.co\"]]</code><br>Explanation: The two James accounts have no common emails, so they remain separate.</li></ul><h3>Constraints</h3><ul><li><code>1 <= accounts.length <= 1000</code></li><li><code>2 <= accounts[i].length <= 10</code></li><li><code>1 <= accounts[i][j].length <= 30</code></li><li><code>accounts[i][0]</code> consists of English letters</li><li><code>accounts[i][j]</code> (for j > 0) is a valid email</li></ul>",
+  "entry_function": "accountsMerge",
+  "template": "def accountsMerge(accounts):\n    ",
+  "solution_text": "<h3>Accounts Merge</h3><p><strong>Algorithm:</strong></p><ol><li>Build email-to-index mapping and Union-Find structure</li><li>Union accounts that share common emails</li><li>Group emails by their root representative</li><li>Sort emails within each group and add account name</li></ol><p><strong>Time Complexity:</strong> O(N*M*α(N)) where N=accounts, M=emails per account, α=inverse Ackermann</p><p><strong>Space Complexity:</strong> O(N*M) for email mappings and result</p><p><strong>Key Insights:</strong></p><ul><li>Union-Find efficiently groups connected accounts</li><li>Emails act as connection points between accounts</li><li>Final sorting ensures lexicographical order</li></ul>",
+  "solution_code": "def accountsMerge(accounts):\n    # Union-Find data structure\n    parent = {}\n    \n    def find(x):\n        if x not in parent:\n            parent[x] = x\n        if parent[x] != x:\n            parent[x] = find(parent[x])\n        return parent[x]\n    \n    def union(x, y):\n        px, py = find(x), find(y)\n        if px != py:\n            parent[px] = py\n    \n    # Map email to account name\n    email_to_name = {}\n    \n    # Union emails within same account and map emails to names\n    for account in accounts:\n        name = account[0]\n        first_email = account[1]\n        \n        for email in account[1:]:\n            email_to_name[email] = name\n            union(first_email, email)\n    \n    # Group emails by root parent\n    groups = {}\n    for email in email_to_name:\n        root = find(email)\n        if root not in groups:\n            groups[root] = []\n        groups[root].append(email)\n    \n    # Build result with sorted emails\n    result = []\n    for emails in groups.values():\n        emails.sort()\n        name = email_to_name[emails[0]]\n        result.append([name] + emails)\n    \n    return result",
+  "order_matters": false,
+  "prepare":"def prepare(test_case_input):\n  \"\"\"Extract accounts from test case input\"\"\" \n return test_case_input['accounts']  ",
+  "verify":"def verify(actual_output, expected_output):\n    \"\"\"Verify the accounts merge result\"\"\"\n    def sort_accounts(accounts):\n        return sorted([sorted(account) for account in accounts])\n    \n    actual_sorted = sort_accounts(actual_output) if actual_output else []\n    expected_sorted = sort_accounts(expected_output) if expected_output else []\n    \n    passed = actual_sorted == expected_sorted\n    output_str = str(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "accounts": [
+          [
+            "neet",
+            "neet@gmail.com",
+            "neet_dsa@gmail.com"
+          ],
+          [
+            "alice",
+            "alice@gmail.com"
+          ],
+          [
+            "neet",
+            "bob@gmail.com",
+            "neet@gmail.com"
+          ],
+          [
+            "neet",
+            "neetcode@gmail.com"
+          ]
+        ]
+      },
+      "output": [
+        [
+          "neet",
+          "bob@gmail.com",
+          "neet@gmail.com",
+          "neet_dsa@gmail.com"
+        ],
+        [
+          "alice",
+          "alice@gmail.com"
+        ],
+        [
+          "neet",
+          "neetcode@gmail.com"
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "accounts": [
+          [
+            "James",
+            "james@mail.com"
+          ],
+          [
+            "James",
+            "james@mail.co"
+          ]
+        ]
+      },
+      "output": [
+        [
+          "James",
+          "james@mail.com"
+        ],
+        [
+          "James",
+          "james@mail.co"
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "input": {
+        "accounts": [
+          [
+            "John",
+            "john@mail.com",
+            "john_work@gmail.com"
+          ],
+          [
+            "John",
+            "john@mail.com",
+            "john_personal@yahoo.com"
+          ],
+          [
+            "Mary",
+            "mary@outlook.com"
+          ]
+        ]
+      },
+      "output": [
+        [
+          "John",
+          "john@mail.com",
+          "john_personal@yahoo.com",
+          "john_work@gmail.com"
+        ],
+        [
+          "Mary",
+          "mary@outlook.com"
+        ]
+      ]
+    },
+    {
+      "id": 4,
+      "input": {
+        "accounts": [
+          [
+            "Alice",
+            "alice1@gmail.com"
+          ],
+          [
+            "Bob",
+            "bob@yahoo.com"
+          ],
+          [
+            "Alice",
+            "alice2@hotmail.com"
+          ]
+        ]
+      },
+      "output": [
+        [
+          "Alice",
+          "alice1@gmail.com"
+        ],
+        [
+          "Bob",
+          "bob@yahoo.com"
+        ],
+        [
+          "Alice",
+          "alice2@hotmail.com"
+        ]
+      ]
+    },
+    {
+      "id": 5,
+      "input": {
+        "accounts": [
+          [
+            "David",
+            "david@gmail.com",
+            "d.smith@company.com"
+          ],
+          [
+            "David",
+            "d.smith@company.com",
+            "david.smith@personal.net"
+          ],
+          [
+            "David",
+            "david.smith@personal.net",
+            "dsmith@oldmail.com"
+          ]
+        ]
+      },
+      "output": [
+        [
+          "David",
+          "d.smith@company.com",
+          "david.smith@personal.net",
+          "david@gmail.com",
+          "dsmith@oldmail.com"
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "input": {
+        "accounts": [
+          [
+            "Alex",
+            "alex@work.com"
+          ]
+        ]
+      },
+      "output": [
+        [
+          "Alex",
+          "alex@work.com"
+        ]
+      ]
+    },
+    {
+      "id": 7,
+      "input": {
+        "accounts": [
+          [
+            "Sam",
+            "sam1@gmail.com",
+            "sam2@yahoo.com"
+          ],
+          [
+            "Sam",
+            "sam3@hotmail.com"
+          ],
+          [
+            "Sam",
+            "sam2@yahoo.com",
+            "sam4@outlook.com"
+          ]
+        ]
+      },
+      "output": [
+        [
+          "Sam",
+          "sam1@gmail.com",
+          "sam2@yahoo.com",
+          "sam4@outlook.com"
+        ],
+        [
+          "Sam",
+          "sam3@hotmail.com"
+        ]
+      ]
+    },
+    {
+      "id": 8,
+      "input": {
+        "accounts": [
+          [
+            "Tom",
+            "tom@a.com",
+            "tom@b.com"
+          ],
+          [
+            "Tom",
+            "tom@c.com",
+            "tom@d.com"
+          ],
+          [
+            "Tom",
+            "tom@b.com",
+            "tom@e.com"
+          ]
+        ]
+      },
+      "output": [
+        [
+          "Tom",
+          "tom@a.com",
+          "tom@b.com",
+          "tom@e.com"
+        ],
+        [
+          "Tom",
+          "tom@c.com",
+          "tom@d.com"
+        ]
+      ]
+    },
+    {
+      "id": 9,
+      "input": {
+        "accounts": [
+          [
+            "Lisa",
+            "lisa@work.org",
+            "l.jones@company.net"
+          ],
+          [
+            "Mike",
+            "mike@personal.com"
+          ],
+          [
+            "Lisa",
+            "lisa.jones@home.com"
+          ],
+          [
+            "Mike",
+            "m.brown@work.co"
+          ]
+        ]
+      },
+      "output": [
+        [
+          "Lisa",
+          "l.jones@company.net",
+          "lisa@work.org"
+        ],
+        [
+          "Mike",
+          "mike@personal.com"
+        ],
+        [
+          "Lisa",
+          "lisa.jones@home.com"
+        ],
+        [
+          "Mike",
+          "m.brown@work.co"
+        ]
+      ]
+    },
+    {
+      "id": 10,
+      "input": {
+        "accounts": [
+          [
+            "Emma",
+            "emma1@test.com",
+            "emma2@test.com",
+            "emma3@test.com"
+          ],
+          [
+            "Emma",
+            "emma4@test.com"
+          ],
+          [
+            "Emma",
+            "emma2@test.com",
+            "emma5@test.com"
+          ]
+        ]
+      },
+      "output": [
+        [
+          "Emma",
+          "emma1@test.com",
+          "emma2@test.com",
+          "emma3@test.com",
+          "emma5@test.com"
+        ],
+        [
+          "Emma",
+          "emma4@test.com"
+        ]
+      ]
+    }
+  ]
+}

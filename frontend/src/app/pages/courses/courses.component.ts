@@ -20,52 +20,36 @@ export class CoursesComponent implements OnInit, OnDestroy {
   allCourses: CourseSearchResult[] = [];
   favoriteCourses: CourseSearchResult[] = [];
   showingFavorites = false;
-  isAuthenticated = false;
-  isFavoritesLoading = false;
   private destroy$ = new Subject<void>();
 
   constructor(
     private courseSearchService: CourseSearchService,
-    private router: Router,
     private favoritesService: FavoritesService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {
-    // Check authentication status and load favorites if authenticated
-    this.authService.isAuthenticated$.pipe(takeUntil(this.destroy$)).subscribe(isAuth => {
-      this.isAuthenticated = isAuth;
-      if (isAuth) {
-        // Load favorites from backend when authenticated
-        this.isFavoritesLoading = true;
-        this.favoritesService.getFavorites().pipe(takeUntil(this.destroy$)).subscribe({
-          next: () => {
-            this.isFavoritesLoading = false;
-            this.updateFavoriteCourses();
-          },
-          error: () => {
-            this.isFavoritesLoading = false;
-          }
-        });
-      } else {
-        this.isFavoritesLoading = false;
-        this.updateFavoriteCourses();
-      }
-    });
-
     // Load courses
     this.courseSearchService.isIndexLoaded().pipe(takeUntil(this.destroy$)).subscribe(loaded => {
       if (loaded) {
         this.allCourses = this.courseSearchService.getAllCourses();
         this.displayResults = this.allCourses;
-        this.updateFavoriteCourses();
       }
     });
 
-    // Subscribe to favorites changes if authenticated
-    this.favoritesService.favorites$.pipe(takeUntil(this.destroy$)).subscribe(() => {
-      this.updateFavoriteCourses();
-    });
+    // Load favorites if authenticated
+    if (this.authService.isAuthenticated()) {
+      this.favoritesService.getFavorites().pipe(takeUntil(this.destroy$)).subscribe({
+        next: () => {
+          this.updateFavoriteCourses();
+        },
+        error: () => {
+          // Silently fail if not authenticated or error occurs
+          this.updateFavoriteCourses();
+        }
+      });
+    }
   }
 
   ngOnDestroy() {
@@ -77,9 +61,9 @@ export class CoursesComponent implements OnInit, OnDestroy {
     const query = event.target.value;
     this.searchTerm = query;
     if (this.showingFavorites) {
-      this.displayResults = this.favoriteCourses.filter(course =>
-        course.title.toLowerCase().includes(query.toLowerCase()) ||
-        course.filename.toLowerCase().includes(query.toLowerCase())
+      this.displayResults = this.favoriteCourses.filter(c =>
+        c.title.toLowerCase().includes(query.toLowerCase()) ||
+        c.filename.toLowerCase().includes(query.toLowerCase())
       );
     } else {
       this.displayResults = this.courseSearchService.searchCourses(query);
@@ -90,27 +74,37 @@ export class CoursesComponent implements OnInit, OnDestroy {
     this.router.navigate(['/courses', course.filename]);
   }
 
+  isFavorite(course: CourseSearchResult): boolean {
+    return this.favoritesService.isFavorite(course.filename);
+  }
+
   toggleFavorite(course: CourseSearchResult, event: Event) {
     event.stopPropagation();
 
-    if (this.isAuthenticated && !this.isFavoritesLoading) {
-      if (this.favoritesService.isFavorited(course.filename)) {
-        this.favoritesService.removeFavorite(course.filename).pipe(takeUntil(this.destroy$)).subscribe({
-          error: (err) => console.error('Failed to remove favorite:', err)
-        });
-      } else {
-        this.favoritesService.addFavorite(course.filename).pipe(takeUntil(this.destroy$)).subscribe({
-          error: (err) => console.error('Failed to add favorite:', err)
-        });
-      }
+    if (!this.authService.isAuthenticated()) {
+      this.router.navigate(['/sign-in']);
+      return;
     }
-  }
 
-  isFavorite(course: CourseSearchResult): boolean {
-    if (this.isAuthenticated) {
-      return this.favoritesService.isFavorited(course.filename);
+    if (this.isFavorite(course)) {
+      this.favoritesService.removeFavorite(course.filename).pipe(takeUntil(this.destroy$)).subscribe({
+        next: () => {
+          this.updateFavoriteCourses();
+        },
+        error: (err) => {
+          console.error('Error removing favorite:', err);
+        }
+      });
+    } else {
+      this.favoritesService.addFavorite(course.filename).pipe(takeUntil(this.destroy$)).subscribe({
+        next: () => {
+          this.updateFavoriteCourses();
+        },
+        error: (err) => {
+          console.error('Error adding favorite:', err);
+        }
+      });
     }
-    return false;
   }
 
   showFavorites() {
@@ -126,13 +120,9 @@ export class CoursesComponent implements OnInit, OnDestroy {
   }
 
   private updateFavoriteCourses() {
-    if (this.isAuthenticated) {
-      const favoriteFilenames = this.favoritesService.getFavoritesSync();
-      this.favoriteCourses = this.allCourses.filter(course =>
-        favoriteFilenames.includes(course.filename)
-      );
-    } else {
-      this.favoriteCourses = [];
-    }
+    const favoriteFilenames = this.favoritesService.getFavoritesSync();
+    this.favoriteCourses = this.allCourses.filter(course =>
+      favoriteFilenames.includes(course.filename)
+    );
   }
 }

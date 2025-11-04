@@ -1,11 +1,15 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { BehaviorSubject, Observable } from "rxjs";
-import { tap } from "rxjs/operators";
-import { environment } from "../../environments/environment";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { tap, map } from 'rxjs/operators';
+import { environment } from '../environments/environment';
+
+export interface FavoritesResponse {
+  favorites: string[];
+}
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root'
 })
 export class FavoritesService {
   private favoritesSubject = new BehaviorSubject<string[]>([]);
@@ -13,60 +17,65 @@ export class FavoritesService {
 
   constructor(private http: HttpClient) {}
 
-  // Get favorites from backend
-  getFavorites(): Observable<{ favorites: string[] }> {
-    return this.http.get<{ favorites: string[] }>(`${environment.apiUrl}/api/favorites`).pipe(
-      tap((response) => {
-        this.favoritesSubject.next(response.favorites);
-      })
-    );
-  }
-
-  // Add favorite to backend
-  addFavorite(courseFilename: string): Observable<any> {
+  /**
+   * Get all favorite courses for the current user
+   */
+  getFavorites(): Observable<string[]> {
     return this.http
-      .post(`${environment.apiUrl}/api/favorites`, { courseFilename })
+      .get<FavoritesResponse>(`${environment.apiUrl}/api/favorites`)
       .pipe(
-        tap(() => this.updateLocal(courseFilename, 'add'))
+        tap((response) => {
+          this.favoritesSubject.next(response.favorites);
+        }),
+        map((response) => response.favorites)
       );
   }
 
-  // Remove favorite from backend
-  removeFavorite(courseFilename: string): Observable<any> {
-    return this.http
-      .delete(`${environment.apiUrl}/api/favorites`, {
-        body: { courseFilename },
-      })
-      .pipe(
-        tap(() => this.updateLocal(courseFilename, 'remove'))
-      );
-  }
-
-  // Check if course is favorited
-  isFavorited(courseFilename: string): boolean {
-    return this.favoritesSubject.value.includes(courseFilename);
-  }
-
-  // Get all favorites
+  /**
+   * Get current favorites synchronously
+   */
   getFavoritesSync(): string[] {
     return this.favoritesSubject.value;
   }
 
-  // Update in-memory state after API call
-  private updateLocal(courseFilename: string, action: 'add' | 'remove'): void {
-    const current = this.favoritesSubject.value;
-    let updated: string[];
+  /**
+   * Check if a course is favorited
+   */
+  isFavorite(courseFilename: string): boolean {
+    return this.favoritesSubject.value.includes(courseFilename);
+  }
 
-    if (action === 'add') {
-      if (!current.includes(courseFilename)) {
-        updated = [...current, courseFilename];
-      } else {
-        updated = current;
-      }
-    } else {
-      updated = current.filter((f) => f !== courseFilename);
-    }
+  /**
+   * Add a course to favorites
+   */
+  addFavorite(courseFilename: string): Observable<any> {
+    return this.http
+      .post(`${environment.apiUrl}/api/favorites`, { courseFilename })
+      .pipe(
+        tap(() => {
+          const current = this.favoritesSubject.value;
+          if (!current.includes(courseFilename)) {
+            this.favoritesSubject.next([...current, courseFilename]);
+          }
+        })
+      );
+  }
 
-    this.favoritesSubject.next(updated);
+  /**
+   * Remove a course from favorites
+   */
+  removeFavorite(courseFilename: string): Observable<any> {
+    return this.http
+      .delete(`${environment.apiUrl}/api/favorites`, {
+        body: { courseFilename }
+      })
+      .pipe(
+        tap(() => {
+          const current = this.favoritesSubject.value;
+          this.favoritesSubject.next(
+            current.filter((fav) => fav !== courseFilename)
+          );
+        })
+      );
   }
 }

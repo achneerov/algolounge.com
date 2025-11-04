@@ -36,7 +36,7 @@
       <div class="course-content">
         <h3>{{ course.title }}</h3>
       </div>
-      <button 
+      <button
         class="favorite-button"
         [class.favorited]="isFavorite(course)"
         (click)="toggleFavorite(course, $event)"

@@ -1,10 +1,12 @@
-import { Component, OnInit, inject, computed } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { FavoritesService } from '../../services/favorites.service';
 import { AuthService } from '../../services/auth.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 interface CourseTag {
   text: string;
@@ -44,28 +46,38 @@ interface Course {
   templateUrl: './course-detail.component.html',
   styleUrl: './course-detail.component.scss'
 })
-export class CourseDetailComponent implements OnInit {
+export class CourseDetailComponent implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private http = inject(HttpClient);
   private localStorageService = inject(LocalStorageService);
   private favoritesService = inject(FavoritesService);
   private authService = inject(AuthService);
+  private destroy$ = new Subject<void>();
 
   course: Course | null = null;
   courseSections: CourseSection[] = [];
   courseName = '';
 
-  // Reactive state
-  isAuthenticated = computed(() => this.authService.isAuthenticated());
-  isFavoritedBackend = computed(() => this.favoritesService.getFavoritesSync().includes(this.courseName));
-  isLoading = false;
-
   ngOnInit() {
-    this.route.params.subscribe(params => {
+    this.route.params.pipe(takeUntil(this.destroy$)).subscribe(params => {
       this.courseName = params['filename'];
       this.loadCourse();
     });
+
+    // Load favorites if authenticated
+    if (this.authService.isAuthenticated()) {
+      this.favoritesService.getFavorites().pipe(takeUntil(this.destroy$)).subscribe({
+        error: () => {
+          // Silently fail if not authenticated or error occurs
+        }
+      });
+    }
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   private loadCourse() {
@@ -161,42 +173,29 @@ export class CourseDetailComponent implements OnInit {
     this.router.navigate(['/courses']);
   }
 
+  isFavorite(): boolean {
+    return this.favoritesService.isFavorite(this.courseName);
+  }
+
   toggleFavorite(): void {
-    if (!this.isAuthenticated()) {
+    if (!this.authService.isAuthenticated()) {
+      this.router.navigate(['/sign-in']);
       return;
     }
 
-    this.isLoading = true;
-    const isFavorited = this.favoritesService.isFavorited(this.courseName);
-
-    if (isFavorited) {
-      this.favoritesService.removeFavorite(this.courseName).subscribe({
-        next: () => {
-          this.isLoading = false;
-        },
+    if (this.isFavorite()) {
+      this.favoritesService.removeFavorite(this.courseName).pipe(takeUntil(this.destroy$)).subscribe({
         error: (err) => {
-          console.error('Failed to remove favorite:', err);
-          this.isLoading = false;
+          console.error('Error removing favorite:', err);
         }
       });
     } else {
-      this.favoritesService.addFavorite(this.courseName).subscribe({
-        next: () => {
-          this.isLoading = false;
-        },
+      this.favoritesService.addFavorite(this.courseName).pipe(takeUntil(this.destroy$)).subscribe({
         error: (err) => {
-          console.error('Failed to add favorite:', err);
-          this.isLoading = false;
+          console.error('Error adding favorite:', err);
         }
       });
     }
-  }
-
-  isFavorite(): boolean {
-    if (this.isAuthenticated()) {
-      return this.isFavoritedBackend();
-    }
-    return false;
   }
 
   isQuestionCompleted(questionFilename: string): boolean {

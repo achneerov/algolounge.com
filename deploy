@@ -68,7 +68,7 @@ mkdir -p frontend/src/environments
 cat > frontend/src/environments/environment.ts << EOF
 export const environment = {
   production: true,
-  apiUrl: '/api'
+  apiUrl: ''
 };
 EOF
 print_status "Frontend environment file created"

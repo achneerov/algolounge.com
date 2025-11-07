@@ -480,7 +480,74 @@
     "week9": {
       "title": "Week 9",
       "description": "These are the questions that will be looked at in week 9.",
-      "questions": []
+      "questions": [
+        {
+          "filename": "climbing-stairs",
+          "urls": [
+            { "url": "https://leetcode.com/problems/climbing-stairs/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/climbing-stairs", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "1D Dynamic Programming", "color": "#06b6d4" }
+          ]
+        },
+        {
+          "filename": "min-cost-climbing-stairs",
+          "urls": [
+            { "url": "https://leetcode.com/problems/min-cost-climbing-stairs/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/min-cost-climbing-stairs", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "1D Dynamic Programming", "color": "#06b6d4" }
+          ]
+        },
+        {
+          "filename": "daily-temperatures",
+          "urls": [
+            { "url": "https://leetcode.com/problems/daily-temperatures/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/daily-temperatures", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Stack", "color": "#eab308" }
+          ]
+        },
+        {
+          "filename": "car-fleet",
+          "urls": [
+            { "url": "https://leetcode.com/problems/car-fleet/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/car-fleet", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Stack", "color": "#eab308" }
+          ]
+        },
+        {
+          "filename": "distinct-subsequences",
+          "urls": [
+            { "url": "https://leetcode.com/problems/distinct-subsequences/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/distinct-subsequences", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "2D Dynamic Programming", "color": "#06b6d4" }
+          ]
+        },
+        {
+          "filename": "burst-balloons",
+          "urls": [
+            { "url": "https://leetcode.com/problems/burst-balloons/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/burst-balloons", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "2D Dynamic Programming", "color": "#06b6d4" }
+          ]
+        }
+      ]
     },
     "week10": {
       "title": "Week 10",

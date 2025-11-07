@@ -1355,8 +1355,36 @@
         "vehicle",
         "only"
       ]
+    },
+    {
+      "index": 84,
+      "filename": "distinct-subsequences",
+      "title": "Distinct Subsequences",
+      "keywords": [
+        "dynamic-programming",
+        "subsequence",
+        "string-matching",
+        "dp-2d"
+      ]
+    },
+    {
+      "index": 85,
+      "filename": "min-cost-climbing-stairs",
+      "title": "Min Cost Climbing Stairs",
+      "keywords": [
+        "min",
+        "cost",
+        "climbing",
+        "stairs",
+        "leetcode",
+        "746",
+        "dynamic",
+        "programming",
+        "array",
+        "optimization"
+      ]
     }
   ],
-  "lastUpdated": "2025-10-23T22:55:52.716Z",
-  "totalQuestions": 84
+  "lastUpdated": "2025-11-07T02:24:22.524Z",
+  "totalQuestions": 86
 }

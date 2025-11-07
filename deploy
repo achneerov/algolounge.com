@@ -63,15 +63,8 @@ CORS_ORIGIN=https://algolounge.com
 EOF
 print_status "Backend environment file created"
 
-# Create frontend environment.ts for production
-mkdir -p frontend/src/environments
-cat > frontend/src/environments/environment.ts << EOF
-export const environment = {
-  production: true,
-  apiUrl: '/api'
-};
-EOF
-print_status "Frontend environment file created"
+# Frontend environment files are now part of the build configuration
+print_status "Frontend environment configuration found (using angular.json fileReplacements)"
 
 # Build Angular application
 print_step "Building Angular application..."

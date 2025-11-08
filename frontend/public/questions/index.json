@@ -69,6 +69,37 @@
         "combination",
         "unique"
       ]
+    },{
+      "index":3,
+      "filename": "accounts-merge",
+      "title": "Accounts Merge",
+      "keywords": [
+        "accounts",
+        "merge",
+        "leetcode",
+        "721",
+        "given",
+        "list",
+        "where",
+        "each",
+        "element",
+        "strings"]
+      },
+      {
+      "filename": "add-binary",
+      "title": "Add Binary",
+      "keywords": [
+        "add",
+        "binary",
+        "leetcode",
+        "given",
+        "two",
+        "strings",
+        "return",
+        "their",
+        "sum",
+        "string"
+      ]
     },
     {
       "index": 3,

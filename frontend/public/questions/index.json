@@ -1383,8 +1383,25 @@
         "array",
         "optimization"
       ]
+    },
+    {
+      "index": 86,
+      "filename": "concatenation-of-array",
+      "title": "Concatenation of Array",
+      "keywords": [
+        "concatenation",
+        "array",
+        "leetcode",
+        "1929",
+        "given",
+        "integer",
+        "nums",
+        "length",
+        "create",
+        "ans"
+      ]
     }
   ],
-  "lastUpdated": "2025-11-07T02:24:22.524Z",
-  "totalQuestions": 86
+  "lastUpdated": "2025-11-08T17:36:04.581Z",
+  "totalQuestions": 87
 }

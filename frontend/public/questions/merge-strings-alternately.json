@@ -1,0 +1,61 @@
+{
+  "index": 88,
+  "filename": "merge-strings-alternately",
+  "title": "Merge Strings Alternately",
+  "keywords": [
+    "merge",
+    "strings",
+    "alternately",
+    "two pointers",
+    "string manipulation"
+  ],
+  "description": "<h2>Merge Strings Alternately</h2><p>You are given two strings, <code>word1</code> and <code>word2</code>. Construct a new string by merging them in <strong>alternating</strong> order, starting with <code>word1</code> — take one character from <code>word1</code>, then one from <code>word2</code>, and repeat this process.</p><p>If one string is longer than the other, append the remaining characters from the longer string to the end of the merged result.</p><p>Return the final merged string.</p><h3>Examples:</h3><ul><li>Input: word1 = \"abc\", word2 = \"xyz\"<br>Output: \"axbycz\"</li><li>Input: word1 = \"ab\", word2 = \"abbxxc\"<br>Output: \"aabbbxxc\"</li></ul><h3>Constraints:</h3><ul><li><code>1 &lt;= word1.length, word2.length &lt;= 100</code></li><li><code>word1</code> and <code>word2</code> consist of lowercase English letters.</li></ul>",
+  "entry_function": "mergeStringsAlternately",
+  "template": "def mergeStringsAlternately(word1, word2):\n    ",
+  "solution_text": "<h3>Merge Strings Alternately</h3><p><strong>Algorithm:</strong></p><ol><li>Use two pointers to track position in each string</li><li>Alternate taking characters from word1 and word2</li><li>When one string is exhausted, append remaining characters from the other</li></ol><p><strong>Time Complexity:</strong> O(m + n) where m and n are lengths of the strings</p><p><strong>Space Complexity:</strong> O(m + n) for the result string</p><p><strong>Key Insights:</strong></p><ul><li>Two pointers technique handles different length strings</li><li>Simple alternating pattern with edge case handling</li><li>Can be solved with iteration or by building result character by character</li></ul>",
+  "solution_code": "def mergeStringsAlternately(word1, word2):\n    result = []\n    i = 0\n    max_len = max(len(word1), len(word2))\n    \n    while i < max_len:\n        if i < len(word1):\n            result.append(word1[i])\n        if i < len(word2):\n            result.append(word2[i])\n        i += 1\n    \n    return ''.join(result)",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for mergeStringsAlternately function\"\"\"\n    return (test_case_input['word1'], test_case_input['word2'])",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the merged string result\"\"\"\n    passed = actual_output == expected_output\n    output_str = str(actual_output) if actual_output is not None else 'None'\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "word1": "abc",
+        "word2": "xyz"
+      },
+      "output": "axbycz"
+    },
+    {
+      "id": 2,
+      "input": {
+        "word1": "ab",
+        "word2": "abbxxc"
+      },
+      "output": "aabbbxxc"
+    },
+    {
+      "id": 3,
+      "input": {
+        "word1": "a",
+        "word2": "b"
+      },
+      "output": "ab"
+    },
+    {
+      "id": 4,
+      "input": {
+        "word1": "hello",
+        "word2": "world"
+      },
+      "output": "hweolrllod"
+    },
+    {
+      "id": 5,
+      "input": {
+        "word1": "x",
+        "word2": "yzabc"
+      },
+      "output": "xyzabc"
+    }
+  ]
+}

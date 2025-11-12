@@ -11,10 +11,10 @@
   width: 100%;
   max-width: 400px;
   padding: 48px 40px;
-  background: var(--color-bg-secondary);
+  background: var(--color-bg-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
   h1 {
     margin: 0 0 32px 0;
@@ -46,7 +46,7 @@ form {
     padding: 12px 16px;
     font-size: 16px;
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
+    border-radius: 14px;
     background: var(--color-bg-primary);
     color: var(--color-text-primary);
     transition: border-color 0.2s ease;
@@ -54,7 +54,7 @@ form {
     &:focus {
       outline: none;
       border-color: var(--color-primary);
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
     }
 
     &:disabled {
@@ -66,11 +66,11 @@ form {
 
 .error-message {
   padding: 12px;
-  background: rgba(239, 68, 68, 0.1);
+  background: var(--color-error-bg);
   border: 1px solid rgba(239, 68, 68, 0.3);
-  border-radius: var(--radius-md);
+  border-radius: 14px;
   font-size: 14px;
-  color: #ef4444;
+  color: var(--color-error);
 }
 
 .submit-btn {
@@ -80,14 +80,14 @@ form {
   color: white;
   background: var(--color-primary);
   border: none;
-  border-radius: var(--radius-lg);
+  border-radius: 14px;
   cursor: pointer;
   transition: all 0.2s ease;
 
   &:hover:not(:disabled) {
-    background: var(--color-primary-hover, #2563eb);
+    background: var(--color-primary-dark);
     transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   }
 
   &:disabled {

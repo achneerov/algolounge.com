@@ -173,10 +173,16 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     this.isRunning = false;
   }
 
+  onReset() {
+    // Clear console output when reset button is clicked
+    this.executionResult = null;
+  }
+
   notFound = false;
 
   loadQuestion(name: string) {
     this.notFound = false;
+    this.executionResult = null;  // Clear console output when loading new question
     this.http
       .get<any>(`/questions/${name}.json`)
       .subscribe({

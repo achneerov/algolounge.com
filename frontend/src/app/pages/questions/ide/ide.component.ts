@@ -60,12 +60,6 @@ export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
       "&.cm-focused .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection, .cm-line ::selection": {
         backgroundColor: "rgba(59, 130, 246, 0.4) !important",
       },
-      ".cm-selectionLayer .cm-selectionBackground": {
-        backgroundColor: "rgba(59, 130, 246, 0.4) !important",
-      },
-      ".cm-activeLine .cm-selectionBackground": {
-        backgroundColor: "rgba(59, 130, 246, 0.6) !important",
-      },
       ".cm-activeLine": {
         backgroundColor: "rgba(241, 245, 249, 0.3)",
       },
@@ -95,12 +89,6 @@ export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
       },
       "&.cm-focused .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection, .cm-line ::selection": {
         backgroundColor: "rgba(96, 165, 250, 0.5) !important",
-      },
-      ".cm-selectionLayer .cm-selectionBackground": {
-        backgroundColor: "rgba(96, 165, 250, 0.5) !important",
-      },
-      ".cm-activeLine .cm-selectionBackground": {
-        backgroundColor: "rgba(96, 165, 250, 0.7) !important",
       },
       ".cm-activeLine": {
         backgroundColor: "rgba(30, 41, 59, 0.3)",

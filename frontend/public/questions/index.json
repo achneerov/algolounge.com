@@ -1383,8 +1383,66 @@
         "array",
         "optimization"
       ]
+    },
+    {
+      "index": 86,
+      "filename": "concatenation-of-array",
+      "title": "Concatenation of Array",
+      "keywords": [
+        "concatenation",
+        "array",
+        "leetcode",
+        "1929",
+        "given",
+        "integer",
+        "nums",
+        "length",
+        "create",
+        "ans"
+      ]
+    },
+    {
+      "index": 87,
+      "filename": "missing-number",
+      "title": "Missing Number",
+      "keywords": [
+        "missing",
+        "number",
+        "array",
+        "math",
+        "bit manipulation",
+        "xor",
+        "sum formula"
+      ]
+    },
+    {
+      "index": 88,
+      "filename": "merge-strings-alternately",
+      "title": "Merge Strings Alternately",
+      "keywords": [
+        "merge",
+        "strings",
+        "alternately",
+        "two pointers",
+        "string manipulation"
+      ]
+    },
+    {
+      "index": 89,
+      "filename": "find-duplicate-integer",
+      "title": "Find the Duplicate Number",
+      "keywords": [
+        "find",
+        "duplicate",
+        "number",
+        "array",
+        "cycle detection",
+        "floyd",
+        "tortoise and hare",
+        "two pointers"
+      ]
     }
   ],
-  "lastUpdated": "2025-11-07T02:24:22.524Z",
-  "totalQuestions": 86
+  "lastUpdated": "2025-11-08T20:04:51.042Z",
+  "totalQuestions": 90
 }

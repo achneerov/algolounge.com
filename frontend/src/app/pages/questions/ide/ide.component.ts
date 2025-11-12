@@ -57,11 +57,17 @@ export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
       ".cm-cursor, .cm-dropCursor": {
         borderLeftColor: "#3B82F6",
       },
-      "&.cm-focused .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection": {
-        backgroundColor: "rgba(59, 130, 246, 0.2)",
+      "&.cm-focused .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection, .cm-line ::selection": {
+        backgroundColor: "rgba(59, 130, 246, 0.4) !important",
+      },
+      ".cm-selectionLayer .cm-selectionBackground": {
+        backgroundColor: "rgba(59, 130, 246, 0.4) !important",
+      },
+      ".cm-activeLine .cm-selectionBackground": {
+        backgroundColor: "rgba(59, 130, 246, 0.6) !important",
       },
       ".cm-activeLine": {
-        backgroundColor: "#F1F5F9",
+        backgroundColor: "rgba(241, 245, 249, 0.3)",
       },
       ".cm-gutters": {
         backgroundColor: "#F1F5F9",
@@ -87,11 +93,17 @@ export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
       ".cm-cursor, .cm-dropCursor": {
         borderLeftColor: "#60A5FA",
       },
-      "&.cm-focused .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection": {
-        backgroundColor: "rgba(96, 165, 250, 0.3)",
+      "&.cm-focused .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection, .cm-line ::selection": {
+        backgroundColor: "rgba(96, 165, 250, 0.5) !important",
+      },
+      ".cm-selectionLayer .cm-selectionBackground": {
+        backgroundColor: "rgba(96, 165, 250, 0.5) !important",
+      },
+      ".cm-activeLine .cm-selectionBackground": {
+        backgroundColor: "rgba(96, 165, 250, 0.7) !important",
       },
       ".cm-activeLine": {
-        backgroundColor: "#1E293B",
+        backgroundColor: "rgba(30, 41, 59, 0.3)",
       },
       ".cm-gutters": {
         backgroundColor: "#1E293B",

@@ -1,122 +1,150 @@
 <div class="home-page">
 
-  <!-- Hero Section - Interactive & Benefit-Driven -->
+  <!-- Hero Section -->
   <section class="hero">
-    <div class="hero-container">
+    <div class="hero-card">
+      <h1 class="hero-title">Welcome to AlgoLounge</h1>
+      <p class="hero-subtitle">
+        The ultimate platform to practice algorithms, prepare for technical interviews, and
+        compete with a global community of developers.
+      </p>
+      <button class="btn-primary" (click)="navigateToQuestions()">
+        Start Coding Now
+      </button>
+    </div>
+  </section>
 
-      <div class="hero-main">
-        <h1 class="hero-headline">
-          Master Algorithms With<br>
-          <span class="headline-accent">Hands-On Practice</span>
-        </h1>
+  <!-- Feature Cards -->
+  <section class="features">
+    <div class="feature-card">
+      <div class="feature-icon cyan">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7" rx="1"/>
+          <rect x="14" y="3" width="7" height="7" rx="1"/>
+          <rect x="14" y="14" width="7" height="7" rx="1"/>
+          <rect x="3" y="14" width="7" height="7" rx="1"/>
+        </svg>
+      </div>
+      <h3 class="feature-title">Vast Problem Library</h3>
+      <p class="feature-text">
+        Access thousands of problems from real company interviews, categorized by topic, level, and difficulty.
+      </p>
+    </div>
 
-        <p class="hero-subtext">
-          A modern coding platform designed for developers who learn by doing. Practice real algorithmic challenges with instant feedback across multiple languages, all in your browser.
+    <div class="feature-card">
+      <div class="feature-icon blue">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <circle cx="12" cy="12" r="6"/>
+          <circle cx="12" cy="12" r="2"/>
+        </svg>
+      </div>
+      <h3 class="feature-title">Live Contests</h3>
+      <p class="feature-text">
+        Test your skills against others in real-time competitions and climb the global leaderboard.
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon cyan">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18h6"/>
+          <path d="M10 22h4"/>
+          <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8a6 6 0 0 0-12 0c0 1.33.47 2.48 1.5 3.5A4.65 4.65 0 0 0 8.91 14"/>
+        </svg>
+      </div>
+      <h3 class="feature-title">AI-Powered Hints</h3>
+      <p class="feature-text">
+        Get smart, contextual hints when you're stuck, powered by AI to advanced AI Hints assist you.
+      </p>
+    </div>
+  </section>
+
+  <!-- Learning Paths -->
+  <section class="learning-paths">
+    <h2 class="section-title">Follow Your Path to Mastery</h2>
+    <p class="section-subtitle">
+      Structured learning paths to guide you from beginner to expert in key areas of computer science.
+    </p>
+
+    <div class="paths-grid">
+      <div class="path-card">
+        <div class="path-icon blue">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <text x="6" y="18" font-family="monospace" font-size="16" font-weight="bold">{{ '{' }} {{ '}' }}</text>
+          </svg>
+        </div>
+        <h3 class="path-title">Data Structures</h3>
+        <p class="path-text">
+          Master arrays, linked lists, trees, graphs, and more.
         </p>
-
-        <button class="btn-start" (click)="navigateToQuestions()">
-          <span class="btn-text">Start Practicing</span>
-          <span class="btn-arrow">→</span>
-        </button>
+        <a class="path-link" (click)="navigateToQuestions()">Explore Path →</a>
       </div>
 
-      <div class="hero-visual">
-        <div class="ide-demo">
-          <div class="ide-header">
-            <span class="ide-title">Two Sum - Array Problem</span>
-            <span class="ide-difficulty">Easy</span>
-          </div>
-          <div class="ide-code">
-            <div class="code-line">
-              <span class="kw">def</span> <span class="fn">twoSum</span>(<span class="pr">nums</span>, <span class="pr">target</span>):
-            </div>
-            <div class="code-line">
-              <span class="indent"></span><span class="vr">seen</span> = {{ '{' }}{{ '}' }}
-            </div>
-            <div class="code-line">
-              <span class="indent"></span><span class="kw">for</span> <span class="vr">i</span>, <span class="vr">n</span> <span class="kw">in</span> <span class="fn">enumerate</span>(<span class="pr">nums</span>):
-            </div>
-            <div class="code-line">
-              <span class="indent"></span><span class="indent"></span><span class="kw">if</span> <span class="pr">target</span> - <span class="vr">n</span> <span class="kw">in</span> <span class="vr">seen</span>:
-            </div>
-            <div class="code-line">
-              <span class="indent"></span><span class="indent"></span><span class="indent"></span><span class="kw">return</span> [<span class="vr">seen</span>[<span class="pr">target</span> - <span class="vr">n</span>], <span class="vr">i</span>]
-            </div>
-            <div class="code-line typing-animation">
-              <span class="indent"></span><span class="indent"></span><span class="vr">seen</span>[<span class="vr">n</span>] = <span class="vr">i</span>
-            </div>
-          </div>
-          <div class="ide-result success">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-            </svg>
-            <span>All tests passed</span>
-            <span class="result-time">Solved in 4:23</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Trusted By Section -->
-  <section class="trusted-by">
-    <p class="trusted-label">Trusted by developers at</p>
-    <div class="company-logos">
-      <span class="company-logo">National Bank</span>
-      <span class="company-logo">KPMG</span>
-      <span class="company-logo">Coveo</span>
-      <span class="company-logo">Intact Insurance</span>
-      <span class="company-logo">Autodesk</span>
-      <span class="company-logo">Consoltec</span>
-    </div>
-  </section>
-
-  <!-- Benefits Section -->
-  <section class="benefits">
-    <div class="benefits-grid">
-
-      <div class="benefit-card">
-        <div class="benefit-icon">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+      <div class="path-card">
+        <div class="path-icon purple">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="5" cy="12" r="2"/>
+            <circle cx="12" cy="5" r="2"/>
+            <circle cx="19" cy="12" r="2"/>
+            <circle cx="12" cy="19" r="2"/>
+            <line x1="6.5" y1="11" x2="10.5" y2="6.5"/>
+            <line x1="13.5" y1="6.5" x2="17.5" y2="11"/>
+            <line x1="17.5" y1="13" x2="13.5" y2="17.5"/>
+            <line x1="10.5" y1="17.5" x2="6.5" y2="13"/>
           </svg>
         </div>
-        <h3 class="benefit-title">Practice anywhere, instantly</h3>
-        <p class="benefit-text">Browser-based IDE. No downloads, no config. Just code.</p>
+        <h3 class="path-title">Algorithms</h3>
+        <p class="path-text">
+          Tackle sorting, searching, dynamic programming, and beyond.
+        </p>
+        <a class="path-link" (click)="navigateToQuestions()">Explore Path →</a>
       </div>
 
-      <div class="benefit-card">
-        <div class="benefit-icon">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M12 6l0 6 4 4"/>
+      <div class="path-card">
+        <div class="path-icon blue">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M3 9h18"/>
+            <path d="M3 15h18"/>
+            <path d="M9 3v18"/>
           </svg>
         </div>
-        <h3 class="benefit-title">Problems from actual interviews</h3>
-        <p class="benefit-text">Google, Amazon, Meta questions. The ones that actually matter.</p>
+        <h3 class="path-title">System Design</h3>
+        <p class="path-text">
+          Learn to design scalable, fault-tolerant systems.
+        </p>
+        <a class="path-link" (click)="navigateToQuestions()">Explore Path →</a>
       </div>
 
-      <div class="benefit-card">
-        <div class="benefit-icon">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="16 18 22 12 16 6"/>
-            <polyline points="8 6 2 12 8 18"/>
+      <div class="path-card">
+        <div class="path-icon blue">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="12" cy="5" rx="9" ry="3"/>
+            <path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/>
+            <path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/>
           </svg>
         </div>
-        <h3 class="benefit-title">Your language, your choice</h3>
-        <p class="benefit-text">Python, Java, TypeScript, JavaScript. Same problem, any stack.</p>
+        <h3 class="path-title">Databases</h3>
+        <p class="path-text">
+          Dive deep into SQL, NoSQL, and database architecture.
+        </p>
+        <a class="path-link" (click)="navigateToQuestions()">Explore Path →</a>
       </div>
-
     </div>
   </section>
 
   <!-- Final CTA -->
   <section class="final-cta">
-    <h2 class="cta-headline">Ready to level up?</h2>
-    <button class="btn-primary-large" (click)="navigateToQuestions()">
-      <span>Browse 200+ Problems</span>
-    </button>
+    <div class="cta-card">
+      <h2 class="cta-title">Ready to Level Up Your Skills?</h2>
+      <p class="cta-text">
+        Join thousands of developers who are sharpening their coding skills and landing their dream jobs with AlgoLounge.
+      </p>
+      <button class="btn-primary" (click)="navigateToQuestions()">
+        Join the Community for Free
+      </button>
+    </div>
   </section>
 
 </div>

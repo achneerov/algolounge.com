@@ -40,6 +40,7 @@ export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() isRunning: boolean = false;
   @Output() run = new EventEmitter<void>();
   @Output() stop = new EventEmitter<void>();
+  @Output() reset = new EventEmitter<void>();
 
   private editorView?: EditorView;
   private forceTemplateReload = false;
@@ -212,6 +213,9 @@ export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
       this.forceTemplateReload = true;
       this.initEditor();
     }
+    
+    // Emit reset event to parent to clear console output
+    this.reset.emit();
   }
 
   onRun(): void {

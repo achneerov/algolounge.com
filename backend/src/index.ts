@@ -4,7 +4,7 @@ import path from "path";
 import dotenv from "dotenv";
 
 // Load environment variables
-dotenv.config({ path: path.join(__dirname, "../.env") });
+dotenv.config({ path: path.join(__dirname, "../.env.local") });
 
 import authRoutes from "./routes/auth";
 import favoritesRoutes from "./routes/favorites";

@@ -56,14 +56,14 @@ print_status "Database migrations complete"
 print_step "Generating environment files..."
 
 # Generate JWT secret if it doesn't exist
-if [ ! -f "backend/.env" ] || ! grep -q "JWT_SECRET" "backend/.env"; then
+if [ ! -f "backend/.env.local" ] || ! grep -q "JWT_SECRET" "backend/.env.local"; then
   JWT_SECRET=$(node -e "console.log(require('crypto').randomBytes(32).toString('base64'))")
 else
-  JWT_SECRET=$(grep "JWT_SECRET" "backend/.env" | cut -d '=' -f 2)
+  JWT_SECRET=$(grep "JWT_SECRET" "backend/.env.local" | cut -d '=' -f 2)
 fi
 
-# Create backend .env
-cat > backend/.env << EOF
+# Create backend .env.local
+cat > backend/.env.local << EOF
 NODE_ENV=$NODE_ENV
 JWT_SECRET=$JWT_SECRET
 PORT=3000

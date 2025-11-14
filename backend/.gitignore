@@ -1,6 +1,6 @@
 node_modules/
 dist/
-.env
+.env.local
 database.db
 database.db-shm
 database.db-wal

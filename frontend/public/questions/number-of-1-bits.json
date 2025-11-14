@@ -1,0 +1,80 @@
+{
+  "index": 101,
+  "filename": "number-of-1-bits",
+  "title": "Number of 1 Bits",
+  "keywords": [
+    "number",
+    "bits",
+    "hamming weight",
+    "bit manipulation",
+    "count",
+    "ones",
+    "binary",
+    "unsigned integer"
+  ],
+  "description": "<h2>Number of 1 Bits</h2><p>Write a function that takes the binary representation of a positive integer and returns the number of set bits it has (also known as the Hamming weight).</p><h3>Examples:</h3><ul><li>Input: n = 11<br>Output: 3<br>Explanation: The input binary string <code>1011</code> has a total of three set bits.</li><li>Input: n = 128<br>Output: 1<br>Explanation: The input binary string <code>10000000</code> has a total of one set bit.</li><li>Input: n = 2147483645<br>Output: 30<br>Explanation: The input binary string <code>1111111111111111111111111111101</code> has a total of thirty set bits.</li></ul><h3>Constraints:</h3><ul><li><code>1 &lt;= n &lt;= 2<sup>31</sup> - 1</code></li></ul><h3>Follow up:</h3><p>If this function is called many times, how would you optimize it?</p>",
+  "entry_function": "hammingWeight",
+  "template": "def hammingWeight(n):\n    ",
+  "solution_text": "<h3>Number of 1 Bits</h3><p><strong>Algorithm:</strong></p><ol><li>Use bit manipulation to count set bits efficiently</li><li>The trick: <code>n &amp; (n - 1)</code> clears the lowest set bit</li><li>Keep applying this operation until n becomes 0</li><li>Count the number of operations needed</li><li>Alternative: use modulo 2 to check last bit, then right shift</li></ol><p><strong>Time Complexity:</strong> O(k) where k is the number of set bits (at most 32 for a 32-bit integer)</p><p><strong>Space Complexity:</strong> O(1) - constant extra space</p><p><strong>Key Insights:</strong></p><ul><li><code>n &amp; (n - 1)</code> removes the rightmost 1 bit</li><li>Example: 12 (1100) &amp; 11 (1011) = 8 (1000)</li><li>Count iterations until n becomes 0</li><li>More efficient than checking every bit position</li></ul>",
+  "solution_code": "def hammingWeight(n):\n    count = 0\n    while n:\n        n &= n - 1  # Clear the lowest set bit\n        count += 1\n    return count",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for hammingWeight function\"\"\"\n    return (test_case_input['n'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the hamming weight result\"\"\"\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "n": 11
+      },
+      "output": 3
+    },
+    {
+      "id": 2,
+      "input": {
+        "n": 128
+      },
+      "output": 1
+    },
+    {
+      "id": 3,
+      "input": {
+        "n": 2147483645
+      },
+      "output": 30
+    },
+    {
+      "id": 4,
+      "input": {
+        "n": 1
+      },
+      "output": 1
+    },
+    {
+      "id": 5,
+      "input": {
+        "n": 7
+      },
+      "output": 3
+    },
+    {
+      "id": 6,
+      "input": {
+        "n": 255
+      },
+      "output": 8
+    },
+    {
+      "id": 7,
+      "input": {
+        "n": 1024
+      },
+      "output": 1
+    },
+    {
+      "id": 8,
+      "input": {
+        "n": 31
+      },
+      "output": 5
+    }
+  ]
+}

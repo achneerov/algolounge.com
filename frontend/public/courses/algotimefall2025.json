@@ -552,7 +552,73 @@
     "week10": {
       "title": "Week 10",
       "description": "These are the questions that will be looked at in week 10.",
-      "questions": []
+      "questions": [
+        {
+          "filename": "single-number",
+          "urls": [
+            { "url": "https://leetcode.com/problems/single-number/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/single-number", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Bit Manipulation", "color": "#a855f7" }
+          ]
+        },
+        {
+          "filename": "number-of-1-bits",
+          "urls": [
+            { "url": "https://leetcode.com/problems/number-of-1-bits/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/number-of-1-bits", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Bit Manipulation", "color": "#a855f7" }
+          ]
+        },
+        {
+          "filename": "sum-of-two-integers",
+          "urls": [
+            { "url": "https://leetcode.com/problems/sum-of-two-integers/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/sum-of-two-integers", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Bit Manipulation", "color": "#a855f7" }
+          ]
+        },
+        {
+          "filename": "reverse-integer",
+          "urls": [
+            { "url": "https://leetcode.com/problems/reverse-integer/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/reverse-integer", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Bit Manipulation", "color": "#a855f7" }
+          ]
+        },
+        {
+          "filename": "regular-expression-matching",
+          "urls": [
+            { "url": "https://leetcode.com/problems/regular-expression-matching/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/regular-expression-matching", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "2D Dynamic Programming", "color": "#06b6d4" }
+          ]
+        },
+        {
+          "filename": "median-of-two-sorted-arrays",
+          "urls": [
+            { "url": "https://leetcode.com/problems/median-of-two-sorted-arrays/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Binary Search", "color": "#3b82f6" }
+          ]
+        }
+      ]
     },
     "week11": {
       "title": "Week 11",

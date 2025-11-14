@@ -1433,7 +1433,7 @@
       "title": "Find the Duplicate Number",
       "keywords": [
         "find",
-        "duplicate",
+        "duplicate ",
         "number",
         "array",
         "cycle detection",
@@ -1441,8 +1441,84 @@
         "tortoise and hare",
         "two pointers"
       ]
+    },
+    {
+      "index": 100,
+      "filename": "single-number",
+      "title": "Single Number",
+      "keywords": [
+        "single",
+        "number",
+        "bit manipulation",
+        "XOR",
+        "array",
+        "integers",
+        "unique",
+        "duplicate",
+        "constant space"
+      ]
+    },
+    {
+      "index": 101,
+      "filename": "number-of-1-bits",
+      "title": "Number of 1 Bits",
+      "keywords": [
+        "number",
+        "bits",
+        "hamming weight",
+        "bit manipulation",
+        "count",
+        "ones",
+        "binary",
+        "unsigned integer"
+      ]
+    },
+    {
+      "index": 102,
+      "filename": "sum-of-two-integers",
+      "title": "Sum of Two Integers",
+      "keywords": [
+        "sum",
+        "integers",
+        "bit manipulation",
+        "addition",
+        "XOR",
+        "carry",
+        "bitwise",
+        "no operators"
+      ]
+    },
+    {
+      "index": 103,
+      "filename": "reverse-integer",
+      "title": "Reverse Integer",
+      "keywords": [
+        "reverse",
+        "integer",
+        "signed",
+        "32-bit",
+        "overflow",
+        "digits",
+        "mathematical",
+        "modulo"
+      ]
+    },
+    {
+      "index": 104,
+      "filename": "regular-expression-matching",
+      "title": "Regular Expression Matching",
+      "keywords": [
+        "regular expression",
+        "regex",
+        "pattern matching",
+        "dynamic programming",
+        "recursion",
+        "string",
+        "wildcard",
+        "hard"
+      ]
     }
   ],
-  "lastUpdated": "2025-11-08T20:04:51.042Z",
-  "totalQuestions": 90
+  "lastUpdated": "2025-11-14T22:32:07.790Z",
+  "totalQuestions": 95
 }

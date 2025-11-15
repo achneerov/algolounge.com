@@ -1,0 +1,48 @@
+<div class="quiz-lobby">
+  <div class="lobby-container" *ngIf="event">
+    <h1 class="lobby-title">Quiz Lobby</h1>
+
+    <div class="room-code-display">
+      <p class="room-code-label">Room Code</p>
+      <div class="room-code">{{ event.roomCode }}</div>
+      <p class="room-code-hint">Share this code with players</p>
+    </div>
+
+    <div class="participants-section">
+      <h2>Participants ({{ event.participants?.length || 0 }})</h2>
+      <div class="participants-list">
+        <div class="participant-card" *ngFor="let participant of event.participants">
+          <div class="participant-avatar">{{ participant.username.charAt(0).toUpperCase() }}</div>
+          <span class="participant-name">{{ participant.username }}</span>
+        </div>
+        <div class="participant-card empty" *ngIf="!event.participants || event.participants.length === 0">
+          <p>Waiting for players to join...</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="error-message" *ngIf="error">
+      {{ error }}
+    </div>
+
+    <div class="lobby-actions">
+      <button
+        *ngIf="isCreator"
+        class="btn btn-primary btn-large"
+        (click)="startQuiz()"
+        [disabled]="isStarting || !event.participants || event.participants.length === 0"
+      >
+        {{ isStarting ? 'Starting...' : 'Start Quiz' }}
+      </button>
+
+      <div class="waiting-message" *ngIf="!isCreator">
+        <p>Waiting for host to start the quiz...</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="error-container" *ngIf="!event && error">
+    <h2>{{ error }}</h2>
+    <a routerLink="/quiz" class="btn btn-secondary">Back to Quiz Home</a>
+  </div>
+</div>

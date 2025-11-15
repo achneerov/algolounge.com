@@ -22,6 +22,27 @@
       "when": 1762219162922,
       "tag": "0002_outstanding_jazinda",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1763246381393,
+      "tag": "0003_moaning_scream",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1763246500000,
+      "tag": "0004_seed_test_users",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1763246600000,
+      "tag": "0005_seed_sample_quiz",
+      "breakpoints": true
     }
   ]
 }

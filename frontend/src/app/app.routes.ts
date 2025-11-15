@@ -7,6 +7,8 @@ import { CourseDetailComponent } from "./pages/course-detail/course-detail.compo
 import { UnitDetailComponent } from "./pages/unit-detail/unit-detail.component";
 import { SignInComponent } from "./pages/auth/sign-in/sign-in.component";
 import { SignUpComponent } from "./pages/auth/sign-up/sign-up.component";
+import { QuizHomeComponent } from "./pages/quiz/quiz-home/quiz-home.component";
+import { QuizLobbyComponent } from "./pages/quiz/quiz-lobby/quiz-lobby.component";
 
 export const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -15,6 +17,8 @@ export const routes: Routes = [
   { path: "questions/:name", component: QuestionsComponent },
   { path: "questions", redirectTo: "questions/two-sum", pathMatch: "full" },
   { path: "home", component: HomeComponent },
+  { path: "quiz", component: QuizHomeComponent },
+  { path: "quiz/:roomCode/lobby", component: QuizLobbyComponent },
   { path: "courses/:courseName/:unitKey", component: UnitDetailComponent },
   { path: "courses/:filename", component: CourseDetailComponent },
   { path: "courses", component: CoursesComponent },

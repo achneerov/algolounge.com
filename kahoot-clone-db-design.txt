@@ -97,7 +97,7 @@ questions (base table)
   - id (integer, primary key)
   - question_type_id (integer, FK to question_types)
   - question_text (text, not null)
-  - time_limit_seconds (integer, nullable) [TODO: decide if needed]
+  - time_limit_seconds (integer, not null, default 30) - range: 5-120 seconds
   - created_at (timestamp)
 
 questions_multiple_choice_2
@@ -154,21 +154,30 @@ quiz_template_rounds (many-to-many: templates ↔ questions)
 quiz_events
   - id (integer, primary key)
   - quiz_template_id (integer, FK to quiz_templates)
-  - room_code (text, 4 digits) [TODO: uniqueness constraints]
+  - room_code (text, 4 digits, not null)
   - created_by_user_id (integer, FK to users)
-  - status (text) [TODO: decide values - 'waiting', 'in_progress', 'completed'?]
+  - status (text, not null) - values: 'waiting', 'in_progress', 'completed'
   - created_at (timestamp)
   - started_at (timestamp, nullable)
   - ended_at (timestamp, nullable)
+  - PARTIAL UNIQUE constraint on room_code WHERE status IN ('waiting', 'in_progress')
+
+quiz_event_participants
+  - id (integer, primary key)
+  - quiz_event_id (integer, FK to quiz_events)
+  - user_id (integer, FK to users)
+  - joined_at (timestamp, not null)
+  - UNIQUE constraint: (quiz_event_id, user_id) - user can only join event once
 
 quiz_event_rounds
   - id (integer, primary key)
   - quiz_event_id (integer, FK to quiz_events)
   - quiz_template_round_id (integer, FK to quiz_template_rounds)
   - round_number (integer, not null) - 1, 2, 3...
-  - status (text) [TODO: decide values - 'waiting', 'active', 'completed'?]
+  - status (text, not null) - values: 'pending', 'active', 'completed'
   - started_at (timestamp, nullable)
   - ended_at (timestamp, nullable)
+  - UNIQUE constraint: (quiz_event_id, round_number)
 ```
 
 ### Performance & Scoring
@@ -178,51 +187,182 @@ quiz_round_performances
   - id (integer, primary key)
   - quiz_event_round_id (integer, FK to quiz_event_rounds)
   - user_id (integer, FK to users)
+  - user_answer (text, nullable) - stores actual answer submitted (option index or typed text)
   - submitted_at (timestamp, not null)
   - answered_correctly (boolean, not null)
-  - points_earned (integer) - calculated after round ends
+  - points_earned (integer, default 0) - calculated after round ends (0-100 range)
   - UNIQUE constraint: (quiz_event_round_id, user_id) - one answer per user per round
 ```
 
 ---
 
-## Open Questions / TODOs
+## Design Decisions - FINALIZED
 
-### Room Codes
-- Should room codes be auto-generated random 4-digit numbers?
-- Unique globally or just among active events?
-- Should they expire/be reusable after event ends?
+### Room Codes ✓
+- **Generation:** Auto-generated random 4-digit numbers (1000-9999)
+- **Uniqueness:** Unique only among active events (status = 'waiting' or 'in_progress')
+- **Expiration:** Reusable after event completes - codes can be recycled
+- **Implementation:** Partial unique constraint on `(room_code)` where status IN ('waiting', 'in_progress')
+- **Rationale:** 9000 possible codes is sufficient for concurrent games; completed games release codes back to pool
 
-### Time Limits
-- Does each question have its own time limit, or is it quiz-wide?
-- What happens if someone doesn't answer in time? Auto-submit as wrong?
-- Store time limit on `questions` table or `quiz_templates` table?
+### Time Limits ✓
+- **Per-question time limits** (not quiz-wide)
+- **Storage:** `time_limit_seconds` column on `questions` table (nullable, defaults to 30 seconds)
+- **Range:** 5-120 seconds (configurable per question based on difficulty)
+- **Timeout behavior:** Auto-submit as incorrect (0 points)
+- **Rationale:** Matches Kahoot's model; creates urgency; different questions need different time
 
-### Scoring Edge Cases
-- What if everyone answers incorrectly? No points awarded to anyone?
-- What if only 1 person answers correctly? They get 100 points (no scaling)?
-- Should incorrect answers get 0 points? Or negative points?
-- Should we support partial credit in the future?
+### Scoring Rules ✓
+- **Everyone wrong:** No points awarded (all get 0)
+- **Only 1 correct:** They get 100 points (no scaling)
+- **Incorrect answers:** 0 points (no negative scoring - keep it positive)
+- **Partial credit:** Not supported in v1 (can add later if needed)
+- **Tie handling:** Users with identical timestamps get averaged position points
+- **Example:** 5 correct answers → 100, 87, 75, 62, 50 points (linear scale 50-100)
 
-### Answer Storage
-- For typed questions, should we store what the user actually typed (for review/debugging)?
-- Or just store `answered_correctly` boolean?
-- Consider adding `user_answer` column to `quiz_round_performances`?
+### Answer Storage ✓
+- **Add `user_answer` column** to `quiz_round_performances` (text, nullable)
+- **Format:**
+  - Multiple choice: option index as string ("1", "2", "3", "4")
+  - True/False: "true" or "false"
+  - Typed: actual user input (trimmed)
+- **Benefits:** Debugging, analytics, dispute resolution, future answer review feature
+- **Overhead:** Minimal (typically 1-50 characters per answer)
 
-### Event Rounds Pre-creation
-- Should we create all `quiz_event_rounds` rows when event starts?
-- Or create them as admin advances through questions?
-- How does admin advance to next question? API endpoint?
+### Event Rounds Pre-creation ✓
+- **Create ALL rounds eagerly** when quiz event is created
+- **Why:** Simpler implementation, allows "question X of Y" display, admin can preview structure
+- **Admin control:** `POST /api/quiz-events/:id/advance` endpoint
+  - Marks current round as completed (sets `ended_at`)
+  - Activates next round (sets `status = 'active'`, `started_at`)
+  - Calculates and stores points for completed round
+  - Returns updated event state with leaderboard
+- **Alternative rejected:** Lazy creation (too complex, no real benefit)
 
-### Database Technology
-- Using existing SQLite + Drizzle ORM setup from AlgoLounge project
-- Will need migration scripts to add new tables
+### Database Technology ✓
+- **Database:** SQLite (existing AlgoLounge setup)
+- **ORM:** Drizzle ORM 0.44.7
+- **Migrations:** Drizzle migrations in `backend/src/db/migrations/`
+- **Dev workflow:** `npm run db:generate` → `npm run db:migrate`
 
-### Frontend Considerations
-- Real-time updates: WebSockets? Server-Sent Events? Polling?
-- Admin dashboard to control quiz flow
-- Player view with live leaderboard
-- Waiting room before quiz starts
+### Real-time Architecture ✓
+- **Technology:** Server-Sent Events (SSE)
+- **Why SSE:**
+  - Simpler than WebSockets (unidirectional server→client)
+  - Automatic reconnection
+  - Works over HTTP
+  - Perfect for server-driven updates (admin controls pace)
+- **Event types:**
+  - `player_joined` - New player enters waiting room
+  - `quiz_started` - Admin starts the quiz
+  - `round_started` - New question activated (includes question data)
+  - `round_ended` - Question time expired (includes correct answer + leaderboard)
+  - `quiz_ended` - All questions complete (final leaderboard)
+- **Endpoint:** `GET /api/quiz-events/:id/stream` (authenticated)
+- **Frontend:** Angular `EventSource` API
+
+### UI Components Required
+- **Admin Dashboard:**
+  - Quiz template selector
+  - "Start Quiz" button → generates room code
+  - Live participant list (waiting room)
+  - "Start Round" / "Next Question" button
+  - Current question display
+  - Timer countdown
+  - Live leaderboard
+- **Player View:**
+  - Room code entry
+  - Waiting room (shows other players joining)
+  - Question display with answer options
+  - Timer countdown (synced with server)
+  - Answer submission feedback
+  - Round results (correct answer + leaderboard)
+  - Final leaderboard
+
+---
+
+## API Endpoints
+
+### Quiz Events
+```
+POST /api/quiz-events
+  Body: { quiz_template_id: number }
+  Auth: Admin only
+  Returns: { id, room_code, status, quiz_template_id, ... }
+  - Creates new event with auto-generated room code
+  - Creates all quiz_event_rounds eagerly
+  - Sets status to 'waiting'
+
+GET /api/quiz-events/:room_code
+  Auth: Any authenticated user
+  Returns: Event details + participants list
+  - Look up event by room_code
+  - Return event details and current round info
+
+POST /api/quiz-events/:id/join
+  Auth: Any authenticated user (non-admin)
+  Returns: Success confirmation
+  - Add user to event participants
+  - Broadcast 'player_joined' SSE event
+
+POST /api/quiz-events/:id/start
+  Auth: Admin (event creator only)
+  Returns: Updated event with first round active
+  - Sets event status to 'in_progress'
+  - Sets started_at timestamp
+  - Activates first round (status = 'active')
+  - Broadcasts 'quiz_started' + 'round_started' SSE events
+
+POST /api/quiz-events/:id/advance
+  Auth: Admin (event creator only)
+  Returns: Updated event + leaderboard
+  - Marks current round as 'completed' (sets ended_at)
+  - Calculates and stores points for all performances in round
+  - If more rounds exist: activates next round
+  - If no more rounds: marks event as 'completed'
+  - Broadcasts 'round_ended' or 'quiz_ended' SSE event
+
+GET /api/quiz-events/:id/stream
+  Auth: Any authenticated participant
+  Returns: SSE stream
+  - Server-Sent Events for real-time updates
+  - Event types: player_joined, quiz_started, round_started, round_ended, quiz_ended
+```
+
+### Answers
+```
+POST /api/quiz-events/:event_id/rounds/:round_id/answer
+  Body: { answer: string } - option index or typed text
+  Auth: Any authenticated participant
+  Returns: Confirmation (no correctness info until round ends)
+  - Validates answer format based on question type
+  - Stores in quiz_round_performances with timestamp
+  - Sets answered_correctly boolean
+  - points_earned remains 0 until round ends
+  - Rejects if round is not 'active' or already answered
+```
+
+### Quiz Templates (Admin only)
+```
+GET /api/quiz-templates
+  Auth: Admin only
+  Returns: List of available quiz templates
+  - For admin to select which quiz to start
+
+GET /api/quiz-templates/:id
+  Auth: Admin only
+  Returns: Template details + all questions/rounds
+  - Preview template before starting
+```
+
+### Leaderboard
+```
+GET /api/quiz-events/:id/leaderboard
+  Auth: Any authenticated participant
+  Returns: Ranked list of participants with total scores
+  - Aggregate points_earned across all completed rounds
+  - Order by total score descending
+```
 
 ---
 
@@ -232,15 +372,18 @@ quiz_round_performances
 1. Create enum tables (user_roles, question_types)
 2. Alter users table to add role_id
 3. Create questions tables (base + type-specific)
-4. Create quiz template tables
-5. Create quiz event tables
-6. Create performance table
-7. Seed initial data (roles, question types)
+4. Create quiz template tables (quiz_templates, quiz_template_rounds)
+5. Create quiz event tables (quiz_events, quiz_event_participants, quiz_event_rounds)
+6. Create performance table (quiz_round_performances)
+7. Create indexes for performance optimization
+8. Seed initial data (roles, question types)
 
 ### Data Relationships
 - quiz_templates → questions: many-to-many (via quiz_template_rounds)
 - quiz_events → quiz_templates: many-to-one
+- quiz_events → users: many-to-many (via quiz_event_participants)
 - quiz_event_rounds → quiz_events: one-to-many
+- quiz_event_rounds → quiz_template_rounds: many-to-one
 - quiz_round_performances → quiz_event_rounds: many-to-one
 - quiz_round_performances → users: many-to-one
 
@@ -248,9 +391,13 @@ quiz_round_performances
 - users.role_id
 - questions.question_type_id
 - quiz_template_rounds: (quiz_template_id, round_order)
-- quiz_events.room_code (for fast lookups during join)
+- quiz_events.room_code (for fast lookups during join - CRITICAL for UX)
+- quiz_event_participants: (quiz_event_id) for participant lists
+- quiz_event_participants: (user_id) for finding user's active quizzes
 - quiz_event_rounds: (quiz_event_id, round_number)
+- quiz_event_rounds: (quiz_event_id, status) for finding active round
 - quiz_round_performances: (quiz_event_round_id, submitted_at) for scoring calculations
+- quiz_round_performances: (quiz_event_round_id, answered_correctly) for filtering correct answers
 
 ---
 

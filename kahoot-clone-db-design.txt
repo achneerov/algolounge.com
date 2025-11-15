@@ -1,0 +1,265 @@
+# Kahoot Clone - Database Design
+
+## Project Overview
+Building a real-time multiplayer quiz platform similar to Kahoot.
+
+## Key Design Decisions
+
+### Architecture
+- No generic "Events" table - simplified to quiz-specific tables
+- Round = single question (not a group of questions)
+- Typical quiz has 10-20 questions
+- Real-time multiplayer gameplay
+- Template-based system: reusable quiz templates can be instantiated as live events
+
+### Question Types
+- Using polymorphic design: base `questions` table + type-specific tables
+- Separate tables for each question type (future-proof and extensible)
+- Multiple choice variants: 2-option, 3-option, 4-option (separate tables)
+- Additional types: true/false, typed (free text)
+- Enum table to track available question types
+
+### User Roles
+- Two roles: Admin and Member
+- User roles stored in enum table
+- Users table needs `role_id` column added
+- Only admins can create quiz events
+- UI: Admins see "Create Quiz" button (top right) + "Join Quiz" (center)
+
+### Quiz Event Flow
+1. Admin selects a quiz template
+2. Admin clicks "Start" → event created with 4-digit room code
+3. Users join using the room code
+4. Admin controls progression through questions
+
+### Join Mechanism
+- 4-digit numeric room codes
+- TODO: Decide on uniqueness constraints and expiration
+
+### Scoring System
+- Relative scoring based on speed (not absolute)
+- Only correct answers get points
+- Algorithm:
+  1. Collect all users who answered correctly
+  2. Order by submission timestamp (earliest to latest)
+  3. Fastest gets 100 points
+  4. Slowest gets 50 points
+  5. Everyone in between scaled linearly (50-100 range)
+- Points calculated AFTER round ends (not real-time)
+- Store calculated points in `quiz_round_performances` table
+
+### Time Tracking
+- `submitted_at` stored as timestamp
+- TODO: Decide on time limit implementation (per-question or quiz-wide)
+
+### Template Creation
+- Manual creation via SQL migrations (no UI for now)
+- Templates are reusable:
+  - One template → many events
+  - Multiple quizzes can share the same questions (many-to-many)
+
+---
+
+## Proposed Database Schema
+
+### Enum Tables
+
+```sql
+user_roles
+  - id (integer, primary key)
+  - role_name (text, unique)
+  - Values: 'admin', 'member'
+
+question_types
+  - id (integer, primary key)
+  - type_name (text, unique)
+  - Values: 'multiple_choice_2', 'multiple_choice_3', 'multiple_choice_4',
+           'true_false', 'typed', [future types...]
+```
+
+### Users Table (UPDATE EXISTING)
+
+```sql
+users
+  - id (integer, primary key)
+  - username (text, unique, not null)
+  - email (text, unique, not null)
+  - password_hash (text, not null)
+  - role_id (integer, FK to user_roles) ← NEW COLUMN
+  - created_at (timestamp)
+  - updated_at (timestamp)
+```
+
+### Questions (Base Table + Type-Specific Tables)
+
+```sql
+questions (base table)
+  - id (integer, primary key)
+  - question_type_id (integer, FK to question_types)
+  - question_text (text, not null)
+  - time_limit_seconds (integer, nullable) [TODO: decide if needed]
+  - created_at (timestamp)
+
+questions_multiple_choice_2
+  - question_id (integer, FK to questions, PRIMARY KEY)
+  - option_1 (text, not null)
+  - option_2 (text, not null)
+  - correct_option_index (integer, 1 or 2)
+
+questions_multiple_choice_3
+  - question_id (integer, FK to questions, PRIMARY KEY)
+  - option_1 (text, not null)
+  - option_2 (text, not null)
+  - option_3 (text, not null)
+  - correct_option_index (integer, 1-3)
+
+questions_multiple_choice_4
+  - question_id (integer, FK to questions, PRIMARY KEY)
+  - option_1 (text, not null)
+  - option_2 (text, not null)
+  - option_3 (text, not null)
+  - option_4 (text, not null)
+  - correct_option_index (integer, 1-4)
+
+questions_true_false
+  - question_id (integer, FK to questions, PRIMARY KEY)
+  - correct_answer (boolean, not null)
+
+questions_typed
+  - question_id (integer, FK to questions, PRIMARY KEY)
+  - correct_answer (text, not null)
+  - case_sensitive (boolean, default false)
+```
+
+### Quiz Templates (Reusable Definitions)
+
+```sql
+quiz_templates
+  - id (integer, primary key)
+  - name (text, not null)
+  - description (text, nullable)
+  - created_at (timestamp)
+
+quiz_template_rounds (many-to-many: templates ↔ questions)
+  - id (integer, primary key)
+  - quiz_template_id (integer, FK to quiz_templates)
+  - question_id (integer, FK to questions)
+  - round_order (integer, not null) - determines sequence of questions
+  - UNIQUE constraint: (quiz_template_id, round_order)
+```
+
+### Quiz Events (Live Game Sessions)
+
+```sql
+quiz_events
+  - id (integer, primary key)
+  - quiz_template_id (integer, FK to quiz_templates)
+  - room_code (text, 4 digits) [TODO: uniqueness constraints]
+  - created_by_user_id (integer, FK to users)
+  - status (text) [TODO: decide values - 'waiting', 'in_progress', 'completed'?]
+  - created_at (timestamp)
+  - started_at (timestamp, nullable)
+  - ended_at (timestamp, nullable)
+
+quiz_event_rounds
+  - id (integer, primary key)
+  - quiz_event_id (integer, FK to quiz_events)
+  - quiz_template_round_id (integer, FK to quiz_template_rounds)
+  - round_number (integer, not null) - 1, 2, 3...
+  - status (text) [TODO: decide values - 'waiting', 'active', 'completed'?]
+  - started_at (timestamp, nullable)
+  - ended_at (timestamp, nullable)
+```
+
+### Performance & Scoring
+
+```sql
+quiz_round_performances
+  - id (integer, primary key)
+  - quiz_event_round_id (integer, FK to quiz_event_rounds)
+  - user_id (integer, FK to users)
+  - submitted_at (timestamp, not null)
+  - answered_correctly (boolean, not null)
+  - points_earned (integer) - calculated after round ends
+  - UNIQUE constraint: (quiz_event_round_id, user_id) - one answer per user per round
+```
+
+---
+
+## Open Questions / TODOs
+
+### Room Codes
+- Should room codes be auto-generated random 4-digit numbers?
+- Unique globally or just among active events?
+- Should they expire/be reusable after event ends?
+
+### Time Limits
+- Does each question have its own time limit, or is it quiz-wide?
+- What happens if someone doesn't answer in time? Auto-submit as wrong?
+- Store time limit on `questions` table or `quiz_templates` table?
+
+### Scoring Edge Cases
+- What if everyone answers incorrectly? No points awarded to anyone?
+- What if only 1 person answers correctly? They get 100 points (no scaling)?
+- Should incorrect answers get 0 points? Or negative points?
+- Should we support partial credit in the future?
+
+### Answer Storage
+- For typed questions, should we store what the user actually typed (for review/debugging)?
+- Or just store `answered_correctly` boolean?
+- Consider adding `user_answer` column to `quiz_round_performances`?
+
+### Event Rounds Pre-creation
+- Should we create all `quiz_event_rounds` rows when event starts?
+- Or create them as admin advances through questions?
+- How does admin advance to next question? API endpoint?
+
+### Database Technology
+- Using existing SQLite + Drizzle ORM setup from AlgoLounge project
+- Will need migration scripts to add new tables
+
+### Frontend Considerations
+- Real-time updates: WebSockets? Server-Sent Events? Polling?
+- Admin dashboard to control quiz flow
+- Player view with live leaderboard
+- Waiting room before quiz starts
+
+---
+
+## Implementation Notes
+
+### Migration Strategy
+1. Create enum tables (user_roles, question_types)
+2. Alter users table to add role_id
+3. Create questions tables (base + type-specific)
+4. Create quiz template tables
+5. Create quiz event tables
+6. Create performance table
+7. Seed initial data (roles, question types)
+
+### Data Relationships
+- quiz_templates → questions: many-to-many (via quiz_template_rounds)
+- quiz_events → quiz_templates: many-to-one
+- quiz_event_rounds → quiz_events: one-to-many
+- quiz_round_performances → quiz_event_rounds: many-to-one
+- quiz_round_performances → users: many-to-one
+
+### Indexes to Consider
+- users.role_id
+- questions.question_type_id
+- quiz_template_rounds: (quiz_template_id, round_order)
+- quiz_events.room_code (for fast lookups during join)
+- quiz_event_rounds: (quiz_event_id, round_number)
+- quiz_round_performances: (quiz_event_round_id, submitted_at) for scoring calculations
+
+---
+
+## Next Steps
+1. Finalize open questions
+2. Write Drizzle schema definitions
+3. Generate and run migrations
+4. Seed initial enum data
+5. Create sample quiz templates via SQL
+6. Build backend API endpoints
+7. Build frontend UI components
+8. Implement real-time sync mechanism

@@ -7,6 +7,8 @@ export const quizTemplates = sqliteTable("quiz_templates", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   name: text("name").notNull(),
   description: text("description"),
+  startingCountdownSeconds: integer("starting_countdown_seconds").notNull().default(5),
+  transitionSeconds: integer("transition_seconds").notNull().default(3),
   createdAt: integer("created_at")
     .default(sql`(unixepoch() * 1000)`)
     .notNull(),

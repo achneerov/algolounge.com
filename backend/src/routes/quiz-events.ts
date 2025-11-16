@@ -12,6 +12,7 @@ import {
   getParticipants,
   getActiveRound,
   getEventRounds,
+  getRoundQuestion,
 } from "../services/quiz";
 import { db, users } from "../db";
 import { eq, inArray } from "drizzle-orm";
@@ -55,6 +56,10 @@ router.get("/:room_code", authMiddleware, async (req: Request, res: Response) =>
       return res.status(404).json({ error: "Quiz event not found" });
     }
 
+    // Get template
+    const { getTemplateById } = await import("../services/quiz");
+    const template = await getTemplateById(event.quizTemplateId);
+
     // Get participants
     const participants = await getParticipants(event.id);
 
@@ -76,6 +81,7 @@ router.get("/:room_code", authMiddleware, async (req: Request, res: Response) =>
 
     res.json({
       ...event,
+      template,
       participants: participantUsers,
       rounds,
       activeRound,
@@ -228,6 +234,28 @@ router.post(
   }
 );
 
+// GET /api/quiz-events/:event_id/rounds/:round_id/question - Get question for a round
+router.get(
+  "/:event_id/rounds/:round_id/question",
+  authMiddleware,
+  async (req: Request, res: Response) => {
+    try {
+      const eventId = parseInt(req.params.event_id);
+      const roundId = parseInt(req.params.round_id);
+
+      if (isNaN(eventId) || isNaN(roundId)) {
+        return res.status(400).json({ error: "Invalid event or round ID" });
+      }
+
+      const question = await getRoundQuestion(eventId, roundId);
+
+      res.json(question);
+    } catch (error: any) {
+      res.status(400).json({ error: error.message });
+    }
+  }
+);
+
 // POST /api/quiz-events/:event_id/rounds/:round_id/answer - Submit answer
 router.post(
   "/:event_id/rounds/:round_id/answer",
@@ -242,15 +270,14 @@ router.post(
         return res.status(400).json({ error: "Invalid event or round ID" });
       }
 
-      if (answer === undefined || answer === null) {
-        return res.status(400).json({ error: "Answer is required" });
-      }
+      // Allow empty answers (user didn't answer in time or chose not to)
+      const answerString = answer !== undefined && answer !== null ? answer.toString() : '';
 
       const performance = await submitAnswer(
         eventId,
         roundId,
         req.user!.userId,
-        answer.toString()
+        answerString
       );
 
       // Return success without revealing if answer is correct

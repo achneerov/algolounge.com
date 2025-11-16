@@ -8,6 +8,8 @@ export interface QuizTemplate {
   id: number;
   name: string;
   description: string;
+  startingCountdownSeconds: number;
+  transitionSeconds: number;
   createdAt: number;
 }
 
@@ -23,6 +25,7 @@ export interface QuizEvent {
   participants?: { id: number; username: string }[];
   rounds?: QuizEventRound[];
   activeRound?: QuizEventRound;
+  template?: QuizTemplate;
 }
 
 export interface QuizEventRound {
@@ -39,6 +42,15 @@ export interface LeaderboardEntry {
   userId: number;
   username: string;
   score: number;
+}
+
+export interface Question {
+  id: number;
+  questionTypeId: number;
+  questionText: string;
+  timeLimitSeconds: number;
+  createdAt: number;
+  options?: any; // Will contain type-specific data
 }
 
 export interface SubmitAnswerResponse {

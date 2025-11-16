@@ -1,0 +1,283 @@
+import { Component, inject, OnInit, OnDestroy } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { QuizService, QuizEvent, QuizEventRound, LeaderboardEntry } from '../../../services/quiz.service';
+import { AuthService } from '../../../services/auth.service';
+import { SSEService } from '../../../services/sse.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
+import { Subject, takeUntil } from 'rxjs';
+
+type QuizState = 'starting' | 'question_display' | 'answering' | 'transitioning' | 'final_results';
+
+interface QuestionData {
+  id: number;
+  questionTypeId: number;
+  questionText: string;
+  questionDisplaySeconds: number;
+  answerTimeSeconds: number;
+  options?: any;
+}
+
+@Component({
+  selector: 'app-quiz-play',
+  imports: [CommonModule, FormsModule],
+  templateUrl: './quiz-play.component.html',
+  styleUrl: './quiz-play.component.scss'
+})
+export class QuizPlayComponent implements OnInit, OnDestroy {
+  private route = inject(ActivatedRoute);
+  public router = inject(Router);
+  private quizService = inject(QuizService);
+  private authService = inject(AuthService);
+  private sseService = inject(SSEService);
+  private http = inject(HttpClient);
+  private destroy$ = new Subject<void>();
+
+  roomCode = '';
+  event: QuizEvent | null = null;
+  currentRound: QuizEventRound | null = null;
+  currentQuestion: QuestionData | null = null;
+
+  state: QuizState = 'starting';
+  countdown = 5;
+  isCreator = false;
+
+  // Answer submission
+  userAnswer: string = '';
+  hasSubmitted = false;
+  isSubmitting = false;
+
+  // Results
+  leaderboard: LeaderboardEntry[] = [];
+  showLeaderboard = false;
+
+  ngOnInit() {
+    this.roomCode = this.route.snapshot.paramMap.get('roomCode') || '';
+
+    if (!this.roomCode) {
+      this.router.navigate(['/quiz']);
+      return;
+    }
+
+    this.initializeQuiz();
+  }
+
+  async initializeQuiz() {
+    // Load event
+    this.quizService.getEventByRoomCode(this.roomCode).subscribe({
+      next: (event) => {
+        this.event = event;
+
+        // Check if user is creator
+        this.authService.currentUser$.pipe(takeUntil(this.destroy$)).subscribe(user => {
+          if (user && event.createdByUserId === user.id) {
+            this.isCreator = true;
+          }
+        });
+
+        // Connect to SSE
+        this.sseService.connect(event.id);
+
+        // Listen for SSE events
+        this.sseService.events$.pipe(takeUntil(this.destroy$)).subscribe(sseEvent => {
+          console.log('SSE Event:', sseEvent);
+
+          if (sseEvent.type === 'round_started') {
+            this.handleRoundStarted(sseEvent.data);
+          } else if (sseEvent.type === 'round_ended') {
+            this.handleRoundEnded(sseEvent.data);
+          } else if (sseEvent.type === 'quiz_ended') {
+            this.handleQuizEnded(sseEvent.data);
+          }
+        });
+
+        // Get active round
+        if (event.activeRound) {
+          this.currentRound = event.activeRound;
+          // Load question and start from question display
+          this.loadQuestion(() => {
+            this.showQuestionSequence();
+          });
+        } else {
+          // Show starting screen
+          this.showStartingSequence();
+        }
+      },
+      error: (error) => {
+        console.error('Failed to load quiz:', error);
+        this.router.navigate(['/quiz']);
+      }
+    });
+  }
+
+  showStartingSequence() {
+    this.state = 'starting';
+    this.countdown = this.event?.template?.startingCountdownSeconds || 5;
+
+    const interval = setInterval(() => {
+      this.countdown--;
+      if (this.countdown <= 0) {
+        clearInterval(interval);
+        // Wait for round_started event
+      }
+    }, 1000);
+  }
+
+  handleRoundStarted(data: any) {
+    console.log('Round started:', data);
+    this.currentRound = data as QuizEventRound;
+    this.hasSubmitted = false;
+    this.userAnswer = '';
+
+    // Reload event to get round details
+    this.quizService.getEventByRoomCode(this.roomCode).subscribe({
+      next: (event) => {
+        this.event = event;
+        const round = event.rounds?.find(r => r.id === data.roundId);
+        if (round) {
+          this.currentRound = round;
+          // Load question FIRST, then start sequence when it's loaded
+          this.loadQuestion(() => {
+            this.showQuestionSequence();
+          });
+        }
+      }
+    });
+  }
+
+  showQuestionSequence() {
+    // Show question text (no preview, just the question)
+    this.state = 'question_display';
+    this.countdown = this.currentQuestion?.questionDisplaySeconds || 5;
+
+    const displayInterval = setInterval(() => {
+      this.countdown--;
+      if (this.countdown <= 0) {
+        clearInterval(displayInterval);
+        // Show answer options
+        this.state = 'answering';
+        this.countdown = this.currentQuestion?.answerTimeSeconds || 30;
+        this.startAnswerTimer();
+      }
+    }, 1000);
+  }
+
+  startAnswerTimer() {
+    const timerInterval = setInterval(() => {
+      this.countdown--;
+      if (this.countdown <= 0) {
+        clearInterval(timerInterval);
+
+        // Time's up - submit empty answer if they haven't answered
+        if (!this.hasSubmitted && !this.isCreator) {
+          this.submitAnswer(); // Will submit empty/current answer
+        }
+
+        // Mark as submitted to lock UI
+        this.hasSubmitted = true;
+
+        // Auto-advance to next round immediately (only admin triggers this)
+        if (this.isCreator) {
+          this.advanceRound();
+        }
+      } else if (this.hasSubmitted) {
+        clearInterval(timerInterval);
+      }
+    }, 1000);
+  }
+
+  loadQuestion(callback?: () => void) {
+    if (!this.currentRound || !this.event) {
+      if (callback) callback();
+      return;
+    }
+
+    // Fetch question data from backend
+    this.http.get<any>(`${environment.apiUrl}/api/quiz-events/${this.event.id}/rounds/${this.currentRound.id}/question`).subscribe({
+      next: (question) => {
+        this.currentQuestion = question;
+        console.log('Question loaded:', question);
+        if (callback) callback();
+      },
+      error: (error) => {
+        console.error('Failed to load question:', error);
+        if (callback) callback();
+      }
+    });
+  }
+
+  submitAnswer() {
+    if (!this.event || !this.currentRound || this.hasSubmitted) return;
+
+    this.isSubmitting = true;
+
+    this.quizService.submitAnswer(this.event.id, this.currentRound.id, this.userAnswer).subscribe({
+      next: () => {
+        this.hasSubmitted = true;
+        this.isSubmitting = false;
+      },
+      error: (error) => {
+        console.error('Failed to submit answer:', error);
+        this.isSubmitting = false;
+      }
+    });
+  }
+
+  advanceRound() {
+    if (!this.event || !this.isCreator) return;
+
+    this.quizService.advanceRound(this.event.id).subscribe({
+      next: (response) => {
+        console.log('Advanced to next round:', response);
+        // SSE will handle the transition
+      },
+      error: (error) => {
+        console.error('Failed to advance round:', error);
+      }
+    });
+  }
+
+  handleRoundEnded(data: any) {
+    console.log('Round ended:', data);
+    this.leaderboard = data.leaderboard;
+    this.state = 'transitioning';
+    this.countdown = this.event?.template?.transitionSeconds || 3;
+
+    const transitionInterval = setInterval(() => {
+      this.countdown--;
+      if (this.countdown <= 0) {
+        clearInterval(transitionInterval);
+        // Wait for next round or quiz end
+      }
+    }, 1000);
+  }
+
+  handleQuizEnded(data: any) {
+    console.log('Quiz ended:', data);
+    this.leaderboard = data.leaderboard;
+    this.state = 'final_results';
+    this.showLeaderboard = true;
+  }
+
+  getQuestionTypeLabel(): string {
+    if (!this.currentQuestion) return '';
+
+    const types: { [key: number]: string } = {
+      1: 'Multiple Choice (2 options)',
+      2: 'Multiple Choice (3 options)',
+      3: 'Multiple Choice (4 options)',
+      4: 'True or False',
+      5: 'Type your answer'
+    };
+
+    return types[this.currentQuestion.questionTypeId] || 'Question';
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+    this.sseService.disconnect();
+  }
+}

@@ -213,13 +213,21 @@ router.post(
           leaderboard: leaderboardWithUsers,
         });
 
-        // Broadcast round_started event for next round
+        // Get template to determine transition delay
+        const event = await getEventById(eventId);
+        const { getTemplateById } = await import("../services/quiz");
+        const template = event ? await getTemplateById(event.quizTemplateId) : null;
+        const transitionSeconds = template?.transitionSeconds || 3;
+
+        // Wait for transition period before broadcasting next round
         if (result.nextRound) {
-          broadcastToEvent(eventId, SSE_EVENTS.ROUND_STARTED, {
-            roundId: result.nextRound.id,
-            roundNumber: result.nextRound.roundNumber,
-            startedAt: result.nextRound.startedAt,
-          });
+          setTimeout(() => {
+            broadcastToEvent(eventId, SSE_EVENTS.ROUND_STARTED, {
+              roundId: result.nextRound!.id,
+              roundNumber: result.nextRound!.roundNumber,
+              startedAt: result.nextRound!.startedAt,
+            });
+          }, transitionSeconds * 1000);
         }
       }
 

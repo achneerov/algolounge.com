@@ -9,7 +9,8 @@ export const questions = sqliteTable("questions", {
     .notNull()
     .references(() => questionTypes.id),
   questionText: text("question_text").notNull(),
-  timeLimitSeconds: integer("time_limit_seconds").notNull().default(30),
+  questionDisplaySeconds: integer("question_display_seconds").notNull().default(5),
+  answerTimeSeconds: integer("answer_time_seconds").notNull().default(30),
   createdAt: integer("created_at")
     .default(sql`(unixepoch() * 1000)`)
     .notNull(),

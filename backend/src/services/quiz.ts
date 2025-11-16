@@ -540,3 +540,119 @@ export async function getEventRounds(eventId: number) {
     .where(eq(quizEventRounds.quizEventId, eventId))
     .orderBy(asc(quizEventRounds.roundNumber));
 }
+
+// Get question data for a round (without correct answer)
+export async function getRoundQuestion(eventId: number, roundId: number) {
+  // Get the round
+  const round = await db
+    .select()
+    .from(quizEventRounds)
+    .where(
+      and(
+        eq(quizEventRounds.id, roundId),
+        eq(quizEventRounds.quizEventId, eventId)
+      )
+    )
+    .limit(1);
+
+  if (round.length === 0) {
+    throw new Error("Round not found");
+  }
+
+  // Get the quiz template round
+  const templateRound = await db
+    .select()
+    .from(quizTemplateRounds)
+    .where(eq(quizTemplateRounds.id, round[0].quizTemplateRoundId))
+    .limit(1);
+
+  if (templateRound.length === 0) {
+    throw new Error("Template round not found");
+  }
+
+  const questionId = templateRound[0].questionId;
+
+  // Get the base question
+  const question = await db
+    .select()
+    .from(questions)
+    .where(eq(questions.id, questionId))
+    .limit(1);
+
+  if (question.length === 0) {
+    throw new Error("Question not found");
+  }
+
+  const questionData = question[0];
+  const questionTypeId = questionData.questionTypeId;
+
+  // Get type-specific data (without correct answer)
+  let options: any = null;
+
+  if (questionTypeId === 1) {
+    const result = await db
+      .select()
+      .from(questionsMultipleChoice2)
+      .where(eq(questionsMultipleChoice2.questionId, questionId))
+      .limit(1);
+    if (result.length > 0) {
+      options = {
+        option1: result[0].option1,
+        option2: result[0].option2,
+      };
+    }
+  } else if (questionTypeId === 2) {
+    const result = await db
+      .select()
+      .from(questionsMultipleChoice3)
+      .where(eq(questionsMultipleChoice3.questionId, questionId))
+      .limit(1);
+    if (result.length > 0) {
+      options = {
+        option1: result[0].option1,
+        option2: result[0].option2,
+        option3: result[0].option3,
+      };
+    }
+  } else if (questionTypeId === 3) {
+    const result = await db
+      .select()
+      .from(questionsMultipleChoice4)
+      .where(eq(questionsMultipleChoice4.questionId, questionId))
+      .limit(1);
+    if (result.length > 0) {
+      options = {
+        option1: result[0].option1,
+        option2: result[0].option2,
+        option3: result[0].option3,
+        option4: result[0].option4,
+      };
+    }
+  } else if (questionTypeId === 4) {
+    // True/False - no options needed, frontend knows to show True/False
+    options = null;
+  } else if (questionTypeId === 5) {
+    // Typed answer - no options needed, frontend knows to show text input
+    options = null;
+  }
+
+  return {
+    id: questionData.id,
+    questionTypeId: questionData.questionTypeId,
+    questionText: questionData.questionText,
+    questionDisplaySeconds: questionData.questionDisplaySeconds,
+    answerTimeSeconds: questionData.answerTimeSeconds,
+    options,
+  };
+}
+
+// Get quiz template by ID
+export async function getTemplateById(templateId: number) {
+  const result = await db
+    .select()
+    .from(quizTemplates)
+    .where(eq(quizTemplates.id, templateId))
+    .limit(1);
+
+  return result[0] || null;
+}

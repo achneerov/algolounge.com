@@ -33,15 +33,15 @@
     {
       "idx": 4,
       "version": "6",
-      "when": 1763246500000,
-      "tag": "0004_seed_test_users",
+      "when": 1763250000000,
+      "tag": "0004_update_timing_fields",
       "breakpoints": true
     },
     {
       "idx": 5,
       "version": "6",
-      "when": 1763246600000,
-      "tag": "0005_seed_sample_quiz",
+      "when": 1763250100000,
+      "tag": "0005_seed_data",
       "breakpoints": true
     }
   ]

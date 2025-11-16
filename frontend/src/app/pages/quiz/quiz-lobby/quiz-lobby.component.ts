@@ -62,6 +62,9 @@ export class QuizLobbyComponent implements OnInit, OnDestroy {
               if (sseEvent.type === 'player_joined') {
                 // Reload event to get updated participant list
                 this.loadEvent(false);
+              } else if (sseEvent.type === 'quiz_started') {
+                // Navigate to play page when quiz starts
+                this.router.navigate(['/quiz', this.roomCode, 'play']);
               }
             });
           }
@@ -79,8 +82,8 @@ export class QuizLobbyComponent implements OnInit, OnDestroy {
     this.isStarting = true;
     this.quizService.startEvent(this.event.id).subscribe({
       next: () => {
-        // Navigate to play page (not implemented yet)
-        alert('Quiz started! (Play page not implemented yet)');
+        // Navigate to play page
+        this.router.navigate(['/quiz', this.roomCode, 'play']);
       },
       error: (error) => {
         this.error = error.error?.error || 'Failed to start quiz';

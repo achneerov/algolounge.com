@@ -141,6 +141,38 @@
     </div>
   </div>
 
+  <!-- Answer Reveal (Show correct answer) -->
+  <div class="quiz-screen answer-reveal-screen" *ngIf="state === 'answer_reveal'">
+    <div class="content-center">
+      <h1 class="big-text">Correct Answer</h1>
+      <div class="countdown-small">{{ countdown }}</div>
+
+      <!-- Show question text -->
+      <div class="question-card">
+        <h2 class="question-text">{{ currentQuestion?.questionText }}</h2>
+      </div>
+
+      <!-- Show correct answer based on question type -->
+      <div class="correct-answer-display">
+        <!-- Multiple Choice -->
+        <div *ngIf="correctAnswer?.type === 'multiple_choice'" class="answer-highlight">
+          <div class="option-letter">{{ ['A', 'B', 'C', 'D'][correctAnswer.correctIndex] }}</div>
+          <div class="answer-text">{{ correctAnswer.correctText }}</div>
+        </div>
+
+        <!-- True/False -->
+        <div *ngIf="correctAnswer?.type === 'true_false'" class="answer-highlight">
+          <div class="answer-text">{{ correctAnswer.correct }}</div>
+        </div>
+
+        <!-- Typed Answer -->
+        <div *ngIf="correctAnswer?.type === 'typed'" class="answer-highlight">
+          <div class="answer-text">{{ correctAnswer.answer }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Transitioning (Between questions) -->
   <div class="quiz-screen transitioning-screen" *ngIf="state === 'transitioning'">
     <div class="content-center">

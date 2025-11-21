@@ -1,0 +1,96 @@
+{
+  "index": 0,
+  "filename": "simplify-path",
+  "title": "Simplify Path",
+  "keywords": [
+    "path",
+    "simplify",
+    "stack",
+    "string",
+    "unix",
+    "filesystem",
+    "directory",
+    "canonical",
+    "navigation",
+    "dot"
+  ],
+  "description": "<h2>Simplify Path</h2><p>Given a string <code>path</code>, which is an absolute path (starting with a slash <code>'/'</code>) to a file or directory in a Unix-style file system, convert it to the simplified canonical path.</p><p>In a Unix-style file system, a period <code>'.'</code> refers to the current directory, a double period <code>'..'</code> refers to the directory up a level, and any multiple consecutive slashes (i.e. <code>'//'</code>) are treated as a single slash <code>'/'</code>. For this problem, any other format of periods such as <code>'...'</code> are treated as file/directory names.</p><p>The canonical path should have the following format:</p><ul><li>The path starts with a single slash <code>'/'</code></li><li>Any two directories are separated by a single slash <code>'/'</code></li><li>The path does not end with a trailing <code>'/'</code></li><li>The path only contains the directories on the path from the root directory to the target file or directory (i.e., no period <code>'.'</code> or double period <code>'..'</code>)</li></ul><p>Return the simplified canonical path.</p><h3>Examples:</h3><ul><li>Input: path = \"/home/\"<br>Output: \"/home\"</li><li>Input: path = \"/../\"<br>Output: \"/\"<br>Explanation: Going one level up from the root directory is a no-op</li><li>Input: path = \"/home//foo/\"<br>Output: \"/home/foo\"</li><li>Input: path = \"/a/./b/../../c/\"<br>Output: \"/c\"</li></ul><h3>Constraints:</h3><ul><li><code>1 <= path.length <= 3000</code></li><li><code>path</code> consists of English letters, digits, period <code>'.'</code>, slash <code>'/'</code> or <code>'_'</code></li><li><code>path</code> is a valid absolute Unix path</li></ul>",
+  "entry_function": "simplifyPath",
+  "template": "def simplifyPath(path):\n    ",
+  "solution_text": "<h3>Simplify Path</h3><p><strong>Algorithm:</strong></p><ol><li>Split the path by '/' to get individual components</li><li>Use a stack to build the canonical path</li><li>For each component:<ul><li>If empty or '.', skip (current directory)</li><li>If '..', pop from stack if not empty (go up one level)</li><li>Otherwise, push component to stack (valid directory name)</li></ul></li><li>Join stack elements with '/' and prepend '/'</li><li>Handle edge case: if stack is empty, return '/'</li></ol><p><strong>Time Complexity:</strong> O(n) where n is the length of the path</p><p><strong>Space Complexity:</strong> O(n) for the stack and split components</p><p><strong>Key Insights:</strong></p><ul><li>Stack naturally handles the \"go back\" operation with '..'</li><li>Split by '/' automatically handles multiple consecutive slashes</li><li>Empty strings from split represent consecutive slashes (ignore them)</li><li>Cannot go above root directory (stack empty check for '..')</li><li>Final path must start with '/' and have no trailing '/'</li></ul>",
+  "solution_code": "def simplifyPath(path):\n    stack = []\n    components = path.split('/')\n    \n    for component in components:\n        if component == '' or component == '.':\n            # Skip empty and current directory\n            continue\n        elif component == '..':\n            # Go up one level if possible\n            if stack:\n                stack.pop()\n        else:\n            # Valid directory name\n            stack.append(component)\n    \n    # Build canonical path\n    return '/' + '/'.join(stack)",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for simplifyPath function\"\"\"\n    return (test_case_input['path'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the simplified path result\"\"\"\n    passed = actual_output == expected_output\n    return [passed, actual_output]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "path": "/home/"
+      },
+      "output": "/home"
+    },
+    {
+      "id": 2,
+      "input": {
+        "path": "/../"
+      },
+      "output": "/"
+    },
+    {
+      "id": 3,
+      "input": {
+        "path": "/home//foo/"
+      },
+      "output": "/home/foo"
+    },
+    {
+      "id": 4,
+      "input": {
+        "path": "/a/./b/../../c/"
+      },
+      "output": "/c"
+    },
+    {
+      "id": 5,
+      "input": {
+        "path": "/a/../../b/../c//.//"
+      },
+      "output": "/c"
+    },
+    {
+      "id": 6,
+      "input": {
+        "path": "/a//b////c/d//././/.."
+      },
+      "output": "/a/b/c"
+    },
+    {
+      "id": 7,
+      "input": {
+        "path": "/"
+      },
+      "output": "/"
+    },
+    {
+      "id": 8,
+      "input": {
+        "path": "/..."
+      },
+      "output": "/..."
+    },
+    {
+      "id": 9,
+      "input": {
+        "path": "/home/user/Documents/../Pictures"
+      },
+      "output": "/home/user/Pictures"
+    },
+    {
+      "id": 10,
+      "input": {
+        "path": "/var/log/../../etc/././config"
+      },
+      "output": "/etc/config"
+    }
+  ]
+}

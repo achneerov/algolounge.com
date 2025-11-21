@@ -1,0 +1,96 @@
+{
+  "index": 0,
+  "filename": "valid-parenthesis-string",
+  "title": "Valid Parenthesis String",
+  "keywords": [
+    "valid",
+    "parenthesis",
+    "string",
+    "greedy",
+    "stack",
+    "dynamic programming",
+    "wildcard",
+    "asterisk",
+    "balance",
+    "medium"
+  ],
+  "description": "<h2>Valid Parenthesis String</h2><p>Given a string <code>s</code> containing only three types of characters: <code>'('</code>, <code>')'</code> and <code>'*'</code>, return true if <code>s</code> is valid.</p><p>The following rules define a <strong>valid</strong> string:</p><ul><li>Any left parenthesis <code>'('</code> must have a corresponding right parenthesis <code>')'</code></li><li>Any right parenthesis <code>')'</code> must have a corresponding left parenthesis <code>'('</code></li><li>Left parenthesis <code>'('</code> must go before the corresponding right parenthesis <code>')'</code></li><li><code>'*'</code> could be treated as a single right parenthesis <code>')'</code> or a single left parenthesis <code>'('</code> or an empty string <code>\"\"</code></li></ul><h3>Examples:</h3><ul><li>Input: s = \"()\"<br>Output: 1<br>Explanation: The string is valid with balanced parentheses</li><li>Input: s = \"(*)\"<br>Output: 1<br>Explanation: The * can be treated as ), making it valid</li><li>Input: s = \"(*))\"<br>Output: 1<br>Explanation: One way is (* becomes (), then we have ())</li><li>Input: s = \"(()\"<br>Output: 0<br>Explanation: Not enough closing parentheses</li></ul><h3>Constraints:</h3><ul><li><code>1 <= s.length <= 100</code></li><li><code>s[i]</code> is <code>'('</code>, <code>')'</code> or <code>'*'</code></li></ul>",
+  "entry_function": "checkValidString",
+  "template": "def checkValidString(s):\n    ",
+  "solution_text": "<h3>Valid Parenthesis String</h3><p><strong>Algorithm (Greedy Approach):</strong></p><ol><li>Track minimum and maximum possible open parentheses count</li><li>For each character:<ul><li>If '(': increment both min and max</li><li>If ')': decrement both min and max</li><li>If '*': increment max (treat as '('), decrement min (treat as ')')</li></ul></li><li>After each step:<ul><li>If max < 0: too many ')', return 0</li><li>If min < 0: reset to 0 (can use '*' as empty)</li></ul></li><li>Return 1 if min == 0 (all opens matched)</li></ol><p><strong>Time Complexity:</strong> O(n) - single pass through string</p><p><strong>Space Complexity:</strong> O(1) - only two variables</p><p><strong>Key Insights:</strong></p><ul><li>Track range of possible open parentheses counts</li><li>max represents best case (all '*' as '(')</li><li>min represents worst case (all '*' as ')')</li><li>If max < 0, impossible to balance</li><li>Final min must be 0 for valid string</li></ul>",
+  "solution_code": "def checkValidString(s):\n    # Track minimum and maximum possible open parentheses\n    min_open = 0  # Minimum possible open parens\n    max_open = 0  # Maximum possible open parens\n    \n    for char in s:\n        if char == '(':\n            min_open += 1\n            max_open += 1\n        elif char == ')':\n            min_open -= 1\n            max_open -= 1\n        else:  # char == '*'\n            min_open -= 1  # Treat * as )\n            max_open += 1  # Treat * as (\n        \n        # If max becomes negative, too many )\n        if max_open < 0:\n            return 0\n        \n        # If min becomes negative, reset to 0\n        # (we can use * as empty string)\n        if min_open < 0:\n            min_open = 0\n    \n    # Valid if we can balance all opens\n    return 1 if min_open == 0 else 0",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for checkValidString function\"\"\"\n    return (test_case_input['s'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the parenthesis string validation result\"\"\"\n    if actual_output != expected_output:\n        return [False, str(actual_output)]\n    return [True, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "s": "()"
+      },
+      "output": 1
+    },
+    {
+      "id": 2,
+      "input": {
+        "s": "(*)"
+      },
+      "output": 1
+    },
+    {
+      "id": 3,
+      "input": {
+        "s": "(*))"
+      },
+      "output": 1
+    },
+    {
+      "id": 4,
+      "input": {
+        "s": "(())"
+      },
+      "output": 1
+    },
+    {
+      "id": 5,
+      "input": {
+        "s": "(()"
+      },
+      "output": 0
+    },
+    {
+      "id": 6,
+      "input": {
+        "s": "())"
+      },
+      "output": 0
+    },
+    {
+      "id": 7,
+      "input": {
+        "s": "***))"
+      },
+      "output": 1
+    },
+    {
+      "id": 8,
+      "input": {
+        "s": "(((******))"
+      },
+      "output": 1
+    },
+    {
+      "id": 9,
+      "input": {
+        "s": "(*()))"
+      },
+      "output": 1
+    },
+    {
+      "id": 10,
+      "input": {
+        "s": "(*))"
+      },
+      "output": 1
+    }
+  ]
+}

@@ -1,6 +1,92 @@
 {
   "questions": [
     {
+      "index": 0,
+      "filename": "implement-stack-using-queues",
+      "title": "Implement Stack using Queues",
+      "keywords": [
+        "stack",
+        "queue",
+        "implement",
+        "data structure",
+        "push",
+        "pop",
+        "top",
+        "empty",
+        "LIFO",
+        "FIFO",
+        "conversion"
+      ]
+    },
+    {
+      "index": 0,
+      "filename": "implement-stack",
+      "title": "Implement Stack",
+      "keywords": [
+        "stack",
+        "implement",
+        "data structure",
+        "linked list",
+        "array",
+        "push",
+        "pop",
+        "top",
+        "empty",
+        "LIFO"
+      ]
+    },
+    {
+      "index": 0,
+      "filename": "longest-valid-parentheses",
+      "title": "Longest Valid Parentheses",
+      "keywords": [
+        "longest",
+        "valid",
+        "parentheses",
+        "stack",
+        "string",
+        "dynamic programming",
+        "substring",
+        "matching",
+        "consecutive",
+        "length"
+      ]
+    },
+    {
+      "index": 0,
+      "filename": "maximum-frequency-stack",
+      "title": "Maximum Frequency Stack",
+      "keywords": [
+        "stack",
+        "frequency",
+        "maximum",
+        "hash map",
+        "data structure",
+        "push",
+        "pop",
+        "count",
+        "priority",
+        "design"
+      ]
+    },
+    {
+      "index": 0,
+      "filename": "simplify-path",
+      "title": "Simplify Path",
+      "keywords": [
+        "path",
+        "simplify",
+        "stack",
+        "string",
+        "unix",
+        "filesystem",
+        "directory",
+        "canonical",
+        "navigation",
+        "dot"
+      ]
+    },
+    {
       "index": 1,
       "filename": "3sum",
       "title": "3Sum",
@@ -1519,6 +1605,6 @@
       ]
     }
   ],
-  "lastUpdated": "2025-11-14T22:32:07.790Z",
-  "totalQuestions": 95
+  "lastUpdated": "2025-11-21T14:51:06.156Z",
+  "totalQuestions": 100
 }

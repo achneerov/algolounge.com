@@ -15,6 +15,7 @@ interface QuestionData {
   id: number;
   questionTypeId: number;
   questionText: string;
+  imageFilename?: string;
   questionDisplaySeconds: number;
   answerTimeSeconds: number;
   answerRevealSeconds: number;
@@ -40,6 +41,7 @@ export class QuizPlayComponent implements OnInit, OnDestroy {
   event: QuizEvent | null = null;
   currentRound: QuizEventRound | null = null;
   currentQuestion: QuestionData | null = null;
+  questionImageUrl: string | null = null;
 
   state: QuizState = 'starting';
   countdown = 5;
@@ -138,6 +140,7 @@ export class QuizPlayComponent implements OnInit, OnDestroy {
     this.hasSubmitted = false;
     this.userAnswer = '';
     this.correctAnswer = null;
+    this.questionImageUrl = null;
 
     // Clear any existing timer from previous round
     if (this.timerInterval) {
@@ -259,6 +262,24 @@ export class QuizPlayComponent implements OnInit, OnDestroy {
       next: (question) => {
         this.currentQuestion = question;
         console.log('Question loaded:', question);
+
+        // Set image URL if question has an image
+        if (question.imageFilename) {
+          // Get token from localStorage to include in image URL (use correct key: auth_token)
+          const token = localStorage.getItem('auth_token');
+          console.log('Token from localStorage:', token ? 'exists' : 'NULL');
+
+          if (token) {
+            this.questionImageUrl = `${environment.apiUrl}/api/quiz-events/${this.event!.id}/rounds/${this.currentRound!.id}/image?token=${token}`;
+            console.log('Image URL:', this.questionImageUrl);
+          } else {
+            console.error('No auth token found - user must be logged in to view images');
+            this.questionImageUrl = null;
+          }
+        } else {
+          this.questionImageUrl = null;
+        }
+
         if (callback) callback();
       },
       error: (error) => {

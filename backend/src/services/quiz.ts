@@ -661,6 +661,7 @@ export async function getRoundQuestion(eventId: number, roundId: number) {
     id: questionData.id,
     questionTypeId: questionData.questionTypeId,
     questionText: questionData.questionText,
+    imageFilename: questionData.imageFilename,
     questionDisplaySeconds: questionData.questionDisplaySeconds,
     answerTimeSeconds: questionData.answerTimeSeconds,
     answerRevealSeconds: questionData.answerRevealSeconds,

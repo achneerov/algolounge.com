@@ -9,6 +9,7 @@ export const questions = sqliteTable("questions", {
     .notNull()
     .references(() => questionTypes.id),
   questionText: text("question_text").notNull(),
+  imageFilename: text("image_filename"), // Optional image for the question
   questionDisplaySeconds: integer("question_display_seconds").notNull().default(5),
   answerTimeSeconds: integer("answer_time_seconds").notNull().default(30),
   answerRevealSeconds: integer("answer_reveal_seconds").notNull().default(5),

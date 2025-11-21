@@ -101,6 +101,17 @@
   margin: 0;
 }
 
+.question-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 0.75rem;
+  margin: 0 auto 24px;
+  display: block;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}
+
 .countdown-small {
   font-size: 24px;
   font-weight: 600;
@@ -591,6 +602,11 @@
 
   .question-text {
     font-size: 24px;
+  }
+
+  .question-image {
+    max-width: 100%;
+    margin-bottom: 16px;
   }
 
   .options-grid {

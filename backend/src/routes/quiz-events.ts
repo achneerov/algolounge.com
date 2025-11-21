@@ -17,6 +17,8 @@ import {
 import { db, users } from "../db";
 import { eq, inArray } from "drizzle-orm";
 import { addClient, broadcastToEvent, SSE_EVENTS } from "../services/sse";
+import path from "path";
+import fs from "fs";
 
 const router = Router();
 
@@ -258,6 +260,64 @@ router.get(
       const question = await getRoundQuestion(eventId, roundId);
 
       res.json(question);
+    } catch (error: any) {
+      res.status(400).json({ error: error.message });
+    }
+  }
+);
+
+// GET /api/quiz-events/:event_id/rounds/:round_id/image - Get image for a round's question
+router.get(
+  "/:event_id/rounds/:round_id/image",
+  async (req: Request, res: Response) => {
+    try {
+      const eventId = parseInt(req.params.event_id);
+      const roundId = parseInt(req.params.round_id);
+
+      if (isNaN(eventId) || isNaN(roundId)) {
+        return res.status(400).json({ error: "Invalid event or round ID" });
+      }
+
+      // Handle auth from query parameter (img tag doesn't support headers)
+      const token = req.query.token as string;
+      if (!token) {
+        return res.status(401).json({ error: "Missing token" });
+      }
+
+      // Verify token
+      const { verifyToken } = await import("../services/auth");
+      const payload = verifyToken(token);
+      if (!payload) {
+        return res.status(401).json({ error: "Invalid or expired token" });
+      }
+
+      // Verify user is a participant in this event
+      const participants = await getParticipants(eventId);
+      const isParticipant = participants.some((p) => p.userId === payload.userId);
+
+      // Also check if user is the creator
+      const event = await getEventById(eventId);
+      const isCreator = event?.createdByUserId === payload.userId;
+
+      if (!isParticipant && !isCreator) {
+        return res.status(403).json({ error: "Not a participant in this quiz event" });
+      }
+
+      // Get the question to retrieve image filename
+      const question = await getRoundQuestion(eventId, roundId);
+
+      if (!question.imageFilename) {
+        return res.status(404).json({ error: "No image for this question" });
+      }
+
+      // Serve the image file
+      const imagePath = path.join(process.cwd(), "src/assets/quizy-images", question.imageFilename);
+
+      if (!fs.existsSync(imagePath)) {
+        return res.status(404).json({ error: "Image file not found" });
+      }
+
+      res.sendFile(imagePath);
     } catch (error: any) {
       res.status(400).json({ error: error.message });
     }

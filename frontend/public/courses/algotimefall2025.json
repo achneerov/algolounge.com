@@ -623,7 +623,90 @@
     "week11": {
       "title": "Week 11",
       "description": "These are the questions that will be looked at in week 11.",
-      "questions": []
+      "questions": [
+        {
+          "filename": "implement-stack",
+          "urls": [
+            { "url": "https://www.geeksforgeeks.org/dsa/implement-a-stack-using-singly-linked-list/", "tooltip": "Stack Tutorial", "color": "#7c3aed", "visibleString": "Tutorial" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Stack", "color": "#eab308" },
+            { "text": "Data Structure Design", "color": "#8b5cf6" }
+          ]
+        },
+        {
+          "filename": "implement-stack-using-queues",
+          "urls": [
+            { "url": "https://leetcode.com/problems/implement-stack-using-queues/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/implement-stack-using-queues", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Stack", "color": "#eab308" },
+            { "text": "Queue", "color": "#ec4899" }
+          ]
+        },
+        {
+          "filename": "valid-parentheses",
+          "urls": [
+            { "url": "https://leetcode.com/problems/valid-parentheses/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/valid-parentheses", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Stack", "color": "#eab308" }
+          ]
+        },
+        {
+          "filename": "valid-parenthesis-string",
+          "urls": [
+            { "url": "https://leetcode.com/problems/valid-parenthesis-string/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/valid-parenthesis-string", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Stack", "color": "#eab308" },
+            { "text": "Greedy", "color": "#8b5cf6" }
+          ]
+        },
+        {
+          "filename": "simplify-path",
+          "urls": [
+            { "url": "https://leetcode.com/problems/simplify-path/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/simplify-path", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Stack", "color": "#eab308" },
+            { "text": "String", "color": "#3b82f6" }
+          ]
+        },
+        {
+          "filename": "longest-valid-parentheses",
+          "urls": [
+            { "url": "https://leetcode.com/problems/longest-valid-parentheses/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/longest-valid-parentheses", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Stack", "color": "#eab308" },
+            { "text": "Dynamic Programming", "color": "#06b6d4" }
+          ]
+        },
+        {
+          "filename": "maximum-frequency-stack",
+          "urls": [
+            { "url": "https://leetcode.com/problems/maximum-frequency-stack/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/maximum-frequency-stack", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Stack", "color": "#eab308" },
+            { "text": "Hash Map", "color": "#3b82f6" }
+          ]
+        }
+      ]
     },
     "week12": {
       "title": "Week 12",

@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 import { Subject, takeUntil } from 'rxjs';
 
-type QuizState = 'starting' | 'question_display' | 'answering' | 'transitioning' | 'final_results';
+type QuizState = 'starting' | 'question_display' | 'answering' | 'answer_reveal' | 'transitioning' | 'final_results';
 
 interface QuestionData {
   id: number;
@@ -17,6 +17,7 @@ interface QuestionData {
   questionText: string;
   questionDisplaySeconds: number;
   answerTimeSeconds: number;
+  answerRevealSeconds: number;
   options?: any;
 }
 
@@ -49,9 +50,15 @@ export class QuizPlayComponent implements OnInit, OnDestroy {
   hasSubmitted = false;
   isSubmitting = false;
 
+  // Answer reveal
+  correctAnswer: any = null;
+
   // Results
   leaderboard: LeaderboardEntry[] = [];
   showLeaderboard = false;
+
+  // Timer management
+  private timerInterval: any = null;
 
   ngOnInit() {
     this.roomCode = this.route.snapshot.paramMap.get('roomCode') || '';
@@ -130,6 +137,13 @@ export class QuizPlayComponent implements OnInit, OnDestroy {
     this.currentRound = data as QuizEventRound;
     this.hasSubmitted = false;
     this.userAnswer = '';
+    this.correctAnswer = null;
+
+    // Clear any existing timer from previous round
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval);
+      this.timerInterval = null;
+    }
 
     // Reload event to get round details
     this.quizService.getEventByRoomCode(this.roomCode).subscribe({
@@ -165,10 +179,11 @@ export class QuizPlayComponent implements OnInit, OnDestroy {
   }
 
   startAnswerTimer() {
-    const timerInterval = setInterval(() => {
+    this.timerInterval = setInterval(() => {
       this.countdown--;
       if (this.countdown <= 0) {
-        clearInterval(timerInterval);
+        clearInterval(this.timerInterval);
+        this.timerInterval = null;
 
         // Time's up - submit empty answer if they haven't answered
         if (!this.hasSubmitted && !this.isCreator) {
@@ -178,14 +193,59 @@ export class QuizPlayComponent implements OnInit, OnDestroy {
         // Mark as submitted to lock UI
         this.hasSubmitted = true;
 
-        // Auto-advance to next round immediately (only admin triggers this)
+        // Show answer reveal screen
+        this.showAnswerReveal();
+      }
+    }, 1000);
+  }
+
+  showAnswerReveal() {
+    this.state = 'answer_reveal';
+    this.countdown = this.currentQuestion?.answerRevealSeconds || 5;
+
+    // Get correct answer based on question type
+    this.setCorrectAnswer();
+
+    const revealInterval = setInterval(() => {
+      this.countdown--;
+      if (this.countdown <= 0) {
+        clearInterval(revealInterval);
+
+        // Auto-advance to next round (only admin triggers this)
         if (this.isCreator) {
           this.advanceRound();
         }
-      } else if (this.hasSubmitted) {
-        clearInterval(timerInterval);
       }
     }, 1000);
+  }
+
+  setCorrectAnswer() {
+    if (!this.currentQuestion) return;
+
+    const typeId = this.currentQuestion.questionTypeId;
+    const options = this.currentQuestion.options;
+
+    if (typeId === 1 || typeId === 2 || typeId === 3) {
+      // Multiple choice - get correct option
+      const correctIndex = options?.correctOptionIndex || 0;
+      this.correctAnswer = {
+        type: 'multiple_choice',
+        correctIndex: correctIndex,
+        correctText: options?.[`option${correctIndex + 1}`] || ''
+      };
+    } else if (typeId === 4) {
+      // True/False
+      this.correctAnswer = {
+        type: 'true_false',
+        correct: options?.correctAnswer ? 'True' : 'False'
+      };
+    } else if (typeId === 5) {
+      // Typed answer
+      this.correctAnswer = {
+        type: 'typed',
+        answer: options?.correctAnswer || ''
+      };
+    }
   }
 
   loadQuestion(callback?: () => void) {
@@ -217,6 +277,7 @@ export class QuizPlayComponent implements OnInit, OnDestroy {
       next: () => {
         this.hasSubmitted = true;
         this.isSubmitting = false;
+        // Timer continues running after submission
       },
       error: (error) => {
         console.error('Failed to submit answer:', error);
@@ -279,5 +340,11 @@ export class QuizPlayComponent implements OnInit, OnDestroy {
     this.destroy$.next();
     this.destroy$.complete();
     this.sseService.disconnect();
+
+    // Clean up timer
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval);
+      this.timerInterval = null;
+    }
   }
 }

@@ -586,7 +586,7 @@ export async function getRoundQuestion(eventId: number, roundId: number) {
   const questionData = question[0];
   const questionTypeId = questionData.questionTypeId;
 
-  // Get type-specific data (without correct answer)
+  // Get type-specific data (including correct answer)
   let options: any = null;
 
   if (questionTypeId === 1) {
@@ -599,6 +599,7 @@ export async function getRoundQuestion(eventId: number, roundId: number) {
       options = {
         option1: result[0].option1,
         option2: result[0].option2,
+        correctOptionIndex: result[0].correctOptionIndex,
       };
     }
   } else if (questionTypeId === 2) {
@@ -612,6 +613,7 @@ export async function getRoundQuestion(eventId: number, roundId: number) {
         option1: result[0].option1,
         option2: result[0].option2,
         option3: result[0].option3,
+        correctOptionIndex: result[0].correctOptionIndex,
       };
     }
   } else if (questionTypeId === 3) {
@@ -626,14 +628,33 @@ export async function getRoundQuestion(eventId: number, roundId: number) {
         option2: result[0].option2,
         option3: result[0].option3,
         option4: result[0].option4,
+        correctOptionIndex: result[0].correctOptionIndex,
       };
     }
   } else if (questionTypeId === 4) {
-    // True/False - no options needed, frontend knows to show True/False
-    options = null;
+    // True/False
+    const result = await db
+      .select()
+      .from(questionsTrueFalse)
+      .where(eq(questionsTrueFalse.questionId, questionId))
+      .limit(1);
+    if (result.length > 0) {
+      options = {
+        correctAnswer: result[0].correctAnswer,
+      };
+    }
   } else if (questionTypeId === 5) {
-    // Typed answer - no options needed, frontend knows to show text input
-    options = null;
+    // Typed answer
+    const result = await db
+      .select()
+      .from(questionsTyped)
+      .where(eq(questionsTyped.questionId, questionId))
+      .limit(1);
+    if (result.length > 0) {
+      options = {
+        correctAnswer: result[0].correctAnswer,
+      };
+    }
   }
 
   return {
@@ -642,6 +663,7 @@ export async function getRoundQuestion(eventId: number, roundId: number) {
     questionText: questionData.questionText,
     questionDisplaySeconds: questionData.questionDisplaySeconds,
     answerTimeSeconds: questionData.answerTimeSeconds,
+    answerRevealSeconds: questionData.answerRevealSeconds,
     options,
   };
 }

@@ -11,6 +11,7 @@ export const questions = sqliteTable("questions", {
   questionText: text("question_text").notNull(),
   questionDisplaySeconds: integer("question_display_seconds").notNull().default(5),
   answerTimeSeconds: integer("answer_time_seconds").notNull().default(30),
+  answerRevealSeconds: integer("answer_reveal_seconds").notNull().default(5),
   createdAt: integer("created_at")
     .default(sql`(unixepoch() * 1000)`)
     .notNull(),

@@ -30,3 +30,19 @@ export function authMiddleware(
   req.user = payload;
   next();
 }
+
+export function adminMiddleware(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  if (!req.user) {
+    return res.status(401).json({ error: "Authentication required" });
+  }
+
+  if (req.user.roleId !== 1) {
+    return res.status(403).json({ error: "Admin access required" });
+  }
+
+  next();
+}

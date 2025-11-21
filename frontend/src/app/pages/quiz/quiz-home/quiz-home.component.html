@@ -1,0 +1,79 @@
+<div class="quiz-home">
+  <div class="quiz-home-container">
+    <h1 class="quiz-title">Quizy</h1>
+    <p class="quiz-subtitle">Real-time multiplayer quizzes</p>
+
+    <div class="quiz-actions">
+      <!-- Join Quiz Section (for all users) -->
+      <div class="quiz-card join-card">
+        <h2>Join a Quiz</h2>
+        <p>Enter the room code to join a quiz</p>
+
+        <div class="form-group">
+          <input
+            type="text"
+            [(ngModel)]="roomCode"
+            placeholder="Enter 4-digit room code"
+            maxlength="4"
+            class="room-code-input"
+            [disabled]="isJoining"
+            (keyup.enter)="joinQuiz()"
+          />
+        </div>
+
+        <div class="error-message" *ngIf="joinError">
+          {{ joinError }}
+        </div>
+
+        <button
+          class="btn btn-primary"
+          (click)="joinQuiz()"
+          [disabled]="isJoining || !roomCode.trim()"
+        >
+          {{ isJoining ? 'Joining...' : 'Join Quiz' }}
+        </button>
+      </div>
+
+      <!-- Create Quiz Section (admin only) -->
+      <div class="quiz-card create-card" *ngIf="isAdmin">
+        <h2>Create a Quiz</h2>
+        <p>Start a new quiz session</p>
+
+        <div class="form-group">
+          <label for="template-select">Select Quiz Template</label>
+          <select
+            id="template-select"
+            [(ngModel)]="selectedTemplateId"
+            class="template-select"
+            [disabled]="isCreating"
+          >
+            <option *ngFor="let template of templates" [value]="template.id">
+              {{ template.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="error-message" *ngIf="createError">
+          {{ createError }}
+        </div>
+
+        <button
+          class="btn btn-primary"
+          (click)="createQuiz()"
+          [disabled]="isCreating || !selectedTemplateId"
+        >
+          {{ isCreating ? 'Creating...' : 'Create Quiz' }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Not signed in message -->
+    <div class="auth-message" *ngIf="!(currentUser$ | async)">
+      <p>
+        Please
+        <a routerLink="/auth/sign-in">sign in</a>
+        to join or create quizzes
+      </p>
+    </div>
+  </div>
+</div>

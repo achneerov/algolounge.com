@@ -4,22 +4,14 @@ CREATE TABLE `question_types` (
 );
 --> statement-breakpoint
 CREATE UNIQUE INDEX `question_types_type_name_unique` ON `question_types` (`type_name`);--> statement-breakpoint
--- Seed question types
-INSERT INTO `question_types` (`type_name`) VALUES ('multiple_choice_2');
---> statement-breakpoint
-INSERT INTO `question_types` (`type_name`) VALUES ('multiple_choice_3');
---> statement-breakpoint
-INSERT INTO `question_types` (`type_name`) VALUES ('multiple_choice_4');
---> statement-breakpoint
-INSERT INTO `question_types` (`type_name`) VALUES ('true_false');
---> statement-breakpoint
-INSERT INTO `question_types` (`type_name`) VALUES ('typed');
---> statement-breakpoint
 CREATE TABLE `questions` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
 	`question_type_id` integer NOT NULL,
 	`question_text` text NOT NULL,
-	`time_limit_seconds` integer DEFAULT 30 NOT NULL,
+	`image_filename` text,
+	`question_display_seconds` integer DEFAULT 5 NOT NULL,
+	`answer_time_seconds` integer DEFAULT 30 NOT NULL,
+	`answer_reveal_seconds` integer DEFAULT 5 NOT NULL,
 	`created_at` integer DEFAULT (unixepoch() * 1000) NOT NULL,
 	FOREIGN KEY (`question_type_id`) REFERENCES `question_types`(`id`) ON UPDATE no action ON DELETE no action
 );
@@ -133,7 +125,7 @@ CREATE UNIQUE INDEX `quiz_template_rounds_quiz_template_id_round_order_unique` O
 CREATE TABLE `quiz_templates` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
 	`name` text NOT NULL,
-	`description` text,
+	`transition_seconds` integer DEFAULT 3 NOT NULL,
 	`created_at` integer DEFAULT (unixepoch() * 1000) NOT NULL
 );
 --> statement-breakpoint
@@ -143,13 +135,35 @@ CREATE TABLE `user_roles` (
 );
 --> statement-breakpoint
 CREATE UNIQUE INDEX `user_roles_role_name_unique` ON `user_roles` (`role_name`);--> statement-breakpoint
--- Seed user roles
-INSERT INTO `user_roles` (`id`, `role_name`) VALUES (1, 'admin');
---> statement-breakpoint
-INSERT INTO `user_roles` (`id`, `role_name`) VALUES (2, 'member');
---> statement-breakpoint
--- Add role_id column to users table
-ALTER TABLE `users` ADD `role_id` integer REFERENCES user_roles(id);
---> statement-breakpoint
--- Set default role for existing users
-UPDATE `users` SET `role_id` = 2 WHERE `role_id` IS NULL;
+ALTER TABLE `users` ADD `role_id` integer NOT NULL REFERENCES user_roles(id);--> statement-breakpoint
+-- Seed question types (required for quiz questions)
+INSERT INTO `question_types` (`id`, `type_name`) VALUES (1, 'multiple_choice_2');--> statement-breakpoint
+INSERT INTO `question_types` (`id`, `type_name`) VALUES (2, 'multiple_choice_3');--> statement-breakpoint
+INSERT INTO `question_types` (`id`, `type_name`) VALUES (3, 'multiple_choice_4');--> statement-breakpoint
+INSERT INTO `question_types` (`id`, `type_name`) VALUES (4, 'true_false');--> statement-breakpoint
+INSERT INTO `question_types` (`id`, `type_name`) VALUES (5, 'typed');--> statement-breakpoint
+-- Seed user roles (required for user accounts)
+INSERT INTO `user_roles` (`id`, `role_name`) VALUES (1, 'admin');--> statement-breakpoint
+INSERT INTO `user_roles` (`id`, `role_name`) VALUES (2, 'member');--> statement-breakpoint
+-- Seed sample quiz template
+INSERT INTO `quiz_templates` (`id`, `name`, `transition_seconds`) VALUES (1, 'Sample Geography Quiz', 5);--> statement-breakpoint
+-- Question 1: Multiple Choice 4 - Capital of France
+INSERT INTO `questions` (`id`, `question_type_id`, `question_text`, `image_filename`, `question_display_seconds`, `answer_time_seconds`, `answer_reveal_seconds`) VALUES (1, 3, 'What is the capital of France?', 'eiffel-tower.jpg', 3, 15, 5);--> statement-breakpoint
+INSERT INTO `questions_multiple_choice_4` (`question_id`, `option_1`, `option_2`, `option_3`, `option_4`, `correct_option_index`) VALUES (1, 'London', 'Berlin', 'Paris', 'Madrid', 3);--> statement-breakpoint
+-- Question 2: Typed Answer - JavaScript creator
+INSERT INTO `questions` (`id`, `question_type_id`, `question_text`, `image_filename`, `question_display_seconds`, `answer_time_seconds`, `answer_reveal_seconds`) VALUES (2, 5, 'Who created JavaScript? (First and last name)', 'javascript-code.jpg', 3, 15, 5);--> statement-breakpoint
+INSERT INTO `questions_typed` (`question_id`, `correct_answer`, `case_sensitive`) VALUES (2, 'Brendan Eich', 0);--> statement-breakpoint
+-- Question 3: True/False - Earth is flat
+INSERT INTO `questions` (`id`, `question_type_id`, `question_text`, `question_display_seconds`, `answer_time_seconds`, `answer_reveal_seconds`) VALUES (3, 4, 'The Earth is flat.', 3, 15, 5);--> statement-breakpoint
+INSERT INTO `questions_true_false` (`question_id`, `correct_answer`) VALUES (3, 0);--> statement-breakpoint
+-- Link questions to quiz template
+INSERT INTO `quiz_template_rounds` (`quiz_template_id`, `question_id`, `round_order`) VALUES (1, 1, 1);--> statement-breakpoint
+INSERT INTO `quiz_template_rounds` (`quiz_template_id`, `question_id`, `round_order`) VALUES (1, 2, 2);--> statement-breakpoint
+INSERT INTO `quiz_template_rounds` (`quiz_template_id`, `question_id`, `round_order`) VALUES (1, 3, 3);--> statement-breakpoint
+-- Seed test user accounts for development/testing
+-- Both passwords: algolounge123
+
+-- Member account: member@algolounge.com / algolounge123
+INSERT INTO `users` (`username`, `email`, `password_hash`, `role_id`) VALUES ('member', 'member@algolounge.com', '$2b$10$BXJ841nJrZPtunPwfP.z2uu0arJvQu9NNcvMwcWR//D9.KGtXmzGe', 2);--> statement-breakpoint
+-- Admin account: admin@algolounge.com / algolounge123
+INSERT INTO `users` (`username`, `email`, `password_hash`, `role_id`) VALUES ('admin', 'admin@algolounge.com', '$2b$10$BDUcC5hgX7az0OdW/sZQnuGji24BM7r5MZ1WkiF5S2lUEO6YkZgJu', 1);

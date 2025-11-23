@@ -30,16 +30,6 @@ export class SSEService {
       return;
     }
 
-    // EventSource doesn't support custom headers, so we need to pass the token in the URL
-    // For now, we'll use a different approach - set up the connection without auth in URL
-    // The backend should validate the token from the Authorization header
-    // Since EventSource doesn't support headers, we'll need to handle this differently
-
-    // For SSE with auth, we have a few options:
-    // 1. Pass token as query parameter (less secure but works with EventSource)
-    // 2. Use fetch with ReadableStream (more complex but supports headers)
-    // Let's use option 1 for simplicity
-
     const url = `${environment.apiUrl}/api/quiz-events/${eventId}/stream?token=${encodeURIComponent(token)}`;
 
     this.eventSource = new EventSource(url);

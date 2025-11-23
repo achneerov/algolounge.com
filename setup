@@ -52,6 +52,13 @@ npx tsx src/db/migrate.ts
 cd ..
 print_status "Database migrations complete"
 
+# Seed development data
+print_step "Seeding development data..."
+cd backend
+npm run db:seed
+cd ..
+print_status "Development data seeded"
+
 # Generate environment files
 print_step "Generating environment files..."
 

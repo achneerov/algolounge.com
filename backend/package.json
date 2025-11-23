@@ -7,7 +7,8 @@
     "dev": "tsx watch src/index.ts",
     "build": "tsx src/index.ts",
     "db:generate": "drizzle-kit generate",
-    "db:migrate": "tsx src/db/migrate.ts"
+    "db:migrate": "tsx src/db/migrate.ts",
+    "db:seed": "tsx src/db/seed.ts"
   },
   "keywords": [],
   "author": "",

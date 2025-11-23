@@ -58,7 +58,6 @@ export class QuizLobbyComponent implements OnInit, OnDestroy {
 
             // Listen for SSE events
             this.sseService.events$.pipe(takeUntil(this.destroy$)).subscribe(sseEvent => {
-              console.log('SSE Event received:', sseEvent);
               if (sseEvent.type === 'player_joined') {
                 // Reload event to get updated participant list
                 this.loadEvent(false);

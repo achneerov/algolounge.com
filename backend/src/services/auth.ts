@@ -59,7 +59,7 @@ export async function registerUser(
   const token = generateToken({
     userId: newUser.id,
     email: newUser.email,
-    roleId: newUser.roleId!,
+    roleId: newUser.roleId,
   });
 
   return {
@@ -67,7 +67,7 @@ export async function registerUser(
       id: newUser.id,
       username: newUser.username,
       email: newUser.email,
-      roleId: newUser.roleId!,
+      roleId: newUser.roleId,
     },
     token,
   };
@@ -107,7 +107,7 @@ export async function loginUser(emailOrUsername: string, password: string) {
   const token = generateToken({
     userId: user.id,
     email: user.email,
-    roleId: user.roleId!,
+    roleId: user.roleId,
   });
 
   return {
@@ -115,7 +115,7 @@ export async function loginUser(emailOrUsername: string, password: string) {
       id: user.id,
       username: user.username,
       email: user.email,
-      roleId: user.roleId!,
+      roleId: user.roleId,
     },
     token,
   };

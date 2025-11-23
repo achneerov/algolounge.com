@@ -7,7 +7,9 @@ export const users = sqliteTable("users", {
   username: text("username").notNull().unique(),
   email: text("email").notNull().unique(),
   passwordHash: text("password_hash").notNull(),
-  roleId: integer("role_id").references(() => userRoles.id), // Nullable in DB schema, but will always be set in application code
+  roleId: integer("role_id")
+    .notNull()
+    .references(() => userRoles.id),
   createdAt: integer("created_at")
     .default(sql`(unixepoch() * 1000)`)
     .notNull(),

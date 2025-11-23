@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 import { Subject, takeUntil } from 'rxjs';
 
-type QuizState = 'starting' | 'question_display' | 'answering' | 'answer_reveal' | 'transitioning' | 'final_results';
+type QuizState = 'waiting' | 'question_display' | 'answering' | 'answer_reveal' | 'transitioning' | 'final_results';
 
 interface QuestionData {
   id: number;
@@ -43,8 +43,8 @@ export class QuizPlayComponent implements OnInit, OnDestroy {
   currentQuestion: QuestionData | null = null;
   questionImageUrl: string | null = null;
 
-  state: QuizState = 'starting';
-  countdown = 5;
+  state: QuizState = 'waiting';
+  countdown = 0;
   isCreator = false;
 
   // Answer submission
@@ -110,8 +110,8 @@ export class QuizPlayComponent implements OnInit, OnDestroy {
             this.showQuestionSequence();
           });
         } else {
-          // Show starting screen
-          this.showStartingSequence();
+          // Wait for round_started event
+          this.state = 'waiting';
         }
       },
       error: (error) => {
@@ -119,19 +119,6 @@ export class QuizPlayComponent implements OnInit, OnDestroy {
         this.router.navigate(['/quiz']);
       }
     });
-  }
-
-  showStartingSequence() {
-    this.state = 'starting';
-    this.countdown = this.event?.template?.startingCountdownSeconds || 5;
-
-    const interval = setInterval(() => {
-      this.countdown--;
-      if (this.countdown <= 0) {
-        clearInterval(interval);
-        // Wait for round_started event
-      }
-    }, 1000);
   }
 
   handleRoundStarted(data: any) {

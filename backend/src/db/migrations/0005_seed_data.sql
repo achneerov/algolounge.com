@@ -12,8 +12,8 @@ VALUES ('admin', 'admin@algolounge.com', '$2b$10$BDUcC5hgX7az0OdW/sZQnuGji24BM7r
 --> statement-breakpoint
 
 -- Seed sample quiz template with custom timings
-INSERT INTO `quiz_templates` (`name`, `description`, `starting_countdown_seconds`, `transition_seconds`)
-VALUES ('Sample Geography Quiz', 'A quick 3-question geography quiz for testing', 5, 5);
+INSERT INTO `quiz_templates` (`name`, `transition_seconds`)
+VALUES ('Sample Geography Quiz', 5);
 --> statement-breakpoint
 
 -- Question 1: Multiple Choice 4 - Capital of France

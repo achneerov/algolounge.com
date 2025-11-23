@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "efa5e048-0e92-46ef-8e31-2a44d829d397",
+  "id": "8f7d75dc-f1f6-4599-9364-9c6e4caf5905",
   "prevId": "fe7c0b0e-4b7a-4db7-beb2-20fcf71c831b",
   "tables": {
     "favorite_courses": {
@@ -166,13 +166,36 @@
           "notNull": true,
           "autoincrement": false
         },
-        "time_limit_seconds": {
-          "name": "time_limit_seconds",
+        "image_filename": {
+          "name": "image_filename",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "question_display_seconds": {
+          "name": "question_display_seconds",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 5
+        },
+        "answer_time_seconds": {
+          "name": "answer_time_seconds",
           "type": "integer",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false,
           "default": 30
+        },
+        "answer_reveal_seconds": {
+          "name": "answer_reveal_seconds",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 5
         },
         "created_at": {
           "name": "created_at",
@@ -973,12 +996,13 @@
           "notNull": true,
           "autoincrement": false
         },
-        "description": {
-          "name": "description",
-          "type": "text",
+        "transition_seconds": {
+          "name": "transition_seconds",
+          "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": true,
+          "autoincrement": false,
+          "default": 3
         },
         "created_at": {
           "name": "created_at",
@@ -1063,8 +1087,7 @@
           "type": "integer",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false,
-          "default": 2
+          "autoincrement": false
         },
         "created_at": {
           "name": "created_at",

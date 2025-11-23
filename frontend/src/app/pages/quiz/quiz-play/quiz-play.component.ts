@@ -91,8 +91,6 @@ export class QuizPlayComponent implements OnInit, OnDestroy {
 
         // Listen for SSE events
         this.sseService.events$.pipe(takeUntil(this.destroy$)).subscribe(sseEvent => {
-          console.log('SSE Event:', sseEvent);
-
           if (sseEvent.type === 'round_started') {
             this.handleRoundStarted(sseEvent.data);
           } else if (sseEvent.type === 'round_ended') {
@@ -122,7 +120,6 @@ export class QuizPlayComponent implements OnInit, OnDestroy {
   }
 
   handleRoundStarted(data: any) {
-    console.log('Round started:', data);
     this.currentRound = data as QuizEventRound;
     this.hasSubmitted = false;
     this.userAnswer = '';
@@ -248,17 +245,14 @@ export class QuizPlayComponent implements OnInit, OnDestroy {
     this.http.get<any>(`${environment.apiUrl}/api/quiz-events/${this.event.id}/rounds/${this.currentRound.id}/question`).subscribe({
       next: (question) => {
         this.currentQuestion = question;
-        console.log('Question loaded:', question);
 
         // Set image URL if question has an image
         if (question.imageFilename) {
           // Get token from localStorage to include in image URL (use correct key: auth_token)
           const token = localStorage.getItem('auth_token');
-          console.log('Token from localStorage:', token ? 'exists' : 'NULL');
 
           if (token) {
             this.questionImageUrl = `${environment.apiUrl}/api/quiz-events/${this.event!.id}/rounds/${this.currentRound!.id}/image?token=${token}`;
-            console.log('Image URL:', this.questionImageUrl);
           } else {
             console.error('No auth token found - user must be logged in to view images');
             this.questionImageUrl = null;
@@ -298,8 +292,7 @@ export class QuizPlayComponent implements OnInit, OnDestroy {
     if (!this.event || !this.isCreator) return;
 
     this.quizService.advanceRound(this.event.id).subscribe({
-      next: (response) => {
-        console.log('Advanced to next round:', response);
+      next: () => {
         // SSE will handle the transition
       },
       error: (error) => {
@@ -309,7 +302,6 @@ export class QuizPlayComponent implements OnInit, OnDestroy {
   }
 
   handleRoundEnded(data: any) {
-    console.log('Round ended:', data);
     this.leaderboard = data.leaderboard;
     this.state = 'transitioning';
     this.countdown = this.event?.template?.transitionSeconds || 3;
@@ -324,7 +316,6 @@ export class QuizPlayComponent implements OnInit, OnDestroy {
   }
 
   handleQuizEnded(data: any) {
-    console.log('Quiz ended:', data);
     this.leaderboard = data.leaderboard;
     this.state = 'final_results';
     this.showLeaderboard = true;

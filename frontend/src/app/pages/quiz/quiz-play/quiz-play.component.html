@@ -1,0 +1,248 @@
+<div class="quiz-play">
+  <!-- Waiting Screen -->
+  <div class="quiz-screen waiting-screen" *ngIf="state === 'waiting'">
+    <div class="content-center">
+      <h1 class="big-text">{{ event?.template?.name || 'Quiz' }}</h1>
+      <p class="subtitle">Waiting for quiz to start...</p>
+    </div>
+  </div>
+
+  <!-- Question Display (Show question text) -->
+  <div class="quiz-screen question-display-screen" *ngIf="state === 'question_display'">
+    <div class="content-center">
+      <div class="question-card">
+        <div class="question-number">Question {{ currentRound?.roundNumber }}</div>
+        <img *ngIf="questionImageUrl" [src]="questionImageUrl" alt="Question image" class="question-image" />
+        <h2 class="question-text">{{ currentQuestion?.questionText }}</h2>
+      </div>
+      <div class="countdown-small">{{ countdown }}</div>
+    </div>
+  </div>
+
+  <!-- Answering (Show options and allow answers) -->
+  <div class="quiz-screen answering-screen" *ngIf="state === 'answering'">
+    <div class="answer-container">
+      <!-- Question Header -->
+      <div class="question-header">
+        <div class="question-number">Question {{ currentRound?.roundNumber }}</div>
+        <div class="timer" [class.urgent]="countdown <= 10">
+          <span class="timer-icon">⏱</span>
+          <span class="timer-value">{{ countdown }}s</span>
+        </div>
+      </div>
+
+      <!-- Question Image -->
+      <img *ngIf="questionImageUrl" [src]="questionImageUrl" alt="Question image" class="question-image" />
+
+      <!-- Question Text -->
+      <h2 class="question-text">{{ currentQuestion?.questionText }}</h2>
+
+      <!-- Answer Options -->
+      <div class="answer-options" *ngIf="!hasSubmitted">
+        <!-- Multiple Choice 4 Options -->
+        <div class="options-grid" *ngIf="currentQuestion?.questionTypeId === 3">
+          <button
+            *ngFor="let option of [1, 2, 3, 4]; let i = index"
+            class="option-button"
+            [class.selected]="userAnswer === (i + 1).toString()"
+            (click)="userAnswer = (i + 1).toString()"
+            [disabled]="hasSubmitted || isCreator"
+          >
+            <span class="option-letter">{{ ['A', 'B', 'C', 'D'][i] }}</span>
+            <span class="option-text">{{ currentQuestion?.options?.['option' + (i + 1)] }}</span>
+          </button>
+        </div>
+
+        <!-- Multiple Choice 3 Options -->
+        <div class="options-grid" *ngIf="currentQuestion?.questionTypeId === 2">
+          <button
+            *ngFor="let option of [1, 2, 3]; let i = index"
+            class="option-button"
+            [class.selected]="userAnswer === (i + 1).toString()"
+            (click)="userAnswer = (i + 1).toString()"
+            [disabled]="hasSubmitted || isCreator"
+          >
+            <span class="option-letter">{{ ['A', 'B', 'C'][i] }}</span>
+            <span class="option-text">{{ currentQuestion?.options?.['option' + (i + 1)] }}</span>
+          </button>
+        </div>
+
+        <!-- Multiple Choice 2 Options -->
+        <div class="options-grid" *ngIf="currentQuestion?.questionTypeId === 1">
+          <button
+            *ngFor="let option of [1, 2]; let i = index"
+            class="option-button"
+            [class.selected]="userAnswer === (i + 1).toString()"
+            (click)="userAnswer = (i + 1).toString()"
+            [disabled]="hasSubmitted || isCreator"
+          >
+            <span class="option-letter">{{ ['A', 'B'][i] }}</span>
+            <span class="option-text">{{ currentQuestion?.options?.['option' + (i + 1)] }}</span>
+          </button>
+        </div>
+
+        <!-- True/False -->
+        <div class="options-grid true-false" *ngIf="currentQuestion?.questionTypeId === 4">
+          <button
+            class="option-button"
+            [class.selected]="userAnswer === 'true'"
+            (click)="userAnswer = 'true'"
+            [disabled]="hasSubmitted || isCreator"
+          >
+            <span class="option-letter">T</span>
+            <span class="option-text">True</span>
+          </button>
+          <button
+            class="option-button"
+            [class.selected]="userAnswer === 'false'"
+            (click)="userAnswer = 'false'"
+            [disabled]="hasSubmitted || isCreator"
+          >
+            <span class="option-letter">F</span>
+            <span class="option-text">False</span>
+          </button>
+        </div>
+
+        <!-- Typed Answer -->
+        <div class="typed-answer" *ngIf="currentQuestion?.questionTypeId === 5">
+          <input
+            type="text"
+            [(ngModel)]="userAnswer"
+            placeholder="Type your answer here..."
+            class="answer-input"
+            [disabled]="hasSubmitted || isCreator"
+            (keyup.enter)="submitAnswer()"
+          />
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          *ngIf="!isCreator"
+          class="btn btn-submit"
+          (click)="submitAnswer()"
+          [disabled]="!userAnswer || hasSubmitted || isSubmitting"
+        >
+          {{ isSubmitting ? 'Submitting...' : hasSubmitted ? 'Submitted!' : 'Submit Answer' }}
+        </button>
+      </div>
+
+      <!-- After Submission -->
+      <div class="submission-confirmation" *ngIf="hasSubmitted && !isCreator && userAnswer">
+        <div class="check-icon">✓</div>
+        <p>Answer submitted! Waiting for others...</p>
+      </div>
+
+      <!-- Time's up (no answer) -->
+      <div class="submission-confirmation" *ngIf="hasSubmitted && !isCreator && !userAnswer">
+        <p>Time's up! Waiting for next question...</p>
+      </div>
+
+      <!-- Admin View (no controls, just watching) -->
+      <div class="admin-controls" *ngIf="isCreator && hasSubmitted">
+        <p class="admin-message">Timer will auto-advance when it expires...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Answer Reveal (Show correct answer) -->
+  <div class="quiz-screen answer-reveal-screen" *ngIf="state === 'answer_reveal'">
+    <div class="content-center">
+      <h1 class="big-text">Correct Answer</h1>
+      <div class="countdown-small">{{ countdown }}</div>
+
+      <!-- Show question text -->
+      <div class="question-card">
+        <img *ngIf="questionImageUrl" [src]="questionImageUrl" alt="Question image" class="question-image" />
+        <h2 class="question-text">{{ currentQuestion?.questionText }}</h2>
+      </div>
+
+      <!-- Show correct answer based on question type -->
+      <div class="correct-answer-display">
+        <!-- Multiple Choice -->
+        <div *ngIf="correctAnswer?.type === 'multiple_choice'" class="answer-highlight">
+          <div class="option-letter">{{ ['A', 'B', 'C', 'D'][correctAnswer.correctIndex] }}</div>
+          <div class="answer-text">{{ correctAnswer.correctText }}</div>
+        </div>
+
+        <!-- True/False -->
+        <div *ngIf="correctAnswer?.type === 'true_false'" class="answer-highlight">
+          <div class="answer-text">{{ correctAnswer.correct }}</div>
+        </div>
+
+        <!-- Typed Answer -->
+        <div *ngIf="correctAnswer?.type === 'typed'" class="answer-highlight">
+          <div class="answer-text">{{ correctAnswer.answer }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Transitioning (Between questions) -->
+  <div class="quiz-screen transitioning-screen" *ngIf="state === 'transitioning'">
+    <div class="content-center">
+      <h1 class="big-text">Next Question</h1>
+      <div class="countdown-circle">{{ countdown }}</div>
+
+      <!-- Show mini leaderboard -->
+      <div class="mini-leaderboard" *ngIf="leaderboard.length > 0">
+        <h3>Current Standings</h3>
+        <div class="leaderboard-list">
+          <div class="leaderboard-item" *ngFor="let entry of leaderboard.slice(0, 3); let i = index">
+            <span class="rank">{{ i + 1 }}</span>
+            <span class="username">{{ entry.username }}</span>
+            <span class="score">{{ entry.score }} pts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Final Results -->
+  <div class="quiz-screen final-results-screen" *ngIf="state === 'final_results'">
+    <div class="results-container">
+      <h1 class="results-title">Quiz Complete!</h1>
+
+      <div class="podium" *ngIf="leaderboard.length >= 3">
+        <!-- 2nd Place -->
+        <div class="podium-place second">
+          <div class="podium-medal">🥈</div>
+          <div class="podium-name">{{ leaderboard[1].username }}</div>
+          <div class="podium-score">{{ leaderboard[1].score }} pts</div>
+          <div class="podium-block rank-2">2</div>
+        </div>
+
+        <!-- 1st Place -->
+        <div class="podium-place first">
+          <div class="podium-medal">🥇</div>
+          <div class="podium-name">{{ leaderboard[0].username }}</div>
+          <div class="podium-score">{{ leaderboard[0].score }} pts</div>
+          <div class="podium-block rank-1">1</div>
+        </div>
+
+        <!-- 3rd Place -->
+        <div class="podium-place third">
+          <div class="podium-medal">🥉</div>
+          <div class="podium-name">{{ leaderboard[2].username }}</div>
+          <div class="podium-score">{{ leaderboard[2].score }} pts</div>
+          <div class="podium-block rank-3">3</div>
+        </div>
+      </div>
+
+      <!-- Full Leaderboard -->
+      <div class="full-leaderboard">
+        <h3>Final Standings</h3>
+        <div class="leaderboard-list">
+          <div class="leaderboard-item" *ngFor="let entry of leaderboard; let i = index">
+            <span class="rank" [class.top-3]="i < 3">{{ i + 1 }}</span>
+            <span class="username">{{ entry.username }}</span>
+            <span class="score">{{ entry.score }} pts</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" (click)="router.navigate(['/quiz'])">
+        Back to Quiz Home
+      </button>
+    </div>
+  </div>
+</div>

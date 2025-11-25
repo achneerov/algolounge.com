@@ -9,6 +9,7 @@ const JWT_EXPIRY = "30d";
 export interface JWTPayload {
   userId: number;
   email: string;
+  roleId: number;
 }
 
 export async function registerUser(
@@ -48,6 +49,7 @@ export async function registerUser(
       username,
       email,
       passwordHash,
+      roleId: 2, // Default to 'member' role
     })
     .returning();
 
@@ -57,6 +59,7 @@ export async function registerUser(
   const token = generateToken({
     userId: newUser.id,
     email: newUser.email,
+    roleId: newUser.roleId,
   });
 
   return {
@@ -64,6 +67,7 @@ export async function registerUser(
       id: newUser.id,
       username: newUser.username,
       email: newUser.email,
+      roleId: newUser.roleId,
     },
     token,
   };
@@ -103,6 +107,7 @@ export async function loginUser(emailOrUsername: string, password: string) {
   const token = generateToken({
     userId: user.id,
     email: user.email,
+    roleId: user.roleId,
   });
 
   return {
@@ -110,6 +115,7 @@ export async function loginUser(emailOrUsername: string, password: string) {
       id: user.id,
       username: user.username,
       email: user.email,
+      roleId: user.roleId,
     },
     token,
   };

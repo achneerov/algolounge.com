@@ -9,6 +9,7 @@ export interface AuthResponse {
     id: number;
     username: string;
     email: string;
+    roleId: number;
   };
   token: string;
 }
@@ -17,6 +18,7 @@ export interface User {
   id: number;
   username: string;
   email: string;
+  roleId: number;
 }
 
 @Injectable({

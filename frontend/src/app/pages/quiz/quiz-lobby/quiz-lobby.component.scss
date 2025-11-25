@@ -1,0 +1,195 @@
+.quiz-lobby {
+  min-height: calc(100vh - 80px);
+  padding: 64px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lobby-container {
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+}
+
+.lobby-title {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 48px;
+  color: var(--color-text-primary);
+}
+
+.room-code-display {
+  background: var(--color-surface);
+  border: 2px solid var(--color-primary);
+  border-radius: 1rem;
+  padding: 40px;
+  margin-bottom: 48px;
+}
+
+.room-code-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.room-code {
+  font-size: 72px;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 0.2em;
+  margin-bottom: 8px;
+}
+
+.room-code-hint {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.participants-section {
+  margin-bottom: 48px;
+
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: var(--color-text-primary);
+  }
+}
+
+.participants-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.participant-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.2s ease;
+
+  &:hover:not(.empty) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  &.empty {
+    grid-column: 1 / -1;
+    justify-content: center;
+
+    p {
+      color: var(--color-text-secondary);
+      margin: 0;
+    }
+  }
+}
+
+.participant-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.participant-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.lobby-actions {
+  margin-top: 48px;
+}
+
+.btn {
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: white;
+
+  &:hover:not(:disabled) {
+    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  }
+}
+
+.btn-secondary {
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+
+  &:hover {
+    background: var(--color-border);
+  }
+}
+
+.btn-large {
+  padding: 20px 48px;
+  font-size: 18px;
+  min-width: 200px;
+}
+
+.waiting-message {
+  padding: 24px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  max-width: 400px;
+  margin: 0 auto;
+
+  p {
+    font-size: 16px;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 14px;
+  margin-bottom: 24px;
+  padding: 16px;
+  background: rgba(239, 68, 68, 0.1);
+  border-radius: 0.5rem;
+}
+
+.error-container {
+  text-align: center;
+
+  h2 {
+    color: #ef4444;
+    margin-bottom: 24px;
+  }
+}

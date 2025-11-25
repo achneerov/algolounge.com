@@ -135,7 +135,7 @@ CREATE TABLE `user_roles` (
 );
 --> statement-breakpoint
 CREATE UNIQUE INDEX `user_roles_role_name_unique` ON `user_roles` (`role_name`);--> statement-breakpoint
-ALTER TABLE `users` ADD `role_id` integer NOT NULL REFERENCES user_roles(id);--> statement-breakpoint
+ALTER TABLE `users` ADD `role_id` integer NOT NULL DEFAULT 2 REFERENCES user_roles(id);--> statement-breakpoint
 -- Seed question types (required for quiz questions)
 INSERT INTO `question_types` (`id`, `type_name`) VALUES (1, 'multiple_choice_2');--> statement-breakpoint
 INSERT INTO `question_types` (`id`, `type_name`) VALUES (2, 'multiple_choice_3');--> statement-breakpoint

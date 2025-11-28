@@ -711,7 +711,90 @@
     "week12": {
       "title": "Week 12",
       "description": "These are the questions that will be looked at in week 12.",
-      "questions": []
+      "questions": [
+        {
+          "filename": "implement-queue",
+          "urls": [
+            { "url": "https://www.geeksforgeeks.org/queue-data-structure/", "tooltip": "Queue Tutorial", "color": "#7c3aed", "visibleString": "Tutorial" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Queue", "color": "#ec4899" },
+            { "text": "Data Structure Design", "color": "#8b5cf6" }
+          ]
+        },
+        {
+          "filename": "implement-queue-using-stacks",
+          "urls": [
+            { "url": "https://leetcode.com/problems/implement-queue-using-stacks/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/implement-queue-using-stacks", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Queue", "color": "#ec4899" },
+            { "text": "Stack", "color": "#eab308" }
+          ]
+        },
+        {
+          "filename": "number-of-recent-calls",
+          "urls": [
+            { "url": "https://leetcode.com/problems/number-of-recent-calls/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/number-of-recent-calls", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Queue", "color": "#ec4899" }
+          ]
+        },
+        {
+          "filename": "find-the-winner-of-the-circular-game",
+          "urls": [
+            { "url": "https://leetcode.com/problems/find-the-winner-of-the-circular-game/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/find-the-winner-of-the-circular-game", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Queue", "color": "#ec4899" },
+            { "text": "Simulation", "color": "#8b5cf6" }
+          ]
+        },
+        {
+          "filename": "minimum-number-of-coins-for-fruits",
+          "urls": [
+            { "url": "https://leetcode.com/problems/minimum-number-of-coins-for-fruits/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/minimum-number-of-coins-for-fruits", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Queue", "color": "#ec4899" },
+            { "text": "Dynamic Programming", "color": "#06b6d4" }
+          ]
+        },
+        {
+          "filename": "maximum-number-of-tasks-you-can-assign",
+          "urls": [
+            { "url": "https://leetcode.com/problems/maximum-number-of-tasks-you-can-assign/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/maximum-number-of-tasks-you-can-assign", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Queue", "color": "#ec4899" },
+            { "text": "Binary Search", "color": "#3b82f6" }
+          ]
+        },
+        {
+          "filename": "find-maximum-non-decreasing-array-length",
+          "urls": [
+            { "url": "https://leetcode.com/problems/find-maximum-non-decreasing-array-length/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/find-maximum-non-decreasing-array-length", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Queue", "color": "#ec4899" },
+            { "text": "Dynamic Programming", "color": "#06b6d4" }
+          ]
+        }
+      ]
     },
     "week13": {
       "title": "Week 13",

@@ -1,0 +1,106 @@
+{
+  "index": 0,
+  "filename": "implement-queue",
+  "title": "Implement Queue",
+  "keywords": [
+    "queue",
+    "implement",
+    "data structure",
+    "linked list",
+    "circular array",
+    "enqueue",
+    "dequeue",
+    "front",
+    "empty",
+    "FIFO"
+  ],
+  "description": "<h2>Implement Queue</h2><p>Implement a queue data structure with the following operations:</p><ul><li><code>enqueue(val)</code>: Add an element to the end of the queue</li><li><code>dequeue()</code>: Remove and return the front element from the queue</li><li><code>front()</code>: Return the front element without removing it</li><li><code>empty()</code>: Return whether the queue is empty</li></ul><p>You can choose to implement the queue using either:</p><ul><li><strong>Linked List</strong> - Each node points to the next node</li><li><strong>Circular Array</strong> - Fixed-size array with wrapping</li></ul><h3>Examples:</h3><ul><li>Input: [\"Queue\", \"enqueue\", \"enqueue\", \"front\", \"dequeue\", \"empty\"]<br>[[], [1], [2], [], [], []]<br>Output: [null, null, null, 1, 1, false]</li><li>Input: [\"Queue\", \"enqueue\", \"dequeue\", \"empty\"]<br>[[], [10], [], []]<br>Output: [null, null, 10, true]</li></ul><h3>Constraints:</h3><ul><li><code>1 <= val <= 10^9</code></li><li>At most <code>10^4</code> calls will be made to each function</li><li><code>dequeue</code> and <code>front</code> will only be called on non-empty queues</li></ul>",
+  "entry_function": "executeQueueOperations",
+  "template": "class Queue:\n    def __init__(self):\n        \n    \n    def enqueue(self, val):\n        \n    \n    def dequeue(self):\n        \n    \n    def front(self):\n        \n    \n    def empty(self):\n        ",
+  "solution_text": "<h3>Implement Queue</h3><p><strong>Algorithm (Linked List Approach):</strong></p><ol><li>Use a singly linked list where each node contains a value and pointer to next</li><li>Maintain both head (front) and tail (rear) pointers</li><li>Enqueue: Add new node at tail</li><li>Dequeue: Remove head and return its value</li><li>Front: Return head value without removal</li><li>Empty: Check if head is None</li></ol><p><strong>Algorithm (Circular Array Approach):</strong></p><ol><li>Use a fixed-size array with front and rear indices</li><li>Enqueue: Add element at rear index and increment rear (with wrap-around)</li><li>Dequeue: Remove element at front index and increment front (with wrap-around)</li><li>Front: Return element at front index</li><li>Empty: Check if front equals rear when queue is empty</li></ol><p><strong>Time Complexity:</strong> O(1) for all operations</p><p><strong>Space Complexity:</strong> O(n) where n is number of elements</p><p><strong>Key Insights:</strong></p><ul><li>Linked list approach is simpler and doesn't need fixed capacity</li><li>Circular array is more memory efficient but requires capacity management</li><li>Both approaches provide O(1) operations</li><li>Queue follows FIFO (First In First Out) principle</li></ul>",
+  "solution_code": "class Node:\n    def __init__(self, val):\n        self.val = val\n        self.next = None\n\nclass Queue:\n    def __init__(self):\n        self.head = None\n        self.tail = None\n        self.size = 0\n    \n    def enqueue(self, val):\n        new_node = Node(val)\n        if self.tail is None:\n            self.head = self.tail = new_node\n        else:\n            self.tail.next = new_node\n            self.tail = new_node\n        self.size += 1\n    \n    def dequeue(self):\n        if self.head is None:\n            return None\n        val = self.head.val\n        self.head = self.head.next\n        if self.head is None:\n            self.tail = None\n        self.size -= 1\n        return val\n    \n    def front(self):\n        if self.head is None:\n            return None\n        return self.head.val\n    \n    def empty(self):\n        return 1 if self.size == 0 else 0",
+  "prepare": "# Define the wrapper function that will execute operations\ndef executeQueueOperations(operations, values):\n    results = []\n    queue = None\n    for i, (op, val) in enumerate(zip(operations, values)):\n        if op == 'Queue':\n            queue = Queue()\n            results.append(None)\n        elif op == 'enqueue':\n            results.append(queue.enqueue(val[0]))\n        elif op == 'dequeue':\n            results.append(queue.dequeue())\n        elif op == 'front':\n            results.append(queue.front())\n        elif op == 'empty':\n            results.append(queue.empty())\n    return results\n\ndef prepare(test_case_input):\n    \"\"\"Prepare arguments for executeQueueOperations function\"\"\"\n    return (test_case_input['operations'], test_case_input['values'])",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the queue operations result\"\"\"\n    if len(actual_output) != len(expected_output):\n        return [False, str(actual_output)]\n    \n    for i, (actual, expected) in enumerate(zip(actual_output, expected_output)):\n        if actual != expected:\n            return [False, str(actual_output)]\n    \n    return [True, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "operations": ["Queue", "enqueue", "enqueue", "front", "dequeue", "empty"],
+        "values": [[], [1], [2], [], [], []]
+      },
+      "output": [null, null, null, 1, 1, 0]
+    },
+    {
+      "id": 2,
+      "input": {
+        "operations": ["Queue", "enqueue", "dequeue", "empty"],
+        "values": [[], [10], [], []]
+      },
+      "output": [null, null, 10, 1]
+    },
+    {
+      "id": 3,
+      "input": {
+        "operations": ["Queue", "enqueue", "enqueue", "enqueue", "dequeue", "dequeue", "dequeue", "empty"],
+        "values": [[], ["hello"], ["world"], ["test"], [], [], [], []]
+      },
+      "output": [null, null, null, null, "hello", "world", "test", 1]
+    },
+    {
+      "id": 4,
+      "input": {
+        "operations": ["Queue", "enqueue", "front", "front", "dequeue", "empty"],
+        "values": [[], [5], [], [], [], []]
+      },
+      "output": [null, null, 5, 5, 5, 1]
+    },
+    {
+      "id": 5,
+      "input": {
+        "operations": ["Queue", "empty", "enqueue", "empty", "enqueue", "front"],
+        "values": [[], [], [100], [], [200], []]
+      },
+      "output": [null, 1, null, 0, null, 100]
+    },
+    {
+      "id": 6,
+      "input": {
+        "operations": ["Queue", "enqueue", "enqueue", "enqueue", "enqueue", "enqueue", "dequeue", "dequeue", "dequeue", "dequeue", "dequeue", "empty"],
+        "values": [[], ["a"], ["b"], ["c"], ["d"], ["e"], [], [], [], [], [], []]
+      },
+      "output": [null, null, null, null, null, null, "a", "b", "c", "d", "e", 1]
+    },
+    {
+      "id": 7,
+      "input": {
+        "operations": ["Queue", "enqueue", "enqueue", "dequeue", "enqueue", "dequeue", "dequeue", "empty"],
+        "values": [[], [7], [8], [], [9], [], [], []]
+      },
+      "output": [null, null, null, 7, null, 8, 9, 1]
+    },
+    {
+      "id": 8,
+      "input": {
+        "operations": ["Queue", "enqueue", "front", "enqueue", "front", "enqueue", "front"],
+        "values": [[], ["x"], [], ["y"], [], ["z"], []]
+      },
+      "output": [null, null, "x", null, "x", null, "x"]
+    },
+    {
+      "id": 9,
+      "input": {
+        "operations": ["Queue", "enqueue", "enqueue", "enqueue", "front", "dequeue", "front", "dequeue", "front"],
+        "values": [[], [10], [20], [30], [], [], [], [], []]
+      },
+      "output": [null, null, null, null, 10, 10, 20, 20, 30]
+    },
+    {
+      "id": 10,
+      "input": {
+        "operations": ["Queue", "enqueue", "empty", "dequeue", "empty", "enqueue", "enqueue", "dequeue", "empty"],
+        "values": [[], [42], [], [], [], [50], [60], [], []]
+      },
+      "output": [null, null, 0, 42, 1, null, null, 50, 0]
+    }
+  ]
+}

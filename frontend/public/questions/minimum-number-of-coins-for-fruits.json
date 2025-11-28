@@ -1,0 +1,77 @@
+{
+  "index": 0,
+  "filename": "minimum-number-of-coins-for-fruits",
+  "title": "Minimum Number of Coins for Fruits",
+  "keywords": [
+    "dynamic programming",
+    "queue",
+    "monotonic queue",
+    "deque",
+    "optimization"
+  ],
+  "description": "<h2>Minimum Number of Coins for Fruits</h2><p>You are at a fruit market with different types of exotic fruits on display.</p><p>You are given a 1-indexed array <code>prices</code> where <code>prices[i]</code> denotes the number of coins needed to purchase the <code>i<sup>th</sup></code> fruit.</p><p>The fruit market has the following offer:</p><ul><li>If you purchase the <code>i<sup>th</sup></code> fruit at <code>prices[i]</code> coins, you can get the next <code>i</code> fruits for free</li></ul><p>Note that even if you can take fruit <code>j</code> for free, you can still purchase it for <code>prices[j]</code> coins to receive a new offer.</p><p>Return the minimum number of coins needed to acquire all the fruits.</p><h3>Examples:</h3><p><strong>Example 1:</strong></p><pre>Input: prices = [3,1,2]\nOutput: 4\nExplanation: \n- Purchase the 1st fruit with 3 coins, you are allowed to take the 2nd fruit for free.\n- Purchase the 2nd fruit with 1 coin, you are allowed to take the 3rd fruit for free.\n- Take the 3rd fruit for free.\nIt is possible to acquire all the fruits for 4 coins.</pre><p><strong>Example 2:</strong></p><pre>Input: prices = [1,10,1,1]\nOutput: 2\nExplanation:\n- Purchase the 1st fruit with 1 coin, you are allowed to take the 2nd fruit for free.\n- Take the 2nd fruit for free.\n- Purchase the 3rd fruit for 1 coin, you are allowed to take the 4th fruit for free.\n- Take the 4th fruit for free.\nIt is possible to acquire all the fruits for 2 coins.</pre><h3>Constraints:</h3><ul><li><code>1 <= prices.length <= 1000</code></li><li><code>1 <= prices[i] <= 10^5</code></li></ul>",
+  "entry_function": "minimumCoins",
+  "template": "def minimumCoins(prices):\n    ",
+  "solution_text": "<h3>Minimum Number of Coins for Fruits</h3><p><strong>Approach 1: Dynamic Programming</strong></p><ol><li>Define dp[i] as the minimum cost to acquire all fruits from index i to the end</li><li>For each position i, we have two choices:\n<ul><li>Buy fruit i: cost is prices[i] + min(dp[i+1], dp[i+2], ..., dp[min(i+i+1, n)])</li><li>The range represents all fruits we can get for free after buying fruit i</li></ul></li><li>Work backwards from the last fruit to the first</li><li>Return dp[0]</li></ol><p><strong>Time Complexity:</strong> O(n²) for basic DP</p><p><strong>Space Complexity:</strong> O(n)</p><p><strong>Approach 2: DP + Monotonic Deque (Optimized)</strong></p><ol><li>Use a monotonic deque to efficiently find the minimum in the range</li><li>The deque maintains indices in increasing order of their dp values</li><li>As we process each position, we remove elements outside our range and elements with higher dp values</li><li>This optimizes the range minimum query from O(n) to O(1)</li></ol><p><strong>Time Complexity:</strong> O(n)</p><p><strong>Space Complexity:</strong> O(n)</p><p><strong>Key Insights:</strong></p><ul><li>Buying earlier fruits can give more free fruits, but they cost more</li><li>We need to find the optimal balance between cost and free fruits</li><li>The problem has optimal substructure - we can solve smaller subproblems</li><li>Monotonic deque is useful for sliding window minimum problems</li></ul>",
+  "solution_code": "def minimumCoins(prices):\n    n = len(prices)\n    # dp[i] represents minimum coins needed to get all fruits from index i onwards\n    # We use 1-indexed as per problem, so adjust\n    dp = [float('inf')] * (n + 1)\n    dp[n] = 0  # No cost for empty range\n    \n    # Process from right to left\n    for i in range(n - 1, -1, -1):\n        # If we buy fruit at index i (1-indexed: i+1)\n        # We can get next i+1 fruits for free\n        # So we need to check positions from i+1 to min(i+1+i+1, n)\n        for j in range(i + 1, min(i + 1 + i + 1, n) + 1):\n            dp[i] = min(dp[i], prices[i] + dp[j])\n        \n        # Edge case: if we can reach the end with free fruits\n        if i + 1 + i + 1 >= n:\n            dp[i] = min(dp[i], prices[i])\n    \n    return dp[0]",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for minimumCoins function\"\"\"\n    return (test_case_input['prices'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the result\"\"\"\n    if actual_output == expected_output:\n        return [True, str(actual_output)]\n    return [False, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "prices": [3, 1, 2]
+      },
+      "output": 4
+    },
+    {
+      "id": 2,
+      "input": {
+        "prices": [1, 10, 1, 1]
+      },
+      "output": 2
+    },
+    {
+      "id": 3,
+      "input": {
+        "prices": [26, 18, 6, 12, 49, 7, 45, 45]
+      },
+      "output": 39
+    },
+    {
+      "id": 4,
+      "input": {
+        "prices": [1]
+      },
+      "output": 1
+    },
+    {
+      "id": 5,
+      "input": {
+        "prices": [5, 4, 3]
+      },
+      "output": 8
+    },
+    {
+      "id": 6,
+      "input": {
+        "prices": [1, 2, 3, 4, 5]
+      },
+      "output": 4
+    },
+    {
+      "id": 7,
+      "input": {
+        "prices": [10, 1, 1, 1]
+      },
+      "output": 11
+    },
+    {
+      "id": 8,
+      "input": {
+        "prices": [3, 2, 1]
+      },
+      "output": 4
+    }
+  ]
+}

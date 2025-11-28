@@ -2,6 +2,62 @@
   "questions": [
     {
       "index": 0,
+      "filename": "find-maximum-non-decreasing-array-length",
+      "title": "Find Maximum Non-decreasing Array Length",
+      "keywords": [
+        "dynamic programming",
+        "queue",
+        "monotonic queue",
+        "deque",
+        "prefix sum",
+        "optimization"
+      ]
+    },
+    {
+      "index": 0,
+      "filename": "find-the-winner-of-the-circular-game",
+      "title": "Find the Winner of the Circular Game",
+      "keywords": [
+        "queue",
+        "simulation",
+        "josephus problem",
+        "circular",
+        "math"
+      ]
+    },
+    {
+      "index": 0,
+      "filename": "implement-queue-using-stacks",
+      "title": "Implement Queue Using Stacks",
+      "keywords": [
+        "queue",
+        "stack",
+        "implement",
+        "data structure",
+        "FIFO",
+        "LIFO",
+        "design"
+      ]
+    },
+    {
+      "index": 0,
+      "filename": "implement-queue",
+      "title": "Implement Queue",
+      "keywords": [
+        "queue",
+        "implement",
+        "data structure",
+        "linked list",
+        "circular array",
+        "enqueue",
+        "dequeue",
+        "front",
+        "empty",
+        "FIFO"
+      ]
+    },
+    {
+      "index": 0,
       "filename": "implement-stack-using-queues",
       "title": "Implement Stack using Queues",
       "keywords": [
@@ -71,6 +127,43 @@
     },
     {
       "index": 0,
+      "filename": "maximum-number-of-tasks-you-can-assign",
+      "title": "Maximum Number of Tasks You Can Assign",
+      "keywords": [
+        "binary search",
+        "greedy",
+        "queue",
+        "monotonic queue",
+        "sorting",
+        "deque"
+      ]
+    },
+    {
+      "index": 0,
+      "filename": "minimum-number-of-coins-for-fruits",
+      "title": "Minimum Number of Coins for Fruits",
+      "keywords": [
+        "dynamic programming",
+        "queue",
+        "monotonic queue",
+        "deque",
+        "optimization"
+      ]
+    },
+    {
+      "index": 0,
+      "filename": "number-of-recent-calls",
+      "title": "Number of Recent Calls",
+      "keywords": [
+        "queue",
+        "design",
+        "data structure",
+        "sliding window",
+        "time range"
+      ]
+    },
+    {
+      "index": 0,
       "filename": "simplify-path",
       "title": "Simplify Path",
       "keywords": [
@@ -84,6 +177,23 @@
         "canonical",
         "navigation",
         "dot"
+      ]
+    },
+    {
+      "index": 0,
+      "filename": "valid-parenthesis-string",
+      "title": "Valid Parenthesis String",
+      "keywords": [
+        "valid",
+        "parenthesis",
+        "string",
+        "greedy",
+        "stack",
+        "dynamic programming",
+        "wildcard",
+        "asterisk",
+        "balance",
+        "medium"
       ]
     },
     {
@@ -1605,6 +1715,6 @@
       ]
     }
   ],
-  "lastUpdated": "2025-11-21T14:51:06.156Z",
-  "totalQuestions": 100
+  "lastUpdated": "2025-11-28T19:08:40.513Z",
+  "totalQuestions": 108
 }

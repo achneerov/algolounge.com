@@ -1,0 +1,85 @@
+{
+  "index": 0,
+  "filename": "number-of-recent-calls",
+  "title": "Number of Recent Calls",
+  "keywords": [
+    "queue",
+    "design",
+    "data structure",
+    "sliding window",
+    "time range"
+  ],
+  "description": "<h2>Number of Recent Calls</h2><p>You have a <code>RecentCounter</code> class which counts the number of recent requests within a certain time frame.</p><p>Implement the <code>RecentCounter</code> class:</p><ul><li><code>RecentCounter()</code>: Initializes the counter with zero recent requests</li><li><code>ping(t)</code>: Adds a new request at time <code>t</code>, where <code>t</code> represents some time in milliseconds, and returns the number of requests that have happened in the past <code>3000</code> milliseconds (including the new request). Specifically, return the number of requests that have happened in the inclusive range <code>[t - 3000, t]</code></li></ul><p>It is guaranteed that every call to <code>ping</code> uses a strictly larger value of <code>t</code> than the previous call.</p><h3>Examples:</h3><p><strong>Example 1:</strong></p><pre>Input: [\"RecentCounter\", \"ping\", \"ping\", \"ping\", \"ping\"]\n[[], [1], [100], [3001], [3002]]\n\nOutput: [null, 1, 2, 3, 3]\n\nExplanation:\nRecentCounter recentCounter = new RecentCounter();\nrecentCounter.ping(1);     // requests = [1], range is [-2999,1], return 1\nrecentCounter.ping(100);   // requests = [1, 100], range is [-2900,100], return 2\nrecentCounter.ping(3001);  // requests = [1, 100, 3001], range is [1,3001], return 3\nrecentCounter.ping(3002);  // requests = [1, 100, 3001, 3002], range is [2,3002], return 3</pre><h3>Constraints:</h3><ul><li><code>1 <= t <= 10^9</code></li><li>Each test case will call <code>ping</code> with strictly increasing values of <code>t</code></li><li>At most <code>10^4</code> calls will be made to <code>ping</code></li></ul>",
+  "entry_function": "executeRecentCounterOperations",
+  "template": "class RecentCounter:\n    def __init__(self):\n        \n    \n    def ping(self, t):\n        ",
+  "solution_text": "<h3>Number of Recent Calls</h3><p><strong>Algorithm (Queue Approach):</strong></p><ol><li>Use a queue to store all request timestamps</li><li>When a new ping arrives at time <code>t</code>, add it to the queue</li><li>Remove all timestamps from the front of the queue that are older than <code>t - 3000</code></li><li>Return the size of the queue (all remaining requests are within the 3000ms window)</li></ol><p><strong>Time Complexity:</strong> O(1) amortized per ping - Each element is added once and removed once</p><p><strong>Space Complexity:</strong> O(n) where n is the maximum number of requests in a 3000ms window (at most 3000 if requests come every millisecond)</p><p><strong>Key Insights:</strong></p><ul><li>Queue is perfect for this because we only need to remove old requests from the front</li><li>Since timestamps are strictly increasing, we never need to look at middle elements</li><li>The window slides forward in time, matching the FIFO nature of a queue</li><li>At most 3000 elements can be in the queue at once (if ping called every millisecond)</li></ul>",
+  "solution_code": "from collections import deque\n\nclass RecentCounter:\n    def __init__(self):\n        self.requests = deque()\n    \n    def ping(self, t):\n        # Add the new request\n        self.requests.append(t)\n        \n        # Remove requests older than t - 3000\n        while self.requests and self.requests[0] < t - 3000:\n            self.requests.popleft()\n        \n        # Return the count of recent requests\n        return len(self.requests)",
+  "prepare": "# Define the wrapper function that will execute operations\ndef executeRecentCounterOperations(operations, values):\n    results = []\n    counter = None\n    for i, (op, val) in enumerate(zip(operations, values)):\n        if op == 'RecentCounter':\n            counter = RecentCounter()\n            results.append(None)\n        elif op == 'ping':\n            results.append(counter.ping(val[0]))\n    return results\n\ndef prepare(test_case_input):\n    \"\"\"Prepare arguments for executeRecentCounterOperations function\"\"\"\n    return (test_case_input['operations'], test_case_input['values'])",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the RecentCounter operations result\"\"\"\n    if len(actual_output) != len(expected_output):\n        return [False, str(actual_output)]\n    \n    for i, (actual, expected) in enumerate(zip(actual_output, expected_output)):\n        if actual != expected:\n            return [False, str(actual_output)]\n    \n    return [True, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "operations": ["RecentCounter", "ping", "ping", "ping", "ping"],
+        "values": [[], [1], [100], [3001], [3002]]
+      },
+      "output": [null, 1, 2, 3, 3]
+    },
+    {
+      "id": 2,
+      "input": {
+        "operations": ["RecentCounter", "ping", "ping", "ping", "ping", "ping"],
+        "values": [[], [1], [2], [3], [4], [3004]]
+      },
+      "output": [null, 1, 2, 3, 4, 2]
+    },
+    {
+      "id": 3,
+      "input": {
+        "operations": ["RecentCounter", "ping"],
+        "values": [[], [642]]
+      },
+      "output": [null, 1]
+    },
+    {
+      "id": 4,
+      "input": {
+        "operations": ["RecentCounter", "ping", "ping", "ping", "ping", "ping", "ping", "ping"],
+        "values": [[], [1], [1000], [2000], [3000], [4000], [5000], [6000]]
+      },
+      "output": [null, 1, 2, 3, 4, 4, 4, 4]
+    },
+    {
+      "id": 5,
+      "input": {
+        "operations": ["RecentCounter", "ping", "ping", "ping"],
+        "values": [[], [1000], [2000], [5001]]
+      },
+      "output": [null, 1, 2, 1]
+    },
+    {
+      "id": 6,
+      "input": {
+        "operations": ["RecentCounter", "ping", "ping", "ping", "ping", "ping"],
+        "values": [[], [100], [200], [3100], [3200], [6300]]
+      },
+      "output": [null, 1, 2, 3, 3, 1]
+    },
+    {
+      "id": 7,
+      "input": {
+        "operations": ["RecentCounter", "ping", "ping", "ping", "ping", "ping", "ping"],
+        "values": [[], [1], [50], [100], [3050], [3100], [6100]]
+      },
+      "output": [null, 1, 2, 3, 3, 3, 2]
+    },
+    {
+      "id": 8,
+      "input": {
+        "operations": ["RecentCounter", "ping", "ping", "ping", "ping", "ping", "ping", "ping", "ping"],
+        "values": [[], [500], [1500], [2500], [3500], [4500], [5500], [6500], [7500]]
+      },
+      "output": [null, 1, 2, 3, 4, 4, 4, 4, 4]
+    }
+  ]
+}

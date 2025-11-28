@@ -19,4 +19,5 @@ jobs:
           key: ${{ secrets.VM_SSH_KEY }}
           script: |
             cd /root/algolounge.com
+            git pull --rebase
             ./deploy

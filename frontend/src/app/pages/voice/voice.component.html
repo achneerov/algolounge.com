@@ -1,0 +1,155 @@
+<div class="voice-page">
+  <!-- Connected to session view -->
+  <div class="voice-session" *ngIf="isConnected && currentSession">
+    <div class="session-header">
+      <h1>{{ currentSession.name }}</h1>
+      <button class="btn btn-secondary" (click)="leaveSession()">Leave Session</button>
+    </div>
+
+    <!-- Local video preview -->
+    <div class="video-grid">
+      <div class="video-tile local">
+        <div class="video-placeholder" *ngIf="!localStream">
+          <div class="icon">📹</div>
+          <p>Preparing your video...</p>
+        </div>
+        <video
+          *ngIf="localStream"
+          #localVideo
+          autoplay
+          muted
+          playsinline
+          [srcObject]="localStream"
+          class="video-stream"
+        ></video>
+        <div class="tile-controls">
+          <span class="username">You</span>
+          <div class="status-icons">
+            <span *ngIf="isMuted" class="icon-muted" title="Muted">🔇</span>
+            <span *ngIf="!isVideoEnabled" class="icon-video-off" title="Video off">📹❌</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Remote participants -->
+      <div class="video-tile" *ngFor="let participant of participants | keyvalue">
+        <div class="video-placeholder">
+          <div class="icon">👤</div>
+          <p>Remote participant</p>
+        </div>
+        <div class="tile-controls">
+          <span class="username">User {{ participant.value.userId }}</span>
+          <div class="status-icons">
+            <span *ngIf="participant.value.isMuted" class="icon-muted" title="Muted">🔇</span>
+            <span *ngIf="!participant.value.isVideoEnabled" class="icon-video-off" title="Video off">📹❌</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="session-controls">
+      <button
+        class="btn btn-control"
+        [class.active]="!isMuted"
+        (click)="toggleMute()"
+        [title]="isMuted ? 'Unmute' : 'Mute'"
+      >
+        {{ isMuted ? '🔇' : '🎤' }} {{ isMuted ? 'Unmute' : 'Mute' }}
+      </button>
+
+      <button
+        class="btn btn-control"
+        [class.active]="isVideoEnabled"
+        (click)="toggleVideo()"
+        [title]="isVideoEnabled ? 'Turn off video' : 'Turn on video'"
+      >
+        {{ isVideoEnabled ? '📹' : '📹❌' }} {{ isVideoEnabled ? 'Video On' : 'Video Off' }}
+      </button>
+
+      <button class="btn btn-danger" (click)="leaveSession()">
+        📞 Disconnect
+      </button>
+    </div>
+
+    <!-- Participant list -->
+    <div class="participants-list">
+      <h3>Participants ({{ (participants | keyvalue).length + 1 }})</h3>
+      <div class="participant-item">
+        <span class="participant-avatar">{{ currentUserId }}</span>
+        <span class="participant-name">You</span>
+      </div>
+      <div class="participant-item" *ngFor="let participant of participants | keyvalue">
+        <span class="participant-avatar">{{ participant.value.userId }}</span>
+        <span class="participant-name">User {{ participant.value.userId }}</span>
+        <div class="participant-status">
+          <span *ngIf="participant.value.isMuted" class="badge">Muted</span>
+          <span *ngIf="!participant.value.isVideoEnabled" class="badge">Video Off</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Browse sessions view -->
+  <div class="voice-browse" *ngIf="!isConnected">
+    <!-- Create new session -->
+    <div class="create-session-card">
+      <h2>Create Voice Session</h2>
+      <div class="form-group">
+        <input
+          type="text"
+          [(ngModel)]="newSessionName"
+          placeholder="Enter session name..."
+          class="session-input"
+          [disabled]="isCreating"
+          (keyup.enter)="createSession()"
+        />
+        <button
+          class="btn btn-primary"
+          (click)="createSession()"
+          [disabled]="!newSessionName.trim() || isCreating"
+        >
+          {{ isCreating ? 'Creating...' : 'Create' }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Active sessions -->
+    <div class="sessions-container">
+      <h2>Active Voice Sessions</h2>
+
+      <div class="no-sessions" *ngIf="sessions.length === 0">
+        <p>No active voice sessions. Create one to get started!</p>
+      </div>
+
+      <div class="session-list">
+        <div class="session-card" *ngFor="let session of sessions">
+          <div class="session-info">
+            <h3>{{ session.name }}</h3>
+            <p class="participant-count">{{ getParticipantCountText(session) }}</p>
+            <p class="created-by">Created by User {{ session.createdByUserId }}</p>
+          </div>
+
+          <div class="session-actions">
+            <button
+              class="btn btn-primary"
+              (click)="joinSession(session)"
+              [disabled]="isJoining"
+            >
+              {{ isJoining ? 'Joining...' : 'Join' }}
+            </button>
+
+            <button
+              *ngIf="currentUserId === session.createdByUserId"
+              class="btn btn-danger"
+              (click)="closeSession(session)"
+              title="Close session (creator only)"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

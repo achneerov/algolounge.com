@@ -10,6 +10,7 @@ import { SignUpComponent } from "./pages/auth/sign-up/sign-up.component";
 import { QuizHomeComponent } from "./pages/quiz/quiz-home/quiz-home.component";
 import { QuizLobbyComponent } from "./pages/quiz/quiz-lobby/quiz-lobby.component";
 import { QuizPlayComponent } from "./pages/quiz/quiz-play/quiz-play.component";
+import { VoiceComponent } from "./pages/voice/voice.component";
 
 export const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -18,6 +19,7 @@ export const routes: Routes = [
   { path: "questions/:name", component: QuestionsComponent },
   { path: "questions", redirectTo: "questions/two-sum", pathMatch: "full" },
   { path: "home", component: HomeComponent },
+  { path: "voice", component: VoiceComponent },
   { path: "quiz", component: QuizHomeComponent },
   { path: "quiz/:roomCode/lobby", component: QuizLobbyComponent },
   { path: "quiz/:roomCode/play", component: QuizPlayComponent },

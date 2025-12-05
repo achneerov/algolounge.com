@@ -799,7 +799,64 @@
     "week13": {
       "title": "Week 13",
       "description": "These are the questions that will be looked at in week 13.",
-      "questions": []
+      "questions": [
+        {
+          "filename": "meeting-rooms",
+          "urls": [
+            { "url": "https://leetcode.com/problems/meeting-rooms/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/meeting-rooms", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Intervals", "color": "#06b6d4" }
+          ]
+        },
+        {
+          "filename": "meeting-rooms-ii",
+          "urls": [
+            { "url": "https://leetcode.com/problems/meeting-rooms-ii/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/meeting-rooms-ii", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Intervals", "color": "#06b6d4" },
+            { "text": "Heap", "color": "#ec4899" }
+          ]
+        },
+        {
+          "filename": "insert-interval",
+          "urls": [
+            { "url": "https://leetcode.com/problems/insert-interval/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/insert-interval", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Intervals", "color": "#06b6d4" }
+          ]
+        },
+        {
+          "filename": "merge-intervals",
+          "urls": [
+            { "url": "https://leetcode.com/problems/merge-intervals/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/merge-intervals", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Intervals", "color": "#06b6d4" }
+          ]
+        },
+        {
+          "filename": "minimum-interval-to-include-each-query",
+          "urls": [
+            { "url": "https://leetcode.com/problems/minimum-interval-to-include-each-query/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/minimum-interval-to-include-each-query", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Intervals", "color": "#06b6d4" }
+          ]
+        }
+      ]
     },
     "week14": {
       "title": "Week 14",

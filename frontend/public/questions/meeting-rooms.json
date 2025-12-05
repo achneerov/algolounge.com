@@ -1,0 +1,70 @@
+{
+  "index": 1,
+  "filename": "meeting-rooms",
+  "title": "Meeting Rooms",
+  "keywords": [
+    "meeting",
+    "intervals",
+    "sorting",
+    "array",
+    "easy",
+    "leetcode"
+  ],
+  "description": "<h2>Meeting Rooms</h2><p>Given an array of meeting time intervals where <code>intervals[i] = [starti, endi]</code>, determine if a person could attend all meetings.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> intervals = [[0,30],[5,10],[15,20]]<br><strong>Output:</strong> false<br><strong>Explanation:</strong> The meetings [0,30] and [5,10] overlap, and [0,30] and [15,20] also overlap.</li><li><strong>Input:</strong> intervals = [[7,10],[2,4]]<br><strong>Output:</strong> true<br><strong>Explanation:</strong> The meetings do not overlap.</li></ul><h3>Constraints:</h3><ul><li><code>0 <= intervals.length <= 10^4</code></li><li><code>intervals[i].length == 2</code></li><li><code>0 <= starti < endi <= 10^6</code></li></ul>",
+  "entry_function": "canAttendMeetings",
+  "template": "def canAttendMeetings(intervals):\n    ",
+  "solution_text": "<h3>Meeting Rooms</h3><p><strong>Algorithm:</strong></p><ol><li>Sort intervals by start time</li><li>Iterate through sorted intervals</li><li>Check if current meeting starts before previous meeting ends</li><li>If overlap found, return false</li><li>If no overlaps, return true</li></ol><p><strong>Time Complexity:</strong> O(n log n) due to sorting</p><p><strong>Space Complexity:</strong> O(1) if sorting in-place, O(n) otherwise</p><p><strong>Key Insights:</strong></p><ul><li>Sorting by start time allows linear scan for overlaps</li><li>Two intervals overlap if start2 < end1</li><li>Only need to check consecutive intervals after sorting</li></ul>",
+  "solution_code": "def canAttendMeetings(intervals):\n    if not intervals:\n        return True\n    \n    # Sort by start time\n    intervals.sort(key=lambda x: x[0])\n    \n    # Check for overlaps\n    for i in range(1, len(intervals)):\n        if intervals[i][0] < intervals[i-1][1]:\n            return False\n    \n    return True",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for canAttendMeetings function\"\"\"\n    return (test_case_input['intervals'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the meeting rooms result\"\"\"\n    def bool_to_string(val):\n        return 'true' if val else 'false'\n    \n    # Convert expected output string to boolean for comparison\n    expected_bool = expected_output == 'true' if isinstance(expected_output, str) else expected_output\n    \n    passed = actual_output == expected_bool\n    output_str = bool_to_string(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "intervals": [
+          [0, 30],
+          [5, 10],
+          [15, 20]
+        ]
+      },
+      "output": "false"
+    },
+    {
+      "id": 2,
+      "input": {
+        "intervals": [
+          [7, 10],
+          [2, 4]
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 3,
+      "input": {
+        "intervals": []
+      },
+      "output": "true"
+    },
+    {
+      "id": 4,
+      "input": {
+        "intervals": [
+          [1, 5],
+          [8, 9]
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 5,
+      "input": {
+        "intervals": [
+          [1, 5],
+          [5, 9]
+        ]
+      },
+      "output": "true"
+    }
+  ]
+}

@@ -1,9 +1,10 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { QuizService, QuizTemplate } from '../../../services/quiz.service';
 import { AuthService } from '../../../services/auth.service';
+import { QuizUploadService } from '../../../services/quiz-upload.service';
 
 @Component({
   selector: 'app-quiz-home',
@@ -15,6 +16,9 @@ export class QuizHomeComponent implements OnInit {
   private quizService = inject(QuizService);
   private authService = inject(AuthService);
   private router = inject(Router);
+  private uploadService = inject(QuizUploadService);
+
+  @ViewChild('fileInput') fileInput!: ElementRef;
 
   currentUser$ = this.authService.currentUser$;
   isAdmin = false;
@@ -29,6 +33,12 @@ export class QuizHomeComponent implements OnInit {
   selectedTemplateId: number | null = null;
   isCreating = false;
   createError = '';
+
+  // Upload quiz (admin only)
+  isUploading = false;
+  uploadError = '';
+  uploadSuccess = '';
+  jsonContent = '';
 
   ngOnInit() {
     // Check if user is admin
@@ -110,5 +120,55 @@ export class QuizHomeComponent implements OnInit {
         this.isCreating = false;
       }
     });
+  }
+
+  uploadQuiz() {
+    this.uploadError = '';
+    this.uploadSuccess = '';
+
+    // Validate JSON
+    const validation = this.uploadService.validateQuizJson(this.jsonContent);
+    if (!validation.valid) {
+      this.uploadError = validation.error || 'Invalid quiz JSON';
+      return;
+    }
+
+    this.isUploading = true;
+    this.quizService.uploadQuiz(validation.data).subscribe({
+      next: (response) => {
+        this.uploadSuccess = `Quiz "${response.name}" uploaded successfully with ${response.roundCount} rounds!`;
+        this.jsonContent = '';
+        this.isUploading = false;
+
+        // Reload templates after a short delay
+        setTimeout(() => {
+          this.loadTemplates();
+          this.uploadSuccess = '';
+        }, 2000);
+      },
+      error: (error) => {
+        this.uploadError = error.error?.error || 'Failed to upload quiz';
+        this.isUploading = false;
+      }
+    });
+  }
+
+  downloadSamples() {
+    this.uploadService.downloadSampleQuizzes();
+  }
+
+  openFileInput() {
+    this.fileInput.nativeElement.click();
+  }
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.jsonContent = e.target.result;
+      };
+      reader.readAsText(file);
+    }
   }
 }

@@ -65,6 +65,62 @@
           {{ isCreating ? 'Creating...' : 'Create Quiz' }}
         </button>
       </div>
+
+      <!-- Upload Quiz Section (admin only) -->
+      <div class="quiz-card upload-card" *ngIf="isAdmin">
+        <h2>Upload a Quiz</h2>
+        <p>Upload a quiz from JSON file</p>
+
+        <div class="form-group">
+          <label>Quiz JSON</label>
+          <textarea
+            [(ngModel)]="jsonContent"
+            placeholder="Paste quiz JSON or select a file..."
+            class="json-textarea"
+            [disabled]="isUploading"
+          ></textarea>
+        </div>
+
+        <div class="button-group">
+          <button
+            class="btn btn-secondary"
+            (click)="openFileInput()"
+            [disabled]="isUploading"
+          >
+            Choose File
+          </button>
+          <button
+            class="btn btn-secondary"
+            (click)="downloadSamples()"
+            [disabled]="isUploading"
+          >
+            Download Samples
+          </button>
+          <input
+            #fileInput
+            type="file"
+            accept=".json"
+            (change)="onFileSelected($event)"
+            style="display: none"
+          />
+        </div>
+
+        <div class="error-message" *ngIf="uploadError">
+          {{ uploadError }}
+        </div>
+
+        <div class="success-message" *ngIf="uploadSuccess">
+          {{ uploadSuccess }}
+        </div>
+
+        <button
+          class="btn btn-primary"
+          (click)="uploadQuiz()"
+          [disabled]="isUploading || !jsonContent.trim()"
+        >
+          {{ isUploading ? 'Uploading...' : 'Upload Quiz' }}
+        </button>
+      </div>
     </div>
 
     <!-- Not signed in message -->

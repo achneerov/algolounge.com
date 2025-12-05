@@ -1,0 +1,41 @@
+{
+  "name": "World Geography Quiz",
+  "transitionSeconds": 3,
+  "rounds": [
+    {
+      "questionText": "What is the capital of France?",
+      "questionType": "multiple_choice_3",
+      "questionDisplaySeconds": 5,
+      "answerTimeSeconds": 30,
+      "answerRevealSeconds": 5,
+      "options": ["Paris", "Lyon", "Marseille"],
+      "correctOptionIndex": 0
+    },
+    {
+      "questionText": "Which is the largest planet in our solar system?",
+      "questionType": "multiple_choice_4",
+      "questionDisplaySeconds": 5,
+      "answerTimeSeconds": 30,
+      "answerRevealSeconds": 5,
+      "options": ["Saturn", "Jupiter", "Neptune", "Uranus"],
+      "correctOptionIndex": 1
+    },
+    {
+      "questionText": "The Great Wall of China is in Asia.",
+      "questionType": "true_false",
+      "questionDisplaySeconds": 5,
+      "answerTimeSeconds": 30,
+      "answerRevealSeconds": 5,
+      "correctAnswer": true
+    },
+    {
+      "questionText": "What is the capital of Australia?",
+      "questionType": "multiple_choice_3",
+      "questionDisplaySeconds": 5,
+      "answerTimeSeconds": 30,
+      "answerRevealSeconds": 5,
+      "options": ["Sydney", "Canberra", "Melbourne"],
+      "correctOptionIndex": 1
+    }
+  ]
+}

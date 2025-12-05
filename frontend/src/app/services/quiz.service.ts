@@ -131,6 +131,11 @@ export class QuizService {
     );
   }
 
+  // Upload a quiz JSON (admin only)
+  uploadQuiz(quizData: any): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/api/quiz-templates/upload`, quizData);
+  }
+
   // Clear current event
   clearCurrentEvent(): void {
     this.currentEventSubject.next(null);

@@ -1,18 +1,39 @@
 import { Router, Request, Response } from "express";
-import { db, quizTemplates, quizTemplateRounds, questions, questionsMultipleChoice2, questionsMultipleChoice3, questionsMultipleChoice4, questionsTrueFalse, questionsTyped, questionTypes } from "../db";
-import { eq } from "drizzle-orm";
+import { db, quizTemplates, quizTemplateRounds, questions, questionsMultipleChoice2, questionsMultipleChoice3, questionsMultipleChoice4, questionsTrueFalse, questionsTyped, questionTypes, quizTemplateStatuses } from "../db";
+import { eq, inArray } from "drizzle-orm";
 import { authMiddleware, adminMiddleware } from "../middleware/auth";
 
 const router = Router();
 
-// GET /api/quiz-templates - List all quiz templates (admin only)
+// GET /api/quiz-templates - List all active quiz templates (admin only)
 router.get(
   "/",
   authMiddleware,
   adminMiddleware,
   async (req: Request, res: Response) => {
     try {
-      const templates = await db.select().from(quizTemplates);
+      const templates = await db
+        .select()
+        .from(quizTemplates)
+        .where(eq(quizTemplates.statusId, 1));
+      res.json(templates);
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+);
+
+// GET /api/quiz-templates/hidden/list - List all hidden quiz templates (admin only)
+router.get(
+  "/hidden/list",
+  authMiddleware,
+  adminMiddleware,
+  async (req: Request, res: Response) => {
+    try {
+      const templates = await db
+        .select()
+        .from(quizTemplates)
+        .where(eq(quizTemplates.statusId, 2));
       res.json(templates);
     } catch (error: any) {
       res.status(500).json({ error: error.message });
@@ -194,6 +215,90 @@ router.post(
       });
     } catch (error: any) {
       res.status(400).json({ error: error.message });
+    }
+  }
+);
+
+// PATCH /api/quiz-templates/:id/hide - Hide a quiz template (admin only)
+router.patch(
+  "/:id/hide",
+  authMiddleware,
+  adminMiddleware,
+  async (req: Request, res: Response) => {
+    try {
+      const templateId = parseInt(req.params.id);
+
+      if (isNaN(templateId)) {
+        return res.status(400).json({ error: "Invalid template ID" });
+      }
+
+      // Check if template exists
+      const template = await db
+        .select()
+        .from(quizTemplates)
+        .where(eq(quizTemplates.id, templateId))
+        .limit(1);
+
+      if (template.length === 0) {
+        return res.status(404).json({ error: "Template not found" });
+      }
+
+      // Update template status to hidden (status_id = 2)
+      await db
+        .update(quizTemplates)
+        .set({ statusId: 2 })
+        .where(eq(quizTemplates.id, templateId));
+
+      res.json({
+        message: "Quiz template hidden successfully",
+        templateId,
+        name: template[0].name,
+        status: "hidden"
+      });
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+);
+
+// PATCH /api/quiz-templates/:id/show - Unhide a quiz template (admin only)
+router.patch(
+  "/:id/show",
+  authMiddleware,
+  adminMiddleware,
+  async (req: Request, res: Response) => {
+    try {
+      const templateId = parseInt(req.params.id);
+
+      if (isNaN(templateId)) {
+        return res.status(400).json({ error: "Invalid template ID" });
+      }
+
+      // Check if template exists
+      const template = await db
+        .select()
+        .from(quizTemplates)
+        .where(eq(quizTemplates.id, templateId))
+        .limit(1);
+
+      if (template.length === 0) {
+        return res.status(404).json({ error: "Template not found" });
+      }
+
+      // Update template status to active (status_id = 1)
+      await db
+        .update(quizTemplates)
+        .set({ statusId: 1 })
+        .where(eq(quizTemplates.id, templateId));
+
+      res.json({
+        message: "Quiz template shown successfully",
+        templateId,
+        name: template[0].name,
+        status: "active"
+      });
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
     }
   }
 );

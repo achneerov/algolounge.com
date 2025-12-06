@@ -40,12 +40,17 @@ export class QuizHomeComponent implements OnInit {
   uploadSuccess = '';
   jsonContent = '';
 
+  // Hidden templates (admin only)
+  hiddenTemplates: QuizTemplate[] = [];
+  showHiddenSection = false;
+
   ngOnInit() {
     // Check if user is admin
     this.authService.currentUser$.subscribe(user => {
       if (user && (user as any).roleId === 1) {
         this.isAdmin = true;
         this.loadTemplates();
+        this.loadHiddenTemplates();
       }
     });
   }
@@ -170,5 +175,59 @@ export class QuizHomeComponent implements OnInit {
       };
       reader.readAsText(file);
     }
+  }
+
+  loadHiddenTemplates() {
+    this.quizService.getHiddenTemplates().subscribe({
+      next: (templates) => {
+        this.hiddenTemplates = templates;
+      },
+      error: (error) => {
+        console.error('Failed to load hidden templates:', error);
+      }
+    });
+  }
+
+  hideTemplate(templateId: number) {
+    const template = this.templates.find(t => t.id === templateId);
+    if (!template) return;
+
+    this.quizService.hideTemplate(templateId).subscribe({
+      next: () => {
+        this.createError = '';
+        this.uploadSuccess = `Quiz "${template.name}" hidden successfully!`;
+        this.loadTemplates();
+        this.loadHiddenTemplates();
+        setTimeout(() => {
+          this.uploadSuccess = '';
+        }, 2000);
+      },
+      error: (error) => {
+        this.createError = error.error?.error || 'Failed to hide quiz';
+      }
+    });
+  }
+
+  showTemplate(templateId: number) {
+    const template = this.hiddenTemplates.find(t => t.id === templateId);
+    if (!template) return;
+
+    this.quizService.showTemplate(templateId).subscribe({
+      next: () => {
+        this.uploadSuccess = `Quiz "${template.name}" restored successfully!`;
+        this.loadTemplates();
+        this.loadHiddenTemplates();
+        setTimeout(() => {
+          this.uploadSuccess = '';
+        }, 2000);
+      },
+      error: (error) => {
+        this.createError = error.error?.error || 'Failed to show quiz';
+      }
+    });
+  }
+
+  toggleHiddenSection() {
+    this.showHiddenSection = !this.showHiddenSection;
   }
 }

@@ -64,6 +64,44 @@
         >
           {{ isCreating ? 'Creating...' : 'Create Quiz' }}
         </button>
+
+        <!-- Templates List with Hide Buttons -->
+        <div class="templates-list" *ngIf="templates.length > 0">
+          <h3>Manage Templates</h3>
+          <div class="template-item" *ngFor="let template of templates">
+            <span class="template-name">{{ template.name }}</span>
+            <button
+              class="btn btn-hide"
+              (click)="hideTemplate(template.id)"
+              title="Hide this quiz template"
+            >
+              Hide
+            </button>
+          </div>
+        </div>
+
+        <!-- Hidden Templates Section -->
+        <div class="hidden-templates-section" *ngIf="hiddenTemplates.length > 0">
+          <button
+            class="toggle-hidden-btn"
+            (click)="toggleHiddenSection()"
+          >
+            {{ showHiddenSection ? '▼' : '▶' }} Hidden Templates ({{ hiddenTemplates.length }})
+          </button>
+
+          <div class="templates-list" *ngIf="showHiddenSection">
+            <div class="template-item" *ngFor="let template of hiddenTemplates">
+              <span class="template-name">{{ template.name }}</span>
+              <button
+                class="btn btn-show"
+                (click)="showTemplate(template.id)"
+                title="Restore this quiz template"
+              >
+                Restore
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Upload Quiz Section (admin only) -->

@@ -2,11 +2,18 @@ import { sql } from "drizzle-orm";
 import { sqliteTable, integer, text, unique } from "drizzle-orm/sqlite-core";
 import { questions } from "./questions";
 
+// Quiz template status enum
+export const quizTemplateStatuses = sqliteTable("quiz_template_statuses", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  statusName: text("status_name").notNull().unique(),
+});
+
 // Reusable quiz templates
 export const quizTemplates = sqliteTable("quiz_templates", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   name: text("name").notNull(),
   transitionSeconds: integer("transition_seconds").notNull().default(3),
+  statusId: integer("status_id").default(1).notNull(),
   createdAt: integer("created_at")
     .default(sql`(unixepoch() * 1000)`)
     .notNull(),

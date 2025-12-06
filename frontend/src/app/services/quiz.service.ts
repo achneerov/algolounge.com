@@ -136,6 +136,21 @@ export class QuizService {
     return this.http.post(`${environment.apiUrl}/api/quiz-templates/upload`, quizData);
   }
 
+  // Hide a quiz template (admin only)
+  hideTemplate(templateId: number): Observable<any> {
+    return this.http.patch(`${environment.apiUrl}/api/quiz-templates/${templateId}/hide`, {});
+  }
+
+  // Show a quiz template (admin only)
+  showTemplate(templateId: number): Observable<any> {
+    return this.http.patch(`${environment.apiUrl}/api/quiz-templates/${templateId}/show`, {});
+  }
+
+  // Get hidden templates (admin only)
+  getHiddenTemplates(): Observable<QuizTemplate[]> {
+    return this.http.get<QuizTemplate[]>(`${environment.apiUrl}/api/quiz-templates/hidden/list`);
+  }
+
   // Clear current event
   clearCurrentEvent(): void {
     this.currentEventSubject.next(null);

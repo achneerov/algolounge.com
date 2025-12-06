@@ -13,7 +13,7 @@ import {
   questionsTrueFalse,
   questionsTyped,
 } from "./models/questions";
-import { quizTemplates, quizTemplateRounds } from "./models/quiz-templates";
+import { quizTemplates, quizTemplateRounds, quizTemplateStatuses } from "./models/quiz-templates";
 import {
   quizEvents,
   quizEventParticipants,
@@ -42,6 +42,7 @@ const schema = {
   questionsTyped,
   quizTemplates,
   quizTemplateRounds,
+  quizTemplateStatuses,
   quizEvents,
   quizEventParticipants,
   quizEventRounds,
@@ -66,6 +67,7 @@ export {
   questionsTyped,
   quizTemplates,
   quizTemplateRounds,
+  quizTemplateStatuses,
   quizEvents,
   quizEventParticipants,
   quizEventRounds,

@@ -1,0 +1,143 @@
+<div class="admin-page">
+  <div class="admin-container">
+    <h1>Admin Dashboard</h1>
+    <p class="subtitle">Manage users and system settings</p>
+
+    <div class="admin-content">
+      <!-- Users List Section -->
+      <div class="users-section">
+        <h2>Users</h2>
+
+        <div class="search-box">
+          <input
+            type="text"
+            [(ngModel)]="searchQuery"
+            placeholder="Search by username or email..."
+            class="search-input"
+            (keyup.enter)="searchUsers()"
+          />
+          <button class="btn btn-search" (click)="searchUsers()">Search</button>
+          <button class="btn btn-reset" (click)="searchQuery = ''; loadUsers()">Reset</button>
+        </div>
+
+        <div class="error-message" *ngIf="error">
+          {{ error }}
+        </div>
+
+        <div class="loading" *ngIf="isLoading">
+          Loading users...
+        </div>
+
+        <div class="users-table" *ngIf="!isLoading && users.length > 0">
+          <div class="table-header">
+            <div class="col col-id">ID</div>
+            <div class="col col-username">Username</div>
+            <div class="col col-email">Email</div>
+            <div class="col col-role">Role</div>
+            <div class="col col-created">Created</div>
+          </div>
+
+          <div
+            class="table-row"
+            *ngFor="let user of users"
+            [class.selected]="selectedUser?.id === user.id"
+            (click)="selectUser(user)"
+          >
+            <div class="col col-id">{{ user.id }}</div>
+            <div class="col col-username">{{ user.username }}</div>
+            <div class="col col-email">{{ user.email }}</div>
+            <div class="col col-role">{{ getRoleName(user.roleId) }}</div>
+            <div class="col col-created">{{ formatDate(user.createdAt) }}</div>
+          </div>
+        </div>
+
+        <div class="empty-state" *ngIf="!isLoading && users.length === 0">
+          No users found
+        </div>
+      </div>
+
+      <!-- User Details Section -->
+      <div class="user-details-section" *ngIf="selectedUser">
+        <h2>User Details</h2>
+
+        <div class="details-card">
+          <div class="detail-row">
+            <span class="label">ID:</span>
+            <span class="value">{{ selectedUser.id }}</span>
+          </div>
+
+          <div class="detail-row">
+            <span class="label">Username:</span>
+            <span class="value" *ngIf="!isEditing">{{ selectedUser.username }}</span>
+            <input
+              type="text"
+              [(ngModel)]="editingUser.username"
+              class="edit-input"
+              *ngIf="isEditing"
+            />
+          </div>
+
+          <div class="detail-row">
+            <span class="label">Email:</span>
+            <span class="value">{{ selectedUser.email }}</span>
+          </div>
+
+          <div class="detail-row">
+            <span class="label">Role:</span>
+            <span class="value" *ngIf="!isEditing">{{ getRoleName(selectedUser.roleId) }}</span>
+            <select [(ngModel)]="editingUser.roleId" class="edit-select" *ngIf="isEditing">
+              <option *ngFor="let role of roleOptions" [value]="role.id">
+                {{ role.name }}
+              </option>
+            </select>
+          </div>
+
+          <div class="detail-row">
+            <span class="label">Created:</span>
+            <span class="value">{{ formatDate(selectedUser.createdAt) }}</span>
+          </div>
+
+          <div class="detail-row">
+            <span class="label">Last Updated:</span>
+            <span class="value">{{ formatDate(selectedUser.updatedAt) }}</span>
+          </div>
+
+          <div class="success-message" *ngIf="successMessage">
+            {{ successMessage }}
+          </div>
+
+          <div class="error-message" *ngIf="editError">
+            {{ editError }}
+          </div>
+
+          <div class="button-group">
+            <button
+              class="btn btn-primary"
+              (click)="startEditing()"
+              *ngIf="!isEditing"
+            >
+              Edit
+            </button>
+
+            <ng-container *ngIf="isEditing">
+              <button
+                class="btn btn-save"
+                (click)="saveChanges()"
+                [disabled]="isSaving"
+              >
+                {{ isSaving ? 'Saving...' : 'Save Changes' }}
+              </button>
+              <button
+                class="btn btn-cancel"
+                (click)="cancelEditing()"
+                [disabled]="isSaving"
+              >
+                Cancel
+              </button>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

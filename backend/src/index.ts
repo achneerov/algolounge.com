@@ -11,6 +11,7 @@ import favoritesRoutes from "./routes/favorites";
 import questionCompletionsRoutes from "./routes/question-completions";
 import quizTemplatesRoutes from "./routes/quiz-templates";
 import quizEventsRoutes from "./routes/quiz-events";
+import adminRoutes from "./routes/admin";
 
 const app = express();
 const PORT = parseInt(process.env.PORT || "3000", 10);
@@ -39,6 +40,7 @@ app.use("/api/favorites", favoritesRoutes);
 app.use("/api/question-completions", questionCompletionsRoutes);
 app.use("/api/quiz-templates", quizTemplatesRoutes);
 app.use("/api/quiz-events", quizEventsRoutes);
+app.use("/api/admin", adminRoutes);
 
 // Serve static files from built Angular app (production)
 if (NODE_ENV === "production") {

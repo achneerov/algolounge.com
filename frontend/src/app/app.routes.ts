@@ -10,11 +10,13 @@ import { SignUpComponent } from "./pages/auth/sign-up/sign-up.component";
 import { QuizHomeComponent } from "./pages/quiz/quiz-home/quiz-home.component";
 import { QuizLobbyComponent } from "./pages/quiz/quiz-lobby/quiz-lobby.component";
 import { QuizPlayComponent } from "./pages/quiz/quiz-play/quiz-play.component";
+import { AdminComponent } from "./pages/admin/admin.component";
 
 export const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
   { path: "auth/sign-in", component: SignInComponent },
   { path: "auth/sign-up", component: SignUpComponent },
+  { path: "admin", component: AdminComponent },
   { path: "questions/:name", component: QuestionsComponent },
   { path: "questions", redirectTo: "questions/two-sum", pathMatch: "full" },
   { path: "home", component: HomeComponent },

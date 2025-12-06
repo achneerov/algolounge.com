@@ -13,6 +13,7 @@
     <a routerLink="/questions" routerLinkActive="active">Questions</a>
     <a routerLink="/courses" routerLinkActive="active">Courses</a>
     <a routerLink="/quiz" routerLinkActive="active">Quizy</a>
+    <a routerLink="/admin" routerLinkActive="active" *ngIf="isAdmin()">Admin</a>
   </div>
 
   <div class="header-right">

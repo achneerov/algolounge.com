@@ -23,6 +23,10 @@ export class GlobalHeaderComponent {
   isAuthenticated$ = this.authService.isAuthenticated$;
   currentUser$ = this.authService.currentUser$;
   showUserMenu = false;
+  isAdmin = computed(() => {
+    const user = this.authService.getCurrentUser();
+    return user && (user as any).roleId === 1;
+  });
 
   toggleTheme(): void {
     this.themeService.toggleTheme();

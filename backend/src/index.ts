@@ -18,7 +18,7 @@ const PORT = parseInt(process.env.PORT || "3000", 10);
 const NODE_ENV = process.env.NODE_ENV || "development";
 
 // Middleware
-app.use(express.json());
+app.use(express.json({ limit: '50mb' }));
 
 // CORS configuration
 const corsOptions =
@@ -33,6 +33,10 @@ const corsOptions =
       };
 
 app.use(cors(corsOptions));
+
+// Serve quiz images
+const assetsPath = path.join(__dirname, "assets");
+app.use("/assets", express.static(assetsPath));
 
 // API Routes
 app.use("/api/auth", authRoutes);

@@ -131,9 +131,21 @@ export class QuizService {
     );
   }
 
-  // Upload a quiz JSON (admin only)
-  uploadQuiz(quizData: any): Observable<any> {
-    return this.http.post(`${environment.apiUrl}/api/quiz-templates/upload`, quizData);
+  // Upload a quiz JSON with optional images (admin only)
+  uploadQuiz(quizData: any, images?: Map<string, Blob>): Observable<any> {
+    const formData = new FormData();
+
+    // Add quiz JSON data
+    formData.append('quizData', JSON.stringify(quizData));
+
+    // Add images if provided
+    if (images && images.size > 0) {
+      images.forEach((blob, filename) => {
+        formData.append('images', blob, filename);
+      });
+    }
+
+    return this.http.post(`${environment.apiUrl}/api/quiz-templates/upload`, formData);
   }
 
   // Hide a quiz template (admin only)

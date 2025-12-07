@@ -107,13 +107,13 @@
       <!-- Upload Quiz Section (admin only) -->
       <div class="quiz-card upload-card" *ngIf="isAdmin">
         <h2>Upload a Quiz</h2>
-        <p>Upload a quiz from JSON file</p>
+        <p>Upload a quiz from JSON or ZIP file (with images)</p>
 
         <div class="form-group">
-          <label>Quiz JSON</label>
+          <label>Quiz JSON or ZIP</label>
           <textarea
             [(ngModel)]="jsonContent"
-            placeholder="Paste quiz JSON or select a file..."
+            placeholder="Paste quiz JSON or select a ZIP/JSON file..."
             class="json-textarea"
             [disabled]="isUploading"
           ></textarea>
@@ -137,7 +137,7 @@
           <input
             #fileInput
             type="file"
-            accept=".json"
+            accept=".json,.zip,application/zip"
             (change)="onFileSelected($event)"
             style="display: none"
           />

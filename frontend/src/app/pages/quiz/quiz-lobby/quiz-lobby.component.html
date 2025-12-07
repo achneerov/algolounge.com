@@ -16,7 +16,8 @@
           <span class="participant-name">{{ participant.username }}</span>
         </div>
         <div class="participant-card empty" *ngIf="!event.participants || event.participants.length === 0">
-          <p>Waiting for players to join...</p>
+          <p *ngIf="isCreator">No one has joined yet. You can start whenever you're ready!</p>
+          <p *ngIf="!isCreator">Waiting for players to join...</p>
         </div>
       </div>
     </div>
@@ -30,7 +31,7 @@
         *ngIf="isCreator"
         class="btn btn-primary btn-large"
         (click)="startQuiz()"
-        [disabled]="isStarting || !event.participants || event.participants.length === 0"
+        [disabled]="isStarting"
       >
         {{ isStarting ? 'Starting...' : 'Start Quiz' }}
       </button>

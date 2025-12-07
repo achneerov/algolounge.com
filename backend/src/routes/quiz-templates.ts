@@ -2,8 +2,17 @@ import { Router, Request, Response } from "express";
 import { db, quizTemplates, quizTemplateRounds, questions, questionsMultipleChoice2, questionsMultipleChoice3, questionsMultipleChoice4, questionsTrueFalse, questionsTyped, questionTypes, quizTemplateStatuses } from "../db";
 import { eq, inArray } from "drizzle-orm";
 import { authMiddleware, adminMiddleware } from "../middleware/auth";
+import * as fs from "fs";
+import * as path from "path";
+import Busboy from "busboy";
 
 const router = Router();
+
+// Ensure images directory exists
+const imagesDir = path.join(__dirname, "../assets/quizy-images");
+if (!fs.existsSync(imagesDir)) {
+  fs.mkdirSync(imagesDir, { recursive: true });
+}
 
 // GET /api/quiz-templates - List all active quiz templates (admin only)
 router.get(
@@ -98,14 +107,72 @@ router.get(
   }
 );
 
-// POST /api/quiz-templates/upload - Upload a quiz JSON (admin only)
+// POST /api/quiz-templates/upload - Upload a quiz JSON with optional images (admin only)
 router.post(
   "/upload",
   authMiddleware,
   adminMiddleware,
   async (req: Request, res: Response) => {
     try {
-      const { name, transitionSeconds, rounds } = req.body;
+      let quizData: any;
+      const imageMap = new Map<string, Buffer>();
+
+      // Check if this is FormData or regular JSON
+      const contentType = req.headers['content-type'] as string;
+
+      if (contentType && contentType.includes('multipart/form-data')) {
+        // Parse FormData using busboy
+        await new Promise<void>((resolve, reject) => {
+          const bb = Busboy({ headers: req.headers });
+
+          bb.on('field', (fieldname, val) => {
+            if (fieldname === 'quizData') {
+              try {
+                quizData = JSON.parse(val);
+              } catch (e) {
+                reject(new Error('Invalid JSON in quizData field'));
+              }
+            }
+          });
+
+          bb.on('file', (fieldname, file, info) => {
+            if (fieldname === 'images') {
+              const chunks: Buffer[] = [];
+              file.on('data', (chunk: Buffer) => {
+                chunks.push(chunk);
+              });
+              file.on('end', () => {
+                const buffer = Buffer.concat(chunks);
+                imageMap.set(info.filename, buffer);
+              });
+            }
+          });
+
+          bb.on('error', reject);
+          bb.on('close', resolve);
+
+          req.pipe(bb);
+        });
+      } else if (typeof req.body === 'object') {
+        // Direct JSON object (backward compatibility - from express.json())
+        quizData = req.body;
+      } else if (typeof req.body === 'string') {
+        // Try JSON parsing directly
+        try {
+          quizData = JSON.parse(req.body);
+        } catch (e) {
+          throw new Error('Failed to parse request body as JSON');
+        }
+      }
+
+      // Validate quizData was parsed
+      if (!quizData) {
+        return res.status(400).json({
+          error: "Failed to parse quiz data. Please ensure you're uploading valid quiz JSON or ZIP file."
+        });
+      }
+
+      const { name, transitionSeconds, rounds } = quizData;
 
       // Validation
       if (!name || !Array.isArray(rounds) || rounds.length === 0) {
@@ -114,7 +181,7 @@ router.post(
         });
       }
 
-      // Create quiz template
+      // Create quiz template first
       const templateResult = await db
         .insert(quizTemplates)
         .values({
@@ -124,6 +191,18 @@ router.post(
         .returning();
 
       const templateId = templateResult[0].id;
+      const imageFilenameMap = new Map<string, string>(); // Maps original filename to prefixed filename
+
+      // Save images with quiz name prefix
+      for (const [originalFilename, imageBuffer] of imageMap.entries()) {
+        const ext = path.extname(originalFilename);
+        const baseName = path.basename(originalFilename, ext);
+        const prefixedFilename = `${name}_${baseName}${ext}`.replace(/\s+/g, '_').toLowerCase();
+
+        const imagePath = path.join(imagesDir, prefixedFilename);
+        fs.writeFileSync(imagePath, imageBuffer);
+        imageFilenameMap.set(originalFilename, prefixedFilename);
+      }
 
       // Process each round
       for (let i = 0; i < rounds.length; i++) {
@@ -147,6 +226,12 @@ router.post(
 
         const questionTypeId = typeResult[0].id;
 
+        // Map image filename if provided
+        let imageFilename: string | null = null;
+        if (round.imageFilename && imageFilenameMap.has(round.imageFilename)) {
+          imageFilename = imageFilenameMap.get(round.imageFilename) || null;
+        }
+
         // Create question
         const questionResult = await db
           .insert(questions)
@@ -156,6 +241,7 @@ router.post(
             questionDisplaySeconds: round.questionDisplaySeconds || 5,
             answerTimeSeconds: round.answerTimeSeconds || 30,
             answerRevealSeconds: round.answerRevealSeconds || 5,
+            imageFilename: imageFilename,
           })
           .returning();
 

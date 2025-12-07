@@ -39,6 +39,8 @@ export class QuizHomeComponent implements OnInit {
   uploadError = '';
   uploadSuccess = '';
   jsonContent = '';
+  uploadedFile: File | null = null;
+  uploadedImages: Map<string, Blob> = new Map();
 
   // Hidden templates (admin only)
   hiddenTemplates: QuizTemplate[] = [];
@@ -127,7 +129,7 @@ export class QuizHomeComponent implements OnInit {
     });
   }
 
-  uploadQuiz() {
+  async uploadQuiz() {
     this.uploadError = '';
     this.uploadSuccess = '';
 
@@ -139,10 +141,12 @@ export class QuizHomeComponent implements OnInit {
     }
 
     this.isUploading = true;
-    this.quizService.uploadQuiz(validation.data).subscribe({
+    this.quizService.uploadQuiz(validation.data, this.uploadedImages).subscribe({
       next: (response) => {
         this.uploadSuccess = `Quiz "${response.name}" uploaded successfully with ${response.roundCount} rounds!`;
         this.jsonContent = '';
+        this.uploadedFile = null;
+        this.uploadedImages = new Map();
         this.isUploading = false;
 
         // Reload templates after a short delay
@@ -166,14 +170,41 @@ export class QuizHomeComponent implements OnInit {
     this.fileInput.nativeElement.click();
   }
 
-  onFileSelected(event: any) {
+  async onFileSelected(event: any) {
     const file: File = event.target.files[0];
-    if (file) {
+    if (!file) return;
+
+    this.uploadError = '';
+    this.uploadSuccess = '';
+
+    // Check if it's a zip file
+    if (file.type === 'application/zip' || file.name.endsWith('.zip')) {
+      // Handle ZIP file
+      const result = await this.uploadService.validateZipFile(file);
+      if (!result.valid) {
+        this.uploadError = result.error || 'Invalid ZIP file';
+        return;
+      }
+
+      this.jsonContent = result.jsonContent!;
+      this.uploadedFile = file;
+      this.uploadedImages = result.images || new Map();
+      this.uploadSuccess = `ZIP file loaded successfully with ${this.uploadedImages.size} image(s)`;
+    } else if (file.name.endsWith('.json')) {
+      // Handle JSON file
       const reader = new FileReader();
       reader.onload = (e: any) => {
         this.jsonContent = e.target.result;
+        this.uploadedFile = file;
+        this.uploadedImages = new Map();
+        this.uploadSuccess = 'JSON file loaded successfully';
+      };
+      reader.onerror = () => {
+        this.uploadError = 'Failed to read JSON file';
       };
       reader.readAsText(file);
+    } else {
+      this.uploadError = 'Please select a ZIP or JSON file';
     }
   }
 

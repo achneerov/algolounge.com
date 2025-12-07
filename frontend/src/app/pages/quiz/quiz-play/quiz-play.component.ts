@@ -248,15 +248,7 @@ export class QuizPlayComponent implements OnInit, OnDestroy {
 
         // Set image URL if question has an image
         if (question.imageFilename) {
-          // Get token from localStorage to include in image URL (use correct key: auth_token)
-          const token = localStorage.getItem('auth_token');
-
-          if (token) {
-            this.questionImageUrl = `${environment.apiUrl}/api/quiz-events/${this.event!.id}/rounds/${this.currentRound!.id}/image?token=${token}`;
-          } else {
-            console.error('No auth token found - user must be logged in to view images');
-            this.questionImageUrl = null;
-          }
+          this.questionImageUrl = `${environment.apiUrl}/assets/quizy-images/${question.imageFilename}`;
         } else {
           this.questionImageUrl = null;
         }

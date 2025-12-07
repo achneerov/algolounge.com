@@ -4,71 +4,55 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class QuizUploadService {
+  private jsZipLoaded = false;
 
   constructor() { }
 
   /**
-   * Download sample quiz files as a zip
+   * Ensure JSZip library is loaded
    */
-  downloadSampleQuizzes(): void {
-    const sampleQuizzes = [
-      {
-        name: 'sample-1-geography.json',
-        url: '/quiz-samples/sample-1-geography.json'
-      },
-      {
-        name: 'sample-2-science.json',
-        url: '/quiz-samples/sample-2-science.json'
-      },
-      {
-        name: 'sample-3-history.json',
-        url: '/quiz-samples/sample-3-history.json'
-      }
-    ];
+  private async ensureJSZipLoaded(): Promise<void> {
+    if (this.jsZipLoaded || (window as any).JSZip) {
+      this.jsZipLoaded = true;
+      return;
+    }
 
-    // Fetch all sample files
-    Promise.all(
-      sampleQuizzes.map(sample =>
-        fetch(sample.url).then(res => res.text()).then(content => ({
-          name: sample.name,
-          content
-        }))
-      )
-    ).then(files => {
-      this.createAndDownloadZip(files);
-    }).catch(error => {
-      console.error('Error downloading samples:', error);
-      alert('Failed to download sample quizzes');
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+      script.onload = () => {
+        this.jsZipLoaded = true;
+        resolve();
+      };
+      script.onerror = () => {
+        reject(new Error('Failed to load JSZip library'));
+      };
+      document.head.appendChild(script);
     });
   }
 
-  private createAndDownloadZip(files: Array<{ name: string; content: string }>): void {
-    // Dynamically import JSZip
-    const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
-    script.onload = () => {
-      const JSZip = (window as any).JSZip;
-      const zip = new JSZip();
-
-      // Add each file to the zip
-      files.forEach(file => {
-        zip.file(file.name, file.content);
-      });
-
-      // Generate the zip file
-      zip.generateAsync({ type: 'blob' }).then((blob: Blob) => {
-        // Create download link
+  /**
+   * Download sample quiz zip file with images
+   */
+  downloadSampleQuizzes(): void {
+    // Download the pre-made zip file with images
+    const zipUrl = '/quiz-samples/sample-with-images.zip';
+    fetch(zipUrl)
+      .then(res => res.blob())
+      .then(blob => {
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'quiz-samples.zip';
+        a.download = 'quiz-sample-with-images.zip';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
         window.URL.revokeObjectURL(url);
+      })
+      .catch(error => {
+        console.error('Error downloading samples:', error);
+        alert('Failed to download sample quizzes');
       });
-    };
-    document.head.appendChild(script);
   }
 
   /**
@@ -131,11 +115,81 @@ export class QuizUploadService {
             return { valid: false, error: `Round ${i + 1}: "correctAnswer" must be a string` };
           }
         }
+
+        // Validate imageFilename if provided (optional field)
+        if (round.imageFilename && typeof round.imageFilename !== 'string') {
+          return { valid: false, error: `Round ${i + 1}: "imageFilename" must be a string` };
+        }
       }
 
       return { valid: true, data };
     } catch (error: any) {
       return { valid: false, error: `JSON parsing error: ${error.message}` };
+    }
+  }
+
+  /**
+   * Validate and extract zip file contents
+   */
+  async validateZipFile(file: File): Promise<{ valid: boolean; error?: string; jsonContent?: string; images?: Map<string, Blob> }> {
+    try {
+      // Load JSZip library dynamically if not already loaded
+      try {
+        await this.ensureJSZipLoaded();
+      } catch (loadError) {
+        return { valid: false, error: 'Failed to load ZIP library. Please check your internet connection.' };
+      }
+
+      const JSZip = (window as any).JSZip;
+      if (!JSZip) {
+        return { valid: false, error: 'Unable to load ZIP library' };
+      }
+
+      const zip = new JSZip();
+      await zip.loadAsync(file);
+
+      let jsonFile: string | null = null;
+      let jsonContent: string | null = null;
+      const images = new Map<string, Blob>();
+      const validImageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+
+      // Extract files from zip
+      for (const filename of Object.keys(zip.files)) {
+        const fileEntry = zip.files[filename];
+
+        // Skip directories
+        if (fileEntry.dir) continue;
+
+        const ext = filename.split('.').pop()?.toLowerCase() || '';
+
+        // Look for JSON file (should be in root)
+        if (ext === 'json' && !filename.includes('/')) {
+          if (jsonFile) {
+            return { valid: false, error: 'ZIP contains multiple JSON files. Only one quiz.json allowed.' };
+          }
+          jsonFile = filename;
+          jsonContent = await fileEntry.async('string');
+        }
+        // Look for image files
+        else if (validImageExtensions.includes(ext) && !filename.includes('/')) {
+          const blob = await fileEntry.async('blob');
+          images.set(filename, blob);
+        }
+      }
+
+      if (!jsonFile) {
+        return { valid: false, error: 'ZIP must contain a JSON file in the root directory' };
+      }
+
+      // Validate the JSON content
+      const jsonValidation = this.validateQuizJson(jsonContent!);
+      if (!jsonValidation.valid) {
+        return { valid: false, error: jsonValidation.error };
+      }
+
+      return { valid: true, jsonContent: jsonContent!, images };
+    } catch (error: any) {
+      return { valid: false, error: `ZIP processing error: ${error.message}` };
     }
   }
 }

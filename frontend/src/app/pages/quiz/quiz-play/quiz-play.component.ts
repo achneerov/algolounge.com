@@ -59,6 +59,10 @@ export class QuizPlayComponent implements OnInit, OnDestroy {
   leaderboard: LeaderboardEntry[] = [];
   showLeaderboard = false;
 
+  // Music
+  backgroundMusic: HTMLAudioElement | null = null;
+  musicUrl: string | null = null;
+
   // Timer management
   private timerInterval: any = null;
 
@@ -78,6 +82,11 @@ export class QuizPlayComponent implements OnInit, OnDestroy {
     this.quizService.getEventByRoomCode(this.roomCode).subscribe({
       next: (event) => {
         this.event = event;
+
+        // Initialize background music if available
+        if (event.template?.musicFilename) {
+          this.initializeMusic(event.template.musicFilename);
+        }
 
         // Check if user is creator
         this.authService.currentUser$.pipe(takeUntil(this.destroy$)).subscribe(user => {
@@ -327,6 +336,21 @@ export class QuizPlayComponent implements OnInit, OnDestroy {
     return types[this.currentQuestion.questionTypeId] || 'Question';
   }
 
+  private initializeMusic(musicFilename: string) {
+    // Create audio element for background music
+    this.backgroundMusic = new Audio();
+    this.backgroundMusic.src = `${environment.apiUrl}/assets/quizy-images/${musicFilename}`;
+    this.backgroundMusic.loop = true;
+    this.backgroundMusic.volume = 0.3; // Set volume to 30%
+
+    // Start playing when user joins
+    this.backgroundMusic.play().catch(err => {
+      console.log('Music autoplay prevented:', err);
+      // Some browsers require user interaction to play audio
+      // Music will start on first user interaction
+    });
+  }
+
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
@@ -336,6 +360,12 @@ export class QuizPlayComponent implements OnInit, OnDestroy {
     if (this.timerInterval) {
       clearInterval(this.timerInterval);
       this.timerInterval = null;
+    }
+
+    // Stop background music
+    if (this.backgroundMusic) {
+      this.backgroundMusic.pause();
+      this.backgroundMusic = null;
     }
   }
 }

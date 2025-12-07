@@ -41,6 +41,7 @@ export class QuizHomeComponent implements OnInit {
   jsonContent = '';
   uploadedFile: File | null = null;
   uploadedImages: Map<string, Blob> = new Map();
+  uploadedMusic: { filename: string; blob: Blob } | null = null;
 
   // Hidden templates (admin only)
   hiddenTemplates: QuizTemplate[] = [];
@@ -141,12 +142,13 @@ export class QuizHomeComponent implements OnInit {
     }
 
     this.isUploading = true;
-    this.quizService.uploadQuiz(validation.data, this.uploadedImages).subscribe({
+    this.quizService.uploadQuiz(validation.data, this.uploadedImages, this.uploadedMusic).subscribe({
       next: (response) => {
         this.uploadSuccess = `Quiz "${response.name}" uploaded successfully with ${response.roundCount} rounds!`;
         this.jsonContent = '';
         this.uploadedFile = null;
         this.uploadedImages = new Map();
+        this.uploadedMusic = null;
         this.isUploading = false;
 
         // Reload templates after a short delay
@@ -189,7 +191,10 @@ export class QuizHomeComponent implements OnInit {
       this.jsonContent = result.jsonContent!;
       this.uploadedFile = file;
       this.uploadedImages = result.images || new Map();
-      this.uploadSuccess = `ZIP file loaded successfully with ${this.uploadedImages.size} image(s)`;
+      this.uploadedMusic = result.music || null;
+      const imageCount = this.uploadedImages.size;
+      const musicInfo = this.uploadedMusic ? ' and 1 music file' : '';
+      this.uploadSuccess = `ZIP file loaded successfully with ${imageCount} image(s)${musicInfo}`;
     } else if (file.name.endsWith('.json')) {
       // Handle JSON file
       const reader = new FileReader();

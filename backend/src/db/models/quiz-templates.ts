@@ -14,6 +14,7 @@ export const quizTemplates = sqliteTable("quiz_templates", {
   name: text("name").notNull(),
   transitionSeconds: integer("transition_seconds").notNull().default(3),
   statusId: integer("status_id").default(1).notNull(),
+  musicFilename: text("music_filename"),
   createdAt: integer("created_at")
     .default(sql`(unixepoch() * 1000)`)
     .notNull(),

@@ -1,10 +1,13 @@
 import { Router, Request, Response } from "express";
-import { db, quizTemplates, quizTemplateRounds, questions, questionsMultipleChoice2, questionsMultipleChoice3, questionsMultipleChoice4, questionsTrueFalse, questionsTyped, questionTypes, quizTemplateStatuses } from "../db";
-import { eq, inArray } from "drizzle-orm";
+import { db, quizTemplates, quizTemplateRounds, questions, questionsMultipleChoice2, questionsMultipleChoice3, questionsMultipleChoice4, questionsTrueFalse, questionsTyped, questionTypes } from "../db";
+import { eq } from "drizzle-orm";
 import { authMiddleware, adminMiddleware } from "../middleware/auth";
 import * as fs from "fs";
 import * as path from "path";
+// @ts-ignore - busboy types not available in @types
 import Busboy from "busboy";
+// @ts-ignore
+import type { BusboyFileStream } from "busboy";
 
 const router = Router();
 
@@ -19,7 +22,7 @@ router.get(
   "/",
   authMiddleware,
   adminMiddleware,
-  async (req: Request, res: Response) => {
+  async (_req: Request, res: Response) => {
     try {
       const templates = await db
         .select()
@@ -37,7 +40,7 @@ router.get(
   "/hidden/list",
   authMiddleware,
   adminMiddleware,
-  async (req: Request, res: Response) => {
+  async (_req: Request, res: Response) => {
     try {
       const templates = await db
         .select()
@@ -116,6 +119,8 @@ router.post(
     try {
       let quizData: any;
       const imageMap = new Map<string, Buffer>();
+      let musicBuffer: Buffer | null = null;
+      let musicFilename: string | null = null;
 
       // Check if this is FormData or regular JSON
       const contentType = req.headers['content-type'] as string;
@@ -123,9 +128,16 @@ router.post(
       if (contentType && contentType.includes('multipart/form-data')) {
         // Parse FormData using busboy
         await new Promise<void>((resolve, reject) => {
-          const bb = Busboy({ headers: req.headers });
+          // Convert Headers to plain object for busboy
+          const headers: Record<string, string> = {};
+          for (const [key, value] of Object.entries(req.headers)) {
+            if (typeof value === 'string') {
+              headers[key] = value;
+            }
+          }
+          const bb = Busboy({ headers });
 
-          bb.on('field', (fieldname, val) => {
+          bb.on('field', (fieldname: string, val: string) => {
             if (fieldname === 'quizData') {
               try {
                 quizData = JSON.parse(val);
@@ -135,7 +147,7 @@ router.post(
             }
           });
 
-          bb.on('file', (fieldname, file, info) => {
+          bb.on('file', (fieldname: string, file: BusboyFileStream, info: any) => {
             if (fieldname === 'images') {
               const chunks: Buffer[] = [];
               file.on('data', (chunk: Buffer) => {
@@ -145,13 +157,23 @@ router.post(
                 const buffer = Buffer.concat(chunks);
                 imageMap.set(info.filename, buffer);
               });
+            } else if (fieldname === 'music') {
+              const chunks: Buffer[] = [];
+              file.on('data', (chunk: Buffer) => {
+                chunks.push(chunk);
+              });
+              file.on('end', () => {
+                musicBuffer = Buffer.concat(chunks);
+                musicFilename = info.filename;
+              });
             }
           });
 
           bb.on('error', reject);
           bb.on('close', resolve);
 
-          req.pipe(bb);
+          // Pipe the request stream to busboy for parsing
+          (req as NodeJS.ReadableStream).pipe(bb);
         });
       } else if (typeof req.body === 'object') {
         // Direct JSON object (backward compatibility - from express.json())
@@ -181,12 +203,24 @@ router.post(
         });
       }
 
-      // Create quiz template first
+      // Process music file if provided
+      let savedMusicFilename: string | null = null;
+      if (musicBuffer && musicFilename) {
+        const ext = path.extname(musicFilename);
+        const baseName = path.basename(musicFilename, ext);
+        savedMusicFilename = `${name}_${baseName}${ext}`.replace(/\s+/g, '_').toLowerCase();
+
+        const musicPath = path.join(imagesDir, savedMusicFilename);
+        fs.writeFileSync(musicPath, musicBuffer);
+      }
+
+      // Create quiz template with music filename
       const templateResult = await db
         .insert(quizTemplates)
         .values({
           name,
           transitionSeconds: transitionSeconds || 3,
+          musicFilename: savedMusicFilename,
         })
         .returning();
 

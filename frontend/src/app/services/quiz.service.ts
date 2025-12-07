@@ -11,6 +11,7 @@ export interface QuizTemplate {
   startingCountdownSeconds: number;
   transitionSeconds: number;
   createdAt: number;
+  musicFilename?: string;
 }
 
 export interface QuizEvent {
@@ -131,8 +132,8 @@ export class QuizService {
     );
   }
 
-  // Upload a quiz JSON with optional images (admin only)
-  uploadQuiz(quizData: any, images?: Map<string, Blob>): Observable<any> {
+  // Upload a quiz JSON with optional images and music (admin only)
+  uploadQuiz(quizData: any, images?: Map<string, Blob>, music?: { filename: string; blob: Blob } | null): Observable<any> {
     const formData = new FormData();
 
     // Add quiz JSON data
@@ -143,6 +144,11 @@ export class QuizService {
       images.forEach((blob, filename) => {
         formData.append('images', blob, filename);
       });
+    }
+
+    // Add music if provided
+    if (music) {
+      formData.append('music', music.blob, music.filename);
     }
 
     return this.http.post(`${environment.apiUrl}/api/quiz-templates/upload`, formData);

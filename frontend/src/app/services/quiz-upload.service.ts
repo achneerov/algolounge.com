@@ -131,7 +131,7 @@ export class QuizUploadService {
   /**
    * Validate and extract zip file contents
    */
-  async validateZipFile(file: File): Promise<{ valid: boolean; error?: string; jsonContent?: string; images?: Map<string, Blob> }> {
+  async validateZipFile(file: File): Promise<{ valid: boolean; error?: string; jsonContent?: string; images?: Map<string, Blob>; music?: { filename: string; blob: Blob } }> {
     try {
       // Load JSZip library dynamically if not already loaded
       try {
@@ -151,7 +151,9 @@ export class QuizUploadService {
       let jsonFile: string | null = null;
       let jsonContent: string | null = null;
       const images = new Map<string, Blob>();
+      let musicFile: { filename: string; blob: Blob } | null = null;
       const validImageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+      const validAudioExtensions = ['mp3', 'wav', 'ogg', 'm4a', 'webm'];
 
       // Extract files from zip
       for (const filename of Object.keys(zip.files)) {
@@ -170,6 +172,14 @@ export class QuizUploadService {
           jsonFile = filename;
           jsonContent = await fileEntry.async('string');
         }
+        // Look for audio/music file (only one allowed)
+        else if (validAudioExtensions.includes(ext) && !filename.includes('/')) {
+          if (musicFile) {
+            return { valid: false, error: 'ZIP contains multiple audio files. Only one music file allowed.' };
+          }
+          const blob = await fileEntry.async('blob');
+          musicFile = { filename, blob };
+        }
         // Look for image files
         else if (validImageExtensions.includes(ext) && !filename.includes('/')) {
           const blob = await fileEntry.async('blob');
@@ -187,7 +197,7 @@ export class QuizUploadService {
         return { valid: false, error: jsonValidation.error };
       }
 
-      return { valid: true, jsonContent: jsonContent!, images };
+      return { valid: true, jsonContent: jsonContent!, images, music: musicFile || undefined };
     } catch (error: any) {
       return { valid: false, error: `ZIP processing error: ${error.message}` };
     }

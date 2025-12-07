@@ -1,0 +1,1 @@
+ALTER TABLE `quiz_templates` ADD `music_filename` text;

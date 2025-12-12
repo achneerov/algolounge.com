@@ -1,0 +1,67 @@
+{
+  "index": 117,
+  "filename": "course-schedule",
+  "title": "Course Schedule",
+  "keywords": [
+    "course",
+    "schedule",
+    "graph",
+    "dfs",
+    "topological",
+    "sort",
+    "leetcode",
+    "207",
+    "cycle",
+    "detection",
+    "medium"
+  ],
+  "description": "<h2>Course Schedule</h2><p>There are a total of <code>numCourses</code> courses you have to take, labeled from <code>0</code> to <code>numCourses - 1</code>. You are given an array <code>prerequisites</code> where <code>prerequisites[i] = [a<sub>i</sub>, b<sub>i</sub>]</code> indicates that you <strong>must</strong> take course <code>b<sub>i</sub></code> first if you want to take course <code>a<sub>i</sub></code>.</p><p>For example, the pair <code>[0, 1]</code>, indicates that to take course <code>0</code> you have to first take course <code>1</code>.</p><p>Return <code>true</code> if you can finish all courses. Otherwise, return <code>false</code>.</p><h3>Examples:</h3><ul><li>Input: numCourses = 2, prerequisites = [[1,0]]<br><br>Output: true<br><br>Explanation: There are a total of 2 courses to take. To take course 1 you should have finished course 0. So it is possible.</li><li>Input: numCourses = 2, prerequisites = [[1,0],[0,1]]<br><br>Output: false<br><br>Explanation: There are a total of 2 courses to take. To take course 1 you should have finished course 0, and to take course 0 you should also have finished course 1. So it is impossible.</li></ul><h3>Constraints:</h3><ul><li><code>1 <= numCourses <= 2000</code></li><li><code>0 <= prerequisites.length <= 5000</code></li><li><code>prerequisites[i].length == 2</code></li><li><code>0 <= a<sub>i</sub>, b<sub>i</sub> < numCourses</code></li><li><code>All the pairs prerequisites[i] are unique</code></li></ul>",
+  "entry_function": "canFinish",
+  "template": "def canFinish(numCourses, prerequisites):\n    ",
+  "solution_text": "<h3>Course Schedule</h3><p><strong>Algorithm:</strong></p><ol><li>Build an adjacency list representing course prerequisites</li><li>Use DFS with a visiting set to detect cycles</li><li>If a course is encountered while being processed, a cycle exists</li><li>Mark courses as completed (empty prerequisites) after validation</li></ol><p><strong>Time Complexity:</strong> O(V + E) - visit all courses and prerequisites</p><p><strong>Space Complexity:</strong> O(V + E) - adjacency list and recursion stack</p><p><strong>Key Insights:</strong></p><ul><li>Problem reduces to cycle detection in directed graph</li><li>Use visiting set to track current DFS path</li><li>Empty prerequisite list means course can be taken</li><li>Optimization: mark validated courses to avoid reprocessing</li></ul>",
+  "solution_code": "def canFinish(numCourses, prerequisites):\n    # Build adjacency list: course -> list of prerequisites\n    preMap = {i: [] for i in range(numCourses)}\n    for crs, pre in prerequisites:\n        preMap[crs].append(pre)\n    \n    visiting = set()\n    \n    def dfs(crs):\n        # Cycle detected\n        if crs in visiting:\n            return False\n        # Course can be completed\n        if preMap[crs] == []:\n            return True\n        \n        visiting.add(crs)\n        for pre in preMap[crs]:\n            if not dfs(pre):\n                return False\n        visiting.remove(crs)\n        \n        # Mark as completable\n        preMap[crs] = []\n        return True\n    \n    for c in range(numCourses):\n        if not dfs(c):\n            return False\n    \n    return True",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Extract numCourses and prerequisites from test case\"\"\"\n    numCourses = test_case_input['numCourses']\n    prerequisites = test_case_input['prerequisites']\n    return (numCourses, prerequisites)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the course schedule result\"\"\"\n    def bool_to_string(val):\n        return 'true' if val else 'false'\n    \n    # Convert string 'true'/'false' to Python bool if needed\n    if isinstance(expected_output, str):\n        expected_output = expected_output.lower() == 'true'\n    \n    passed = actual_output == expected_output\n    output_str = bool_to_string(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "numCourses": 2,
+        "prerequisites": [[1, 0]]
+      },
+      "output": "true"
+    },
+    {
+      "id": 2,
+      "input": {
+        "numCourses": 2,
+        "prerequisites": [[1, 0], [0, 1]]
+      },
+      "output": "false"
+    },
+    {
+      "id": 3,
+      "input": {
+        "numCourses": 4,
+        "prerequisites": [[1, 0], [2, 0], [3, 1], [3, 2]]
+      },
+      "output": "true"
+    },
+    {
+      "id": 4,
+      "input": {
+        "numCourses": 5,
+        "prerequisites": [[1, 4], [2, 4], [3, 1], [3, 2]]
+      },
+      "output": "true"
+    },
+    {
+      "id": 5,
+      "input": {
+        "numCourses": 3,
+        "prerequisites": [[0, 1], [1, 2], [2, 0]]
+      },
+      "output": "false"
+    }
+  ]
+}

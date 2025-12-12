@@ -1,0 +1,74 @@
+{
+  "index": 114,
+  "filename": "intersection-of-two-linked-lists",
+  "title": "Intersection of Two Linked Lists",
+  "keywords": [
+    "intersection",
+    "linked",
+    "list",
+    "leetcode",
+    "160",
+    "two",
+    "pointers",
+    "easy"
+  ],
+  "description": "<h2>Intersection of Two Linked Lists</h2><p>Given the heads of two singly linked-lists <code>headA</code> and <code>headB</code>, return the node at which the two lists intersect. If the two linked lists have no intersection at all, return <code>null</code>.</p><p>The test cases are generated such that there are no cycles anywhere in the entire linked structure.</p><p><strong>Note</strong> that the linked lists must retain their original structure after the function returns.</p><h3>Examples:</h3><ul><li>Input: intersectVal = 8, listA = [4,1,8,4,5], listB = [5,6,1,8,4,5], skipA = 2, skipB = 3<br><br>Output: Intersected at '8'<br><br>Explanation: The intersected node's value is 8</li><li>Input: intersectVal = 0, listA = [2,6,4], listB = [1,5]<br><br>Output: null<br><br>Explanation: The two lists do not intersect</li></ul><h3>Constraints:</h3><ul><li><code>The number of nodes of listA is in the range [0, 3 * 10^4]</code></li><li><code>The number of nodes of listB is in the range [0, 3 * 10^4]</code></li><li><code>0 <= Node.val <= 10^5</code></li></ul>",
+  "entry_function": "getIntersectionNode",
+  "template": "# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\n\ndef getIntersectionNode(headA, headB):\n    ",
+  "solution_text": "<h3>Intersection of Two Linked Lists</h3><p><strong>Algorithm:</strong></p><ol><li>Use two pointers, one for each list</li><li>Traverse both lists simultaneously</li><li>When a pointer reaches the end, redirect it to the other list's head</li><li>The pointers will meet at the intersection or both become null</li></ol><p><strong>Time Complexity:</strong> O(m + n) - where m and n are list lengths</p><p><strong>Space Complexity:</strong> O(1) - only using two pointers</p><p><strong>Key Insights:</strong></p><ul><li>Both pointers travel the same total distance</li><li>By switching lists, they sync up at the intersection</li><li>If no intersection exists, both reach null together</li><li>Works without knowing the list lengths</li></ul>",
+  "solution_code": "def getIntersectionNode(headA, headB):\n    l1, l2 = headA, headB\n    \n    while l1 != l2:\n        l1 = l1.next if l1 else headB\n        l2 = l2.next if l2 else headA\n    \n    return l1",
+  "prepare": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n    \n    def __repr__(self):\n        return f'ListNode({self.val})'\n\ndef prepare(test_case_input):\n    \"\"\"Convert array representation to intersecting ListNode structures\"\"\"\n    listA = test_case_input['listA']\n    listB = test_case_input['listB']\n    skipA = test_case_input.get('skipA', 0)\n    skipB = test_case_input.get('skipB', 0)\n    \n    if not listA and not listB:\n        return (None, None)\n    \n    def build_list(arr):\n        if not arr:\n            return None\n        head = ListNode(arr[0])\n        current = head\n        for i in range(1, len(arr)):\n            current.next = ListNode(arr[i])\n            current = current.next\n        return head\n    \n    # Build initial parts\n    headA = build_list(listA[:skipA]) if skipA > 0 else None\n    headB = build_list(listB[:skipB]) if skipB > 0 else None\n    \n    # Build common part if exists\n    if skipA < len(listA):\n        common = build_list(listA[skipA:])\n        \n        # Connect headA to common\n        if headA:\n            curr = headA\n            while curr.next:\n                curr = curr.next\n            curr.next = common\n        else:\n            headA = common\n        \n        # Connect headB to common\n        if headB:\n            curr = headB\n            while curr.next:\n                curr = curr.next\n            curr.next = common\n        else:\n            headB = common\n    \n    return (headA, headB)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the intersection node result\"\"\"\n    if expected_output is None:\n        passed = actual_output is None\n        output_str = 'null'\n    else:\n        passed = actual_output is not None and actual_output.val == expected_output\n        output_str = f'{actual_output.val}' if actual_output else 'null'\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "listA": [4, 1, 8, 4, 5],
+        "listB": [5, 6, 1, 8, 4, 5],
+        "skipA": 2,
+        "skipB": 3
+      },
+      "output": 8
+    },
+    {
+      "id": 2,
+      "input": {
+        "listA": [1, 9, 1, 2, 4],
+        "listB": [3, 2, 4],
+        "skipA": 3,
+        "skipB": 1
+      },
+      "output": 2
+    },
+    {
+      "id": 3,
+      "input": {
+        "listA": [2, 6, 4],
+        "listB": [1, 5],
+        "skipA": 3,
+        "skipB": 2
+      },
+      "output": null
+    },
+    {
+      "id": 4,
+      "input": {
+        "listA": [1],
+        "listB": [1],
+        "skipA": 0,
+        "skipB": 0
+      },
+      "output": 1
+    },
+    {
+      "id": 5,
+      "input": {
+        "listA": [],
+        "listB": [],
+        "skipA": 0,
+        "skipB": 0
+      },
+      "output": null
+    }
+  ]
+}

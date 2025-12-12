@@ -1768,8 +1768,90 @@
         "wildcard",
         "hard"
       ]
+    },
+    {
+      "index": 114,
+      "filename": "intersection-of-two-linked-lists",
+      "title": "Intersection of Two Linked Lists",
+      "keywords": [
+        "intersection",
+        "linked",
+        "list",
+        "leetcode",
+        "160",
+        "two",
+        "pointers",
+        "easy"
+      ]
+    },
+    {
+      "index": 115,
+      "filename": "palindrome-linked-list",
+      "title": "Palindrome Linked List",
+      "keywords": [
+        "palindrome",
+        "linked",
+        "list",
+        "leetcode",
+        "234",
+        "two",
+        "pointers",
+        "reverse",
+        "easy"
+      ]
+    },
+    {
+      "index": 116,
+      "filename": "clone-graph",
+      "title": "Clone Graph",
+      "keywords": [
+        "clone",
+        "graph",
+        "dfs",
+        "bfs",
+        "leetcode",
+        "133",
+        "hash",
+        "map",
+        "medium"
+      ]
+    },
+    {
+      "index": 117,
+      "filename": "course-schedule",
+      "title": "Course Schedule",
+      "keywords": [
+        "course",
+        "schedule",
+        "graph",
+        "dfs",
+        "topological",
+        "sort",
+        "leetcode",
+        "207",
+        "cycle",
+        "detection",
+        "medium"
+      ]
+    },
+    {
+      "index": 118,
+      "filename": "redundant-connection-ii",
+      "title": "Redundant Connection II",
+      "keywords": [
+        "redundant",
+        "connection",
+        "graph",
+        "union",
+        "find",
+        "tree",
+        "leetcode",
+        "685",
+        "directed",
+        "hard"
+      ]
     }
   ],
-  "lastUpdated": "2025-12-05T15:38:45.266Z",
-  "totalQuestions": 112
+  "lastUpdated": "2025-12-12T20:07:13.364Z",
+  "totalQuestions": 117
 }

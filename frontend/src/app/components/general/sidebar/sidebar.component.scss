@@ -116,6 +116,107 @@
   }
 }
 
+// Tags Section
+.tags-section {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.tags-header {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.tags-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-primary);
+  opacity: 0.8;
+}
+
+.tags-count {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.tags-scroll {
+  overflow-x: auto;
+  margin: 0 -1rem;
+  padding: 0 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+  
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 2px;
+  }
+}
+
+.tags-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  padding-bottom: 2px;
+  max-height: 120px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 2px;
+  }
+}
+
+.tag-chip {
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.375rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  border: 1.5px solid var(--color-border);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+  flex-shrink: 0;
+
+  &:hover {
+    border-color: var(--tag-color);
+    color: var(--tag-color);
+    background-color: color-mix(in srgb, var(--tag-color) 10%, transparent);
+  }
+
+  &.active {
+    border-color: var(--tag-color);
+    background-color: var(--tag-color);
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  }
+}
+
 .questions-list {
   flex: 1;
   overflow-y: auto;
@@ -191,6 +292,28 @@
 .question-meta {
   display: flex;
   align-items: center;
+}
+
+.question-tags {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.question-tag {
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  white-space: nowrap;
+}
+
+.tag-more {
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: var(--color-text-tertiary);
 }
 
 .difficulty-badge {

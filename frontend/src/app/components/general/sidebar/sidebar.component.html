@@ -45,6 +45,26 @@
         </button>
       </div>
     </div>
+
+    <!-- Tag Filter Section -->
+    <div class="tags-section">
+      <div class="tags-header">
+        <span class="tags-label">Tags</span>
+        <span class="tags-count" *ngIf="selectedTags.size > 0">({{ selectedTags.size }})</span>
+      </div>
+      <div class="tags-scroll">
+        <div class="tags-group">
+          <button
+            *ngFor="let tag of availableTags"
+            class="tag-chip"
+            [class.active]="isTagSelected(tag)"
+            [style.--tag-color]="getTagColor(tag)"
+            (click)="toggleTag(tag)">
+            {{ tag }}
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Question List -->
@@ -66,9 +86,16 @@
       <div class="question-content">
         <div class="question-title">{{ question.title }}</div>
         <div class="question-meta">
-          <span class="difficulty-badge" [style.color]="getDifficultyColor(question.difficulty)">
-            {{ question.difficulty }}
-          </span>
+          <div class="question-tags">
+            <span
+              *ngFor="let tag of question.tags.slice(0, 2)"
+              class="question-tag"
+              [style.background-color]="getTagColor(tag) + '15'"
+              [style.color]="getTagColor(tag)">
+              {{ tag }}
+            </span>
+            <span *ngIf="question.tags.length > 2" class="tag-more">+{{ question.tags.length - 2 }}</span>
+          </div>
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { QuestionSearchService, QuestionSearchResult } from '../../../services/question-search.service';
 import { LocalStorageService } from '../../../services/local-storage.service';
+import { TagService } from '../../../services/tag.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -23,16 +24,20 @@ export class SidebarComponent implements OnInit {
   // Filters
   selectedDifficulty: string | null = null;
   showCompleted: boolean | null = null; // null = all, true = completed, false = todo
+  selectedTags: Set<string> = new Set(); // Track selected tags
+  availableTags: string[] = []; // All unique tags from questions
 
   constructor(
     private questionSearchService: QuestionSearchService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private tagService: TagService
   ) {}
 
   ngOnInit(): void {
     this.questionSearchService.isIndexLoaded().subscribe(loaded => {
       if (loaded) {
         this.questions = this.questionSearchService.getAllQuestions();
+        this.availableTags = this.getAllUniqueTags();
         this.filterQuestions();
       }
     });
@@ -49,6 +54,15 @@ export class SidebarComponent implements OnInit {
     // Difficulty filter
     if (this.selectedDifficulty) {
       result = result.filter(q => q.difficulty.toLowerCase() === this.selectedDifficulty?.toLowerCase());
+    }
+
+    // Tag filter - question must have ALL selected tags
+    if (this.selectedTags.size > 0) {
+      result = result.filter(q => {
+        return Array.from(this.selectedTags).every(selectedTag =>
+          q.tags.some(qTag => qTag.toLowerCase() === selectedTag.toLowerCase())
+        );
+      });
     }
 
     // Status filter
@@ -80,6 +94,27 @@ export class SidebarComponent implements OnInit {
     this.filterQuestions();
   }
 
+  toggleTag(tag: string): void {
+    if (this.selectedTags.has(tag)) {
+      this.selectedTags.delete(tag);
+    } else {
+      this.selectedTags.add(tag);
+    }
+    this.filterQuestions();
+  }
+
+  isTagSelected(tag: string): boolean {
+    return this.selectedTags.has(tag);
+  }
+
+  getAllUniqueTags(): string[] {
+    const tagSet = new Set<string>();
+    this.questions.forEach(q => {
+      q.tags.forEach(tag => tagSet.add(tag));
+    });
+    return Array.from(tagSet).sort();
+  }
+
   isQuestionCompleted(filename: string): boolean {
     return this.localStorageService.isQuestionCompleted(filename);
   }
@@ -88,12 +123,7 @@ export class SidebarComponent implements OnInit {
     this.selectQuestion.emit(filename);
   }
 
-  getDifficultyColor(difficulty: string): string {
-    switch (difficulty.toLowerCase()) {
-      case 'easy': return 'var(--color-success)';
-      case 'medium': return 'var(--color-warning)';
-      case 'hard': return 'var(--color-error)';
-      default: return 'var(--color-text-secondary)';
-    }
+  getTagColor(tag: string): string {
+    return this.tagService.getTagColor(tag);
   }
 }

@@ -6,7 +6,18 @@
       <!-- Title -->
       <div *ngSwitchCase="'title'" class="title-section">
         <h1 class="problem-title">{{ section.content }}</h1>
-        <span class="completion-badge" *ngIf="isCompleted">Completed</span>
+        <div class="title-metadata">
+          <span
+            *ngIf="questionTags && questionTags.length > 0"
+            class="difficulty-tag"
+            [style.background-color]="questionTags[0].color + '20'"
+            [style.color]="questionTags[0].color"
+            [style.border]="'1px solid ' + questionTags[0].color + '40'"
+          >
+            {{ questionTags[0].text }}
+          </span>
+          <span class="completion-badge" *ngIf="isCompleted">Completed</span>
+        </div>
       </div>
 
       <!-- Main Description -->

@@ -11,6 +11,7 @@ import { CodeExecutionService } from "../../services/code-execution.service";
 import { LocalStorageService } from "../../services/local-storage.service";
 import { CompletionService } from "../../services/completion.service";
 import { AuthService } from "../../services/auth.service";
+import { TagService, Tag } from "../../services/tag.service";
 import { SuccessAnimationComponent } from "../../components/questions/success-animation/success-animation.component";
 import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
@@ -45,6 +46,7 @@ export class QuestionsComponent implements OnInit, OnDestroy {
   currentQuestionFilename: string = "";
   isCompleted: boolean = false;
   showSuccessAnimation = signal(false);
+  questionTags: Tag[] = [];
   private destroy$ = new Subject<void>();
 
   constructor(
@@ -54,7 +56,8 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     private codeExecutionService: CodeExecutionService,
     private localStorageService: LocalStorageService,
     private completionService: CompletionService,
-    private authService: AuthService
+    private authService: AuthService,
+    private tagService: TagService
   ) {}
 
   ngOnInit() {
@@ -207,7 +210,14 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     this.solutionText = this.questionData.solution_text || "";
     this.solutionCode = this.questionData.solution_code || "";
     this.template = this.questionData.template || "";
-    
+
+    // Extract difficulty and tags
+    const difficulty = this.questionData.difficulty;
+    const tags = this.questionData.tags || [];
+
+    // Convert to Tag objects with colors
+    this.questionTags = this.tagService.getQuestionTags(difficulty, tags);
+
     // Validate that entry_function is provided
     if (!this.questionData.entry_function) {
       console.warn(`Question ${this.currentQuestionFilename} is missing entry_function field`);

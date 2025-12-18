@@ -83,14 +83,26 @@ function syncQuestionsIndex() {
     for (const item of questionsData) {
       const title = item.data.title || 'Untitled Question';
       const keywords = item.data.keywords || [];
+      const difficulty = item.data.difficulty;
+      const tags = item.data.tags || [];
       const index = item.data.index;
 
-      questions.push({
+      const question = {
         index: index,
         filename: item.filename,
         title: title,
         keywords: keywords
-      });
+      };
+
+      // Add optional fields if they exist
+      if (difficulty) {
+        question.difficulty = difficulty;
+      }
+      if (tags.length > 0) {
+        question.tags = tags;
+      }
+
+      questions.push(question);
 
       console.log(`✅ Processed: ${item.filename} - "${title}" (index: ${index})`);
     }

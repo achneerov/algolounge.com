@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Tag } from '../../../services/tag.service';
 
 interface ParsedSection {
   type: 'title' | 'description' | 'examples' | 'constraints' | 'generic';
@@ -22,6 +23,7 @@ interface ParsedSection {
 export class DescriptionComponent implements OnChanges {
   @Input() content: string = '';
   @Input() isCompleted: boolean = false;
+  @Input() questionTags: Tag[] = [];
   parsedSections: ParsedSection[] = [];
 
   ngOnChanges(changes: SimpleChanges): void {

@@ -6,6 +6,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FormsModule } from '@angular/forms';
 import { QuestionSearchService, QuestionSearchResult } from '../../services/question-search.service';
 import { LocalStorageService } from '../../services/local-storage.service';
+import { Tag } from '../../services/tag.service';
 
 @Component({
   selector: 'app-content-tabs',
@@ -58,7 +59,8 @@ import { LocalStorageService } from '../../services/local-storage.service';
         <app-description
           *ngIf="activeTab === 'description'"
           [content]="description"
-          [isCompleted]="isCompleted">
+          [isCompleted]="isCompleted"
+          [questionTags]="questionTags">
         </app-description>
         <app-solution
           *ngIf="activeTab === 'solution'"
@@ -193,6 +195,7 @@ export class ContentTabsComponent implements OnInit {
   @Input() solutionCode: string = '';
   @Input() isCompleted: boolean = false;
   @Input() currentQuestionFilename: string = '';
+  @Input() questionTags: Tag[] = [];
   @Output() go = new EventEmitter<string>();
 
   activeTab: 'description' | 'solution' = 'description';

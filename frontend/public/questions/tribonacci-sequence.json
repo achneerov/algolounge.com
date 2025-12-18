@@ -3,7 +3,9 @@
   "filename": "tribonacci-sequence",
   "title": "Tribonacci Sequence",
   "difficulty": "Medium",
-  "tags": [],
+  "tags": [
+    "Dynamic Programming"
+  ],
   "keywords": [
     "dynamic",
     "programming",

@@ -3,7 +3,9 @@
   "filename": "dice-ways",
   "title": "Dice Ways",
   "difficulty": "Medium",
-  "tags": [],
+  "tags": [
+    "Dynamic Programming"
+  ],
   "keywords": [
     "dynamic",
     "programming",

@@ -2,6 +2,10 @@
   "index": 36,
   "filename": "contains-duplicate",
   "title": "Contains Duplicate",
+  "difficulty": "Easy",
+  "tags": [
+    "Arrays and Hashing"
+  ],
   "keywords": [
     "contains",
     "duplicate",

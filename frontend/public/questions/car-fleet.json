@@ -2,6 +2,10 @@
   "index": 28,
   "filename": "car-fleet",
   "title": "Car Fleet",
+  "difficulty": "Medium",
+  "tags": [
+    "Stack"
+  ],
   "keywords": [
     "car",
     "fleet",
@@ -21,7 +25,6 @@
   "solution_code": "def carFleet(target, position, speed):\n    if not position:\n        return 0\n    \n    # Pair position and speed, then sort by position (descending)\n    cars = sorted(zip(position, speed), reverse=True)\n    \n    stack = []\n    \n    for pos, spd in cars:\n        # Calculate time to reach target\n        time = (target - pos) / spd\n        \n        # If this car reaches destination faster than the car ahead,\n        # it will catch up and form a fleet\n        while stack and time <= stack[-1]:\n            stack.pop()\n        \n        stack.append(time)\n    \n    return len(stack)",
   "prepare": "def prepare(test_case_input):\n    return (test_case_input['target'], test_case_input['position'], test_case_input['speed'])",
   "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    return [passed, output_str]",
-  "order_matters": false,
   "test_cases": [
     {
       "id": 1,

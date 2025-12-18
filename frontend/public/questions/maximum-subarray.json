@@ -2,6 +2,8 @@
   "index": 57,
   "filename": "maximum-subarray",
   "title": "Maximum Subarray",
+  "difficulty": "Medium",
+  "tags": [],
   "keywords": [
     "maximum",
     "subarray",

@@ -2,6 +2,10 @@
   "index": 4,
   "filename": "add-two-numbers",
   "title": "Add Two Numbers",
+  "difficulty": "Medium",
+  "tags": [
+    "Linked List"
+  ],
   "keywords": [
     "add",
     "two",

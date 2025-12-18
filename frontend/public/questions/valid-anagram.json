@@ -2,6 +2,8 @@
   "index": 78,
   "filename": "valid-anagram",
   "title": "Valid Anagram",
+  "difficulty": "Medium",
+  "tags": [],
   "keywords": [
     "valid",
     "anagram",

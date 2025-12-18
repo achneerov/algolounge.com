@@ -2,6 +2,8 @@
   "index": 52,
   "filename": "longest-common-subsequence",
   "title": "Longest Common Subsequence",
+  "difficulty": "Medium",
+  "tags": [],
   "keywords": [
     "longest",
     "common",

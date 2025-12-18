@@ -2,6 +2,10 @@
   "index": 1,
   "filename": "reconstruct-itinerary",
   "title": "Reconstruct Itinerary",
+  "difficulty": "Hard",
+  "tags": [
+    "Advanced Graphs"
+  ],
   "keywords": [
     "reconstruct",
     "itinerary",
@@ -27,57 +31,131 @@
       "id": 1,
       "input": {
         "tickets": [
-          ["MUC", "LHR"],
-          ["JFK", "MUC"],
-          ["SFO", "SJC"],
-          ["LHR", "SFO"]
+          [
+            "MUC",
+            "LHR"
+          ],
+          [
+            "JFK",
+            "MUC"
+          ],
+          [
+            "SFO",
+            "SJC"
+          ],
+          [
+            "LHR",
+            "SFO"
+          ]
         ]
       },
-      "output": ["JFK", "MUC", "LHR", "SFO", "SJC"]
+      "output": [
+        "JFK",
+        "MUC",
+        "LHR",
+        "SFO",
+        "SJC"
+      ]
     },
     {
       "id": 2,
       "input": {
         "tickets": [
-          ["JFK", "SFO"],
-          ["JFK", "ATL"],
-          ["SFO", "ATL"],
-          ["ATL", "JFK"],
-          ["ATL", "SFO"]
+          [
+            "JFK",
+            "SFO"
+          ],
+          [
+            "JFK",
+            "ATL"
+          ],
+          [
+            "SFO",
+            "ATL"
+          ],
+          [
+            "ATL",
+            "JFK"
+          ],
+          [
+            "ATL",
+            "SFO"
+          ]
         ]
       },
-      "output": ["JFK", "ATL", "JFK", "SFO", "ATL", "SFO"]
+      "output": [
+        "JFK",
+        "ATL",
+        "JFK",
+        "SFO",
+        "ATL",
+        "SFO"
+      ]
     },
     {
       "id": 3,
       "input": {
         "tickets": [
-          ["JFK", "KUL"],
-          ["JFK", "NRT"],
-          ["NRT", "JFK"]
+          [
+            "JFK",
+            "KUL"
+          ],
+          [
+            "JFK",
+            "NRT"
+          ],
+          [
+            "NRT",
+            "JFK"
+          ]
         ]
       },
-      "output": ["JFK", "NRT", "JFK", "KUL"]
+      "output": [
+        "JFK",
+        "NRT",
+        "JFK",
+        "KUL"
+      ]
     },
     {
       "id": 4,
       "input": {
         "tickets": [
-          ["JFK", "NRT"],
-          ["NRT", "JFK"]
+          [
+            "JFK",
+            "NRT"
+          ],
+          [
+            "NRT",
+            "JFK"
+          ]
         ]
       },
-      "output": ["JFK", "NRT", "JFK"]
+      "output": [
+        "JFK",
+        "NRT",
+        "JFK"
+      ]
     },
     {
       "id": 5,
       "input": {
         "tickets": [
-          ["JFK", "ATL"],
-          ["ATL", "JFK"]
+          [
+            "JFK",
+            "ATL"
+          ],
+          [
+            "ATL",
+            "JFK"
+          ]
         ]
       },
-      "output": ["JFK", "ATL", "JFK"]
+      "output": [
+        "JFK",
+        "ATL",
+        "JFK"
+      ]
     }
   ]
 }

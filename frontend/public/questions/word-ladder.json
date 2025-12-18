@@ -2,6 +2,10 @@
   "index": 81,
   "filename": "word-ladder",
   "title": "Word Ladder",
+  "difficulty": "Hard",
+  "tags": [
+    "Graph"
+  ],
   "keywords": [
     "word",
     "ladder",

@@ -2,6 +2,10 @@
   "index": 74,
   "filename": "trapping-rain-water",
   "title": "Trapping Rain Water",
+  "difficulty": "Hard",
+  "tags": [
+    "Two Pointers"
+  ],
   "keywords": [
     "trapping",
     "rain",

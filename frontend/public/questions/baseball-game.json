@@ -2,6 +2,8 @@
   "index": 10,
   "filename": "baseball-game",
   "title": "Baseball Game",
+  "difficulty": "Medium",
+  "tags": [],
   "keywords": [
     "baseball",
     "game",
@@ -21,7 +23,6 @@
   "solution_code": "def calPoints(operations):\n    stack = []\n    \n    for op in operations:\n        if op == '+':\n            stack.append(stack[-1] + stack[-2])\n        elif op == 'D':\n            stack.append(stack[-1] * 2)\n        elif op == 'C':\n            stack.pop()\n        else:\n            stack.append(int(op))\n    \n    return sum(stack)",
   "prepare": "def prepare(test_case_input):\n    return (test_case_input['operations'],)",
   "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    return [passed, output_str]",
-  "order_matters": false,
   "test_cases": [
     {
       "id": 1,

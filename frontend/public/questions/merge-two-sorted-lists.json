@@ -2,6 +2,10 @@
   "index": 59,
   "filename": "merge-two-sorted-lists",
   "title": "Merge Two Sorted Linked Lists",
+  "difficulty": "Easy",
+  "tags": [
+    "Linked List"
+  ],
   "keywords": [
     "merge",
     "two",

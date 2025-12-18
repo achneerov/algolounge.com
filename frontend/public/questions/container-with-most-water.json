@@ -2,6 +2,10 @@
   "index": 35,
   "filename": "container-with-most-water",
   "title": "Container With Most Water",
+  "difficulty": "Medium",
+  "tags": [
+    "Two Pointers"
+  ],
   "keywords": [
     "container",
     "most",

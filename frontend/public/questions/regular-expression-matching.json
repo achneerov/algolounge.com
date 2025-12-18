@@ -2,6 +2,10 @@
   "index": 104,
   "filename": "regular-expression-matching",
   "title": "Regular Expression Matching",
+  "difficulty": "Hard",
+  "tags": [
+    "2D Dynamic Programming"
+  ],
   "keywords": [
     "regular expression",
     "regex",

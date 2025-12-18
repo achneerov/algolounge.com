@@ -2,6 +2,10 @@
   "index": 51,
   "filename": "linked-list-cycle",
   "title": "Linked List Cycle Detection",
+  "difficulty": "Easy",
+  "tags": [
+    "Linked List"
+  ],
   "keywords": [
     "linked",
     "list",

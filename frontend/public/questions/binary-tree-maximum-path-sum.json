@@ -2,6 +2,8 @@
   "index": 18,
   "filename": "binary-tree-maximum-path-sum",
   "title": "Binary Tree Maximum Path Sum",
+  "difficulty": "Hard",
+  "tags": [],
   "keywords": [
     "binary",
     "tree",

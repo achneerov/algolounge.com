@@ -2,6 +2,10 @@
   "index": 76,
   "filename": "two-sum-ii-input-array-is-sorted",
   "title": "Two Sum II - Input Array Is Sorted",
+  "difficulty": "Medium",
+  "tags": [
+    "Two Pointers"
+  ],
   "keywords": [
     "two",
     "sum",

@@ -83,14 +83,20 @@ function syncQuestionsIndex() {
     for (const item of questionsData) {
       const title = item.data.title || 'Untitled Question';
       const keywords = item.data.keywords || [];
+      const difficulty = item.data.difficulty;
+      const tags = item.data.tags || [];
       const index = item.data.index;
 
-      questions.push({
+      const question = {
         index: index,
         filename: item.filename,
         title: title,
+        difficulty: difficulty,
+        tags: tags,
         keywords: keywords
-      });
+      };
+
+      questions.push(question);
 
       console.log(`✅ Processed: ${item.filename} - "${title}" (index: ${index})`);
     }

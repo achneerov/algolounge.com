@@ -2,6 +2,11 @@
   "index": 0,
   "filename": "implement-stack",
   "title": "Implement Stack",
+  "difficulty": "Easy",
+  "tags": [
+    "Stack",
+    "Data Structure Design"
+  ],
   "keywords": [
     "stack",
     "implement",

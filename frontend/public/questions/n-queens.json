@@ -2,6 +2,10 @@
   "index": 62,
   "filename": "n-queens",
   "title": "N-Queens",
+  "difficulty": "Hard",
+  "tags": [
+    "Backtracking"
+  ],
   "keywords": [
     "n",
     "queens",

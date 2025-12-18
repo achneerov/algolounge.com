@@ -2,6 +2,8 @@
   "index": 86,
   "filename": "concatenation-of-array",
   "title": "Concatenation of Array",
+  "difficulty": "Medium",
+  "tags": [],
   "keywords": [
     "concatenation",
     "array",
@@ -25,30 +27,74 @@
     {
       "id": 1,
       "input": {
-        "nums": [1, 4, 1, 2]
+        "nums": [
+          1,
+          4,
+          1,
+          2
+        ]
       },
-      "output": [1, 4, 1, 2, 1, 4, 1, 2]
+      "output": [
+        1,
+        4,
+        1,
+        2,
+        1,
+        4,
+        1,
+        2
+      ]
     },
     {
       "id": 2,
       "input": {
-        "nums": [22, 21, 20, 1]
+        "nums": [
+          22,
+          21,
+          20,
+          1
+        ]
       },
-      "output": [22, 21, 20, 1, 22, 21, 20, 1]
+      "output": [
+        22,
+        21,
+        20,
+        1,
+        22,
+        21,
+        20,
+        1
+      ]
     },
     {
       "id": 3,
       "input": {
-        "nums": [1]
+        "nums": [
+          1
+        ]
       },
-      "output": [1, 1]
+      "output": [
+        1,
+        1
+      ]
     },
     {
       "id": 4,
       "input": {
-        "nums": [1, 2, 3]
+        "nums": [
+          1,
+          2,
+          3
+        ]
       },
-      "output": [1, 2, 3, 1, 2, 3]
+      "output": [
+        1,
+        2,
+        3,
+        1,
+        2,
+        3
+      ]
     }
   ]
 }

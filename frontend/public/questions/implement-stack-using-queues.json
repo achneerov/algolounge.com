@@ -2,6 +2,11 @@
   "index": 0,
   "filename": "implement-stack-using-queues",
   "title": "Implement Stack using Queues",
+  "difficulty": "Easy",
+  "tags": [
+    "Stack",
+    "Queue"
+  ],
   "keywords": [
     "stack",
     "queue",

@@ -2,6 +2,8 @@
   "index": 83,
   "filename": "car-pooling",
   "title": "Car Pooling",
+  "difficulty": "Medium",
+  "tags": [],
   "keywords": [
     "car",
     "pooling",
@@ -19,7 +21,8 @@
   "template": "def carPooling(trips, capacity):\n    ",
   "solution_text": "<p><strong>Car Pooling Solution using Difference Array:</strong></p><p>Track passenger count changes at pickup and dropoff points.</p><p><strong>Algorithm:</strong></p><ol><li>Create events for pickup (+passengers) and dropoff (-passengers)</li><li>Sort events by location</li><li>Process events and track current passenger count</li><li>Check if capacity is ever exceeded</li></ol><p><strong>Alternative: Difference Array</strong></p><ol><li>Use array to track passenger changes at each location</li><li>Increment at pickup, decrement at dropoff</li><li>Calculate running sum and check capacity</li></ol><p><strong>Time Complexity:</strong> O(n log n) for sorting or O(max_location) for difference array</p><p><strong>Space Complexity:</strong> O(n) or O(max_location)</p><p><strong>Key Insights:</strong></p><ul><li>Event-based approach tracks state changes at specific locations</li><li>Sorting events allows single pass through locations in order</li><li>Dropoff and pickup at same location: pickup happens first (tuples sort naturally)</li><li>Early exit when capacity exceeded saves unnecessary processing</li></ul>",
   "solution_code": "def carPooling(trips, capacity):\n    # Create events: (location, passenger_change)\n    events = []\n    \n    for passengers, start, end in trips:\n        events.append((start, passengers))    # pickup: add passengers\n        events.append((end, -passengers))     # dropoff: remove passengers\n    \n    # Sort events by location\n    events.sort()\n    \n    # Process events and track current passenger count\n    current_passengers = 0\n    \n    for location, change in events:\n        current_passengers += change\n        if current_passengers > capacity:\n            return False\n    \n    return True",
-  "order_matters": false,
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['trips'], test_case_input['capacity'])",
+  "verify": "def verify(actual_output, expected_output):\n    def bool_to_string(val):\n        return 'true' if val else 'false'\n    \n    # Convert expected output string to boolean for comparison if needed\n    expected_bool = expected_output == 'true' if isinstance(expected_output, str) else expected_output\n    \n    passed = actual_output == expected_bool\n    output_str = bool_to_string(actual_output)\n    \n    return [passed, output_str]",
   "test_cases": [
     {
       "id": 1,
@@ -284,7 +287,5 @@
       },
       "output": "true"
     }
-  ],
-  "prepare": "def prepare(test_case_input):\n    return (test_case_input['trips'], test_case_input['capacity'])",
-  "verify": "def verify(actual_output, expected_output):\n    def bool_to_string(val):\n        return 'true' if val else 'false'\n    \n    # Convert expected output string to boolean for comparison if needed\n    expected_bool = expected_output == 'true' if isinstance(expected_output, str) else expected_output\n    \n    passed = actual_output == expected_bool\n    output_str = bool_to_string(actual_output)\n    \n    return [passed, output_str]"
+  ]
 }

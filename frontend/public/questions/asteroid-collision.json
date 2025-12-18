@@ -2,6 +2,8 @@
   "index": 8,
   "filename": "asteroid-collision",
   "title": "Asteroid Collision",
+  "difficulty": "Medium",
+  "tags": [],
   "keywords": [
     "asteroid",
     "collision",
@@ -21,7 +23,6 @@
   "solution_code": "def asteroidCollision(asteroids):\n    stack = []\n    \n    for asteroid in asteroids:\n        # Process current asteroid\n        while stack and asteroid < 0 < stack[-1]:\n            # Collision occurs: right-moving vs left-moving\n            if stack[-1] < -asteroid:\n                # Right-moving asteroid explodes\n                stack.pop()\n                continue\n            elif stack[-1] == -asteroid:\n                # Both asteroids explode\n                stack.pop()\n            # Left-moving asteroid explodes (asteroid >= 0 or no collision)\n            break\n        else:\n            # No collision or asteroid survives\n            stack.append(asteroid)\n    \n    return stack",
   "prepare": "def prepare(test_case_input):\n    return (test_case_input['asteroids'],)",
   "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    return [passed, output_str]",
-  "order_matters": false,
   "test_cases": [
     {
       "id": 1,

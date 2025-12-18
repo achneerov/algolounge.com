@@ -4,6 +4,11 @@
       "index": 0,
       "filename": "find-maximum-non-decreasing-array-length",
       "title": "Find Maximum Non-decreasing Array Length",
+      "difficulty": "Hard",
+      "tags": [
+        "Queue",
+        "Dynamic Programming"
+      ],
       "keywords": [
         "dynamic programming",
         "queue",
@@ -17,6 +22,11 @@
       "index": 0,
       "filename": "find-the-winner-of-the-circular-game",
       "title": "Find the Winner of the Circular Game",
+      "difficulty": "Medium",
+      "tags": [
+        "Queue",
+        "Simulation"
+      ],
       "keywords": [
         "queue",
         "simulation",
@@ -29,6 +39,11 @@
       "index": 0,
       "filename": "implement-queue-using-stacks",
       "title": "Implement Queue Using Stacks",
+      "difficulty": "Easy",
+      "tags": [
+        "Queue",
+        "Stack"
+      ],
       "keywords": [
         "queue",
         "stack",
@@ -43,6 +58,11 @@
       "index": 0,
       "filename": "implement-queue",
       "title": "Implement Queue",
+      "difficulty": "Easy",
+      "tags": [
+        "Queue",
+        "Data Structure Design"
+      ],
       "keywords": [
         "queue",
         "implement",
@@ -60,6 +80,11 @@
       "index": 0,
       "filename": "implement-stack-using-queues",
       "title": "Implement Stack using Queues",
+      "difficulty": "Easy",
+      "tags": [
+        "Stack",
+        "Queue"
+      ],
       "keywords": [
         "stack",
         "queue",
@@ -78,6 +103,11 @@
       "index": 0,
       "filename": "implement-stack",
       "title": "Implement Stack",
+      "difficulty": "Easy",
+      "tags": [
+        "Stack",
+        "Data Structure Design"
+      ],
       "keywords": [
         "stack",
         "implement",
@@ -95,6 +125,11 @@
       "index": 0,
       "filename": "longest-valid-parentheses",
       "title": "Longest Valid Parentheses",
+      "difficulty": "Hard",
+      "tags": [
+        "Stack",
+        "Dynamic Programming"
+      ],
       "keywords": [
         "longest",
         "valid",
@@ -112,6 +147,11 @@
       "index": 0,
       "filename": "maximum-frequency-stack",
       "title": "Maximum Frequency Stack",
+      "difficulty": "Hard",
+      "tags": [
+        "Stack",
+        "Hash Map"
+      ],
       "keywords": [
         "stack",
         "frequency",
@@ -129,6 +169,11 @@
       "index": 0,
       "filename": "maximum-number-of-tasks-you-can-assign",
       "title": "Maximum Number of Tasks You Can Assign",
+      "difficulty": "Hard",
+      "tags": [
+        "Queue",
+        "Binary Search"
+      ],
       "keywords": [
         "binary search",
         "greedy",
@@ -142,6 +187,11 @@
       "index": 0,
       "filename": "minimum-number-of-coins-for-fruits",
       "title": "Minimum Number of Coins for Fruits",
+      "difficulty": "Medium",
+      "tags": [
+        "Queue",
+        "Dynamic Programming"
+      ],
       "keywords": [
         "dynamic programming",
         "queue",
@@ -154,6 +204,10 @@
       "index": 0,
       "filename": "number-of-recent-calls",
       "title": "Number of Recent Calls",
+      "difficulty": "Easy",
+      "tags": [
+        "Queue"
+      ],
       "keywords": [
         "queue",
         "design",
@@ -166,6 +220,11 @@
       "index": 0,
       "filename": "simplify-path",
       "title": "Simplify Path",
+      "difficulty": "Medium",
+      "tags": [
+        "Stack",
+        "String"
+      ],
       "keywords": [
         "path",
         "simplify",
@@ -183,6 +242,11 @@
       "index": 0,
       "filename": "valid-parenthesis-string",
       "title": "Valid Parenthesis String",
+      "difficulty": "Medium",
+      "tags": [
+        "Stack",
+        "Greedy"
+      ],
       "keywords": [
         "valid",
         "parenthesis",
@@ -200,6 +264,10 @@
       "index": 1,
       "filename": "3sum",
       "title": "3Sum",
+      "difficulty": "Medium",
+      "tags": [
+        "Two Pointers"
+      ],
       "keywords": [
         "3sum",
         "three",
@@ -217,6 +285,10 @@
       "index": 1,
       "filename": "insert-interval",
       "title": "Insert Interval",
+      "difficulty": "Medium",
+      "tags": [
+        "Intervals"
+      ],
       "keywords": [
         "insert",
         "interval",
@@ -231,6 +303,11 @@
       "index": 1,
       "filename": "meeting-rooms-ii",
       "title": "Meeting Rooms II",
+      "difficulty": "Medium",
+      "tags": [
+        "Intervals",
+        "Heap"
+      ],
       "keywords": [
         "meeting",
         "intervals",
@@ -246,6 +323,10 @@
       "index": 1,
       "filename": "meeting-rooms",
       "title": "Meeting Rooms",
+      "difficulty": "Easy",
+      "tags": [
+        "Intervals"
+      ],
       "keywords": [
         "meeting",
         "intervals",
@@ -259,6 +340,10 @@
       "index": 1,
       "filename": "merge-intervals",
       "title": "Merge Intervals",
+      "difficulty": "Medium",
+      "tags": [
+        "Intervals"
+      ],
       "keywords": [
         "merge",
         "intervals",
@@ -272,6 +357,10 @@
       "index": 1,
       "filename": "minimum-interval-to-include-each-query",
       "title": "Minimum Interval to Include Each Query",
+      "difficulty": "Hard",
+      "tags": [
+        "Intervals"
+      ],
       "keywords": [
         "minimum",
         "interval",
@@ -290,6 +379,10 @@
       "index": 1,
       "filename": "reconstruct-itinerary",
       "title": "Reconstruct Itinerary",
+      "difficulty": "Hard",
+      "tags": [
+        "Advanced Graphs"
+      ],
       "keywords": [
         "reconstruct",
         "itinerary",
@@ -308,6 +401,10 @@
       "index": 2,
       "filename": "4sum",
       "title": "4Sum",
+      "difficulty": "Medium",
+      "tags": [
+        "Two Pointers"
+      ],
       "keywords": [
         "4sum",
         "leetcode",
@@ -325,6 +422,8 @@
       "index": 3,
       "filename": "add-binary",
       "title": "Add Binary",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "add",
         "binary",
@@ -342,6 +441,10 @@
       "index": 4,
       "filename": "add-two-numbers",
       "title": "Add Two Numbers",
+      "difficulty": "Medium",
+      "tags": [
+        "Linked List"
+      ],
       "keywords": [
         "add",
         "two",
@@ -359,6 +462,8 @@
       "index": 5,
       "filename": "alice-typing-problem",
       "title": "Alice Typing Problem",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "string",
         "counting",
@@ -371,6 +476,8 @@
       "index": 6,
       "filename": "alphabetical-order-checker",
       "title": "Alphabetical Order Checker",
+      "difficulty": "Easy",
+      "tags": [],
       "keywords": [
         "string",
         "sorting",
@@ -383,6 +490,8 @@
       "index": 7,
       "filename": "anagram-groups",
       "title": "Group Anagrams",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "group",
         "anagrams",
@@ -400,6 +509,8 @@
       "index": 8,
       "filename": "asteroid-collision",
       "title": "Asteroid Collision",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "asteroid",
         "collision",
@@ -417,6 +528,10 @@
       "index": 9,
       "filename": "balanced-binary-tree",
       "title": "Balanced Binary Tree",
+      "difficulty": "Easy",
+      "tags": [
+        "Trees"
+      ],
       "keywords": [
         "balanced",
         "binary",
@@ -434,6 +549,8 @@
       "index": 10,
       "filename": "baseball-game",
       "title": "Baseball Game",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "baseball",
         "game",
@@ -451,6 +568,8 @@
       "index": 11,
       "filename": "best-time-to-buy-and-sell-stock-ii",
       "title": "Best Time to Buy and Sell Stock II",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "best",
         "time",
@@ -468,6 +587,10 @@
       "index": 12,
       "filename": "best-time-to-buy-and-sell-stock",
       "title": "Best Time to Buy and Sell Stock",
+      "difficulty": "Easy",
+      "tags": [
+        "Sliding Window"
+      ],
       "keywords": [
         "best",
         "time",
@@ -490,6 +613,8 @@
       "index": 13,
       "filename": "binary-representation",
       "title": "Binary Representation",
+      "difficulty": "Easy",
+      "tags": [],
       "keywords": [
         "binary",
         "conversion",
@@ -502,6 +627,10 @@
       "index": 14,
       "filename": "binary-search",
       "title": "Binary Search",
+      "difficulty": "Easy",
+      "tags": [
+        "Binary Search"
+      ],
       "keywords": [
         "binary",
         "search",
@@ -519,6 +648,10 @@
       "index": 15,
       "filename": "binary-tree-diameter",
       "title": "Diameter of Binary Tree",
+      "difficulty": "Easy",
+      "tags": [
+        "Trees"
+      ],
       "keywords": [
         "diameter",
         "binary",
@@ -536,6 +669,8 @@
       "index": 16,
       "filename": "binary-tree-from-preorder-and-inorder-traversal",
       "title": "Construct Binary Tree from Preorder and Inorder Traversal",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "construct",
         "binary",
@@ -553,6 +688,8 @@
       "index": 17,
       "filename": "binary-tree-inorder-traversal",
       "title": "Binary Tree Inorder Traversal",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "binary",
         "tree",
@@ -570,6 +707,8 @@
       "index": 18,
       "filename": "binary-tree-maximum-path-sum",
       "title": "Binary Tree Maximum Path Sum",
+      "difficulty": "Hard",
+      "tags": [],
       "keywords": [
         "binary",
         "tree",
@@ -587,6 +726,8 @@
       "index": 19,
       "filename": "binary-tree-postorder-traversal",
       "title": "Binary Tree Postorder Traversal",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "binary",
         "tree",
@@ -604,6 +745,8 @@
       "index": 20,
       "filename": "binary-tree-preorder-traversal",
       "title": "Binary Tree Preorder Traversal",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "binary",
         "tree",
@@ -621,6 +764,8 @@
       "index": 21,
       "filename": "binary-tree-right-side-view",
       "title": "Binary Tree Right Side View",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "binary",
         "tree",
@@ -638,6 +783,8 @@
       "index": 22,
       "filename": "bitwise-and-of-numbers-range",
       "title": "Bitwise AND of Numbers Range",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "bitwise",
         "numbers",
@@ -655,6 +802,8 @@
       "index": 23,
       "filename": "boats-to-save-people",
       "title": "Boats to Save People",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "boats",
         "save",
@@ -672,6 +821,10 @@
       "index": 24,
       "filename": "burst-balloons",
       "title": "Burst Balloons",
+      "difficulty": "Hard",
+      "tags": [
+        "2D Dynamic Programming"
+      ],
       "keywords": [
         "burst",
         "balloons",
@@ -689,6 +842,8 @@
       "index": 25,
       "filename": "caffeine-calculator",
       "title": "Caffeine Calculator",
+      "difficulty": "Easy",
+      "tags": [],
       "keywords": [
         "math",
         "ceiling",
@@ -701,6 +856,8 @@
       "index": 26,
       "filename": "canadian-province-validator",
       "title": "Canadian Province Validator",
+      "difficulty": "Easy",
+      "tags": [],
       "keywords": [
         "string",
         "validation",
@@ -713,6 +870,8 @@
       "index": 27,
       "filename": "candy",
       "title": "Candy",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "candy",
         "leetcode",
@@ -730,6 +889,10 @@
       "index": 28,
       "filename": "car-fleet",
       "title": "Car Fleet",
+      "difficulty": "Medium",
+      "tags": [
+        "Stack"
+      ],
       "keywords": [
         "car",
         "fleet",
@@ -747,6 +910,10 @@
       "index": 30,
       "filename": "climbing-stairs",
       "title": "Climbing Stairs",
+      "difficulty": "Easy",
+      "tags": [
+        "1D Dynamic Programming"
+      ],
       "keywords": [
         "climbing",
         "stairs",
@@ -764,6 +931,8 @@
       "index": 31,
       "filename": "coffee-production-scheduler",
       "title": "HW13 - Coffee Production Scheduler",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "simulation",
         "string",
@@ -776,6 +945,8 @@
       "index": 32,
       "filename": "coffee-sales-projection",
       "title": "Coffee Sales Projection",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "array",
         "math",
@@ -788,6 +959,8 @@
       "index": 33,
       "filename": "coffee-shop-billing",
       "title": "Alex's Brew Coffee Shop Billing",
+      "difficulty": "Easy",
+      "tags": [],
       "keywords": [
         "array",
         "math",
@@ -800,6 +973,10 @@
       "index": 34,
       "filename": "coin-change",
       "title": "Coin Change",
+      "difficulty": "Medium",
+      "tags": [
+        "Dynamic Programming"
+      ],
       "keywords": [
         "coin",
         "change",
@@ -820,6 +997,10 @@
       "index": 35,
       "filename": "container-with-most-water",
       "title": "Container With Most Water",
+      "difficulty": "Medium",
+      "tags": [
+        "Two Pointers"
+      ],
       "keywords": [
         "container",
         "most",
@@ -837,6 +1018,10 @@
       "index": 36,
       "filename": "contains-duplicate",
       "title": "Contains Duplicate",
+      "difficulty": "Easy",
+      "tags": [
+        "Arrays and Hashing"
+      ],
       "keywords": [
         "contains",
         "duplicate",
@@ -854,6 +1039,10 @@
       "index": 37,
       "filename": "copy-list-with-random-pointer",
       "title": "Copy List with Random Pointer",
+      "difficulty": "Medium",
+      "tags": [
+        "Linked List"
+      ],
       "keywords": [
         "copy",
         "linked",
@@ -874,6 +1063,8 @@
       "index": 38,
       "filename": "count-vowels",
       "title": "Count Vowels",
+      "difficulty": "Easy",
+      "tags": [],
       "keywords": [
         "string",
         "vowels",
@@ -886,6 +1077,10 @@
       "index": 39,
       "filename": "daily-temperatures",
       "title": "Daily Temperatures",
+      "difficulty": "Medium",
+      "tags": [
+        "Stack"
+      ],
       "keywords": [
         "daily",
         "temperatures",
@@ -903,6 +1098,10 @@
       "index": 40,
       "filename": "dice-ways",
       "title": "Dice Ways",
+      "difficulty": "Medium",
+      "tags": [
+        "Dynamic Programming"
+      ],
       "keywords": [
         "dynamic",
         "programming",
@@ -915,6 +1114,8 @@
       "index": 41,
       "filename": "evaluate-reverse-polish-notation",
       "title": "Evaluate Reverse Polish Notation",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "evaluate",
         "reverse",
@@ -932,6 +1133,10 @@
       "index": 42,
       "filename": "find-median-from-data-stream",
       "title": "Find Median From Data Stream",
+      "difficulty": "Hard",
+      "tags": [
+        "Heap / Priority Queue"
+      ],
       "keywords": [
         "find",
         "median",
@@ -949,6 +1154,8 @@
       "index": 43,
       "filename": "generate-parentheses",
       "title": "Generate Parentheses",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "generate",
         "parentheses",
@@ -967,6 +1174,8 @@
       "index": 44,
       "filename": "greatest-common-divisor",
       "title": "Greatest Common Divisor (GCD)",
+      "difficulty": "Easy",
+      "tags": [],
       "keywords": [
         "gcd",
         "math",
@@ -980,6 +1189,8 @@
       "index": 45,
       "filename": "hello-world",
       "title": "Hello World",
+      "difficulty": "Easy",
+      "tags": [],
       "keywords": [
         "hello",
         "world",
@@ -996,6 +1207,8 @@
       "index": 46,
       "filename": "house-robber",
       "title": "House Robber",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "house",
         "robber",
@@ -1013,6 +1226,10 @@
       "index": 47,
       "filename": "invert-binary-tree",
       "title": "Invert Binary Tree",
+      "difficulty": "Easy",
+      "tags": [
+        "Trees"
+      ],
       "keywords": [
         "invert",
         "binary",
@@ -1030,6 +1247,10 @@
       "index": 48,
       "filename": "largest-rectangle-in-histogram",
       "title": "Largest Rectangle In Histogram",
+      "difficulty": "Hard",
+      "tags": [
+        "Stack"
+      ],
       "keywords": [
         "largest",
         "rectangle",
@@ -1047,6 +1268,8 @@
       "index": 49,
       "filename": "last-even-index",
       "title": "Last Even Index",
+      "difficulty": "Easy",
+      "tags": [],
       "keywords": [
         "array",
         "even",
@@ -1060,6 +1283,10 @@
       "index": 50,
       "filename": "last-stone-weight",
       "title": "Last Stone Weight",
+      "difficulty": "Easy",
+      "tags": [
+        "Heap / Priority Queue"
+      ],
       "keywords": [
         "last",
         "stone",
@@ -1078,6 +1305,10 @@
       "index": 51,
       "filename": "linked-list-cycle",
       "title": "Linked List Cycle Detection",
+      "difficulty": "Easy",
+      "tags": [
+        "Linked List"
+      ],
       "keywords": [
         "linked",
         "list",
@@ -1095,6 +1326,8 @@
       "index": 52,
       "filename": "longest-common-subsequence",
       "title": "Longest Common Subsequence",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "longest",
         "common",
@@ -1112,6 +1345,10 @@
       "index": 53,
       "filename": "longest-consecutive-sequence",
       "title": "Longest Consecutive Sequence",
+      "difficulty": "Medium",
+      "tags": [
+        "Arrays and Hashing"
+      ],
       "keywords": [
         "longest",
         "consecutive",
@@ -1129,6 +1366,10 @@
       "index": 54,
       "filename": "longest-increasing-path-in-a-matrix",
       "title": "Longest Increasing Path in a Matrix",
+      "difficulty": "Hard",
+      "tags": [
+        "2D Dynamic Programming"
+      ],
       "keywords": [
         "longest",
         "increasing",
@@ -1150,6 +1391,8 @@
       "index": 55,
       "filename": "longest-palindromic-substring",
       "title": "Longest Palindromic Substring",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "longest",
         "palindrome",
@@ -1167,6 +1410,10 @@
       "index": 56,
       "filename": "maximum-depth-of-binary-tree",
       "title": "Maximum Depth of Binary Tree",
+      "difficulty": "Easy",
+      "tags": [
+        "Trees"
+      ],
       "keywords": [
         "maximum",
         "depth",
@@ -1184,6 +1431,8 @@
       "index": 57,
       "filename": "maximum-subarray",
       "title": "Maximum Subarray",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "maximum",
         "subarray",
@@ -1201,6 +1450,10 @@
       "index": 58,
       "filename": "median-of-two-sorted-arrays",
       "title": "Median of Two Sorted Arrays",
+      "difficulty": "Hard",
+      "tags": [
+        "Binary Search"
+      ],
       "keywords": [
         "median",
         "two",
@@ -1218,6 +1471,10 @@
       "index": 59,
       "filename": "merge-two-sorted-lists",
       "title": "Merge Two Sorted Linked Lists",
+      "difficulty": "Easy",
+      "tags": [
+        "Linked List"
+      ],
       "keywords": [
         "merge",
         "two",
@@ -1235,6 +1492,8 @@
       "index": 60,
       "filename": "most-frequent-element",
       "title": "Most Frequent Element",
+      "difficulty": "Easy",
+      "tags": [],
       "keywords": [
         "array",
         "frequency",
@@ -1247,6 +1506,8 @@
       "index": 61,
       "filename": "multiple-check",
       "title": "Multiple Check",
+      "difficulty": "Easy",
+      "tags": [],
       "keywords": [
         "multiple",
         "modulo",
@@ -1261,6 +1522,10 @@
       "index": 62,
       "filename": "n-queens",
       "title": "N-Queens",
+      "difficulty": "Hard",
+      "tags": [
+        "Backtracking"
+      ],
       "keywords": [
         "n",
         "queens",
@@ -1277,6 +1542,8 @@
       "index": 63,
       "filename": "palindrome-checker",
       "title": "Palindrome Checker",
+      "difficulty": "Easy",
+      "tags": [],
       "keywords": [
         "palindrome",
         "string",
@@ -1289,6 +1556,10 @@
       "index": 64,
       "filename": "product-of-array-except-self",
       "title": "Product of Array Except Self",
+      "difficulty": "Medium",
+      "tags": [
+        "Arrays and Hashing"
+      ],
       "keywords": [
         "product",
         "array",
@@ -1306,6 +1577,10 @@
       "index": 65,
       "filename": "remove-nth-node-from-end-of-list",
       "title": "Remove Nth Node From End of List",
+      "difficulty": "Medium",
+      "tags": [
+        "Linked List"
+      ],
       "keywords": [
         "remove",
         "node",
@@ -1325,6 +1600,10 @@
       "index": 66,
       "filename": "reorder-list",
       "title": "Reorder Linked List",
+      "difficulty": "Medium",
+      "tags": [
+        "Linked List"
+      ],
       "keywords": [
         "reorder",
         "linked",
@@ -1342,6 +1621,10 @@
       "index": 67,
       "filename": "reverse-linked-list",
       "title": "Reverse Linked List",
+      "difficulty": "Easy",
+      "tags": [
+        "Linked List"
+      ],
       "keywords": [
         "reverse",
         "linked",
@@ -1359,6 +1642,10 @@
       "index": 68,
       "filename": "serialize-and-deserialize-binary-tree",
       "title": "Serialize and Deserialize Binary Tree",
+      "difficulty": "Hard",
+      "tags": [
+        "Trees"
+      ],
       "keywords": [
         "serialize",
         "deserialize",
@@ -1376,6 +1663,8 @@
       "index": 69,
       "filename": "string-comparison",
       "title": "String Comparison",
+      "difficulty": "Easy",
+      "tags": [],
       "keywords": [
         "string",
         "comparison",
@@ -1390,6 +1679,8 @@
       "index": 70,
       "filename": "string-matching",
       "title": "String Matching",
+      "difficulty": "Easy",
+      "tags": [],
       "keywords": [
         "string",
         "hash-map",
@@ -1402,6 +1693,8 @@
       "index": 71,
       "filename": "string-reversal",
       "title": "String Reversal",
+      "difficulty": "Easy",
+      "tags": [],
       "keywords": [
         "string",
         "reverse",
@@ -1413,6 +1706,8 @@
       "index": 72,
       "filename": "sum-of-digits-times-seven",
       "title": "Sum of Digits Times Seven",
+      "difficulty": "Easy",
+      "tags": [],
       "keywords": [
         "digits",
         "sum",
@@ -1426,6 +1721,8 @@
       "index": 73,
       "filename": "sum-two-integers",
       "title": "Sum Two Integers",
+      "difficulty": "Easy",
+      "tags": [],
       "keywords": [
         "sum",
         "addition",
@@ -1441,6 +1738,10 @@
       "index": 74,
       "filename": "trapping-rain-water",
       "title": "Trapping Rain Water",
+      "difficulty": "Hard",
+      "tags": [
+        "Two Pointers"
+      ],
       "keywords": [
         "trapping",
         "rain",
@@ -1459,6 +1760,10 @@
       "index": 75,
       "filename": "tribonacci-sequence",
       "title": "Tribonacci Sequence",
+      "difficulty": "Medium",
+      "tags": [
+        "Dynamic Programming"
+      ],
       "keywords": [
         "dynamic",
         "programming",
@@ -1472,6 +1777,10 @@
       "index": 76,
       "filename": "two-sum-ii-input-array-is-sorted",
       "title": "Two Sum II - Input Array Is Sorted",
+      "difficulty": "Medium",
+      "tags": [
+        "Two Pointers"
+      ],
       "keywords": [
         "two",
         "sum",
@@ -1489,6 +1798,10 @@
       "index": 77,
       "filename": "two-sum",
       "title": "Two Sum",
+      "difficulty": "Easy",
+      "tags": [
+        "Arrays and Hashing"
+      ],
       "keywords": [
         "two",
         "sum",
@@ -1506,6 +1819,8 @@
       "index": 78,
       "filename": "valid-anagram",
       "title": "Valid Anagram",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "valid",
         "anagram",
@@ -1523,6 +1838,10 @@
       "index": 79,
       "filename": "valid-parentheses",
       "title": "Valid Parentheses",
+      "difficulty": "Easy",
+      "tags": [
+        "Stack"
+      ],
       "keywords": [
         "valid",
         "parentheses",
@@ -1540,6 +1859,10 @@
       "index": 80,
       "filename": "valid-sudoku",
       "title": "Valid Sudoku",
+      "difficulty": "Medium",
+      "tags": [
+        "Arrays and Hashing"
+      ],
       "keywords": [
         "valid",
         "sudoku",
@@ -1557,6 +1880,10 @@
       "index": 81,
       "filename": "word-ladder",
       "title": "Word Ladder",
+      "difficulty": "Hard",
+      "tags": [
+        "Graph"
+      ],
       "keywords": [
         "word",
         "ladder",
@@ -1576,6 +1903,10 @@
       "index": 82,
       "filename": "word-search-ii",
       "title": "Word Search II",
+      "difficulty": "Hard",
+      "tags": [
+        "Tries"
+      ],
       "keywords": [
         "word",
         "search",
@@ -1594,6 +1925,8 @@
       "index": 83,
       "filename": "car-pooling",
       "title": "Car Pooling",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "car",
         "pooling",
@@ -1611,6 +1944,10 @@
       "index": 84,
       "filename": "distinct-subsequences",
       "title": "Distinct Subsequences",
+      "difficulty": "Hard",
+      "tags": [
+        "2D Dynamic Programming"
+      ],
       "keywords": [
         "dynamic-programming",
         "subsequence",
@@ -1622,6 +1959,10 @@
       "index": 85,
       "filename": "min-cost-climbing-stairs",
       "title": "Min Cost Climbing Stairs",
+      "difficulty": "Easy",
+      "tags": [
+        "1D Dynamic Programming"
+      ],
       "keywords": [
         "min",
         "cost",
@@ -1639,6 +1980,8 @@
       "index": 86,
       "filename": "concatenation-of-array",
       "title": "Concatenation of Array",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "concatenation",
         "array",
@@ -1656,6 +1999,8 @@
       "index": 87,
       "filename": "missing-number",
       "title": "Missing Number",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "missing",
         "number",
@@ -1670,6 +2015,8 @@
       "index": 88,
       "filename": "merge-strings-alternately",
       "title": "Merge Strings Alternately",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "merge",
         "strings",
@@ -1682,6 +2029,8 @@
       "index": 89,
       "filename": "find-duplicate-integer",
       "title": "Find the Duplicate Number",
+      "difficulty": "Medium",
+      "tags": [],
       "keywords": [
         "find",
         "duplicate ",
@@ -1697,6 +2046,10 @@
       "index": 100,
       "filename": "single-number",
       "title": "Single Number",
+      "difficulty": "Easy",
+      "tags": [
+        "Bit Manipulation"
+      ],
       "keywords": [
         "single",
         "number",
@@ -1713,6 +2066,10 @@
       "index": 101,
       "filename": "number-of-1-bits",
       "title": "Number of 1 Bits",
+      "difficulty": "Easy",
+      "tags": [
+        "Bit Manipulation"
+      ],
       "keywords": [
         "number",
         "bits",
@@ -1728,6 +2085,10 @@
       "index": 102,
       "filename": "sum-of-two-integers",
       "title": "Sum of Two Integers",
+      "difficulty": "Medium",
+      "tags": [
+        "Bit Manipulation"
+      ],
       "keywords": [
         "sum",
         "integers",
@@ -1743,6 +2104,10 @@
       "index": 103,
       "filename": "reverse-integer",
       "title": "Reverse Integer",
+      "difficulty": "Medium",
+      "tags": [
+        "Bit Manipulation"
+      ],
       "keywords": [
         "reverse",
         "integer",
@@ -1758,6 +2123,10 @@
       "index": 104,
       "filename": "regular-expression-matching",
       "title": "Regular Expression Matching",
+      "difficulty": "Hard",
+      "tags": [
+        "2D Dynamic Programming"
+      ],
       "keywords": [
         "regular expression",
         "regex",
@@ -1773,6 +2142,11 @@
       "index": 114,
       "filename": "intersection-of-two-linked-lists",
       "title": "Intersection of Two Linked Lists",
+      "difficulty": "Easy",
+      "tags": [
+        "Linked List",
+        "Two Pointers"
+      ],
       "keywords": [
         "intersection",
         "linked",
@@ -1788,6 +2162,11 @@
       "index": 115,
       "filename": "palindrome-linked-list",
       "title": "Palindrome Linked List",
+      "difficulty": "Easy",
+      "tags": [
+        "Linked List",
+        "Two Pointers"
+      ],
       "keywords": [
         "palindrome",
         "linked",
@@ -1804,6 +2183,11 @@
       "index": 116,
       "filename": "clone-graph",
       "title": "Clone Graph",
+      "difficulty": "Medium",
+      "tags": [
+        "Graph",
+        "DFS"
+      ],
       "keywords": [
         "clone",
         "graph",
@@ -1820,6 +2204,11 @@
       "index": 117,
       "filename": "course-schedule",
       "title": "Course Schedule",
+      "difficulty": "Medium",
+      "tags": [
+        "Graph",
+        "Topological Sort"
+      ],
       "keywords": [
         "course",
         "schedule",
@@ -1838,6 +2227,11 @@
       "index": 118,
       "filename": "redundant-connection-ii",
       "title": "Redundant Connection II",
+      "difficulty": "Hard",
+      "tags": [
+        "Graph",
+        "Union Find"
+      ],
       "keywords": [
         "redundant",
         "connection",
@@ -1852,6 +2246,6 @@
       ]
     }
   ],
-  "lastUpdated": "2025-12-12T20:07:13.364Z",
+  "lastUpdated": "2025-12-18T19:47:59.508Z",
   "totalQuestions": 117
 }

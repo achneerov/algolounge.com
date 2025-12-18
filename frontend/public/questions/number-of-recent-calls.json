@@ -2,6 +2,10 @@
   "index": 0,
   "filename": "number-of-recent-calls",
   "title": "Number of Recent Calls",
+  "difficulty": "Easy",
+  "tags": [
+    "Queue"
+  ],
   "keywords": [
     "queue",
     "design",
@@ -20,66 +24,309 @@
     {
       "id": 1,
       "input": {
-        "operations": ["RecentCounter", "ping", "ping", "ping", "ping"],
-        "values": [[], [1], [100], [3001], [3002]]
+        "operations": [
+          "RecentCounter",
+          "ping",
+          "ping",
+          "ping",
+          "ping"
+        ],
+        "values": [
+          [],
+          [
+            1
+          ],
+          [
+            100
+          ],
+          [
+            3001
+          ],
+          [
+            3002
+          ]
+        ]
       },
-      "output": [null, 1, 2, 3, 3]
+      "output": [
+        null,
+        1,
+        2,
+        3,
+        3
+      ]
     },
     {
       "id": 2,
       "input": {
-        "operations": ["RecentCounter", "ping", "ping", "ping", "ping", "ping"],
-        "values": [[], [1], [2], [3], [4], [3004]]
+        "operations": [
+          "RecentCounter",
+          "ping",
+          "ping",
+          "ping",
+          "ping",
+          "ping"
+        ],
+        "values": [
+          [],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ],
+          [
+            4
+          ],
+          [
+            3004
+          ]
+        ]
       },
-      "output": [null, 1, 2, 3, 4, 2]
+      "output": [
+        null,
+        1,
+        2,
+        3,
+        4,
+        2
+      ]
     },
     {
       "id": 3,
       "input": {
-        "operations": ["RecentCounter", "ping"],
-        "values": [[], [642]]
+        "operations": [
+          "RecentCounter",
+          "ping"
+        ],
+        "values": [
+          [],
+          [
+            642
+          ]
+        ]
       },
-      "output": [null, 1]
+      "output": [
+        null,
+        1
+      ]
     },
     {
       "id": 4,
       "input": {
-        "operations": ["RecentCounter", "ping", "ping", "ping", "ping", "ping", "ping", "ping"],
-        "values": [[], [1], [1000], [2000], [3000], [4000], [5000], [6000]]
+        "operations": [
+          "RecentCounter",
+          "ping",
+          "ping",
+          "ping",
+          "ping",
+          "ping",
+          "ping",
+          "ping"
+        ],
+        "values": [
+          [],
+          [
+            1
+          ],
+          [
+            1000
+          ],
+          [
+            2000
+          ],
+          [
+            3000
+          ],
+          [
+            4000
+          ],
+          [
+            5000
+          ],
+          [
+            6000
+          ]
+        ]
       },
-      "output": [null, 1, 2, 3, 4, 4, 4, 4]
+      "output": [
+        null,
+        1,
+        2,
+        3,
+        4,
+        4,
+        4,
+        4
+      ]
     },
     {
       "id": 5,
       "input": {
-        "operations": ["RecentCounter", "ping", "ping", "ping"],
-        "values": [[], [1000], [2000], [5001]]
+        "operations": [
+          "RecentCounter",
+          "ping",
+          "ping",
+          "ping"
+        ],
+        "values": [
+          [],
+          [
+            1000
+          ],
+          [
+            2000
+          ],
+          [
+            5001
+          ]
+        ]
       },
-      "output": [null, 1, 2, 1]
+      "output": [
+        null,
+        1,
+        2,
+        1
+      ]
     },
     {
       "id": 6,
       "input": {
-        "operations": ["RecentCounter", "ping", "ping", "ping", "ping", "ping"],
-        "values": [[], [100], [200], [3100], [3200], [6300]]
+        "operations": [
+          "RecentCounter",
+          "ping",
+          "ping",
+          "ping",
+          "ping",
+          "ping"
+        ],
+        "values": [
+          [],
+          [
+            100
+          ],
+          [
+            200
+          ],
+          [
+            3100
+          ],
+          [
+            3200
+          ],
+          [
+            6300
+          ]
+        ]
       },
-      "output": [null, 1, 2, 3, 3, 1]
+      "output": [
+        null,
+        1,
+        2,
+        3,
+        3,
+        1
+      ]
     },
     {
       "id": 7,
       "input": {
-        "operations": ["RecentCounter", "ping", "ping", "ping", "ping", "ping", "ping"],
-        "values": [[], [1], [50], [100], [3050], [3100], [6100]]
+        "operations": [
+          "RecentCounter",
+          "ping",
+          "ping",
+          "ping",
+          "ping",
+          "ping",
+          "ping"
+        ],
+        "values": [
+          [],
+          [
+            1
+          ],
+          [
+            50
+          ],
+          [
+            100
+          ],
+          [
+            3050
+          ],
+          [
+            3100
+          ],
+          [
+            6100
+          ]
+        ]
       },
-      "output": [null, 1, 2, 3, 3, 3, 2]
+      "output": [
+        null,
+        1,
+        2,
+        3,
+        3,
+        3,
+        2
+      ]
     },
     {
       "id": 8,
       "input": {
-        "operations": ["RecentCounter", "ping", "ping", "ping", "ping", "ping", "ping", "ping", "ping"],
-        "values": [[], [500], [1500], [2500], [3500], [4500], [5500], [6500], [7500]]
+        "operations": [
+          "RecentCounter",
+          "ping",
+          "ping",
+          "ping",
+          "ping",
+          "ping",
+          "ping",
+          "ping",
+          "ping"
+        ],
+        "values": [
+          [],
+          [
+            500
+          ],
+          [
+            1500
+          ],
+          [
+            2500
+          ],
+          [
+            3500
+          ],
+          [
+            4500
+          ],
+          [
+            5500
+          ],
+          [
+            6500
+          ],
+          [
+            7500
+          ]
+        ]
       },
-      "output": [null, 1, 2, 3, 4, 4, 4, 4, 4]
+      "output": [
+        null,
+        1,
+        2,
+        3,
+        4,
+        4,
+        4,
+        4,
+        4
+      ]
     }
   ]
 }

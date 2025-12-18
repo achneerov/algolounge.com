@@ -2,6 +2,10 @@
   "index": 34,
   "filename": "coin-change",
   "title": "Coin Change",
+  "difficulty": "Medium",
+  "tags": [
+    "Dynamic Programming"
+  ],
   "keywords": [
     "coin",
     "change",

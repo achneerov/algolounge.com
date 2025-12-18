@@ -2,6 +2,8 @@
   "index": 23,
   "filename": "boats-to-save-people",
   "title": "Boats to Save People",
+  "difficulty": "Medium",
+  "tags": [],
   "keywords": [
     "boats",
     "save",
@@ -19,7 +21,8 @@
   "template": "def boatsToSavePeople(people, limit):\n    ",
   "solution_text": "<h3>Boats to Save People</h3><p><strong>Algorithm:</strong></p><ol><li>Sort the people array by weight</li><li>Use two pointers: lightest person (left) and heaviest person (right)</li><li>Try to pair the lightest with the heaviest in one boat</li><li>If they can't fit together, the heavier person goes alone</li><li>Move pointers accordingly and count boats</li></ol><p><strong>Time Complexity:</strong> O(n log n) - due to sorting</p><p><strong>Space Complexity:</strong> O(1) - only using two pointers</p><p><strong>Key Insights:</strong></p><ul><li>Greedy approach: always try to pair lightest with heaviest</li><li>If heaviest can't pair with lightest, it can't pair with anyone</li><li>Two pointers technique after sorting optimizes the pairing</li></ul>",
   "solution_code": "def boatsToSavePeople(people, limit):\n    people.sort()\n    left, right = 0, len(people) - 1\n    boats = 0\n    \n    while left <= right:\n        # If both lightest and heaviest can fit in one boat\n        if people[left] + people[right] <= limit:\n            left += 1  # Take the lightest person too\n        \n        # Always take the heaviest person (right pointer)\n        right -= 1\n        boats += 1\n    \n    return boats",
-  "order_matters": false,
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['people'], test_case_input['limit'])",
+  "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    return [passed, output_str]",
   "test_cases": [
     {
       "id": 1,
@@ -195,7 +198,5 @@
       },
       "output": 11
     }
-  ],
-  "prepare": "def prepare(test_case_input):\n    return (test_case_input['people'], test_case_input['limit'])",
-  "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    return [passed, output_str]"
+  ]
 }

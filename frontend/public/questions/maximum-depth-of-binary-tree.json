@@ -2,6 +2,10 @@
   "index": 56,
   "filename": "maximum-depth-of-binary-tree",
   "title": "Maximum Depth of Binary Tree",
+  "difficulty": "Easy",
+  "tags": [
+    "Trees"
+  ],
   "keywords": [
     "maximum",
     "depth",

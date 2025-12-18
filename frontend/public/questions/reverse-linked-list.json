@@ -2,6 +2,10 @@
   "index": 67,
   "filename": "reverse-linked-list",
   "title": "Reverse Linked List",
+  "difficulty": "Easy",
+  "tags": [
+    "Linked List"
+  ],
   "keywords": [
     "reverse",
     "linked",

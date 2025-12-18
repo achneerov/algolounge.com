@@ -2,6 +2,10 @@
   "index": 103,
   "filename": "reverse-integer",
   "title": "Reverse Integer",
+  "difficulty": "Medium",
+  "tags": [
+    "Bit Manipulation"
+  ],
   "keywords": [
     "reverse",
     "integer",

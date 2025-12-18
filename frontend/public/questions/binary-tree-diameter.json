@@ -2,6 +2,10 @@
   "index": 15,
   "filename": "binary-tree-diameter",
   "title": "Diameter of Binary Tree",
+  "difficulty": "Easy",
+  "tags": [
+    "Trees"
+  ],
   "keywords": [
     "diameter",
     "binary",
@@ -21,7 +25,6 @@
   "solution_code": "def diameterOfBinaryTree(root):\n    max_diameter = 0\n    \n    def depth(node):\n        nonlocal max_diameter\n        \n        if not node:\n            return 0\n        \n        # Get depth of left and right subtrees\n        left_depth = depth(node.left)\n        right_depth = depth(node.right)\n        \n        # Update maximum diameter (path through current node)\n        current_diameter = left_depth + right_depth\n        max_diameter = max(max_diameter, current_diameter)\n        \n        # Return depth of current subtree\n        return max(left_depth, right_depth) + 1\n    \n    depth(root)\n    return max_diameter",
   "prepare": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef prepare(test_case_input):\n    def build_tree(arr):\n        if not arr:\n            return None\n        \n        root = TreeNode(arr[0])\n        queue = [root]\n        i = 1\n        \n        while queue and i < len(arr):\n            node = queue.pop(0)\n            \n            if i < len(arr) and arr[i] is not None:\n                node.left = TreeNode(arr[i])\n                queue.append(node.left)\n            i += 1\n            \n            if i < len(arr) and arr[i] is not None:\n                node.right = TreeNode(arr[i])\n                queue.append(node.right)\n            i += 1\n        \n        return root\n    \n    root = build_tree(test_case_input['root'])\n    return (root,)",
   "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    return [passed, output_str]",
-  "order_matters": false,
   "test_cases": [
     {
       "id": 1,

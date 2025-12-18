@@ -2,6 +2,8 @@
   "index": 45,
   "filename": "hello-world",
   "title": "Hello World",
+  "difficulty": "Easy",
+  "tags": [],
   "keywords": [
     "hello",
     "world",

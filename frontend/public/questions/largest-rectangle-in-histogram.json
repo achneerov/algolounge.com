@@ -2,6 +2,10 @@
   "index": 48,
   "filename": "largest-rectangle-in-histogram",
   "title": "Largest Rectangle In Histogram",
+  "difficulty": "Hard",
+  "tags": [
+    "Stack"
+  ],
   "keywords": [
     "largest",
     "rectangle",

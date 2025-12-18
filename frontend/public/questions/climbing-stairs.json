@@ -2,6 +2,10 @@
   "index": 30,
   "filename": "climbing-stairs",
   "title": "Climbing Stairs",
+  "difficulty": "Easy",
+  "tags": [
+    "1D Dynamic Programming"
+  ],
   "keywords": [
     "climbing",
     "stairs",

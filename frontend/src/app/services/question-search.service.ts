@@ -5,6 +5,8 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export interface QuestionSearchResult {
   filename: string;
   title: string;
+  difficulty: string;
+  tags: string[];
   keywords: string[];
   score: number;
 }
@@ -13,6 +15,8 @@ interface QuestionsIndex {
   questions: {
     filename: string;
     title: string;
+    difficulty: string;
+    tags: string[];
     keywords: string[];
   }[];
   lastUpdated: string;

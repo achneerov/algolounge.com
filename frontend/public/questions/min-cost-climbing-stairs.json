@@ -2,6 +2,10 @@
   "index": 85,
   "filename": "min-cost-climbing-stairs",
   "title": "Min Cost Climbing Stairs",
+  "difficulty": "Easy",
+  "tags": [
+    "1D Dynamic Programming"
+  ],
   "keywords": [
     "min",
     "cost",

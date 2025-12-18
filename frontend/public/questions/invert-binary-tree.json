@@ -2,6 +2,10 @@
   "index": 47,
   "filename": "invert-binary-tree",
   "title": "Invert Binary Tree",
+  "difficulty": "Easy",
+  "tags": [
+    "Trees"
+  ],
   "keywords": [
     "invert",
     "binary",

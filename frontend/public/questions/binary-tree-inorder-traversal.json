@@ -2,6 +2,8 @@
   "index": 17,
   "filename": "binary-tree-inorder-traversal",
   "title": "Binary Tree Inorder Traversal",
+  "difficulty": "Medium",
+  "tags": [],
   "keywords": [
     "binary",
     "tree",

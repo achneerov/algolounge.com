@@ -6,6 +6,8 @@ import { LocalStorageService } from '../../services/local-storage.service';
 import { CompletionService } from '../../services/completion.service';
 import { FavoritesService } from '../../services/favorites.service';
 import { AuthService } from '../../services/auth.service';
+import { TagService } from '../../services/tag.service';
+import { QuestionSearchService } from '../../services/question-search.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -55,16 +57,35 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
   private completionService = inject(CompletionService);
   private favoritesService = inject(FavoritesService);
   private authService = inject(AuthService);
+  private tagService = inject(TagService);
+  private questionSearchService = inject(QuestionSearchService);
   private destroy$ = new Subject<void>();
 
   course: Course | null = null;
   courseSections: CourseSection[] = [];
   courseName = '';
+  private questionsIndexLoaded = false;
 
   ngOnInit() {
+    // Wait for questions index to load first
+    this.questionSearchService.isIndexLoaded().pipe(takeUntil(this.destroy$)).subscribe(loaded => {
+      if (loaded && !this.questionsIndexLoaded) {
+        this.questionsIndexLoaded = true;
+
+        // Now load the course
+        if (this.courseName) {
+          this.loadCourse();
+        }
+      }
+    });
+
     this.route.params.pipe(takeUntil(this.destroy$)).subscribe(params => {
       this.courseName = params['filename'];
-      this.loadCourse();
+
+      // Load course if questions index is already loaded
+      if (this.questionsIndexLoaded) {
+        this.loadCourse();
+      }
     });
 
     // Load favorites and completions if authenticated
@@ -134,18 +155,18 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
           for (const question of (value as any).questions) {
             if (typeof question === 'string') {
               // Old format: just string filename
-              section.questions.push({
+              section.questions.push(this.enrichQuestionData({
                 filename: question,
                 title: this.formatQuestionTitle(question)
-              });
+              }));
             } else if (typeof question === 'object' && question.filename) {
               // New format: object with filename and optional attributes
-              section.questions.push({
+              // Load tags from question file (via index) instead of using course tags
+              section.questions.push(this.enrichQuestionData({
                 filename: question.filename,
                 title: this.formatQuestionTitle(question.filename),
-                urls: question.urls,
-                tags: question.tags
-              });
+                urls: question.urls
+              }));
             }
           }
         }
@@ -168,6 +189,35 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
       .split('-')
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ');
+  }
+
+  /**
+   * Enrich question data with tags from the question file (via index)
+   */
+  private enrichQuestionData(question: CourseQuestion): CourseQuestion {
+    // Look up question in the index to get difficulty and tags
+    const allQuestions = this.questionSearchService.getAllQuestions();
+    const questionData = allQuestions.find(q => q.filename === question.filename);
+
+    if (questionData) {
+      // Convert difficulty and tags to CourseTag objects with colors
+      const tags: CourseTag[] = [];
+
+      // Add difficulty tag (always present)
+      tags.push(this.tagService.getDifficultyTag(questionData.difficulty));
+
+      // Add other tags if any
+      if (questionData.tags.length > 0) {
+        tags.push(...this.tagService.getTags(questionData.tags));
+      }
+
+      return {
+        ...question,
+        tags: tags
+      };
+    }
+
+    return question;
   }
 
   onQuestionClick(question: CourseQuestion) {

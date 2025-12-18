@@ -2,6 +2,10 @@
   "index": 37,
   "filename": "copy-list-with-random-pointer",
   "title": "Copy List with Random Pointer",
+  "difficulty": "Medium",
+  "tags": [
+    "Linked List"
+  ],
   "keywords": [
     "copy",
     "linked",

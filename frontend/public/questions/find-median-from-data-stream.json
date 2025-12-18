@@ -2,6 +2,10 @@
   "index": 42,
   "filename": "find-median-from-data-stream",
   "title": "Find Median From Data Stream",
+  "difficulty": "Hard",
+  "tags": [
+    "Heap / Priority Queue"
+  ],
   "keywords": [
     "find",
     "median",

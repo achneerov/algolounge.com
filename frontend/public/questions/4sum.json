@@ -2,6 +2,10 @@
   "index": 2,
   "filename": "4sum",
   "title": "4Sum",
+  "difficulty": "Medium",
+  "tags": [
+    "Two Pointers"
+  ],
   "keywords": [
     "4sum",
     "leetcode",

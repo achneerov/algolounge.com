@@ -27,15 +27,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: $spacing-sm;
   background: transparent;
   border: 2px solid var(--color-border);
   border-radius: $radius-md;
-  width: 40px;
+  width: auto;
   height: 40px;
+  padding: 0 $spacing-md;
   cursor: pointer;
   color: var(--color-text-secondary);
   transition: all $transition-base;
-  padding: 0;
 
   &:hover {
     background: var(--color-bg-primary);
@@ -51,10 +52,17 @@
 
   svg {
     transition: transform $transition-base;
+    flex-shrink: 0;
   }
 
   &:hover svg {
     transform: scale(1.1);
+  }
+
+  .sidebar-toggle-text {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    white-space: nowrap;
   }
 }
 

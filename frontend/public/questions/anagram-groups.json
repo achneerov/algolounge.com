@@ -2,6 +2,8 @@
   "index": 7,
   "filename": "anagram-groups",
   "title": "Group Anagrams",
+  "difficulty": "Medium",
+  "tags": [],
   "keywords": [
     "group",
     "anagrams",
@@ -21,7 +23,6 @@
   "solution_code": "def groupAnagrams(strs):\n    from collections import defaultdict\n    \n    groups = defaultdict(list)\n    \n    for s in strs:\n        # Sort characters to create key\n        key = ''.join(sorted(s))\n        groups[key].append(s)\n    \n    return list(groups.values())",
   "prepare": "def prepare(test_case_input):\n    return (test_case_input['strs'],)",
   "verify": "def verify(actual_output, expected_output):\n    # Sort each group and then sort the list of groups for comparison\n    def normalize(groups):\n        return sorted([sorted(group) for group in groups])\n    \n    actual_normalized = normalize(actual_output)\n    expected_normalized = normalize(expected_output)\n    \n    passed = actual_normalized == expected_normalized\n    \n    # Format output string\n    output_str = '[' + ', '.join('[' + ', '.join('\"' + s + '\"' for s in group) + ']' for group in actual_output) + ']'\n    \n    return [passed, output_str]",
-  "order_matters": false,
   "test_cases": [
     {
       "id": 1,

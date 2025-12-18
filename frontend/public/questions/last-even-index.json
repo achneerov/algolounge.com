@@ -2,6 +2,8 @@
   "index": 49,
   "filename": "last-even-index",
   "title": "Last Even Index",
+  "difficulty": "Medium",
+  "tags": [],
   "keywords": [
     "array",
     "even",

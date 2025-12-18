@@ -2,6 +2,10 @@
   "index": 54,
   "filename": "longest-increasing-path-in-a-matrix",
   "title": "Longest Increasing Path in a Matrix",
+  "difficulty": "Hard",
+  "tags": [
+    "2D Dynamic Programming"
+  ],
   "keywords": [
     "longest",
     "increasing",

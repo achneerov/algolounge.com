@@ -2,6 +2,10 @@
   "index": 65,
   "filename": "remove-nth-node-from-end-of-list",
   "title": "Remove Nth Node From End of List",
+  "difficulty": "Medium",
+  "tags": [
+    "Linked List"
+  ],
   "keywords": [
     "remove",
     "node",

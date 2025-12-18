@@ -2,6 +2,10 @@
   "index": 50,
   "filename": "last-stone-weight",
   "title": "Last Stone Weight",
+  "difficulty": "Easy",
+  "tags": [
+    "Heap / Priority Queue"
+  ],
   "keywords": [
     "last",
     "stone",

@@ -2,6 +2,11 @@
   "index": 0,
   "filename": "valid-parenthesis-string",
   "title": "Valid Parenthesis String",
+  "difficulty": "Medium",
+  "tags": [
+    "Stack",
+    "Greedy"
+  ],
   "keywords": [
     "valid",
     "parenthesis",

@@ -2,6 +2,8 @@
   "index": 38,
   "filename": "count-vowels",
   "title": "Count Vowels",
+  "difficulty": "Medium",
+  "tags": [],
   "keywords": [
     "string",
     "vowels",

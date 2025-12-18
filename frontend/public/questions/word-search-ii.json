@@ -2,6 +2,10 @@
   "index": 82,
   "filename": "word-search-ii",
   "title": "Word Search II",
+  "difficulty": "Hard",
+  "tags": [
+    "Tries"
+  ],
   "keywords": [
     "word",
     "search",

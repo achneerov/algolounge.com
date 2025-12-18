@@ -2,6 +2,10 @@
   "index": 39,
   "filename": "daily-temperatures",
   "title": "Daily Temperatures",
+  "difficulty": "Medium",
+  "tags": [
+    "Stack"
+  ],
   "keywords": [
     "daily",
     "temperatures",
@@ -21,7 +25,6 @@
   "solution_code": "def dailyTemperatures(temperatures):\n    n = len(temperatures)\n    result = [0] * n\n    stack = []  # Stack to store indices\n    \n    for i in range(n):\n        # While stack not empty and current temperature is warmer\n        # than temperature at index stored at top of stack\n        while stack and temperatures[i] > temperatures[stack[-1]]:\n            prev_index = stack.pop()\n            result[prev_index] = i - prev_index\n        \n        stack.append(i)\n    \n    return result",
   "prepare": "def prepare(test_case_input):\n    return (test_case_input['temperatures'],)",
   "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    return [passed, output_str]",
-  "order_matters": false,
   "test_cases": [
     {
       "id": 1,

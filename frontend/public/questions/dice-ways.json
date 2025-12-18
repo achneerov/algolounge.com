@@ -2,6 +2,8 @@
   "index": 40,
   "filename": "dice-ways",
   "title": "Dice Ways",
+  "difficulty": "Medium",
+  "tags": [],
   "keywords": [
     "dynamic",
     "programming",

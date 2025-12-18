@@ -2,6 +2,8 @@
   "index": 79,
   "filename": "valid-parentheses",
   "title": "Valid Parentheses",
+  "difficulty": "Easy",
+  "tags": ["Stack"],
   "keywords": [
     "valid",
     "parentheses",

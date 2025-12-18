@@ -2,6 +2,8 @@
   "index": 11,
   "filename": "best-time-to-buy-and-sell-stock-ii",
   "title": "Best Time to Buy and Sell Stock II",
+  "difficulty": "Medium",
+  "tags": [],
   "keywords": [
     "best",
     "time",
@@ -21,7 +23,6 @@
   "solution_code": "def bestTimeToBuyAndSellStockIi(prices):\n    if not prices or len(prices) < 2:\n        return 0\n    \n    max_profit = 0\n    \n    # Add profit for every price increase\n    for i in range(1, len(prices)):\n        if prices[i] > prices[i - 1]:\n            max_profit += prices[i] - prices[i - 1]\n    \n    return max_profit",
   "prepare": "def prepare(test_case_input):\n    return (test_case_input['prices'],)",
   "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    return [passed, output_str]",
-  "order_matters": false,
   "test_cases": [
     {
       "id": 1,

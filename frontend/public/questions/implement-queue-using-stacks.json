@@ -2,6 +2,11 @@
   "index": 0,
   "filename": "implement-queue-using-stacks",
   "title": "Implement Queue Using Stacks",
+  "difficulty": "Easy",
+  "tags": [
+    "Queue",
+    "Stack"
+  ],
   "keywords": [
     "queue",
     "stack",
@@ -22,98 +27,478 @@
     {
       "id": 1,
       "input": {
-        "operations": ["MyQueue", "enqueue", "enqueue", "front", "dequeue", "empty"],
-        "values": [[], [1], [2], [], [], []]
+        "operations": [
+          "MyQueue",
+          "enqueue",
+          "enqueue",
+          "front",
+          "dequeue",
+          "empty"
+        ],
+        "values": [
+          [],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [],
+          [],
+          []
+        ]
       },
-      "output": [null, null, null, 1, 1, 0]
+      "output": [
+        null,
+        null,
+        null,
+        1,
+        1,
+        0
+      ]
     },
     {
       "id": 2,
       "input": {
-        "operations": ["MyQueue", "enqueue", "dequeue", "empty"],
-        "values": [[], [1], [], []]
+        "operations": [
+          "MyQueue",
+          "enqueue",
+          "dequeue",
+          "empty"
+        ],
+        "values": [
+          [],
+          [
+            1
+          ],
+          [],
+          []
+        ]
       },
-      "output": [null, null, 1, 1]
+      "output": [
+        null,
+        null,
+        1,
+        1
+      ]
     },
     {
       "id": 3,
       "input": {
-        "operations": ["MyQueue", "enqueue", "enqueue", "enqueue", "front", "dequeue", "front"],
-        "values": [[], ["hello"], ["world"], ["test"], [], [], []]
+        "operations": [
+          "MyQueue",
+          "enqueue",
+          "enqueue",
+          "enqueue",
+          "front",
+          "dequeue",
+          "front"
+        ],
+        "values": [
+          [],
+          [
+            "hello"
+          ],
+          [
+            "world"
+          ],
+          [
+            "test"
+          ],
+          [],
+          [],
+          []
+        ]
       },
-      "output": [null, null, null, null, "hello", "hello", "world"]
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        "hello",
+        "hello",
+        "world"
+      ]
     },
     {
       "id": 4,
       "input": {
-        "operations": ["MyQueue", "enqueue", "enqueue", "dequeue", "enqueue", "dequeue", "dequeue", "empty"],
-        "values": [[], ["a"], ["b"], [], ["c"], [], [], []]
+        "operations": [
+          "MyQueue",
+          "enqueue",
+          "enqueue",
+          "dequeue",
+          "enqueue",
+          "dequeue",
+          "dequeue",
+          "empty"
+        ],
+        "values": [
+          [],
+          [
+            "a"
+          ],
+          [
+            "b"
+          ],
+          [],
+          [
+            "c"
+          ],
+          [],
+          [],
+          []
+        ]
       },
-      "output": [null, null, null, "a", null, "b", "c", 1]
+      "output": [
+        null,
+        null,
+        null,
+        "a",
+        null,
+        "b",
+        "c",
+        1
+      ]
     },
     {
       "id": 5,
       "input": {
-        "operations": ["MyQueue", "enqueue", "enqueue", "enqueue", "dequeue", "enqueue", "dequeue", "dequeue", "dequeue", "empty"],
-        "values": [[], [1], [2], [3], [], [4], [], [], [], []]
+        "operations": [
+          "MyQueue",
+          "enqueue",
+          "enqueue",
+          "enqueue",
+          "dequeue",
+          "enqueue",
+          "dequeue",
+          "dequeue",
+          "dequeue",
+          "empty"
+        ],
+        "values": [
+          [],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ],
+          [],
+          [
+            4
+          ],
+          [],
+          [],
+          [],
+          []
+        ]
       },
-      "output": [null, null, null, null, 1, null, 2, 3, 4, 1]
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        2,
+        3,
+        4,
+        1
+      ]
     },
     {
       "id": 6,
       "input": {
-        "operations": ["MyQueue", "enqueue", "enqueue", "dequeue", "enqueue", "front", "dequeue", "front"],
-        "values": [[], [5], [6], [], [7], [], [], []]
+        "operations": [
+          "MyQueue",
+          "enqueue",
+          "enqueue",
+          "dequeue",
+          "enqueue",
+          "front",
+          "dequeue",
+          "front"
+        ],
+        "values": [
+          [],
+          [
+            5
+          ],
+          [
+            6
+          ],
+          [],
+          [
+            7
+          ],
+          [],
+          [],
+          []
+        ]
       },
-      "output": [null, null, null, 5, null, 6, 6, 7]
+      "output": [
+        null,
+        null,
+        null,
+        5,
+        null,
+        6,
+        6,
+        7
+      ]
     },
     {
       "id": 7,
       "input": {
-        "operations": ["MyQueue", "empty", "enqueue", "empty"],
-        "values": [[], [], [9], []]
+        "operations": [
+          "MyQueue",
+          "empty",
+          "enqueue",
+          "empty"
+        ],
+        "values": [
+          [],
+          [],
+          [
+            9
+          ],
+          []
+        ]
       },
-      "output": [null, 1, null, 0]
+      "output": [
+        null,
+        1,
+        null,
+        0
+      ]
     },
     {
       "id": 8,
       "input": {
-        "operations": ["MyQueue", "enqueue", "enqueue", "enqueue", "enqueue", "enqueue", "dequeue", "dequeue", "dequeue", "dequeue", "dequeue", "empty"],
-        "values": [[], [1], [2], [3], [4], [5], [], [], [], [], [], []]
+        "operations": [
+          "MyQueue",
+          "enqueue",
+          "enqueue",
+          "enqueue",
+          "enqueue",
+          "enqueue",
+          "dequeue",
+          "dequeue",
+          "dequeue",
+          "dequeue",
+          "dequeue",
+          "empty"
+        ],
+        "values": [
+          [],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ],
+          [
+            4
+          ],
+          [
+            5
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
       },
-      "output": [null, null, null, null, null, null, 1, 2, 3, 4, 5, 1]
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        2,
+        3,
+        4,
+        5,
+        1
+      ]
     },
     {
       "id": 9,
       "input": {
-        "operations": ["MyQueue", "enqueue", "front", "enqueue", "front", "dequeue", "front"],
-        "values": [[], [8], [], [9], [], [], []]
+        "operations": [
+          "MyQueue",
+          "enqueue",
+          "front",
+          "enqueue",
+          "front",
+          "dequeue",
+          "front"
+        ],
+        "values": [
+          [],
+          [
+            8
+          ],
+          [],
+          [
+            9
+          ],
+          [],
+          [],
+          []
+        ]
       },
-      "output": [null, null, 8, null, 8, 8, 9]
+      "output": [
+        null,
+        null,
+        8,
+        null,
+        8,
+        8,
+        9
+      ]
     },
     {
       "id": 10,
       "input": {
-        "operations": ["MyQueue", "enqueue", "enqueue", "dequeue", "enqueue", "dequeue", "empty", "enqueue", "front"],
-        "values": [[], [2], [3], [], [4], [], [], [5], []]
+        "operations": [
+          "MyQueue",
+          "enqueue",
+          "enqueue",
+          "dequeue",
+          "enqueue",
+          "dequeue",
+          "empty",
+          "enqueue",
+          "front"
+        ],
+        "values": [
+          [],
+          [
+            2
+          ],
+          [
+            3
+          ],
+          [],
+          [
+            4
+          ],
+          [],
+          [],
+          [
+            5
+          ],
+          []
+        ]
       },
-      "output": [null, null, null, 2, null, 3, 0, null, 4]
+      "output": [
+        null,
+        null,
+        null,
+        2,
+        null,
+        3,
+        0,
+        null,
+        4
+      ]
     },
     {
       "id": 11,
       "input": {
-        "operations": ["MyQueue", "enqueue", "enqueue", "enqueue", "dequeue", "dequeue", "front", "dequeue", "empty"],
-        "values": [[], ["x"], ["y"], ["z"], [], [], [], [], []]
+        "operations": [
+          "MyQueue",
+          "enqueue",
+          "enqueue",
+          "enqueue",
+          "dequeue",
+          "dequeue",
+          "front",
+          "dequeue",
+          "empty"
+        ],
+        "values": [
+          [],
+          [
+            "x"
+          ],
+          [
+            "y"
+          ],
+          [
+            "z"
+          ],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
       },
-      "output": [null, null, null, null, "x", "y", "z", "z", 1]
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        "x",
+        "y",
+        "z",
+        "z",
+        1
+      ]
     },
     {
       "id": 12,
       "input": {
-        "operations": ["MyQueue", "enqueue", "front", "enqueue", "enqueue", "dequeue", "dequeue", "front"],
-        "values": [[], ["foo"], [], ["bar"], ["baz"], [], [], []]
+        "operations": [
+          "MyQueue",
+          "enqueue",
+          "front",
+          "enqueue",
+          "enqueue",
+          "dequeue",
+          "dequeue",
+          "front"
+        ],
+        "values": [
+          [],
+          [
+            "foo"
+          ],
+          [],
+          [
+            "bar"
+          ],
+          [
+            "baz"
+          ],
+          [],
+          [],
+          []
+        ]
       },
-      "output": [null, null, "foo", null, null, "foo", "bar", "baz"]
+      "output": [
+        null,
+        null,
+        "foo",
+        null,
+        null,
+        "foo",
+        "bar",
+        "baz"
+      ]
     }
   ]
 }

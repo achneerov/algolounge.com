@@ -2,6 +2,10 @@
   "index": 68,
   "filename": "serialize-and-deserialize-binary-tree",
   "title": "Serialize and Deserialize Binary Tree",
+  "difficulty": "Hard",
+  "tags": [
+    "Trees"
+  ],
   "keywords": [
     "serialize",
     "deserialize",

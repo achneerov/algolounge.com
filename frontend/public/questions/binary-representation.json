@@ -2,6 +2,8 @@
   "index": 13,
   "filename": "binary-representation",
   "title": "Binary Representation",
+  "difficulty": "Medium",
+  "tags": [],
   "keywords": [
     "binary",
     "conversion",

@@ -2,6 +2,10 @@
   "index": 9,
   "filename": "balanced-binary-tree",
   "title": "Balanced Binary Tree",
+  "difficulty": "Easy",
+  "tags": [
+    "Trees"
+  ],
   "keywords": [
     "balanced",
     "binary",
@@ -21,7 +25,6 @@
   "solution_code": "def isBalanced(root):\n    def check_balance(node):\n        # Base case: empty tree is balanced with height 0\n        if not node:\n            return 0\n        \n        # Check left subtree\n        left_height = check_balance(node.left)\n        if left_height == -1:\n            return -1  # Left subtree is unbalanced\n        \n        # Check right subtree\n        right_height = check_balance(node.right)\n        if right_height == -1:\n            return -1  # Right subtree is unbalanced\n        \n        # Check balance condition\n        if abs(left_height - right_height) > 1:\n            return -1  # Current node is unbalanced\n        \n        # Return height of current subtree\n        return max(left_height, right_height) + 1\n    \n    return check_balance(root) != -1",
   "prepare": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef prepare(test_case_input):\n    def build_tree(arr):\n        if not arr:\n            return None\n        \n        root = TreeNode(arr[0])\n        queue = [root]\n        i = 1\n        \n        while queue and i < len(arr):\n            node = queue.pop(0)\n            \n            if i < len(arr) and arr[i] is not None:\n                node.left = TreeNode(arr[i])\n                queue.append(node.left)\n            i += 1\n            \n            if i < len(arr) and arr[i] is not None:\n                node.right = TreeNode(arr[i])\n                queue.append(node.right)\n            i += 1\n        \n        return root\n    \n    root = build_tree(test_case_input['root'])\n    return (root,)",
   "verify": "def verify(actual_output, expected_output):\n    def bool_to_string(val):\n        return 'true' if val else 'false'\n    \n    # Convert expected output string to boolean for comparison if needed\n    expected_bool = expected_output == 'true' if isinstance(expected_output, str) else expected_output\n    \n    passed = actual_output == expected_bool\n    output_str = bool_to_string(actual_output)\n    \n    return [passed, output_str]",
-  "order_matters": false,
   "test_cases": [
     {
       "id": 1,

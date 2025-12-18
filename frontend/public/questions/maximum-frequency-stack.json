@@ -2,6 +2,11 @@
   "index": 0,
   "filename": "maximum-frequency-stack",
   "title": "Maximum Frequency Stack",
+  "difficulty": "Hard",
+  "tags": [
+    "Stack",
+    "Hash Map"
+  ],
   "keywords": [
     "stack",
     "frequency",

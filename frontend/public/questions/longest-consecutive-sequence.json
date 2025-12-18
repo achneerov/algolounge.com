@@ -2,6 +2,10 @@
   "index": 53,
   "filename": "longest-consecutive-sequence",
   "title": "Longest Consecutive Sequence",
+  "difficulty": "Medium",
+  "tags": [
+    "Arrays and Hashing"
+  ],
   "keywords": [
     "longest",
     "consecutive",

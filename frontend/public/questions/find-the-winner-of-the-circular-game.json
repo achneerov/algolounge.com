@@ -2,6 +2,11 @@
   "index": 0,
   "filename": "find-the-winner-of-the-circular-game",
   "title": "Find the Winner of the Circular Game",
+  "difficulty": "Medium",
+  "tags": [
+    "Queue",
+    "Simulation"
+  ],
   "keywords": [
     "queue",
     "simulation",

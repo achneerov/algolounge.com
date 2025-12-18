@@ -2,6 +2,8 @@
   "index": 32,
   "filename": "coffee-sales-projection",
   "title": "Coffee Sales Projection",
+  "difficulty": "Medium",
+  "tags": [],
   "keywords": [
     "array",
     "math",

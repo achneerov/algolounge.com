@@ -2,6 +2,10 @@
   "index": 24,
   "filename": "burst-balloons",
   "title": "Burst Balloons",
+  "difficulty": "Hard",
+  "tags": [
+    "2D Dynamic Programming"
+  ],
   "keywords": [
     "burst",
     "balloons",
@@ -19,7 +23,8 @@
   "template": "def burstBalloons(nums):\n    ",
   "solution_text": "<h3>Burst Balloons</h3><p><strong>Algorithm:</strong></p><ol><li>Use dynamic programming with interval DP approach</li><li>Add virtual balloons with value 1 at both ends</li><li>For each interval [i,j], try every possible last balloon k to burst</li><li>dp[i][j] = max coins from bursting all balloons between i and j (exclusive)</li><li>The answer is dp[0][n+1] where n is the original array length</li></ol><p><strong>Time Complexity:</strong> O(n³) - three nested loops for DP</p><p><strong>Space Complexity:</strong> O(n²) - 2D DP table</p><p><strong>Key Insights:</strong></p><ul><li>Think backwards: which balloon to burst last in each interval</li><li>Add dummy balloons to handle boundary conditions</li><li>Interval DP pattern: combine smaller solved subproblems</li></ul>",
   "solution_code": "def burstBalloons(nums):\n    # Add dummy balloons with value 1 at both ends\n    balloons = [1] + nums + [1]\n    n = len(balloons)\n    \n    # dp[i][j] = max coins from bursting balloons between i and j (exclusive)\n    dp = [[0] * n for _ in range(n)]\n    \n    # Length of the interval\n    for length in range(2, n):\n        # Start position\n        for i in range(n - length):\n            j = i + length\n            \n            # Try every balloon k as the last one to burst in interval [i,j]\n            for k in range(i + 1, j):\n                # Coins from bursting balloon k last\n                coins = balloons[i] * balloons[k] * balloons[j]\n                # Total coins = coins from k + left subproblem + right subproblem\n                dp[i][j] = max(dp[i][j], dp[i][k] + coins + dp[k][j])\n    \n    # Return max coins from the entire array (excluding dummy balloons)\n    return dp[0][n - 1]",
-  "order_matters": false,
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['nums'],)",
+  "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    return [passed, output_str]",
   "test_cases": [
     {
       "id": 1,
@@ -160,7 +165,5 @@
       },
       "output": 56970
     }
-  ],
-  "prepare": "def prepare(test_case_input):\n    return (test_case_input['nums'],)",
-  "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    return [passed, output_str]"
+  ]
 }

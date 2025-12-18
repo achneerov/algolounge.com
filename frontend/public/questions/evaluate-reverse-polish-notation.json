@@ -2,6 +2,8 @@
   "index": 41,
   "filename": "evaluate-reverse-polish-notation",
   "title": "Evaluate Reverse Polish Notation",
+  "difficulty": "Medium",
+  "tags": [],
   "keywords": [
     "evaluate",
     "reverse",
@@ -21,7 +23,6 @@
   "solution_code": "def evaluateReversePolishNotation(tokens):\n    stack = []\n    operators = {'+', '-', '*', '/'}\n    \n    for token in tokens:\n        if token in operators:\n            # Pop two operands (order matters!)\n            b = stack.pop()  # Second operand\n            a = stack.pop()  # First operand\n            \n            # Perform operation\n            if token == '+':\n                result = a + b\n            elif token == '-':\n                result = a - b\n            elif token == '*':\n                result = a * b\n            elif token == '/':\n                # Integer division truncating toward zero\n                result = int(a / b)\n            \n            stack.append(result)\n        else:\n            # Token is a number, push to stack\n            stack.append(int(token))\n    \n    # Final result is the only element left in stack\n    return stack[0]",
   "prepare": "def prepare(test_case_input):\n    return (test_case_input['tokens'],)",
   "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    return [passed, output_str]",
-  "order_matters": false,
   "test_cases": [
     {
       "id": 1,

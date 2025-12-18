@@ -2,6 +2,10 @@
   "index": 100,
   "filename": "single-number",
   "title": "Single Number",
+  "difficulty": "Easy",
+  "tags": [
+    "Bit Manipulation"
+  ],
   "keywords": [
     "single",
     "number",
@@ -24,56 +28,92 @@
     {
       "id": 1,
       "input": {
-        "nums": [2, 2, 1]
+        "nums": [
+          2,
+          2,
+          1
+        ]
       },
       "output": 1
     },
     {
       "id": 2,
       "input": {
-        "nums": [4, 1, 2, 1, 2]
+        "nums": [
+          4,
+          1,
+          2,
+          1,
+          2
+        ]
       },
       "output": 4
     },
     {
       "id": 3,
       "input": {
-        "nums": [1]
+        "nums": [
+          1
+        ]
       },
       "output": 1
     },
     {
       "id": 4,
       "input": {
-        "nums": [7, 6, 6, 7, 8]
+        "nums": [
+          7,
+          6,
+          6,
+          7,
+          8
+        ]
       },
       "output": 8
     },
     {
       "id": 5,
       "input": {
-        "nums": [3, 2, 3]
+        "nums": [
+          3,
+          2,
+          3
+        ]
       },
       "output": 2
     },
     {
       "id": 6,
       "input": {
-        "nums": [-1, -1, -2]
+        "nums": [
+          -1,
+          -1,
+          -2
+        ]
       },
       "output": -2
     },
     {
       "id": 7,
       "input": {
-        "nums": [0, 1, 0]
+        "nums": [
+          0,
+          1,
+          0
+        ]
       },
       "output": 1
     },
     {
       "id": 8,
       "input": {
-        "nums": [100, 200, 100, 200, 300]
+        "nums": [
+          100,
+          200,
+          100,
+          200,
+          300
+        ]
       },
       "output": 300
     }

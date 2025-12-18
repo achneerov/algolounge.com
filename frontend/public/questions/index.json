@@ -11,6 +11,11 @@
         "deque",
         "prefix sum",
         "optimization"
+      ],
+      "difficulty": "Hard",
+      "tags": [
+        "Queue",
+        "Dynamic Programming"
       ]
     },
     {
@@ -23,6 +28,11 @@
         "josephus problem",
         "circular",
         "math"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Queue",
+        "Simulation"
       ]
     },
     {
@@ -37,6 +47,11 @@
         "FIFO",
         "LIFO",
         "design"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "Queue",
+        "Stack"
       ]
     },
     {
@@ -54,6 +69,11 @@
         "front",
         "empty",
         "FIFO"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "Queue",
+        "Data Structure Design"
       ]
     },
     {
@@ -72,6 +92,11 @@
         "LIFO",
         "FIFO",
         "conversion"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "Stack",
+        "Queue"
       ]
     },
     {
@@ -89,6 +114,11 @@
         "top",
         "empty",
         "LIFO"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "Stack",
+        "Data Structure Design"
       ]
     },
     {
@@ -106,6 +136,11 @@
         "matching",
         "consecutive",
         "length"
+      ],
+      "difficulty": "Hard",
+      "tags": [
+        "Stack",
+        "Dynamic Programming"
       ]
     },
     {
@@ -123,6 +158,11 @@
         "count",
         "priority",
         "design"
+      ],
+      "difficulty": "Hard",
+      "tags": [
+        "Stack",
+        "Hash Map"
       ]
     },
     {
@@ -136,6 +176,11 @@
         "monotonic queue",
         "sorting",
         "deque"
+      ],
+      "difficulty": "Hard",
+      "tags": [
+        "Queue",
+        "Binary Search"
       ]
     },
     {
@@ -148,6 +193,11 @@
         "monotonic queue",
         "deque",
         "optimization"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Queue",
+        "Dynamic Programming"
       ]
     },
     {
@@ -160,6 +210,10 @@
         "data structure",
         "sliding window",
         "time range"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "Queue"
       ]
     },
     {
@@ -177,6 +231,11 @@
         "canonical",
         "navigation",
         "dot"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Stack",
+        "String"
       ]
     },
     {
@@ -194,6 +253,11 @@
         "asterisk",
         "balance",
         "medium"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Stack",
+        "Greedy"
       ]
     },
     {
@@ -211,6 +275,10 @@
         "sorting",
         "integer",
         "leetcode"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Two Pointers"
       ]
     },
     {
@@ -225,6 +293,10 @@
         "array",
         "medium",
         "leetcode"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Intervals"
       ]
     },
     {
@@ -240,6 +312,11 @@
         "queue",
         "medium",
         "leetcode"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Intervals",
+        "Heap"
       ]
     },
     {
@@ -253,6 +330,10 @@
         "array",
         "easy",
         "leetcode"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "Intervals"
       ]
     },
     {
@@ -266,6 +347,10 @@
         "array",
         "medium",
         "leetcode"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Intervals"
       ]
     },
     {
@@ -284,6 +369,10 @@
         "binary",
         "search",
         "leetcode"
+      ],
+      "difficulty": "Hard",
+      "tags": [
+        "Intervals"
       ]
     },
     {
@@ -302,6 +391,10 @@
         "lexical",
         "order",
         "leetcode"
+      ],
+      "difficulty": "Hard",
+      "tags": [
+        "Advanced Graphs"
       ]
     },
     {
@@ -319,6 +412,10 @@
         "sorting",
         "combination",
         "unique"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Two Pointers"
       ]
     },
     {
@@ -336,7 +433,8 @@
         "their",
         "sum",
         "string"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 4,
@@ -353,6 +451,10 @@
         "linked",
         "lists",
         "where"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Linked List"
       ]
     },
     {
@@ -365,7 +467,8 @@
         "grouping",
         "consecutive",
         "medium"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 6,
@@ -377,7 +480,8 @@
         "validation",
         "comparison",
         "easy"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 7,
@@ -394,7 +498,8 @@
         "all",
         "together",
         "into"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 8,
@@ -411,7 +516,8 @@
         "integers",
         "representing",
         "row"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 9,
@@ -428,6 +534,10 @@
         "true",
         "height",
         "false"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "Trees"
       ]
     },
     {
@@ -445,7 +555,8 @@
         "rules",
         "beginning",
         "start"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 11,
@@ -462,7 +573,8 @@
         "given",
         "integer",
         "array"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 12,
@@ -484,6 +596,10 @@
         "greedy",
         "dynamic",
         "programming"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "Sliding Window"
       ]
     },
     {
@@ -496,7 +612,8 @@
         "bit-manipulation",
         "string",
         "easy"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 14,
@@ -513,6 +630,10 @@
         "integers",
         "nums",
         "sorted"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "Binary Search"
       ]
     },
     {
@@ -530,6 +651,10 @@
         "longest",
         "path",
         "between"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "Trees"
       ]
     },
     {
@@ -547,7 +672,8 @@
         "105",
         "given",
         "two"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 17,
@@ -564,7 +690,8 @@
         "return",
         "its",
         "nodes"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 18,
@@ -581,7 +708,8 @@
         "given",
         "root",
         "non"
-      ]
+      ],
+      "difficulty": "Hard"
     },
     {
       "index": 19,
@@ -598,7 +726,8 @@
         "root",
         "return",
         "its"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 20,
@@ -615,7 +744,8 @@
         "root",
         "return",
         "its"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 21,
@@ -632,7 +762,8 @@
         "given",
         "root",
         "return"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 22,
@@ -649,7 +780,8 @@
         "integers",
         "left",
         "right"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 23,
@@ -666,7 +798,8 @@
         "array",
         "where",
         "weight"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 24,
@@ -683,6 +816,10 @@
         "nums",
         "size",
         "ith"
+      ],
+      "difficulty": "Hard",
+      "tags": [
+        "2D Dynamic Programming"
       ]
     },
     {
@@ -695,7 +832,8 @@
         "division",
         "calculation",
         "easy"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 26,
@@ -707,7 +845,8 @@
         "canada",
         "set",
         "easy"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 27,
@@ -724,7 +863,8 @@
         "each",
         "child",
         "assigned"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 28,
@@ -741,6 +881,10 @@
         "same",
         "destination",
         "one"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Stack"
       ]
     },
     {
@@ -758,6 +902,10 @@
         "iteration",
         "combination",
         "optimization"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "1D Dynamic Programming"
       ]
     },
     {
@@ -770,7 +918,8 @@
         "state-machine",
         "counter",
         "medium"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 32,
@@ -782,7 +931,8 @@
         "percentage",
         "calculation",
         "medium"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 33,
@@ -794,7 +944,8 @@
         "tax",
         "calculation",
         "easy"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 34,
@@ -814,6 +965,11 @@
         "hw20",
         "hello world 2025",
         "medium"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "HW20",
+        "Dynamic Programming"
       ]
     },
     {
@@ -831,6 +987,10 @@
         "max",
         "height",
         "leetcode"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Two Pointers"
       ]
     },
     {
@@ -848,6 +1008,10 @@
         "217",
         "unique",
         "validation"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "Arrays and Hashing"
       ]
     },
     {
@@ -868,6 +1032,10 @@
         "clone",
         "hash",
         "map"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Linked List"
       ]
     },
     {
@@ -880,7 +1048,8 @@
         "count",
         "iteration",
         "easy"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 39,
@@ -897,6 +1066,10 @@
         "where",
         "represents",
         "ith"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Stack"
       ]
     },
     {
@@ -909,7 +1082,8 @@
         "combinatorics",
         "counting",
         "medium"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 41,
@@ -926,7 +1100,8 @@
         "array",
         "strings",
         "tokens"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 42,
@@ -943,6 +1118,10 @@
         "class",
         "design",
         "leetcode"
+      ],
+      "difficulty": "Hard",
+      "tags": [
+        "Heap / Priority Queue"
       ]
     },
     {
@@ -961,7 +1140,8 @@
         "well",
         "formed",
         "strings"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 44,
@@ -974,7 +1154,8 @@
         "algorithm",
         "recursion",
         "easy"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 45,
@@ -990,7 +1171,8 @@
         "function",
         "basic",
         "easy"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 46,
@@ -1007,7 +1189,8 @@
         "optimization",
         "decision",
         "problem"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 47,
@@ -1024,6 +1207,10 @@
         "return",
         "mirror",
         "recursive"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "Trees"
       ]
     },
     {
@@ -1041,6 +1228,10 @@
         "integers",
         "heights",
         "stack"
+      ],
+      "difficulty": "Hard",
+      "tags": [
+        "Stack"
       ]
     },
     {
@@ -1054,7 +1245,8 @@
         "iteration",
         "modulo",
         "easy"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 50,
@@ -1072,6 +1264,10 @@
         "simulation",
         "leetcode",
         "1046"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "Heap / Priority Queue"
       ]
     },
     {
@@ -1089,6 +1285,10 @@
         "beginning",
         "head",
         "return"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "Linked List"
       ]
     },
     {
@@ -1106,7 +1306,8 @@
         "string",
         "table",
         "2d"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 53,
@@ -1123,6 +1324,10 @@
         "integers",
         "nums",
         "hashset"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Arrays and Hashing"
       ]
     },
     {
@@ -1144,6 +1349,10 @@
         "depth",
         "first",
         "search"
+      ],
+      "difficulty": "Hard",
+      "tags": [
+        "2D Dynamic Programming"
       ]
     },
     {
@@ -1161,7 +1370,8 @@
         "dynamic",
         "programming",
         "pattern"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 56,
@@ -1178,6 +1388,10 @@
         "root",
         "return",
         "height"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "Trees"
       ]
     },
     {
@@ -1195,7 +1409,8 @@
         "sum",
         "contiguous",
         "optimization"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 58,
@@ -1212,6 +1427,10 @@
         "time",
         "partition",
         "divide"
+      ],
+      "difficulty": "Hard",
+      "tags": [
+        "Binary Search"
       ]
     },
     {
@@ -1229,6 +1448,10 @@
         "heads",
         "list1",
         "list2"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "Linked List"
       ]
     },
     {
@@ -1241,7 +1464,8 @@
         "hash-map",
         "counting",
         "easy"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 61,
@@ -1255,7 +1479,8 @@
         "math",
         "integer",
         "easy"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 62,
@@ -1271,6 +1496,10 @@
         "constraint",
         "satisfaction",
         "leetcode"
+      ],
+      "difficulty": "Hard",
+      "tags": [
+        "Backtracking"
       ]
     },
     {
@@ -1283,7 +1512,8 @@
         "two-pointers",
         "alphanumeric",
         "easy"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 64,
@@ -1300,6 +1530,10 @@
         "division",
         "algorithm",
         "optimization"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Arrays and Hashing"
       ]
     },
     {
@@ -1319,6 +1553,10 @@
         "head",
         "two",
         "pointers"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Linked List"
       ]
     },
     {
@@ -1336,6 +1574,10 @@
         "singly",
         "positions",
         "length"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Linked List"
       ]
     },
     {
@@ -1353,6 +1595,10 @@
         "singly",
         "head",
         "return"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "Linked List"
       ]
     },
     {
@@ -1370,6 +1616,10 @@
         "algorithm",
         "serialization",
         "process"
+      ],
+      "difficulty": "Hard",
+      "tags": [
+        "Trees"
       ]
     },
     {
@@ -1384,7 +1634,8 @@
         "boolean",
         "case-sensitive",
         "easy"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 70,
@@ -1396,7 +1647,8 @@
         "frequency",
         "counter",
         "easy"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 71,
@@ -1407,7 +1659,8 @@
         "reverse",
         "slicing",
         "easy"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 72,
@@ -1420,7 +1673,8 @@
         "math",
         "string",
         "easy"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 73,
@@ -1435,7 +1689,8 @@
         "basic",
         "arithmetic",
         "easy"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 74,
@@ -1453,6 +1708,10 @@
         "integers",
         "height",
         "two-pointers"
+      ],
+      "difficulty": "Hard",
+      "tags": [
+        "Two Pointers"
       ]
     },
     {
@@ -1466,7 +1725,8 @@
         "fibonacci",
         "sequence",
         "medium"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 76,
@@ -1483,6 +1743,10 @@
         "given",
         "integers",
         "two-pointers"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Two Pointers"
       ]
     },
     {
@@ -1500,6 +1764,10 @@
         "numbers",
         "hash",
         "map"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "Arrays and Hashing"
       ]
     },
     {
@@ -1517,7 +1785,8 @@
         "sorting",
         "characters",
         "comparison"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 79,
@@ -1534,6 +1803,10 @@
         "nested",
         "structure",
         "validation"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "Stack"
       ]
     },
     {
@@ -1551,6 +1824,10 @@
         "constraints",
         "game",
         "puzzle"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Arrays and Hashing"
       ]
     },
     {
@@ -1570,6 +1847,10 @@
         "transformation",
         "bfs",
         "graph"
+      ],
+      "difficulty": "Hard",
+      "tags": [
+        "Graph"
       ]
     },
     {
@@ -1588,6 +1869,10 @@
         "list",
         "strings",
         "trie"
+      ],
+      "difficulty": "Hard",
+      "tags": [
+        "Tries"
       ]
     },
     {
@@ -1605,7 +1890,8 @@
         "seats",
         "vehicle",
         "only"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 84,
@@ -1616,6 +1902,10 @@
         "subsequence",
         "string-matching",
         "dp-2d"
+      ],
+      "difficulty": "Hard",
+      "tags": [
+        "2D Dynamic Programming"
       ]
     },
     {
@@ -1633,6 +1923,10 @@
         "programming",
         "array",
         "optimization"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "1D Dynamic Programming"
       ]
     },
     {
@@ -1650,7 +1944,8 @@
         "length",
         "create",
         "ans"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 87,
@@ -1664,7 +1959,8 @@
         "bit manipulation",
         "xor",
         "sum formula"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 88,
@@ -1676,7 +1972,8 @@
         "alternately",
         "two pointers",
         "string manipulation"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 89,
@@ -1691,7 +1988,8 @@
         "floyd",
         "tortoise and hare",
         "two pointers"
-      ]
+      ],
+      "difficulty": "Medium"
     },
     {
       "index": 100,
@@ -1707,6 +2005,10 @@
         "unique",
         "duplicate",
         "constant space"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "Bit Manipulation"
       ]
     },
     {
@@ -1722,6 +2024,10 @@
         "ones",
         "binary",
         "unsigned integer"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "Bit Manipulation"
       ]
     },
     {
@@ -1737,6 +2043,10 @@
         "carry",
         "bitwise",
         "no operators"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Bit Manipulation"
       ]
     },
     {
@@ -1752,6 +2062,10 @@
         "digits",
         "mathematical",
         "modulo"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Bit Manipulation"
       ]
     },
     {
@@ -1767,6 +2081,10 @@
         "string",
         "wildcard",
         "hard"
+      ],
+      "difficulty": "Hard",
+      "tags": [
+        "2D Dynamic Programming"
       ]
     },
     {
@@ -1782,6 +2100,11 @@
         "two",
         "pointers",
         "easy"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "Linked List",
+        "Two Pointers"
       ]
     },
     {
@@ -1798,6 +2121,11 @@
         "pointers",
         "reverse",
         "easy"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "Linked List",
+        "Two Pointers"
       ]
     },
     {
@@ -1814,6 +2142,11 @@
         "hash",
         "map",
         "medium"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Graph",
+        "DFS"
       ]
     },
     {
@@ -1832,6 +2165,11 @@
         "cycle",
         "detection",
         "medium"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Graph",
+        "Topological Sort"
       ]
     },
     {
@@ -1849,9 +2187,14 @@
         "685",
         "directed",
         "hard"
+      ],
+      "difficulty": "Hard",
+      "tags": [
+        "Graph",
+        "Union Find"
       ]
     }
   ],
-  "lastUpdated": "2025-12-12T20:07:13.364Z",
+  "lastUpdated": "2025-12-18T19:05:40.449Z",
   "totalQuestions": 117
 }

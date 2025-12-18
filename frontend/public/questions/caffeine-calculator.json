@@ -2,6 +2,8 @@
   "index": 25,
   "filename": "caffeine-calculator",
   "title": "Caffeine Calculator",
+  "difficulty": "Medium",
+  "tags": [],
   "keywords": [
     "math",
     "ceiling",

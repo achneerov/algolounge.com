@@ -2,6 +2,8 @@
   "index": 88,
   "filename": "merge-strings-alternately",
   "title": "Merge Strings Alternately",
+  "difficulty": "Medium",
+  "tags": [],
   "keywords": [
     "merge",
     "strings",

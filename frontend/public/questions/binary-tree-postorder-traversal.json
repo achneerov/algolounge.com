@@ -2,6 +2,8 @@
   "index": 19,
   "filename": "binary-tree-postorder-traversal",
   "title": "Binary Tree Postorder Traversal",
+  "difficulty": "Medium",
+  "tags": [],
   "keywords": [
     "binary",
     "tree",
@@ -19,7 +21,8 @@
   "template": "def binaryTreePostorderTraversal(root):\n    ",
   "solution_text": "<h3>Binary Tree Postorder Traversal</h3><p><strong>Algorithm:</strong></p><ol><li>Traverse left subtree recursively</li><li>Traverse right subtree recursively</li><li>Process current node (add to result)</li></ol><p><strong>Time Complexity:</strong> O(n) - visit each node once</p><p><strong>Space Complexity:</strong> O(h) - recursion stack depth, where h is tree height</p><p><strong>Key Insights:</strong></p><ul><li>Postorder: Left -> Right -> Root</li><li>Node is processed after both subtrees</li><li>Useful for deleting trees or calculating node depths</li></ul>",
   "solution_code": "def binaryTreePostorderTraversal(root):\n    result = []\n    \n    def postorder(node):\n        if not node:\n            return\n        \n        postorder(node.left)   # Traverse left subtree\n        postorder(node.right)  # Traverse right subtree\n        result.append(node.val)  # Process current node\n    \n    postorder(root)\n    return result",
-  "order_matters": false,
+  "prepare": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef prepare(test_case_input):\n    def build_tree(arr):\n        if not arr:\n            return None\n        root = TreeNode(arr[0])\n        queue = [root]\n        i = 1\n        while queue and i < len(arr):\n            node = queue.pop(0)\n            if i < len(arr) and arr[i] is not None:\n                node.left = TreeNode(arr[i])\n                queue.append(node.left)\n            i += 1\n            if i < len(arr) and arr[i] is not None:\n                node.right = TreeNode(arr[i])\n                queue.append(node.right)\n            i += 1\n        return root\n\n    root = build_tree(test_case_input['root'])\n    return (root,)",
+  "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    return [passed, output_str]",
   "test_cases": [
     {
       "id": 1,
@@ -200,7 +203,5 @@
         8
       ]
     }
-  ],
-  "prepare": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef prepare(test_case_input):\n    def build_tree(arr):\n        if not arr:\n            return None\n        root = TreeNode(arr[0])\n        queue = [root]\n        i = 1\n        while queue and i < len(arr):\n            node = queue.pop(0)\n            if i < len(arr) and arr[i] is not None:\n                node.left = TreeNode(arr[i])\n                queue.append(node.left)\n            i += 1\n            if i < len(arr) and arr[i] is not None:\n                node.right = TreeNode(arr[i])\n                queue.append(node.right)\n            i += 1\n        return root\n\n    root = build_tree(test_case_input['root'])\n    return (root,)",
-  "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    return [passed, output_str]"
+  ]
 }

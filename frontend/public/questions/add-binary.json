@@ -2,6 +2,8 @@
   "index": 3,
   "filename": "add-binary",
   "title": "Add Binary",
+  "difficulty": "Medium",
+  "tags": [],
   "keywords": [
     "add",
     "binary",
@@ -21,7 +23,6 @@
   "solution_code": "def addBinary(a, b):\n    result = []\n    carry = 0\n    i, j = len(a) - 1, len(b) - 1\n    \n    while i >= 0 or j >= 0 or carry:\n        digit_sum = carry\n        \n        if i >= 0:\n            digit_sum += int(a[i])\n            i -= 1\n        \n        if j >= 0:\n            digit_sum += int(b[j])\n            j -= 1\n        \n        result.append(str(digit_sum % 2))\n        carry = digit_sum // 2\n    \n    return ''.join(reversed(result))",
   "prepare": "def prepare(test_case_input):\n    return (test_case_input['a'], test_case_input['b'])",
   "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    output_str = '\"' + str(actual_output) + '\"'\n    return [passed, output_str]",
-  "order_matters": false,
   "test_cases": [
     {
       "id": 1,

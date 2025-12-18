@@ -2,6 +2,8 @@
   "index": 87,
   "filename": "missing-number",
   "title": "Missing Number",
+  "difficulty": "Medium",
+  "tags": [],
   "keywords": [
     "missing",
     "number",
@@ -22,35 +24,59 @@
     {
       "id": 1,
       "input": {
-        "nums": [1, 2, 3]
+        "nums": [
+          1,
+          2,
+          3
+        ]
       },
       "output": 0
     },
     {
       "id": 2,
       "input": {
-        "nums": [0, 2]
+        "nums": [
+          0,
+          2
+        ]
       },
       "output": 1
     },
     {
       "id": 3,
       "input": {
-        "nums": [0, 1]
+        "nums": [
+          0,
+          1
+        ]
       },
       "output": 2
     },
     {
       "id": 4,
       "input": {
-        "nums": [3, 0, 1]
+        "nums": [
+          3,
+          0,
+          1
+        ]
       },
       "output": 2
     },
     {
       "id": 5,
       "input": {
-        "nums": [9, 6, 4, 2, 3, 5, 7, 0, 1]
+        "nums": [
+          9,
+          6,
+          4,
+          2,
+          3,
+          5,
+          7,
+          0,
+          1
+        ]
       },
       "output": 8
     }

@@ -2,6 +2,11 @@
   "index": 0,
   "filename": "find-maximum-non-decreasing-array-length",
   "title": "Find Maximum Non-decreasing Array Length",
+  "difficulty": "Hard",
+  "tags": [
+    "Queue",
+    "Dynamic Programming"
+  ],
   "keywords": [
     "dynamic programming",
     "queue",
@@ -21,56 +26,94 @@
     {
       "id": 1,
       "input": {
-        "nums": [5, 2, 2]
+        "nums": [
+          5,
+          2,
+          2
+        ]
       },
       "output": 1
     },
     {
       "id": 2,
       "input": {
-        "nums": [1, 2, 3, 4]
+        "nums": [
+          1,
+          2,
+          3,
+          4
+        ]
       },
       "output": 4
     },
     {
       "id": 3,
       "input": {
-        "nums": [4, 3, 2, 6]
+        "nums": [
+          4,
+          3,
+          2,
+          6
+        ]
       },
       "output": 3
     },
     {
       "id": 4,
       "input": {
-        "nums": [1]
+        "nums": [
+          1
+        ]
       },
       "output": 1
     },
     {
       "id": 5,
       "input": {
-        "nums": [2, 3, 1]
+        "nums": [
+          2,
+          3,
+          1
+        ]
       },
       "output": 2
     },
     {
       "id": 6,
       "input": {
-        "nums": [10, 1, 1, 1, 1]
+        "nums": [
+          10,
+          1,
+          1,
+          1,
+          1
+        ]
       },
       "output": 1
     },
     {
       "id": 7,
       "input": {
-        "nums": [1, 1, 1, 1, 1]
+        "nums": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
       },
       "output": 5
     },
     {
       "id": 8,
       "input": {
-        "nums": [5, 4, 3, 2, 1]
+        "nums": [
+          5,
+          4,
+          3,
+          2,
+          1
+        ]
       },
       "output": 2
     }

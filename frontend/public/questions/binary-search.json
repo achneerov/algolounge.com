@@ -2,6 +2,8 @@
   "index": 14,
   "filename": "binary-search",
   "title": "Binary Search",
+  "difficulty": "Easy",
+  "tags": ["Binary Search"],
   "keywords": [
     "binary",
     "search",

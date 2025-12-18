@@ -2,6 +2,10 @@
   "index": 1,
   "filename": "3sum",
   "title": "3Sum",
+  "difficulty": "Medium",
+  "tags": [
+    "Two Pointers"
+  ],
   "keywords": [
     "3sum",
     "three",

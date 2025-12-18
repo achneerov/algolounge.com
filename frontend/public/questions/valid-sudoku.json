@@ -2,6 +2,8 @@
   "index": 80,
   "filename": "valid-sudoku",
   "title": "Valid Sudoku",
+  "difficulty": "Medium",
+  "tags": ["Arrays and Hashing"],
   "keywords": [
     "valid",
     "sudoku",

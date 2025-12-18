@@ -2,6 +2,11 @@
   "index": 0,
   "filename": "maximum-number-of-tasks-you-can-assign",
   "title": "Maximum Number of Tasks You Can Assign",
+  "difficulty": "Hard",
+  "tags": [
+    "Queue",
+    "Binary Search"
+  ],
   "keywords": [
     "binary search",
     "greedy",
@@ -21,8 +26,16 @@
     {
       "id": 1,
       "input": {
-        "tasks": [3, 2, 1],
-        "workers": [0, 3, 3],
+        "tasks": [
+          3,
+          2,
+          1
+        ],
+        "workers": [
+          0,
+          3,
+          3
+        ],
         "pills": 1,
         "strength": 1
       },
@@ -31,8 +44,15 @@
     {
       "id": 2,
       "input": {
-        "tasks": [5, 4],
-        "workers": [0, 0, 0],
+        "tasks": [
+          5,
+          4
+        ],
+        "workers": [
+          0,
+          0,
+          0
+        ],
         "pills": 1,
         "strength": 5
       },
@@ -41,8 +61,18 @@
     {
       "id": 3,
       "input": {
-        "tasks": [10, 15, 30],
-        "workers": [0, 10, 10, 10, 10],
+        "tasks": [
+          10,
+          15,
+          30
+        ],
+        "workers": [
+          0,
+          10,
+          10,
+          10,
+          10
+        ],
         "pills": 3,
         "strength": 10
       },
@@ -51,8 +81,20 @@
     {
       "id": 4,
       "input": {
-        "tasks": [5, 9, 8, 5, 9],
-        "workers": [1, 6, 4, 2, 6],
+        "tasks": [
+          5,
+          9,
+          8,
+          5,
+          9
+        ],
+        "workers": [
+          1,
+          6,
+          4,
+          2,
+          6
+        ],
         "pills": 1,
         "strength": 5
       },
@@ -61,8 +103,12 @@
     {
       "id": 5,
       "input": {
-        "tasks": [1],
-        "workers": [1],
+        "tasks": [
+          1
+        ],
+        "workers": [
+          1
+        ],
         "pills": 0,
         "strength": 0
       },
@@ -71,8 +117,16 @@
     {
       "id": 6,
       "input": {
-        "tasks": [1, 2, 3],
-        "workers": [3, 3, 3],
+        "tasks": [
+          1,
+          2,
+          3
+        ],
+        "workers": [
+          3,
+          3,
+          3
+        ],
         "pills": 0,
         "strength": 10
       },
@@ -81,8 +135,16 @@
     {
       "id": 7,
       "input": {
-        "tasks": [10, 20, 30],
-        "workers": [5, 5, 5],
+        "tasks": [
+          10,
+          20,
+          30
+        ],
+        "workers": [
+          5,
+          5,
+          5
+        ],
         "pills": 3,
         "strength": 5
       },
@@ -91,8 +153,18 @@
     {
       "id": 8,
       "input": {
-        "tasks": [1, 1, 1, 1],
-        "workers": [0, 0, 0, 0],
+        "tasks": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "workers": [
+          0,
+          0,
+          0,
+          0
+        ],
         "pills": 4,
         "strength": 1
       },

@@ -2,6 +2,8 @@
   "index": 73,
   "filename": "sum-two-integers",
   "title": "Sum Two Integers",
+  "difficulty": "Medium",
+  "tags": [],
   "keywords": [
     "sum",
     "addition",

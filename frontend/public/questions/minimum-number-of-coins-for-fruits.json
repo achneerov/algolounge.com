@@ -2,6 +2,11 @@
   "index": 0,
   "filename": "minimum-number-of-coins-for-fruits",
   "title": "Minimum Number of Coins for Fruits",
+  "difficulty": "Medium",
+  "tags": [
+    "Queue",
+    "Dynamic Programming"
+  ],
   "keywords": [
     "dynamic programming",
     "queue",
@@ -20,56 +25,95 @@
     {
       "id": 1,
       "input": {
-        "prices": [3, 1, 2]
+        "prices": [
+          3,
+          1,
+          2
+        ]
       },
       "output": 4
     },
     {
       "id": 2,
       "input": {
-        "prices": [1, 10, 1, 1]
+        "prices": [
+          1,
+          10,
+          1,
+          1
+        ]
       },
       "output": 2
     },
     {
       "id": 3,
       "input": {
-        "prices": [26, 18, 6, 12, 49, 7, 45, 45]
+        "prices": [
+          26,
+          18,
+          6,
+          12,
+          49,
+          7,
+          45,
+          45
+        ]
       },
       "output": 39
     },
     {
       "id": 4,
       "input": {
-        "prices": [1]
+        "prices": [
+          1
+        ]
       },
       "output": 1
     },
     {
       "id": 5,
       "input": {
-        "prices": [5, 4, 3]
+        "prices": [
+          5,
+          4,
+          3
+        ]
       },
       "output": 8
     },
     {
       "id": 6,
       "input": {
-        "prices": [1, 2, 3, 4, 5]
+        "prices": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
       },
       "output": 4
     },
     {
       "id": 7,
       "input": {
-        "prices": [10, 1, 1, 1]
+        "prices": [
+          10,
+          1,
+          1,
+          1
+        ]
       },
       "output": 11
     },
     {
       "id": 8,
       "input": {
-        "prices": [3, 2, 1]
+        "prices": [
+          3,
+          2,
+          1
+        ]
       },
       "output": 4
     }

@@ -2,6 +2,11 @@
   "index": 0,
   "filename": "longest-valid-parentheses",
   "title": "Longest Valid Parentheses",
+  "difficulty": "Hard",
+  "tags": [
+    "Stack",
+    "Dynamic Programming"
+  ],
   "keywords": [
     "longest",
     "valid",

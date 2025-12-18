@@ -2,6 +2,10 @@
   "index": 66,
   "filename": "reorder-list",
   "title": "Reorder Linked List",
+  "difficulty": "Medium",
+  "tags": [
+    "Linked List"
+  ],
   "keywords": [
     "reorder",
     "linked",

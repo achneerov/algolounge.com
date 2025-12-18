@@ -2,6 +2,10 @@
   "index": 1,
   "filename": "meeting-rooms",
   "title": "Meeting Rooms",
+  "difficulty": "Easy",
+  "tags": [
+    "Intervals"
+  ],
   "keywords": [
     "meeting",
     "intervals",
@@ -22,9 +26,18 @@
       "id": 1,
       "input": {
         "intervals": [
-          [0, 30],
-          [5, 10],
-          [15, 20]
+          [
+            0,
+            30
+          ],
+          [
+            5,
+            10
+          ],
+          [
+            15,
+            20
+          ]
         ]
       },
       "output": "false"
@@ -33,8 +46,14 @@
       "id": 2,
       "input": {
         "intervals": [
-          [7, 10],
-          [2, 4]
+          [
+            7,
+            10
+          ],
+          [
+            2,
+            4
+          ]
         ]
       },
       "output": "true"
@@ -50,8 +69,14 @@
       "id": 4,
       "input": {
         "intervals": [
-          [1, 5],
-          [8, 9]
+          [
+            1,
+            5
+          ],
+          [
+            8,
+            9
+          ]
         ]
       },
       "output": "true"
@@ -60,8 +85,14 @@
       "id": 5,
       "input": {
         "intervals": [
-          [1, 5],
-          [5, 9]
+          [
+            1,
+            5
+          ],
+          [
+            5,
+            9
+          ]
         ]
       },
       "output": "true"

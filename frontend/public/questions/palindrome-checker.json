@@ -2,6 +2,8 @@
   "index": 63,
   "filename": "palindrome-checker",
   "title": "Palindrome Checker",
+  "difficulty": "Medium",
+  "tags": [],
   "keywords": [
     "palindrome",
     "string",

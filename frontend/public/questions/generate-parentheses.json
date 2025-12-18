@@ -2,6 +2,8 @@
   "index": 43,
   "filename": "generate-parentheses",
   "title": "Generate Parentheses",
+  "difficulty": "Medium",
+  "tags": [],
   "keywords": [
     "generate",
     "parentheses",
@@ -22,7 +24,6 @@
   "solution_code": "def generateParentheses(n):\n    result = []\n    \n    def backtrack(current, open_count, close_count):\n        # Base case: complete valid combination\n        if len(current) == 2 * n:\n            result.append(current)\n            return\n        \n        # Add opening parenthesis if we haven't used all\n        if open_count < n:\n            backtrack(current + '(', open_count + 1, close_count)\n        \n        # Add closing parenthesis if it would be valid\n        if close_count < open_count:\n            backtrack(current + ')', open_count, close_count + 1)\n    \n    backtrack('', 0, 0)\n    return result",
   "prepare": "def prepare(test_case_input):\n    return (test_case_input['n'],)",
   "verify": "def verify(actual_output, expected_output):\n    # Sort both lists for comparison since order doesn't matter\n    actual_sorted = sorted(actual_output)\n    expected_sorted = sorted(expected_output)\n    passed = actual_sorted == expected_sorted\n    output_str = str(actual_sorted)\n    return [passed, output_str]",
-  "order_matters": false,
   "test_cases": [
     {
       "id": 1,

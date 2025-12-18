@@ -2,6 +2,10 @@
   "index": 102,
   "filename": "sum-of-two-integers",
   "title": "Sum of Two Integers",
+  "difficulty": "Medium",
+  "tags": [
+    "Bit Manipulation"
+  ],
   "keywords": [
     "sum",
     "integers",

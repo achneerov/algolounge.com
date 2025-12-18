@@ -22,7 +22,7 @@ import { javascript } from "@codemirror/lang-javascript";
 import { java } from "@codemirror/lang-java";
 import { oneDark } from "@codemirror/theme-one-dark";
 import { EditorView as EditorViewClass } from "@codemirror/view";
-import { HighlightStyle, syntaxHighlighting } from "@codemirror/language";
+import { HighlightStyle, syntaxHighlighting, indentUnit } from "@codemirror/language";
 import { tags as t } from "@lezer/highlight";
 import { ButtonModule } from "primeng/button";
 import { ThemeService } from "../../../services/theme.service";
@@ -177,6 +177,7 @@ export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
 
     const extensions = [
       basicSetup,
+      indentUnit.of("    "), // 4 spaces for indentation
       keymap.of([indentWithTab]),
       languageExtension,
       isDarkMode ? this.getDarkTheme() : this.getLightTheme(),

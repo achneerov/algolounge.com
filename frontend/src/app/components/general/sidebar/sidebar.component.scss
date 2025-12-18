@@ -274,12 +274,21 @@
   min-width: 0; // For text truncation
 }
 
+.question-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+  min-width: 0; // Allow children to shrink
+}
+
 .question-title {
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--color-text-primary);
-  margin-bottom: 0.25rem;
-  
+  flex: 1;
+  min-width: 0;
+
   // 2-line truncation
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -317,9 +326,22 @@
 }
 
 .difficulty-badge {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+
+  &.difficulty-easy {
+    color: var(--color-success);
+  }
+
+  &.difficulty-medium {
+    color: var(--color-warning);
+  }
+
+  &.difficulty-hard {
+    color: var(--color-error);
+  }
 }
 
 .empty-state {

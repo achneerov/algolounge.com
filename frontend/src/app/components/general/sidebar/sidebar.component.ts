@@ -126,4 +126,11 @@ export class SidebarComponent implements OnInit {
   getTagColor(tag: string): string {
     return this.tagService.getTagColor(tag);
   }
+
+  getDifficultyLabel(difficulty: string): string {
+    if (difficulty.toLowerCase() === 'medium') {
+      return 'Med';
+    }
+    return difficulty;
+  }
 }

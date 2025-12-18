@@ -1,0 +1,81 @@
+<div class="sidebar-container">
+  <!-- Search Header -->
+  <div class="sidebar-header">
+    <div class="search-wrapper">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input 
+        type="text" 
+        [(ngModel)]="searchQuery" 
+        (ngModelChange)="filterQuestions()"
+        placeholder="Search questions..."
+        class="search-input"
+      >
+    </div>
+
+    <!-- Filters -->
+    <div class="filters-scroll">
+      <div class="filters-group">
+        <button 
+          class="filter-chip easy" 
+          [class.active]="selectedDifficulty === 'Easy'"
+          (click)="toggleDifficulty('Easy')">
+          Easy
+        </button>
+        <button 
+          class="filter-chip medium" 
+          [class.active]="selectedDifficulty === 'Medium'"
+          (click)="toggleDifficulty('Medium')">
+          Med
+        </button>
+        <button 
+          class="filter-chip hard" 
+          [class.active]="selectedDifficulty === 'Hard'"
+          (click)="toggleDifficulty('Hard')">
+          Hard
+        </button>
+        <div class="divider"></div>
+        <button 
+          class="filter-chip status" 
+          [class.active]="showCompleted === true"
+          (click)="toggleStatus(true)">
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Question List -->
+  <div class="questions-list">
+    <div 
+      *ngFor="let question of filteredQuestions" 
+      class="question-item"
+      [class.active]="question.filename === currentQuestionFilename"
+      (click)="onSelect(question.filename)">
+      
+      <div class="question-status">
+        <div class="status-indicator" [class.completed]="isQuestionCompleted(question.filename)">
+          <svg *ngIf="isQuestionCompleted(question.filename)" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+      </div>
+
+      <div class="question-content">
+        <div class="question-title">{{ question.title }}</div>
+        <div class="question-meta">
+          <span class="difficulty-badge" [style.color]="getDifficultyColor(question.difficulty)">
+            {{ question.difficulty }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="filteredQuestions.length === 0" class="empty-state">
+      <p>No questions found</p>
+    </div>
+  </div>
+</div>

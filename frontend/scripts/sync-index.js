@@ -91,16 +91,10 @@ function syncQuestionsIndex() {
         index: index,
         filename: item.filename,
         title: title,
+        difficulty: difficulty,
+        tags: tags,
         keywords: keywords
       };
-
-      // Add optional fields if they exist
-      if (difficulty) {
-        question.difficulty = difficulty;
-      }
-      if (tags.length > 0) {
-        question.tags = tags;
-      }
 
       questions.push(question);
 

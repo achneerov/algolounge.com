@@ -199,17 +199,15 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
     const allQuestions = this.questionSearchService.getAllQuestions();
     const questionData = allQuestions.find(q => q.filename === question.filename);
 
-    if (questionData && (questionData.difficulty || questionData.tags)) {
+    if (questionData) {
       // Convert difficulty and tags to CourseTag objects with colors
       const tags: CourseTag[] = [];
 
-      // Add difficulty tag first
-      if (questionData.difficulty) {
-        tags.push(this.tagService.getDifficultyTag(questionData.difficulty));
-      }
+      // Add difficulty tag (always present)
+      tags.push(this.tagService.getDifficultyTag(questionData.difficulty));
 
-      // Add other tags
-      if (questionData.tags && questionData.tags.length > 0) {
+      // Add other tags if any
+      if (questionData.tags.length > 0) {
         tags.push(...this.tagService.getTags(questionData.tags));
       }
 

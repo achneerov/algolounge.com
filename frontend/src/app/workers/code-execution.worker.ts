@@ -161,8 +161,19 @@ _test_result
         jsResult = result && typeof result.toJs === 'function' ? result.toJs() : result;
 
         // Call verify function to check result and get output string
+        // Check how many parameters verify accepts for backward compatibility
         const outputString = JSON.stringify(testCase.output).replace(/null/g, 'None');
-        const verifyResult = pyodideInstance.runPython(`verify(_test_result, ${outputString})`);
+        const verifyResult = pyodideInstance.runPython(`
+import inspect
+_verify_sig = inspect.signature(verify)
+_verify_param_count = len(_verify_sig.parameters)
+
+if _verify_param_count >= 3:
+    _verify_result = verify(_test_result, ${outputString}, _test_input)
+else:
+    _verify_result = verify(_test_result, ${outputString})
+_verify_result
+        `);
         const verifyJs = verifyResult && typeof verifyResult.toJs === 'function' ? verifyResult.toJs() : verifyResult;
 
         passed = verifyJs[0];

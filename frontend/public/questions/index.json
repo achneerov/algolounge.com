@@ -2291,8 +2291,7 @@
       "difficulty": "Medium",
       "tags": [
         "Arrays and Hashing",
-        "Two Pointers",
-        "Sorting"
+        "Two Pointers"
       ],
       "keywords": [
         "sort",
@@ -2307,6 +2306,6 @@
       ]
     }
   ],
-  "lastUpdated": "2025-12-19T18:00:04.097Z",
+  "lastUpdated": "2026-01-11T23:05:50.079Z",
   "totalQuestions": 120
 }

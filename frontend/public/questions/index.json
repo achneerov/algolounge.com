@@ -2244,8 +2244,69 @@
         "directed",
         "hard"
       ]
+    },
+    {
+      "index": 119,
+      "filename": "majority-element",
+      "title": "Majority Element",
+      "difficulty": "Easy",
+      "tags": [
+        "Arrays and Hashing",
+        "Bit Manipulation"
+      ],
+      "keywords": [
+        "majority",
+        "element",
+        "array",
+        "voting",
+        "boyer-moore",
+        "frequency",
+        "leetcode",
+        "169"
+      ]
+    },
+    {
+      "index": 120,
+      "filename": "remove-element",
+      "title": "Remove Element",
+      "difficulty": "Easy",
+      "tags": [
+        "Arrays and Hashing",
+        "Two Pointers"
+      ],
+      "keywords": [
+        "remove",
+        "element",
+        "array",
+        "in-place",
+        "two-pointer",
+        "leetcode",
+        "27"
+      ]
+    },
+    {
+      "index": 121,
+      "filename": "sort-colors",
+      "title": "Sort Colors",
+      "difficulty": "Medium",
+      "tags": [
+        "Arrays and Hashing",
+        "Two Pointers",
+        "Sorting"
+      ],
+      "keywords": [
+        "sort",
+        "colors",
+        "array",
+        "three-way-partition",
+        "dutch-national-flag",
+        "in-place",
+        "two-pointer",
+        "leetcode",
+        "75"
+      ]
     }
   ],
-  "lastUpdated": "2025-12-18T19:47:59.508Z",
-  "totalQuestions": 117
+  "lastUpdated": "2025-12-19T18:00:04.097Z",
+  "totalQuestions": 120
 }

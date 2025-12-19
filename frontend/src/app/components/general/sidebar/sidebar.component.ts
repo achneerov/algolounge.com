@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -24,8 +24,9 @@ export class SidebarComponent implements OnInit {
   // Filters
   selectedDifficulty: string | null = null;
   showCompleted: boolean | null = null; // null = all, true = completed, false = todo
-  selectedTags: Set<string> = new Set(); // Track selected tags
+  selectedTag: string | null = null; // Single tag selection
   availableTags: string[] = []; // All unique tags from questions
+  showTagsPopover: boolean = false; // Toggle popover visibility
 
   constructor(
     private questionSearchService: QuestionSearchService,
@@ -56,13 +57,11 @@ export class SidebarComponent implements OnInit {
       result = result.filter(q => q.difficulty.toLowerCase() === this.selectedDifficulty?.toLowerCase());
     }
 
-    // Tag filter - question must have ALL selected tags
-    if (this.selectedTags.size > 0) {
-      result = result.filter(q => {
-        return Array.from(this.selectedTags).every(selectedTag =>
-          q.tags.some(qTag => qTag.toLowerCase() === selectedTag.toLowerCase())
-        );
-      });
+    // Tag filter - question must have the selected tag
+    if (this.selectedTag) {
+      result = result.filter(q =>
+        q.tags.some(qTag => qTag.toLowerCase() === this.selectedTag?.toLowerCase())
+      );
     }
 
     // Status filter
@@ -94,17 +93,20 @@ export class SidebarComponent implements OnInit {
     this.filterQuestions();
   }
 
-  toggleTag(tag: string): void {
-    if (this.selectedTags.has(tag)) {
-      this.selectedTags.delete(tag);
-    } else {
-      this.selectedTags.add(tag);
-    }
+  selectTag(tag: string): void {
+    this.selectedTag = tag;
+    this.showTagsPopover = false;
+    this.filterQuestions();
+  }
+
+  clearTag(): void {
+    this.selectedTag = null;
+    this.showTagsPopover = false;
     this.filterQuestions();
   }
 
   isTagSelected(tag: string): boolean {
-    return this.selectedTags.has(tag);
+    return this.selectedTag === tag;
   }
 
   getAllUniqueTags(): string[] {
@@ -132,5 +134,19 @@ export class SidebarComponent implements OnInit {
       return 'Med';
     }
     return difficulty;
+  }
+
+  toggleTagsPopover(): void {
+    this.showTagsPopover = !this.showTagsPopover;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+    const tagsSection = target.closest('.tags-section');
+
+    if (!tagsSection && this.showTagsPopover) {
+      this.showTagsPopover = false;
+    }
   }
 }

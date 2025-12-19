@@ -927,7 +927,41 @@
     "week15": {
       "title": "Week 15",
       "description": "These are the questions that will be looked at in week 15.",
-      "questions": []
+      "questions": [
+        {
+          "filename": "majority-element",
+          "urls": [
+            { "url": "https://leetcode.com/problems/majority-element/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/majority-element", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Arrays and Hashing", "color": "#3b82f6" }
+          ]
+        },
+        {
+          "filename": "remove-element",
+          "urls": [
+            { "url": "https://leetcode.com/problems/remove-element/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/remove-element", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Two Pointers", "color": "#a855f7" }
+          ]
+        },
+        {
+          "filename": "sort-colors",
+          "urls": [
+            { "url": "https://leetcode.com/problems/sort-colors/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/sort-colors", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Two Pointers", "color": "#a855f7" }
+          ]
+        }
+      ]
     },
     "week16": {
       "title": "Week 16",

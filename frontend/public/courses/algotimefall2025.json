@@ -966,7 +966,91 @@
     "week16": {
       "title": "Week 16",
       "description": "These are the questions that will be looked at in week 16.",
-      "questions": []
+      "questions": [
+        {
+          "filename": "search-insert-position",
+          "urls": [
+            { "url": "https://leetcode.com/problems/search-insert-position/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/search-insert-position", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Binary Search", "color": "#3b82f6" }
+          ]
+        },
+        {
+          "filename": "add-binary",
+          "urls": [
+            { "url": "https://leetcode.com/problems/add-binary/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/add-binary", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "String", "color": "#3b82f6" },
+            { "text": "Math", "color": "#8b5cf6" }
+          ]
+        },
+        {
+          "filename": "number-of-islands",
+          "urls": [
+            { "url": "https://leetcode.com/problems/number-of-islands/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/problems/count-number-of-islands", "tooltip": "NeetCode Problem", "color": "#16a34a", "visibleString": "NeetCode" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Graph", "color": "#ec4899" },
+            { "text": "DFS", "color": "#10b981" }
+          ]
+        },
+        {
+          "filename": "max-area-of-island",
+          "urls": [
+            { "url": "https://leetcode.com/problems/max-area-of-island/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/problems/max-area-of-island", "tooltip": "NeetCode Problem", "color": "#16a34a", "visibleString": "NeetCode" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Graph", "color": "#ec4899" },
+            { "text": "DFS", "color": "#10b981" }
+          ]
+        },
+        {
+          "filename": "rotting-oranges",
+          "urls": [
+            { "url": "https://leetcode.com/problems/rotting-oranges/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/problems/rotting-fruit", "tooltip": "NeetCode Problem", "color": "#16a34a", "visibleString": "NeetCode" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Graph", "color": "#ec4899" },
+            { "text": "BFS", "color": "#06b6d4" }
+          ]
+        },
+        {
+          "filename": "word-ladder",
+          "urls": [
+            { "url": "https://leetcode.com/problems/word-ladder/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/problems/word-ladder", "tooltip": "NeetCode Problem", "color": "#16a34a", "visibleString": "NeetCode" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Graph", "color": "#ec4899" },
+            { "text": "BFS", "color": "#06b6d4" }
+          ]
+        },
+        {
+          "filename": "longest-increasing-path-in-a-matrix",
+          "urls": [
+            { "url": "https://leetcode.com/problems/longest-increasing-path-in-a-matrix/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/problems/longest-increasing-path-in-matrix", "tooltip": "NeetCode Problem", "color": "#16a34a", "visibleString": "NeetCode" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "2D Dynamic Programming", "color": "#06b6d4" },
+            { "text": "DFS", "color": "#10b981" }
+          ]
+        }
+      ]
     }
   }
 }

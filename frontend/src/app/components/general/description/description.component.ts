@@ -112,37 +112,43 @@ export class DescriptionComponent implements OnChanges {
       const example: { input?: string; output?: string; explanation?: string } = {};
 
       // Try to extract with <strong> tags first (newer format)
-      let inputMatch = text.match(/<strong>Input:<\/strong>\s*(.*?)(?=<br>|<strong>Output|<\/li>|$)/is);
+      // Only stop at <br> when followed by Output (allows multi-line inputs)
+      let inputMatch = text.match(/<strong>Input:<\/strong>\s*(.*?)(?=<br\s*\/?>\s*<strong>Output|<strong>Output|<\/li>|$)/is);
       if (inputMatch) {
         let inputText = inputMatch[1].trim();
         inputText = inputText.replace(/<\/?code>/gi, '');
-        inputText = inputText.replace(/<(?!br)([^>]+)>/gi, '');
+        inputText = inputText.replace(/<br\s*\/?>/gi, '\n'); // Convert <br> to newlines
+        inputText = inputText.replace(/<[^>]+>/gi, ''); // Remove remaining HTML tags
         example.input = inputText.trim();
       } else {
         // Try plain text format (older format): "Input: ... <br>"
-        inputMatch = text.match(/Input:\s*(.*?)(?=<br>|Output:|$)/is);
+        inputMatch = text.match(/Input:\s*(.*?)(?=<br\s*\/?>\s*Output:|Output:|$)/is);
         if (inputMatch) {
           let inputText = inputMatch[1].trim();
           inputText = inputText.replace(/<\/?code>/gi, '');
-          inputText = inputText.replace(/<(?!br)([^>]+)>/gi, '');
+          inputText = inputText.replace(/<br\s*\/?>/gi, '\n'); // Convert <br> to newlines
+          inputText = inputText.replace(/<[^>]+>/gi, ''); // Remove remaining HTML tags
           example.input = inputText.trim();
         }
       }
 
       // Try to extract Output with <strong> tags first
-      let outputMatch = text.match(/<strong>Output:<\/strong>\s*(.*?)(?=<br>.*?<strong>Explanation|<br>.*?Explanation|<\/li>|$)/is);
+      // Only stop at <br> when followed by Explanation (allows multi-line outputs)
+      let outputMatch = text.match(/<strong>Output:<\/strong>\s*(.*?)(?=<br\s*\/?>\s*<strong>Explanation|<strong>Explanation|<\/li>|$)/is);
       if (outputMatch) {
         let outputText = outputMatch[1].trim();
         outputText = outputText.replace(/<\/?code>/gi, '');
-        outputText = outputText.replace(/<(?!br)([^>]+)>/gi, '');
+        outputText = outputText.replace(/<br\s*\/?>/gi, '\n'); // Convert <br> to newlines
+        outputText = outputText.replace(/<[^>]+>/gi, ''); // Remove remaining HTML tags
         example.output = outputText.trim();
       } else {
         // Try plain text format
-        outputMatch = text.match(/Output:\s*(.*?)(?=<br>.*?Explanation|<br>|$)/is);
+        outputMatch = text.match(/Output:\s*(.*?)(?=<br\s*\/?>\s*Explanation:|Explanation:|$)/is);
         if (outputMatch) {
           let outputText = outputMatch[1].trim();
           outputText = outputText.replace(/<\/?code>/gi, '');
-          outputText = outputText.replace(/<(?!br)([^>]+)>/gi, '');
+          outputText = outputText.replace(/<br\s*\/?>/gi, '\n'); // Convert <br> to newlines
+          outputText = outputText.replace(/<[^>]+>/gi, ''); // Remove remaining HTML tags
           example.output = outputText.trim();
         }
       }

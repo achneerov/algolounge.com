@@ -190,6 +190,8 @@
     border: none;
     color: var(--color-primary);
     font-size: inherit;
+    white-space: pre-wrap; // Preserve newlines and allow wrapping
+    display: block; // Ensure block display for proper newline rendering
   }
 }
 

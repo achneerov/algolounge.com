@@ -1,0 +1,110 @@
+{
+  "index": 200,
+  "filename": "search-insert-position",
+  "title": "Search Insert Position",
+  "difficulty": "Easy",
+  "tags": [
+    "Binary Search",
+    "Array"
+  ],
+  "keywords": [
+    "binary",
+    "search",
+    "insert",
+    "position",
+    "leetcode",
+    "35",
+    "sorted",
+    "array",
+    "easy"
+  ],
+  "description": "<h2>Search Insert Position</h2><p>Given a sorted array of distinct integers <code>nums</code> and a target value <code>target</code>, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p><p>You must write an algorithm with <strong>O(log n)</strong> runtime complexity.</p><h3>Examples:</h3><ul><li>Input: <code>nums = [1,3,5,6]</code>, <code>target = 5</code><br><br>Output: <code>2</code><br><br>Explanation: 5 is found at index 2.</li><li>Input: <code>nums = [1,3,5,6]</code>, <code>target = 2</code><br><br>Output: <code>1</code><br><br>Explanation: 2 should be inserted at index 1.</li><li>Input: <code>nums = [1,3,5,6]</code>, <code>target = 7</code><br><br>Output: <code>4</code><br><br>Explanation: 7 should be inserted at index 4.</li><li>Input: <code>nums = [1,3,5,6]</code>, <code>target = 0</code><br><br>Output: <code>0</code><br><br>Explanation: 0 should be inserted at index 0.</li></ul><h3>Constraints:</h3><ul><li><code>1 <= nums.length <= 10<sup>4</sup></code></li><li><code>-10<sup>4</sup> <= nums[i] <= 10<sup>4</sup></code></li><li><code>nums</code> contains <strong>distinct</strong> values sorted in <strong>ascending</strong> order</li><li><code>-10<sup>4</sup> <= target <= 10<sup>4</sup></code></li></ul>",
+  "entry_function": "searchInsert",
+  "template": "def searchInsert(nums, target):\n    ",
+  "solution_text": "<h3>Search Insert Position</h3><p><strong>Algorithm:</strong></p><ol><li>Initialize left and right pointers to array bounds</li><li>Use binary search to find target or insertion position</li><li>If target is found, return its index</li><li>If not found, left pointer will be at the correct insertion position</li></ol><p><strong>Time Complexity:</strong> O(log n) - binary search halves the search space each iteration</p><p><strong>Space Complexity:</strong> O(1) - constant extra space</p><p><strong>Key Insights:</strong></p><ul><li>Binary search works because array is sorted</li><li>When target is not found, left pointer ends up at insertion position</li><li>Use <code>left + (right - left) // 2</code> to avoid integer overflow</li><li>The algorithm naturally handles all edge cases (insert at start, middle, or end)</li></ul>",
+  "solution_code": "def searchInsert(nums, target):\n    left, right = 0, len(nums) - 1\n    \n    while left <= right:\n        mid = left + (right - left) // 2\n        \n        if nums[mid] == target:\n            return mid\n        elif nums[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    \n    return left",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for searchInsert function\"\"\"\n    return (test_case_input['nums'], test_case_input['target'])",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the search insert position result\"\"\"\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [1, 3, 5, 6],
+        "target": 5
+      },
+      "output": 2
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [1, 3, 5, 6],
+        "target": 2
+      },
+      "output": 1
+    },
+    {
+      "id": 3,
+      "input": {
+        "nums": [1, 3, 5, 6],
+        "target": 7
+      },
+      "output": 4
+    },
+    {
+      "id": 4,
+      "input": {
+        "nums": [1, 3, 5, 6],
+        "target": 0
+      },
+      "output": 0
+    },
+    {
+      "id": 5,
+      "input": {
+        "nums": [1],
+        "target": 0
+      },
+      "output": 0
+    },
+    {
+      "id": 6,
+      "input": {
+        "nums": [1],
+        "target": 1
+      },
+      "output": 0
+    },
+    {
+      "id": 7,
+      "input": {
+        "nums": [1],
+        "target": 2
+      },
+      "output": 1
+    },
+    {
+      "id": 8,
+      "input": {
+        "nums": [1, 3],
+        "target": 2
+      },
+      "output": 1
+    },
+    {
+      "id": 9,
+      "input": {
+        "nums": [1, 3, 5, 7, 9, 11],
+        "target": 6
+      },
+      "output": 3
+    },
+    {
+      "id": 10,
+      "input": {
+        "nums": [1, 3, 5, 7, 9, 11],
+        "target": 12
+      },
+      "output": 6
+    }
+  ]
+}

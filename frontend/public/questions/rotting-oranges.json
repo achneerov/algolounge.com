@@ -1,0 +1,126 @@
+{
+  "index": 203,
+  "filename": "rotting-oranges",
+  "title": "Rotting Oranges",
+  "difficulty": "Medium",
+  "tags": [
+    "Graph",
+    "BFS",
+    "Matrix"
+  ],
+  "keywords": [
+    "rotting",
+    "oranges",
+    "bfs",
+    "grid",
+    "leetcode",
+    "994",
+    "matrix",
+    "graph",
+    "medium",
+    "multi-source"
+  ],
+  "description": "<h2>Rotting Oranges</h2><p>You are given an <code>m x n</code> grid where each cell can have one of three values:</p><ul><li><code>0</code> - empty cell</li><li><code>1</code> - fresh orange</li><li><code>2</code> - rotten orange</li></ul><p>Every minute, any fresh orange that is <strong>4-directionally adjacent</strong> to a rotten orange becomes rotten.</p><p>Return <em>the minimum number of minutes that must elapse until no cell has a fresh orange</em>. If <em>this is impossible, return</em> <code>-1</code>.</p><h3>Examples</h3><ul><li>Input: <code>grid = [<br>  [2,1,1],<br>  [1,1,0],<br>  [0,1,1]<br>]</code><br>Output: <code>4</code><br>Explanation: All oranges rot in 4 minutes as the rot spreads from (0,0) outward.</li><li>Input: <code>grid = [<br>  [2,1,1],<br>  [0,1,1],<br>  [1,0,1]<br>]</code><br>Output: <code>-1</code><br>Explanation: The orange at bottom-left can never rot (isolated by empty cells).</li><li>Input: <code>grid = [[0,2]]</code><br>Output: <code>0</code><br>Explanation: No fresh oranges, so 0 minutes needed.</li></ul><h3>Constraints</h3><ul><li><code>m == grid.length</code></li><li><code>n == grid[i].length</code></li><li><code>1 <= m, n <= 10</code></li><li><code>grid[i][j]</code> is <code>0</code>, <code>1</code>, or <code>2</code></li></ul>",
+  "entry_function": "orangesRotting",
+  "template": "def orangesRotting(grid):\n    ",
+  "solution_text": "<h3>Rotting Oranges</h3><p><strong>Algorithm (Multi-Source BFS):</strong></p><ol><li>Count all fresh oranges and collect all initially rotten oranges in a queue</li><li>Perform BFS starting from all rotten oranges simultaneously</li><li>For each minute (BFS level), rot all fresh oranges adjacent to currently rotten ones</li><li>Decrement fresh orange count and add newly rotten oranges to queue</li><li>Return minutes elapsed if all oranges rotted, else return -1</li></ol><p><strong>Time Complexity:</strong> O(m × n) - visit each cell at most once</p><p><strong>Space Complexity:</strong> O(m × n) - queue can hold all cells in worst case</p><p><strong>Key Insights:</strong></p><ul><li>Multi-source BFS: start from all rotten oranges at once</li><li>Each BFS level represents one minute passing</li><li>Track fresh orange count to detect impossible cases</li><li>Use queue to process oranges level by level</li><li>Return -1 if fresh oranges remain after BFS completes</li></ul>",
+  "solution_code": "def orangesRotting(grid):\n    from collections import deque\n    \n    if not grid or not grid[0]:\n        return -1\n    \n    rows, cols = len(grid), len(grid[0])\n    queue = deque()\n    fresh_count = 0\n    minutes = 0\n    \n    # Count fresh oranges and collect rotten oranges\n    for r in range(rows):\n        for c in range(cols):\n            if grid[r][c] == 1:\n                fresh_count += 1\n            elif grid[r][c] == 2:\n                queue.append((r, c))\n    \n    # If no fresh oranges, no time needed\n    if fresh_count == 0:\n        return 0\n    \n    # Directions: up, down, left, right\n    directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]\n    \n    # BFS to rot oranges level by level\n    while queue and fresh_count > 0:\n        minutes += 1\n        \n        # Process all oranges at current level (current minute)\n        for _ in range(len(queue)):\n            r, c = queue.popleft()\n            \n            # Check all 4 adjacent cells\n            for dr, dc in directions:\n                nr, nc = r + dr, c + dc\n                \n                # If adjacent cell is a fresh orange\n                if 0 <= nr < rows and 0 <= nc < cols and grid[nr][nc] == 1:\n                    grid[nr][nc] = 2\n                    fresh_count -= 1\n                    queue.append((nr, nc))\n    \n    # Return minutes if all oranges rotted, else -1\n    return minutes if fresh_count == 0 else -1",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for orangesRotting function\"\"\"\n    # Deep copy the grid to avoid modifying the test case\n    import copy\n    grid_copy = copy.deepcopy(test_case_input['grid'])\n    return (grid_copy,)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the rotting oranges result\"\"\"\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "grid": [
+          [2, 1, 1],
+          [1, 1, 0],
+          [0, 1, 1]
+        ]
+      },
+      "output": 4
+    },
+    {
+      "id": 2,
+      "input": {
+        "grid": [
+          [2, 1, 1],
+          [0, 1, 1],
+          [1, 0, 1]
+        ]
+      },
+      "output": -1
+    },
+    {
+      "id": 3,
+      "input": {
+        "grid": [
+          [0, 2]
+        ]
+      },
+      "output": 0
+    },
+    {
+      "id": 4,
+      "input": {
+        "grid": [
+          [2, 2],
+          [1, 1],
+          [0, 0],
+          [2, 1]
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 5,
+      "input": {
+        "grid": [
+          [0, 0, 0],
+          [0, 0, 0],
+          [0, 0, 0]
+        ]
+      },
+      "output": 0
+    },
+    {
+      "id": 6,
+      "input": {
+        "grid": [
+          [1, 1, 1],
+          [1, 1, 1],
+          [1, 1, 1]
+        ]
+      },
+      "output": -1
+    },
+    {
+      "id": 7,
+      "input": {
+        "grid": [
+          [2]
+        ]
+      },
+      "output": 0
+    },
+    {
+      "id": 8,
+      "input": {
+        "grid": [
+          [1]
+        ]
+      },
+      "output": -1
+    },
+    {
+      "id": 9,
+      "input": {
+        "grid": [
+          [2, 1, 1, 1, 1],
+          [1, 1, 1, 1, 1],
+          [1, 1, 1, 1, 2]
+        ]
+      },
+      "output": 3
+    }
+  ]
+}

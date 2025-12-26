@@ -72,7 +72,34 @@ export class SidebarComponent implements OnInit {
       });
     }
 
+    // Sort by difficulty first, then by tags
+    result = this.sortQuestions(result);
+
     this.filteredQuestions = result;
+  }
+
+  private sortQuestions(questions: QuestionSearchResult[]): QuestionSearchResult[] {
+    const difficultyOrder: { [key: string]: number } = {
+      'easy': 1,
+      'medium': 2,
+      'hard': 3
+    };
+
+    return questions.sort((a, b) => {
+      // First sort by difficulty
+      const diffA = difficultyOrder[a.difficulty.toLowerCase()] || 999;
+      const diffB = difficultyOrder[b.difficulty.toLowerCase()] || 999;
+
+      if (diffA !== diffB) {
+        return diffA - diffB;
+      }
+
+      // Then sort by first tag alphabetically
+      const tagA = a.tags[0]?.toLowerCase() || '';
+      const tagB = b.tags[0]?.toLowerCase() || '';
+
+      return tagA.localeCompare(tagB);
+    });
   }
 
   toggleDifficulty(difficulty: string): void {

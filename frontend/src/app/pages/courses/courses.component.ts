@@ -34,7 +34,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
     this.courseSearchService.isIndexLoaded().pipe(takeUntil(this.destroy$)).subscribe(loaded => {
       if (loaded) {
         this.allCourses = this.courseSearchService.getAllCourses();
-        this.displayResults = this.allCourses;
+        this.displayResults = this.getSortedCourses(this.allCourses);
       }
     });
 
@@ -90,6 +90,9 @@ export class CoursesComponent implements OnInit, OnDestroy {
       this.favoritesService.removeFavorite(course.filename).pipe(takeUntil(this.destroy$)).subscribe({
         next: () => {
           this.updateFavoriteCourses();
+          if (!this.showingFavorites) {
+            this.displayResults = this.getSortedCourses(this.allCourses);
+          }
         },
         error: (err) => {
           console.error('Error removing favorite:', err);
@@ -99,6 +102,9 @@ export class CoursesComponent implements OnInit, OnDestroy {
       this.favoritesService.addFavorite(course.filename).pipe(takeUntil(this.destroy$)).subscribe({
         next: () => {
           this.updateFavoriteCourses();
+          if (!this.showingFavorites) {
+            this.displayResults = this.getSortedCourses(this.allCourses);
+          }
         },
         error: (err) => {
           console.error('Error adding favorite:', err);
@@ -116,7 +122,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
   showAllCourses() {
     this.showingFavorites = false;
     this.searchTerm = '';
-    this.displayResults = this.allCourses;
+    this.displayResults = this.getSortedCourses(this.allCourses);
   }
 
   private updateFavoriteCourses() {
@@ -166,5 +172,20 @@ export class CoursesComponent implements OnInit, OnDestroy {
       return 'No favorites match your search. Try a different search term.';
     }
     return 'No courses match your search. Try a different search term.';
+  }
+
+  private getSortedCourses(courses: CourseSearchResult[]): CourseSearchResult[] {
+    const favoriteFilenames = this.favoritesService.getFavoritesSync();
+    
+    // Separate into favorited and non-favorited
+    const favorited = courses.filter(c => favoriteFilenames.includes(c.filename));
+    const nonFavorited = courses.filter(c => !favoriteFilenames.includes(c.filename));
+    
+    // Sort each group alphabetically by title
+    favorited.sort((a, b) => a.title.localeCompare(b.title));
+    nonFavorited.sort((a, b) => a.title.localeCompare(b.title));
+    
+    // Return favorited first, then non-favorited
+    return [...favorited, ...nonFavorited];
   }
 }

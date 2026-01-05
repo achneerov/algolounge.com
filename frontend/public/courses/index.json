@@ -3,6 +3,7 @@
     {
       "filename": "algotimefall2025",
       "title": "AlgoTime Fall 2025",
+      "description": "Weekly coding challenges reviewed in live sessions. Updated every week with new problems to sharpen your skills.",
       "keywords": [
         "algorithms",
         "data structures",
@@ -12,11 +13,16 @@
         "comprehensive",
         "progressive learning",
         "competitive programming"
-      ]
+      ],
+      "metadata": {
+        "type": "weekly",
+        "badge": "Updated weekly"
+      }
     },
     {
       "filename": "helloworld2025",
       "title": "Hello World 2025",
+      "description": "Competition problems from the SCS Hello World 2025 event. Perfect for beginners starting their coding journey.",
       "keywords": [
         "beginner",
         "tutorial",
@@ -25,9 +31,13 @@
         "progressive learning",
         "competitive programming",
         "interview prep"
-      ]
+      ],
+      "metadata": {
+        "type": "competition",
+        "badge": "Competition • Beginner friendly"
+      }
     }
   ],
-  "lastUpdated": "2025-12-26T18:28:32.087Z",
+  "lastUpdated": "2025-01-05T00:00:00.000Z",
   "totalCourses": 2
 }

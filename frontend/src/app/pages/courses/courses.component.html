@@ -56,7 +56,7 @@
   
   <!-- Course Cards Grid -->
   <div class="courses-grid" *ngIf="displayResults.length > 0">
-    <div *ngFor="let course of displayResults" class="course-card" [class]="getCourseType(course)" (click)="onSelect(course)">
+    <div *ngFor="let course of displayResults" class="course-card" (click)="onSelect(course)">
       <div class="card-header">
         <h3>{{ course.title }}</h3>
         <button

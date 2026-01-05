@@ -275,7 +275,7 @@ h1 {
   }
 
   &.completed {
-    border-left: 4px solid var(--color-success);
+    border: 2px solid var(--color-success);
   }
 }
 
@@ -344,6 +344,13 @@ h1 {
   &:active {
     transform: scale(0.95);
   }
+}
+
+.link-icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
 }
 
 .completion-check {

@@ -18,7 +18,21 @@
   }
 }
 
-// Header Section
+// Top Navigation Bar
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $spacing-xl;
+  margin-bottom: $spacing-2xl;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: $spacing-lg;
+  }
+}
+
+// Header Section (now below nav)
 .page-header {
   text-align: center;
   margin-bottom: $spacing-3xl;
@@ -29,6 +43,7 @@
     color: var(--color-text-primary);
     margin: 0 0 $spacing-md 0;
     line-height: 1.2;
+    letter-spacing: 0.05em;
 
     @media (max-width: 768px) {
       font-size: $font-size-4xl;
@@ -50,15 +65,13 @@
   }
 }
 
-// Tabs
+// Tabs (in top nav)
 .tabs {
   display: flex;
   gap: $spacing-md;
-  margin-bottom: $spacing-xl;
-  justify-content: center;
-  position: relative;
 
   @media (max-width: 768px) {
+    width: 100%;
     justify-content: stretch;
   }
 }
@@ -75,6 +88,7 @@
   transition: all $transition-base;
   position: relative;
   overflow: hidden;
+  white-space: nowrap;
 
   @media (max-width: 768px) {
     flex: 1;
@@ -109,18 +123,16 @@
   }
 }
 
-// Search
-.search-section {
-  margin-bottom: $spacing-2xl;
-}
-
+// Search (in top nav)
 .search-container {
   display: flex;
-  justify-content: center;
   align-items: center;
   position: relative;
-  margin: 0 auto;
-  max-width: 600px;
+  width: 400px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 }
 
 .search-icon {
@@ -133,7 +145,6 @@
 
 .search-input {
   width: 100%;
-  max-width: 600px;
   padding: $spacing-md $spacing-lg;
   padding-left: $spacing-3xl;
   padding-right: $spacing-3xl;
@@ -186,8 +197,12 @@
 // Course Cards Grid
 .courses-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: $spacing-xl;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;

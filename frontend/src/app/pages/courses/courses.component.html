@@ -1,30 +1,25 @@
 <div class="courses-page">
-  <!-- Header -->
-  <header class="page-header">
-    <h1>Courses</h1>
-    <p class="subtitle">Structured learning paths to master algorithms and data structures</p>
-  </header>
-  
-  <!-- Tabs -->
-  <div class="tabs">
-    <button 
-      class="tab-btn" 
-      [class.active]="!showingFavorites"
-      (click)="showAllCourses()"
-    >
-      All Courses
-    </button>
-    <button 
-      class="tab-btn" 
-      [class.active]="showingFavorites"
-      (click)="showFavorites()"
-    >
-      Favorites ({{ favoriteCourses.length }})
-    </button>
-  </div>
-  
-  <!-- Search -->
-  <div class="search-section">
+  <!-- Top Navigation Bar -->
+  <div class="top-nav">
+    <!-- Tabs on Left -->
+    <div class="tabs">
+      <button 
+        class="tab-btn" 
+        [class.active]="!showingFavorites"
+        (click)="showAllCourses()"
+      >
+        All Courses
+      </button>
+      <button 
+        class="tab-btn" 
+        [class.active]="showingFavorites"
+        (click)="showFavorites()"
+      >
+        Favorites ({{ favoriteCourses.length }})
+      </button>
+    </div>
+
+    <!-- Search on Right -->
     <div class="search-container">
       <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="11" cy="11" r="8"/>
@@ -33,7 +28,7 @@
       <input 
         type="text" 
         class="search-input"
-        [placeholder]="showingFavorites ? 'Search favorites...' : 'Search courses...'"
+        [placeholder]="showingFavorites ? 'Search favorites...' : 'Search academy...'"
         [(ngModel)]="searchTerm"
         (input)="onSearchChange($event)"
       />
@@ -49,10 +44,18 @@
         </svg>
       </button>
     </div>
-    <p class="search-count" *ngIf="searchTerm || showingFavorites">
-      {{ getSearchResultText() }}
-    </p>
   </div>
+
+  <!-- Result Count -->
+  <p class="search-count" *ngIf="searchTerm || showingFavorites">
+    {{ getSearchResultText() }}
+  </p>
+  
+  <!-- Page Header -->
+  <header class="page-header">
+    <h1>ACADEMY</h1>
+    <p class="subtitle">Structured learning paths to master algorithms and data structures</p>
+  </header>
   
   <!-- Course Cards Grid -->
   <div class="courses-grid" *ngIf="displayResults.length > 0">

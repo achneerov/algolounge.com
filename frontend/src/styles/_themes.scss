@@ -39,46 +39,7 @@
   --code-variable: #EA580C;
 }
 
-// Dark theme
-html.dark-mode,
-html:not(.light-mode) {
-  @media (prefers-color-scheme: dark) {
-    --color-primary: #{$dark-warm-blue};
-    --color-primary-dark: #{$dark-navy};
-    --color-accent: #{$light-sunset-gold};
-    --color-text-primary: #{$light-cloud-white};
-    --color-text-secondary: #{$dark-slate};
-    --color-bg-primary: #{$dark-surface};
-    --color-bg-surface: #{$dark-charcoal};
-    --color-border: #{$dark-border};
-
-    // Semantic colors (adjusted for dark mode)
-    --color-success: #34D399;
-    --color-warning: #FBBF24;
-    --color-error: #F87171;
-    --color-info: #60A5FA;
-
-    // Semantic backgrounds (dark mode)
-    --color-success-bg: #064E3B;
-    --color-error-bg: #7F1D1D;
-    --color-warning-bg: #78350F;
-    --color-info-bg: #1E3A8A;
-
-    // Secondary background (dark mode)
-    --color-bg-secondary: #1E293B;
-
-    // Code editor colors (dark)
-    --code-bg: #1E293B;
-    --code-text: #E2E8F0;
-    --code-comment: #94A3B8;
-    --code-keyword: #38BDF8;
-    --code-function: #A78BFA;
-    --code-string: #34D399;
-    --code-number: #FB923C;
-    --code-variable: #FB7185;
-  }
-}
-
+// Explicit dark mode class
 // Force dark mode when class is applied
 html.dark-mode {
   --color-primary: #{$dark-warm-blue};
@@ -143,6 +104,41 @@ html.light-mode {
   --code-string: #059669;
   --code-number: #DC2626;
   --code-variable: #EA580C;
+}
+
+// System preference: Apply dark theme when user hasn't explicitly chosen and OS prefers dark
+@media (prefers-color-scheme: dark) {
+  html:not(.light-mode):not(.dark-mode) {
+    --color-primary: #{$dark-warm-blue};
+    --color-primary-dark: #{$dark-navy};
+    --color-accent: #{$light-sunset-gold};
+    --color-text-primary: #{$light-cloud-white};
+    --color-text-secondary: #{$dark-slate};
+    --color-bg-primary: #{$dark-surface};
+    --color-bg-surface: #{$dark-charcoal};
+    --color-border: #{$dark-border};
+
+    --color-success: #34D399;
+    --color-warning: #FBBF24;
+    --color-error: #F87171;
+    --color-info: #60A5FA;
+
+    --color-success-bg: #064E3B;
+    --color-error-bg: #7F1D1D;
+    --color-warning-bg: #78350F;
+    --color-info-bg: #1E3A8A;
+
+    --color-bg-secondary: #1E293B;
+
+    --code-bg: #1E293B;
+    --code-text: #E2E8F0;
+    --code-comment: #94A3B8;
+    --code-keyword: #38BDF8;
+    --code-function: #A78BFA;
+    --code-string: #34D399;
+    --code-number: #FB923C;
+    --code-variable: #FB7185;
+  }
 }
 
 // Smooth theme transitions

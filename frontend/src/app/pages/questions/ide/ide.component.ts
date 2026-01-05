@@ -141,7 +141,11 @@ export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   ngAfterViewInit() {
-    this.initEditor();
+    // Wait for next tick to ensure theme class is applied to <html> element
+    // This prevents race condition where editor initializes before theme service applies CSS classes
+    setTimeout(() => {
+      this.initEditor();
+    }, 0);
   }
 
   ngOnDestroy() {

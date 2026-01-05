@@ -1,7 +1,7 @@
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { isPlatformBrowser } from '@angular/common';
 import { GlobalHeaderComponent } from './components/general/global-header/global-header.component';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -9,32 +9,9 @@ import { GlobalHeaderComponent } from './components/general/global-header/global
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'algolounge';
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
-
-  ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      this.setupDarkMode();
-    }
-  }
-
-  private setupDarkMode(): void {
-    const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    
-    const updateDarkMode = (e: MediaQueryListEvent | MediaQueryList) => {
-      if (e.matches) {
-        document.documentElement.classList.add('dark-mode');
-      } else {
-        document.documentElement.classList.remove('dark-mode');
-      }
-    };
-
-    // Set initial state
-    updateDarkMode(darkModeQuery);
-    
-    // Listen for changes
-    darkModeQuery.addEventListener('change', updateDarkMode);
-  }
+  // Inject ThemeService to ensure it initializes early and applies saved theme preference
+  private themeService = inject(ThemeService);
 }

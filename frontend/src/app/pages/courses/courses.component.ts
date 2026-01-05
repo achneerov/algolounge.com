@@ -2,11 +2,17 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { CourseSearchService, CourseSearchResult } from '../../services/course-search.service';
 import { FavoritesService } from '../../services/favorites.service';
 import { AuthService } from '../../services/auth.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+
+interface CourseStats {
+  questionCount: number;
+  categoryCount: number;
+}
 
 @Component({
   selector: 'app-courses',
@@ -20,13 +26,15 @@ export class CoursesComponent implements OnInit, OnDestroy {
   allCourses: CourseSearchResult[] = [];
   favoriteCourses: CourseSearchResult[] = [];
   showingFavorites = false;
+  courseStats: Map<string, CourseStats> = new Map();
   private destroy$ = new Subject<void>();
 
   constructor(
     private courseSearchService: CourseSearchService,
     private favoritesService: FavoritesService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) {}
 
   ngOnInit() {
@@ -35,6 +43,11 @@ export class CoursesComponent implements OnInit, OnDestroy {
       if (loaded) {
         this.allCourses = this.courseSearchService.getAllCourses();
         this.displayResults = this.getSortedCourses(this.allCourses);
+        
+        // Load stats for each course
+        this.allCourses.forEach(course => {
+          this.loadCourseStats(course.filename);
+        });
       }
     });
 
@@ -67,6 +80,29 @@ export class CoursesComponent implements OnInit, OnDestroy {
       );
     } else {
       this.displayResults = this.courseSearchService.searchCourses(query);
+    }
+  }
+
+  clearSearch() {
+    this.searchTerm = '';
+    if (this.showingFavorites) {
+      this.displayResults = this.favoriteCourses;
+    } else {
+      this.displayResults = this.getSortedCourses(this.allCourses);
+    }
+  }
+
+  getSearchResultText(): string {
+    if (this.showingFavorites) {
+      if (this.searchTerm) {
+        return `Showing ${this.displayResults.length} of ${this.favoriteCourses.length} favorites`;
+      }
+      return `${this.favoriteCourses.length} ${this.favoriteCourses.length === 1 ? 'favorite' : 'favorites'}`;
+    } else {
+      if (this.searchTerm) {
+        return `Showing ${this.displayResults.length} of ${this.allCourses.length} courses`;
+      }
+      return `${this.allCourses.length} ${this.allCourses.length === 1 ? 'course' : 'courses'}`;
     }
   }
 
@@ -161,15 +197,21 @@ export class CoursesComponent implements OnInit, OnDestroy {
     if (this.showingFavorites && this.favoriteCourses.length > 0) {
       return 'No Matches Found';
     }
+    if (this.searchTerm) {
+      return `No results for "${this.searchTerm}"`;
+    }
     return 'No Courses Found';
   }
 
   getEmptyStateMessage(): string {
     if (this.showingFavorites && this.favoriteCourses.length === 0) {
-      return 'Add courses to your favorites by clicking the heart icon. Your favorited courses will appear here for quick access.';
+      return 'Start building your personalized learning path by adding courses to your favorites. Click the heart icon on any course to get started.';
     }
     if (this.showingFavorites && this.favoriteCourses.length > 0) {
-      return 'No favorites match your search. Try a different search term.';
+      return 'No favorites match your search. Try a different search term or clear the search to see all your favorites.';
+    }
+    if (this.searchTerm) {
+      return 'Try adjusting your search term or browse all available courses.';
     }
     return 'No courses match your search. Try a different search term.';
   }
@@ -187,5 +229,52 @@ export class CoursesComponent implements OnInit, OnDestroy {
     
     // Return favorited first, then non-favorited
     return [...favorited, ...nonFavorited];
+  }
+
+  private loadCourseStats(filename: string) {
+    this.http.get<any>(`/courses/${filename}.json`).pipe(takeUntil(this.destroy$)).subscribe({
+      next: (data) => {
+        if (data.units) {
+          const units = Object.values(data.units);
+          const categoryCount = units.length;
+          const questionCount = units.reduce((total: number, unit: any) => {
+            return total + (unit.questions?.length || 0);
+          }, 0);
+
+          this.courseStats.set(filename, { questionCount, categoryCount });
+        }
+      },
+      error: (err) => {
+        console.error(`Error loading stats for ${filename}:`, err);
+      }
+    });
+  }
+
+  getCourseType(course: CourseSearchResult): string {
+    const typeMap: { [key: string]: string } = {
+      'algotimefall2025': 'weekly',
+      'helloworld2025': 'competition',
+      'foundations': 'structured'
+    };
+    return typeMap[course.filename] || 'structured';
+  }
+
+  getCourseStats(course: CourseSearchResult): string {
+    const stats = this.courseStats.get(course.filename);
+    if (!stats) return '';
+
+    const { questionCount, categoryCount } = stats;
+    const unitLabel = this.getCourseType(course) === 'weekly' ? 'weeks' : 'categories';
+    
+    return `${questionCount} questions • ${categoryCount} ${unitLabel}`;
+  }
+
+  getBadgeText(course: CourseSearchResult): string {
+    const badgeMap: { [key: string]: string } = {
+      'algotimefall2025': 'Weekly Challenges',
+      'helloworld2025': 'Competition',
+      'foundations': 'Structured Learning'
+    };
+    return badgeMap[course.filename] || 'Interactive Course';
   }
 }

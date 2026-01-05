@@ -36,8 +36,27 @@
         "type": "competition",
         "badge": "Competition • Beginner friendly"
       }
+    },
+    {
+      "filename": "foundations",
+      "title": "AlgoLounge Foundations",
+      "description": "Master essential algorithms and data structures through curated problems. Progress from fundamentals to advanced topics with a proven learning path.",
+      "keywords": [
+        "foundations",
+        "interview prep",
+        "algorithms",
+        "data structures",
+        "essential",
+        "neetcode",
+        "leetcode",
+        "comprehensive"
+      ],
+      "metadata": {
+        "type": "structured",
+        "badge": "Structured Learning Path"
+      }
     }
   ],
   "lastUpdated": "2025-01-05T00:00:00.000Z",
-  "totalCourses": 2
+  "totalCourses": 3
 }

@@ -130,7 +130,8 @@ export class CoursesComponent implements OnInit, OnDestroy {
     // Map course filenames to descriptions
     const descriptions: { [key: string]: string } = {
       'algotimefall2025': 'Weekly coding challenges reviewed in live sessions. Updated every week with new problems to sharpen your skills.',
-      'helloworld2025': 'Competition problems from the SCS Hello World 2025 event. Perfect for beginners starting their coding journey.'
+      'helloworld2025': 'Competition problems from the SCS Hello World 2025 event. Perfect for beginners starting their coding journey.',
+      'foundations': 'Master essential algorithms and data structures through curated problems. Progress from fundamentals to advanced topics with a proven learning path.'
     };
 
     return descriptions[course.filename] || 'Explore curated programming challenges and structured learning materials.';
@@ -140,7 +141,8 @@ export class CoursesComponent implements OnInit, OnDestroy {
     // Map course filenames to metadata
     const metadata: { [key: string]: string } = {
       'algotimefall2025': 'Updated weekly',
-      'helloworld2025': 'Competition • Beginner friendly'
+      'helloworld2025': 'Competition • Beginner friendly',
+      'foundations': 'Structured Learning Path • 17 categories'
     };
 
     return metadata[course.filename] || 'Interactive course';

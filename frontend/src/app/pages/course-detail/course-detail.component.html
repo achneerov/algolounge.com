@@ -1,31 +1,67 @@
 <div class="course-detail-container">
   <div class="course-header">
     <div class="header-top">
-      <button class="back-btn" (click)="goBack()">← Back to Courses</button>
+      <button class="back-btn" (click)="goBack()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"/>
+          <polyline points="12 19 5 12 12 5"/>
+        </svg>
+        Back to Courses
+      </button>
       <button
-        class="favorite-button"
+        class="favorite-btn"
         [class.favorited]="isFavorite()"
         (click)="toggleFavorite()"
         *ngIf="course"
+        [attr.aria-label]="isFavorite() ? 'Remove from favorites' : 'Add to favorites'"
       >
-        {{ isFavorite() ? '★' : '☆' }}
+        <svg width="24" height="24" viewBox="0 0 24 24" [attr.fill]="isFavorite() ? 'currentColor' : 'none'" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
       </button>
     </div>
     <h1 *ngIf="course">{{ course.course_name }}</h1>
     <p *ngIf="course" class="course-description">{{ course.course_description }}</p>
+
+    <!-- Overall Progress -->
+    <div class="overall-progress" *ngIf="course && getTotalQuestions() > 0">
+      <div class="progress-header">
+        <span class="progress-label">Overall Progress</span>
+        <span class="progress-text">{{ getCompletedCount() }}/{{ getTotalQuestions() }} completed ({{ getOverallProgress() }}%)</span>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar-fill" [style.width.%]="getOverallProgress()"></div>
+      </div>
+    </div>
   </div>
   
   <div class="sections-container" *ngIf="courseSections.length > 0">
     <div *ngFor="let section of courseSections" class="course-section">
-      <div class="section-header">
-        <h2 class="section-title-clickable" (click)="onUnitClick(section.unitKey)">
-          {{ section.title }}
-          <span class="unit-link-icon">🔗</span>
-        </h2>
+      <div class="section-header" (click)="toggleSection(section.unitKey)">
+        <div class="section-title-row">
+          <h2>
+            <span class="section-number">{{ getSectionNumber(section) }}.</span>
+            {{ section.title }}
+            <span class="question-count" *ngIf="section.questions.length > 0">({{ section.questions.length }} questions)</span>
+          </h2>
+          <svg class="chevron" [class.expanded]="isSectionExpanded(section.unitKey)" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
         <p *ngIf="section.description" class="section-description">{{ section.description }}</p>
+        
+        <!-- Section Progress -->
+        <div class="section-progress" *ngIf="section.questions.length > 0">
+          <div class="progress-bar-mini">
+            <div class="progress-fill-mini" 
+                 [style.width.%]="getSectionProgress(section)"
+                 [class.completed]="getSectionProgress(section) === 100"></div>
+          </div>
+          <span class="section-progress-text">{{ getSectionCompletedCount(section) }}/{{ section.questions.length }} completed</span>
+        </div>
       </div>
       
-      <div class="questions-list" *ngIf="section.questions.length > 0">
+      <div class="questions-list" *ngIf="isSectionExpanded(section.unitKey) && section.questions.length > 0">
         <div
           *ngFor="let question of section.questions"
           class="question-item"
@@ -58,7 +94,9 @@
             >
               {{ urlItem.visibleString || '🔗' }}
             </button>
-            <span *ngIf="isQuestionCompleted(question.filename)" class="completion-check">✅</span>
+            <svg *ngIf="isQuestionCompleted(question.filename)" class="completion-check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
           </div>
         </div>
       </div>

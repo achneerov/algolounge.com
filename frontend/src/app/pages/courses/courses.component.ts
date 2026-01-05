@@ -125,4 +125,44 @@ export class CoursesComponent implements OnInit, OnDestroy {
       favoriteFilenames.includes(course.filename)
     );
   }
+
+  getCourseDescription(course: CourseSearchResult): string {
+    // Map course filenames to descriptions
+    const descriptions: { [key: string]: string } = {
+      'algotimefall2025': 'Weekly coding challenges reviewed in live sessions. Updated every week with new problems to sharpen your skills.',
+      'helloworld2025': 'Competition problems from the SCS Hello World 2025 event. Perfect for beginners starting their coding journey.'
+    };
+
+    return descriptions[course.filename] || 'Explore curated programming challenges and structured learning materials.';
+  }
+
+  getCourseMetadata(course: CourseSearchResult): string {
+    // Map course filenames to metadata
+    const metadata: { [key: string]: string } = {
+      'algotimefall2025': 'Updated weekly',
+      'helloworld2025': 'Competition • Beginner friendly'
+    };
+
+    return metadata[course.filename] || 'Interactive course';
+  }
+
+  getEmptyStateTitle(): string {
+    if (this.showingFavorites && this.favoriteCourses.length === 0) {
+      return 'No Favorites Yet';
+    }
+    if (this.showingFavorites && this.favoriteCourses.length > 0) {
+      return 'No Matches Found';
+    }
+    return 'No Courses Found';
+  }
+
+  getEmptyStateMessage(): string {
+    if (this.showingFavorites && this.favoriteCourses.length === 0) {
+      return 'Add courses to your favorites by clicking the heart icon. Your favorited courses will appear here for quick access.';
+    }
+    if (this.showingFavorites && this.favoriteCourses.length > 0) {
+      return 'No favorites match your search. Try a different search term.';
+    }
+    return 'No courses match your search. Try a different search term.';
+  }
 }

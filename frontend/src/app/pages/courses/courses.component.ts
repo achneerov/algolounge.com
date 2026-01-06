@@ -206,11 +206,17 @@ export class CoursesComponent implements OnInit, OnDestroy {
   private loadCourseData(course: CourseSearchResult) {
     this.http.get<any>(`/courses/${course.filename}.json`).pipe(takeUntil(this.destroy$)).subscribe({
       next: (data) => {
+        // Find the course in the canonical list to ensure we update the correct reference
+        const courseToUpdate = this.allCourses.find(c => c.filename === course.filename);
+        if (!courseToUpdate) {
+          return;
+        }
+        
         // Load description from course_description field
-        course.description = data.course_description;
+        courseToUpdate.description = data.course_description;
         
         // Load badge
-        course.badge = data.badge;
+        courseToUpdate.badge = data.badge;
         
         // Calculate stats dynamically
         if (data.units) {
@@ -220,7 +226,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
             return total + (unit.questions?.length || 0);
           }, 0);
           
-          course.stats = `${questionCount} questions • ${categoryCount} stages`;
+          courseToUpdate.stats = `${questionCount} questions • ${categoryCount} stages`;
         }
       },
       error: (err) => {

@@ -37,11 +37,6 @@ export class CoursesComponent implements OnInit, OnDestroy {
       if (loaded) {
         this.allCourses = this.courseSearchService.getAllCourses();
         this.displayResults = this.getSortedCourses(this.allCourses);
-        
-        // Load full data for each course (description, badge, stats)
-        this.allCourses.forEach(course => {
-          this.loadCourseData(course);
-        });
       }
     });
 
@@ -201,37 +196,5 @@ export class CoursesComponent implements OnInit, OnDestroy {
     
     // Return favorited first, then non-favorited
     return [...favorited, ...nonFavorited];
-  }
-
-  private loadCourseData(course: CourseSearchResult) {
-    this.http.get<any>(`/courses/${course.filename}.json`).pipe(takeUntil(this.destroy$)).subscribe({
-      next: (data) => {
-        // Find the course in the canonical list to ensure we update the correct reference
-        const courseToUpdate = this.allCourses.find(c => c.filename === course.filename);
-        if (!courseToUpdate) {
-          return;
-        }
-        
-        // Load description from course_description field
-        courseToUpdate.description = data.course_description;
-        
-        // Load badge
-        courseToUpdate.badge = data.badge;
-        
-        // Calculate stats dynamically
-        if (data.units) {
-          const units = Object.values(data.units);
-          const categoryCount = units.length;
-          const questionCount = units.reduce((total: number, unit: any) => {
-            return total + (unit.questions?.length || 0);
-          }, 0);
-          
-          courseToUpdate.stats = `${questionCount} questions • ${categoryCount} stages`;
-        }
-      },
-      error: (err) => {
-        console.error(`Error loading course data for ${course.filename}:`, err);
-      }
-    });
   }
 }

@@ -12,20 +12,10 @@
         "comprehensive",
         "progressive learning",
         "competitive programming"
-      ]
-    },
-    {
-      "filename": "helloworld2025",
-      "title": "Hello World 2025",
-      "keywords": [
-        "beginner",
-        "tutorial",
-        "algorithms",
-        "data structures",
-        "progressive learning",
-        "competitive programming",
-        "interview prep"
-      ]
+      ],
+      "description": "Welcome to Algotime, we look over cool coding questions here.",
+      "badge": "Weekly Challenges",
+      "stats": "85 questions • 16 stages"
     },
     {
       "filename": "foundations",
@@ -39,9 +29,28 @@
         "neetcode",
         "leetcode",
         "comprehensive"
-      ]
+      ],
+      "description": "Master essential algorithms and data structures through curated problems. Progress from fundamentals to advanced topics with a proven learning path covering 17 key categories.",
+      "badge": "Structured Learning Path",
+      "stats": "96 questions • 17 stages"
+    },
+    {
+      "filename": "helloworld2025",
+      "title": "Hello World 2025",
+      "keywords": [
+        "beginner",
+        "tutorial",
+        "algorithms",
+        "data structures",
+        "progressive learning",
+        "competitive programming",
+        "interview prep"
+      ],
+      "description": "Problems from the SCS Hello World 2025 competition.",
+      "badge": "Competition",
+      "stats": "23 questions • 5 stages"
     }
   ],
-  "lastUpdated": "2025-01-05T00:00:00.000Z",
+  "lastUpdated": "2026-01-06T22:36:28.108Z",
   "totalCourses": 3
 }

@@ -9,11 +9,6 @@ import { AuthService } from '../../services/auth.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-interface CourseStats {
-  questionCount: number;
-  categoryCount: number;
-}
-
 @Component({
   selector: 'app-courses',
   imports: [CommonModule, FormsModule],
@@ -26,7 +21,6 @@ export class CoursesComponent implements OnInit, OnDestroy {
   allCourses: CourseSearchResult[] = [];
   favoriteCourses: CourseSearchResult[] = [];
   showingFavorites = false;
-  courseStats: Map<string, CourseStats> = new Map();
   private destroy$ = new Subject<void>();
 
   constructor(
@@ -44,9 +38,9 @@ export class CoursesComponent implements OnInit, OnDestroy {
         this.allCourses = this.courseSearchService.getAllCourses();
         this.displayResults = this.getSortedCourses(this.allCourses);
         
-        // Load stats for each course
+        // Load full data for each course (description, badge, stats)
         this.allCourses.forEach(course => {
-          this.loadCourseStats(course.filename);
+          this.loadCourseData(course);
         });
       }
     });
@@ -168,28 +162,6 @@ export class CoursesComponent implements OnInit, OnDestroy {
     );
   }
 
-  getCourseDescription(course: CourseSearchResult): string {
-    // Map course filenames to descriptions
-    const descriptions: { [key: string]: string } = {
-      'algotimefall2025': 'Weekly coding challenges reviewed in live sessions. Updated every week with new problems to sharpen your skills.',
-      'helloworld2025': 'Competition problems from the SCS Hello World 2025 event. Perfect for beginners starting their coding journey.',
-      'foundations': 'Master essential algorithms and data structures through curated problems. Progress from fundamentals to advanced topics with a proven learning path.'
-    };
-
-    return descriptions[course.filename] || 'Explore curated programming challenges and structured learning materials.';
-  }
-
-  getCourseMetadata(course: CourseSearchResult): string {
-    // Map course filenames to metadata
-    const metadata: { [key: string]: string } = {
-      'algotimefall2025': 'Updated weekly',
-      'helloworld2025': 'Competition • Beginner friendly',
-      'foundations': 'Structured Learning Path • 17 categories'
-    };
-
-    return metadata[course.filename] || 'Interactive course';
-  }
-
   getEmptyStateTitle(): string {
     if (this.showingFavorites && this.favoriteCourses.length === 0) {
       return 'No Favorites Yet';
@@ -231,50 +203,29 @@ export class CoursesComponent implements OnInit, OnDestroy {
     return [...favorited, ...nonFavorited];
   }
 
-  private loadCourseStats(filename: string) {
-    this.http.get<any>(`/courses/${filename}.json`).pipe(takeUntil(this.destroy$)).subscribe({
+  private loadCourseData(course: CourseSearchResult) {
+    this.http.get<any>(`/courses/${course.filename}.json`).pipe(takeUntil(this.destroy$)).subscribe({
       next: (data) => {
+        // Load description from course_description field
+        course.description = data.course_description;
+        
+        // Load badge
+        course.badge = data.badge;
+        
+        // Calculate stats dynamically
         if (data.units) {
           const units = Object.values(data.units);
           const categoryCount = units.length;
           const questionCount = units.reduce((total: number, unit: any) => {
             return total + (unit.questions?.length || 0);
           }, 0);
-
-          this.courseStats.set(filename, { questionCount, categoryCount });
+          
+          course.stats = `${questionCount} questions • ${categoryCount} stages`;
         }
       },
       error: (err) => {
-        console.error(`Error loading stats for ${filename}:`, err);
+        console.error(`Error loading course data for ${course.filename}:`, err);
       }
     });
-  }
-
-  getCourseType(course: CourseSearchResult): string {
-    const typeMap: { [key: string]: string } = {
-      'algotimefall2025': 'weekly',
-      'helloworld2025': 'competition',
-      'foundations': 'structured'
-    };
-    return typeMap[course.filename] || 'structured';
-  }
-
-  getCourseStats(course: CourseSearchResult): string {
-    const stats = this.courseStats.get(course.filename);
-    if (!stats) return '';
-
-    const { questionCount, categoryCount } = stats;
-    const unitLabel = this.getCourseType(course) === 'weekly' ? 'weeks' : 'categories';
-    
-    return `${questionCount} questions • ${categoryCount} ${unitLabel}`;
-  }
-
-  getBadgeText(course: CourseSearchResult): string {
-    const badgeMap: { [key: string]: string } = {
-      'algotimefall2025': 'Weekly Challenges',
-      'helloworld2025': 'Competition',
-      'foundations': 'Structured Learning'
-    };
-    return badgeMap[course.filename] || 'Interactive Course';
   }
 }

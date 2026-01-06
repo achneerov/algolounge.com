@@ -7,6 +7,10 @@ export interface CourseSearchResult {
   title: string;
   keywords: string[];
   score: number;
+  // Properties loaded from individual course JSON files:
+  description?: string;
+  badge?: string;
+  stats?: string;
 }
 
 interface CoursesIndex {

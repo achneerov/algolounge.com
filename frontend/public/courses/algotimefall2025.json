@@ -3,6 +3,7 @@
   "course_name": "AlgoTime Fall 2025",
   "course_description": "Welcome to Algotime, we look over cool coding questions here.",
   "keywords": ["algorithms", "data structures", "technical interviews", "problem solving", "fall", "comprehensive", "progressive learning", "competitive programming"],
+  "badge": "Weekly Challenges",
   "units": {
     "week1": {
       "title": "Week 1",

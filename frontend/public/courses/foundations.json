@@ -12,6 +12,7 @@
     "leetcode",
     "comprehensive"
   ],
+  "badge": "Structured Learning Path",
   "units": {
     "arrays_hashing": {
       "title": "Arrays & Hashing",

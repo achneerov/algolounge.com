@@ -7,6 +7,10 @@ export interface CourseSearchResult {
   title: string;
   keywords: string[];
   score: number;
+  // Properties loaded from index.json:
+  description: string;
+  badge: string;
+  stats: string;
 }
 
 interface CoursesIndex {
@@ -14,6 +18,9 @@ interface CoursesIndex {
     filename: string;
     title: string;
     keywords: string[];
+    description: string;
+    badge: string;
+    stats: string;
   }[];
   lastUpdated: string;
   totalCourses: number;

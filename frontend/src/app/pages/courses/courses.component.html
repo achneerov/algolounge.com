@@ -1,54 +1,109 @@
-<div class="courses-container">
-  <div class="courses-header">
-    <h1>Courses</h1>
-    <p>Discover programming courses and tutorials designed to level up your coding skills.</p>
-  </div>
-  
-  <div class="tabs-container">
-    <button 
-      class="tab-button" 
-      [class.active]="!showingFavorites"
-      (click)="showAllCourses()"
-    >
-      All Courses
-    </button>
-    <button 
-      class="tab-button" 
-      [class.active]="showingFavorites"
-      (click)="showFavorites()"
-    >
-      Favorites ({{ favoriteCourses.length }})
-    </button>
-  </div>
-  
-  <div class="search-container">
-    <input 
-      type="text" 
-      class="search-input"
-      [placeholder]="showingFavorites ? 'Search favorites...' : 'Search courses...'"
-      [(ngModel)]="searchTerm"
-      (input)="onSearchChange($event)"
-    />
-  </div>
-  
-  <div class="course-list" *ngIf="displayResults.length > 0">
-    <div *ngFor="let course of displayResults" class="course-item" (click)="onSelect(course)">
-      <div class="course-content">
-        <h3>{{ course.title }}</h3>
-      </div>
-      <button
-        class="favorite-button"
-        [class.favorited]="isFavorite(course)"
-        (click)="toggleFavorite(course, $event)"
+<div class="courses-page">
+  <!-- Top Navigation Bar -->
+  <div class="top-nav">
+    <!-- Tabs on Left -->
+    <div class="tabs">
+      <button 
+        class="tab-btn" 
+        [class.active]="!showingFavorites"
+        (click)="showAllCourses()"
       >
-        {{ isFavorite(course) ? '★' : '☆' }}
+        All Courses
+      </button>
+      <button 
+        class="tab-btn" 
+        [class.active]="showingFavorites"
+        (click)="showFavorites()"
+      >
+        Favorites ({{ favoriteCourses.length }})
+      </button>
+    </div>
+
+    <!-- Search on Right -->
+    <div class="search-container">
+      <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input 
+        type="text" 
+        class="search-input"
+        [placeholder]="showingFavorites ? 'Search favorites...' : 'Search academy...'"
+        [(ngModel)]="searchTerm"
+        (input)="onSearchChange($event)"
+      />
+      <button 
+        *ngIf="searchTerm" 
+        class="clear-btn" 
+        (click)="clearSearch()"
+        aria-label="Clear search"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
       </button>
     </div>
   </div>
+
+  <!-- Result Count -->
+  <p class="search-count" *ngIf="searchTerm || showingFavorites">
+    {{ getSearchResultText() }}
+  </p>
   
-  <div *ngIf="displayResults.length === 0" class="no-results">
-    <p *ngIf="!showingFavorites">No courses found. Try a different search term.</p>
-    <p *ngIf="showingFavorites && favoriteCourses.length === 0">No favorite courses yet. Star some courses to see them here!</p>
-    <p *ngIf="showingFavorites && favoriteCourses.length > 0">No favorites match your search. Try a different term.</p>
+  <!-- Page Header -->
+  <header class="page-header">
+    <h1>ACADEMY</h1>
+    <p class="subtitle">Structured learning paths to master algorithms and data structures</p>
+  </header>
+  
+  <!-- Course Cards Grid -->
+  <div class="courses-grid" *ngIf="displayResults.length > 0">
+    <div *ngFor="let course of displayResults" class="course-card" (click)="onSelect(course)">
+      <div class="card-header">
+        <h3>{{ course.title }}</h3>
+        <button
+          class="favorite-btn"
+          [class.favorited]="isFavorite(course)"
+          (click)="toggleFavorite(course, $event)"
+          [attr.aria-label]="isFavorite(course) ? 'Remove from favorites' : 'Add to favorites'"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" [attr.fill]="isFavorite(course) ? 'currentColor' : 'none'" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </button>
+      </div>
+      <p class="card-description">{{ course.description }}</p>
+      <p class="card-stats" *ngIf="course.stats">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+        </svg>
+        {{ course.stats }}
+      </p>
+      <div class="card-footer">
+        <span class="badge" *ngIf="course.badge">{{ course.badge }}</span>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Empty States -->
+  <div *ngIf="displayResults.length === 0" class="empty-state">
+    <svg *ngIf="!showingFavorites || favoriteCourses.length > 0" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"/>
+      <path d="m21 21-4.35-4.35"/>
+    </svg>
+    <svg *ngIf="showingFavorites && favoriteCourses.length === 0" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+    </svg>
+    <h3>{{ getEmptyStateTitle() }}</h3>
+    <p>{{ getEmptyStateMessage() }}</p>
+    <button 
+      *ngIf="showingFavorites && favoriteCourses.length === 0" 
+      class="btn-primary" 
+      (click)="showAllCourses()"
+    >
+      Browse All Courses
+    </button>
   </div>
 </div>

@@ -65,6 +65,7 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
   courseSections: CourseSection[] = [];
   courseName = '';
   private questionsIndexLoaded = false;
+  expandedSections: Set<string> = new Set();
 
   ngOnInit() {
     // Wait for questions index to load first
@@ -138,6 +139,11 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
     }
     
     this.courseSections = sections;
+
+    // Expand first section by default
+    if (sections.length > 0) {
+      this.expandedSections.add(sections[0].unitKey);
+    }
   }
 
   private extractSectionsFromContainer(container: any, sections: CourseSection[]) {
@@ -271,5 +277,51 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
 
   onUnitClick(unitKey: string) {
     this.router.navigate(['/courses', this.courseName, unitKey]);
+  }
+
+  // Progress tracking methods
+  toggleSection(unitKey: string): void {
+    if (this.expandedSections.has(unitKey)) {
+      this.expandedSections.delete(unitKey);
+    } else {
+      this.expandedSections.add(unitKey);
+    }
+  }
+
+  isSectionExpanded(unitKey: string): boolean {
+    return this.expandedSections.has(unitKey);
+  }
+
+  getOverallProgress(): number {
+    const total = this.getTotalQuestions();
+    const completed = this.getCompletedCount();
+    return total > 0 ? Math.round((completed / total) * 100) : 0;
+  }
+
+  getTotalQuestions(): number {
+    return this.courseSections.reduce((sum, section) => sum + section.questions.length, 0);
+  }
+
+  getCompletedCount(): number {
+    let count = 0;
+    this.courseSections.forEach(section => {
+      section.questions.forEach(q => {
+        if (this.isQuestionCompleted(q.filename)) count++;
+      });
+    });
+    return count;
+  }
+
+  getSectionProgress(section: CourseSection): number {
+    const completed = this.getSectionCompletedCount(section);
+    return section.questions.length > 0 ? Math.round((completed / section.questions.length) * 100) : 0;
+  }
+
+  getSectionCompletedCount(section: CourseSection): number {
+    return section.questions.filter(q => this.isQuestionCompleted(q.filename)).length;
+  }
+
+  getSectionNumber(section: CourseSection): number {
+    return this.courseSections.indexOf(section) + 1;
   }
 }

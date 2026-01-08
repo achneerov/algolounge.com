@@ -150,13 +150,31 @@ function syncCoursesIndex() {
         const title = courseData.course_name || 'Untitled Course';
         const keywords = courseData.keywords || [];
         
+        // Extract description and badge
+        const description = courseData.course_description || '';
+        const badge = courseData.badge || '';
+        
+        // Calculate stats from units
+        let stats = '';
+        if (courseData.units) {
+          const units = Object.values(courseData.units);
+          const categoryCount = units.length;
+          const questionCount = units.reduce((total, unit) => {
+            return total + (unit.questions?.length || 0);
+          }, 0);
+          stats = `${questionCount} questions • ${categoryCount} stages`;
+        }
+        
         courses.push({
           filename: filename,
           title: title,
-          keywords: keywords
+          keywords: keywords,
+          description: description,
+          badge: badge,
+          stats: stats
         });
         
-        console.log(`✅ Processed: ${filename} - "${title}"`);
+        console.log(`✅ Processed: ${filename} - "${title}" ${stats ? `(${stats})` : ''}`);
         
       } catch (error) {
         console.error(`❌ Error processing ${file}:`, error.message);

@@ -1,402 +1,382 @@
+@use '../../../styles/variables' as *;
+
 :host {
   display: block;
-  background: var(--surface-ground, #ffffff);
-  height: 100%;
-}
-
-// Dark mode overrides for host
-:host-context(.dark-mode) {
-  background: var(--surface-ground, #1a1a1a) !important;
-}
-
-@media (prefers-color-scheme: dark) {
-  :host {
-    background: var(--surface-ground, #1a1a1a) !important;
-  }
+  background: var(--color-bg-primary);
+  min-height: 100%;
+  width: 100%;
 }
 
 .course-detail-container {
-  padding: 1rem;
   max-width: 1200px;
   margin: 0 auto;
-  background: transparent;
-  height: 100%;
+  padding: $spacing-3xl $spacing-3xl;
   box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: $spacing-2xl $spacing-lg;
+  }
 }
 
+// Course Header
 .course-header {
-  margin-bottom: 2rem;
-  
-  .header-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-  }
-  
-  .back-btn {
-    background: none;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    color: var(--text-color, #333333);
-    transition: background-color 0.2s ease;
-    
-    &:hover {
-      background: var(--surface-100, #f8f9fa);
-    }
-  }
-  
-  .favorite-button {
-    background: none;
-    border: none;
-    font-size: 1.8rem;
-    cursor: pointer;
-    padding: 0.25rem;
-    color: #ccc;
-    transition: color 0.2s ease, transform 0.1s ease;
-    
-    &:hover {
-      transform: scale(1.1);
-    }
-    
-    &.favorited {
-      color: #ffd700;
-    }
-  }
-  
-  h1 {
-    color: var(--text-color, #333333);
-    margin-bottom: 1rem;
-    font-size: 2rem;
-  }
-  
-  .course-description {
-    color: var(--text-color-secondary, #666666);
-    font-size: 1.1rem;
-    line-height: 1.6;
-  }
+  margin-bottom: $spacing-3xl;
 }
 
-.sections-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.course-section {
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 8px;
-  padding: 1.5rem;
-  background: var(--surface-card, #ffffff);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-}
-
-.section-header {
-  margin-bottom: 1rem;
-  
-  h2 {
-    color: var(--text-color, #333333);
-    margin-bottom: 0.5rem;
-    font-size: 1.3rem;
-  }
-
-  .section-title-clickable {
-    cursor: pointer;
-    transition: color 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-
-    &:hover {
-      color: var(--primary-color, #2196f3);
-    }
-
-    .unit-link-icon {
-      font-size: 0.8rem;
-      opacity: 0.6;
-      transition: opacity 0.2s ease;
-    }
-
-    &:hover .unit-link-icon {
-      opacity: 1;
-    }
-  }
-  
-  .section-description {
-    color: var(--text-color-secondary, #666666);
-    margin: 0;
-    font-size: 0.95rem;
-    line-height: 1.5;
-  }
-}
-
-.questions-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.question-item {
-  background: var(--surface-50, #f8f9fa);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 6px;
-  padding: 0.75rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+.header-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
-  &:hover {
-    background: var(--surface-100, #e9ecef);
-    transform: translateY(-1px);
-    border-color: rgba(0, 0, 0, 0.15);
-  }
-  
-  &.completed {
-    border-left: 4px solid #4caf50;
-  }
-  
-  .question-content {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
+  margin-bottom: $spacing-xl;
+}
 
-    h3 {
-      color: var(--text-color, #333333);
-      margin: 0;
-      font-size: 1rem;
-      font-weight: 500;
-    }
-  }
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  padding: $spacing-md $spacing-lg;
+  border-radius: $radius-lg;
+  cursor: pointer;
+  color: var(--color-text-primary);
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  transition: all $transition-base;
 
-  .tags-container {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .difficulty-tag {
-    display: inline-block;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    min-width: 50px;
-    text-align: center;
+  svg {
     flex-shrink: 0;
   }
 
-  .question-actions {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .url-btn {
-    border-radius: 4px;
-    padding: 0.4rem 0.6rem;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: background-color 0.2s ease, transform 0.1s ease, filter 0.2s ease;
-    text-decoration: none;
-    font-weight: 600;
-
-    &:hover {
-      filter: brightness(1.2);
-      transform: scale(1.05);
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
-  }
-
-  .completion-check {
-    font-size: 1.2rem;
+  &:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
   }
 }
 
+.favorite-btn {
+  background: none;
+  border: none;
+  padding: $spacing-xs;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  transition: all $transition-fast;
+  border-radius: $radius-sm;
+
+  &:hover {
+    transform: scale(1.1);
+    color: var(--color-primary);
+  }
+
+  &.favorited {
+    color: var(--color-accent);
+  }
+
+  svg {
+    display: block;
+  }
+}
+
+h1 {
+  font-size: $font-size-5xl;
+  font-weight: $font-weight-bold;
+  color: var(--color-text-primary);
+  margin: 0 0 $spacing-md 0;
+  line-height: 1.2;
+
+  @media (max-width: 768px) {
+    font-size: $font-size-4xl;
+  }
+}
+
+.course-description {
+  font-size: $font-size-lg;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0 0 $spacing-xl 0;
+}
+
+// Overall Progress
+.overall-progress {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-top: $spacing-xl;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-md;
+  gap: $spacing-md;
+  flex-wrap: wrap;
+}
+
+.progress-label {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text-primary);
+}
+
+.progress-text {
+  font-size: $font-size-sm;
+  color: var(--color-text-secondary);
+}
+
+.progress-bar-container {
+  height: 8px;
+  background: var(--color-bg-secondary);
+  border-radius: $radius-full;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: $radius-full;
+  transition: width $transition-slow;
+}
+
+// Sections
+.sections-container {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+}
+
+.course-section {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+}
+
+.section-header {
+  padding: $spacing-xl;
+  cursor: pointer;
+  transition: background $transition-base;
+  user-select: none;
+
+  &:hover {
+    background: var(--color-bg-secondary);
+  }
+}
+
+.section-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $spacing-md;
+  margin-bottom: $spacing-sm;
+
+  h2 {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-semibold;
+    color: var(--color-text-primary);
+    margin: 0;
+    line-height: 1.3;
+    flex: 1;
+
+    @media (max-width: 768px) {
+      font-size: $font-size-xl;
+    }
+  }
+}
+
+.section-number {
+  color: var(--color-primary);
+  font-weight: $font-weight-bold;
+  margin-right: $spacing-xs;
+}
+
+.question-count {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-regular;
+  color: var(--color-text-secondary);
+  margin-left: $spacing-xs;
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+  transition: transform $transition-base;
+
+  &.expanded {
+    transform: rotate(180deg);
+  }
+}
+
+.section-description {
+  font-size: $font-size-base;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin: 0 0 $spacing-md 0;
+}
+
+// Section Progress
+.section-progress {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.progress-bar-mini {
+  flex: 1;
+  height: 6px;
+  background: var(--color-bg-secondary);
+  border-radius: $radius-full;
+  overflow: hidden;
+}
+
+.progress-fill-mini {
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: $radius-full;
+  transition: width $transition-slow, background $transition-base;
+
+  &.completed {
+    background: var(--color-success);
+  }
+}
+
+.section-progress-text {
+  font-size: $font-size-sm;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+// Questions List
+.questions-list {
+  padding: 0 $spacing-xl $spacing-xl $spacing-xl;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.question-item {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  cursor: pointer;
+  transition: all $transition-base;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $spacing-md;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-sm;
+    border-color: var(--color-primary);
+  }
+
+  &.completed {
+    border: 2px solid var(--color-success);
+  }
+}
+
+.question-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  min-width: 0;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  h3 {
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    color: var(--color-text-primary);
+    margin: 0;
+    line-height: 1.4;
+  }
+}
+
+.tags-container {
+  display: flex;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.difficulty-tag {
+  display: inline-block;
+  padding: $spacing-xs $spacing-md;
+  border-radius: $radius-sm;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 50px;
+  text-align: center;
+}
+
+.question-actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  flex-shrink: 0;
+}
+
+.url-btn {
+  border-radius: $radius-sm;
+  padding: $spacing-sm $spacing-md;
+  cursor: pointer;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  transition: all $transition-fast;
+  border: none;
+
+  &:hover {
+    filter: brightness(1.2);
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.link-icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.completion-check {
+  color: var(--color-success);
+  flex-shrink: 0;
+}
+
+// Empty States
 .no-questions-in-section {
   text-align: center;
-  padding: 1rem;
-  
+  padding: $spacing-xl;
+
   p {
-    color: var(--text-color-secondary, #999999);
-    font-size: 0.9rem;
+    font-size: $font-size-sm;
+    color: var(--color-text-secondary);
     margin: 0;
   }
 }
 
 .no-sections {
   text-align: center;
-  padding: 2rem;
-  
+  padding: $spacing-4xl $spacing-xl;
+
   p {
-    color: var(--text-color-secondary, #666666);
-    font-size: 1.1rem;
-  }
-}
-
-// Dark mode overrides
-:host-context(.dark-mode) {
-  .course-header {
-    .back-btn {
-      color: var(--text-color, #ffffff) !important;
-      border-color: rgba(255, 255, 255, 0.2) !important;
-
-      &:hover {
-        background: var(--surface-300, #444444) !important;
-      }
-    }
-
-    .favorite-button {
-      color: #ccc !important;
-
-      &.favorited {
-        color: #ffd700 !important;
-      }
-    }
-
-    h1 {
-      color: var(--text-color, #ffffff) !important;
-    }
-
-    .course-description {
-      color: var(--text-color-secondary, #cccccc) !important;
-    }
-  }
-
-  .course-section {
-    background: var(--surface-card, #2a2a2a) !important;
-    border-color: rgba(255, 255, 255, 0.1) !important;
-  }
-
-  .section-header {
-    h2 {
-      color: var(--text-color, #ffffff) !important;
-    }
-
-    .section-title-clickable {
-      color: var(--text-color, #ffffff) !important;
-
-      &:hover {
-        color: var(--primary-color, #64b5f6) !important;
-      }
-    }
-
-    .section-description {
-      color: var(--text-color-secondary, #cccccc) !important;
-    }
-  }
-
-  .question-item {
-    background: var(--surface-300, #444444) !important;
-    border-color: rgba(255, 255, 255, 0.05) !important;
-
-    &:hover {
-      background: var(--surface-400, #555555) !important;
-    }
-
-    .question-content h3 {
-      color: var(--text-color, #ffffff) !important;
-    }
-
-
-    .leetcode-link-btn {
-      background: rgba(33, 102, 172, 0.3) !important;
-
-      &:hover {
-        background: rgba(33, 102, 172, 0.5) !important;
-      }
-    }
-  }
-  
-  .no-questions-in-section p {
-    color: var(--text-color-secondary, #aaaaaa) !important;
-  }
-  
-  .no-sections p {
-    color: var(--text-color-secondary, #cccccc) !important;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .course-header {
-    .back-btn {
-      color: var(--text-color, #ffffff) !important;
-      border-color: rgba(255, 255, 255, 0.2) !important;
-      
-      &:hover {
-        background: var(--surface-300, #444444) !important;
-      }
-    }
-    
-    h1 {
-      color: var(--text-color, #ffffff) !important;
-    }
-    
-    .course-description {
-      color: var(--text-color-secondary, #cccccc) !important;
-    }
-  }
-  
-  .course-section {
-    background: var(--surface-card, #2a2a2a) !important;
-    border-color: rgba(255, 255, 255, 0.1) !important;
-  }
-  
-  .section-header {
-    h2 {
-      color: var(--text-color, #ffffff) !important;
-    }
-
-    .section-title-clickable {
-      color: var(--text-color, #ffffff) !important;
-
-      &:hover {
-        color: var(--primary-color, #64b5f6) !important;
-      }
-    }
-
-    .section-description {
-      color: var(--text-color-secondary, #cccccc) !important;
-    }
-  }
-  
-  .question-item {
-    background: var(--surface-300, #444444) !important;
-    border-color: rgba(255, 255, 255, 0.05) !important;
-    
-    &:hover {
-      background: var(--surface-400, #555555) !important;
-    }
-    
-    h3 {
-      color: var(--text-color, #ffffff) !important;
-    }
-
-
-    .leetcode-link-btn {
-      background: rgba(33, 102, 172, 0.3) !important;
-
-      &:hover {
-        background: rgba(33, 102, 172, 0.5) !important;
-      }
-    }
-  }
-
-  .no-questions-in-section p {
-    color: var(--text-color-secondary, #aaaaaa) !important;
-  }
-
-  .no-sections p {
-    color: var(--text-color-secondary, #cccccc) !important;
+    font-size: $font-size-lg;
+    color: var(--color-text-secondary);
+    margin: 0;
   }
 }

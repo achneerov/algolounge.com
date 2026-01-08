@@ -1,0 +1,1720 @@
+{
+  "filename": "foundations",
+  "course_name": "AlgoLounge Foundations",
+  "course_description": "Master essential algorithms and data structures through curated problems. Progress from fundamentals to advanced topics with a proven learning path covering 17 key categories.",
+  "keywords": [
+    "foundations",
+    "interview prep",
+    "algorithms",
+    "data structures",
+    "essential",
+    "neetcode",
+    "leetcode",
+    "comprehensive"
+  ],
+  "badge": "Structured Learning Path",
+  "units": {
+    "arrays_hashing": {
+      "title": "Arrays & Hashing",
+      "description": "Master array manipulation and hash table techniques. Foundation patterns for solving complex algorithmic problems efficiently.",
+      "questions": [
+        {
+          "filename": "contains-duplicate",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/contains-duplicate/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "two-sum",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/two-sum/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "majority-element",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/majority-element/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "remove-element",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/remove-element/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "most-frequent-element",
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "concatenation-of-array",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/concatenation-of-array/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "anagram-groups",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/group-anagrams/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "product-of-array-except-self",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/product-of-array-except-self/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "valid-sudoku",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/valid-sudoku/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "longest-consecutive-sequence",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/longest-consecutive-sequence/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "sort-colors",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/sort-colors/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "valid-anagram",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/valid-anagram/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        }
+      ]
+    },
+    "two_pointers": {
+      "title": "Two Pointers",
+      "description": "Learn efficient array and string manipulation using the two-pointer technique. Essential for optimizing solutions from O(n\u00b2) to O(n).",
+      "questions": [
+        {
+          "filename": "palindrome-checker",
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "intersection-of-two-linked-lists",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/intersection-of-two-linked-lists/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "two-sum-ii-input-array-is-sorted",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "3sum",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/3sum/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "4sum",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/4sum/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "container-with-most-water",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/container-with-most-water/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "boats-to-save-people",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/boats-to-save-people/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "longest-palindromic-substring",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/longest-palindromic-substring/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "trapping-rain-water",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/trapping-rain-water/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Hard",
+              "color": "#ef4444"
+            }
+          ]
+        }
+      ]
+    },
+    "stack": {
+      "title": "Stack",
+      "description": "Master stack-based problem solving including monotonic stacks, expression evaluation, and parenthesis matching.",
+      "questions": [
+        {
+          "filename": "valid-parentheses",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/valid-parentheses/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "implement-stack",
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "implement-stack-using-queues",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/implement-stack-using-queues/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "simplify-path",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/simplify-path/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "valid-parenthesis-string",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/valid-parenthesis-string/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "car-fleet",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/car-fleet/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "daily-temperatures",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/daily-temperatures/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "evaluate-reverse-polish-notation",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/evaluate-reverse-polish-notation/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "asteroid-collision",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/asteroid-collision/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "baseball-game",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/baseball-game/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "longest-valid-parentheses",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/longest-valid-parentheses/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Hard",
+              "color": "#ef4444"
+            }
+          ]
+        },
+        {
+          "filename": "largest-rectangle-in-histogram",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/largest-rectangle-in-histogram/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Hard",
+              "color": "#ef4444"
+            }
+          ]
+        },
+        {
+          "filename": "maximum-frequency-stack",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/maximum-frequency-stack/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Hard",
+              "color": "#ef4444"
+            }
+          ]
+        }
+      ]
+    },
+    "binary_search": {
+      "title": "Binary Search",
+      "description": "Master the binary search algorithm and its variations. Learn to solve problems in O(log n) time complexity.",
+      "questions": [
+        {
+          "filename": "binary-search",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/binary-search/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "search-insert-position",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/search-insert-position/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "median-of-two-sorted-arrays",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/median-of-two-sorted-arrays/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Hard",
+              "color": "#ef4444"
+            }
+          ]
+        }
+      ]
+    },
+    "sliding_window": {
+      "title": "Sliding Window",
+      "description": "Learn to optimize subarray and substring problems using the sliding window technique for linear time solutions.",
+      "questions": [
+        {
+          "filename": "best-time-to-buy-and-sell-stock",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "best-time-to-buy-and-sell-stock-ii",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        }
+      ]
+    },
+    "linked_list": {
+      "title": "Linked List",
+      "description": "Master linked list manipulation including reversal, cycle detection, merging, and pointer techniques.",
+      "questions": [
+        {
+          "filename": "reverse-linked-list",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/reverse-linked-list/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "merge-two-sorted-lists",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/merge-two-sorted-lists/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "linked-list-cycle",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/linked-list-cycle/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "palindrome-linked-list",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/palindrome-linked-list/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "add-two-numbers",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/add-two-numbers/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "copy-list-with-random-pointer",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/copy-list-with-random-pointer/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "remove-nth-node-from-end-of-list",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "reorder-list",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/reorder-list/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        }
+      ]
+    },
+    "trees": {
+      "title": "Trees",
+      "description": "Build expertise in tree traversals, binary search trees, and tree manipulation. Foundation for advanced graph algorithms.",
+      "questions": [
+        {
+          "filename": "invert-binary-tree",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/invert-binary-tree/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "maximum-depth-of-binary-tree",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "balanced-binary-tree",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/balanced-binary-tree/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "binary-tree-diameter",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/diameter-of-binary-tree/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "binary-tree-inorder-traversal",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/binary-tree-inorder-traversal/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "binary-tree-preorder-traversal",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/binary-tree-preorder-traversal/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "binary-tree-postorder-traversal",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/binary-tree-postorder-traversal/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "binary-tree-right-side-view",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/binary-tree-right-side-view/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "binary-tree-from-preorder-and-inorder-traversal",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "serialize-and-deserialize-binary-tree",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Hard",
+              "color": "#ef4444"
+            }
+          ]
+        },
+        {
+          "filename": "binary-tree-maximum-path-sum",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/binary-tree-maximum-path-sum/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Hard",
+              "color": "#ef4444"
+            }
+          ]
+        }
+      ]
+    },
+    "tries": {
+      "title": "Tries",
+      "description": "Learn trie (prefix tree) data structures for efficient string operations and word search problems.",
+      "questions": [
+        {
+          "filename": "word-search-ii",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/word-search-ii/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Hard",
+              "color": "#ef4444"
+            }
+          ]
+        }
+      ]
+    },
+    "backtracking": {
+      "title": "Backtracking",
+      "description": "Learn recursive backtracking for solving constraint satisfaction and combinatorial problems.",
+      "questions": [
+        {
+          "filename": "generate-parentheses",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/generate-parentheses/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "n-queens",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/n-queens/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Hard",
+              "color": "#ef4444"
+            }
+          ]
+        }
+      ]
+    },
+    "heap_priority_queue": {
+      "title": "Heap / Priority Queue",
+      "description": "Master heap data structures and priority queues for efficient top-K problems and scheduling algorithms.",
+      "questions": [
+        {
+          "filename": "last-stone-weight",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/last-stone-weight/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "meeting-rooms-ii",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/meeting-rooms-ii/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "find-median-from-data-stream",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/find-median-from-data-stream/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Hard",
+              "color": "#ef4444"
+            }
+          ]
+        }
+      ]
+    },
+    "graphs": {
+      "title": "Graphs",
+      "description": "Master graph traversal algorithms (DFS, BFS), cycle detection, and connected component problems.",
+      "questions": [
+        {
+          "filename": "clone-graph",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/clone-graph/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "course-schedule",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/course-schedule/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "number-of-islands",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/number-of-islands/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "max-area-of-island",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/max-area-of-island/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "rotting-oranges",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/rotting-oranges/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "word-ladder",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/word-ladder/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Hard",
+              "color": "#ef4444"
+            }
+          ]
+        }
+      ]
+    },
+    "dp_1d": {
+      "title": "1D Dynamic Programming",
+      "description": "Build dynamic programming foundations with 1D array problems. Essential preparation for complex DP patterns.",
+      "questions": [
+        {
+          "filename": "climbing-stairs",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/climbing-stairs/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "min-cost-climbing-stairs",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/min-cost-climbing-stairs/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "house-robber",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/house-robber/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "coin-change",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/coin-change/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "longest-common-subsequence",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/longest-common-subsequence/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "maximum-subarray",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/maximum-subarray/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "tribonacci-sequence",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/n-th-tribonacci-number/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "dice-ways",
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        }
+      ]
+    },
+    "intervals": {
+      "title": "Intervals",
+      "description": "Master interval problems including merging, scheduling, and overlap detection. Common in meeting room scenarios.",
+      "questions": [
+        {
+          "filename": "meeting-rooms",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/meeting-rooms/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "insert-interval",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/insert-interval/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "merge-intervals",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/merge-intervals/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "minimum-interval-to-include-each-query",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/minimum-interval-to-include-each-query/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Hard",
+              "color": "#ef4444"
+            }
+          ]
+        }
+      ]
+    },
+    "greedy": {
+      "title": "Greedy",
+      "description": "Learn greedy algorithms for optimization problems. Make locally optimal choices to find global solutions.",
+      "questions": [
+        {
+          "filename": "candy",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/candy/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "car-pooling",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/car-pooling/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        }
+      ]
+    },
+    "advanced_graphs": {
+      "title": "Advanced Graphs",
+      "description": "Advanced graph algorithms including topological sort, union find, and Eulerian paths.",
+      "questions": [
+        {
+          "filename": "reconstruct-itinerary",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/reconstruct-itinerary/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Hard",
+              "color": "#ef4444"
+            }
+          ]
+        },
+        {
+          "filename": "redundant-connection-ii",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/redundant-connection-ii/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Hard",
+              "color": "#ef4444"
+            }
+          ]
+        }
+      ]
+    },
+    "dp_2d": {
+      "title": "2D Dynamic Programming",
+      "description": "Advanced dynamic programming with 2D arrays and matrices. Master complex state transitions and optimizations.",
+      "questions": [
+        {
+          "filename": "burst-balloons",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/burst-balloons/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Hard",
+              "color": "#ef4444"
+            }
+          ]
+        },
+        {
+          "filename": "longest-increasing-path-in-a-matrix",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/longest-increasing-path-in-a-matrix/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Hard",
+              "color": "#ef4444"
+            }
+          ]
+        },
+        {
+          "filename": "distinct-subsequences",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/distinct-subsequences/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Hard",
+              "color": "#ef4444"
+            }
+          ]
+        },
+        {
+          "filename": "regular-expression-matching",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/regular-expression-matching/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Hard",
+              "color": "#ef4444"
+            }
+          ]
+        }
+      ]
+    },
+    "bit_manipulation": {
+      "title": "Bit Manipulation",
+      "description": "Master bitwise operations and bit manipulation tricks. Essential for low-level optimization and clever solutions.",
+      "questions": [
+        {
+          "filename": "single-number",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/single-number/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "number-of-1-bits",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/number-of-1-bits/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Easy",
+              "color": "#22c55e"
+            }
+          ]
+        },
+        {
+          "filename": "sum-of-two-integers",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/sum-of-two-integers/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "reverse-integer",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/reverse-integer/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "bitwise-and-of-numbers-range",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/bitwise-and-of-numbers-range/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        },
+        {
+          "filename": "missing-number",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/missing-number/",
+              "tooltip": "LeetCode Problem",
+              "color": "#2563eb",
+              "visibleString": "\ud83d\udd17"
+            }
+          ],
+          "tags": [
+            {
+              "text": "Medium",
+              "color": "#f59e0b"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

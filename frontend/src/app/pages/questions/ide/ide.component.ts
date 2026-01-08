@@ -1,6 +1,5 @@
 import {
   Component,
-  AfterViewInit,
   ElementRef,
   ViewChild,
   Input,
@@ -12,6 +11,7 @@ import {
   Inject,
   PLATFORM_ID,
   effect,
+  afterNextRender,
 } from "@angular/core";
 import { isPlatformBrowser, CommonModule } from "@angular/common";
 import { EditorView, basicSetup } from "codemirror";
@@ -33,7 +33,7 @@ import { ThemeService } from "../../../services/theme.service";
   templateUrl: "./ide.component.html",
   styleUrl: "./ide.component.scss",
 })
-export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
+export class IdeComponent implements OnChanges, OnDestroy {
   @ViewChild("editor") editorElement!: ElementRef;
   @Input() template: string = "";
   @Input() questionData: any = null;
@@ -138,10 +138,12 @@ export class IdeComponent implements AfterViewInit, OnChanges, OnDestroy {
         this.initEditor();
       }
     });
-  }
 
-  ngAfterViewInit() {
-    this.initEditor();
+    // Initialize editor after Angular completes rendering
+    // This ensures ThemeService has applied theme classes to <html> element
+    afterNextRender(() => {
+      this.initEditor();
+    });
   }
 
   ngOnDestroy() {

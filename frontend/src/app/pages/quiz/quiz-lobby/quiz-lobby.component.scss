@@ -1,9 +1,12 @@
+@use '../../../../styles/variables' as *;
+
 .quiz-lobby {
   min-height: calc(100vh - 80px);
-  padding: 64px 24px;
+  padding: $spacing-2xl $spacing-lg;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: var(--color-bg-primary);
 }
 
 .lobby-container {
@@ -13,50 +16,51 @@
 }
 
 .lobby-title {
-  font-size: 48px;
-  font-weight: 700;
-  margin-bottom: 48px;
+  font-size: $font-size-5xl;
+  font-weight: $font-weight-bold;
+  margin-bottom: $spacing-2xl;
   color: var(--color-text-primary);
 }
 
 .room-code-display {
-  background: var(--color-surface);
+  background: var(--color-bg-surface);
   border: 2px solid var(--color-primary);
-  border-radius: 1rem;
-  padding: 40px;
-  margin-bottom: 48px;
+  border-radius: $radius-xl;
+  padding: $spacing-2xl $spacing-xl;
+  margin-bottom: $spacing-2xl;
+  box-shadow: $shadow-sm;
 }
 
 .room-code-label {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
   color: var(--color-text-secondary);
-  margin-bottom: 16px;
+  margin-bottom: $spacing-md;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 
 .room-code {
   font-size: 72px;
-  font-weight: 700;
+  font-weight: $font-weight-bold;
   color: var(--color-primary);
   letter-spacing: 0.2em;
-  margin-bottom: 8px;
+  margin-bottom: $spacing-sm;
 }
 
 .room-code-hint {
-  font-size: 14px;
+  font-size: $font-size-sm;
   color: var(--color-text-secondary);
   margin: 0;
 }
 
 .participants-section {
-  margin-bottom: 48px;
+  margin-bottom: $spacing-2xl;
 
   h2 {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 24px;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $spacing-lg;
     color: var(--color-text-primary);
   }
 }
@@ -64,22 +68,23 @@
 .participants-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
+  gap: $spacing-md;
 }
 
 .participant-card {
-  background: var(--color-surface);
+  background: var(--color-bg-surface);
   border: 1px solid var(--color-border);
-  border-radius: 0.75rem;
-  padding: 24px;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
   display: flex;
   align-items: center;
-  gap: 16px;
-  transition: all 0.2s ease;
+  gap: $spacing-md;
+  transition: all $transition-base;
+  box-shadow: $shadow-sm;
 
   &:hover:not(.empty) {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: $shadow-md;
   }
 
   &.empty {
@@ -103,28 +108,28 @@
   align-items: center;
   justify-content: center;
   font-size: 24px;
-  font-weight: 700;
+  font-weight: $font-weight-bold;
   flex-shrink: 0;
 }
 
 .participant-name {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
   color: var(--color-text-primary);
 }
 
 .lobby-actions {
-  margin-top: 48px;
+  margin-top: $spacing-2xl;
 }
 
 .btn {
-  padding: 16px 32px;
-  font-size: 16px;
-  font-weight: 600;
+  padding: $spacing-md $spacing-xl;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
   border: none;
-  border-radius: 0.75rem;
+  border-radius: $radius-lg;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all $transition-base;
   text-decoration: none;
   display: inline-block;
 
@@ -139,57 +144,58 @@
   color: white;
 
   &:hover:not(:disabled) {
-    background: #2563eb;
+    background: var(--color-primary-dark);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
   }
 }
 
 .btn-secondary {
-  background: var(--color-surface);
+  background: var(--color-bg-surface);
   color: var(--color-text-primary);
   border: 1px solid var(--color-border);
 
   &:hover {
-    background: var(--color-border);
+    background: var(--color-bg-secondary);
   }
 }
 
 .btn-large {
-  padding: 20px 48px;
-  font-size: 18px;
+  padding: 20px $spacing-2xl;
+  font-size: $font-size-lg;
   min-width: 200px;
 }
 
 .waiting-message {
-  padding: 24px;
-  background: var(--color-surface);
+  padding: $spacing-lg;
+  background: var(--color-bg-surface);
   border: 1px solid var(--color-border);
-  border-radius: 0.75rem;
+  border-radius: $radius-lg;
   max-width: 400px;
   margin: 0 auto;
+  box-shadow: $shadow-sm;
 
   p {
-    font-size: 16px;
+    font-size: $font-size-base;
     color: var(--color-text-secondary);
     margin: 0;
   }
 }
 
 .error-message {
-  color: #ef4444;
-  font-size: 14px;
-  margin-bottom: 24px;
-  padding: 16px;
-  background: rgba(239, 68, 68, 0.1);
-  border-radius: 0.5rem;
+  color: var(--color-error);
+  font-size: $font-size-sm;
+  margin-bottom: $spacing-lg;
+  padding: $spacing-md;
+  background: var(--color-error-bg);
+  border-radius: $radius-md;
 }
 
 .error-container {
   text-align: center;
 
   h2 {
-    color: #ef4444;
-    margin-bottom: 24px;
+    color: var(--color-error);
+    margin-bottom: $spacing-lg;
   }
 }

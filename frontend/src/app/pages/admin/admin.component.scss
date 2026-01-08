@@ -1,12 +1,15 @@
+@use '../../../styles/variables' as *;
+
 .admin-page {
   min-height: calc(100vh - 80px);
-  padding: 96px 64px;
+  padding: $spacing-3xl $spacing-2xl;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  background: var(--color-bg-primary);
 
   @media (max-width: 768px) {
-    padding: 64px 24px;
+    padding: $spacing-3xl $spacing-lg;
   }
 }
 
@@ -15,24 +18,25 @@
   width: 100%;
 
   h1 {
-    font-size: 48px;
-    font-weight: 700;
+    font-size: $font-size-5xl;
+    font-weight: $font-weight-bold;
     line-height: 1.1;
-    margin-bottom: 8px;
+    margin-bottom: $spacing-sm;
     color: var(--color-text-primary);
   }
 
   .subtitle {
-    font-size: 16px;
+    font-size: $font-size-base;
     color: var(--color-text-secondary);
-    margin-bottom: 48px;
+    margin-bottom: $spacing-2xl;
+    line-height: 1.6;
   }
 }
 
 .admin-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px;
+  gap: $spacing-xl;
 
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
@@ -41,32 +45,34 @@
 
 .users-section,
 .user-details-section {
-  background: var(--color-surface);
+  background: var(--color-bg-surface);
   border: 1px solid var(--color-border);
-  border-radius: 1rem;
-  padding: 32px;
+  border-radius: $radius-xl;
+  padding: $spacing-xl;
+  box-shadow: $shadow-sm;
 
   h2 {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 24px;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $spacing-lg;
     color: var(--color-text-primary);
   }
 }
 
 .search-box {
   display: flex;
-  gap: 8px;
-  margin-bottom: 24px;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-lg;
 
   .search-input {
     flex: 1;
-    padding: 12px 16px;
-    font-size: 14px;
+    padding: $spacing-sm $spacing-md;
+    font-size: $font-size-sm;
     border: 1px solid var(--color-border);
-    border-radius: 0.5rem;
-    background: var(--color-background);
+    border-radius: $radius-md;
+    background: var(--color-bg-surface);
     color: var(--color-text-primary);
+    transition: border-color $transition-base, box-shadow $transition-base;
 
     &:focus {
       outline: none;
@@ -77,13 +83,13 @@
 }
 
 .btn {
-  padding: 12px 16px;
-  font-size: 14px;
-  font-weight: 600;
+  padding: $spacing-sm $spacing-md;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: $radius-md;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all $transition-base;
 
   &:disabled {
     opacity: 0.5;
@@ -96,7 +102,7 @@
   color: white;
 
   &:hover:not(:disabled) {
-    background: #2563eb;
+    background: var(--color-primary-dark);
     transform: translateY(-2px);
   }
 }
@@ -107,6 +113,7 @@
 
   &:hover:not(:disabled) {
     background: var(--color-text-primary);
+    transform: translateY(-2px);
   }
 }
 
@@ -116,71 +123,73 @@
   width: 100%;
 
   &:hover:not(:disabled) {
-    background: #2563eb;
+    background: var(--color-primary-dark);
   }
 }
 
 .btn-save {
-  background: #10b981;
+  background: var(--color-success);
   color: white;
   flex: 1;
 
   &:hover:not(:disabled) {
-    background: #059669;
+    background: darken(#10B981, 15%);
+    transform: translateY(-2px);
   }
 }
 
 .btn-cancel {
-  background: #ef4444;
+  background: var(--color-error);
   color: white;
   flex: 1;
 
   &:hover:not(:disabled) {
-    background: #dc2626;
+    background: darken(#EF4444, 15%);
+    transform: translateY(-2px);
   }
 }
 
 .loading,
 .empty-state {
   text-align: center;
-  padding: 32px;
+  padding: $spacing-xl;
   color: var(--color-text-secondary);
-  font-size: 14px;
+  font-size: $font-size-sm;
 }
 
 .error-message {
-  background: rgba(239, 68, 68, 0.1);
-  color: #ef4444;
-  padding: 12px 16px;
-  border-radius: 0.5rem;
-  margin-bottom: 16px;
-  font-size: 14px;
+  background: var(--color-error-bg);
+  color: var(--color-error);
+  padding: $spacing-sm $spacing-md;
+  border-radius: $radius-md;
+  margin-bottom: $spacing-md;
+  font-size: $font-size-sm;
 }
 
 .success-message {
-  background: rgba(34, 197, 94, 0.1);
-  color: #10b981;
-  padding: 12px 16px;
-  border-radius: 0.5rem;
-  margin-bottom: 16px;
-  font-size: 14px;
+  background: var(--color-success-bg);
+  color: var(--color-success);
+  padding: $spacing-sm $spacing-md;
+  border-radius: $radius-md;
+  margin-bottom: $spacing-md;
+  font-size: $font-size-sm;
 }
 
 .users-table {
   border: 1px solid var(--color-border);
-  border-radius: 0.5rem;
+  border-radius: $radius-md;
   overflow: hidden;
 }
 
 .table-header {
   display: grid;
   grid-template-columns: 60px 1fr 1fr 100px 120px;
-  gap: 8px;
-  padding: 16px;
-  background: var(--color-background);
+  gap: $spacing-sm;
+  padding: $spacing-md;
+  background: var(--color-bg-secondary);
   border-bottom: 1px solid var(--color-border);
-  font-weight: 600;
-  font-size: 13px;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-xs;
   color: var(--color-text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -189,11 +198,11 @@
 .table-row {
   display: grid;
   grid-template-columns: 60px 1fr 1fr 100px 120px;
-  gap: 8px;
-  padding: 16px;
+  gap: $spacing-sm;
+  padding: $spacing-md;
   border-bottom: 1px solid var(--color-border);
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background $transition-base;
 
   &:last-child {
     border-bottom: none;
@@ -204,14 +213,14 @@
   }
 
   &.selected {
-    background: rgba(59, 130, 246, 0.1);
+    background: var(--color-info-bg);
     border-left: 3px solid var(--color-primary);
     padding-left: 13px;
   }
 }
 
 .col {
-  font-size: 14px;
+  font-size: $font-size-sm;
   color: var(--color-text-primary);
   white-space: nowrap;
   overflow: hidden;
@@ -222,23 +231,23 @@
   }
 
   &.col-email {
-    font-size: 13px;
+    font-size: $font-size-xs;
     color: var(--color-text-secondary);
   }
 }
 
 .details-card {
-  background: var(--color-background);
+  background: var(--color-bg-secondary);
   border: 1px solid var(--color-border);
-  border-radius: 0.5rem;
-  padding: 24px;
+  border-radius: $radius-md;
+  padding: $spacing-lg;
 }
 
 .detail-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 0;
+  padding: $spacing-md 0;
   border-bottom: 1px solid var(--color-border);
 
   &:last-child {
@@ -246,9 +255,9 @@
   }
 
   .label {
-    font-weight: 600;
+    font-weight: $font-weight-semibold;
     color: var(--color-text-secondary);
-    font-size: 14px;
+    font-size: $font-size-sm;
     min-width: 120px;
   }
 
@@ -256,19 +265,20 @@
     flex: 1;
     color: var(--color-text-primary);
     text-align: right;
-    font-size: 14px;
+    font-size: $font-size-sm;
   }
 }
 
 .edit-input,
 .edit-select {
   flex: 1;
-  padding: 8px 12px;
-  font-size: 14px;
+  padding: $spacing-sm;
+  font-size: $font-size-sm;
   border: 1px solid var(--color-border);
-  border-radius: 0.375rem;
-  background: var(--color-surface);
+  border-radius: $radius-sm;
+  background: var(--color-bg-surface);
   color: var(--color-text-primary);
+  transition: border-color $transition-base, box-shadow $transition-base;
 
   &:focus {
     outline: none;
@@ -279,8 +289,8 @@
 
 .button-group {
   display: flex;
-  gap: 12px;
-  margin-top: 24px;
+  gap: $spacing-md;
+  margin-top: $spacing-lg;
 
   .btn {
     flex: 1;

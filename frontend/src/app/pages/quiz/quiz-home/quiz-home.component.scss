@@ -1,12 +1,15 @@
+@use '../../../../styles/variables' as *;
+
 .quiz-home {
   min-height: calc(100vh - 80px);
-  padding: 96px 64px;
+  padding: $spacing-3xl $spacing-2xl;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: var(--color-bg-primary);
 
   @media (max-width: 768px) {
-    padding: 64px 24px;
+    padding: $spacing-3xl $spacing-lg;
   }
 }
 
@@ -17,63 +20,66 @@
 }
 
 .quiz-title {
-  font-size: 64px;
-  font-weight: 700;
+  font-size: $font-size-6xl;
+  font-weight: $font-weight-bold;
   line-height: 1.1;
-  margin-bottom: 16px;
+  margin-bottom: $spacing-md;
   color: var(--color-text-primary);
 }
 
 .quiz-subtitle {
-  font-size: 18px;
+  font-size: $font-size-lg;
   color: var(--color-text-secondary);
-  margin-bottom: 64px;
+  margin-bottom: $spacing-3xl;
+  line-height: 1.6;
 }
 
 .quiz-actions {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 32px;
+  gap: $spacing-xl;
   max-width: 800px;
   margin: 0 auto;
 }
 
 .quiz-card {
-  background: var(--color-surface);
+  background: var(--color-bg-surface);
   border: 1px solid var(--color-border);
-  border-radius: 1rem;
-  padding: 40px;
+  border-radius: $radius-xl;
+  padding: $spacing-2xl $spacing-xl;
   text-align: left;
-  transition: all 0.2s ease;
+  transition: all $transition-base;
+  box-shadow: $shadow-sm;
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    box-shadow: $shadow-lg;
   }
 
   h2 {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 8px;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $spacing-sm;
     color: var(--color-text-primary);
   }
 
   p {
-    font-size: 16px;
+    font-size: $font-size-base;
     color: var(--color-text-secondary);
-    margin-bottom: 24px;
+    margin-bottom: $spacing-lg;
+    line-height: 1.6;
   }
 }
 
 .form-group {
-  margin-bottom: 16px;
+  margin-bottom: $spacing-md;
 
   label {
     display: block;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
     color: var(--color-text-primary);
-    margin-bottom: 8px;
+    margin-bottom: $spacing-sm;
   }
 }
 
@@ -81,13 +87,13 @@
 .template-select,
 .json-textarea {
   width: 100%;
-  padding: 16px;
-  font-size: 16px;
+  padding: $spacing-md;
+  font-size: $font-size-base;
   border: 1px solid var(--color-border);
-  border-radius: 0.75rem;
-  background: var(--color-background);
+  border-radius: $radius-lg;
+  background: var(--color-bg-surface);
   color: var(--color-text-primary);
-  transition: all 0.2s ease;
+  transition: all $transition-base;
 
   &:focus {
     outline: none;
@@ -103,7 +109,7 @@
 
 .json-textarea {
   min-height: 150px;
-  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-family: $font-family-mono;
   font-size: 13px;
   line-height: 1.5;
   resize: vertical;
@@ -112,20 +118,20 @@
 .room-code-input {
   text-align: center;
   font-size: 24px;
-  font-weight: 600;
+  font-weight: $font-weight-semibold;
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
 .btn {
   width: 100%;
-  padding: 16px 32px;
-  font-size: 16px;
-  font-weight: 600;
+  padding: $spacing-md $spacing-xl;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
   border: none;
-  border-radius: 0.75rem;
+  border-radius: $radius-lg;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all $transition-base;
 
   &:disabled {
     opacity: 0.5;
@@ -138,7 +144,7 @@
   color: white;
 
   &:hover:not(:disabled) {
-    background: #2563eb;
+    background: var(--color-primary-dark);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
   }
@@ -164,8 +170,8 @@
 
 .button-group {
   display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-md;
 
   button {
     flex: 1;
@@ -173,32 +179,32 @@
 }
 
 .error-message {
-  color: #ef4444;
-  font-size: 14px;
-  margin-bottom: 16px;
-  padding: 8px 12px;
-  background: rgba(239, 68, 68, 0.1);
-  border-radius: 0.5rem;
+  color: var(--color-error);
+  font-size: $font-size-sm;
+  margin-bottom: $spacing-md;
+  padding: $spacing-sm;
+  background: var(--color-error-bg);
+  border-radius: $radius-md;
 }
 
 .success-message {
-  color: #22c55e;
-  font-size: 14px;
-  margin-bottom: 16px;
-  padding: 8px 12px;
-  background: rgba(34, 197, 94, 0.1);
-  border-radius: 0.5rem;
+  color: var(--color-success);
+  font-size: $font-size-sm;
+  margin-bottom: $spacing-md;
+  padding: $spacing-sm;
+  background: var(--color-success-bg);
+  border-radius: $radius-md;
 }
 
 .btn-hide {
-  background: #f59e0b;
+  background: var(--color-warning);
   color: white;
-  padding: 8px 16px !important;
-  font-size: 14px !important;
+  padding: $spacing-sm $spacing-md !important;
+  font-size: $font-size-sm !important;
   width: auto;
 
   &:hover:not(:disabled) {
-    background: #d97706;
+    background: darken(#F59E0B, 15%);
     transform: translateY(-2px);
   }
 
@@ -208,14 +214,14 @@
 }
 
 .btn-show {
-  background: #10b981;
+  background: var(--color-success);
   color: white;
-  padding: 8px 16px !important;
-  font-size: 14px !important;
+  padding: $spacing-sm $spacing-md !important;
+  font-size: $font-size-sm !important;
   width: auto;
 
   &:hover:not(:disabled) {
-    background: #059669;
+    background: darken(#10B981, 15%);
     transform: translateY(-2px);
   }
 
@@ -225,15 +231,15 @@
 }
 
 .templates-list {
-  margin-top: 32px;
-  padding-top: 32px;
+  margin-top: $spacing-xl;
+  padding-top: $spacing-xl;
   border-top: 1px solid var(--color-border);
 
   h3 {
-    font-size: 16px;
-    font-weight: 600;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
     color: var(--color-text-primary);
-    margin-bottom: 16px;
+    margin-bottom: $spacing-md;
   }
 }
 
@@ -241,27 +247,27 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px;
-  margin-bottom: 8px;
-  background: var(--color-background);
+  padding: $spacing-md;
+  margin-bottom: $spacing-sm;
+  background: var(--color-bg-secondary);
   border: 1px solid var(--color-border);
-  border-radius: 0.5rem;
+  border-radius: $radius-md;
 
   .template-name {
-    font-size: 14px;
+    font-size: $font-size-sm;
     color: var(--color-text-primary);
     flex: 1;
   }
 
   .btn-hide,
   .btn-show {
-    margin-left: 8px;
+    margin-left: $spacing-sm;
   }
 }
 
 .hidden-templates-section {
-  margin-top: 32px;
-  padding-top: 32px;
+  margin-top: $spacing-xl;
+  padding-top: $spacing-xl;
   border-top: 1px solid var(--color-border);
 }
 
@@ -269,14 +275,14 @@
   background: none;
   border: none;
   color: var(--color-text-primary);
-  font-size: 16px;
-  font-weight: 600;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
   padding: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-md;
 
   &:hover {
     color: var(--color-primary);
@@ -284,17 +290,17 @@
 }
 
 .auth-message {
-  margin-top: 48px;
-  padding: 24px;
-  background: var(--color-surface);
+  margin-top: $spacing-2xl;
+  padding: $spacing-lg;
+  background: var(--color-bg-surface);
   border: 1px solid var(--color-border);
-  border-radius: 0.75rem;
+  border-radius: $radius-lg;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
 
   p {
-    font-size: 16px;
+    font-size: $font-size-base;
     color: var(--color-text-secondary);
     margin: 0;
   }
@@ -302,7 +308,7 @@
   a {
     color: var(--color-primary);
     text-decoration: none;
-    font-weight: 600;
+    font-weight: $font-weight-semibold;
 
     &:hover {
       text-decoration: underline;

@@ -37,23 +37,27 @@
   
   <div class="sections-container" *ngIf="courseSections.length > 0">
     <div *ngFor="let section of courseSections" class="course-section">
-      <div class="section-header" (click)="toggleSection(section.unitKey)">
-        <div class="section-title-row">
+      <div class="section-header">
+        <div class="section-title-row" (click)="toggleSection(section.unitKey)">
           <h2>
             <span class="section-number">{{ getSectionNumber(section) }}.</span>
-            {{ section.title }}
+            <span class="title-text" (click)="onUnitClick(section.unitKey); $event.stopPropagation()">{{ section.title }}</span>
             <span class="question-count" *ngIf="section.questions.length > 0">({{ section.questions.length }} questions)</span>
           </h2>
-          <svg class="chevron" [class.expanded]="isSectionExpanded(section.unitKey)" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg
+            class="chevron"
+            [class.expanded]="isSectionExpanded(section.unitKey)"
+            width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"/>
           </svg>
         </div>
+
         <p *ngIf="section.description" class="section-description">{{ section.description }}</p>
-        
+
         <!-- Section Progress -->
         <div class="section-progress" *ngIf="section.questions.length > 0">
           <div class="progress-bar-mini">
-            <div class="progress-fill-mini" 
+            <div class="progress-fill-mini"
                  [style.width.%]="getSectionProgress(section)"
                  [class.completed]="getSectionProgress(section) === 100"></div>
           </div>

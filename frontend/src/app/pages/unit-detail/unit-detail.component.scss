@@ -1,136 +1,133 @@
+@use '../../../styles/variables' as *;
+
 :host {
   display: block;
-  background: var(--surface-ground, #ffffff);
+  background: var(--color-bg-primary);
   height: 100%;
 }
 
-// Dark mode overrides for host
-:host-context(.dark-mode) {
-  background: var(--surface-ground, #1a1a1a) !important;
-}
-
-@media (prefers-color-scheme: dark) {
-  :host {
-    background: var(--surface-ground, #1a1a1a) !important;
-  }
-}
-
 .unit-detail-container {
-  padding: 1rem;
+  padding: $spacing-3xl;
   max-width: 1200px;
   margin: 0 auto;
   background: transparent;
   height: 100%;
   box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: $spacing-2xl $spacing-lg;
+  }
 }
 
 .unit-header {
-  margin-bottom: 2rem;
+  margin-bottom: $spacing-3xl;
 
   .header-top {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: $spacing-lg;
   }
 
   .back-btn {
     background: none;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
+    border: 1px solid var(--color-border);
+    padding: $spacing-sm $spacing-md;
+    border-radius: $radius-lg;
     cursor: pointer;
-    color: var(--text-color, #333333);
-    transition: background-color 0.2s ease;
+    color: var(--color-text-primary);
+    transition: background-color $transition-base;
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
 
     &:hover {
-      background: var(--surface-100, #f8f9fa);
+      background: var(--color-bg-secondary);
     }
   }
 
   h1 {
-    color: var(--text-color, #333333);
-    margin-bottom: 1rem;
-    font-size: 2rem;
+    color: var(--color-text-primary);
+    margin-bottom: $spacing-lg;
+    font-size: $font-size-5xl;
+    font-weight: $font-weight-bold;
   }
 
   .unit-description {
-    color: var(--text-color-secondary, #666666);
-    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    font-size: $font-size-lg;
     line-height: 1.6;
-    margin-bottom: 0.5rem;
+    margin-bottom: $spacing-sm;
   }
 
   .course-context {
-    color: var(--text-color-secondary, #888888);
-    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    font-size: $font-size-sm;
     font-style: italic;
     margin: 0;
   }
 }
 
 .questions-section {
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 8px;
-  padding: 1.5rem;
-  background: var(--surface-card, #ffffff);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  padding: $spacing-xl;
+  background: var(--color-bg-surface);
+  box-shadow: $shadow-sm;
 }
 
 .questions-list {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: $spacing-md;
 }
 
 .question-item {
-  background: var(--surface-50, #f8f9fa);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 6px;
-  padding: 0.75rem;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  transition: background-color $transition-base, transform $transition-fast;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   &:hover {
-    background: var(--surface-100, #e9ecef);
-    transform: translateY(-1px);
-    border-color: rgba(0, 0, 0, 0.15);
+    background: var(--color-bg-surface);
+    transform: translateY(-2px);
   }
 
   &.completed {
-    border-left: 4px solid #4caf50;
+    border-left: 3px solid var(--color-success);
   }
 
   .question-content {
     flex: 1;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: $spacing-md;
 
     h3 {
-      color: var(--text-color, #333333);
+      color: var(--color-text-primary);
       margin: 0;
-      font-size: 1rem;
-      font-weight: 500;
+      font-size: $font-size-base;
+      font-weight: $font-weight-medium;
     }
   }
 
   .tags-container {
     display: flex;
-    gap: 0.5rem;
+    gap: $spacing-sm;
     flex-wrap: wrap;
     align-items: center;
   }
 
   .difficulty-tag {
     display: inline-block;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    font-weight: 600;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $radius-sm;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     min-width: 50px;
@@ -141,17 +138,17 @@
   .question-actions {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: $spacing-sm;
   }
 
   .url-btn {
-    border-radius: 4px;
-    padding: 0.4rem 0.6rem;
+    border-radius: $radius-sm;
+    padding: $spacing-xs $spacing-sm;
     cursor: pointer;
-    font-size: 0.9rem;
-    transition: background-color 0.2s ease, transform 0.1s ease, filter 0.2s ease;
+    font-size: $font-size-sm;
+    transition: background-color $transition-base, transform $transition-fast, filter $transition-base;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: $font-weight-semibold;
 
     &:hover {
       filter: brightness(1.2);
@@ -164,148 +161,27 @@
   }
 
   .completion-check {
-    font-size: 1.2rem;
+    font-size: $font-size-xl;
   }
 }
 
 .no-questions {
   text-align: center;
-  padding: 1rem;
+  padding: $spacing-lg;
 
   p {
-    color: var(--text-color-secondary, #999999);
-    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    font-size: $font-size-sm;
     margin: 0;
   }
 }
 
 .loading {
   text-align: center;
-  padding: 2rem;
+  padding: $spacing-2xl;
 
   p {
-    color: var(--text-color-secondary, #666666);
-    font-size: 1.1rem;
-  }
-}
-
-// Dark mode overrides
-:host-context(.dark-mode) {
-  .unit-header {
-    .back-btn {
-      color: var(--text-color, #ffffff) !important;
-      border-color: rgba(255, 255, 255, 0.2) !important;
-
-      &:hover {
-        background: var(--surface-300, #444444) !important;
-      }
-    }
-
-    h1 {
-      color: var(--text-color, #ffffff) !important;
-    }
-
-    .unit-description {
-      color: var(--text-color-secondary, #cccccc) !important;
-    }
-
-    .course-context {
-      color: var(--text-color-secondary, #aaaaaa) !important;
-    }
-  }
-
-  .questions-section {
-    background: var(--surface-card, #2a2a2a) !important;
-    border-color: rgba(255, 255, 255, 0.1) !important;
-  }
-
-  .question-item {
-    background: var(--surface-300, #444444) !important;
-    border-color: rgba(255, 255, 255, 0.05) !important;
-
-    &:hover {
-      background: var(--surface-400, #555555) !important;
-    }
-
-    .question-content h3 {
-      color: var(--text-color, #ffffff) !important;
-    }
-
-
-    .leetcode-link-btn {
-      background: rgba(33, 102, 172, 0.3) !important;
-
-      &:hover {
-        background: rgba(33, 102, 172, 0.5) !important;
-      }
-    }
-  }
-
-  .no-questions p {
-    color: var(--text-color-secondary, #aaaaaa) !important;
-  }
-
-  .loading p {
-    color: var(--text-color-secondary, #cccccc) !important;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .unit-header {
-    .back-btn {
-      color: var(--text-color, #ffffff) !important;
-      border-color: rgba(255, 255, 255, 0.2) !important;
-
-      &:hover {
-        background: var(--surface-300, #444444) !important;
-      }
-    }
-
-    h1 {
-      color: var(--text-color, #ffffff) !important;
-    }
-
-    .unit-description {
-      color: var(--text-color-secondary, #cccccc) !important;
-    }
-
-    .course-context {
-      color: var(--text-color-secondary, #aaaaaa) !important;
-    }
-  }
-
-  .questions-section {
-    background: var(--surface-card, #2a2a2a) !important;
-    border-color: rgba(255, 255, 255, 0.1) !important;
-  }
-
-  .question-item {
-    background: var(--surface-300, #444444) !important;
-    border-color: rgba(255, 255, 255, 0.05) !important;
-
-    &:hover {
-      background: var(--surface-400, #555555) !important;
-    }
-
-    h3 {
-      color: var(--text-color, #ffffff) !important;
-    }
-
-
-    .leetcode-link-btn {
-      background: rgba(33, 102, 172, 0.3) !important;
-
-      &:hover {
-        background: rgba(33, 102, 172, 0.5) !important;
-      }
-    }
-  }
-
-  .no-questions p {
-    color: var(--text-color-secondary, #aaaaaa) !important;
-  }
-
-  .loading p {
-    color: var(--text-color-secondary, #cccccc) !important;
+    color: var(--color-text-secondary);
+    font-size: $font-size-lg;
   }
 }

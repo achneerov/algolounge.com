@@ -156,13 +156,7 @@ h1 {
 
 .section-header {
   padding: $spacing-xl;
-  cursor: pointer;
-  transition: background $transition-base;
   user-select: none;
-
-  &:hover {
-    background: var(--color-bg-secondary);
-  }
 }
 
 .section-title-row {
@@ -171,6 +165,7 @@ h1 {
   align-items: center;
   gap: $spacing-md;
   margin-bottom: $spacing-sm;
+  cursor: pointer;
 
   h2 {
     font-size: $font-size-2xl;
@@ -183,6 +178,15 @@ h1 {
     @media (max-width: 768px) {
       font-size: $font-size-xl;
     }
+  }
+}
+
+.title-text {
+  cursor: pointer;
+  transition: color $transition-base;
+
+  &:hover {
+    color: var(--color-primary);
   }
 }
 
@@ -202,7 +206,14 @@ h1 {
 .chevron {
   flex-shrink: 0;
   color: var(--color-text-secondary);
-  transition: transform $transition-base;
+  transition: transform $transition-base, color $transition-base;
+  cursor: pointer;
+  padding: $spacing-xs;
+  margin: -$spacing-xs;
+
+  &:hover {
+    color: var(--color-primary);
+  }
 
   &.expanded {
     transform: rotate(180deg);
@@ -213,7 +224,7 @@ h1 {
   font-size: $font-size-base;
   line-height: 1.5;
   color: var(--color-text-secondary);
-  margin: 0 0 $spacing-md 0;
+  margin: $spacing-sm 0 $spacing-md 0;
 }
 
 // Section Progress

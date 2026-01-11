@@ -1,43 +1,17 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DescriptionComponent } from './description/description.component';
 import { SolutionComponent } from './solution/solution.component';
-import { AutoCompleteModule } from 'primeng/autocomplete';
-import { FormsModule } from '@angular/forms';
-import { QuestionSearchService, QuestionSearchResult } from '../../services/question-search.service';
-import { LocalStorageService } from '../../services/local-storage.service';
 import { Tag } from '../../services/tag.service';
 
 @Component({
   selector: 'app-content-tabs',
   standalone: true,
-  imports: [CommonModule, DescriptionComponent, SolutionComponent, AutoCompleteModule, FormsModule],
+  imports: [CommonModule, DescriptionComponent, SolutionComponent],
   template: `
     <div class="container">
-      <!-- Tab Navigation with Search -->
+      <!-- Tab Navigation -->
       <div class="tab-navigation">
-        <div class="search-section">
-          <p-autoComplete
-            [(ngModel)]="selectedQuestion"
-            [suggestions]="searchResults"
-            (completeMethod)="onSearch($event)"
-            (onSelect)="onSelect($event)"
-            (keydown)="onKeyDown($event)"
-            field="title"
-            placeholder="Search questions..."
-            [forceSelection]="false"
-            [dropdown]="true"
-            class="question-search"
-            [appendTo]="'body'"
-          >
-            <ng-template let-question pTemplate="item">
-              <div class="search-item">
-                <div class="search-title">{{ question.title }}</div>
-                <div class="completion-status" *ngIf="isQuestionCompleted(question.filename)">✅</div>
-              </div>
-            </ng-template>
-          </p-autoComplete>
-        </div>
         <button
           [class.active]="activeTab === 'description'"
           (click)="activeTab = 'description'"
@@ -82,37 +56,6 @@ import { Tag } from '../../services/tag.service';
       border: 1px solid var(--color-border);
     }
 
-    .search-section {
-      padding: 0.5rem 1rem;
-      margin-right: 1rem;
-      display: flex;
-      align-items: center;
-      flex-shrink: 0;
-      min-width: 250px;
-    }
-
-    .question-search {
-      width: 250px;
-    }
-
-    .search-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      padding: 0.25rem 0;
-    }
-
-    .search-title {
-      flex: 1;
-      font-size: 0.875rem;
-    }
-
-    .completion-status {
-      margin-left: 0.5rem;
-      font-size: 0.75rem;
-    }
-
     .tab-navigation {
       display: flex;
       align-items: center;
@@ -131,6 +74,7 @@ import { Tag } from '../../services/tag.service';
       -ms-overflow-style: none;
       height: 56px;
       box-sizing: border-box;
+      padding: 0 0.5rem;
     }
 
     .tab-navigation::-webkit-scrollbar {
@@ -170,14 +114,6 @@ import { Tag } from '../../services/tag.service';
       }
     }
 
-    .completion-indicator {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      font-size: 1rem;
-      z-index: 100;
-    }
-
     .tab-content-area {
       flex: 1;
       overflow: auto;
@@ -196,58 +132,10 @@ export class ContentTabsComponent implements OnInit {
   @Input() isCompleted: boolean = false;
   @Input() currentQuestionFilename: string = '';
   @Input() questionTags: Tag[] = [];
-  @Output() go = new EventEmitter<string>();
 
   activeTab: 'description' | 'solution' = 'description';
-  searchResults: QuestionSearchResult[] = [];
-  selectedQuestion: QuestionSearchResult | null = null;
-
-  constructor(
-    private questionSearchService: QuestionSearchService,
-    private localStorageService: LocalStorageService
-  ) {}
 
   ngOnInit(): void {
-    this.questionSearchService.isIndexLoaded().subscribe(loaded => {
-      if (loaded) {
-        this.onSearch({ query: "" });
-        // Set the currently selected question
-        if (this.currentQuestionFilename) {
-          const allQuestions = this.questionSearchService.getAllQuestions();
-          this.selectedQuestion = allQuestions.find(q => q.filename === this.currentQuestionFilename) || null;
-        }
-      }
-    });
-  }
-
-  onSearch(event: any): void {
-    const query = event.query;
-    if (query && query.length > 0) {
-      this.searchResults = this.questionSearchService.searchQuestions(query);
-    } else {
-      this.searchResults = this.questionSearchService.getAllQuestions();
-    }
-  }
-
-  onSelect(event: any): void {
-    const question = event.value as QuestionSearchResult;
-    // Keep the selected question displayed in the search bar
-    this.selectedQuestion = question;
-    this.go.emit(question.filename);
-  }
-
-  onKeyDown(event: KeyboardEvent): void {
-    if (event.key === 'Enter') {
-      if (this.searchResults.length > 0) {
-        const topResult = this.searchResults[0];
-        // Keep the selected question displayed in the search bar
-        this.selectedQuestion = topResult;
-        this.go.emit(topResult.filename);
-      }
-    }
-  }
-
-  isQuestionCompleted(filename: string): boolean {
-    return this.localStorageService.isQuestionCompleted(filename);
+    // Component initialization if needed
   }
 }

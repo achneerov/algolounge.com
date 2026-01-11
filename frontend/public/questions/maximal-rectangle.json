@@ -1,0 +1,134 @@
+{
+  "index": 0,
+  "filename": "maximal-rectangle",
+  "title": "Maximal Rectangle",
+  "difficulty": "Hard",
+  "tags": [
+    "Stack"
+  ],
+  "keywords": [
+    "maximal",
+    "rectangle",
+    "matrix",
+    "binary",
+    "histogram",
+    "leetcode",
+    "85",
+    "largest",
+    "area",
+    "stack"
+  ],
+  "description": "<h2>Maximal Rectangle</h2><p>Given a <code>rows x cols</code> binary matrix filled with <code>'0'</code>s and <code>'1'</code>s, find the largest rectangle containing only <code>'1'</code>s and return its area.</p><h3>Examples:</h3><ul><li>Input: matrix = [[\"1\",\"0\",\"1\",\"0\",\"0\"],[\"1\",\"0\",\"1\",\"1\",\"1\"],[\"1\",\"1\",\"1\",\"1\",\"1\"],[\"1\",\"0\",\"0\",\"1\",\"0\"]]<br><pre>┌───┬───┬───┬───┬───┐\n│ 1 │ 0 │ 1 │ 0 │ 0 │\n├───┼───╔═══╦═══╦═══╗\n│ 1 │ 0 ║ 1 ║ 1 ║ 1 ║\n├───┼───╠═══╬═══╬═══╣\n│ 1 │ 1 ║ 1 ║ 1 ║ 1 ║\n├───┼───╚═══╩═══╩═══╝\n│ 1 │ 0 │ 0 │ 1 │ 0 │\n└───┴───┴───┴───┴───┘</pre>Output: 6 (double-line border = maximal rectangle, 3 × 2)</li><li>Input: matrix = [[\"0\"]]<br>Output: 0</li><li>Input: matrix = [[\"1\"]]<br>Output: 1</li></ul><h3>Constraints:</h3><ul><li>rows == matrix.length</li><li>cols == matrix[i].length</li><li>1 &lt;= rows, cols &lt;= 200</li><li>matrix[i][j] is '0' or '1'</li></ul>",
+  "entry_function": "maximalRectangle",
+  "template": "def maximalRectangle(matrix):\n    ",
+  "solution_text": "<h3>Maximal Rectangle</h3><p><strong>Algorithm:</strong></p><ol><li>Convert the 2D matrix problem into multiple 1D histogram problems</li><li>For each row, build a histogram where the height at each column is the count of consecutive '1's above (including current row)</li><li>Apply the \"Largest Rectangle in Histogram\" algorithm to each histogram</li><li>Track the maximum area found across all rows</li></ol><p><strong>Time Complexity:</strong> O(m × n) - process each cell once, histogram algorithm is O(n) per row</p><p><strong>Space Complexity:</strong> O(n) - histogram array and stack</p><p><strong>Key Insights:</strong></p><ul><li>This problem builds on LeetCode 84 (Largest Rectangle in Histogram)</li><li>Each row can be viewed as the base of a histogram</li><li>Heights reset to 0 when we encounter a '0'</li><li>The monotonic stack efficiently finds the largest rectangle in each histogram</li></ul>",
+  "solution_code": "def maximalRectangle(matrix):\n    def area(heights):\n        stack = []\n        maxArea = 0\n        n = len(heights)\n        \n        for i in range(n + 1):\n            h = 0 if i == n else heights[i]\n            while stack and h < heights[stack[-1]]:\n                height = heights[stack.pop()]\n                width = i if not stack else i - stack[-1] - 1\n                maxArea = max(maxArea, height * width)\n            stack.append(i)\n        \n        return maxArea\n    \n    if not matrix:\n        return 0\n    \n    m, n = len(matrix), len(matrix[0])\n    hist = [0] * n\n    ans = 0\n    \n    for i in range(m):\n        for j in range(n):\n            if matrix[i][j] == '1':\n                hist[j] += 1\n            else:\n                hist[j] = 0\n        ans = max(ans, area(hist))\n    \n    return ans",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Extract matrix from test case input\"\"\"\n    return (test_case_input['matrix'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the maximal rectangle area\"\"\"\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "matrix": [
+          ["1","0","1","0","0"],
+          ["1","0","1","1","1"],
+          ["1","1","1","1","1"],
+          ["1","0","0","1","0"]
+        ]
+      },
+      "output": 6
+    },
+    {
+      "id": 2,
+      "input": {
+        "matrix": [
+          ["0"]
+        ]
+      },
+      "output": 0
+    },
+    {
+      "id": 3,
+      "input": {
+        "matrix": [
+          ["1"]
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 4,
+      "input": {
+        "matrix": [
+          ["1","1","1","1"]
+        ]
+      },
+      "output": 4
+    },
+    {
+      "id": 5,
+      "input": {
+        "matrix": [
+          ["1"],
+          ["1"],
+          ["1"]
+        ]
+      },
+      "output": 3
+    },
+    {
+      "id": 6,
+      "input": {
+        "matrix": [
+          ["0","0","0"],
+          ["0","0","0"]
+        ]
+      },
+      "output": 0
+    },
+    {
+      "id": 7,
+      "input": {
+        "matrix": [
+          ["1","1"],
+          ["1","1"],
+          ["1","1"]
+        ]
+      },
+      "output": 6
+    },
+    {
+      "id": 8,
+      "input": {
+        "matrix": [
+          ["1","0","1"],
+          ["0","1","0"],
+          ["1","0","1"]
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 9,
+      "input": {
+        "matrix": [
+          ["0","0","0","0","0","0","1"],
+          ["0","0","0","0","1","1","1"],
+          ["1","1","1","1","1","1","1"],
+          ["0","0","0","1","1","1","1"]
+        ]
+      },
+      "output": 9
+    },
+    {
+      "id": 10,
+      "input": {
+        "matrix": [
+          ["0","0","1"],
+          ["1","1","1"]
+        ]
+      },
+      "output": 3
+    }
+  ]
+}

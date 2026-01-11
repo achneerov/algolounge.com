@@ -1,0 +1,91 @@
+{
+  "filename": "algotimewinter2026",
+  "course_name": "Algotime Winter 2026",
+  "course_description": "Welcome to Algotime Winter 2026! Practice these key algorithm problems to sharpen your skills.",
+  "keywords": ["algorithms", "data structures", "technical interviews", "problem solving", "winter", "two pointers", "arrays"],
+  "badge": "Winter 2026",
+  "units": {
+    "week1": {
+      "title": "Week 1",
+      "description": "These are the questions that will be looked at in week 1.",
+      "questions": [
+        {
+          "filename": "two-sum",
+          "urls": [
+            { "url": "https://leetcode.com/problems/two-sum/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/two-sum", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Arrays and Hashing", "color": "#3b82f6" }
+          ]
+        },
+        {
+          "filename": "palindrome-checker",
+          "urls": [
+            { "url": "https://leetcode.com/problems/valid-palindrome/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/valid-palindrome", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Two Pointers", "color": "#a855f7" }
+          ]
+        },
+        {
+          "filename": "two-sum-ii-input-array-is-sorted",
+          "urls": [
+            { "url": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/two-sum-ii-input-array-is-sorted", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Two Pointers", "color": "#a855f7" }
+          ]
+        },
+        {
+          "filename": "3sum",
+          "urls": [
+            { "url": "https://leetcode.com/problems/3sum/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/3sum", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Two Pointers", "color": "#a855f7" }
+          ]
+        },
+        {
+          "filename": "container-with-most-water",
+          "urls": [
+            { "url": "https://leetcode.com/problems/container-with-most-water/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/container-with-most-water", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Two Pointers", "color": "#a855f7" }
+          ]
+        },
+        {
+          "filename": "trapping-rain-water",
+          "urls": [
+            { "url": "https://leetcode.com/problems/trapping-rain-water/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/trapping-rain-water", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Two Pointers", "color": "#a855f7" }
+          ]
+        },
+        {
+          "filename": "maximal-rectangle",
+          "urls": [
+            { "url": "https://leetcode.com/problems/maximal-rectangle/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/maximal-rectangle", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Stack", "color": "#eab308" }
+          ]
+        }
+      ]
+    }
+  }
+}

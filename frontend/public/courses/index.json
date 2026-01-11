@@ -18,6 +18,22 @@
       "stats": "85 questions • 16 stages"
     },
     {
+      "filename": "algotimewinter2026",
+      "title": "Algotime Winter 2026",
+      "keywords": [
+        "algorithms",
+        "data structures",
+        "technical interviews",
+        "problem solving",
+        "winter",
+        "two pointers",
+        "arrays"
+      ],
+      "description": "Welcome to Algotime Winter 2026! Practice these key algorithm problems to sharpen your skills.",
+      "badge": "Winter 2026",
+      "stats": "7 questions • 1 stages"
+    },
+    {
       "filename": "foundations",
       "title": "AlgoLounge Foundations",
       "keywords": [
@@ -51,6 +67,6 @@
       "stats": "23 questions • 5 stages"
     }
   ],
-  "lastUpdated": "2026-01-06T22:36:28.108Z",
-  "totalCourses": 3
+  "lastUpdated": "2026-01-11T22:43:03.153Z",
+  "totalCourses": 4
 }

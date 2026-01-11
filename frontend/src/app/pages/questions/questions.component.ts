@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy, ViewChild, signal } from "@angular/core";
 import { IdeComponent } from "./ide/ide.component";
 import { ConsoleComponent, ExecutionResult } from "./console/console.component";
 import { ContentTabsComponent } from "../../components/general/content-tabs.component";
-import { SidebarComponent } from "../../components/general/sidebar/sidebar.component";
 import { SplitterModule } from "primeng/splitter";
 import { ActivatedRoute, Router } from "@angular/router";
 import { CommonModule } from "@angular/common";
@@ -13,7 +12,6 @@ import { LocalStorageService } from "../../services/local-storage.service";
 import { CompletionService } from "../../services/completion.service";
 import { AuthService } from "../../services/auth.service";
 import { TagService, Tag } from "../../services/tag.service";
-import { SidebarService } from "../../services/sidebar.service";
 import { SuccessAnimationComponent } from "../../components/questions/success-animation/success-animation.component";
 import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
@@ -26,7 +24,6 @@ import { takeUntil } from "rxjs/operators";
     IdeComponent,
     ConsoleComponent,
     ContentTabsComponent,
-    SidebarComponent,
     SplitterModule,
     NotFoundComponent,
     SuccessAnimationComponent,
@@ -45,13 +42,11 @@ export class QuestionsComponent implements OnInit, OnDestroy {
   executionResult: ExecutionResult | null = null;
   isRunning: boolean = false;
   horizontalPanelSizes: number[] = [40, 60];
-  sidebarOpenPanelSizes: number[] = [20, 30, 50]; // sidebar, content-tabs, ide+console
   verticalPanelSizes: number[] = [65, 35];
   currentQuestionFilename: string = "";
   isCompleted: boolean = false;
   showSuccessAnimation = signal(false);
   questionTags: Tag[] = [];
-  sidebarVisible: boolean = true;
   private destroy$ = new Subject<void>();
 
   constructor(
@@ -62,18 +57,12 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     private localStorageService: LocalStorageService,
     private completionService: CompletionService,
     private authService: AuthService,
-    private tagService: TagService,
-    private sidebarService: SidebarService
+    private tagService: TagService
   ) {}
 
   ngOnInit() {
     // Add questions-page class to body
     document.body.classList.add('questions-page');
-
-    // Subscribe to sidebar visibility
-    this.sidebarService.sidebarVisible$.pipe(takeUntil(this.destroy$)).subscribe(visible => {
-      this.sidebarVisible = visible;
-    });
 
     // Load completions if authenticated
     if (this.authService.isAuthenticated()) {

@@ -1,10 +1,8 @@
 import { Component, computed, inject, HostListener, ElementRef } from '@angular/core';
-import { RouterModule, Router, NavigationEnd } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { ThemeService } from '../../../services/theme.service';
 import { AuthService } from '../../../services/auth.service';
-import { SidebarService } from '../../../services/sidebar.service';
 import { CommonModule } from '@angular/common';
-import { filter, map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-global-header',
@@ -15,13 +13,13 @@ import { filter, map, startWith } from 'rxjs/operators';
 export class GlobalHeaderComponent {
   private themeService = inject(ThemeService);
   private authService = inject(AuthService);
-  private sidebarService = inject(SidebarService);
   private router = inject(Router);
   private elementRef = inject(ElementRef);
 
   // Get current theme
   isDarkMode = computed(() => this.themeService.activeTheme() === 'dark');
 
+  // Auth state - use observables directly for reactivity
   isAuthenticated$ = this.authService.isAuthenticated$;
   currentUser$ = this.authService.currentUser$;
   showUserMenu = false;
@@ -30,26 +28,12 @@ export class GlobalHeaderComponent {
     return user && (user as any).roleId === 1;
   });
 
-  // Sidebar state
-  sidebarVisible$ = this.sidebarService.sidebarVisible$;
-  
-  // Check if we're on the questions page
-  isQuestionsPage$ = this.router.events.pipe(
-    filter(event => event instanceof NavigationEnd),
-    map(() => this.router.url.startsWith('/questions/')),
-    startWith(this.router.url.startsWith('/questions/'))
-  );
-
   toggleTheme(): void {
     this.themeService.toggleTheme();
   }
 
   toggleUserMenu(): void {
     this.showUserMenu = !this.showUserMenu;
-  }
-
-  toggleSidebar(): void {
-    this.sidebarService.toggle();
   }
 
   logout(): void {

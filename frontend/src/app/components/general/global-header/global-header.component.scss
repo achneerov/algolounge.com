@@ -20,50 +20,6 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: $spacing-md;
-}
-
-.sidebar-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: $spacing-sm;
-  background: transparent;
-  border: 2px solid var(--color-border);
-  border-radius: $radius-md;
-  width: auto;
-  height: 40px;
-  padding: 0 $spacing-md;
-  cursor: pointer;
-  color: var(--color-text-secondary);
-  transition: all $transition-base;
-
-  &:hover {
-    background: var(--color-bg-primary);
-    border-color: var(--color-primary);
-    color: var(--color-primary);
-    transform: translateY(-2px);
-    box-shadow: $shadow-md;
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
-
-  svg {
-    transition: transform $transition-base;
-    flex-shrink: 0;
-  }
-
-  &:hover svg {
-    transform: scale(1.1);
-  }
-
-  .sidebar-toggle-text {
-    font-size: $font-size-sm;
-    font-weight: $font-weight-medium;
-    white-space: nowrap;
-  }
 }
 
 .logo-link {

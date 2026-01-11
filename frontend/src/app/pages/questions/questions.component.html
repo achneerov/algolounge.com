@@ -1,76 +1,24 @@
 <ng-container *ngIf="!notFound; else notFoundTpl">
-  <!-- 3-panel layout when sidebar is open -->
   <p-splitter
-    *ngIf="sidebarVisible"
-    [style]="{ height: 'calc(100%)', margin: '0' }"
-    [panelSizes]="sidebarOpenPanelSizes"
-    [minSizes]="[15, 20, 10]"
-    (onResizeEnd)="onHorizontalResizeEnd($event)"
-  >
-    <!-- Sidebar Panel -->
-    <ng-template pTemplate="panel">
-      <app-sidebar
-        [currentQuestionFilename]="currentQuestionFilename"
-        (selectQuestion)="onGo($event)">
-      </app-sidebar>
-    </ng-template>
-
-    <!-- Content Tabs Panel -->
-    <ng-template pTemplate="panel">
-      <app-content-tabs
-        [description]="description"
-        [solutionText]="solutionText"
-        [solutionCode]="solutionCode"
-        [isCompleted]="isCompleted"
-        [currentQuestionFilename]="currentQuestionFilename"
-        [questionTags]="questionTags">
-      </app-content-tabs>
-    </ng-template>
-
-    <!-- IDE + Console Panel -->
-    <ng-template pTemplate="panel">
-      <p-splitter layout="vertical" [panelSizes]="verticalPanelSizes" [minSizes]="[10, 5]" (onResizeEnd)="onVerticalResizeEnd($event)">
-        <ng-template pTemplate="panel">
-          <app-ide
-            [template]="template"
-            [questionData]="questionData"
-            [isRunning]="isRunning"
-            (run)="onRun()"
-            (stop)="onStop()"
-            (reset)="onReset()"
-          ></app-ide>
-        </ng-template>
-        <ng-template pTemplate="panel">
-          <app-console [result]="executionResult" [isRunning]="isRunning"></app-console>
-        </ng-template>
-      </p-splitter>
-    </ng-template>
-  </p-splitter>
-
-  <!-- 2-panel layout when sidebar is closed -->
-  <p-splitter
-    *ngIf="!sidebarVisible"
     [style]="{ height: 'calc(100%)', margin: '0' }"
     [panelSizes]="horizontalPanelSizes"
     [minSizes]="[25, 10]"
     (onResizeEnd)="onHorizontalResizeEnd($event)"
   >
-    <!-- Content Tabs Panel -->
-    <ng-template pTemplate="panel">
+    <ng-template pTemplate="panel1">
       <app-content-tabs
         [description]="description"
         [solutionText]="solutionText"
         [solutionCode]="solutionCode"
         [isCompleted]="isCompleted"
         [currentQuestionFilename]="currentQuestionFilename"
-        [questionTags]="questionTags">
+        [questionTags]="questionTags"
+        (go)="onGo($event)">
       </app-content-tabs>
     </ng-template>
-
-    <!-- IDE + Console Panel -->
-    <ng-template pTemplate="panel">
+    <ng-template pTemplate="panel2">
       <p-splitter layout="vertical" [panelSizes]="verticalPanelSizes" [minSizes]="[10, 5]" (onResizeEnd)="onVerticalResizeEnd($event)">
-        <ng-template pTemplate="panel">
+        <ng-template pTemplate="panel1">
           <app-ide
             [template]="template"
             [questionData]="questionData"
@@ -80,7 +28,7 @@
             (reset)="onReset()"
           ></app-ide>
         </ng-template>
-        <ng-template pTemplate="panel">
+        <ng-template pTemplate="panel2">
           <app-console [result]="executionResult" [isRunning]="isRunning"></app-console>
         </ng-template>
       </p-splitter>

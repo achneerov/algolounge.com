@@ -1,9 +1,13 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { QuestionSearchService, QuestionSearchResult } from '../../../services/question-search.service';
 import { LocalStorageService } from '../../../services/local-storage.service';
+import { CompletionService } from '../../../services/completion.service';
+import { AuthService } from '../../../services/auth.service';
 import { TagService } from '../../../services/tag.service';
 
 @Component({
@@ -13,14 +17,14 @@ import { TagService } from '../../../services/tag.service';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit, OnDestroy {
   @Input() currentQuestionFilename: string = '';
   @Output() selectQuestion = new EventEmitter<string>();
 
   searchQuery: string = '';
   questions: QuestionSearchResult[] = [];
   filteredQuestions: QuestionSearchResult[] = [];
-  
+
   // Filters
   selectedDifficulty: string | null = null;
   showCompleted: boolean | null = null; // null = all, true = completed, false = todo
@@ -28,20 +32,36 @@ export class SidebarComponent implements OnInit {
   availableTags: string[] = []; // All unique tags from questions
   showTagsPopover: boolean = false; // Toggle popover visibility
 
+  private destroy$ = new Subject<void>();
+  private serverCompletions: string[] = [];
+
   constructor(
     private questionSearchService: QuestionSearchService,
     private localStorageService: LocalStorageService,
+    private completionService: CompletionService,
+    private authService: AuthService,
     private tagService: TagService
   ) {}
 
   ngOnInit(): void {
-    this.questionSearchService.isIndexLoaded().subscribe(loaded => {
+    this.questionSearchService.isIndexLoaded().pipe(takeUntil(this.destroy$)).subscribe(loaded => {
       if (loaded) {
         this.questions = this.questionSearchService.getAllQuestions();
         this.availableTags = this.getAllUniqueTags();
         this.filterQuestions();
       }
     });
+
+    // Subscribe to completions from server (updates when user completes questions)
+    this.completionService.completions$.pipe(takeUntil(this.destroy$)).subscribe(completions => {
+      this.serverCompletions = completions;
+      this.filterQuestions();
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   filterQuestions(): void {
@@ -145,6 +165,10 @@ export class SidebarComponent implements OnInit {
   }
 
   isQuestionCompleted(filename: string): boolean {
+    // Use server completions if authenticated, fallback to local storage
+    if (this.authService.isAuthenticated()) {
+      return this.serverCompletions.includes(filename);
+    }
     return this.localStorageService.isQuestionCompleted(filename);
   }
 

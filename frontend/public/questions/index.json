@@ -2310,8 +2310,7 @@
       "difficulty": "Medium",
       "tags": [
         "Arrays and Hashing",
-        "Two Pointers",
-        "Sorting"
+        "Two Pointers"
       ],
       "keywords": [
         "sort",
@@ -2416,6 +2415,6 @@
       ]
     }
   ],
-  "lastUpdated": "2026-01-11T22:43:03.144Z",
+  "lastUpdated": "2026-01-11T23:08:58.479Z",
   "totalQuestions": 125
 }

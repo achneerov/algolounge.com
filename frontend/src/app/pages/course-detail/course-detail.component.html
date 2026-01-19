@@ -40,7 +40,6 @@
       <div class="section-header">
         <div class="section-title-row" (click)="toggleSection(section.unitKey)">
           <h2>
-            <span class="section-number">{{ getSectionNumber(section) }}.</span>
             <span class="title-text" (click)="onUnitClick(section.unitKey); $event.stopPropagation()">{{ section.title }}</span>
             <span class="question-count" *ngIf="section.questions.length > 0">({{ section.questions.length }} questions)</span>
           </h2>

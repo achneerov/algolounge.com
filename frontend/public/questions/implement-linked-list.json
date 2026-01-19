@@ -1,0 +1,100 @@
+{
+  "index": 0,
+  "filename": "implement-linked-list",
+  "title": "Implement Linked List",
+  "difficulty": "Easy",
+  "tags": [
+    "Linked List",
+    "Data Structure Design"
+  ],
+  "keywords": [
+    "linked list",
+    "implement",
+    "data structure",
+    "node",
+    "prepend",
+    "append",
+    "delete",
+    "get",
+    "singly linked list"
+  ],
+  "description": "<h2>Implement Linked List</h2><p>Implement a singly linked list data structure with a <code>Node</code> class and a <code>LinkedList</code> class that supports the following operations:</p><ul><li><code>prepend(val)</code>: Prepend a new node with the given value to the beginning of the list</li><li><code>append(val)</code>: Append a new node with the given value at the end of the list</li><li><code>get(index)</code>: Return the value of the node at the specified index. Return <code>-1</code> if the index is invalid</li><li><code>insert(index, val)</code>: Insert a new node with the given value at the specified index. If the index is greater than the length, append to the end</li><li><code>delete(index)</code>: Delete the node at the specified index. Do nothing if the index is invalid</li></ul><p>The <code>Node</code> class should have:</p><ul><li><code>val</code>: The value stored in the node</li><li><code>next</code>: A pointer to the next node (initially <code>None</code>)</li></ul><h3>Examples:</h3><ul><li>Input: [\"LinkedList()\", \"append(1)\", \"append(2)\", \"get(1)\", \"prepend(0)\", \"get(0)\"]<br>Output: [null, null, null, 2, null, 0]</li><li>Input: [\"LinkedList()\", \"append(1)\", \"append(2)\", \"append(3)\", \"delete(1)\", \"get(1)\"]<br>Output: [null, null, null, null, null, 3]</li></ul><h3>Constraints:</h3><ul><li><code>0 <= index <= 1000</code></li><li><code>-1000 <= val <= 1000</code></li><li>At most <code>1000</code> calls will be made to the methods</li></ul>",
+  "entry_function": "executeLinkedListOperations",
+  "template": "class Node:\n    def __init__(self, val):\n        pass\n\nclass LinkedList:\n    def __init__(self):\n        pass\n    \n    def prepend(self, val):\n        pass\n    \n    def append(self, val):\n        pass\n    \n    def get(self, index):\n        pass\n    \n    def insert(self, index, val):\n        pass\n    \n    def delete(self, index):\n        pass",
+  "solution_text": "<h3>Implement Linked List</h3><p><strong>Algorithm:</strong></p><ol><li><strong>Node class</strong>: Store a value and a pointer to the next node</li><li><strong>LinkedList class</strong>: Maintain a head pointer and track the size</li><li><strong>prepend</strong>: Create a new node, point it to current head, update head</li><li><strong>append</strong>: Traverse to the last node and add the new node, or set as head if empty</li><li><strong>get</strong>: Traverse to the index and return the value, or -1 if out of bounds</li><li><strong>insert</strong>: Traverse to index-1, insert new node between current and next</li><li><strong>delete</strong>: Traverse to index-1, skip over the node to delete by updating pointers</li></ol><p><strong>Time Complexity:</strong></p><ul><li>prepend: O(1)</li><li>append: O(n) - must traverse to end</li><li>get: O(n) - must traverse to index</li><li>insert: O(n) - must traverse to index</li><li>delete: O(n) - must traverse to index</li></ul><p><strong>Space Complexity:</strong> O(n) where n is number of elements</p><p><strong>Key Insights:</strong></p><ul><li>Always handle edge cases: empty list, single element, index out of bounds</li><li>Tracking size makes bounds checking O(1)</li><li>Head operations are O(1), tail operations are O(n) without a tail pointer</li><li>Consider using a dummy head node to simplify edge case handling</li></ul>",
+  "solution_code": "class Node:\n    def __init__(self, val):\n        self.val = val\n        self.next = None\n\nclass LinkedList:\n    def __init__(self):\n        self.head = None\n        self.size = 0\n    \n    def prepend(self, val):\n        new_node = Node(val)\n        new_node.next = self.head\n        self.head = new_node\n        self.size += 1\n    \n    def append(self, val):\n        new_node = Node(val)\n        if self.head is None:\n            self.head = new_node\n        else:\n            current = self.head\n            while current.next is not None:\n                current = current.next\n            current.next = new_node\n        self.size += 1\n    \n    def get(self, index):\n        if index < 0 or index >= self.size:\n            return -1\n        current = self.head\n        for _ in range(index):\n            current = current.next\n        return current.val\n    \n    def insert(self, index, val):\n        if index <= 0:\n            self.prepend(val)\n            return\n        if index >= self.size:\n            self.append(val)\n            return\n        new_node = Node(val)\n        current = self.head\n        for _ in range(index - 1):\n            current = current.next\n        new_node.next = current.next\n        current.next = new_node\n        self.size += 1\n    \n    def delete(self, index):\n        if index < 0 or index >= self.size:\n            return\n        if index == 0:\n            self.head = self.head.next\n        else:\n            current = self.head\n            for _ in range(index - 1):\n                current = current.next\n            current.next = current.next.next\n        self.size -= 1",
+  "prepare": "import re\n\ndef parse_operation(op_str):\n    match = re.match(r'(\\w+)\\((.*)\\)', op_str)\n    if not match:\n        return op_str, []\n    name = match.group(1)\n    args_str = match.group(2).strip()\n    if not args_str:\n        return name, []\n    args = [int(a.strip()) for a in args_str.split(',')]\n    return name, args\n\ndef executeLinkedListOperations(operations):\n    results = []\n    linked_list = None\n    for op_str in operations:\n        op, args = parse_operation(op_str)\n        if op == 'LinkedList':\n            linked_list = LinkedList()\n            results.append(None)\n        elif op == 'prepend':\n            linked_list.prepend(args[0])\n            results.append(None)\n        elif op == 'append':\n            linked_list.append(args[0])\n            results.append(None)\n        elif op == 'get':\n            results.append(linked_list.get(args[0]))\n        elif op == 'insert':\n            linked_list.insert(args[0], args[1])\n            results.append(None)\n        elif op == 'delete':\n            linked_list.delete(args[0])\n            results.append(None)\n    return results\n\ndef prepare(test_case_input):\n    return (test_case_input['operations'],)",
+  "verify": "def verify(actual_output, expected_output):\n    if len(actual_output) != len(expected_output):\n        return [False, str(actual_output)]\n    \n    for actual, expected in zip(actual_output, expected_output):\n        if actual != expected:\n            return [False, str(actual_output)]\n    \n    return [True, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "operations": ["LinkedList()", "append(1)", "append(2)", "get(1)", "prepend(0)", "get(0)"]
+      },
+      "output": [null, null, null, 2, null, 0]
+    },
+    {
+      "id": 2,
+      "input": {
+        "operations": ["LinkedList()", "append(1)", "append(2)", "append(3)", "delete(1)", "get(1)"]
+      },
+      "output": [null, null, null, null, null, 3]
+    },
+    {
+      "id": 3,
+      "input": {
+        "operations": ["LinkedList()", "get(0)", "delete(0)", "append(5)", "get(0)"]
+      },
+      "output": [null, -1, null, null, 5]
+    },
+    {
+      "id": 4,
+      "input": {
+        "operations": ["LinkedList()", "prepend(3)", "prepend(2)", "prepend(1)", "get(0)", "get(1)", "get(2)"]
+      },
+      "output": [null, null, null, null, 1, 2, 3]
+    },
+    {
+      "id": 5,
+      "input": {
+        "operations": ["LinkedList()", "append(1)", "append(2)", "append(4)", "append(5)", "insert(3, 99)", "get(0)", "get(1)", "get(2)", "get(3)", "get(4)"]
+      },
+      "output": [null, null, null, null, null, null, 1, 2, 4, 99, 5]
+    },
+    {
+      "id": 6,
+      "input": {
+        "operations": ["LinkedList()", "append(10)", "delete(0)", "get(0)"]
+      },
+      "output": [null, null, null, -1]
+    },
+    {
+      "id": 7,
+      "input": {
+        "operations": ["LinkedList()", "append(1)", "append(2)", "append(3)", "delete(2)", "delete(0)", "get(0)"]
+      },
+      "output": [null, null, null, null, null, null, 2]
+    },
+    {
+      "id": 8,
+      "input": {
+        "operations": ["LinkedList()", "append(1)", "append(2)", "append(3)", "append(4)", "append(5)", "insert(2, 50)", "insert(4, 75)", "get(0)", "get(1)", "get(2)", "get(3)", "get(4)", "get(5)", "get(6)"]
+      },
+      "output": [null, null, null, null, null, null, null, null, 1, 2, 50, 3, 75, 4, 5]
+    },
+    {
+      "id": 9,
+      "input": {
+        "operations": ["LinkedList()", "append(100)", "append(200)", "get(0)", "get(1)", "get(2)"]
+      },
+      "output": [null, null, null, 100, 200, -1]
+    },
+    {
+      "id": 10,
+      "input": {
+        "operations": ["LinkedList()", "insert(100, 5)", "get(0)", "prepend(1)", "get(0)", "append(10)", "get(0)", "get(1)", "get(2)"]
+      },
+      "output": [null, null, 5, null, 1, null, 1, 5, 10]
+    }
+  ]
+}

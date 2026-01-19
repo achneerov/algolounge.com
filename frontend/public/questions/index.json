@@ -37,6 +37,27 @@
     },
     {
       "index": 0,
+      "filename": "implement-linked-list",
+      "title": "Implement Linked List",
+      "difficulty": "Easy",
+      "tags": [
+        "Linked List",
+        "Data Structure Design"
+      ],
+      "keywords": [
+        "linked list",
+        "implement",
+        "data structure",
+        "node",
+        "prepend",
+        "append",
+        "delete",
+        "get",
+        "singly linked list"
+      ]
+    },
+    {
+      "index": 0,
       "filename": "implement-queue-using-stacks",
       "title": "Implement Queue Using Stacks",
       "difficulty": "Easy",
@@ -119,6 +140,30 @@
         "top",
         "empty",
         "LIFO"
+      ]
+    },
+    {
+      "index": 0,
+      "filename": "linked-list-cycle-ii",
+      "title": "Linked List Cycle II",
+      "difficulty": "Medium",
+      "tags": [
+        "Linked List",
+        "Two Pointers"
+      ],
+      "keywords": [
+        "linked",
+        "list",
+        "cycle",
+        "detection",
+        "leetcode",
+        "142",
+        "head",
+        "return",
+        "node",
+        "floyd",
+        "tortoise",
+        "hare"
       ]
     },
     {
@@ -235,6 +280,25 @@
         "data structure",
         "sliding window",
         "time range"
+      ]
+    },
+    {
+      "index": 0,
+      "filename": "reverse-nodes-in-k-group",
+      "title": "Reverse Nodes in K-Group",
+      "difficulty": "Hard",
+      "tags": [
+        "Linked List"
+      ],
+      "keywords": [
+        "linked",
+        "list",
+        "reverse",
+        "k-group",
+        "group",
+        "nodes",
+        "head",
+        "simulation"
       ]
     },
     {
@@ -2415,6 +2479,6 @@
       ]
     }
   ],
-  "lastUpdated": "2026-01-11T23:08:58.479Z",
-  "totalQuestions": 125
+  "lastUpdated": "2026-01-19T21:38:44.645Z",
+  "totalQuestions": 128
 }

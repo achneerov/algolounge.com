@@ -11,7 +11,10 @@
       "questions": [
         {
           "filename": "string-reversal",
-          "urls": [],
+          "urls": [
+            { "url": "https://leetcode.com/problems/reverse-string/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/reverse-string", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
           "tags": [
             { "text": "Easy", "color": "#22c55e" },
             { "text": "Strings", "color": "#06b6d4" }
@@ -19,7 +22,10 @@
         },
         {
           "filename": "implement-linked-list",
-          "urls": [],
+          "urls": [
+            { "url": "https://leetcode.com/problems/design-linked-list/description/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/design-linked-list", "tooltip": "NeetCode Problem", "color": "#16a34a", "visibleString": "NeetCode" }
+          ],
           "tags": [
             { "text": "Easy", "color": "#22c55e" },
             { "text": "Linked List", "color": "#ec4899" }

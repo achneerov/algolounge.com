@@ -1,0 +1,132 @@
+<div class="sidebar-container">
+  <!-- Search Header -->
+  <div class="sidebar-header">
+    <div class="search-wrapper">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input 
+        type="text" 
+        [(ngModel)]="searchQuery" 
+        (ngModelChange)="filterQuestions()"
+        placeholder="Search questions..."
+        class="search-input"
+      >
+    </div>
+
+    <!-- Filters -->
+    <div class="filters-scroll">
+      <div class="filters-group">
+        <button 
+          class="filter-chip easy" 
+          [class.active]="selectedDifficulty === 'Easy'"
+          (click)="toggleDifficulty('Easy')">
+          Easy
+        </button>
+        <button 
+          class="filter-chip medium" 
+          [class.active]="selectedDifficulty === 'Medium'"
+          (click)="toggleDifficulty('Medium')">
+          Med
+        </button>
+        <button 
+          class="filter-chip hard" 
+          [class.active]="selectedDifficulty === 'Hard'"
+          (click)="toggleDifficulty('Hard')">
+          Hard
+        </button>
+        <div class="divider"></div>
+        <button 
+          class="filter-chip status" 
+          [class.active]="showCompleted === true"
+          (click)="toggleStatus(true)">
+          Done
+        </button>
+      </div>
+    </div>
+
+    <!-- Tag Filter Section -->
+    <div class="tags-section">
+      <!-- Button showing current selection -->
+      <button class="tags-button" [class.has-selection]="selectedTag !== null" [style.--selected-tag-color]="selectedTag ? getTagColor(selectedTag) : 'transparent'" (click)="toggleTagsPopover(); $event.stopPropagation()">
+        <span class="tags-button-label">
+          {{ selectedTag ? selectedTag : 'TOPIC' }}
+        </span>
+        <svg class="tags-button-icon" [class.open]="showTagsPopover" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+
+      <!-- Floating popover -->
+      <div class="tags-popover" *ngIf="showTagsPopover" (click)="$event.stopPropagation()">
+        <div class="tags-popover-content">
+          <!-- Clear option (shown first if tag is selected) -->
+          <button
+            *ngIf="selectedTag"
+            class="tag-option clear-option"
+            (click)="clearTag()">
+            <span>(Clear filter)</span>
+          </button>
+
+          <!-- All available tags -->
+          <button
+            *ngFor="let tag of availableTags"
+            class="tag-option"
+            [class.selected]="isTagSelected(tag)"
+            [style.--tag-color]="getTagColor(tag)"
+            (click)="selectTag(tag)">
+            <span>{{ tag }}</span>
+            <svg *ngIf="isTagSelected(tag)" class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Question List -->
+  <div class="questions-list">
+    <div 
+      *ngFor="let question of filteredQuestions" 
+      class="question-item"
+      [class.active]="question.filename === currentQuestionFilename"
+      (click)="onSelect(question.filename)">
+      
+      <div class="question-status">
+        <div class="status-indicator" [class.completed]="isQuestionCompleted(question.filename)">
+          <svg *ngIf="isQuestionCompleted(question.filename)" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+      </div>
+
+      <div class="question-content">
+        <div class="question-title-row">
+          <div class="question-title">{{ question.title }}</div>
+          <div class="difficulty-badge" [ngClass]="'difficulty-' + question.difficulty.toLowerCase()">
+            {{ getDifficultyLabel(question.difficulty) }}
+          </div>
+        </div>
+        <div class="question-meta">
+          <div class="question-tags">
+            <span
+              *ngFor="let tag of question.tags.slice(0, 2)"
+              class="question-tag"
+              [style.background-color]="getTagColor(tag) + '15'"
+              [style.color]="getTagColor(tag)">
+              {{ tag }}
+            </span>
+            <span *ngIf="question.tags.length > 2" class="tag-more">+{{ question.tags.length - 2 }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="filteredQuestions.length === 0" class="empty-state">
+      <p>No questions found</p>
+    </div>
+  </div>
+</div>

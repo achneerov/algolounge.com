@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { LocalStorageService } from '../../services/local-storage.service';
+import { TagService } from '../../services/tag.service';
+import { QuestionSearchService } from '../../services/question-search.service';
 
 interface CourseTag {
   text: string;
@@ -51,7 +53,9 @@ export class UnitDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private http: HttpClient,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private tagService: TagService,
+    private questionSearchService: QuestionSearchService
   ) {}
 
   ngOnInit() {
@@ -92,27 +96,60 @@ export class UnitDetailComponent implements OnInit {
       // Extract questions from this unit
       if (unitData.questions && Array.isArray(unitData.questions)) {
         for (const question of unitData.questions) {
+          let courseQuestion: CourseQuestion;
+
           if (typeof question === 'string') {
             // Old format: just string filename
-            this.unit.questions.push({
+            courseQuestion = {
               filename: question,
               title: this.formatQuestionTitle(question)
-            });
+            };
           } else if (typeof question === 'object' && question.filename) {
             // New format: object with filename and optional attributes
-            this.unit.questions.push({
+            courseQuestion = {
               filename: question.filename,
               title: this.formatQuestionTitle(question.filename),
-              urls: question.urls,
-              tags: question.tags
-            });
+              urls: question.urls
+            };
+          } else {
+            continue;
           }
+
+          // Enrich with tags from question index
+          this.unit.questions.push(this.enrichQuestionData(courseQuestion));
         }
       }
     } else {
       // Unit not found, redirect to course
       this.router.navigate(['/courses', this.courseName]);
     }
+  }
+
+  /**
+   * Enrich question data with tags from the question index
+   */
+  private enrichQuestionData(question: CourseQuestion): CourseQuestion {
+    const allQuestions = this.questionSearchService.getAllQuestions();
+    const questionData = allQuestions.find(q => q.filename === question.filename);
+
+    if (questionData) {
+      const tags: CourseTag[] = [];
+
+      // Add difficulty tag
+      tags.push(this.tagService.getDifficultyTag(questionData.difficulty));
+
+      // Add other tags
+      if (questionData.tags.length > 0) {
+        tags.push(...this.tagService.getTags(questionData.tags));
+      }
+
+      return {
+        ...question,
+        tags: tags
+      };
+    }
+
+    return question;
   }
 
   private formatUnitTitle(key: string): string {

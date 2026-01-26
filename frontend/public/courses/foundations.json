@@ -25,13 +25,7 @@
               "url": "https://leetcode.com/problems/contains-duplicate/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -42,13 +36,7 @@
               "url": "https://leetcode.com/problems/two-sum/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -59,13 +47,7 @@
               "url": "https://leetcode.com/problems/majority-element/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -76,24 +58,12 @@
               "url": "https://leetcode.com/problems/remove-element/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
+              "visibleString": "🔗"
             }
           ]
         },
         {
-          "filename": "most-frequent-element",
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
-            }
-          ]
+          "filename": "most-frequent-element"
         },
         {
           "filename": "concatenation-of-array",
@@ -102,13 +72,7 @@
               "url": "https://leetcode.com/problems/concatenation-of-array/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -119,13 +83,7 @@
               "url": "https://leetcode.com/problems/group-anagrams/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -136,13 +94,7 @@
               "url": "https://leetcode.com/problems/product-of-array-except-self/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -153,13 +105,7 @@
               "url": "https://leetcode.com/problems/valid-sudoku/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -170,13 +116,7 @@
               "url": "https://leetcode.com/problems/longest-consecutive-sequence/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -187,13 +127,7 @@
               "url": "https://leetcode.com/problems/sort-colors/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -204,13 +138,7 @@
               "url": "https://leetcode.com/problems/valid-anagram/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         }
@@ -218,16 +146,10 @@
     },
     "two_pointers": {
       "title": "Two Pointers",
-      "description": "Learn efficient array and string manipulation using the two-pointer technique. Essential for optimizing solutions from O(n\u00b2) to O(n).",
+      "description": "Learn efficient array and string manipulation using the two-pointer technique. Essential for optimizing solutions from O(n²) to O(n).",
       "questions": [
         {
-          "filename": "palindrome-checker",
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
-            }
-          ]
+          "filename": "palindrome-checker"
         },
         {
           "filename": "intersection-of-two-linked-lists",
@@ -236,13 +158,7 @@
               "url": "https://leetcode.com/problems/intersection-of-two-linked-lists/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -253,13 +169,7 @@
               "url": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -270,13 +180,7 @@
               "url": "https://leetcode.com/problems/3sum/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -287,13 +191,7 @@
               "url": "https://leetcode.com/problems/4sum/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -304,13 +202,7 @@
               "url": "https://leetcode.com/problems/container-with-most-water/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -321,13 +213,7 @@
               "url": "https://leetcode.com/problems/boats-to-save-people/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -338,13 +224,7 @@
               "url": "https://leetcode.com/problems/longest-palindromic-substring/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -355,13 +235,7 @@
               "url": "https://leetcode.com/problems/trapping-rain-water/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Hard",
-              "color": "#ef4444"
+              "visibleString": "🔗"
             }
           ]
         }
@@ -378,24 +252,12 @@
               "url": "https://leetcode.com/problems/valid-parentheses/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
+              "visibleString": "🔗"
             }
           ]
         },
         {
-          "filename": "implement-stack",
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
-            }
-          ]
+          "filename": "implement-stack"
         },
         {
           "filename": "implement-stack-using-queues",
@@ -404,13 +266,7 @@
               "url": "https://leetcode.com/problems/implement-stack-using-queues/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -421,13 +277,7 @@
               "url": "https://leetcode.com/problems/simplify-path/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -438,13 +288,7 @@
               "url": "https://leetcode.com/problems/valid-parenthesis-string/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -455,13 +299,7 @@
               "url": "https://leetcode.com/problems/car-fleet/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -472,13 +310,7 @@
               "url": "https://leetcode.com/problems/daily-temperatures/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -489,13 +321,7 @@
               "url": "https://leetcode.com/problems/evaluate-reverse-polish-notation/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -506,13 +332,7 @@
               "url": "https://leetcode.com/problems/asteroid-collision/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -523,13 +343,7 @@
               "url": "https://leetcode.com/problems/baseball-game/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -540,13 +354,7 @@
               "url": "https://leetcode.com/problems/longest-valid-parentheses/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Hard",
-              "color": "#ef4444"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -557,13 +365,7 @@
               "url": "https://leetcode.com/problems/largest-rectangle-in-histogram/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Hard",
-              "color": "#ef4444"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -574,13 +376,7 @@
               "url": "https://leetcode.com/problems/maximum-frequency-stack/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Hard",
-              "color": "#ef4444"
+              "visibleString": "🔗"
             }
           ]
         }
@@ -597,13 +393,7 @@
               "url": "https://leetcode.com/problems/binary-search/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -614,13 +404,7 @@
               "url": "https://leetcode.com/problems/search-insert-position/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -631,13 +415,7 @@
               "url": "https://leetcode.com/problems/median-of-two-sorted-arrays/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Hard",
-              "color": "#ef4444"
+              "visibleString": "🔗"
             }
           ]
         }
@@ -654,13 +432,7 @@
               "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -671,13 +443,7 @@
               "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         }
@@ -694,13 +460,7 @@
               "url": "https://leetcode.com/problems/reverse-linked-list/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -711,13 +471,7 @@
               "url": "https://leetcode.com/problems/merge-two-sorted-lists/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -728,13 +482,7 @@
               "url": "https://leetcode.com/problems/linked-list-cycle/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -745,13 +493,7 @@
               "url": "https://leetcode.com/problems/palindrome-linked-list/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -762,13 +504,7 @@
               "url": "https://leetcode.com/problems/add-two-numbers/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -779,13 +515,7 @@
               "url": "https://leetcode.com/problems/copy-list-with-random-pointer/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -796,13 +526,7 @@
               "url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -813,13 +537,7 @@
               "url": "https://leetcode.com/problems/reorder-list/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         }
@@ -836,13 +554,7 @@
               "url": "https://leetcode.com/problems/invert-binary-tree/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -853,13 +565,7 @@
               "url": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -870,13 +576,7 @@
               "url": "https://leetcode.com/problems/balanced-binary-tree/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -887,13 +587,7 @@
               "url": "https://leetcode.com/problems/diameter-of-binary-tree/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -904,13 +598,7 @@
               "url": "https://leetcode.com/problems/binary-tree-inorder-traversal/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -921,13 +609,7 @@
               "url": "https://leetcode.com/problems/binary-tree-preorder-traversal/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -938,13 +620,7 @@
               "url": "https://leetcode.com/problems/binary-tree-postorder-traversal/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -955,13 +631,7 @@
               "url": "https://leetcode.com/problems/binary-tree-right-side-view/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -972,13 +642,7 @@
               "url": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -989,13 +653,7 @@
               "url": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Hard",
-              "color": "#ef4444"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1006,13 +664,7 @@
               "url": "https://leetcode.com/problems/binary-tree-maximum-path-sum/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Hard",
-              "color": "#ef4444"
+              "visibleString": "🔗"
             }
           ]
         }
@@ -1029,13 +681,7 @@
               "url": "https://leetcode.com/problems/word-search-ii/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Hard",
-              "color": "#ef4444"
+              "visibleString": "🔗"
             }
           ]
         }
@@ -1052,13 +698,7 @@
               "url": "https://leetcode.com/problems/generate-parentheses/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1069,13 +709,7 @@
               "url": "https://leetcode.com/problems/n-queens/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Hard",
-              "color": "#ef4444"
+              "visibleString": "🔗"
             }
           ]
         }
@@ -1092,13 +726,7 @@
               "url": "https://leetcode.com/problems/last-stone-weight/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1109,13 +737,7 @@
               "url": "https://leetcode.com/problems/meeting-rooms-ii/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1126,13 +748,7 @@
               "url": "https://leetcode.com/problems/find-median-from-data-stream/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Hard",
-              "color": "#ef4444"
+              "visibleString": "🔗"
             }
           ]
         }
@@ -1149,13 +765,7 @@
               "url": "https://leetcode.com/problems/clone-graph/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1166,13 +776,7 @@
               "url": "https://leetcode.com/problems/course-schedule/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1183,13 +787,7 @@
               "url": "https://leetcode.com/problems/number-of-islands/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1200,13 +798,7 @@
               "url": "https://leetcode.com/problems/max-area-of-island/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1217,13 +809,7 @@
               "url": "https://leetcode.com/problems/rotting-oranges/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1234,13 +820,7 @@
               "url": "https://leetcode.com/problems/word-ladder/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Hard",
-              "color": "#ef4444"
+              "visibleString": "🔗"
             }
           ]
         }
@@ -1257,13 +837,7 @@
               "url": "https://leetcode.com/problems/climbing-stairs/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1274,13 +848,7 @@
               "url": "https://leetcode.com/problems/min-cost-climbing-stairs/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1291,13 +859,7 @@
               "url": "https://leetcode.com/problems/house-robber/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1308,13 +870,7 @@
               "url": "https://leetcode.com/problems/coin-change/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1325,13 +881,7 @@
               "url": "https://leetcode.com/problems/longest-common-subsequence/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1342,13 +892,7 @@
               "url": "https://leetcode.com/problems/maximum-subarray/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1359,24 +903,12 @@
               "url": "https://leetcode.com/problems/n-th-tribonacci-number/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
         {
-          "filename": "dice-ways",
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
-            }
-          ]
+          "filename": "dice-ways"
         }
       ]
     },
@@ -1391,13 +923,7 @@
               "url": "https://leetcode.com/problems/meeting-rooms/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1408,13 +934,7 @@
               "url": "https://leetcode.com/problems/insert-interval/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1425,13 +945,7 @@
               "url": "https://leetcode.com/problems/merge-intervals/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1442,13 +956,7 @@
               "url": "https://leetcode.com/problems/minimum-interval-to-include-each-query/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Hard",
-              "color": "#ef4444"
+              "visibleString": "🔗"
             }
           ]
         }
@@ -1465,13 +973,7 @@
               "url": "https://leetcode.com/problems/candy/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1482,13 +984,7 @@
               "url": "https://leetcode.com/problems/car-pooling/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         }
@@ -1505,13 +1001,7 @@
               "url": "https://leetcode.com/problems/reconstruct-itinerary/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Hard",
-              "color": "#ef4444"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1522,13 +1012,7 @@
               "url": "https://leetcode.com/problems/redundant-connection-ii/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Hard",
-              "color": "#ef4444"
+              "visibleString": "🔗"
             }
           ]
         }
@@ -1545,13 +1029,7 @@
               "url": "https://leetcode.com/problems/burst-balloons/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Hard",
-              "color": "#ef4444"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1562,13 +1040,7 @@
               "url": "https://leetcode.com/problems/longest-increasing-path-in-a-matrix/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Hard",
-              "color": "#ef4444"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1579,13 +1051,7 @@
               "url": "https://leetcode.com/problems/distinct-subsequences/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Hard",
-              "color": "#ef4444"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1596,13 +1062,7 @@
               "url": "https://leetcode.com/problems/regular-expression-matching/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Hard",
-              "color": "#ef4444"
+              "visibleString": "🔗"
             }
           ]
         }
@@ -1619,13 +1079,7 @@
               "url": "https://leetcode.com/problems/single-number/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1636,13 +1090,7 @@
               "url": "https://leetcode.com/problems/number-of-1-bits/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Easy",
-              "color": "#22c55e"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1653,13 +1101,7 @@
               "url": "https://leetcode.com/problems/sum-of-two-integers/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1670,13 +1112,7 @@
               "url": "https://leetcode.com/problems/reverse-integer/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1687,13 +1123,7 @@
               "url": "https://leetcode.com/problems/bitwise-and-of-numbers-range/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         },
@@ -1704,13 +1134,7 @@
               "url": "https://leetcode.com/problems/missing-number/",
               "tooltip": "LeetCode Problem",
               "color": "#2563eb",
-              "visibleString": "\ud83d\udd17"
-            }
-          ],
-          "tags": [
-            {
-              "text": "Medium",
-              "color": "#f59e0b"
+              "visibleString": "🔗"
             }
           ]
         }

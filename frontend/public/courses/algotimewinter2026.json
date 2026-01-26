@@ -13,10 +13,6 @@
           "filename": "factory-method-pattern",
           "urls": [
             { "url": "https://neetcode.io/problems/factory", "tooltip": "NeetCode Problem", "color": "#16a34a", "visibleString": "NeetCode" }
-          ],
-          "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Design Patterns", "color": "#8b5cf6" }
           ]
         },
         {
@@ -24,10 +20,6 @@
           "urls": [
             { "url": "https://leetcode.com/problems/design-hashset/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
             { "url": "https://neetcode.io/solutions/design-hashset", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
-          ],
-          "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Hash Set", "color": "#8b5cf6" }
           ]
         },
         {
@@ -35,10 +27,6 @@
           "urls": [
             { "url": "https://leetcode.com/problems/design-hashmap/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
             { "url": "https://neetcode.io/solutions/design-hashmap", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
-          ],
-          "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Hash Map", "color": "#3b82f6" }
           ]
         },
 
@@ -47,10 +35,6 @@
           "urls": [
             { "url": "https://leetcode.com/problems/repeated-dna-sequences/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
             { "url": "https://neetcode.io/solutions/repeated-dna-sequences", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
-          ],
-          "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Hash Map", "color": "#3b82f6" }
           ]
         },
         {
@@ -58,10 +42,6 @@
           "urls": [
             { "url": "https://leetcode.com/problems/fraction-to-recurring-decimal/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
             { "url": "https://neetcode.io/solutions/fraction-to-recurring-decimal", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
-          ],
-          "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Hash Map", "color": "#3b82f6" }
           ]
         },
         {
@@ -69,10 +49,6 @@
           "urls": [
             { "url": "https://leetcode.com/problems/sudoku-solver/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
             { "url": "https://neetcode.io/solutions/sudoku-solver", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
-          ],
-          "tags": [
-            { "text": "Hard", "color": "#ef4444" },
-            { "text": "Backtracking", "color": "#f59e0b" }
           ]
         }
       ]
@@ -86,10 +62,6 @@
           "urls": [
             { "url": "https://leetcode.com/problems/reverse-string/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
             { "url": "https://neetcode.io/solutions/reverse-string", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
-          ],
-          "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Strings", "color": "#06b6d4" }
           ]
         },
         {
@@ -97,10 +69,6 @@
           "urls": [
             { "url": "https://leetcode.com/problems/design-linked-list/description/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
             { "url": "https://neetcode.io/solutions/design-linked-list", "tooltip": "NeetCode Problem", "color": "#16a34a", "visibleString": "NeetCode" }
-          ],
-          "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Linked List", "color": "#ec4899" }
           ]
         },
         {
@@ -108,10 +76,6 @@
           "urls": [
             { "url": "https://leetcode.com/problems/palindrome-linked-list/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
             { "url": "https://neetcode.io/solutions/palindrome-linked-list", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
-          ],
-          "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Linked List", "color": "#ec4899" }
           ]
         },
         {
@@ -119,10 +83,6 @@
           "urls": [
             { "url": "https://leetcode.com/problems/linked-list-cycle/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
             { "url": "https://neetcode.io/solutions/linked-list-cycle", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
-          ],
-          "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Linked List", "color": "#ec4899" }
           ]
         },
         {
@@ -130,10 +90,6 @@
           "urls": [
             { "url": "https://leetcode.com/problems/linked-list-cycle-ii/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
             { "url": "https://neetcode.io/solutions/linked-list-cycle-ii", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
-          ],
-          "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Linked List", "color": "#ec4899" }
           ]
         },
         {
@@ -141,10 +97,6 @@
           "urls": [
             { "url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
             { "url": "https://neetcode.io/solutions/remove-nth-node-from-end-of-list", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
-          ],
-          "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Linked List", "color": "#ec4899" }
           ]
         },
         {
@@ -152,10 +104,6 @@
           "urls": [
             { "url": "https://leetcode.com/problems/reverse-nodes-in-k-group/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
             { "url": "https://neetcode.io/solutions/reverse-nodes-in-k-group", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
-          ],
-          "tags": [
-            { "text": "Hard", "color": "#ef4444" },
-            { "text": "Linked List", "color": "#ec4899" }
           ]
         }
       ]
@@ -169,10 +117,6 @@
           "urls": [
             { "url": "https://leetcode.com/problems/two-sum/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
             { "url": "https://neetcode.io/solutions/two-sum", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
-          ],
-          "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Arrays and Hashing", "color": "#3b82f6" }
           ]
         },
         {
@@ -180,10 +124,6 @@
           "urls": [
             { "url": "https://leetcode.com/problems/valid-palindrome/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
             { "url": "https://neetcode.io/solutions/valid-palindrome", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
-          ],
-          "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Two Pointers", "color": "#a855f7" }
           ]
         },
         {
@@ -191,10 +131,6 @@
           "urls": [
             { "url": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
             { "url": "https://neetcode.io/solutions/two-sum-ii-input-array-is-sorted", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
-          ],
-          "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Two Pointers", "color": "#a855f7" }
           ]
         },
         {
@@ -202,10 +138,6 @@
           "urls": [
             { "url": "https://leetcode.com/problems/3sum/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
             { "url": "https://neetcode.io/solutions/3sum", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
-          ],
-          "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Two Pointers", "color": "#a855f7" }
           ]
         },
         {
@@ -213,10 +145,6 @@
           "urls": [
             { "url": "https://leetcode.com/problems/container-with-most-water/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
             { "url": "https://neetcode.io/solutions/container-with-most-water", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
-          ],
-          "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Two Pointers", "color": "#a855f7" }
           ]
         },
         {
@@ -224,10 +152,6 @@
           "urls": [
             { "url": "https://leetcode.com/problems/trapping-rain-water/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
             { "url": "https://neetcode.io/solutions/trapping-rain-water", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
-          ],
-          "tags": [
-            { "text": "Hard", "color": "#ef4444" },
-            { "text": "Two Pointers", "color": "#a855f7" }
           ]
         },
         {
@@ -235,9 +159,6 @@
           "urls": [
             { "url": "https://leetcode.com/problems/maximal-rectangle/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
             { "url": "https://neetcode.io/solutions/maximal-rectangle", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
-          ],
-          "tags": [
-            { "text": "Stack", "color": "#eab308" }
           ]
         }
       ]

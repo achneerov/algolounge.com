@@ -3,7 +3,9 @@
   "filename": "canadian-province-validator",
   "title": "Canadian Province Validator",
   "difficulty": "Easy",
-  "tags": [],
+  "tags": [
+    "String"
+  ],
   "keywords": [
     "string",
     "validation",

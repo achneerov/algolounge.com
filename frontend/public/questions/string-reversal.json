@@ -3,7 +3,9 @@
   "filename": "string-reversal",
   "title": "String Reversal",
   "difficulty": "Easy",
-  "tags": [],
+  "tags": [
+    "String"
+  ],
   "keywords": [
     "string",
     "reverse",

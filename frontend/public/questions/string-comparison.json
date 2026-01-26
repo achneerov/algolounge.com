@@ -3,7 +3,9 @@
   "filename": "string-comparison",
   "title": "String Comparison",
   "difficulty": "Easy",
-  "tags": [],
+  "tags": [
+    "String"
+  ],
   "keywords": [
     "string",
     "comparison",

@@ -3,7 +3,9 @@
   "filename": "binary-representation",
   "title": "Binary Representation",
   "difficulty": "Easy",
-  "tags": [],
+  "tags": [
+    "Bit Manipulation"
+  ],
   "keywords": [
     "binary",
     "conversion",

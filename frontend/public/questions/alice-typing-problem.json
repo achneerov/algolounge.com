@@ -3,7 +3,9 @@
   "filename": "alice-typing-problem",
   "title": "Alice Typing Problem",
   "difficulty": "Medium",
-  "tags": [],
+  "tags": [
+    "String"
+  ],
   "keywords": [
     "string",
     "counting",

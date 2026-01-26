@@ -3,7 +3,9 @@
   "filename": "palindrome-checker",
   "title": "Palindrome Checker",
   "difficulty": "Easy",
-  "tags": [],
+  "tags": [
+    "Two Pointers"
+  ],
   "keywords": [
     "palindrome",
     "string",

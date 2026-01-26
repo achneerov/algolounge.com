@@ -3,7 +3,9 @@
   "filename": "alphabetical-order-checker",
   "title": "Alphabetical Order Checker",
   "difficulty": "Easy",
-  "tags": [],
+  "tags": [
+    "String"
+  ],
   "keywords": [
     "string",
     "sorting",

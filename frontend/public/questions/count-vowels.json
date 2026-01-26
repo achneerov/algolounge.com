@@ -3,7 +3,9 @@
   "filename": "count-vowels",
   "title": "Count Vowels",
   "difficulty": "Easy",
-  "tags": [],
+  "tags": [
+    "String"
+  ],
   "keywords": [
     "string",
     "vowels",

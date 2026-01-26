@@ -3,7 +3,9 @@
   "filename": "string-matching",
   "title": "String Matching",
   "difficulty": "Easy",
-  "tags": [],
+  "tags": [
+    "Arrays and Hashing"
+  ],
   "keywords": [
     "string",
     "hash-map",

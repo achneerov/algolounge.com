@@ -3,7 +3,9 @@
   "filename": "most-frequent-element",
   "title": "Most Frequent Element",
   "difficulty": "Easy",
-  "tags": [],
+  "tags": [
+    "Arrays and Hashing"
+  ],
   "keywords": [
     "array",
     "frequency",

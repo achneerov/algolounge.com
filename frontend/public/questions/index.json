@@ -667,7 +667,9 @@
       "filename": "alice-typing-problem",
       "title": "Alice Typing Problem",
       "difficulty": "Medium",
-      "tags": [],
+      "tags": [
+        "String"
+      ],
       "keywords": [
         "string",
         "counting",
@@ -681,7 +683,9 @@
       "filename": "alphabetical-order-checker",
       "title": "Alphabetical Order Checker",
       "difficulty": "Easy",
-      "tags": [],
+      "tags": [
+        "String"
+      ],
       "keywords": [
         "string",
         "sorting",
@@ -818,7 +822,9 @@
       "filename": "binary-representation",
       "title": "Binary Representation",
       "difficulty": "Easy",
-      "tags": [],
+      "tags": [
+        "Bit Manipulation"
+      ],
       "keywords": [
         "binary",
         "conversion",
@@ -1061,7 +1067,9 @@
       "filename": "canadian-province-validator",
       "title": "Canadian Province Validator",
       "difficulty": "Easy",
-      "tags": [],
+      "tags": [
+        "String"
+      ],
       "keywords": [
         "string",
         "validation",
@@ -1136,7 +1144,9 @@
       "filename": "coffee-production-scheduler",
       "title": "HW13 - Coffee Production Scheduler",
       "difficulty": "Medium",
-      "tags": [],
+      "tags": [
+        "Simulation"
+      ],
       "keywords": [
         "simulation",
         "string",
@@ -1268,7 +1278,9 @@
       "filename": "count-vowels",
       "title": "Count Vowels",
       "difficulty": "Easy",
-      "tags": [],
+      "tags": [
+        "String"
+      ],
       "keywords": [
         "string",
         "vowels",
@@ -1696,7 +1708,9 @@
       "filename": "most-frequent-element",
       "title": "Most Frequent Element",
       "difficulty": "Easy",
-      "tags": [],
+      "tags": [
+        "Arrays and Hashing"
+      ],
       "keywords": [
         "array",
         "frequency",
@@ -1746,7 +1760,9 @@
       "filename": "palindrome-checker",
       "title": "Palindrome Checker",
       "difficulty": "Easy",
-      "tags": [],
+      "tags": [
+        "Two Pointers"
+      ],
       "keywords": [
         "palindrome",
         "string",
@@ -1867,7 +1883,9 @@
       "filename": "string-comparison",
       "title": "String Comparison",
       "difficulty": "Easy",
-      "tags": [],
+      "tags": [
+        "String"
+      ],
       "keywords": [
         "string",
         "comparison",
@@ -1883,7 +1901,9 @@
       "filename": "string-matching",
       "title": "String Matching",
       "difficulty": "Easy",
-      "tags": [],
+      "tags": [
+        "Arrays and Hashing"
+      ],
       "keywords": [
         "string",
         "hash-map",
@@ -1897,7 +1917,9 @@
       "filename": "string-reversal",
       "title": "String Reversal",
       "difficulty": "Easy",
-      "tags": [],
+      "tags": [
+        "String"
+      ],
       "keywords": [
         "string",
         "reverse",
@@ -2598,6 +2620,6 @@
       ]
     }
   ],
-  "lastUpdated": "2026-01-26T16:38:18.987Z",
+  "lastUpdated": "2026-01-26T22:08:30.236Z",
   "totalQuestions": 134
 }

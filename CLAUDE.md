@@ -463,10 +463,11 @@ export const environment = {
 ## Development Guidelines
 
 ### Adding New Questions
-1. Create JSON file in `frontend/public/questions/` following multi-language format
-2. Include all supported languages (python, javascript, typescript, java)
-3. Add templates, solutions, and comprehensive test cases
-4. Run `npm run sync-index` from frontend directory to update indices
+1. **Retrieve from doocs/leetcode repository when possible**: Check https://github.com/doocs/leetcode/tree/main/solution for existing LeetCode solutions. This repository contains multi-language implementations that can be adapted to AlgoLounge's format.
+2. Create JSON file in `frontend/public/questions/` following multi-language format
+3. Include all supported languages (python, javascript, typescript, java)
+4. Add templates, solutions, and comprehensive test cases
+5. Run `npm run sync-index` from frontend directory to update indices
 
 ### Adding New Courses
 1. Create JSON file in `frontend/public/courses/` with course structure

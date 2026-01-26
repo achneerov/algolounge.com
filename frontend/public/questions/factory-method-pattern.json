@@ -1,0 +1,153 @@
+{
+  "index": 0,
+  "filename": "factory-method-pattern",
+  "title": "Factory Method Pattern",
+  "difficulty": "Easy",
+  "tags": [
+    "Design Patterns"
+  ],
+  "keywords": [
+    "factory",
+    "method",
+    "pattern",
+    "design",
+    "creational",
+    "vehicle",
+    "car",
+    "bike",
+    "truck",
+    "OOP"
+  ],
+  "description": "<h2>Factory Method Pattern</h2><p>Implement the Factory Method design pattern.</p><p>The Factory Method is a creational design pattern that provides an interface for creating objects in a superclass, but allows subclasses to decide which class to instantiate. Instead of calling a constructor directly, objects are created by calling a factory method.</p><p>You are given code that includes several vehicle types (<code>Car</code>, <code>Bike</code>, <code>Truck</code>) and their respective factory classes. Complete the factory method implementation so that each factory returns the correct vehicle type.</p><p><strong>Example:</strong></p><p><code>carFactory = CarFactory()</code><br><code>truckFactory = TruckFactory()</code><br><code>bikeFactory = BikeFactory()</code></p><p><code>myCar = carFactory.createVehicle()</code><br><code>myTruck = truckFactory.createVehicle()</code><br><code>myBike = bikeFactory.createVehicle()</code></p><p><code>myCar.getType()   # \"Car\"</code><br><code>myTruck.getType() # \"Truck\"</code><br><code>myBike.getType()  # \"Bike\"</code></p>",
+  "entry_function": "executeFactoryOperations",
+  "template": "from abc import ABC, abstractmethod\n\nclass Vehicle(ABC):\n    @abstractmethod\n    def getType(self) -> str:\n        pass\n\nclass Car(Vehicle):\n    def getType(self) -> str:\n        return \"Car\"\n\nclass Bike(Vehicle):\n    def getType(self) -> str:\n        return \"Bike\"\n\nclass Truck(Vehicle):\n    def getType(self) -> str:\n        return \"Truck\"\n\nclass VehicleFactory(ABC):\n    @abstractmethod\n    def createVehicle(self) -> Vehicle:\n        pass\n\nclass CarFactory(VehicleFactory):\n    # Write your code here\n    pass\n\nclass BikeFactory(VehicleFactory):\n    # Write your code here\n    pass\n\nclass TruckFactory(VehicleFactory):\n    # Write your code here\n    pass",
+  "solution_text": "<h3>Factory Method Pattern</h3><p><strong>Concept:</strong></p><p>The Factory Method Pattern delegates object creation to subclasses. Each factory subclass overrides the <code>createVehicle()</code> method to return an instance of the specific vehicle type it is responsible for.</p><p><strong>Implementation:</strong></p><ol><li><code>CarFactory.createVehicle()</code> returns a new <code>Car()</code> instance</li><li><code>BikeFactory.createVehicle()</code> returns a new <code>Bike()</code> instance</li><li><code>TruckFactory.createVehicle()</code> returns a new <code>Truck()</code> instance</li></ol><p><strong>Benefits:</strong></p><ul><li><strong>Loose Coupling:</strong> Client code works with the abstract <code>Vehicle</code> and <code>VehicleFactory</code> interfaces without knowing concrete classes</li><li><strong>Open/Closed Principle:</strong> New vehicle types can be added without modifying existing code</li><li><strong>Single Responsibility:</strong> Each factory is responsible for creating one type of object</li></ul><p><strong>Time Complexity:</strong> O(1) for object creation</p><p><strong>Space Complexity:</strong> O(1) per created object</p>",
+  "solution_code": "from abc import ABC, abstractmethod\n\nclass Vehicle(ABC):\n    @abstractmethod\n    def getType(self) -> str:\n        pass\n\nclass Car(Vehicle):\n    def getType(self) -> str:\n        return \"Car\"\n\nclass Bike(Vehicle):\n    def getType(self) -> str:\n        return \"Bike\"\n\nclass Truck(Vehicle):\n    def getType(self) -> str:\n        return \"Truck\"\n\nclass VehicleFactory(ABC):\n    @abstractmethod\n    def createVehicle(self) -> Vehicle:\n        pass\n\nclass CarFactory(VehicleFactory):\n    def createVehicle(self) -> Vehicle:\n        return Car()\n\nclass BikeFactory(VehicleFactory):\n    def createVehicle(self) -> Vehicle:\n        return Bike()\n\nclass TruckFactory(VehicleFactory):\n    def createVehicle(self) -> Vehicle:\n        return Truck()",
+  "prepare": "def executeFactoryOperations(operations):\n    results = []\n    factories = {}\n    vehicles = {}\n    \n    for op in operations:\n        if '=' in op and 'Factory()' in op:\n            # Creating a factory: carFactory = CarFactory()\n            parts = op.split('=')\n            var_name = parts[0].strip()\n            factory_type = parts[1].strip().replace('()', '')\n            if factory_type == 'CarFactory':\n                factories[var_name] = CarFactory()\n            elif factory_type == 'BikeFactory':\n                factories[var_name] = BikeFactory()\n            elif factory_type == 'TruckFactory':\n                factories[var_name] = TruckFactory()\n            results.append(None)\n        elif '=' in op and '.createVehicle()' in op:\n            # Creating a vehicle: myCar = carFactory.createVehicle()\n            parts = op.split('=')\n            var_name = parts[0].strip()\n            factory_call = parts[1].strip()\n            factory_name = factory_call.split('.')[0]\n            vehicles[var_name] = factories[factory_name].createVehicle()\n            results.append(None)\n        elif '.getType()' in op:\n            # Getting type: myCar.getType()\n            var_name = op.replace('.getType()', '').strip()\n            results.append(vehicles[var_name].getType())\n    \n    return results\n\ndef prepare(test_case_input):\n    return (test_case_input['operations'],)",
+  "verify": "def verify(actual_output, expected_output):\n    if len(actual_output) != len(expected_output):\n        return [False, str(actual_output)]\n    \n    for actual, expected in zip(actual_output, expected_output):\n        if actual != expected:\n            return [False, str(actual_output)]\n    \n    return [True, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "operations": ["carFactory = CarFactory()", "myCar = carFactory.createVehicle()", "myCar.getType()"]
+      },
+      "output": [null, null, "Car"]
+    },
+    {
+      "id": 2,
+      "input": {
+        "operations": ["bikeFactory = BikeFactory()", "myBike = bikeFactory.createVehicle()", "myBike.getType()"]
+      },
+      "output": [null, null, "Bike"]
+    },
+    {
+      "id": 3,
+      "input": {
+        "operations": ["truckFactory = TruckFactory()", "myTruck = truckFactory.createVehicle()", "myTruck.getType()"]
+      },
+      "output": [null, null, "Truck"]
+    },
+    {
+      "id": 4,
+      "input": {
+        "operations": [
+          "carFactory = CarFactory()",
+          "bikeFactory = BikeFactory()",
+          "truckFactory = TruckFactory()",
+          "car = carFactory.createVehicle()",
+          "bike = bikeFactory.createVehicle()",
+          "truck = truckFactory.createVehicle()",
+          "car.getType()",
+          "bike.getType()",
+          "truck.getType()"
+        ]
+      },
+      "output": [null, null, null, null, null, null, "Car", "Bike", "Truck"]
+    },
+    {
+      "id": 5,
+      "input": {
+        "operations": [
+          "f1 = CarFactory()",
+          "f2 = CarFactory()",
+          "v1 = f1.createVehicle()",
+          "v2 = f2.createVehicle()",
+          "v1.getType()",
+          "v2.getType()"
+        ]
+      },
+      "output": [null, null, null, null, "Car", "Car"]
+    },
+    {
+      "id": 6,
+      "input": {
+        "operations": [
+          "factory = BikeFactory()",
+          "b1 = factory.createVehicle()",
+          "b2 = factory.createVehicle()",
+          "b3 = factory.createVehicle()",
+          "b1.getType()",
+          "b2.getType()",
+          "b3.getType()"
+        ]
+      },
+      "output": [null, null, null, null, "Bike", "Bike", "Bike"]
+    },
+    {
+      "id": 7,
+      "input": {
+        "operations": [
+          "tf = TruckFactory()",
+          "t = tf.createVehicle()",
+          "t.getType()"
+        ]
+      },
+      "output": [null, null, "Truck"]
+    },
+    {
+      "id": 8,
+      "input": {
+        "operations": [
+          "a = CarFactory()",
+          "b = BikeFactory()",
+          "c = TruckFactory()",
+          "x = a.createVehicle()",
+          "y = b.createVehicle()",
+          "z = c.createVehicle()",
+          "z.getType()",
+          "y.getType()",
+          "x.getType()"
+        ]
+      },
+      "output": [null, null, null, null, null, null, "Truck", "Bike", "Car"]
+    },
+    {
+      "id": 9,
+      "input": {
+        "operations": [
+          "carFactory = CarFactory()",
+          "car1 = carFactory.createVehicle()",
+          "car1.getType()",
+          "car2 = carFactory.createVehicle()",
+          "car2.getType()"
+        ]
+      },
+      "output": [null, null, "Car", null, "Car"]
+    },
+    {
+      "id": 10,
+      "input": {
+        "operations": [
+          "bf = BikeFactory()",
+          "cf = CarFactory()",
+          "bike = bf.createVehicle()",
+          "car = cf.createVehicle()",
+          "bike.getType()",
+          "car.getType()",
+          "bike.getType()"
+        ]
+      },
+      "output": [null, null, null, null, "Bike", "Car", "Bike"]
+    }
+  ]
+}

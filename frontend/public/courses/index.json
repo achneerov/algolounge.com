@@ -29,11 +29,13 @@
         "two pointers",
         "arrays",
         "linked list",
-        "strings"
+        "strings",
+        "hash table",
+        "design"
       ],
       "description": "Welcome to Algotime Winter 2026! Practice these key algorithm problems to sharpen your skills.",
       "badge": "Winter 2026",
-      "stats": "14 questions • 2 stages"
+      "stats": "20 questions • 3 stages"
     },
     {
       "filename": "foundations",
@@ -69,6 +71,6 @@
       "stats": "23 questions • 5 stages"
     }
   ],
-  "lastUpdated": "2026-01-19T21:38:44.653Z",
+  "lastUpdated": "2026-01-26T16:38:18.997Z",
   "totalCourses": 4
 }

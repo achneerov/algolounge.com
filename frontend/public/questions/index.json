@@ -2,6 +2,65 @@
   "questions": [
     {
       "index": 0,
+      "filename": "design-hashmap",
+      "title": "Design HashMap",
+      "difficulty": "Easy",
+      "tags": [
+        "Hash Map"
+      ],
+      "keywords": [
+        "design",
+        "hashmap",
+        "hash table",
+        "leetcode",
+        "706",
+        "put",
+        "get",
+        "remove"
+      ]
+    },
+    {
+      "index": 0,
+      "filename": "design-hashset",
+      "title": "Design HashSet",
+      "difficulty": "Easy",
+      "tags": [
+        "Hash Set"
+      ],
+      "keywords": [
+        "design",
+        "hashset",
+        "hash table",
+        "leetcode",
+        "705",
+        "add",
+        "remove",
+        "contains"
+      ]
+    },
+    {
+      "index": 0,
+      "filename": "factory-method-pattern",
+      "title": "Factory Method Pattern",
+      "difficulty": "Easy",
+      "tags": [
+        "Design Patterns"
+      ],
+      "keywords": [
+        "factory",
+        "method",
+        "pattern",
+        "design",
+        "creational",
+        "vehicle",
+        "car",
+        "bike",
+        "truck",
+        "OOP"
+      ]
+    },
+    {
+      "index": 0,
       "filename": "find-maximum-non-decreasing-array-length",
       "title": "Find Maximum Non-decreasing Array Length",
       "difficulty": "Hard",
@@ -33,6 +92,26 @@
         "josephus problem",
         "circular",
         "math"
+      ]
+    },
+    {
+      "index": 0,
+      "filename": "fraction-to-recurring-decimal",
+      "title": "Fraction to Recurring Decimal",
+      "difficulty": "Medium",
+      "tags": [
+        "Hash Map"
+      ],
+      "keywords": [
+        "fraction",
+        "decimal",
+        "recurring",
+        "repeating",
+        "division",
+        "hash",
+        "math",
+        "leetcode",
+        "166"
       ]
     },
     {
@@ -284,6 +363,26 @@
     },
     {
       "index": 0,
+      "filename": "repeated-dna-sequences",
+      "title": "Repeated DNA Sequences",
+      "difficulty": "Medium",
+      "tags": [
+        "Hash Map",
+        "Sliding Window"
+      ],
+      "keywords": [
+        "dna",
+        "sequences",
+        "repeated",
+        "substring",
+        "hash",
+        "sliding window",
+        "leetcode",
+        "187"
+      ]
+    },
+    {
+      "index": 0,
       "filename": "reverse-nodes-in-k-group",
       "title": "Reverse Nodes in K-Group",
       "difficulty": "Hard",
@@ -321,6 +420,26 @@
         "canonical",
         "navigation",
         "dot"
+      ]
+    },
+    {
+      "index": 0,
+      "filename": "sudoku-solver",
+      "title": "Sudoku Solver",
+      "difficulty": "Hard",
+      "tags": [
+        "Backtracking"
+      ],
+      "keywords": [
+        "sudoku",
+        "solver",
+        "backtracking",
+        "recursion",
+        "constraint",
+        "matrix",
+        "grid",
+        "leetcode",
+        "37"
       ]
     },
     {
@@ -2479,6 +2598,6 @@
       ]
     }
   ],
-  "lastUpdated": "2026-01-19T21:38:44.645Z",
-  "totalQuestions": 128
+  "lastUpdated": "2026-01-26T16:38:18.987Z",
+  "totalQuestions": 134
 }

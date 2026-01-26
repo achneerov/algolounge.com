@@ -1,0 +1,110 @@
+{
+  "index": 0,
+  "filename": "sudoku-solver",
+  "title": "Sudoku Solver",
+  "difficulty": "Hard",
+  "tags": [
+    "Backtracking"
+  ],
+  "keywords": [
+    "sudoku",
+    "solver",
+    "backtracking",
+    "recursion",
+    "constraint",
+    "matrix",
+    "grid",
+    "leetcode",
+    "37"
+  ],
+  "description": "<h2>Sudoku Solver</h2><p>LeetCode 37. Sudoku Solver</p><p>Write a program to solve a Sudoku puzzle by filling the empty cells.</p><p>A sudoku solution must satisfy all of the following rules:</p><ul><li>Each of the digits <code>1-9</code> must occur exactly once in each row.</li><li>Each of the digits <code>1-9</code> must occur exactly once in each column.</li><li>Each of the digits <code>1-9</code> must occur exactly once in each of the 9 <code>3x3</code> sub-boxes of the grid.</li></ul><p>The <code>'.'</code> character indicates empty cells.</p><p>The function should modify the board in-place. You do not need to return anything.</p><h3>Constraints:</h3><ul><li><code>board.length == 9</code></li><li><code>board[i].length == 9</code></li><li><code>board[i][j]</code> is a digit or <code>'.'</code></li><li>It is guaranteed that the input board has only one solution.</li></ul>",
+  "entry_function": "solveSudoku",
+  "template": "def solveSudoku(board):\n    # Modify board in-place to solve the sudoku\n    pass",
+  "solution_text": "<h3>Sudoku Solver</h3><p><strong>Algorithm (Backtracking with Constraint Tracking):</strong></p><p>Use backtracking to try placing digits 1-9 in each empty cell, using constraint arrays to efficiently check validity.</p><ol><li><strong>Setup:</strong> Create three boolean arrays to track which digits are used in each row, column, and 3x3 box.</li><li><strong>Find empty cells:</strong> Collect all positions with '.' into a list.</li><li><strong>Initialize constraints:</strong> Mark existing digits as used in their respective row, column, and box.</li><li><strong>Backtrack:</strong> For each empty cell, try digits 1-9. If a digit is valid (not used in row, column, or box), place it and recurse. If recursion succeeds, we're done. Otherwise, undo and try next digit.</li></ol><p><strong>Time Complexity:</strong> O(9^m) where m is the number of empty cells (worst case)</p><p><strong>Space Complexity:</strong> O(m) for recursion stack + O(81) for constraint arrays</p>",
+  "solution_code": "def solveSudoku(board):\n    def dfs(k):\n        nonlocal ok\n        if k == len(empty_cells):\n            ok = True\n            return\n        i, j = empty_cells[k]\n        for v in range(9):\n            if not row[i][v] and not col[j][v] and not block[i // 3][j // 3][v]:\n                row[i][v] = col[j][v] = block[i // 3][j // 3][v] = True\n                board[i][j] = str(v + 1)\n                dfs(k + 1)\n                if ok:\n                    return\n                row[i][v] = col[j][v] = block[i // 3][j // 3][v] = False\n\n    row = [[False] * 9 for _ in range(9)]\n    col = [[False] * 9 for _ in range(9)]\n    block = [[[False] * 9 for _ in range(3)] for _ in range(3)]\n    empty_cells = []\n    ok = False\n    \n    for i in range(9):\n        for j in range(9):\n            if board[i][j] == '.':\n                empty_cells.append((i, j))\n            else:\n                v = int(board[i][j]) - 1\n                row[i][v] = col[j][v] = block[i // 3][j // 3][v] = True\n    \n    dfs(0)",
+  "prepare": "def prepare(test_case_input):\n    board = [row[:] for row in test_case_input['board']]\n    return (board,)",
+  "verify": "def verify(actual_output, expected_output, args=None):\n    # actual_output is None (function modifies in place)\n    # We need to check the board that was passed to the function\n    if args is None:\n        return [False, \"Cannot verify - no board provided\"]\n        \n    board = args[0]  # Extract modified board from args tuple\n    \n    # Check if the modified board matches expected output\n    if board != expected_output:\n        return [False, f\"Expected {expected_output}, got {board}\"]\n        \n    return [True, str(board)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "board": [
+          ["5","3",".",".","7",".",".",".","."],
+          ["6",".",".","1","9","5",".",".","."],
+          [".","9","8",".",".",".",".","6","."],
+          ["8",".",".",".","6",".",".",".","3"],
+          ["4",".",".","8",".","3",".",".","1"],
+          ["7",".",".",".","2",".",".",".","6"],
+          [".","6",".",".",".",".","2","8","."],
+          [".",".",".","4","1","9",".",".","5"],
+          [".",".",".",".","8",".",".","7","9"]
+        ]
+      },
+      "output": [
+        ["5","3","4","6","7","8","9","1","2"],
+        ["6","7","2","1","9","5","3","4","8"],
+        ["1","9","8","3","4","2","5","6","7"],
+        ["8","5","9","7","6","1","4","2","3"],
+        ["4","2","6","8","5","3","7","9","1"],
+        ["7","1","3","9","2","4","8","5","6"],
+        ["9","6","1","5","3","7","2","8","4"],
+        ["2","8","7","4","1","9","6","3","5"],
+        ["3","4","5","2","8","6","1","7","9"]
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "board": [
+          [".",".","9","7","4","8",".",".","."],
+          ["7",".",".",".",".",".",".",".","."],
+          [".","2",".","1",".","9",".",".","."],
+          [".",".","7",".",".",".","2","4","."],
+          [".","6","4",".","1",".","5","9","."],
+          [".","9","8",".",".",".","3",".","."],
+          [".",".",".","8",".","3",".","2","."],
+          [".",".",".",".",".",".",".",".","6"],
+          [".",".",".","2","7","5","9",".","."]
+        ]
+      },
+      "output": [
+        ["5","1","9","7","4","8","6","3","2"],
+        ["7","8","3","6","5","2","4","1","9"],
+        ["4","2","6","1","3","9","8","7","5"],
+        ["3","5","7","9","8","6","2","4","1"],
+        ["2","6","4","3","1","7","5","9","8"],
+        ["1","9","8","5","2","4","3","6","7"],
+        ["9","7","5","8","6","3","1","2","4"],
+        ["8","3","2","4","9","1","7","5","6"],
+        ["6","4","1","2","7","5","9","8","3"]
+      ]
+    },
+    {
+      "id": 3,
+      "input": {
+        "board": [
+          [".",".",".","2",".",".",".","6","3"],
+          ["3",".",".",".",".","5","4",".","1"],
+          [".",".","1",".",".","3","9","8","."],
+          [".",".",".",".",".",".",".","9","."],
+          [".",".",".","5","3","8",".",".","."],
+          [".","3",".",".",".",".",".",".","."],
+          [".","2","6","3",".",".","5",".","."],
+          ["5",".","3","7",".",".",".",".","8"],
+          ["4","7",".",".",".","1",".",".","."]
+        ]
+      },
+      "output": [
+        ["8","5","4","2","1","9","7","6","3"],
+        ["3","9","7","8","6","5","4","2","1"],
+        ["2","6","1","4","7","3","9","8","5"],
+        ["7","8","5","1","2","6","3","9","4"],
+        ["6","4","9","5","3","8","1","7","2"],
+        ["1","3","2","9","4","7","8","5","6"],
+        ["9","2","6","3","8","4","5","1","7"],
+        ["5","1","3","7","9","2","6","4","8"],
+        ["4","7","8","6","5","1","2","3","9"]
+      ]
+    }
+  ]
+}

@@ -2,9 +2,81 @@
   "filename": "algotimewinter2026",
   "course_name": "Algotime Winter 2026",
   "course_description": "Welcome to Algotime Winter 2026! Practice these key algorithm problems to sharpen your skills.",
-  "keywords": ["algorithms", "data structures", "technical interviews", "problem solving", "winter", "two pointers", "arrays", "linked list", "strings"],
+  "keywords": ["algorithms", "data structures", "technical interviews", "problem solving", "winter", "two pointers", "arrays", "linked list", "strings", "hash table", "design"],
   "badge": "Winter 2026",
   "units": {
+    "week3": {
+      "title": "Week 3",
+      "description": "",
+      "questions": [
+        {
+          "filename": "factory-method-pattern",
+          "urls": [
+            { "url": "https://neetcode.io/problems/factory", "tooltip": "NeetCode Problem", "color": "#16a34a", "visibleString": "NeetCode" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Design Patterns", "color": "#8b5cf6" }
+          ]
+        },
+        {
+          "filename": "design-hashset",
+          "urls": [
+            { "url": "https://leetcode.com/problems/design-hashset/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/design-hashset", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Hash Set", "color": "#8b5cf6" }
+          ]
+        },
+        {
+          "filename": "design-hashmap",
+          "urls": [
+            { "url": "https://leetcode.com/problems/design-hashmap/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/design-hashmap", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Hash Map", "color": "#3b82f6" }
+          ]
+        },
+
+        {
+          "filename": "repeated-dna-sequences",
+          "urls": [
+            { "url": "https://leetcode.com/problems/repeated-dna-sequences/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/repeated-dna-sequences", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Hash Map", "color": "#3b82f6" }
+          ]
+        },
+        {
+          "filename": "fraction-to-recurring-decimal",
+          "urls": [
+            { "url": "https://leetcode.com/problems/fraction-to-recurring-decimal/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/fraction-to-recurring-decimal", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Hash Map", "color": "#3b82f6" }
+          ]
+        },
+        {
+          "filename": "sudoku-solver",
+          "urls": [
+            { "url": "https://leetcode.com/problems/sudoku-solver/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/sudoku-solver", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Backtracking", "color": "#f59e0b" }
+          ]
+        }
+      ]
+    },
     "week2": {
       "title": "Week 2",
       "description": "Warm up with strings, then dive into linked list fundamentals and cycle detection.",

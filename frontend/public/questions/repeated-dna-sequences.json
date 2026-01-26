@@ -1,0 +1,99 @@
+{
+  "index": 0,
+  "filename": "repeated-dna-sequences",
+  "title": "Repeated DNA Sequences",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Map",
+    "Sliding Window"
+  ],
+  "keywords": [
+    "dna",
+    "sequences",
+    "repeated",
+    "substring",
+    "hash",
+    "sliding window",
+    "leetcode",
+    "187"
+  ],
+  "description": "<h2>Repeated DNA Sequences</h2><p>LeetCode 187. Repeated DNA Sequences</p><p>The DNA sequence is composed of a series of nucleotides abbreviated as <code>'A'</code>, <code>'C'</code>, <code>'G'</code>, and <code>'T'</code>.</p><p>Given a string <code>s</code> that represents a DNA sequence, return all the <strong>10-letter-long</strong> sequences (substrings) that occur more than once in a DNA molecule. You may return the answer in any order.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> <code>s = \"AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT\"</code><br><strong>Output:</strong> <code>[\"AAAAACCCCC\", \"CCCCCAAAAA\"]</code></li><li><strong>Input:</strong> <code>s = \"AAAAAAAAAAAAA\"</code><br><strong>Output:</strong> <code>[\"AAAAAAAAAA\"]</code></li></ul><h3>Constraints:</h3><ul><li><code>1 <= s.length <= 10^5</code></li><li><code>s[i]</code> is either <code>'A'</code>, <code>'C'</code>, <code>'G'</code>, or <code>'T'</code></li></ul>",
+  "entry_function": "findRepeatedDnaSequences",
+  "template": "def findRepeatedDnaSequences(s):\n    pass",
+  "solution_text": "<h3>Repeated DNA Sequences</h3><p><strong>Algorithm (Hash Map with Sliding Window):</strong></p><p>Use a hash map to count occurrences of all 10-character substrings as we slide through the string.</p><ol><li><strong>Iterate:</strong> Slide a window of size 10 across the string.</li><li><strong>Count:</strong> For each 10-character substring, increment its count in the hash map.</li><li><strong>Collect:</strong> When a substring's count reaches exactly 2, add it to the result (this ensures we only add each repeated sequence once).</li></ol><p><strong>Time Complexity:</strong> O(n) where n is the length of the string</p><p><strong>Space Complexity:</strong> O(n) for storing substrings in the hash map</p><p><strong>Key Insight:</strong> We add to results when count equals 2 (not greater) to avoid duplicates in the output.</p>",
+  "solution_code": "def findRepeatedDnaSequences(s):\n    cnt = {}\n    ans = []\n    for i in range(len(s) - 9):\n        t = s[i:i + 10]\n        cnt[t] = cnt.get(t, 0) + 1\n        if cnt[t] == 2:\n            ans.append(t)\n    return ans",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['s'],)",
+  "verify": "def verify(actual_output, expected_output):\n    if set(actual_output) == set(expected_output):\n        return [True, str(actual_output)]\n    return [False, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "s": "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"
+      },
+      "output": ["AAAAACCCCC", "CCCCCAAAAA"]
+    },
+    {
+      "id": 2,
+      "input": {
+        "s": "AAAAAAAAAAAAA"
+      },
+      "output": ["AAAAAAAAAA"]
+    },
+    {
+      "id": 3,
+      "input": {
+        "s": "ACGT"
+      },
+      "output": []
+    },
+    {
+      "id": 4,
+      "input": {
+        "s": "AAAAAAAAAAA"
+      },
+      "output": ["AAAAAAAAAA"]
+    },
+    {
+      "id": 5,
+      "input": {
+        "s": "ACGTACGTACGTACGT"
+      },
+      "output": ["ACGTACGTAC", "CGTACGTACG", "GTACGTACGT"]
+    },
+    {
+      "id": 6,
+      "input": {
+        "s": "GAGAGAGAGAGAGAGAGAGA"
+      },
+      "output": ["GAGAGAGAGA", "AGAGAGAGAG"]
+    },
+    {
+      "id": 7,
+      "input": {
+        "s": "AAAAAAAAAA"
+      },
+      "output": []
+    },
+    {
+      "id": 8,
+      "input": {
+        "s": "TTTTTTTTTTTTTTTTTTTTTTTTT"
+      },
+      "output": ["TTTTTTTTTT"]
+    },
+    {
+      "id": 9,
+      "input": {
+        "s": "ACGTACGTACACGTACGTAC"
+      },
+      "output": ["ACGTACGTAC"]
+    },
+    {
+      "id": 10,
+      "input": {
+        "s": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
+      },
+      "output": ["CCCCCCCCCC"]
+    }
+  ]
+}

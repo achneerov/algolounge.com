@@ -1,0 +1,95 @@
+{
+  "index": 13,
+  "filename": "binary-representation",
+  "title": "Binary Representation",
+  "difficulty": "Easy",
+  "tags": [
+    "Bit Manipulation"
+  ],
+  "keywords": [
+    "binary",
+    "conversion",
+    "bit-manipulation",
+    "string",
+    "easy"
+  ],
+  "description": "<h2>Binary Representation</h2><p>Convert a positive integer to its binary representation as a string.</p><h3>Examples:</h3><ul><li>Input: 5<br>Output: \"101\"</li><li>Input: 8<br>Output: \"1000\"</li><li>Input: 0<br>Output: \"0\"</li></ul><h3>Constraints:</h3><ul><li>Return binary string without \"0b\" prefix</li><li>Handle zero case specially</li><li>Input is non-negative integer</li></ul>",
+  "entry_function": "toBinary",
+  "template": "def toBinary(n):\n  ",
+  "solution_text": "<h3>Binary Representation</h3><p><strong>Algorithm:</strong></p><ol><li>Use bin() function to convert to binary</li><li>Remove '0b' prefix</li></ol><p><strong>Time Complexity:</strong> O(log n) - number of bits</p><p><strong>Space Complexity:</strong> O(log n) - string length</p><p><strong>Key Insights:</strong></p><ul><li>Python's bin() function handles conversion internally (repeated division by 2)</li><li>Zero is special case returning '0'</li><li>Binary string length = floor(log2(n)) + 1 for n > 0</li><li>Slicing [2:] removes the '0b' prefix automatically</li></ul>",
+  "solution_code": "def toBinary(n):\n    return bin(n)[2:]",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for toBinary function\"\"\"\n    return (test_case_input['n'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the binary string\"\"\"\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "n": 5
+      },
+      "output": "101"
+    },
+    {
+      "id": 2,
+      "input": {
+        "n": 8
+      },
+      "output": "1000"
+    },
+    {
+      "id": 3,
+      "input": {
+        "n": 0
+      },
+      "output": "0"
+    },
+    {
+      "id": 4,
+      "input": {
+        "n": 15
+      },
+      "output": "1111"
+    },
+    {
+      "id": 5,
+      "input": {
+        "n": 255
+      },
+      "output": "11111111"
+    },
+    {
+      "id": 6,
+      "input": {
+        "n": 1
+      },
+      "output": "1"
+    },
+    {
+      "id": 7,
+      "input": {
+        "n": 16
+      },
+      "output": "10000"
+    },
+    {
+      "id": 8,
+      "input": {
+        "n": 63
+      },
+      "output": "111111"
+    },
+    {
+      "id": 9,
+      "input": {
+        "n": 100
+      },
+      "output": "1100100"
+    },
+    {
+      "id": 10,
+      "input": {
+        "n": 1024
+      },
+      "output": "10000000000"
+    }
+  ]
+}

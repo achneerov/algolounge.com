@@ -1,0 +1,97 @@
+{
+  "index": 67,
+  "filename": "reverse-linked-list",
+  "title": "Reverse Linked List",
+  "difficulty": "Easy",
+  "tags": [
+    "Linked List"
+  ],
+  "keywords": [
+    "reverse",
+    "linked",
+    "list",
+    "leetcode",
+    "206",
+    "given",
+    "beginning",
+    "singly",
+    "head",
+    "return"
+  ],
+  "description": "<h2>Reverse Linked List</h2><p>Given the beginning of a singly linked list <code>head</code>, reverse the list, and return the new beginning of the list.</p><h3>Examples:</h3><ul><li>Input: head = [0,1,2,3]<br><br>Output: [3,2,1,0]</li><li>Input: head = []<br><br>Output: []</li></ul><h3>Constraints:</h3><ul><li><code>0 <= The length of the list <= 1000</code></li><li><code>-1000 <= Node.val <= 1000</code></li></ul>",
+  "entry_function": "reverseLinkedList",
+  "template": "# class ListNode:\n#     def __init__(self, val, next):\n#         self.val = val\n#         self.next = next\n\ndef reverseLinkedList(head):\n    ",
+  "solution_text": "<h3>Reverse Linked List</h3><p><strong>Algorithm:</strong></p><ol><li>Use three pointers: prev, curr, and next</li><li>Iterate through the list, reversing links</li><li>Move pointers forward in each iteration</li><li>Return the new head (prev pointer)</li></ol><p><strong>Time Complexity:</strong> O(n) - single pass through list</p><p><strong>Space Complexity:</strong> O(1) - only using constant extra space</p><p><strong>Key Insights:</strong></p><ul><li>Iterative approach using three pointers</li><li>Reverse the direction of each link</li><li>Handle null head edge case</li><li>Can also be solved recursively</li></ul>",
+  "solution_code": "def reverseLinkedList(head):\n    prev = None\n    curr = head\n    \n    while curr:\n        next_temp = curr.next\n        curr.next = prev\n        prev = curr\n        curr = next_temp\n    \n    return prev",
+  "prepare": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n    \n    def __repr__(self):\n        return f'ListNode({self.val})'\n\ndef prepare(test_case_input):\n    \"\"\"Convert array representation to ListNode structure\"\"\"\n    head_array = test_case_input['head']\n    if not head_array:\n        return (None,)\n\n    def build_list(arr):\n        if not arr:\n            return None\n        \n        head = ListNode(arr[0])\n        current = head\n        \n        for i in range(1, len(arr)):\n            current.next = ListNode(arr[i])\n            current = current.next\n        \n        return head\n\n    return (build_list(head_array),)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the reverse linked list result\"\"\"\n    def list_to_array(head):\n        result = []\n        current = head\n        while current:\n            result.append(current.val)\n            current = current.next\n        return result\n    \n    def list_to_string(lst):\n        if not lst:\n            return '[]'\n        return '[' + ', '.join(str(x) for x in lst) + ']'\n    \n    actual_array = list_to_array(actual_output)\n    passed = actual_array == expected_output\n    output_str = list_to_string(actual_array)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "head": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "output": [
+        3,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "head": []
+      },
+      "output": []
+    },
+    {
+      "id": 3,
+      "input": {
+        "head": [
+          1
+        ]
+      },
+      "output": [
+        1
+      ]
+    },
+    {
+      "id": 4,
+      "input": {
+        "head": [
+          1,
+          2
+        ]
+      },
+      "output": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": 5,
+      "input": {
+        "head": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "output": [
+        5,
+        4,
+        3,
+        2,
+        1
+      ]
+    }
+  ]
+}

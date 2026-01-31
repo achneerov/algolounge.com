@@ -1,0 +1,109 @@
+{
+  "index": 0,
+  "filename": "fraction-to-recurring-decimal",
+  "title": "Fraction to Recurring Decimal",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Map"
+  ],
+  "keywords": [
+    "fraction",
+    "decimal",
+    "recurring",
+    "repeating",
+    "division",
+    "hash",
+    "math",
+    "leetcode",
+    "166"
+  ],
+  "description": "<h2>Fraction to Recurring Decimal</h2><p>LeetCode 166. Fraction to Recurring Decimal</p><p>Given two integers representing the <code>numerator</code> and <code>denominator</code> of a fraction, return the fraction in string format.</p><p>If the fractional part is repeating, enclose the repeating part in parentheses.</p><p>If multiple answers are possible, return any of them.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> <code>numerator = 1, denominator = 2</code><br><strong>Output:</strong> <code>\"0.5\"</code></li><li><strong>Input:</strong> <code>numerator = 2, denominator = 1</code><br><strong>Output:</strong> <code>\"2\"</code></li><li><strong>Input:</strong> <code>numerator = 4, denominator = 333</code><br><strong>Output:</strong> <code>\"0.(012)\"</code></li></ul><h3>Constraints:</h3><ul><li><code>-2^31 <= numerator, denominator <= 2^31 - 1</code></li><li><code>denominator != 0</code></li></ul>",
+  "entry_function": "fractionToDecimal",
+  "template": "def fractionToDecimal(numerator, denominator):\n    pass",
+  "solution_text": "<h3>Fraction to Recurring Decimal</h3><p><strong>Algorithm (Long Division with Hash Map):</strong></p><p>Simulate long division while tracking remainders to detect repeating cycles.</p><ol><li><strong>Handle edge cases:</strong> If numerator is 0, return \"0\". Handle negative numbers.</li><li><strong>Integer part:</strong> Compute the integer division result.</li><li><strong>Decimal part:</strong> Use long division, storing each remainder and its position in a hash map.</li><li><strong>Detect cycle:</strong> If a remainder repeats, we've found a cycle. Insert parentheses around the repeating portion.</li></ol><p><strong>Time Complexity:</strong> O(d) where d is the length of the decimal representation</p><p><strong>Space Complexity:</strong> O(d) for storing remainders and result</p><p><strong>Key Insight:</strong> A repeating decimal occurs when the same remainder appears twice during long division.</p>",
+  "solution_code": "def fractionToDecimal(numerator, denominator):\n    if numerator == 0:\n        return \"0\"\n    \n    ans = []\n    \n    # Handle negative sign\n    if (numerator > 0) ^ (denominator > 0):\n        ans.append(\"-\")\n    \n    a, b = abs(numerator), abs(denominator)\n    \n    # Integer part\n    ans.append(str(a // b))\n    a %= b\n    \n    if a == 0:\n        return \"\".join(ans)\n    \n    ans.append(\".\")\n    \n    # Decimal part with cycle detection\n    d = {}\n    while a:\n        d[a] = len(ans)\n        a *= 10\n        ans.append(str(a // b))\n        a %= b\n        if a in d:\n            ans.insert(d[a], \"(\")\n            ans.append(\")\")\n            break\n    \n    return \"\".join(ans)",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['numerator'], test_case_input['denominator'])",
+  "verify": "def verify(actual_output, expected_output):\n    if actual_output == expected_output:\n        return [True, str(actual_output)]\n    return [False, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "numerator": 1,
+        "denominator": 2
+      },
+      "output": "0.5"
+    },
+    {
+      "id": 2,
+      "input": {
+        "numerator": 2,
+        "denominator": 1
+      },
+      "output": "2"
+    },
+    {
+      "id": 3,
+      "input": {
+        "numerator": 4,
+        "denominator": 333
+      },
+      "output": "0.(012)"
+    },
+    {
+      "id": 4,
+      "input": {
+        "numerator": 1,
+        "denominator": 3
+      },
+      "output": "0.(3)"
+    },
+    {
+      "id": 5,
+      "input": {
+        "numerator": 1,
+        "denominator": 6
+      },
+      "output": "0.1(6)"
+    },
+    {
+      "id": 6,
+      "input": {
+        "numerator": -1,
+        "denominator": 2
+      },
+      "output": "-0.5"
+    },
+    {
+      "id": 7,
+      "input": {
+        "numerator": 0,
+        "denominator": 5
+      },
+      "output": "0"
+    },
+    {
+      "id": 8,
+      "input": {
+        "numerator": 7,
+        "denominator": 12
+      },
+      "output": "0.58(3)"
+    },
+    {
+      "id": 9,
+      "input": {
+        "numerator": 1,
+        "denominator": 7
+      },
+      "output": "0.(142857)"
+    },
+    {
+      "id": 10,
+      "input": {
+        "numerator": -50,
+        "denominator": 8
+      },
+      "output": "-6.25"
+    }
+  ]
+}

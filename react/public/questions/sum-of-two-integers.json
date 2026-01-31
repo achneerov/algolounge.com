@@ -1,0 +1,92 @@
+{
+  "index": 102,
+  "filename": "sum-of-two-integers",
+  "title": "Sum of Two Integers",
+  "difficulty": "Medium",
+  "tags": [
+    "Bit Manipulation"
+  ],
+  "keywords": [
+    "sum",
+    "integers",
+    "bit manipulation",
+    "addition",
+    "XOR",
+    "carry",
+    "bitwise",
+    "no operators"
+  ],
+  "description": "<h2>Sum of Two Integers</h2><p>Given two integers <code>a</code> and <code>b</code>, return the sum of the two integers without using the operators <code>+</code> and <code>-</code>.</p><h3>Examples:</h3><ul><li>Input: a = 1, b = 2<br>Output: 3</li><li>Input: a = 2, b = 3<br>Output: 5</li></ul><h3>Constraints:</h3><ul><li><code>-1000 &lt;= a, b &lt;= 1000</code></li></ul>",
+  "entry_function": "getSum",
+  "template": "def getSum(a, b):\n    ",
+  "solution_text": "<h3>Sum of Two Integers</h3><p><strong>Algorithm:</strong></p><ol><li>Use XOR to calculate sum without carry: <code>a XOR b</code></li><li>Use AND and left shift to calculate carry: <code>(a AND b) &lt;&lt; 1</code></li><li>Repeat until there is no carry (carry becomes 0)</li><li>Handle negative numbers using mask for 32-bit integers</li><li>Convert back from 32-bit representation if needed</li></ol><p><strong>Time Complexity:</strong> O(1) - at most 32 iterations for 32-bit integers</p><p><strong>Space Complexity:</strong> O(1) - constant extra space</p><p><strong>Key Insights:</strong></p><ul><li>XOR gives sum without considering carry</li><li>AND gives positions where carry occurs, left shift by 1 to add carry to next position</li><li>Repeat until no more carry bits remain</li><li>Python needs special handling for negative numbers due to arbitrary precision integers</li></ul>",
+  "solution_code": "def getSum(a, b):\n    # Mask to get 32-bit integers\n    mask = 0xFFFFFFFF\n    \n    while b != 0:\n        # Calculate sum without carry and carry\n        tmp = (a ^ b) & mask\n        carry = ((a & b) << 1) & mask\n        a = tmp\n        b = carry\n    \n    # Handle negative numbers (if a > 0x7FFFFFFF, it's negative in 32-bit)\n    if a > 0x7FFFFFFF:\n        return ~(a ^ mask)\n    return a",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for getSum function\"\"\"\n    return (test_case_input['a'], test_case_input['b'])",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the sum result\"\"\"\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "a": 1,
+        "b": 2
+      },
+      "output": 3
+    },
+    {
+      "id": 2,
+      "input": {
+        "a": 2,
+        "b": 3
+      },
+      "output": 5
+    },
+    {
+      "id": 3,
+      "input": {
+        "a": 0,
+        "b": 0
+      },
+      "output": 0
+    },
+    {
+      "id": 4,
+      "input": {
+        "a": -1,
+        "b": 1
+      },
+      "output": 0
+    },
+    {
+      "id": 5,
+      "input": {
+        "a": 5,
+        "b": 7
+      },
+      "output": 12
+    },
+    {
+      "id": 6,
+      "input": {
+        "a": -12,
+        "b": -8
+      },
+      "output": -20
+    },
+    {
+      "id": 7,
+      "input": {
+        "a": 100,
+        "b": -100
+      },
+      "output": 0
+    },
+    {
+      "id": 8,
+      "input": {
+        "a": 15,
+        "b": 15
+      },
+      "output": 30
+    }
+  ]
+}

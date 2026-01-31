@@ -1,0 +1,220 @@
+{
+  "index": 8,
+  "filename": "asteroid-collision",
+  "title": "Asteroid Collision",
+  "difficulty": "Medium",
+  "tags": [],
+  "keywords": [
+    "asteroid",
+    "collision",
+    "leetcode",
+    "735",
+    "given",
+    "array",
+    "asteroids",
+    "integers",
+    "representing",
+    "row"
+  ],
+  "description": "<h2>Asteroid Collision</h2><p>Leetcode 735. Asteroid Collision</p><p>You are given an array <code>asteroids</code> of integers representing asteroids in a row. The indices of the asteroid in the array represent their relative position in space.</p><p>For each asteroid, the absolute value represents its size, and the sign represents its direction (positive meaning right, negative meaning left). Each asteroid moves at the same speed.</p><p>Find out the state of the asteroids after all collisions. If two asteroids meet, the smaller one will explode. If both are the same size, both will explode. Two asteroids moving in the same direction will never meet.</p><h3>Examples:</h3><ul><li>Input: <code>asteroids = [2,4,-4,-1]</code><br>Output: <code>[2]</code></li><li>Input: <code>asteroids = [5,5]</code><br>Output: <code>[5,5]</code></li><li>Input: <code>asteroids = [7,-3,9]</code><br>Output: <code>[7,9]</code></li></ul><h3>Constraints:</h3><ul><li><code>2 <= asteroids.length <= 10,000</code></li><li><code>-1000 <= asteroids[i] <= 1000</code></li><li><code>asteroids[i] != 0</code></li></ul>",
+  "entry_function": "asteroidCollision",
+  "template": "def asteroidCollision(asteroids):\n    ",
+  "solution_text": "<h3>Asteroid Collision</h3><p><strong>Algorithm:</strong></p><ol><li>Use stack to track surviving asteroids</li><li>For each asteroid, check collision conditions</li><li>Right-moving (positive) asteroids are added to stack</li><li>Left-moving (negative) asteroids may collide with stack top</li><li>Handle collision outcomes: smaller explodes, equal both explode</li></ol><p><strong>Time Complexity:</strong> O(n) - Each asteroid processed once</p><p><strong>Space Complexity:</strong> O(n) - Stack storage in worst case</p><p><strong>Key Insights:</strong></p><ul><li>Only right-moving vs left-moving asteroids collide</li><li>Stack naturally handles the collision sequence</li><li>Continue collisions until no more conflicts</li></ul>",
+  "solution_code": "def asteroidCollision(asteroids):\n    stack = []\n    \n    for asteroid in asteroids:\n        # Process current asteroid\n        while stack and asteroid < 0 < stack[-1]:\n            # Collision occurs: right-moving vs left-moving\n            if stack[-1] < -asteroid:\n                # Right-moving asteroid explodes\n                stack.pop()\n                continue\n            elif stack[-1] == -asteroid:\n                # Both asteroids explode\n                stack.pop()\n            # Left-moving asteroid explodes (asteroid >= 0 or no collision)\n            break\n        else:\n            # No collision or asteroid survives\n            stack.append(asteroid)\n    \n    return stack",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['asteroids'],)",
+  "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "asteroids": [
+          2,
+          4,
+          -4,
+          -1
+        ]
+      },
+      "output": [
+        2
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "asteroids": [
+          5,
+          5
+        ]
+      },
+      "output": [
+        5,
+        5
+      ]
+    },
+    {
+      "id": 3,
+      "input": {
+        "asteroids": [
+          7,
+          -3,
+          9
+        ]
+      },
+      "output": [
+        7,
+        9
+      ]
+    },
+    {
+      "id": 4,
+      "input": {
+        "asteroids": [
+          -2,
+          -1,
+          1,
+          2
+        ]
+      },
+      "output": [
+        -2,
+        -1,
+        1,
+        2
+      ]
+    },
+    {
+      "id": 5,
+      "input": {
+        "asteroids": [
+          10,
+          2,
+          -5
+        ]
+      },
+      "output": [
+        10
+      ]
+    },
+    {
+      "id": 6,
+      "input": {
+        "asteroids": [
+          8,
+          -8
+        ]
+      },
+      "output": []
+    },
+    {
+      "id": 7,
+      "input": {
+        "asteroids": [
+          -2,
+          -2,
+          1,
+          -2
+        ]
+      },
+      "output": [
+        -2,
+        -2,
+        -2
+      ]
+    },
+    {
+      "id": 8,
+      "input": {
+        "asteroids": [
+          1,
+          -1,
+          -2,
+          -2
+        ]
+      },
+      "output": [
+        -2,
+        -2
+      ]
+    },
+    {
+      "id": 9,
+      "input": {
+        "asteroids": [
+          3,
+          5,
+          -3,
+          -5,
+          -6
+        ]
+      },
+      "output": [
+        -6
+      ]
+    },
+    {
+      "id": 10,
+      "input": {
+        "asteroids": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "output": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "id": 11,
+      "input": {
+        "asteroids": [
+          -5,
+          -4,
+          -3,
+          -2,
+          -1
+        ]
+      },
+      "output": [
+        -5,
+        -4,
+        -3,
+        -2,
+        -1
+      ]
+    },
+    {
+      "id": 12,
+      "input": {
+        "asteroids": [
+          -1000,
+          1000,
+          -1000
+        ]
+      },
+      "output": [
+        -1000
+      ]
+    },
+    {
+      "id": 13,
+      "input": {
+        "asteroids": [
+          5,
+          -3,
+          10,
+          -20
+        ]
+      },
+      "output": [
+        -20
+      ]
+    }
+  ]
+}

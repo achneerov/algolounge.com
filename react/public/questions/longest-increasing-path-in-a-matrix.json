@@ -1,0 +1,228 @@
+{
+  "index": 54,
+  "filename": "longest-increasing-path-in-a-matrix",
+  "title": "Longest Increasing Path in a Matrix",
+  "difficulty": "Hard",
+  "tags": [
+    "2D Dynamic Programming"
+  ],
+  "keywords": [
+    "longest",
+    "increasing",
+    "path",
+    "matrix",
+    "329",
+    "dfs",
+    "memoization",
+    "dynamic",
+    "programming",
+    "grid",
+    "depth",
+    "first",
+    "search"
+  ],
+  "description": "<h2>Longest Increasing Path in a Matrix</h2><p>Given an <code>m x n</code> integers matrix, return the length of the longest increasing path.</p><p>From each cell, you can either move in four directions: left, right, up, or down. You may not move diagonally or move outside the boundary (i.e., wrap-around is not allowed).</p><h3>Examples:</h3><ul><li><strong>Input:</strong> matrix = [<br>  [9,9,4],<br>  [6,6,8],<br>  [2,1,1]<br>]<br><strong>Output:</strong> 4<br><strong>Explanation:</strong> The longest increasing path is [1, 2, 6, 9].</li><li><strong>Input:</strong> matrix = [<br>  [3,4,5],<br>  [3,2,6],<br>  [2,2,1]<br>]<br><strong>Output:</strong> 4<br><strong>Explanation:</strong> The longest increasing path is [3, 4, 5, 6]. Moving diagonally is not allowed.</li><li><strong>Input:</strong> matrix = [[1]]<br><strong>Output:</strong> 1</li></ul><h3>Constraints:</h3><ul><li><code>m == matrix.length</code></li><li><code>n == matrix[i].length</code></li><li><code>1 <= m, n <= 200</code></li><li><code>0 <= matrix[i][j] <= 2^31 - 1</code></li></ul>",
+  "entry_function": "longestIncreasingPath",
+  "template": "def longestIncreasingPath(matrix):\n    ",
+  "solution_text": "<h3>Longest Increasing Path in a Matrix</h3><p><strong>Algorithm:</strong></p><ol><li>Use DFS with memoization to find longest path from each cell</li><li>For each cell, explore all four directions (up, down, left, right)</li><li>Only move to adjacent cells with strictly greater values</li><li>Cache results to avoid recomputing paths from same cell</li><li>Return maximum path length found across all starting positions</li></ol><p><strong>Time Complexity:</strong> O(m × n) - each cell visited at most once due to memoization</p><p><strong>Space Complexity:</strong> O(m × n) - memoization cache and recursion stack</p><p><strong>Key Insights:</strong></p><ul><li>DFS naturally explores all possible paths from each starting point</li><li>Memoization prevents redundant calculations for overlapping subproblems</li><li>Strictly increasing constraint ensures no cycles</li><li>Can use topological sort alternative for iterative approach</li></ul>",
+  "solution_code": "def longestIncreasingPath(matrix):\n    if not matrix or not matrix[0]:\n        return 0\n    \n    m, n = len(matrix), len(matrix[0])\n    memo = {}\n    \n    def dfs(row, col):\n        if (row, col) in memo:\n            return memo[(row, col)]\n        \n        # Base case: current cell contributes 1 to the path length\n        max_path = 1\n        \n        # Check all four directions: up, down, left, right\n        directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]\n        \n        for dr, dc in directions:\n            new_row, new_col = row + dr, col + dc\n            \n            # Check if the new position is valid and forms an increasing path\n            if (0 <= new_row < m and 0 <= new_col < n and \n                matrix[new_row][new_col] > matrix[row][col]):\n                \n                # Recursively find the longest path from the new position\n                path_from_neighbor = 1 + dfs(new_row, new_col)\n                max_path = max(max_path, path_from_neighbor)\n        \n        memo[(row, col)] = max_path\n        return max_path\n    \n    result = 0\n    # Try starting from each cell and find the maximum path length\n    for i in range(m):\n        for j in range(n):\n            result = max(result, dfs(i, j))\n    \n    return result",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for longestIncreasingPath function\"\"\"\n    return (test_case_input['matrix'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the longest increasing path result\"\"\"\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "matrix": [
+          [
+            9,
+            9,
+            4
+          ],
+          [
+            6,
+            6,
+            8
+          ],
+          [
+            2,
+            1,
+            1
+          ]
+        ]
+      },
+      "output": 4
+    },
+    {
+      "id": 2,
+      "input": {
+        "matrix": [
+          [
+            3,
+            4,
+            5
+          ],
+          [
+            3,
+            2,
+            6
+          ],
+          [
+            2,
+            2,
+            1
+          ]
+        ]
+      },
+      "output": 4
+    },
+    {
+      "id": 3,
+      "input": {
+        "matrix": [
+          [
+            1
+          ]
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 4,
+      "input": {
+        "matrix": [
+          [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        ]
+      },
+      "output": 5
+    },
+    {
+      "id": 5,
+      "input": {
+        "matrix": [
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ],
+          [
+            4
+          ],
+          [
+            5
+          ]
+        ]
+      },
+      "output": 5
+    },
+    {
+      "id": 6,
+      "input": {
+        "matrix": [
+          [
+            5,
+            4,
+            3
+          ],
+          [
+            2,
+            1,
+            0
+          ]
+        ]
+      },
+      "output": 4
+    },
+    {
+      "id": 7,
+      "input": {
+        "matrix": [
+          [
+            1,
+            2
+          ],
+          [
+            4,
+            3
+          ]
+        ]
+      },
+      "output": 4
+    },
+    {
+      "id": 8,
+      "input": {
+        "matrix": [
+          [
+            7,
+            8,
+            9
+          ],
+          [
+            9,
+            7,
+            6
+          ],
+          [
+            7,
+            2,
+            3
+          ]
+        ]
+      },
+      "output": 6
+    },
+    {
+      "id": 9,
+      "input": {
+        "matrix": [
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        ]
+      },
+      "output": 10
+    },
+    {
+      "id": 10,
+      "input": {
+        "matrix": [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ]
+      },
+      "output": 1
+    }
+  ]
+}

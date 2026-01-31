@@ -1,0 +1,418 @@
+{
+  "index": 0,
+  "filename": "implement-stack",
+  "title": "Implement Stack",
+  "difficulty": "Easy",
+  "tags": [
+    "Stack",
+    "Data Structure Design"
+  ],
+  "keywords": [
+    "stack",
+    "implement",
+    "data structure",
+    "linked list",
+    "array",
+    "push",
+    "pop",
+    "top",
+    "empty",
+    "LIFO"
+  ],
+  "description": "<h2>Implement Stack</h2><p>Implement a stack data structure with the following operations:</p><ul><li><code>push(val)</code>: Push an element onto the stack</li><li><code>pop()</code>: Remove and return the top element from the stack</li><li><code>top()</code>: Return the top element without removing it</li><li><code>empty()</code>: Return whether the stack is empty</li></ul><p>You can choose to implement the stack using either:</p><ol><li><strong>Linked List</strong> - Each node points to the next node</li><li><strong>Circular Array</strong> - Fixed-size array with wrapping</li></ol><h3>Examples:</h3><ul><li>Input: [\"Stack\", \"push\", \"push\", \"top\", \"pop\", \"empty\"]<br>[[], [1], [2], [], [], []]<br>Output: [null, null, null, 2, 2, false]</li><li>Input: [\"Stack\", \"push\", \"pop\", \"empty\"]<br>[[], [10], [], []]<br>Output: [null, null, 10, true]</li></ul><h3>Constraints:</h3><ul><li><code>1 <= val <= 10^9</code></li><li>At most <code>10^4</code> calls will be made to each function</li><li><code>pop</code> and <code>top</code> will only be called on non-empty stacks</li></ul>",
+  "entry_function": "executeStackOperations",
+  "template": "class Stack:\n    def __init__(self):\n        \n    \n    def push(self, val):\n        \n    \n    def pop(self):\n        \n    \n    def top(self):\n        \n    \n    def empty(self):\n        ",
+  "solution_text": "<h3>Implement Stack</h3><p><strong>Algorithm (Linked List Approach):</strong></p><ol><li>Use a singly linked list where each node contains a value and pointer to next</li><li>Maintain a head pointer to the top of the stack</li><li>Push: Create new node and set as head</li><li>Pop: Remove head and return its value</li><li>Top: Return head value without removal</li><li>Empty: Check if head is None</li></ol><p><strong>Algorithm (Array Approach):</strong></p><ol><li>Use a Python list (dynamic array)</li><li>Push: Append to end of list</li><li>Pop: Remove and return last element</li><li>Top: Return last element</li><li>Empty: Check if list length is 0</li></ol><p><strong>Time Complexity:</strong> O(1) for all operations</p><p><strong>Space Complexity:</strong> O(n) where n is number of elements</p><p><strong>Key Insights:</strong></p><ul><li>Linked list uses more memory per element but no resizing overhead</li><li>Array uses less memory but may need to resize</li><li>Both approaches provide O(1) operations</li><li>Stack follows LIFO (Last In First Out) principle</li></ul>",
+  "solution_code": "class Node:\n    def __init__(self, val):\n        self.val = val\n        self.next = None\n\nclass Stack:\n    def __init__(self):\n        self.head = None\n        self.size = 0\n    \n    def push(self, val):\n        new_node = Node(val)\n        new_node.next = self.head\n        self.head = new_node\n        self.size += 1\n    \n    def pop(self):\n        if self.head is None:\n            return None\n        val = self.head.val\n        self.head = self.head.next\n        self.size -= 1\n        return val\n    \n    def top(self):\n        if self.head is None:\n            return None\n        return self.head.val\n    \n    def empty(self):\n        return 1 if self.size == 0 else 0",
+  "prepare": "# Define the wrapper function that will execute operations\ndef executeStackOperations(operations, values):\n    results = []\n    stack = None\n    for i, (op, val) in enumerate(zip(operations, values)):\n        if op == 'Stack':\n            stack = Stack()\n            results.append(None)\n        elif op == 'push':\n            results.append(stack.push(val[0]))\n        elif op == 'pop':\n            results.append(stack.pop())\n        elif op == 'top':\n            results.append(stack.top())\n        elif op == 'empty':\n            results.append(stack.empty())\n    return results\n\ndef prepare(test_case_input):\n    \"\"\"Prepare arguments for executeStackOperations function\"\"\"\n    return (test_case_input['operations'], test_case_input['values'])",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the stack operations result\"\"\"\n    if len(actual_output) != len(expected_output):\n        return [False, str(actual_output)]\n    \n    for i, (actual, expected) in enumerate(zip(actual_output, expected_output)):\n        if actual != expected:\n            return [False, str(actual_output)]\n    \n    return [True, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "operations": [
+          "Stack",
+          "push",
+          "push",
+          "top",
+          "pop",
+          "empty"
+        ],
+        "values": [
+          [],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [],
+          [],
+          []
+        ]
+      },
+      "output": [
+        null,
+        null,
+        null,
+        2,
+        2,
+        0
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "operations": [
+          "Stack",
+          "push",
+          "pop",
+          "empty"
+        ],
+        "values": [
+          [],
+          [
+            10
+          ],
+          [],
+          []
+        ]
+      },
+      "output": [
+        null,
+        null,
+        10,
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "input": {
+        "operations": [
+          "Stack",
+          "push",
+          "push",
+          "push",
+          "pop",
+          "pop",
+          "pop",
+          "empty"
+        ],
+        "values": [
+          [],
+          [
+            "hello"
+          ],
+          [
+            "world"
+          ],
+          [
+            "test"
+          ],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        "test",
+        "world",
+        "hello",
+        1
+      ]
+    },
+    {
+      "id": 4,
+      "input": {
+        "operations": [
+          "Stack",
+          "push",
+          "top",
+          "top",
+          "pop",
+          "empty"
+        ],
+        "values": [
+          [],
+          [
+            5
+          ],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "output": [
+        null,
+        null,
+        5,
+        5,
+        5,
+        1
+      ]
+    },
+    {
+      "id": 5,
+      "input": {
+        "operations": [
+          "Stack",
+          "empty",
+          "push",
+          "empty",
+          "push",
+          "top"
+        ],
+        "values": [
+          [],
+          [],
+          [
+            100
+          ],
+          [],
+          [
+            200
+          ],
+          []
+        ]
+      },
+      "output": [
+        null,
+        1,
+        null,
+        0,
+        null,
+        200
+      ]
+    },
+    {
+      "id": 6,
+      "input": {
+        "operations": [
+          "Stack",
+          "push",
+          "push",
+          "push",
+          "push",
+          "push",
+          "pop",
+          "pop",
+          "pop",
+          "pop",
+          "pop",
+          "empty"
+        ],
+        "values": [
+          [],
+          [
+            "a"
+          ],
+          [
+            "b"
+          ],
+          [
+            "c"
+          ],
+          [
+            "d"
+          ],
+          [
+            "e"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        "e",
+        "d",
+        "c",
+        "b",
+        "a",
+        1
+      ]
+    },
+    {
+      "id": 7,
+      "input": {
+        "operations": [
+          "Stack",
+          "push",
+          "push",
+          "pop",
+          "push",
+          "pop",
+          "pop",
+          "empty"
+        ],
+        "values": [
+          [],
+          [
+            7
+          ],
+          [
+            8
+          ],
+          [],
+          [
+            9
+          ],
+          [],
+          [],
+          []
+        ]
+      },
+      "output": [
+        null,
+        null,
+        null,
+        8,
+        null,
+        9,
+        7,
+        1
+      ]
+    },
+    {
+      "id": 8,
+      "input": {
+        "operations": [
+          "Stack",
+          "push",
+          "top",
+          "push",
+          "top",
+          "push",
+          "top"
+        ],
+        "values": [
+          [],
+          [
+            "x"
+          ],
+          [],
+          [
+            "y"
+          ],
+          [],
+          [
+            "z"
+          ],
+          []
+        ]
+      },
+      "output": [
+        null,
+        null,
+        "x",
+        null,
+        "y",
+        null,
+        "z"
+      ]
+    },
+    {
+      "id": 9,
+      "input": {
+        "operations": [
+          "Stack",
+          "push",
+          "push",
+          "push",
+          "top",
+          "pop",
+          "top",
+          "pop",
+          "top"
+        ],
+        "values": [
+          [],
+          [
+            10
+          ],
+          [
+            20
+          ],
+          [
+            30
+          ],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        30,
+        30,
+        20,
+        20,
+        10
+      ]
+    },
+    {
+      "id": 10,
+      "input": {
+        "operations": [
+          "Stack",
+          "push",
+          "empty",
+          "pop",
+          "empty",
+          "push",
+          "push",
+          "pop",
+          "empty"
+        ],
+        "values": [
+          [],
+          [
+            42
+          ],
+          [],
+          [],
+          [],
+          [
+            50
+          ],
+          [
+            60
+          ],
+          [],
+          []
+        ]
+      },
+      "output": [
+        null,
+        null,
+        0,
+        42,
+        1,
+        null,
+        null,
+        60,
+        0
+      ]
+    }
+  ]
+}

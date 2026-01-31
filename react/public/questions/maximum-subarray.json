@@ -1,0 +1,150 @@
+{
+  "index": 57,
+  "filename": "maximum-subarray",
+  "title": "Maximum Subarray",
+  "difficulty": "Medium",
+  "tags": [],
+  "keywords": [
+    "maximum",
+    "subarray",
+    "kadane",
+    "algorithm",
+    "dynamic",
+    "programming",
+    "array",
+    "sum",
+    "contiguous",
+    "optimization"
+  ],
+  "description": "<h2>Maximum Subarray</h2><p>Given an array of integers <code>nums</code>, find the subarray with the largest sum and return the sum.</p><p>A <strong>subarray</strong> is a contiguous non-empty sequence of elements within an array.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> nums = [2,-3,4,-2,2,1,-1,4]<br><strong>Output:</strong> 8<br><strong>Explanation:</strong> The subarray [4,-2,2,1,-1,4] has the largest sum 8.</li><li><strong>Input:</strong> nums = [-1]<br><strong>Output:</strong> -1</li></ul><h3>Constraints:</h3><ul><li><code>1 <= nums.length <= 1000</code></li><li><code>-1000 <= nums[i] <= 1000</code></li></ul>",
+  "entry_function": "maxSubArray",
+  "template": "def maxSubArray(nums):\n    ",
+  "solution_text": "<h3>Maximum Subarray - Kadane's Algorithm</h3><p><strong>Algorithm:</strong></p><ol><li>Initialize max_sum to first element and current_sum to 0</li><li>For each element, decide: start new subarray or extend current one</li><li>current_sum = max(num, current_sum + num)</li><li>Update max_sum if current_sum is larger</li><li>Return max_sum</li></ol><p><strong>Time Complexity:</strong> O(n) - single pass through array</p><p><strong>Space Complexity:</strong> O(1) - constant extra space</p><p><strong>Key Insights:</strong></p><ul><li>Kadane's algorithm is a classic dynamic programming approach</li><li>Negative prefixes are discarded as they don't improve the sum</li><li>Correctly handles arrays with all negative numbers</li><li>Decision at each step: include current element in subarray or start fresh</li></ul>",
+  "solution_code": "def maxSubArray(nums):\n    if not nums:\n        return 0\n    \n    max_sum = nums[0]\n    current_sum = 0\n    \n    for num in nums:\n        current_sum = max(num, current_sum + num)\n        max_sum = max(max_sum, current_sum)\n    \n    return max_sum",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for maxSubArray function\"\"\"\n    return (test_case_input['nums'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the maximum subarray result\"\"\"\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [
+          2,
+          -3,
+          4,
+          -2,
+          2,
+          1,
+          -1,
+          4
+        ]
+      },
+      "output": 8
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [
+          -1
+        ]
+      },
+      "output": -1
+    },
+    {
+      "id": 3,
+      "input": {
+        "nums": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "output": 15
+    },
+    {
+      "id": 4,
+      "input": {
+        "nums": [
+          -2,
+          -3,
+          -1,
+          -5
+        ]
+      },
+      "output": -1
+    },
+    {
+      "id": 5,
+      "input": {
+        "nums": [
+          5
+        ]
+      },
+      "output": 5
+    },
+    {
+      "id": 6,
+      "input": {
+        "nums": [
+          -5,
+          4,
+          -1,
+          7,
+          -8
+        ]
+      },
+      "output": 10
+    },
+    {
+      "id": 7,
+      "input": {
+        "nums": [
+          1,
+          -3,
+          2,
+          1,
+          -1
+        ]
+      },
+      "output": 3
+    },
+    {
+      "id": 8,
+      "input": {
+        "nums": [
+          -1,
+          0,
+          -2
+        ]
+      },
+      "output": 0
+    },
+    {
+      "id": 9,
+      "input": {
+        "nums": [
+          0,
+          -1,
+          2,
+          -3,
+          4
+        ]
+      },
+      "output": 4
+    },
+    {
+      "id": 10,
+      "input": {
+        "nums": [
+          5,
+          4,
+          -1,
+          7,
+          8
+        ]
+      },
+      "output": 23
+    }
+  ]
+}

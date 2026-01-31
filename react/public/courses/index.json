@@ -1,0 +1,76 @@
+{
+  "courses": [
+    {
+      "filename": "algotimefall2025",
+      "title": "AlgoTime Fall 2025",
+      "keywords": [
+        "algorithms",
+        "data structures",
+        "technical interviews",
+        "problem solving",
+        "fall",
+        "comprehensive",
+        "progressive learning",
+        "competitive programming"
+      ],
+      "description": "Welcome to Algotime, we look over cool coding questions here.",
+      "badge": "Weekly Challenges",
+      "stats": "85 questions • 16 stages"
+    },
+    {
+      "filename": "algotimewinter2026",
+      "title": "Algotime Winter 2026",
+      "keywords": [
+        "algorithms",
+        "data structures",
+        "technical interviews",
+        "problem solving",
+        "winter",
+        "two pointers",
+        "arrays",
+        "linked list",
+        "strings",
+        "hash table",
+        "design"
+      ],
+      "description": "Welcome to Algotime Winter 2026! Practice these key algorithm problems to sharpen your skills.",
+      "badge": "Winter 2026",
+      "stats": "20 questions • 3 stages"
+    },
+    {
+      "filename": "foundations",
+      "title": "AlgoLounge Foundations",
+      "keywords": [
+        "foundations",
+        "interview prep",
+        "algorithms",
+        "data structures",
+        "essential",
+        "neetcode",
+        "leetcode",
+        "comprehensive"
+      ],
+      "description": "Master essential algorithms and data structures through curated problems. Progress from fundamentals to advanced topics with a proven learning path covering 17 key categories.",
+      "badge": "Structured Learning Path",
+      "stats": "96 questions • 17 stages"
+    },
+    {
+      "filename": "helloworld2025",
+      "title": "Hello World 2025",
+      "keywords": [
+        "beginner",
+        "tutorial",
+        "algorithms",
+        "data structures",
+        "progressive learning",
+        "competitive programming",
+        "interview prep"
+      ],
+      "description": "Problems from the SCS Hello World 2025 competition.",
+      "badge": "Competition",
+      "stats": "23 questions • 5 stages"
+    }
+  ],
+  "lastUpdated": "2026-01-26T22:08:30.245Z",
+  "totalCourses": 4
+}

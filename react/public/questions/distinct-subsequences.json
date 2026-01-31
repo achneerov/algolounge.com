@@ -1,0 +1,80 @@
+{
+  "index": 84,
+  "filename": "distinct-subsequences",
+  "title": "Distinct Subsequences",
+  "difficulty": "Hard",
+  "tags": [
+    "2D Dynamic Programming"
+  ],
+  "keywords": [
+    "dynamic-programming",
+    "subsequence",
+    "string-matching",
+    "dp-2d"
+  ],
+  "description": "<h2>Distinct Subsequences</h2><p>Given two strings <code>s</code> and <code>t</code>, return the number of distinct subsequences of <code>s</code> which equals <code>t</code>.</p><p>The test cases are generated so that the answer fits on a 32-bit signed integer.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> s = \"rabbbit\", t = \"rabbit\"<br><strong>Output:</strong> 3<br><strong>Explanation:</strong> There are 3 ways you can generate \"rabbit\" from s.</li><li><strong>Input:</strong> s = \"babgbag\", t = \"bag\"<br><strong>Output:</strong> 5<br><strong>Explanation:</strong> There are 5 ways you can generate \"bag\" from s.</li></ul><h3>Constraints:</h3><ul><li><code>1 <= s.length, t.length <= 1000</code></li><li><code>s</code> and <code>t</code> consist of English letters</li></ul>",
+  "entry_function": "numDistinct",
+  "template": "def numDistinct(s, t):\n    ",
+  "solution_text": "<h3>Distinct Subsequences</h3><p><strong>Algorithm: Dynamic Programming (2D)</strong></p><ol><li>Use a 2D DP table where <code>dp[i][j]</code> = number of ways to form <code>t[0:j]</code> from <code>s[0:i]</code></li><li>Base case: <code>dp[i][0] = 1</code> for all i (empty string can be formed in one way)</li><li>Recurrence relation:<ul><li>If <code>s[i-1] == t[j-1]</code>: <code>dp[i][j] = dp[i-1][j-1] + dp[i-1][j]</code> (use the character or skip it)</li><li>Otherwise: <code>dp[i][j] = dp[i-1][j]</code> (skip the character in s)</li></ul></li><li>Optimize space to 1D array since we only need the previous row</li></ol><p><strong>Time Complexity:</strong> O(m × n) where m = len(s), n = len(t)</p><p><strong>Space Complexity:</strong> O(n) with 1D DP array optimization</p><p><strong>Key Insights:</strong></p><ul><li>When characters match, we have two choices: include the character in our solution or skip it</li><li>When characters don't match, we can only skip the character from s</li><li>Space optimization reduces O(m × n) to O(n) by using only one row</li></ul>",
+  "solution_code": "def numDistinct(s, t):\n    m, n = len(s), len(t)\n    \n    # dp[j] = number of ways to form t[0:j] from current portion of s\n    dp = [0] * (n + 1)\n    dp[0] = 1  # Empty string can be formed in one way\n    \n    for i in range(1, m + 1):\n        # Traverse from right to left to avoid overwriting values we need\n        for j in range(n, 0, -1):\n            if s[i - 1] == t[j - 1]:\n                dp[j] += dp[j - 1]\n    \n    return dp[n]",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for numDistinct function\"\"\"\n    return (test_case_input['s'], test_case_input['t'])",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the distinct subsequences result\"\"\"\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "s": "rabbbit",
+        "t": "rabbit"
+      },
+      "output": 3
+    },
+    {
+      "id": 2,
+      "input": {
+        "s": "babgbag",
+        "t": "bag"
+      },
+      "output": 5
+    },
+    {
+      "id": 3,
+      "input": {
+        "s": "a",
+        "t": "a"
+      },
+      "output": 1
+    },
+    {
+      "id": 4,
+      "input": {
+        "s": "aaaa",
+        "t": "aa"
+      },
+      "output": 6
+    },
+    {
+      "id": 5,
+      "input": {
+        "s": "aab",
+        "t": "ab"
+      },
+      "output": 2
+    },
+    {
+      "id": 6,
+      "input": {
+        "s": "aab",
+        "t": "b"
+      },
+      "output": 1
+    },
+    {
+      "id": 7,
+      "input": {
+        "s": "aabdbbac",
+        "t": "aabdac"
+      },
+      "output": 1
+    }
+  ]
+}

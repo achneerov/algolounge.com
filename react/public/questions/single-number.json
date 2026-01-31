@@ -1,0 +1,121 @@
+{
+  "index": 100,
+  "filename": "single-number",
+  "title": "Single Number",
+  "difficulty": "Easy",
+  "tags": [
+    "Bit Manipulation"
+  ],
+  "keywords": [
+    "single",
+    "number",
+    "bit manipulation",
+    "XOR",
+    "array",
+    "integers",
+    "unique",
+    "duplicate",
+    "constant space"
+  ],
+  "description": "<h2>Single Number</h2><p>Given a <strong>non-empty</strong> array of integers <code>nums</code>, every element appears twice except for one. Find that single one.</p><p>You must implement a solution with a linear runtime complexity and use only constant extra space.</p><h3>Examples:</h3><ul><li>Input: nums = [2,2,1]<br>Output: 1</li><li>Input: nums = [4,1,2,1,2]<br>Output: 4</li><li>Input: nums = [1]<br>Output: 1</li></ul><h3>Constraints:</h3><ul><li><code>1 &lt;= nums.length &lt;= 3 * 10<sup>4</sup></code></li><li><code>-3 * 10<sup>4</sup> &lt;= nums[i] &lt;= 3 * 10<sup>4</sup></code></li><li>Each element in the array appears twice except for one element which appears only once.</li></ul>",
+  "entry_function": "singleNumber",
+  "template": "def singleNumber(nums):\n    ",
+  "solution_text": "<h3>Single Number</h3><p><strong>Algorithm:</strong></p><ol><li>Use the XOR bitwise operation to find the unique number</li><li>Initialize result to 0</li><li>XOR all numbers in the array with the result</li><li>Since XOR of identical numbers equals 0, and XOR of any number with 0 equals the number itself, all pairs cancel out</li><li>The remaining value is the single number that appears only once</li></ol><p><strong>Time Complexity:</strong> O(n) - single pass through the array</p><p><strong>Space Complexity:</strong> O(1) - constant extra space</p><p><strong>Key Insights:</strong></p><ul><li>XOR has commutative and associative properties: order doesn't matter</li><li>XOR of identical values equals 0: <code>a XOR a = 0</code></li><li>XOR of any value with 0 equals the value: <code>a XOR 0 = a</code></li><li>All duplicate pairs cancel out, leaving only the single number</li></ul>",
+  "solution_code": "def singleNumber(nums):\n    result = 0\n    for num in nums:\n        result ^= num  # XOR operation\n    return result",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for singleNumber function\"\"\"\n    return (test_case_input['nums'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the single number result\"\"\"\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [
+          2,
+          2,
+          1
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [
+          4,
+          1,
+          2,
+          1,
+          2
+        ]
+      },
+      "output": 4
+    },
+    {
+      "id": 3,
+      "input": {
+        "nums": [
+          1
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 4,
+      "input": {
+        "nums": [
+          7,
+          6,
+          6,
+          7,
+          8
+        ]
+      },
+      "output": 8
+    },
+    {
+      "id": 5,
+      "input": {
+        "nums": [
+          3,
+          2,
+          3
+        ]
+      },
+      "output": 2
+    },
+    {
+      "id": 6,
+      "input": {
+        "nums": [
+          -1,
+          -1,
+          -2
+        ]
+      },
+      "output": -2
+    },
+    {
+      "id": 7,
+      "input": {
+        "nums": [
+          0,
+          1,
+          0
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 8,
+      "input": {
+        "nums": [
+          100,
+          200,
+          100,
+          200,
+          300
+        ]
+      },
+      "output": 300
+    }
+  ]
+}

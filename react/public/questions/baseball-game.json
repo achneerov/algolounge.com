@@ -1,0 +1,157 @@
+{
+  "index": 10,
+  "filename": "baseball-game",
+  "title": "Baseball Game",
+  "difficulty": "Medium",
+  "tags": [],
+  "keywords": [
+    "baseball",
+    "game",
+    "leetcode",
+    "682",
+    "keeping",
+    "scores",
+    "strange",
+    "rules",
+    "beginning",
+    "start"
+  ],
+  "description": "<h2>Baseball Game</h2><p>You are keeping the scores for a baseball game with strange rules. At the beginning of the game, you start with an empty record.</p><p>Given a list of strings <code>operations</code>, where <code>operations[i]</code> is the <code>i</code>th operation you must apply to the record and is one of the following:</p><ul><li>An integer <code>x</code>: Record a new score of <code>x</code>.</li><li><code>\"+\"</code>: Record a new score that is the sum of the previous two scores.</li><li><code>\"D\"</code>: Record a new score that is the double of the previous score.</li><li><code>\"C\"</code>: Invalidate the previous score, removing it from the record.</li></ul><p>Return the sum of all the scores on the record after applying all the operations.</p><p><strong>Note:</strong> The test cases are generated such that the answer and all intermediate calculations fit in a 32-bit integer and that all operations are valid.</p><h3>Examples:</h3><ul><li><p><strong>Input:</strong> <code>operations = [\"1\",\"2\",\"+\",\"C\",\"5\",\"D\"]</code><br><strong>Output:</strong> <code>18</code></p><p><strong>Explanation:</strong></p><ul><li><code>\"1\"</code> - Add 1 to the record, record = <code>[1]</code></li><li><code>\"2\"</code> - Add 2 to the record, record = <code>[1, 2]</code></li><li><code>\"+\"</code> - Add <code>1 + 2 = 3</code> to the record, record = <code>[1, 2, 3]</code></li><li><code>\"C\"</code> - Invalidate and remove the previous score, record = <code>[1, 2]</code></li><li><code>\"5\"</code> - Add 5 to the record, record = <code>[1, 2, 5]</code></li><li><code>\"D\"</code> - Add <code>2 × 5 = 10</code> to the record, record = <code>[1, 2, 5, 10]</code></li><li>The total sum is <code>1 + 2 + 5 + 10 = 18</code></li></ul></li><li><p><strong>Input:</strong> <code>operations = [\"5\",\"D\",\"+\",\"C\"]</code><br><strong>Output:</strong> <code>15</code></p><p><strong>Explanation:</strong></p><ul><li><code>\"5\"</code> - Add 5 to the record, record = <code>[5]</code></li><li><code>\"D\"</code> - Add <code>2 × 5 = 10</code> to the record, record = <code>[5, 10]</code></li><li><code>\"+\"</code> - Add <code>5 + 10 = 15</code> to the record, record = <code>[5, 10, 15]</code></li><li><code>\"C\"</code> - Invalidate and remove the previous score, record = <code>[5, 10]</code></li><li>The total sum is <code>5 + 10 = 15</code></li></ul></li></ul><h3>Constraints:</h3><ul><li><code>1 <= operations.length <= 1000</code></li><li><code>operations[i]</code> is <code>\"C\"</code>, <code>\"D\"</code>, <code>\"+\"</code>, or a string representing an integer in the range <code>[-30000, 30000]</code></li><li>For operation <code>\"+\"</code>, there will always be at least two previous scores on the record</li><li>For operations <code>\"C\"</code> and <code>\"D\"</code>, there will always be at least one previous score on the record</li></ul>",
+  "entry_function": "calPoints",
+  "template": "def calPoints(operations):\n    ",
+  "solution_text": "<h3>Baseball Game</h3><p><strong>Algorithm:</strong></p><ol><li>Use a stack to track valid scores</li><li>Process each operation: integer, '+', 'D', 'C'</li><li>Handle special operations based on previous scores</li><li>Sum all remaining scores in the stack</li></ol><p><strong>Time Complexity:</strong> O(n) - process each operation once</p><p><strong>Space Complexity:</strong> O(n) - stack storage for scores</p><p><strong>Key Insights:</strong></p><ul><li>Stack naturally handles the scoring requirements</li><li>'+' uses last two scores, 'D' doubles last score</li><li>'C' removes the most recent score</li></ul>",
+  "solution_code": "def calPoints(operations):\n    stack = []\n    \n    for op in operations:\n        if op == '+':\n            stack.append(stack[-1] + stack[-2])\n        elif op == 'D':\n            stack.append(stack[-1] * 2)\n        elif op == 'C':\n            stack.pop()\n        else:\n            stack.append(int(op))\n    \n    return sum(stack)",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['operations'],)",
+  "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "operations": [
+          "1",
+          "2",
+          "+",
+          "C",
+          "5",
+          "D"
+        ]
+      },
+      "output": 18
+    },
+    {
+      "id": 2,
+      "input": {
+        "operations": [
+          "5",
+          "D",
+          "+",
+          "C"
+        ]
+      },
+      "output": 15
+    },
+    {
+      "id": 3,
+      "input": {
+        "operations": [
+          "5",
+          "-2",
+          "4",
+          "C",
+          "D",
+          "9",
+          "+",
+          "+"
+        ]
+      },
+      "output": 27
+    },
+    {
+      "id": 4,
+      "input": {
+        "operations": [
+          "1"
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 5,
+      "input": {
+        "operations": [
+          "10",
+          "C"
+        ]
+      },
+      "output": 0
+    },
+    {
+      "id": 6,
+      "input": {
+        "operations": [
+          "0",
+          "0",
+          "+",
+          "+"
+        ]
+      },
+      "output": 0
+    },
+    {
+      "id": 7,
+      "input": {
+        "operations": [
+          "-10",
+          "D",
+          "+"
+        ]
+      },
+      "output": -60
+    },
+    {
+      "id": 8,
+      "input": {
+        "operations": [
+          "100",
+          "D",
+          "C",
+          "50",
+          "+",
+          "D"
+        ]
+      },
+      "output": 600
+    },
+    {
+      "id": 9,
+      "input": {
+        "operations": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "C",
+          "C",
+          "C",
+          "+",
+          "+"
+        ]
+      },
+      "output": 11
+    },
+    {
+      "id": 10,
+      "input": {
+        "operations": [
+          "30000",
+          "D",
+          "C",
+          "-30000",
+          "D"
+        ]
+      },
+      "output": -60000
+    }
+  ]
+}

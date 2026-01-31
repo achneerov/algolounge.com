@@ -1,0 +1,40 @@
+{
+  "difficulties": {
+    "Easy": "#22c55e",
+    "Medium": "#f59e0b",
+    "Hard": "#ef4444"
+  },
+  "tags": {
+    "Alex's Favorite": "#ffd700",
+    "Sliding Window": "#3b82f6",
+    "Linked List": "#8b5cf6",
+    "Graph": "#ec4899",
+    "2D Dynamic Programming": "#06b6d4",
+    "Trees": "#10b981",
+    "Tries": "#f97316",
+    "Arrays and Hashing": "#3b82f6",
+    "Two Pointers": "#a855f7",
+    "Stack": "#eab308",
+    "Heap / Priority Queue": "#ec4899",
+    "1D Dynamic Programming": "#06b6d4",
+    "Bit Manipulation": "#a855f7",
+    "Binary Search": "#3b82f6",
+    "Data Structure Design": "#8b5cf6",
+    "Queue": "#ec4899",
+    "Simulation": "#8b5cf6",
+    "String": "#3b82f6",
+    "Greedy": "#8b5cf6",
+    "Hash Map": "#3b82f6",
+    "Hash Set": "#8b5cf6",
+    "Design Patterns": "#8b5cf6",
+    "Intervals": "#06b6d4",
+    "DFS": "#10b981",
+    "Topological Sort": "#06b6d4",
+    "Union Find": "#8b5cf6",
+    "HW20": "#8b5cf6",
+    "Backtracking": "#f59e0b",
+    "Advanced Graphs": "#ec4899",
+    "Dynamic Programming": "#06b6d4",
+    "BFS": "#10b981"
+  }
+}

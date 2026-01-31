@@ -1,0 +1,84 @@
+{
+  "index": 103,
+  "filename": "reverse-integer",
+  "title": "Reverse Integer",
+  "difficulty": "Medium",
+  "tags": [
+    "Bit Manipulation"
+  ],
+  "keywords": [
+    "reverse",
+    "integer",
+    "signed",
+    "32-bit",
+    "overflow",
+    "digits",
+    "mathematical",
+    "modulo"
+  ],
+  "description": "<h2>Reverse Integer</h2><p>Given a signed 32-bit integer <code>x</code>, return <code>x</code> with its digits reversed. If reversing <code>x</code> causes the value to go outside the signed 32-bit integer range <code>[-2<sup>31</sup>, 2<sup>31</sup> - 1]</code>, then return <code>0</code>.</p><p><strong>Assume the environment does not allow you to store 64-bit integers (signed or unsigned).</strong></p><h3>Examples:</h3><ul><li>Input: x = 123<br>Output: 321</li><li>Input: x = -123<br>Output: -321</li><li>Input: x = 120<br>Output: 21</li></ul><h3>Constraints:</h3><ul><li><code>-2<sup>31</sup> &lt;= x &lt;= 2<sup>31</sup> - 1</code></li></ul>",
+  "entry_function": "reverse",
+  "template": "def reverse(x):\n    ",
+  "solution_text": "<h3>Reverse Integer</h3><p><strong>Algorithm:</strong></p><ol><li>Handle the sign separately - store if number is negative</li><li>Work with absolute value of the number</li><li>Build reversed number digit by digit using modulo and integer division</li><li>Extract last digit: <code>x % 10</code></li><li>Add to result: <code>result = result * 10 + digit</code></li><li>Remove last digit: <code>x = x // 10</code></li><li>Check for 32-bit overflow before returning</li><li>Return 0 if overflow occurs, otherwise return with original sign</li></ol><p><strong>Time Complexity:</strong> O(log x) - number of digits in x</p><p><strong>Space Complexity:</strong> O(1) - constant extra space</p><p><strong>Key Insights:</strong></p><ul><li>Handle negative numbers by tracking sign separately</li><li>Use mathematical operations (modulo, division) instead of string conversion</li><li>Check bounds: -2<sup>31</sup> to 2<sup>31</sup> - 1</li><li>Return 0 if reversed number exceeds 32-bit range</li></ul>",
+  "solution_code": "def reverse(x):\n    # Define 32-bit integer bounds\n    INT_MIN, INT_MAX = -2**31, 2**31 - 1\n    \n    # Handle sign\n    sign = -1 if x < 0 else 1\n    x = abs(x)\n    \n    # Reverse the number\n    result = 0\n    while x != 0:\n        digit = x % 10\n        x //= 10\n        \n        # Check for overflow before updating result\n        if result > INT_MAX // 10 or (result == INT_MAX // 10 and digit > 7):\n            return 0\n        if result < INT_MIN // 10 or (result == INT_MIN // 10 and digit < -8):\n            return 0\n            \n        result = result * 10 + digit\n    \n    result *= sign\n    \n    # Final overflow check\n    if result < INT_MIN or result > INT_MAX:\n        return 0\n    \n    return result",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for reverse function\"\"\"\n    return (test_case_input['x'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the reverse integer result\"\"\"\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "x": 123
+      },
+      "output": 321
+    },
+    {
+      "id": 2,
+      "input": {
+        "x": -123
+      },
+      "output": -321
+    },
+    {
+      "id": 3,
+      "input": {
+        "x": 120
+      },
+      "output": 21
+    },
+    {
+      "id": 4,
+      "input": {
+        "x": 0
+      },
+      "output": 0
+    },
+    {
+      "id": 5,
+      "input": {
+        "x": 1534236469
+      },
+      "output": 0
+    },
+    {
+      "id": 6,
+      "input": {
+        "x": -2147483648
+      },
+      "output": 0
+    },
+    {
+      "id": 7,
+      "input": {
+        "x": 1463847412
+      },
+      "output": 2147483641
+    },
+    {
+      "id": 8,
+      "input": {
+        "x": -100
+      },
+      "output": -1
+    }
+  ]
+}

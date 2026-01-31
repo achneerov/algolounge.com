@@ -1,0 +1,121 @@
+{
+  "index": 201,
+  "filename": "number-of-islands",
+  "title": "Number of Islands",
+  "difficulty": "Medium",
+  "tags": [
+    "Graph",
+    "DFS",
+    "BFS",
+    "Matrix"
+  ],
+  "keywords": [
+    "islands",
+    "grid",
+    "dfs",
+    "bfs",
+    "leetcode",
+    "200",
+    "matrix",
+    "graph",
+    "medium"
+  ],
+  "description": "<h2>Number of Islands</h2><p>Given an <code>m x n</code> 2D binary grid <code>grid</code> which represents a map of <code>1</code>s (land) and <code>0</code>s (water), return <em>the number of islands</em>.</p><p>An <strong>island</strong> is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.</p><h3>Examples</h3><ul><li>Input: <code>grid = [<br>  [1,1,1,1,0],<br>  [1,1,0,1,0],<br>  [1,1,0,0,0],<br>  [0,0,0,0,0]<br>]</code><br>Output: <code>1</code><br>Explanation: There is 1 island (all the 1s are connected).</li><li>Input: <code>grid = [<br>  [1,1,0,0,0],<br>  [1,1,0,0,0],<br>  [0,0,1,0,0],<br>  [0,0,0,1,1]<br>]</code><br>Output: <code>3</code><br>Explanation: There are 3 separate islands.</li><li>Input: <code>grid = [<br>  [1,0,1,0,1],<br>  [0,1,0,1,0],<br>  [1,0,1,0,1],<br>  [0,1,0,1,0]<br>]</code><br>Output: <code>10</code><br>Explanation: Each 1 is its own island (no adjacent lands).</li></ul><h3>Constraints</h3><ul><li><code>m == grid.length</code></li><li><code>n == grid[i].length</code></li><li><code>1 <= m, n <= 300</code></li><li><code>grid[i][j]</code> is <code>0</code> or <code>1</code></li></ul>",
+  "entry_function": "numIslands",
+  "template": "def numIslands(grid):\n    ",
+  "solution_text": "<h3>Number of Islands</h3><p><strong>Algorithm (DFS Approach):</strong></p><ol><li>Iterate through each cell in the grid</li><li>When finding an unvisited land cell (1), increment island count</li><li>Use DFS to mark all connected land cells as visited</li><li>DFS explores all 4 directions (up, down, left, right)</li><li>Mark visited cells by changing 1 to 0 (or use a visited set)</li></ol><p><strong>Time Complexity:</strong> O(m × n) - visit each cell at most once</p><p><strong>Space Complexity:</strong> O(m × n) - worst case recursion depth if entire grid is one island</p><p><strong>Key Insights:</strong></p><ul><li>DFS/BFS both work - DFS is more concise</li><li>Modify grid in-place to mark visited cells (or use separate visited set)</li><li>Each DFS call explores one complete island</li><li>Prevents counting same island multiple times</li></ul>",
+  "solution_code": "def numIslands(grid):\n    if not grid or not grid[0]:\n        return 0\n    \n    rows, cols = len(grid), len(grid[0])\n    count = 0\n    \n    def dfs(r, c):\n        # Base cases: out of bounds or water\n        if r < 0 or r >= rows or c < 0 or c >= cols or grid[r][c] == 0:\n            return\n        \n        # Mark current cell as visited by changing to 0\n        grid[r][c] = 0\n        \n        # Explore all 4 directions\n        dfs(r + 1, c)  # down\n        dfs(r - 1, c)  # up\n        dfs(r, c + 1)  # right\n        dfs(r, c - 1)  # left\n    \n    # Iterate through each cell\n    for r in range(rows):\n        for c in range(cols):\n            if grid[r][c] == 1:\n                count += 1\n                dfs(r, c)\n    \n    return count",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for numIslands function\"\"\"\n    # Deep copy the grid to avoid modifying the test case\n    import copy\n    grid_copy = copy.deepcopy(test_case_input['grid'])\n    return (grid_copy,)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the number of islands result\"\"\"\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "grid": [
+          [1, 1, 1, 1, 0],
+          [1, 1, 0, 1, 0],
+          [1, 1, 0, 0, 0],
+          [0, 0, 0, 0, 0]
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 2,
+      "input": {
+        "grid": [
+          [1, 1, 0, 0, 0],
+          [1, 1, 0, 0, 0],
+          [0, 0, 1, 0, 0],
+          [0, 0, 0, 1, 1]
+        ]
+      },
+      "output": 3
+    },
+    {
+      "id": 3,
+      "input": {
+        "grid": [
+          [1, 0, 1, 0, 1],
+          [0, 1, 0, 1, 0],
+          [1, 0, 1, 0, 1],
+          [0, 1, 0, 1, 0]
+        ]
+      },
+      "output": 10
+    },
+    {
+      "id": 4,
+      "input": {
+        "grid": [
+          [1, 1, 1],
+          [0, 1, 0],
+          [1, 1, 1]
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 5,
+      "input": {
+        "grid": [
+          [0, 0, 0],
+          [0, 0, 0],
+          [0, 0, 0]
+        ]
+      },
+      "output": 0
+    },
+    {
+      "id": 6,
+      "input": {
+        "grid": [
+          [1]
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 7,
+      "input": {
+        "grid": [
+          [0]
+        ]
+      },
+      "output": 0
+    },
+    {
+      "id": 8,
+      "input": {
+        "grid": [
+          [1, 1, 1, 1, 1],
+          [1, 0, 0, 0, 1],
+          [1, 0, 1, 0, 1],
+          [1, 0, 0, 0, 1],
+          [1, 1, 1, 1, 1]
+        ]
+      },
+      "output": 2
+    }
+  ]
+}

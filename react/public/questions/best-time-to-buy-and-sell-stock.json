@@ -1,0 +1,153 @@
+{
+  "index": 12,
+  "filename": "best-time-to-buy-and-sell-stock",
+  "title": "Best Time to Buy and Sell Stock",
+  "difficulty": "Easy",
+  "tags": ["Sliding Window"],
+  "keywords": [
+    "best",
+    "time",
+    "buy",
+    "sell",
+    "stock",
+    "array",
+    "profit",
+    "maximum",
+    "sliding",
+    "window",
+    "leetcode",
+    "121",
+    "greedy",
+    "dynamic",
+    "programming"
+  ],
+  "description": "<h2>Best Time to Buy and Sell Stock</h2><p>You are given an array <code>prices</code> where <code>prices[i]</code> is the price of a given stock on the <code>i<sup>th</sup></code> day.</p><p>You want to maximize your profit by choosing a <strong>single day</strong> to buy one stock and choosing a <strong>different day in the future</strong> to sell that stock.</p><p>Return <em>the maximum profit you can achieve from this transaction</em>. If you cannot achieve any profit, return <code>0</code>.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> <code>prices = [7,1,5,3,6,4]</code><br><strong>Output:</strong> <code>5</code><br><strong>Explanation:</strong> Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5. Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.</li><li><strong>Input:</strong> <code>prices = [7,6,4,3,1]</code><br><strong>Output:</strong> <code>0</code><br><strong>Explanation:</strong> In this case, no transactions are done and the max profit = 0.</li></ul><h3>Constraints:</h3><ul><li><code>1 <= prices.length <= 10<sup>5</sup></code></li><li><code>0 <= prices[i] <= 10<sup>4</sup></code></li></ul>",
+  "entry_function": "maxProfit",
+  "template": "def maxProfit(prices):\n    ",
+  "solution_text": "<h3>Best Time to Buy and Sell Stock</h3><p><strong>Algorithm:</strong></p><ol><li>Track the minimum price seen so far (best buy price)</li><li>For each price, calculate profit if selling today</li><li>Keep track of maximum profit seen so far</li><li>Return the maximum profit</li></ol><p><strong>Time Complexity:</strong> O(n) - single pass through the array</p><p><strong>Space Complexity:</strong> O(1) - only using constant extra space</p><p><strong>Key Insights:</strong></p><ul><li>Greedy approach: always buy at the lowest price seen so far</li><li>For each day, calculate potential profit and update maximum</li><li>Must buy before selling (can't sell on the same day)</li><li>Single transaction only (one buy, one sell)</li></ul>",
+  "solution_code": "def maxProfit(prices):\n    if not prices or len(prices) < 2:\n        return 0\n    \n    min_price = prices[0]  # Minimum price seen so far (best buy price)\n    max_profit = 0         # Maximum profit achievable\n    \n    for price in prices[1:]:\n        # Calculate profit if we sell at current price\n        current_profit = price - min_price\n        \n        # Update maximum profit if current is better\n        max_profit = max(max_profit, current_profit)\n        \n        # Update minimum price if current is lower\n        min_price = min(min_price, price)\n    \n    return max_profit",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for maxProfit function\"\"\"\n    return (test_case_input['prices'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the maximum profit result\"\"\"\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "prices": [
+          7,
+          1,
+          5,
+          3,
+          6,
+          4
+        ]
+      },
+      "output": 5
+    },
+    {
+      "id": 2,
+      "input": {
+        "prices": [
+          7,
+          6,
+          4,
+          3,
+          1
+        ]
+      },
+      "output": 0
+    },
+    {
+      "id": 3,
+      "input": {
+        "prices": [
+          1,
+          2
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 4,
+      "input": {
+        "prices": [
+          2,
+          1
+        ]
+      },
+      "output": 0
+    },
+    {
+      "id": 5,
+      "input": {
+        "prices": [
+          1
+        ]
+      },
+      "output": 0
+    },
+    {
+      "id": 6,
+      "input": {
+        "prices": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "output": 4
+    },
+    {
+      "id": 7,
+      "input": {
+        "prices": [
+          5,
+          4,
+          3,
+          2,
+          1
+        ]
+      },
+      "output": 0
+    },
+    {
+      "id": 8,
+      "input": {
+        "prices": [
+          3,
+          3,
+          5,
+          0,
+          0,
+          3,
+          1,
+          4
+        ]
+      },
+      "output": 4
+    },
+    {
+      "id": 9,
+      "input": {
+        "prices": [
+          1,
+          4,
+          2
+        ]
+      },
+      "output": 3
+    },
+    {
+      "id": 10,
+      "input": {
+        "prices": [
+          2,
+          4,
+          1
+        ]
+      },
+      "output": 2
+    }
+  ]
+}

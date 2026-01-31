@@ -1,0 +1,504 @@
+{
+  "index": 0,
+  "filename": "implement-queue-using-stacks",
+  "title": "Implement Queue Using Stacks",
+  "difficulty": "Easy",
+  "tags": [
+    "Queue",
+    "Stack"
+  ],
+  "keywords": [
+    "queue",
+    "stack",
+    "implement",
+    "data structure",
+    "FIFO",
+    "LIFO",
+    "design"
+  ],
+  "description": "<h2>Implement Queue Using Stacks</h2><p>Implement a first in first out (FIFO) queue using only two stacks. The implemented queue should support all the functions of a normal queue (<code>enqueue</code>, <code>dequeue</code>, <code>front</code>, and <code>empty</code>).</p><p>Implement the <code>MyQueue</code> class:</p><ul><li><code>enqueue(x)</code>: Pushes element x to the back of the queue</li><li><code>dequeue()</code>: Removes the element from the front of the queue and returns it</li><li><code>front()</code>: Returns the element at the front of the queue</li><li><code>empty()</code>: Returns <code>1</code> if the queue is empty, <code>0</code> otherwise</li></ul><h3>Notes:</h3><ul><li>You must use only standard operations of a stack, which means only <code>push</code>, <code>pop</code>, <code>top</code>, and <code>empty</code> operations are valid</li><li>Depending on your language, the stack may not be supported natively</li></ul><h3>Examples:</h3><ul><li><strong>Example 1:</strong><br>Input: [\"MyQueue\", \"enqueue\", \"enqueue\", \"front\", \"dequeue\", \"empty\"]<br>[[], [1], [2], [], [], []]<br>Output: [null, null, null, 1, 1, 0]<br>Explanation:<br>MyQueue myQueue = new MyQueue();<br>myQueue.enqueue(1); // queue is: [1]<br>myQueue.enqueue(2); // queue is: [1, 2]<br>myQueue.front(); // return 1<br>myQueue.dequeue(); // return 1, queue is [2]<br>myQueue.empty(); // return 0 (false)</li><li><strong>Example 2:</strong><br>Input: [\"MyQueue\", \"enqueue\", \"dequeue\", \"empty\"]<br>[[], [1], [], []]<br>Output: [null, null, 1, 1]<br>Explanation:<br>MyQueue myQueue = new MyQueue();<br>myQueue.enqueue(1); // queue is: [1]<br>myQueue.dequeue(); // return 1, queue is []<br>myQueue.empty(); // return 1 (true)</li></ul><h3>Constraints:</h3><ul><li><code>1 <= x <= 9</code> for integers, or any string value</li><li>At most <code>100</code> calls will be made to <code>enqueue</code>, <code>dequeue</code>, <code>front</code>, and <code>empty</code></li><li>All calls to <code>dequeue</code> and <code>front</code> will be valid</li></ul><h3>Follow-up:</h3><p>Can you implement the queue such that each operation is amortized <code>O(1)</code> time complexity? In other words, performing <code>n</code> operations will take overall <code>O(n)</code> time even if one of those operations may take longer.</p>",
+  "entry_function": "executeMyQueueOperations",
+  "template": "class MyQueue:\n    def __init__(self):\n        \n    \n    def enqueue(self, x):\n        \n    \n    def dequeue(self):\n        \n    \n    def front(self):\n        \n    \n    def empty(self):\n        ",
+  "solution_text": "<h3>Implement Queue Using Stacks</h3><p><strong>Algorithm (Two Stack Approach):</strong></p><ol><li>Use two stacks: <code>stack_in</code> for enqueue operations and <code>stack_out</code> for dequeue operations</li><li><strong>Enqueue:</strong> Simply push element to <code>stack_in</code></li><li><strong>Dequeue/Front:</strong> If <code>stack_out</code> is empty, transfer all elements from <code>stack_in</code> to <code>stack_out</code> (this reverses the order). Then pop/peek from <code>stack_out</code></li><li><strong>Empty:</strong> Return true only if both stacks are empty</li></ol><p><strong>Time Complexity:</strong></p><ul><li>Enqueue: O(1)</li><li>Dequeue/Front: Amortized O(1) - Each element is moved at most once from stack_in to stack_out</li><li>Empty: O(1)</li></ul><p><strong>Space Complexity:</strong> O(n) where n is number of elements</p><p><strong>Key Insights:</strong></p><ul><li>Stack is LIFO (Last In First Out), Queue is FIFO (First In First Out)</li><li>By using two stacks, we can reverse the order twice to achieve FIFO behavior</li><li>Lazy transfer: only move elements when stack_out is empty</li><li>Amortized analysis: although a single dequeue might take O(n), the average over many operations is O(1)</li></ul>",
+  "solution_code": "class MyQueue:\n    def __init__(self):\n        self.stack_in = []\n        self.stack_out = []\n    \n    def enqueue(self, x):\n        self.stack_in.append(x)\n    \n    def dequeue(self):\n        self._transfer()\n        return self.stack_out.pop()\n    \n    def front(self):\n        self._transfer()\n        return self.stack_out[-1]\n    \n    def empty(self):\n        return 1 if len(self.stack_in) == 0 and len(self.stack_out) == 0 else 0\n    \n    def _transfer(self):\n        if not self.stack_out:\n            while self.stack_in:\n                self.stack_out.append(self.stack_in.pop())",
+  "prepare": "# Define the wrapper function that will execute operations\ndef executeMyQueueOperations(operations, values):\n    results = []\n    queue = None\n    for i, (op, val) in enumerate(zip(operations, values)):\n        if op == 'MyQueue':\n            queue = MyQueue()\n            results.append(None)\n        elif op == 'enqueue':\n            results.append(queue.enqueue(val[0]))\n        elif op == 'dequeue':\n            results.append(queue.dequeue())\n        elif op == 'front':\n            results.append(queue.front())\n        elif op == 'empty':\n            results.append(queue.empty())\n    return results\n\ndef prepare(test_case_input):\n    \"\"\"Prepare arguments for executeMyQueueOperations function\"\"\"\n    return (test_case_input['operations'], test_case_input['values'])",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the queue operations result\"\"\"\n    if len(actual_output) != len(expected_output):\n        return [False, str(actual_output)]\n    \n    for i, (actual, expected) in enumerate(zip(actual_output, expected_output)):\n        if actual != expected:\n            return [False, str(actual_output)]\n    \n    return [True, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "operations": [
+          "MyQueue",
+          "enqueue",
+          "enqueue",
+          "front",
+          "dequeue",
+          "empty"
+        ],
+        "values": [
+          [],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [],
+          [],
+          []
+        ]
+      },
+      "output": [
+        null,
+        null,
+        null,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "operations": [
+          "MyQueue",
+          "enqueue",
+          "dequeue",
+          "empty"
+        ],
+        "values": [
+          [],
+          [
+            1
+          ],
+          [],
+          []
+        ]
+      },
+      "output": [
+        null,
+        null,
+        1,
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "input": {
+        "operations": [
+          "MyQueue",
+          "enqueue",
+          "enqueue",
+          "enqueue",
+          "front",
+          "dequeue",
+          "front"
+        ],
+        "values": [
+          [],
+          [
+            "hello"
+          ],
+          [
+            "world"
+          ],
+          [
+            "test"
+          ],
+          [],
+          [],
+          []
+        ]
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        "hello",
+        "hello",
+        "world"
+      ]
+    },
+    {
+      "id": 4,
+      "input": {
+        "operations": [
+          "MyQueue",
+          "enqueue",
+          "enqueue",
+          "dequeue",
+          "enqueue",
+          "dequeue",
+          "dequeue",
+          "empty"
+        ],
+        "values": [
+          [],
+          [
+            "a"
+          ],
+          [
+            "b"
+          ],
+          [],
+          [
+            "c"
+          ],
+          [],
+          [],
+          []
+        ]
+      },
+      "output": [
+        null,
+        null,
+        null,
+        "a",
+        null,
+        "b",
+        "c",
+        1
+      ]
+    },
+    {
+      "id": 5,
+      "input": {
+        "operations": [
+          "MyQueue",
+          "enqueue",
+          "enqueue",
+          "enqueue",
+          "dequeue",
+          "enqueue",
+          "dequeue",
+          "dequeue",
+          "dequeue",
+          "empty"
+        ],
+        "values": [
+          [],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ],
+          [],
+          [
+            4
+          ],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        2,
+        3,
+        4,
+        1
+      ]
+    },
+    {
+      "id": 6,
+      "input": {
+        "operations": [
+          "MyQueue",
+          "enqueue",
+          "enqueue",
+          "dequeue",
+          "enqueue",
+          "front",
+          "dequeue",
+          "front"
+        ],
+        "values": [
+          [],
+          [
+            5
+          ],
+          [
+            6
+          ],
+          [],
+          [
+            7
+          ],
+          [],
+          [],
+          []
+        ]
+      },
+      "output": [
+        null,
+        null,
+        null,
+        5,
+        null,
+        6,
+        6,
+        7
+      ]
+    },
+    {
+      "id": 7,
+      "input": {
+        "operations": [
+          "MyQueue",
+          "empty",
+          "enqueue",
+          "empty"
+        ],
+        "values": [
+          [],
+          [],
+          [
+            9
+          ],
+          []
+        ]
+      },
+      "output": [
+        null,
+        1,
+        null,
+        0
+      ]
+    },
+    {
+      "id": 8,
+      "input": {
+        "operations": [
+          "MyQueue",
+          "enqueue",
+          "enqueue",
+          "enqueue",
+          "enqueue",
+          "enqueue",
+          "dequeue",
+          "dequeue",
+          "dequeue",
+          "dequeue",
+          "dequeue",
+          "empty"
+        ],
+        "values": [
+          [],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ],
+          [
+            4
+          ],
+          [
+            5
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        2,
+        3,
+        4,
+        5,
+        1
+      ]
+    },
+    {
+      "id": 9,
+      "input": {
+        "operations": [
+          "MyQueue",
+          "enqueue",
+          "front",
+          "enqueue",
+          "front",
+          "dequeue",
+          "front"
+        ],
+        "values": [
+          [],
+          [
+            8
+          ],
+          [],
+          [
+            9
+          ],
+          [],
+          [],
+          []
+        ]
+      },
+      "output": [
+        null,
+        null,
+        8,
+        null,
+        8,
+        8,
+        9
+      ]
+    },
+    {
+      "id": 10,
+      "input": {
+        "operations": [
+          "MyQueue",
+          "enqueue",
+          "enqueue",
+          "dequeue",
+          "enqueue",
+          "dequeue",
+          "empty",
+          "enqueue",
+          "front"
+        ],
+        "values": [
+          [],
+          [
+            2
+          ],
+          [
+            3
+          ],
+          [],
+          [
+            4
+          ],
+          [],
+          [],
+          [
+            5
+          ],
+          []
+        ]
+      },
+      "output": [
+        null,
+        null,
+        null,
+        2,
+        null,
+        3,
+        0,
+        null,
+        4
+      ]
+    },
+    {
+      "id": 11,
+      "input": {
+        "operations": [
+          "MyQueue",
+          "enqueue",
+          "enqueue",
+          "enqueue",
+          "dequeue",
+          "dequeue",
+          "front",
+          "dequeue",
+          "empty"
+        ],
+        "values": [
+          [],
+          [
+            "x"
+          ],
+          [
+            "y"
+          ],
+          [
+            "z"
+          ],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        "x",
+        "y",
+        "z",
+        "z",
+        1
+      ]
+    },
+    {
+      "id": 12,
+      "input": {
+        "operations": [
+          "MyQueue",
+          "enqueue",
+          "front",
+          "enqueue",
+          "enqueue",
+          "dequeue",
+          "dequeue",
+          "front"
+        ],
+        "values": [
+          [],
+          [
+            "foo"
+          ],
+          [],
+          [
+            "bar"
+          ],
+          [
+            "baz"
+          ],
+          [],
+          [],
+          []
+        ]
+      },
+      "output": [
+        null,
+        null,
+        "foo",
+        null,
+        null,
+        "foo",
+        "bar",
+        "baz"
+      ]
+    }
+  ]
+}

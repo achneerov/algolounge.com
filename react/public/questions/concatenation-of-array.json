@@ -1,0 +1,100 @@
+{
+  "index": 86,
+  "filename": "concatenation-of-array",
+  "title": "Concatenation of Array",
+  "difficulty": "Medium",
+  "tags": [],
+  "keywords": [
+    "concatenation",
+    "array",
+    "leetcode",
+    "1929",
+    "given",
+    "integer",
+    "nums",
+    "length",
+    "create",
+    "ans"
+  ],
+  "description": "<h2>Concatenation of Array</h2><p>You are given an integer array <code>nums</code> of length <code>n</code>. Create an array <code>ans</code> of length <code>2n</code> where <code>ans[i] == nums[i]</code> and <code>ans[i + n] == nums[i]</code> for <code>0 &lt;= i &lt; n</code> (0-indexed).</p><p>Specifically, <code>ans</code> is the concatenation of two <code>nums</code> arrays.</p><p>Return the array <code>ans</code>.</p><h3>Examples:</h3><ul><li>Input: nums = [1,4,1,2]<br>Output: [1,4,1,2,1,4,1,2]</li><li>Input: nums = [22,21,20,1]<br>Output: [22,21,20,1,22,21,20,1]</li></ul><h3>Constraints:</h3><ul><li><code>1 &lt;= nums.length &lt;= 1000</code></li><li><code>1 &lt;= nums[i] &lt;= 1000</code></li></ul>",
+  "entry_function": "concatenationOfArray",
+  "template": "def concatenationOfArray(nums):\n    ",
+  "solution_text": "<h3>Concatenation of Array Solution</h3><p><strong>Algorithm:</strong></p><ol><li>Create a new array by concatenating the input array with itself</li><li>In Python, this is simply <code>nums + nums</code></li><li>Return the result</li></ol><p><strong>Time Complexity:</strong> O(n) where n is the length of the input array</p><p><strong>Space Complexity:</strong> O(n) for the result array</p><p><strong>Key Insights:</strong></p><ul><li>Simple array construction problem</li><li>First n elements are copies of original array</li><li>Next n elements are another copy of original array</li><li>Can be solved with array concatenation or manual index mapping</li></ul>",
+  "solution_code": "def concatenationOfArray(nums):\n    return nums + nums",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for concatenationOfArray function\"\"\"\n    return (test_case_input['nums'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the concatenation result\"\"\"\n    def list_to_string(lst):\n        if not lst:\n            return '[]'\n        return '[' + ', '.join(str(x) for x in lst) + ']'\n    \n    passed = actual_output == expected_output\n    output_str = list_to_string(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [
+          1,
+          4,
+          1,
+          2
+        ]
+      },
+      "output": [
+        1,
+        4,
+        1,
+        2,
+        1,
+        4,
+        1,
+        2
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [
+          22,
+          21,
+          20,
+          1
+        ]
+      },
+      "output": [
+        22,
+        21,
+        20,
+        1,
+        22,
+        21,
+        20,
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "input": {
+        "nums": [
+          1
+        ]
+      },
+      "output": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": 4,
+      "input": {
+        "nums": [
+          1,
+          2,
+          3
+        ]
+      },
+      "output": [
+        1,
+        2,
+        3,
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

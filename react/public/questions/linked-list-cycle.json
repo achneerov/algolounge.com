@@ -1,0 +1,151 @@
+{
+  "index": 51,
+  "filename": "linked-list-cycle",
+  "title": "Linked List Cycle Detection",
+  "difficulty": "Easy",
+  "tags": [
+    "Linked List"
+  ],
+  "keywords": [
+    "linked",
+    "list",
+    "cycle",
+    "detection",
+    "leetcode",
+    "141",
+    "given",
+    "beginning",
+    "head",
+    "return"
+  ],
+  "description": "<h2>Linked List Cycle Detection</h2><p><em>Leetcode 141. Linked List Cycle</em></p><p>Given the beginning of a linked list <code>head</code>, return <code>true</code> if there is a cycle in the linked list. Otherwise, return <code>false</code>.</p><p>There is a cycle in a linked list if at least one node in the list can be visited again by following the <code>next</code> pointer.</p><p>Internally, <code>index</code> determines the index of the beginning of the cycle, if it exists. The tail node of the list will set its <code>next</code> pointer to the <code>index</code>-th node. If <code>index = -1</code>, then the tail node points to <code>null</code> and no cycle exists.</p><p><strong>Note:</strong> <code>index</code> is <strong>not</strong> given to you as a parameter.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> head = [3,2,0,-4], pos = 1<br><strong>Output:</strong> true<br><strong>Explanation:</strong> There is a cycle in the linked list, where the tail connects to the 1st node (0-indexed)</li><li><strong>Input:</strong> head = [1,2], pos = 0<br><strong>Output:</strong> true<br><strong>Explanation:</strong> There is a cycle in the linked list, where the tail connects to the 0th node</li><li><strong>Input:</strong> head = [1], pos = -1<br><strong>Output:</strong> false<br><strong>Explanation:</strong> There is no cycle in the linked list</li></ul><h3>Constraints:</h3><ul><li><code>1 <= Length of the list <= 1000</code></li><li><code>-1000 <= Node.val <= 1000</code></li><li><code>index</code> is <code>-1</code> or a valid index in the linked list</li></ul>",
+  "entry_function": "hasCycle",
+  "template": "# Definition for singly-linked list.\n# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\ndef hasCycle(head):\n    ",
+  "solution_text": "<h3>Linked List Cycle Detection - Floyd's Tortoise and Hare</h3>\n\n<p><strong>Algorithm:</strong></p>\n<ol>\n<li>Use two pointers: slow (moves 1 step) and fast (moves 2 steps)</li>\n<li>If there's a cycle, fast pointer will eventually catch up to slow</li>\n<li>If fast reaches end (null), no cycle exists</li>\n</ol>\n\n<p><strong>Time Complexity:</strong> O(n) - visit each node at most once</p>\n<p><strong>Space Complexity:</strong> O(1) - only using two pointers</p>\n\n<p><strong>Key Insights:</strong></p>\n<ul>\n<li>Floyd's algorithm uses different speeds to detect cycles</li>\n<li>If cycle exists, pointers will meet inside the cycle</li>\n<li>No extra space needed unlike hash set approach</li>\n</ul>",
+  "solution_code": "def hasCycle(head):\n    if not head or not head.next:\n        return False\n    \n    # Two pointers: slow moves 1 step, fast moves 2 steps\n    slow = head\n    fast = head\n    \n    while fast and fast.next:\n        slow = slow.next\n        fast = fast.next.next\n        \n        # If pointers meet, cycle detected\n        if slow == fast:\n            return True\n    \n    # Fast reached end, no cycle\n    return False",
+  "prepare": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n    \n    def __repr__(self):\n        return f'ListNode({self.val})'\n\ndef prepare(test_case_input):\n    \"\"\"Convert array representation to ListNode with possible cycle\"\"\"\n    arr = test_case_input['head']\n    pos = test_case_input['pos']\n    \n    if not arr:\n        return (None,)\n    \n    # Build linked list\n    head = ListNode(arr[0])\n    current = head\n    nodes = [head]\n    \n    for val in arr[1:]:\n        new_node = ListNode(val)\n        current.next = new_node\n        current = new_node\n        nodes.append(new_node)\n    \n    # Create cycle if pos >= 0\n    if pos >= 0 and pos < len(nodes):\n        current.next = nodes[pos]\n    \n    return (head,)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the cycle detection result\"\"\"\n    def bool_to_string(val):\n        return 'true' if val else 'false'\n    \n    # Convert string 'true'/'false' to Python bool if needed\n    if isinstance(expected_output, str):\n        expected_output = expected_output.lower() == 'true'\n    \n    passed = actual_output == expected_output\n    output_str = bool_to_string(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "head": [
+          3,
+          2,
+          0,
+          -4
+        ],
+        "pos": 1
+      },
+      "output": "true"
+    },
+    {
+      "id": 2,
+      "input": {
+        "head": [
+          1,
+          2
+        ],
+        "pos": 0
+      },
+      "output": "true"
+    },
+    {
+      "id": 3,
+      "input": {
+        "head": [
+          1
+        ],
+        "pos": -1
+      },
+      "output": "false"
+    },
+    {
+      "id": 4,
+      "input": {
+        "head": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "pos": -1
+      },
+      "output": "false"
+    },
+    {
+      "id": 5,
+      "input": {
+        "head": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "pos": 2
+      },
+      "output": "true"
+    },
+    {
+      "id": 6,
+      "input": {
+        "head": [],
+        "pos": -1
+      },
+      "output": "false"
+    },
+    {
+      "id": 7,
+      "input": {
+        "head": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "pos": 3
+      },
+      "output": "true"
+    },
+    {
+      "id": 8,
+      "input": {
+        "head": [
+          5,
+          6
+        ],
+        "pos": -1
+      },
+      "output": "false"
+    },
+    {
+      "id": 9,
+      "input": {
+        "head": [
+          10,
+          20,
+          30
+        ],
+        "pos": 0
+      },
+      "output": "true"
+    },
+    {
+      "id": 10,
+      "input": {
+        "head": [
+          100,
+          200,
+          300,
+          400,
+          500,
+          600
+        ],
+        "pos": 4
+      },
+      "output": "true"
+    }
+  ]
+}

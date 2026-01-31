@@ -1,0 +1,139 @@
+{
+  "filename": "helloworld2025",
+  "course_name": "Hello World 2025",
+  "course_description": "Problems from the SCS Hello World 2025 competition.",
+  "keywords": [
+    "beginner",
+    "tutorial",
+    "algorithms",
+    "data structures",
+    "progressive learning",
+    "competitive programming",
+    "interview prep"
+  ],
+  "badge": "Competition",
+  "units": {
+    "tutorial": {
+      "title": "Tutorial",
+      "description": "",
+      "questions": [
+        {
+          "filename": "hello-world",
+          "urls": []
+        }
+      ]
+    },
+    "beginner": {
+      "title": "",
+      "description": "",
+      "questions": [
+        {
+          "filename": "sum-two-integers",
+          "urls": []
+        },
+        {
+          "filename": "string-comparison",
+          "urls": []
+        },
+        {
+          "filename": "multiple-check",
+          "urls": []
+        }
+      ]
+    },
+    "easy": {
+      "title": "",
+      "description": "",
+      "questions": [
+        {
+          "filename": "last-even-index",
+          "urls": []
+        },
+        {
+          "filename": "sum-of-digits-times-seven",
+          "urls": []
+        },
+        {
+          "filename": "count-vowels",
+          "urls": []
+        },
+        {
+          "filename": "coffee-shop-billing",
+          "urls": []
+        },
+        {
+          "filename": "greatest-common-divisor",
+          "urls": []
+        },
+        {
+          "filename": "canadian-province-validator",
+          "urls": []
+        },
+        {
+          "filename": "string-reversal",
+          "urls": []
+        },
+        {
+          "filename": "caffeine-calculator",
+          "urls": []
+        }
+      ]
+    },
+    "medium": {
+      "title": "Medium",
+      "description": "",
+      "questions": [
+        {
+          "filename": "palindrome-checker",
+          "urls": []
+        },
+        {
+          "filename": "coffee-production-scheduler",
+          "urls": []
+        },
+        {
+          "filename": "alice-typing-problem",
+          "urls": []
+        },
+        {
+          "filename": "binary-representation",
+          "urls": []
+        },
+        {
+          "filename": "most-frequent-element",
+          "urls": []
+        },
+        {
+          "filename": "string-matching",
+          "urls": []
+        },
+        {
+          "filename": "alphabetical-order-checker",
+          "urls": []
+        },
+        {
+          "filename": "coffee-sales-projection",
+          "urls": []
+        }
+      ]
+    },
+    "hard": {
+      "title": "Hard",
+      "description": "",
+      "questions": [
+        {
+          "filename": "coin-change",
+          "urls": []
+        },
+        {
+          "filename": "tribonacci-sequence",
+          "urls": []
+        },
+        {
+          "filename": "dice-ways",
+          "urls": []
+        }
+      ]
+    }
+  }
+}

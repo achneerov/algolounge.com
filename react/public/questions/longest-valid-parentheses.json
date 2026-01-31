@@ -1,0 +1,101 @@
+{
+  "index": 0,
+  "filename": "longest-valid-parentheses",
+  "title": "Longest Valid Parentheses",
+  "difficulty": "Hard",
+  "tags": [
+    "Stack",
+    "Dynamic Programming"
+  ],
+  "keywords": [
+    "longest",
+    "valid",
+    "parentheses",
+    "stack",
+    "string",
+    "dynamic programming",
+    "substring",
+    "matching",
+    "consecutive",
+    "length"
+  ],
+  "description": "<h2>Longest Valid Parentheses</h2><p>Given a string containing just the characters <code>'('</code> and <code>')'</code>, return the length of the longest valid (well-formed) parentheses substring.</p><h3>Examples:</h3><ul><li>Input: s = \"(()\"<br>Output: 2<br>Explanation: The longest valid parentheses substring is \"()\"</li><li>Input: s = \")()())\"<br>Output: 4<br>Explanation: The longest valid parentheses substring is \"()()\"</li><li>Input: s = \"\"<br>Output: 0</li><li>Input: s = \"()(())\"<br>Output: 6<br>Explanation: The entire string is valid</li></ul><h3>Constraints:</h3><ul><li><code>0 <= s.length <= 3 * 10^4</code></li><li><code>s[i]</code> is <code>'('</code> or <code>')'</code></li></ul>",
+  "entry_function": "longestValidParentheses",
+  "template": "def longestValidParentheses(s):\n    ",
+  "solution_text": "<h3>Longest Valid Parentheses</h3><p><strong>Algorithm (Stack Approach):</strong></p><ol><li>Use a stack to track indices of unmatched parentheses</li><li>Initialize stack with -1 as base for length calculation</li><li>For each character at index i:<ul><li>If '(': push index i onto stack</li><li>If ')':<ul><li>Pop from stack</li><li>If stack becomes empty: push current index (new base)</li><li>Otherwise: calculate length as i - stack.top(), update max</li></ul></li></ul></li><li>Return the maximum length found</li></ol><p><strong>Algorithm (Dynamic Programming Approach):</strong></p><ol><li>Create dp array where dp[i] = length of longest valid substring ending at i</li><li>For each ')' at index i:<ul><li>If s[i-1] == '(': dp[i] = dp[i-2] + 2</li><li>If s[i-1] == ')' and s[i - dp[i-1] - 1] == '(':<br>dp[i] = dp[i-1] + 2 + dp[i - dp[i-1] - 2]</li></ul></li><li>Return max value in dp array</li></ol><p><strong>Time Complexity:</strong> O(n) for both approaches</p><p><strong>Space Complexity:</strong> O(n) for both approaches</p><p><strong>Key Insights:</strong></p><ul><li>Stack approach: Track indices to calculate valid substring lengths</li><li>Base value (-1) in stack helps calculate lengths correctly</li><li>DP approach: Build solution using previous valid substrings</li><li>Must handle edge cases: empty string, all invalid, nested vs consecutive</li><li>Valid substring must have matching pairs in correct order</li></ul>",
+  "solution_code": "def longestValidParentheses(s):\n    if not s:\n        return 0\n    \n    max_len = 0\n    stack = [-1]  # Base for length calculation\n    \n    for i, char in enumerate(s):\n        if char == '(':\n            stack.append(i)\n        else:  # char == ')'\n            stack.pop()\n            if not stack:\n                # No matching '(', set new base\n                stack.append(i)\n            else:\n                # Calculate length of valid substring\n                max_len = max(max_len, i - stack[-1])\n    \n    return max_len",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for longestValidParentheses function\"\"\"\n    return (test_case_input['s'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the longest valid parentheses result\"\"\"\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "s": "(()"
+      },
+      "output": 2
+    },
+    {
+      "id": 2,
+      "input": {
+        "s": ")()())"
+      },
+      "output": 4
+    },
+    {
+      "id": 3,
+      "input": {
+        "s": ""
+      },
+      "output": 0
+    },
+    {
+      "id": 4,
+      "input": {
+        "s": "()(())"
+      },
+      "output": 6
+    },
+    {
+      "id": 5,
+      "input": {
+        "s": "(((()"
+      },
+      "output": 2
+    },
+    {
+      "id": 6,
+      "input": {
+        "s": ")))))"
+      },
+      "output": 0
+    },
+    {
+      "id": 7,
+      "input": {
+        "s": "()(()"
+      },
+      "output": 2
+    },
+    {
+      "id": 8,
+      "input": {
+        "s": "(()())"
+      },
+      "output": 6
+    },
+    {
+      "id": 9,
+      "input": {
+        "s": "()()()()("
+      },
+      "output": 8
+    },
+    {
+      "id": 10,
+      "input": {
+        "s": "()(()(()"
+      },
+      "output": 2
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "index": 0,
+  "filename": "maximum-number-of-tasks-you-can-assign",
+  "title": "Maximum Number of Tasks You Can Assign",
+  "difficulty": "Hard",
+  "tags": [
+    "Queue",
+    "Binary Search"
+  ],
+  "keywords": [
+    "binary search",
+    "greedy",
+    "queue",
+    "monotonic queue",
+    "sorting",
+    "deque"
+  ],
+  "description": "<h2>Maximum Number of Tasks You Can Assign</h2><p>You have <code>n</code> tasks and <code>m</code> workers. Each task has a strength requirement stored in a 0-indexed integer array <code>tasks</code>, with the <code>i<sup>th</sup></code> task requiring <code>tasks[i]</code> strength to complete. The strength of each worker is stored in a 0-indexed integer array <code>workers</code>, with the <code>j<sup>th</sup></code> worker having <code>workers[j]</code> strength. Each worker can only be assigned to a single task and must have a strength greater than or equal to the task's strength requirement (i.e., <code>workers[j] >= tasks[i]</code>).</p><p>Additionally, you have <code>pills</code> magical pills that will increase a worker's strength by <code>strength</code>. You can decide which workers receive the magical pills, however, you may only give each worker at most one magical pill.</p><p>Given the 0-indexed integer arrays <code>tasks</code> and <code>workers</code> and the integers <code>pills</code> and <code>strength</code>, return the maximum number of tasks that can be completed.</p><h3>Examples:</h3><p><strong>Example 1:</strong></p><pre>Input: tasks = [3,2,1], workers = [0,3,3], pills = 1, strength = 1\nOutput: 3\nExplanation:\nWe can assign the magical pill and tasks as follows:\n- Give the magical pill to worker 0.\n- Assign worker 0 to task 2 (0 + 1 >= 1)\n- Assign worker 1 to task 1 (3 >= 2)\n- Assign worker 2 to task 0 (3 >= 3)\n</pre><p><strong>Example 2:</strong></p><pre>Input: tasks = [5,4], workers = [0,0,0], pills = 1, strength = 5\nOutput: 1\nExplanation:\nWe can assign the magical pill and tasks as follows:\n- Give the magical pill to worker 0.\n- Assign worker 0 to task 1 (0 + 5 >= 4)\nThere is no way to assign worker 1 or worker 2 to a task.</pre><p><strong>Example 3:</strong></p><pre>Input: tasks = [10,15,30], workers = [0,10,10,10,10], pills = 3, strength = 10\nOutput: 2\nExplanation:\nWe can assign the magical pills and tasks as follows:\n- Give the magical pill to worker 0 and worker 1.\n- Assign worker 0 to task 0 (0 + 10 >= 10)\n- Assign worker 1 to task 1 (10 + 10 >= 15)\n- The pill is not needed for worker 2 and task 2 (10 < 30)\n</pre><h3>Constraints:</h3><ul><li><code>n == tasks.length</code></li><li><code>m == workers.length</code></li><li><code>1 <= n, m <= 5 * 10^4</code></li><li><code>0 <= pills <= m</code></li><li><code>0 <= tasks[i], workers[j], strength <= 10^9</code></li></ul>",
+  "entry_function": "maxTaskAssign",
+  "template": "def maxTaskAssign(tasks, workers, pills, strength):\n    ",
+  "solution_text": "<h3>Maximum Number of Tasks You Can Assign</h3><p><strong>Algorithm (Binary Search + Greedy with Deque):</strong></p><ol><li><strong>Binary Search on Answer:</strong> The maximum number of tasks we can complete is between 0 and min(n, m). Use binary search to find the maximum feasible number</li><li><strong>Feasibility Check:</strong> For a given number k, check if we can complete k tasks:\n<ul><li>Sort tasks in ascending order, take the k easiest tasks</li><li>Sort workers in descending order, take the k strongest workers</li><li>Use a greedy approach with a deque to match workers to tasks</li></ul></li><li><strong>Greedy Matching:</strong> For each task (from hardest to easiest among selected k):\n<ul><li>Find the weakest worker who can do it (with or without pill)</li><li>If a worker can do it without a pill, assign them</li><li>Otherwise, use a pill on the strongest worker who can do it with a pill</li><li>Use a deque to efficiently manage the pool of available workers</li></ul></li><li>Return the maximum k where feasibility check passes</li></ol><p><strong>Time Complexity:</strong> O((n + m) log(n + m) + min(n,m) * log(min(n,m)))</p><p><strong>Space Complexity:</strong> O(min(n, m))</p><p><strong>Key Insights:</strong></p><ul><li>Binary search on the answer helps reduce the problem space</li><li>Greedy strategy: match weaker workers to easier tasks when possible</li><li>Save pills for when they're absolutely needed</li><li>Deque allows efficient management of worker pool during greedy matching</li><li>Sorting helps in making optimal greedy decisions</li></ul>",
+  "solution_code": "from collections import deque\n\ndef maxTaskAssign(tasks, workers, pills, strength):\n    tasks.sort()\n    workers.sort()\n    n, m = len(tasks), len(workers)\n    \n    def canComplete(k):\n        # Try to complete k easiest tasks with k strongest workers\n        selected_tasks = tasks[:k]\n        selected_workers = workers[m - k:]\n        \n        pills_used = 0\n        worker_deque = deque(selected_workers)\n        \n        # Process tasks from hardest to easiest\n        for i in range(k - 1, -1, -1):\n            task = selected_tasks[i]\n            \n            # If the strongest available worker can't do it even with pill\n            if worker_deque[-1] + strength < task:\n                return False\n            \n            # If the strongest worker can do it without pill\n            if worker_deque[-1] >= task:\n                worker_deque.pop()\n            else:\n                # Need to use a pill\n                if pills_used >= pills:\n                    return False\n                \n                # Find the weakest worker who can do it with a pill\n                found = False\n                for j in range(len(worker_deque)):\n                    if worker_deque[j] + strength >= task:\n                        worker_deque.remove(worker_deque[j])\n                        pills_used += 1\n                        found = True\n                        break\n                \n                if not found:\n                    return False\n        \n        return True\n    \n    # Binary search on the number of tasks\n    left, right = 0, min(n, m)\n    result = 0\n    \n    while left <= right:\n        mid = (left + right) // 2\n        if canComplete(mid):\n            result = mid\n            left = mid + 1\n        else:\n            right = mid - 1\n    \n    return result",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for maxTaskAssign function\"\"\"\n    return (test_case_input['tasks'], test_case_input['workers'], test_case_input['pills'], test_case_input['strength'])",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the result\"\"\"\n    if actual_output == expected_output:\n        return [True, str(actual_output)]\n    return [False, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "tasks": [
+          3,
+          2,
+          1
+        ],
+        "workers": [
+          0,
+          3,
+          3
+        ],
+        "pills": 1,
+        "strength": 1
+      },
+      "output": 3
+    },
+    {
+      "id": 2,
+      "input": {
+        "tasks": [
+          5,
+          4
+        ],
+        "workers": [
+          0,
+          0,
+          0
+        ],
+        "pills": 1,
+        "strength": 5
+      },
+      "output": 1
+    },
+    {
+      "id": 3,
+      "input": {
+        "tasks": [
+          10,
+          15,
+          30
+        ],
+        "workers": [
+          0,
+          10,
+          10,
+          10,
+          10
+        ],
+        "pills": 3,
+        "strength": 10
+      },
+      "output": 2
+    },
+    {
+      "id": 4,
+      "input": {
+        "tasks": [
+          5,
+          9,
+          8,
+          5,
+          9
+        ],
+        "workers": [
+          1,
+          6,
+          4,
+          2,
+          6
+        ],
+        "pills": 1,
+        "strength": 5
+      },
+      "output": 3
+    },
+    {
+      "id": 5,
+      "input": {
+        "tasks": [
+          1
+        ],
+        "workers": [
+          1
+        ],
+        "pills": 0,
+        "strength": 0
+      },
+      "output": 1
+    },
+    {
+      "id": 6,
+      "input": {
+        "tasks": [
+          1,
+          2,
+          3
+        ],
+        "workers": [
+          3,
+          3,
+          3
+        ],
+        "pills": 0,
+        "strength": 10
+      },
+      "output": 3
+    },
+    {
+      "id": 7,
+      "input": {
+        "tasks": [
+          10,
+          20,
+          30
+        ],
+        "workers": [
+          5,
+          5,
+          5
+        ],
+        "pills": 3,
+        "strength": 5
+      },
+      "output": 1
+    },
+    {
+      "id": 8,
+      "input": {
+        "tasks": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "workers": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pills": 4,
+        "strength": 1
+      },
+      "output": 4
+    }
+  ]
+}

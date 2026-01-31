@@ -1,0 +1,167 @@
+{
+  "filename": "algotimewinter2026",
+  "course_name": "Algotime Winter 2026",
+  "course_description": "Welcome to Algotime Winter 2026! Practice these key algorithm problems to sharpen your skills.",
+  "keywords": ["algorithms", "data structures", "technical interviews", "problem solving", "winter", "two pointers", "arrays", "linked list", "strings", "hash table", "design"],
+  "badge": "Winter 2026",
+  "units": {
+    "week3": {
+      "title": "Week 3",
+      "description": "",
+      "questions": [
+        {
+          "filename": "factory-method-pattern",
+          "urls": [
+            { "url": "https://neetcode.io/problems/factory", "tooltip": "NeetCode Problem", "color": "#16a34a", "visibleString": "NeetCode" }
+          ]
+        },
+        {
+          "filename": "design-hashset",
+          "urls": [
+            { "url": "https://leetcode.com/problems/design-hashset/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/design-hashset", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ]
+        },
+        {
+          "filename": "design-hashmap",
+          "urls": [
+            { "url": "https://leetcode.com/problems/design-hashmap/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/design-hashmap", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ]
+        },
+
+        {
+          "filename": "repeated-dna-sequences",
+          "urls": [
+            { "url": "https://leetcode.com/problems/repeated-dna-sequences/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/repeated-dna-sequences", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ]
+        },
+        {
+          "filename": "fraction-to-recurring-decimal",
+          "urls": [
+            { "url": "https://leetcode.com/problems/fraction-to-recurring-decimal/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/fraction-to-recurring-decimal", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ]
+        },
+        {
+          "filename": "sudoku-solver",
+          "urls": [
+            { "url": "https://leetcode.com/problems/sudoku-solver/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/sudoku-solver", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ]
+        }
+      ]
+    },
+    "week2": {
+      "title": "Week 2",
+      "description": "Warm up with strings, then dive into linked list fundamentals and cycle detection.",
+      "questions": [
+        {
+          "filename": "string-reversal",
+          "urls": [
+            { "url": "https://leetcode.com/problems/reverse-string/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/reverse-string", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ]
+        },
+        {
+          "filename": "implement-linked-list",
+          "urls": [
+            { "url": "https://leetcode.com/problems/design-linked-list/description/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/design-linked-list", "tooltip": "NeetCode Problem", "color": "#16a34a", "visibleString": "NeetCode" }
+          ]
+        },
+        {
+          "filename": "palindrome-linked-list",
+          "urls": [
+            { "url": "https://leetcode.com/problems/palindrome-linked-list/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/palindrome-linked-list", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ]
+        },
+        {
+          "filename": "linked-list-cycle",
+          "urls": [
+            { "url": "https://leetcode.com/problems/linked-list-cycle/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/linked-list-cycle", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ]
+        },
+        {
+          "filename": "linked-list-cycle-ii",
+          "urls": [
+            { "url": "https://leetcode.com/problems/linked-list-cycle-ii/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/linked-list-cycle-ii", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ]
+        },
+        {
+          "filename": "remove-nth-node-from-end-of-list",
+          "urls": [
+            { "url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/remove-nth-node-from-end-of-list", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ]
+        },
+        {
+          "filename": "reverse-nodes-in-k-group",
+          "urls": [
+            { "url": "https://leetcode.com/problems/reverse-nodes-in-k-group/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/reverse-nodes-in-k-group", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ]
+        }
+      ]
+    },
+    "week1": {
+      "title": "Week 1",
+      "description": "These are the questions that will be looked at in week 1.",
+      "questions": [
+        {
+          "filename": "two-sum",
+          "urls": [
+            { "url": "https://leetcode.com/problems/two-sum/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/two-sum", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ]
+        },
+        {
+          "filename": "palindrome-checker",
+          "urls": [
+            { "url": "https://leetcode.com/problems/valid-palindrome/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/valid-palindrome", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ]
+        },
+        {
+          "filename": "two-sum-ii-input-array-is-sorted",
+          "urls": [
+            { "url": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/two-sum-ii-input-array-is-sorted", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ]
+        },
+        {
+          "filename": "3sum",
+          "urls": [
+            { "url": "https://leetcode.com/problems/3sum/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/3sum", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ]
+        },
+        {
+          "filename": "container-with-most-water",
+          "urls": [
+            { "url": "https://leetcode.com/problems/container-with-most-water/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/container-with-most-water", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ]
+        },
+        {
+          "filename": "trapping-rain-water",
+          "urls": [
+            { "url": "https://leetcode.com/problems/trapping-rain-water/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/trapping-rain-water", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ]
+        },
+        {
+          "filename": "maximal-rectangle",
+          "urls": [
+            { "url": "https://leetcode.com/problems/maximal-rectangle/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/maximal-rectangle", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ]
+        }
+      ]
+    }
+  }
+}

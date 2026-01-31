@@ -1,0 +1,162 @@
+{
+  "index": 118,
+  "filename": "redundant-connection-ii",
+  "title": "Redundant Connection II",
+  "difficulty": "Hard",
+  "tags": [
+    "Graph",
+    "Union Find"
+  ],
+  "keywords": [
+    "redundant",
+    "connection",
+    "graph",
+    "union",
+    "find",
+    "tree",
+    "leetcode",
+    "685",
+    "directed",
+    "hard"
+  ],
+  "description": "<h2>Redundant Connection II</h2><p>In this problem, a rooted tree is a <strong>directed</strong> graph such that, there is exactly one node (the root) for which all other nodes are descendants of this node, plus every node has exactly one parent, except for the root node which has no parents.</p><p>The given input is a directed graph that started as a rooted tree with <code>n</code> nodes (with distinct values from <code>1</code> to <code>n</code>), with one additional directed edge added. The added edge has two different vertices chosen from <code>1</code> to <code>n</code>, and was not an edge that already existed.</p><p>The resulting graph is given as a 2D-array of <code>edges</code>. Each element of <code>edges</code> is a pair <code>[u<sub>i</sub>, v<sub>i</sub>]</code> that represents a <strong>directed</strong> edge connecting nodes <code>u<sub>i</sub></code> and <code>v<sub>i</sub></code>, where <code>u<sub>i</sub></code> is a parent of child <code>v<sub>i</sub></code>.</p><p>Return an edge that can be removed so that the resulting graph is a rooted tree of <code>n</code> nodes. If there are multiple answers, return the answer that occurs last in the given 2D-array.</p><h3>Examples:</h3><ul><li>Input: edges = [[1,2],[1,3],[2,3]]<br><br>Output: [2,3]<br><br>Explanation: The given directed graph is a rooted tree with node 1 as root, plus an extra edge from node 2 to node 3. We should remove [2,3].</li><li>Input: edges = [[1,2],[2,3],[3,4],[4,1],[1,5]]<br><br>Output: [4,1]<br><br>Explanation: There is a cycle in the graph. The answer [4,1] is the last edge that creates the cycle.</li></ul><h3>Constraints:</h3><ul><li><code>n == edges.length</code></li><li><code>3 <= n <= 1000</code></li><li><code>edges[i].length == 2</code></li><li><code>1 <= u<sub>i</sub>, v<sub>i</sub> <= n</code></li><li><code>u<sub>i</sub> != v<sub>i</sub></code></li></ul>",
+  "entry_function": "findRedundantDirectedConnection",
+  "template": "def findRedundantDirectedConnection(edges):\n    ",
+  "solution_text": "<h3>Redundant Connection II</h3><p><strong>Algorithm:</strong></p><ol><li>Detect if any node has two parents (invalid tree structure)</li><li>Use Union-Find to detect cycles in the directed graph</li><li>Handle three cases: node with two parents, cycle without double parent, or both</li><li>Return the edge that should be removed to restore valid tree structure</li></ol><p><strong>Time Complexity:</strong> O(n) - single pass with union-find operations</p><p><strong>Space Complexity:</strong> O(n) - parent tracking and union-find structure</p><p><strong>Key Insights:</strong></p><ul><li>Problem combines cycle detection with parent validation</li><li>Union-Find efficiently detects cycles</li><li>Need to handle case where node has two parents</li><li>Return last occurring edge when multiple solutions exist</li></ul>",
+  "solution_code": "def findRedundantDirectedConnection(edges):\n    n = len(edges)\n    parent = list(range(n + 1))\n    \n    def find(x):\n        if parent[x] != x:\n            parent[x] = find(parent[x])\n        return parent[x]\n    \n    def union(x, y):\n        px, py = find(x), find(y)\n        if px == py:\n            return False\n        parent[px] = py\n        return True\n    \n    # Check for node with two parents\n    indegree = {}\n    candidate1 = candidate2 = None\n    \n    for u, v in edges:\n        if v in indegree:\n            candidate1 = [indegree[v], v]\n            candidate2 = [u, v]\n            break\n        indegree[v] = u\n    \n    # Reset parent for union-find\n    parent = list(range(n + 1))\n    \n    for u, v in edges:\n        # Skip candidate2 if we found two parents\n        if candidate2 and [u, v] == candidate2:\n            continue\n        \n        if not union(u, v):\n            # Cycle detected\n            if candidate1:\n                return candidate1\n            return [u, v]\n    \n    return candidate2",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Extract edges from test case\"\"\"\n    edges = test_case_input['edges']\n    return (edges,)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the redundant connection result\"\"\"\n    passed = actual_output == expected_output\n    output_str = f'[{actual_output[0]},{actual_output[1]}]' if actual_output else 'null'\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "edges": [
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ]
+        ]
+      },
+      "output": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "edges": [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            1,
+            5
+          ]
+        ]
+      },
+      "output": [
+        4,
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "input": {
+        "edges": [
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            1,
+            4
+          ]
+        ]
+      },
+      "output": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": 4,
+      "input": {
+        "edges": [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            1
+          ]
+        ]
+      },
+      "output": [
+        3,
+        1
+      ]
+    },
+    {
+      "id": 5,
+      "input": {
+        "edges": [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            2
+          ]
+        ]
+      },
+      "output": [
+        4,
+        2
+      ]
+    }
+  ]
+}

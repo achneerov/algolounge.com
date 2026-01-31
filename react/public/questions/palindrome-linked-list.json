@@ -1,0 +1,87 @@
+{
+  "index": 115,
+  "filename": "palindrome-linked-list",
+  "title": "Palindrome Linked List",
+  "difficulty": "Easy",
+  "tags": [
+    "Linked List",
+    "Two Pointers"
+  ],
+  "keywords": [
+    "palindrome",
+    "linked",
+    "list",
+    "leetcode",
+    "234",
+    "two",
+    "pointers",
+    "reverse",
+    "easy"
+  ],
+  "description": "<h2>Palindrome Linked List</h2><p>Given the <code>head</code> of a singly linked list, return <code>true</code> if it is a palindrome or <code>false</code> otherwise.</p><h3>Examples:</h3><ul><li>Input: head = [1,2,2,1]<br><br>Output: true</li><li>Input: head = [1,2]<br><br>Output: false</li></ul><h3>Constraints:</h3><ul><li><code>The number of nodes in the list is in the range [1, 10^5]</code></li><li><code>0 <= Node.val <= 9</code></li></ul><h3>Follow up:</h3><p>Could you do it in O(n) time and O(1) space?</p>",
+  "entry_function": "isPalindrome",
+  "template": "# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\n\ndef isPalindrome(head):\n    ",
+  "solution_text": "<h3>Palindrome Linked List</h3><p><strong>Algorithm:</strong></p><ol><li>Find the middle of the linked list using slow/fast pointers</li><li>Reverse the second half of the list</li><li>Compare the first half with the reversed second half</li><li>Return true if all values match</li></ol><p><strong>Time Complexity:</strong> O(n) - single pass to find middle, reverse, and compare</p><p><strong>Space Complexity:</strong> O(1) - only using pointers</p><p><strong>Key Insights:</strong></p><ul><li>Fast pointer moves twice as fast as slow pointer</li><li>When fast reaches end, slow is at middle</li><li>Reverse second half in-place to save space</li><li>No need to restore the list after checking</li></ul>",
+  "solution_code": "def isPalindrome(head):\n    fast = head\n    slow = head\n    \n    # Find the middle\n    while fast and fast.next:\n        fast = fast.next.next\n        slow = slow.next\n    \n    # Reverse second half\n    prev = None\n    while slow:\n        tmp = slow.next\n        slow.next = prev\n        prev = slow\n        slow = tmp\n    \n    # Check palindrome\n    left, right = head, prev\n    while right:\n        if left.val != right.val:\n            return False\n        left = left.next\n        right = right.next\n    \n    return True",
+  "prepare": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n    \n    def __repr__(self):\n        return f'ListNode({self.val})'\n\ndef prepare(test_case_input):\n    \"\"\"Convert array representation to ListNode structure\"\"\"\n    head_array = test_case_input['head']\n    if not head_array:\n        return (None,)\n\n    def build_list(arr):\n        if not arr:\n            return None\n        \n        head = ListNode(arr[0])\n        current = head\n        \n        for i in range(1, len(arr)):\n            current.next = ListNode(arr[i])\n            current = current.next\n        \n        return head\n\n    return (build_list(head_array),)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the palindrome check result\"\"\"\n    def bool_to_string(val):\n        return 'true' if val else 'false'\n    \n    # Convert string 'true'/'false' to Python bool if needed\n    if isinstance(expected_output, str):\n        expected_output = expected_output.lower() == 'true'\n    \n    passed = actual_output == expected_output\n    output_str = bool_to_string(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "head": [
+          1,
+          2,
+          2,
+          1
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 2,
+      "input": {
+        "head": [
+          1,
+          2
+        ]
+      },
+      "output": "false"
+    },
+    {
+      "id": 3,
+      "input": {
+        "head": [
+          1
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 4,
+      "input": {
+        "head": [
+          1,
+          2,
+          3,
+          2,
+          1
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 5,
+      "input": {
+        "head": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "output": "false"
+    }
+  ]
+}

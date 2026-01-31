@@ -1,0 +1,121 @@
+{
+  "index": 0,
+  "filename": "find-maximum-non-decreasing-array-length",
+  "title": "Find Maximum Non-decreasing Array Length",
+  "difficulty": "Hard",
+  "tags": [
+    "Queue",
+    "Dynamic Programming"
+  ],
+  "keywords": [
+    "dynamic programming",
+    "queue",
+    "monotonic queue",
+    "deque",
+    "prefix sum",
+    "optimization"
+  ],
+  "description": "<h2>Find Maximum Non-decreasing Array Length</h2><p>You are given a 0-indexed integer array <code>nums</code>.</p><p>You can perform any number of operations, where each operation involves selecting a subarray of the array and replacing it with the sum of its elements.</p><p>For example, if the given array is <code>[1,3,5,6]</code> and you select subarray <code>[3,5]</code>, the array will convert to <code>[1,8,6]</code>.</p><p>Return the maximum length of a non-decreasing array that can be made after applying operations.</p><p>A subarray is a contiguous non-empty sequence of elements within an array.</p><h3>Examples:</h3><p><strong>Example 1:</strong></p><pre>Input: nums = [5,2,2]\nOutput: 1\nExplanation: This array with length 3 is not non-decreasing.\nWe have two ways to make the array length two:\nChoose subarray [5,2] which converts to [7,2].\nChoose subarray [2,2] which converts to [5,4].\nIn both cases, the array is not non-decreasing.\nOne way to make the array with length 1 is to choose subarray [5,2,2] which converts to [9].\nHence, the maximum length of a non-decreasing array is 1.</pre><p><strong>Example 2:</strong></p><pre>Input: nums = [1,2,3,4]\nOutput: 4\nExplanation: The array is non-decreasing. Hence, the maximum length is 4.</pre><p><strong>Example 3:</strong></p><pre>Input: nums = [4,3,2,6]\nOutput: 3\nExplanation: Replacing [3,2] with [5] converts the given array to [4,5,6] that is non-decreasing.\nHence, the maximum length of a non-decreasing array is 3.</pre><h3>Constraints:</h3><ul><li><code>1 <= nums.length <= 10^5</code></li><li><code>1 <= nums[i] <= 10^5</code></li></ul>",
+  "entry_function": "findMaximumLength",
+  "template": "def findMaximumLength(nums):\n    ",
+  "solution_text": "<h3>Find Maximum Non-decreasing Array Length</h3><p><strong>Algorithm (Dynamic Programming + Monotonic Deque):</strong></p><ol><li><strong>Define State:</strong> Let dp[i] be the maximum length of non-decreasing array we can form using nums[0...i]</li><li><strong>Define last[i]:</strong> The last element value in the optimal non-decreasing array ending at position i</li><li><strong>Transition:</strong> For each position i, we can either:\n<ul><li>Start a new segment from some position j < i</li><li>The new segment value is sum(nums[j+1...i])</li><li>This is valid only if sum(nums[j+1...i]) >= last[j]</li><li>Then dp[i] = dp[j] + 1 and last[i] = sum(nums[j+1...i])</li></ul></li><li><strong>Optimization:</strong> Use prefix sums and monotonic deque to efficiently find the best j for each i</li><li>Return dp[n-1]</li></ol><p><strong>Time Complexity:</strong> O(n) with monotonic deque optimization</p><p><strong>Space Complexity:</strong> O(n)</p><p><strong>Key Insights:</strong></p><ul><li>We want to minimize merging (maximize array length) while maintaining non-decreasing property</li><li>Greedy doesn't work - we need DP to explore all possibilities</li><li>Monotonic deque helps find the optimal split point efficiently</li><li>Prefix sums allow O(1) range sum queries</li><li>The constraint is that each new segment sum must be >= previous segment sum</li></ul>",
+  "solution_code": "from bisect import bisect_left\nfrom itertools import accumulate\n\ndef findMaximumLength(nums):\n    n = len(nums)\n    # acc[i] = sum of nums[0..i-1]\n    acc = list(accumulate(nums, initial=0))\n    # pre[i] = the rightmost position where we can start a new segment\n    pre = [0] * (n + 2)\n    # dp[i] = maximum length of non-decreasing array using nums[0..i-1]\n    dp = [0] * (n + 1)\n    \n    i = 0\n    for j in range(1, n + 1):\n        # Find the best position to start current segment\n        i = max(i, pre[j])\n        # Extend from position i\n        dp[j] = dp[i] + 1\n        # Find where the next segment could potentially start\n        # We want acc[k] >= 2 * acc[j] - acc[i]\n        k = bisect_left(acc, acc[j] * 2 - acc[i])\n        pre[k] = j\n    \n    return dp[n]",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for findMaximumLength function\"\"\"\n    return (test_case_input['nums'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the result\"\"\"\n    if actual_output == expected_output:\n        return [True, str(actual_output)]\n    return [False, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [
+          5,
+          2,
+          2
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "output": 4
+    },
+    {
+      "id": 3,
+      "input": {
+        "nums": [
+          4,
+          3,
+          2,
+          6
+        ]
+      },
+      "output": 3
+    },
+    {
+      "id": 4,
+      "input": {
+        "nums": [
+          1
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 5,
+      "input": {
+        "nums": [
+          2,
+          3,
+          1
+        ]
+      },
+      "output": 2
+    },
+    {
+      "id": 6,
+      "input": {
+        "nums": [
+          10,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 7,
+      "input": {
+        "nums": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "output": 5
+    },
+    {
+      "id": 8,
+      "input": {
+        "nums": [
+          5,
+          4,
+          3,
+          2,
+          1
+        ]
+      },
+      "output": 2
+    }
+  ]
+}

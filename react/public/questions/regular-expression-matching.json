@@ -1,0 +1,92 @@
+{
+  "index": 104,
+  "filename": "regular-expression-matching",
+  "title": "Regular Expression Matching",
+  "difficulty": "Hard",
+  "tags": [
+    "2D Dynamic Programming"
+  ],
+  "keywords": [
+    "regular expression",
+    "regex",
+    "pattern matching",
+    "dynamic programming",
+    "recursion",
+    "string",
+    "wildcard",
+    "hard"
+  ],
+  "description": "<h2>Regular Expression Matching</h2><p>Given an input string <code>s</code> and a pattern <code>p</code>, implement regular expression matching with support for <code>'.'</code> and <code>'*'</code> where:</p><ul><li><code>'.'</code> Matches any single character.</li><li><code>'*'</code> Matches zero or more of the preceding element.</li></ul><p>The matching should cover the <strong>entire</strong> input string (not partial).</p><h3>Examples:</h3><ul><li>Input: s = \"aa\", p = \"a\"<br>Output: false<br>Explanation: \"a\" does not match the entire string \"aa\".</li><li>Input: s = \"aa\", p = \"a*\"<br>Output: true<br>Explanation: '*' means zero or more of the preceding element, 'a'. Therefore, by repeating 'a' once, it becomes \"aa\".</li><li>Input: s = \"ab\", p = \".*\"<br>Output: true<br>Explanation: \".*\" means \"zero or more (*) of any character (.)\".</li></ul><h3>Constraints:</h3><ul><li><code>1 &lt;= s.length &lt;= 20</code></li><li><code>1 &lt;= p.length &lt;= 20</code></li><li><code>s</code> contains only lowercase English letters.</li><li><code>p</code> contains only lowercase English letters, <code>'.'</code>, and <code>'*'</code>.</li><li>It is guaranteed for each appearance of the character <code>'*'</code>, there will be a previous valid character to match.</li></ul>",
+  "entry_function": "isMatch",
+  "template": "def isMatch(s, p):\n    ",
+  "solution_text": "<h3>Regular Expression Matching</h3><p><strong>Algorithm:</strong></p><ol><li>Use dynamic programming with a 2D table</li><li><code>dp[i][j]</code> represents if <code>s[0..i-1]</code> matches <code>p[0..j-1]</code></li><li>Base case: empty string matches empty pattern</li><li>Handle patterns like \"a*\", \"a*b*\" that can match empty string</li><li>For each character, check three cases:<ul><li>Characters match directly or pattern has '.'</li><li>Pattern has '*' - can match zero occurrences (skip pattern char and '*')</li><li>Pattern has '*' - can match one or more occurrences (if current chars match)</li></ul></li><li>Return <code>dp[m][n]</code> where m and n are lengths of s and p</li></ol><p><strong>Time Complexity:</strong> O(m * n) where m = len(s), n = len(p)</p><p><strong>Space Complexity:</strong> O(m * n) for the DP table</p><p><strong>Key Insights:</strong></p><ul><li>Dynamic programming builds solution bottom-up</li><li>'*' can match zero or more of the preceding element</li><li>Need to handle empty string matching with patterns like \"a*b*c*\"</li><li>Check if current characters match OR pattern has '.' before using previous states</li></ul>",
+  "solution_code": "def isMatch(s, p):\n    m, n = len(s), len(p)\n    \n    # dp[i][j] = True if s[0:i] matches p[0:j]\n    dp = [[False] * (n + 1) for _ in range(m + 1)]\n    \n    # Empty string matches empty pattern\n    dp[0][0] = True\n    \n    # Handle patterns like a*, a*b*, a*b*c* that can match empty string\n    for j in range(2, n + 1):\n        if p[j - 1] == '*':\n            dp[0][j] = dp[0][j - 2]\n    \n    # Fill the DP table\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            # Current characters match\n            if p[j - 1] == s[i - 1] or p[j - 1] == '.':\n                dp[i][j] = dp[i - 1][j - 1]\n            # Pattern has '*'\n            elif p[j - 1] == '*':\n                # Zero occurrences of character before '*'\n                dp[i][j] = dp[i][j - 2]\n                \n                # One or more occurrences - check if current char matches\n                if p[j - 2] == s[i - 1] or p[j - 2] == '.':\n                    dp[i][j] = dp[i][j] or dp[i - 1][j]\n    \n    return dp[m][n]",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for isMatch function\"\"\"\n    return (test_case_input['s'], test_case_input['p'])",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the regex matching result\"\"\"\n    def bool_to_string(val):\n        return 'true' if val else 'false'\n    \n    # Convert expected output string to boolean for comparison if needed\n    expected_bool = expected_output == 'true' if isinstance(expected_output, str) else expected_output\n    \n    passed = actual_output == expected_bool\n    output_str = bool_to_string(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "s": "aa",
+        "p": "a"
+      },
+      "output": "false"
+    },
+    {
+      "id": 2,
+      "input": {
+        "s": "aa",
+        "p": "a*"
+      },
+      "output": "true"
+    },
+    {
+      "id": 3,
+      "input": {
+        "s": "ab",
+        "p": ".*"
+      },
+      "output": "true"
+    },
+    {
+      "id": 4,
+      "input": {
+        "s": "aab",
+        "p": "c*a*b"
+      },
+      "output": "true"
+    },
+    {
+      "id": 5,
+      "input": {
+        "s": "mississippi",
+        "p": "mis*is*p*."
+      },
+      "output": "false"
+    },
+    {
+      "id": 6,
+      "input": {
+        "s": "",
+        "p": "a*"
+      },
+      "output": "true"
+    },
+    {
+      "id": 7,
+      "input": {
+        "s": "ab",
+        "p": ".*c"
+      },
+      "output": "false"
+    },
+    {
+      "id": 8,
+      "input": {
+        "s": "aaa",
+        "p": "a*a"
+      },
+      "output": "true"
+    }
+  ]
+}

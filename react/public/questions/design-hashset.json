@@ -1,0 +1,98 @@
+{
+  "index": 0,
+  "filename": "design-hashset",
+  "title": "Design HashSet",
+  "difficulty": "Easy",
+  "tags": [
+    "Hash Set"
+  ],
+  "keywords": [
+    "design",
+    "hashset",
+    "hash table",
+    "leetcode",
+    "705",
+    "add",
+    "remove",
+    "contains"
+  ],
+  "description": "<h2>Design HashSet</h2><p>LeetCode 705. Design HashSet</p><p>Design a HashSet without using any built-in hash table libraries. You may not use <code>set()</code> or <code>dict()</code>.</p><p>Implement the <code>MyHashSet</code> class:</p><ul><li><code>MyHashSet()</code> initializes the object with an empty set.</li><li><code>add(key)</code> Inserts the value <code>key</code> into the HashSet.</li><li><code>contains(key)</code> Returns whether the value <code>key</code> exists in the HashSet or not.</li><li><code>remove(key)</code> Removes the value <code>key</code> in the HashSet. If <code>key</code> does not exist in the HashSet, do nothing.</li></ul><h3>Examples:</h3><ul><li>Input: [\"MyHashSet()\", \"add(1)\", \"add(2)\", \"contains(1)\", \"contains(3)\", \"add(2)\", \"contains(2)\", \"remove(2)\", \"contains(2)\"]<br>Output: [null, null, null, true, false, null, true, null, false]<br><br>Explanation:<br>MyHashSet myHashSet = new MyHashSet();<br>myHashSet.add(1);      // set = [1]<br>myHashSet.add(2);      // set = [1, 2]<br>myHashSet.contains(1); // return true<br>myHashSet.contains(3); // return false (not found)<br>myHashSet.add(2);      // set = [1, 2]<br>myHashSet.contains(2); // return true<br>myHashSet.remove(2);   // set = [1]<br>myHashSet.contains(2); // return false (already removed)</li></ul><h3>Constraints:</h3><ul><li><code>0 <= key <= 1,000,000</code></li><li>At most <code>10,000</code> calls will be made to <code>add</code>, <code>remove</code>, and <code>contains</code>.</li></ul>",
+  "entry_function": "executeHashSetOperations",
+  "template": "class MyHashSet:\n\n    def __init__(self):\n        pass\n\n    def add(self, key: int) -> None:\n        pass\n\n    def remove(self, key: int) -> None:\n        pass\n\n    def contains(self, key: int) -> bool:\n        pass",
+  "solution_text": "<h3>Design HashSet</h3><p><strong>Algorithm (Array-based with Chaining):</strong></p><p>This solution implements a HashSet using an array of buckets, where each bucket is a list to handle collisions through chaining.</p><ol><li><strong>Initialization:</strong> Choose a size for the internal array (e.g., 1000 buckets). Initialize each bucket as an empty list.</li><li><strong>Hash Function:</strong> Use <code>key % size</code> to determine which bucket a key belongs to.</li><li><strong>add(key):</strong> Calculate the bucket index, then check if the key already exists in that bucket. If not, append it.</li><li><strong>remove(key):</strong> Calculate the bucket index, then remove the key from the bucket if it exists.</li><li><strong>contains(key):</strong> Calculate the bucket index, then check if the key is in that bucket.</li></ol><p><strong>Time Complexity:</strong></p><ul><li>Average Case: O(1) for all operations, assuming good hash distribution</li><li>Worst Case: O(N/K) where N is total keys and K is number of buckets</li></ul><p><strong>Space Complexity:</strong> O(K + N) for K buckets and N stored keys</p><p><strong>Key Insights:</strong></p><ul><li>Using a prime number of buckets can improve hash distribution</li><li>Chaining handles collisions by storing multiple keys in the same bucket</li><li>The modulo operation ensures keys map to valid bucket indices</li></ul>",
+  "solution_code": "class MyHashSet:\n\n    def __init__(self):\n        self.size = 1000\n        self.buckets = [[] for _ in range(self.size)]\n\n    def _hash(self, key: int) -> int:\n        return key % self.size\n\n    def add(self, key: int) -> None:\n        hash_key = self._hash(key)\n        bucket = self.buckets[hash_key]\n        if key not in bucket:\n            bucket.append(key)\n\n    def remove(self, key: int) -> None:\n        hash_key = self._hash(key)\n        bucket = self.buckets[hash_key]\n        if key in bucket:\n            bucket.remove(key)\n\n    def contains(self, key: int) -> bool:\n        hash_key = self._hash(key)\n        return key in self.buckets[hash_key]",
+  "prepare": "import re\n\ndef parse_operation(op_str):\n    match = re.match(r'(\\w+)\\((.*)\\)', op_str)\n    if not match:\n        return op_str, []\n    name = match.group(1)\n    args_str = match.group(2).strip()\n    if not args_str:\n        return name, []\n    args = [int(a.strip()) for a in args_str.split(',')]\n    return name, args\n\ndef executeHashSetOperations(operations):\n    results = []\n    hash_set = None\n    for op_str in operations:\n        op, args = parse_operation(op_str)\n        if op == 'MyHashSet':\n            hash_set = MyHashSet()\n            results.append(None)\n        elif op == 'add':\n            hash_set.add(args[0])\n            results.append(None)\n        elif op == 'remove':\n            hash_set.remove(args[0])\n            results.append(None)\n        elif op == 'contains':\n            results.append(hash_set.contains(args[0]))\n    return results\n\ndef prepare(test_case_input):\n    return (test_case_input['operations'],)",
+  "verify": "def verify(actual_output, expected_output):\n    if len(actual_output) != len(expected_output):\n        return [False, str(actual_output)]\n    \n    for actual, expected in zip(actual_output, expected_output):\n        if actual != expected:\n            return [False, str(actual_output)]\n    \n    return [True, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "operations": ["MyHashSet()", "add(1)", "add(2)", "contains(1)", "contains(3)", "add(2)", "contains(2)", "remove(2)", "contains(2)"]
+      },
+      "output": [null, null, null, 1, 0, null, 1, null, 0]
+    },
+    {
+      "id": 2,
+      "input": {
+        "operations": ["MyHashSet()", "add(1)", "remove(1)", "contains(1)"]
+      },
+      "output": [null, null, null, 0]
+    },
+    {
+      "id": 3,
+      "input": {
+        "operations": ["MyHashSet()", "contains(10)", "add(10)", "contains(10)", "remove(10)", "contains(10)"]
+      },
+      "output": [null, 0, null, 1, null, 0]
+    },
+    {
+      "id": 4,
+      "input": {
+        "operations": ["MyHashSet()", "add(0)", "add(1000000)", "add(500)", "contains(0)", "contains(1000000)", "contains(999)"]
+      },
+      "output": [null, null, null, null, 1, 1, 0]
+    },
+    {
+      "id": 5,
+      "input": {
+        "operations": ["MyHashSet()", "add(1)", "add(1)", "remove(1)", "remove(2)", "contains(1)", "contains(2)"]
+      },
+      "output": [null, null, null, null, null, 0, 0]
+    },
+    {
+      "id": 6,
+      "input": {
+        "operations": ["MyHashSet()", "add(1)", "add(2)", "add(3)", "add(4)", "add(5)", "add(6)", "add(7)", "add(8)", "add(9)", "add(10)"]
+      },
+      "output": [null, null, null, null, null, null, null, null, null, null, null]
+    },
+    {
+      "id": 7,
+      "input": {
+        "operations": ["MyHashSet()", "add(1)", "contains(1)", "add(1001)", "contains(1001)"]
+      },
+      "output": [null, null, 1, null, 1]
+    },
+    {
+      "id": 8,
+      "input": {
+        "operations": ["MyHashSet()", "remove(14)", "contains(14)"]
+      },
+      "output": [null, null, 0]
+    },
+    {
+      "id": 9,
+      "input": {
+        "operations": ["MyHashSet()", "add(1)", "add(1)", "contains(1)", "remove(1)", "contains(1)"]
+      },
+      "output": [null, null, null, 1, null, 0]
+    },
+    {
+      "id": 10,
+      "input": {
+        "operations": ["MyHashSet()", "add(5)", "add(1005)", "add(2005)", "contains(5)", "contains(1005)", "contains(2005)", "remove(1005)", "contains(1005)"]
+      },
+      "output": [null, null, null, null, 1, 1, 1, null, 0]
+    }
+  ]
+}

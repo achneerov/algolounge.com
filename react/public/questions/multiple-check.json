@@ -1,0 +1,105 @@
+{
+  "index": 61,
+  "filename": "multiple-check",
+  "title": "Multiple Check",
+  "difficulty": "Easy",
+  "tags": [],
+  "keywords": [
+    "multiple",
+    "modulo",
+    "divisibility",
+    "beginner",
+    "math",
+    "integer",
+    "easy"
+  ],
+  "description": "<h2>Multiple Check</h2><p>Given two integers <code>x</code> and <code>y</code>, return <code>true</code> if <code>x</code> is a multiple of <code>y</code>, otherwise return <code>false</code>.</p><h3>Examples:</h3><ul><li>Input: x = 15, y = 3<br>Output: true<br>Explanation: 15 = 3 × 5</li><li>Input: x = 10, y = 3<br>Output: false</li></ul><h3>Constraints:</h3><ul><li>Handle edge cases with zero values</li><li>Standard integer range</li></ul>",
+  "entry_function": "isMultiple",
+  "template": "def isMultiple(x, y):\n  ",
+  "solution_text": "<h3>Multiple Check</h3><p><strong>Algorithm:</strong></p><ol><li>Use modulo operator to check if remainder is 0</li><li>Handle edge case where y is 0</li></ol><p><strong>Time Complexity:</strong> O(1) - constant time</p><p><strong>Space Complexity:</strong> O(1) - constant space</p><p><strong>Key Insights:</strong></p><ul><li>x is a multiple of y if x % y == 0</li><li>Need to handle division by zero</li></ul>",
+  "solution_code": "def isMultiple(x, y):\n    if y == 0:\n        return False\n    return x % y == 0",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for isMultiple function\"\"\"\n    return (test_case_input['x'], test_case_input['y'])",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the boolean result\"\"\"\n    def bool_to_string(val):\n        return 'true' if val else 'false'\n    \n    # Convert expected output string to boolean for comparison\n    expected_bool = expected_output == 'true' if isinstance(expected_output, str) else expected_output\n    \n    passed = actual_output == expected_bool\n    output_str = bool_to_string(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "x": 15,
+        "y": 3
+      },
+      "output": "true"
+    },
+    {
+      "id": 2,
+      "input": {
+        "x": 10,
+        "y": 3
+      },
+      "output": "false"
+    },
+    {
+      "id": 3,
+      "input": {
+        "x": 0,
+        "y": 5
+      },
+      "output": "true"
+    },
+    {
+      "id": 4,
+      "input": {
+        "x": 7,
+        "y": 0
+      },
+      "output": "false"
+    },
+    {
+      "id": 5,
+      "input": {
+        "x": 100,
+        "y": 10
+      },
+      "output": "true"
+    },
+    {
+      "id": 6,
+      "input": {
+        "x": 20,
+        "y": 4
+      },
+      "output": "true"
+    },
+    {
+      "id": 7,
+      "input": {
+        "x": 17,
+        "y": 5
+      },
+      "output": "false"
+    },
+    {
+      "id": 8,
+      "input": {
+        "x": -12,
+        "y": 3
+      },
+      "output": "true"
+    },
+    {
+      "id": 9,
+      "input": {
+        "x": 1,
+        "y": 1
+      },
+      "output": "true"
+    },
+    {
+      "id": 10,
+      "input": {
+        "x": 25,
+        "y": 6
+      },
+      "output": "false"
+    }
+  ]
+}

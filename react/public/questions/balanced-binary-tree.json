@@ -1,0 +1,212 @@
+{
+  "index": 9,
+  "filename": "balanced-binary-tree",
+  "title": "Balanced Binary Tree",
+  "difficulty": "Easy",
+  "tags": [
+    "Trees"
+  ],
+  "keywords": [
+    "balanced",
+    "binary",
+    "tree",
+    "leetcode",
+    "110",
+    "given",
+    "return",
+    "true",
+    "height",
+    "false"
+  ],
+  "description": "<h2>Balanced Binary Tree</h2><p>Given a binary tree, return <code>true</code> if it is <strong>height-balanced</strong> and <code>false</code> otherwise.</p><p>A <strong>height-balanced</strong> binary tree is defined as a binary tree in which the left and right subtrees of every node differ in height by no more than 1.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> root = [3,9,20,null,null,15,7]<br><strong>Output:</strong> true<br><strong>Explanation:</strong> The tree is balanced as the height difference between left and right subtrees is at most 1 for all nodes.</li><li><strong>Input:</strong> root = [1,2,2,3,3,null,null,4,4]<br><strong>Output:</strong> false<br><strong>Explanation:</strong> The tree is not balanced because the left subtree of the root has height 3 while the right subtree has height 1.</li><li><strong>Input:</strong> root = []<br><strong>Output:</strong> true<br><strong>Explanation:</strong> An empty tree is considered balanced.</li></ul><h3>Constraints</h3><ul><li>The number of nodes in the tree is in the range <code>[0, 1000]</code>.</li><li><code>-1000 <= Node.val <= 1000</code></li></ul>",
+  "entry_function": "isBalanced",
+  "template": "# Definition for a binary tree node.\n# class TreeNode:\n#     def __init__(self, val=0, left=None, right=None):\n#         self.val = val\n#         self.left = left\n#         self.right = right\n\ndef isBalanced(root):\n    ",
+  "solution_text": "<h3>Balanced Binary Tree</h3><p><strong>Algorithm:</strong></p><ol><li>Use helper function to compute height and check balance</li><li>For each node, check if left and right subtrees are balanced</li><li>Check if height difference is at most 1</li><li>Return -1 if unbalanced, otherwise return height</li></ol><p><strong>Time Complexity:</strong> O(n) - visit each node once</p><p><strong>Space Complexity:</strong> O(h) - recursion stack depth</p><p><strong>Key Insights:</strong></p><ul><li>Combine height calculation with balance checking</li><li>Early termination when imbalance is detected</li><li>Bottom-up approach for efficiency</li></ul>",
+  "solution_code": "def isBalanced(root):\n    def check_balance(node):\n        # Base case: empty tree is balanced with height 0\n        if not node:\n            return 0\n        \n        # Check left subtree\n        left_height = check_balance(node.left)\n        if left_height == -1:\n            return -1  # Left subtree is unbalanced\n        \n        # Check right subtree\n        right_height = check_balance(node.right)\n        if right_height == -1:\n            return -1  # Right subtree is unbalanced\n        \n        # Check balance condition\n        if abs(left_height - right_height) > 1:\n            return -1  # Current node is unbalanced\n        \n        # Return height of current subtree\n        return max(left_height, right_height) + 1\n    \n    return check_balance(root) != -1",
+  "prepare": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef prepare(test_case_input):\n    def build_tree(arr):\n        if not arr:\n            return None\n        \n        root = TreeNode(arr[0])\n        queue = [root]\n        i = 1\n        \n        while queue and i < len(arr):\n            node = queue.pop(0)\n            \n            if i < len(arr) and arr[i] is not None:\n                node.left = TreeNode(arr[i])\n                queue.append(node.left)\n            i += 1\n            \n            if i < len(arr) and arr[i] is not None:\n                node.right = TreeNode(arr[i])\n                queue.append(node.right)\n            i += 1\n        \n        return root\n    \n    root = build_tree(test_case_input['root'])\n    return (root,)",
+  "verify": "def verify(actual_output, expected_output):\n    def bool_to_string(val):\n        return 'true' if val else 'false'\n    \n    # Convert expected output string to boolean for comparison if needed\n    expected_bool = expected_output == 'true' if isinstance(expected_output, str) else expected_output\n    \n    passed = actual_output == expected_bool\n    output_str = bool_to_string(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "root": []
+      },
+      "output": "true"
+    },
+    {
+      "id": 2,
+      "input": {
+        "root": [
+          1
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 3,
+      "input": {
+        "root": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 4,
+      "input": {
+        "root": [
+          1,
+          2,
+          2,
+          3,
+          3,
+          null,
+          null,
+          4,
+          4
+        ]
+      },
+      "output": "false"
+    },
+    {
+      "id": 5,
+      "input": {
+        "root": [
+          1,
+          2,
+          3
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 6,
+      "input": {
+        "root": [
+          1,
+          2,
+          null,
+          3,
+          null,
+          4
+        ]
+      },
+      "output": "false"
+    },
+    {
+      "id": 7,
+      "input": {
+        "root": [
+          1,
+          null,
+          2,
+          null,
+          3
+        ]
+      },
+      "output": "false"
+    },
+    {
+      "id": 8,
+      "input": {
+        "root": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          null,
+          8
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 9,
+      "input": {
+        "root": [
+          5,
+          4,
+          8,
+          11,
+          null,
+          13,
+          4,
+          7,
+          2,
+          null,
+          null,
+          null,
+          1
+        ]
+      },
+      "output": "false"
+    },
+    {
+      "id": 10,
+      "input": {
+        "root": [
+          1,
+          2,
+          2,
+          3,
+          null,
+          null,
+          3,
+          4,
+          null,
+          null,
+          4
+        ]
+      },
+      "output": "false"
+    },
+    {
+      "id": 11,
+      "input": {
+        "root": [
+          10,
+          5,
+          15,
+          null,
+          null,
+          6,
+          20
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 12,
+      "input": {
+        "root": [
+          1,
+          2,
+          2,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          null,
+          null,
+          5,
+          5
+        ]
+      },
+      "output": "true"
+    }
+  ]
+}

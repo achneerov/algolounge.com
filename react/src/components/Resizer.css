@@ -1,0 +1,45 @@
+.resizer {
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-primary);
+  transition: background-color var(--transition-fast);
+}
+
+.resizer:hover,
+.resizer.dragging {
+  background-color: var(--color-primary);
+}
+
+.resizer-horizontal {
+  width: 6px;
+  cursor: col-resize;
+}
+
+.resizer-vertical {
+  height: 6px;
+  cursor: row-resize;
+}
+
+.resizer-handle {
+  background-color: var(--color-border);
+  border-radius: var(--radius-full);
+  transition: background-color var(--transition-fast);
+}
+
+.resizer:hover .resizer-handle,
+.resizer.dragging .resizer-handle {
+  background-color: white;
+}
+
+.resizer-horizontal .resizer-handle {
+  width: 2px;
+  height: 32px;
+}
+
+.resizer-vertical .resizer-handle {
+  width: 32px;
+  height: 2px;
+}

@@ -5,28 +5,35 @@ import { IDE, IDEHandle } from '../components/IDE';
 import { Console } from '../components/Console';
 import { ContentTabs } from '../components/ContentTabs';
 import { SuccessAnimation } from '../components/SuccessAnimation';
+import { Resizer } from '../components/Resizer';
 import { useCodeExecution } from '../hooks/useCodeExecution';
 import { useTags } from '../hooks/useTags';
 import { useCompletion } from '../context/CompletionContext';
-import { useSidebar } from '../context/SidebarContext';
 import { Question, ExecutionResult, Tag } from '../types';
 import './Questions.css';
+
+// Min/max sizes in pixels
+const MIN_PANEL_WIDTH = 300;
+const MIN_PANEL_HEIGHT = 150;
 
 export function Questions() {
   const { name } = useParams<{ name: string }>();
   const navigate = useNavigate();
   const ideRef = useRef<IDEHandle>(null);
-  const { executeCode, stopExecution, initPyodide, isLoading } = useCodeExecution();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { executeCode, stopExecution, initPyodide } = useCodeExecution();
   const { getQuestionTags } = useTags();
   const { isCompleted, markCompleted } = useCompletion();
-  const { isVisible: sidebarVisible } = useSidebar();
-
   const [question, setQuestion] = useState<Question | null>(null);
   const [executionResult, setExecutionResult] = useState<ExecutionResult | null>(null);
   const [isRunning, setIsRunning] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [notFound, setNotFound] = useState(false);
   const [questionTags, setQuestionTags] = useState<Tag[]>([]);
+
+  // Panel sizes (percentages)
+  const [leftPanelWidth, setLeftPanelWidth] = useState(40); // percentage
+  const [ideHeight, setIdeHeight] = useState(65); // percentage
 
   const currentFilename = name || '';
   const completed = isCompleted(currentFilename);
@@ -110,6 +117,33 @@ export function Questions() {
     setExecutionResult(null);
   }, []);
 
+  // Resize handlers
+  const handleHorizontalResize = useCallback((delta: number) => {
+    if (!containerRef.current) return;
+    const containerWidth = containerRef.current.offsetWidth;
+    const deltaPercent = (delta / containerWidth) * 100;
+
+    setLeftPanelWidth(prev => {
+      const newWidth = prev + deltaPercent;
+      const minPercent = (MIN_PANEL_WIDTH / containerWidth) * 100;
+      const maxPercent = 100 - minPercent;
+      return Math.min(maxPercent, Math.max(minPercent, newWidth));
+    });
+  }, []);
+
+  const handleVerticalResize = useCallback((delta: number) => {
+    if (!containerRef.current) return;
+    const containerHeight = containerRef.current.offsetHeight;
+    const deltaPercent = (delta / containerHeight) * 100;
+
+    setIdeHeight(prev => {
+      const newHeight = prev + deltaPercent;
+      const minPercent = (MIN_PANEL_HEIGHT / containerHeight) * 100;
+      const maxPercent = 100 - minPercent;
+      return Math.min(maxPercent, Math.max(minPercent, newHeight));
+    });
+  }, []);
+
   if (notFound) {
     return (
       <div className="questions-page">
@@ -138,12 +172,11 @@ export function Questions() {
   return (
     <div className="questions-page">
       <SuccessAnimation show={showSuccess} onComplete={() => setShowSuccess(false)} />
-
       <Sidebar currentQuestionFilename={currentFilename} />
 
-      <main className={`questions-main ${!sidebarVisible ? 'full-width' : ''}`}>
+      <main className="questions-main" ref={containerRef}>
         <div className="questions-layout">
-          <div className="left-panel">
+          <div className="left-panel" style={{ width: `${leftPanelWidth}%` }}>
             <ContentTabs
               description={question.description}
               solutionText={question.solution_text}
@@ -153,8 +186,10 @@ export function Questions() {
             />
           </div>
 
-          <div className="right-panel">
-            <div className="ide-container">
+          <Resizer direction="horizontal" onResize={handleHorizontalResize} />
+
+          <div className="right-panel" style={{ width: `${100 - leftPanelWidth}%` }}>
+            <div className="ide-container" style={{ height: `${ideHeight}%` }}>
               <IDE
                 ref={ideRef}
                 template={question.template}
@@ -164,7 +199,10 @@ export function Questions() {
                 onReset={handleReset}
               />
             </div>
-            <div className="console-container">
+
+            <Resizer direction="vertical" onResize={handleVerticalResize} />
+
+            <div className="console-container" style={{ height: `${100 - ideHeight}%` }}>
               <Console result={executionResult} isRunning={isRunning} />
             </div>
           </div>

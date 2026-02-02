@@ -17,7 +17,7 @@ export function Sidebar({ currentQuestionFilename }: SidebarProps) {
   const { isLoaded, allQuestions, searchQuestions, getUniqueTags } = useQuestionSearch();
   const { getDifficultyColor, getTagColor } = useTags();
   const { isCompleted } = useCompletion();
-  const { isVisible } = useSidebar();
+  const { isVisible, close } = useSidebar();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedDifficulty, setSelectedDifficulty] = useState<string | null>(null);
@@ -91,7 +91,8 @@ export function Sidebar({ currentQuestionFilename }: SidebarProps) {
 
   const handleSelect = useCallback((filename: string) => {
     navigate(`/questions/${filename}`);
-  }, [navigate]);
+    close();
+  }, [navigate, close]);
 
   // Close popover when clicking outside
   useEffect(() => {
@@ -112,9 +113,16 @@ export function Sidebar({ currentQuestionFilename }: SidebarProps) {
   if (!isVisible) return null;
 
   return (
-    <aside className="sidebar">
-      <div className="sidebar-header">
-        <div className="search-box">
+    <div className="sidebar-overlay" onClick={close}>
+      <aside className="sidebar" onClick={(e) => e.stopPropagation()}>
+        <div className="sidebar-header">
+          <div className="sidebar-title-row">
+            <h2 className="sidebar-title">Problems</h2>
+            <button className="sidebar-close" onClick={close}>
+              <X size={20} />
+            </button>
+          </div>
+          <div className="search-box">
           <Search size={16} className="search-icon" />
           <input
             type="text"
@@ -234,5 +242,6 @@ export function Sidebar({ currentQuestionFilename }: SidebarProps) {
         )}
       </div>
     </aside>
+    </div>
   );
 }

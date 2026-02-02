@@ -912,7 +912,9 @@
       "filename": "binary-tree-maximum-path-sum",
       "title": "Binary Tree Maximum Path Sum",
       "difficulty": "Hard",
-      "tags": [],
+      "tags": [
+        "Trees"
+      ],
       "keywords": [
         "binary",
         "tree",
@@ -2596,8 +2598,112 @@
         "medium",
         "multi-source"
       ]
+    },
+    {
+      "index": 204,
+      "filename": "adapter-pattern",
+      "title": "Adapter Pattern",
+      "difficulty": "Easy",
+      "tags": [
+        "Design Patterns"
+      ],
+      "keywords": [
+        "adapter",
+        "pattern",
+        "design",
+        "structural",
+        "interface",
+        "square",
+        "circle",
+        "OOP",
+        "wrapper"
+      ]
+    },
+    {
+      "index": 205,
+      "filename": "same-tree",
+      "title": "Same Tree",
+      "difficulty": "Easy",
+      "tags": [
+        "Trees"
+      ],
+      "keywords": [
+        "same",
+        "tree",
+        "binary",
+        "leetcode",
+        "100",
+        "identical",
+        "equal",
+        "compare",
+        "recursive"
+      ]
+    },
+    {
+      "index": 206,
+      "filename": "subtree-of-another-tree",
+      "title": "Subtree of Another Tree",
+      "difficulty": "Easy",
+      "tags": [
+        "Trees"
+      ],
+      "keywords": [
+        "subtree",
+        "tree",
+        "binary",
+        "leetcode",
+        "572",
+        "contains",
+        "recursive",
+        "same",
+        "identical"
+      ]
+    },
+    {
+      "index": 207,
+      "filename": "lowest-common-ancestor-of-a-bst",
+      "title": "Lowest Common Ancestor of a Binary Search Tree",
+      "difficulty": "Medium",
+      "tags": [
+        "Trees"
+      ],
+      "keywords": [
+        "lowest",
+        "common",
+        "ancestor",
+        "LCA",
+        "binary",
+        "search",
+        "tree",
+        "BST",
+        "leetcode",
+        "235"
+      ]
+    },
+    {
+      "index": 208,
+      "filename": "binary-tree-level-order-traversal",
+      "title": "Binary Tree Level Order Traversal",
+      "difficulty": "Medium",
+      "tags": [
+        "Trees"
+      ],
+      "keywords": [
+        "binary",
+        "tree",
+        "level",
+        "order",
+        "traversal",
+        "BFS",
+        "breadth",
+        "first",
+        "search",
+        "queue",
+        "leetcode",
+        "102"
+      ]
     }
   ],
-  "lastUpdated": "2026-01-26T16:38:18.987Z",
-  "totalQuestions": 134
+  "lastUpdated": "2026-02-02T21:17:33.462Z",
+  "totalQuestions": 139
 }

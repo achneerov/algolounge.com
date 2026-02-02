@@ -1,0 +1,109 @@
+{
+  "index": 205,
+  "filename": "same-tree",
+  "title": "Same Tree",
+  "difficulty": "Easy",
+  "tags": [
+    "Trees"
+  ],
+  "keywords": [
+    "same",
+    "tree",
+    "binary",
+    "leetcode",
+    "100",
+    "identical",
+    "equal",
+    "compare",
+    "recursive"
+  ],
+  "description": "<h2>Same Tree</h2><p><em>LeetCode 100. Same Tree</em></p><p>Given the roots of two binary trees <code>p</code> and <code>q</code>, write a function to check if they are the same or not.</p><p>Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> p = [1,2,3], q = [1,2,3]<br><pre>  p:       q:\n   1        1\n  / \\      / \\\n 2   3    2   3</pre><strong>Output:</strong> true<br><strong>Explanation:</strong> Both trees have identical structure and values.</li><li><strong>Input:</strong> p = [1,2], q = [1,null,2]<br><strong>Output:</strong> false<br><strong>Explanation:</strong> First tree has left child, second tree has right child.</li><li><strong>Input:</strong> p = [1,2,1], q = [1,1,2]<br><strong>Output:</strong> false<br><strong>Explanation:</strong> The children values are swapped.</li></ul><h3>Constraints:</h3><ul><li>The number of nodes in both trees is in the range <code>[0, 100]</code></li><li><code>-10^4 <= Node.val <= 10^4</code></li></ul>",
+  "entry_function": "isSameTree",
+  "template": "# Definition for a binary tree node.\n# class TreeNode:\n#     def __init__(self, val=0, left=None, right=None):\n#         self.val = val\n#         self.left = left\n#         self.right = right\n\ndef isSameTree(p, q):\n    ",
+  "solution_text": "<h3>Same Tree</h3><p><strong>Algorithm:</strong></p><ol><li>If both nodes are None, return True (base case - both empty)</li><li>If one is None and other is not, return False (different structure)</li><li>If values are different, return False</li><li>Recursively check left subtrees and right subtrees</li><li>Return True only if both subtrees are same</li></ol><p><strong>Time Complexity:</strong> O(n) - visit each node once</p><p><strong>Space Complexity:</strong> O(h) - recursion stack depth where h is tree height</p><p><strong>Key Insights:</strong></p><ul><li>Trees must be structurally identical AND have same values</li><li>Use recursion to compare node by node</li><li>Both trees must have same shape and same node values at each position</li></ul>",
+  "solution_code": "def isSameTree(p, q):\n    # Both nodes are None - trees are same at this point\n    if not p and not q:\n        return True\n    \n    # One is None, other is not - trees are different\n    if not p or not q:\n        return False\n    \n    # Values are different\n    if p.val != q.val:\n        return False\n    \n    # Recursively check left and right subtrees\n    return isSameTree(p.left, q.left) and isSameTree(p.right, q.right)",
+  "prepare": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n    \n    def __repr__(self):\n        return f'TreeNode({self.val})'\n\ndef build_tree(arr):\n    if not arr or arr[0] is None:\n        return None\n    from collections import deque\n    root = TreeNode(arr[0])\n    queue = deque([root])\n    i = 1\n    while queue and i < len(arr):\n        node = queue.popleft()\n        if i < len(arr):\n            if arr[i] is not None:\n                node.left = TreeNode(arr[i])\n                queue.append(node.left)\n            i += 1\n        if i < len(arr):\n            if arr[i] is not None:\n                node.right = TreeNode(arr[i])\n                queue.append(node.right)\n            i += 1\n    return root\n\ndef prepare(test_case_input):\n    p = build_tree(test_case_input['p'])\n    q = build_tree(test_case_input['q'])\n    return (p, q)",
+  "verify": "def verify(actual_output, expected_output):\n    def bool_to_string(val):\n        return 'true' if val else 'false'\n    expected_bool = expected_output == 'true' if isinstance(expected_output, str) else expected_output\n    passed = actual_output == expected_bool\n    return [passed, bool_to_string(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "p": [1, 2, 3],
+        "q": [1, 2, 3]
+      },
+      "output": "true"
+    },
+    {
+      "id": 2,
+      "input": {
+        "p": [1, 2],
+        "q": [1, null, 2]
+      },
+      "output": "false"
+    },
+    {
+      "id": 3,
+      "input": {
+        "p": [1, 2, 1],
+        "q": [1, 1, 2]
+      },
+      "output": "false"
+    },
+    {
+      "id": 4,
+      "input": {
+        "p": [],
+        "q": []
+      },
+      "output": "true"
+    },
+    {
+      "id": 5,
+      "input": {
+        "p": [1],
+        "q": [1]
+      },
+      "output": "true"
+    },
+    {
+      "id": 6,
+      "input": {
+        "p": [1],
+        "q": [2]
+      },
+      "output": "false"
+    },
+    {
+      "id": 7,
+      "input": {
+        "p": [1, 2, 3, 4, 5],
+        "q": [1, 2, 3, 4, 5]
+      },
+      "output": "true"
+    },
+    {
+      "id": 8,
+      "input": {
+        "p": [1, 2, 3, 4, 5],
+        "q": [1, 2, 3, 4, 6]
+      },
+      "output": "false"
+    },
+    {
+      "id": 9,
+      "input": {
+        "p": [1, null, 2, null, 3],
+        "q": [1, null, 2, null, 3]
+      },
+      "output": "true"
+    },
+    {
+      "id": 10,
+      "input": {
+        "p": [1],
+        "q": []
+      },
+      "output": "false"
+    }
+  ]
+}

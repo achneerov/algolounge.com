@@ -5,6 +5,77 @@
   "keywords": ["algorithms", "data structures", "technical interviews", "problem solving", "winter", "two pointers", "arrays", "linked list", "strings", "hash table", "design"],
   "badge": "Winter 2026",
   "units": {
+    "week4": {
+      "title": "Week 4",
+      "description": "Binary trees fundamentals: comparison, traversal, and tree properties.",
+      "questions": [
+        {
+          "filename": "adapter-pattern",
+          "urls": [
+            { "url": "https://neetcode.io/problems/adapter", "tooltip": "NeetCode Problem", "color": "#16a34a", "visibleString": "NeetCode" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Design Patterns", "color": "#8b5cf6" }
+          ]
+        },
+        {
+          "filename": "same-tree",
+          "urls": [
+            { "url": "https://leetcode.com/problems/same-tree/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/same-tree", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Trees", "color": "#10b981" }
+          ]
+        },
+        {
+          "filename": "subtree-of-another-tree",
+          "urls": [
+            { "url": "https://leetcode.com/problems/subtree-of-another-tree/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/subtree-of-another-tree", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Trees", "color": "#10b981" }
+          ]
+        },
+        {
+          "filename": "lowest-common-ancestor-of-a-bst",
+          "urls": [
+            { "url": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/lowest-common-ancestor-of-a-binary-search-tree", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Trees", "color": "#10b981" }
+          ]
+        },
+        {
+          "filename": "binary-tree-level-order-traversal",
+          "urls": [
+            { "url": "https://leetcode.com/problems/binary-tree-level-order-traversal/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/binary-tree-level-order-traversal", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Trees", "color": "#10b981" }
+          ]
+        },
+        {
+          "filename": "binary-tree-maximum-path-sum",
+          "urls": [
+            { "url": "https://leetcode.com/problems/binary-tree-maximum-path-sum/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/binary-tree-maximum-path-sum", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Trees", "color": "#10b981" }
+          ]
+        }
+      ]
+    },
     "week3": {
       "title": "Week 3",
       "description": "",

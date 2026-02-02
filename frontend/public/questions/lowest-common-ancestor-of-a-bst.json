@@ -1,0 +1,120 @@
+{
+  "index": 207,
+  "filename": "lowest-common-ancestor-of-a-bst",
+  "title": "Lowest Common Ancestor of a Binary Search Tree",
+  "difficulty": "Medium",
+  "tags": [
+    "Trees"
+  ],
+  "keywords": [
+    "lowest",
+    "common",
+    "ancestor",
+    "LCA",
+    "binary",
+    "search",
+    "tree",
+    "BST",
+    "leetcode",
+    "235"
+  ],
+  "description": "<h2>Lowest Common Ancestor of a Binary Search Tree</h2><p><em>LeetCode 235. Lowest Common Ancestor of a Binary Search Tree</em></p><p>Given a binary search tree (BST), find the lowest common ancestor (LCA) node of two given nodes in the BST.</p><p>According to the definition of LCA on Wikipedia: \"The lowest common ancestor is defined between two nodes <code>p</code> and <code>q</code> as the lowest node in T that has both <code>p</code> and <code>q</code> as descendants (where we allow a node to be a descendant of itself).\"</p><h3>Examples:</h3><ul><li><strong>Input:</strong> root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8<br><pre>       6  (LCA)\n      / \\\n     2   8\n    / \\ / \\\n   0  4 7  9\n     / \\\n    3   5</pre><strong>Output:</strong> 6<br><strong>Explanation:</strong> The LCA of nodes 2 and 8 is 6 (they are in different subtrees).</li><li><strong>Input:</strong> root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4<br><strong>Output:</strong> 2<br><strong>Explanation:</strong> The LCA of nodes 2 and 4 is 2, since a node can be a descendant of itself.</li><li><strong>Input:</strong> root = [2,1], p = 2, q = 1<br><strong>Output:</strong> 2</li></ul><h3>Constraints:</h3><ul><li>The number of nodes in the tree is in the range <code>[2, 10^5]</code></li><li><code>-10^9 <= Node.val <= 10^9</code></li><li>All <code>Node.val</code> are unique</li><li><code>p != q</code></li><li><code>p</code> and <code>q</code> will exist in the BST</li></ul>",
+  "entry_function": "lowestCommonAncestor",
+  "template": "# Definition for a binary tree node.\n# class TreeNode:\n#     def __init__(self, val=0, left=None, right=None):\n#         self.val = val\n#         self.left = left\n#         self.right = right\n\ndef lowestCommonAncestor(root, p, q):\n    ",
+  "solution_text": "<h3>Lowest Common Ancestor of a BST</h3><p><strong>Algorithm:</strong></p><ol><li>Start from root node</li><li>If both p and q are smaller than root, LCA is in left subtree</li><li>If both p and q are greater than root, LCA is in right subtree</li><li>Otherwise, current node is the LCA (split point)</li></ol><p><strong>Time Complexity:</strong> O(h) - where h is tree height, O(log n) for balanced BST</p><p><strong>Space Complexity:</strong> O(1) iterative, O(h) recursive</p><p><strong>Key Insights:</strong></p><ul><li>BST property: left subtree < root < right subtree</li><li>LCA is the first node where p and q split into different subtrees</li><li>Can be solved iteratively without recursion</li><li>No need to actually find the nodes p and q - just use their values</li></ul>",
+  "solution_code": "def lowestCommonAncestor(root, p, q):\n    # Traverse tree using BST property\n    while root:\n        # Both p and q are in left subtree\n        if p.val < root.val and q.val < root.val:\n            root = root.left\n        # Both p and q are in right subtree\n        elif p.val > root.val and q.val > root.val:\n            root = root.right\n        # Split point found - current node is LCA\n        else:\n            return root\n    \n    return None",
+  "prepare": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n    \n    def __repr__(self):\n        return f'TreeNode({self.val})'\n\ndef build_tree(arr):\n    if not arr or arr[0] is None:\n        return None\n    from collections import deque\n    root = TreeNode(arr[0])\n    queue = deque([root])\n    i = 1\n    while queue and i < len(arr):\n        node = queue.popleft()\n        if i < len(arr):\n            if arr[i] is not None:\n                node.left = TreeNode(arr[i])\n                queue.append(node.left)\n            i += 1\n        if i < len(arr):\n            if arr[i] is not None:\n                node.right = TreeNode(arr[i])\n                queue.append(node.right)\n            i += 1\n    return root\n\ndef find_node(root, val):\n    if not root:\n        return None\n    if root.val == val:\n        return root\n    left = find_node(root.left, val)\n    if left:\n        return left\n    return find_node(root.right, val)\n\ndef prepare(test_case_input):\n    root = build_tree(test_case_input['root'])\n    p = find_node(root, test_case_input['p'])\n    q = find_node(root, test_case_input['q'])\n    return (root, p, q)",
+  "verify": "def verify(actual_output, expected_output):\n    if actual_output is None:\n        return [expected_output is None, 'null']\n    passed = actual_output.val == expected_output\n    return [passed, str(actual_output.val)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "root": [6, 2, 8, 0, 4, 7, 9, null, null, 3, 5],
+        "p": 2,
+        "q": 8
+      },
+      "output": 6
+    },
+    {
+      "id": 2,
+      "input": {
+        "root": [6, 2, 8, 0, 4, 7, 9, null, null, 3, 5],
+        "p": 2,
+        "q": 4
+      },
+      "output": 2
+    },
+    {
+      "id": 3,
+      "input": {
+        "root": [2, 1],
+        "p": 2,
+        "q": 1
+      },
+      "output": 2
+    },
+    {
+      "id": 4,
+      "input": {
+        "root": [6, 2, 8, 0, 4, 7, 9, null, null, 3, 5],
+        "p": 3,
+        "q": 5
+      },
+      "output": 4
+    },
+    {
+      "id": 5,
+      "input": {
+        "root": [6, 2, 8, 0, 4, 7, 9, null, null, 3, 5],
+        "p": 7,
+        "q": 9
+      },
+      "output": 8
+    },
+    {
+      "id": 6,
+      "input": {
+        "root": [6, 2, 8, 0, 4, 7, 9, null, null, 3, 5],
+        "p": 0,
+        "q": 5
+      },
+      "output": 2
+    },
+    {
+      "id": 7,
+      "input": {
+        "root": [6, 2, 8, 0, 4, 7, 9, null, null, 3, 5],
+        "p": 3,
+        "q": 9
+      },
+      "output": 6
+    },
+    {
+      "id": 8,
+      "input": {
+        "root": [5, 3, 8, 1, 4, 7, 10],
+        "p": 1,
+        "q": 4
+      },
+      "output": 3
+    },
+    {
+      "id": 9,
+      "input": {
+        "root": [5, 3, 8, 1, 4, 7, 10],
+        "p": 7,
+        "q": 10
+      },
+      "output": 8
+    },
+    {
+      "id": 10,
+      "input": {
+        "root": [5, 3, 8, 1, 4, 7, 10],
+        "p": 1,
+        "q": 10
+      },
+      "output": 5
+    }
+  ]
+}

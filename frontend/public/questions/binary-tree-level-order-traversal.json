@@ -1,0 +1,102 @@
+{
+  "index": 208,
+  "filename": "binary-tree-level-order-traversal",
+  "title": "Binary Tree Level Order Traversal",
+  "difficulty": "Medium",
+  "tags": [
+    "Trees"
+  ],
+  "keywords": [
+    "binary",
+    "tree",
+    "level",
+    "order",
+    "traversal",
+    "BFS",
+    "breadth",
+    "first",
+    "search",
+    "queue",
+    "leetcode",
+    "102"
+  ],
+  "description": "<h2>Binary Tree Level Order Traversal</h2><p><em>LeetCode 102. Binary Tree Level Order Traversal</em></p><p>Given the <code>root</code> of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).</p><h3>Examples:</h3><ul><li><strong>Input:</strong> root = [3,9,20,null,null,15,7]<br><pre>    3         Level 0\n   / \\\n  9  20       Level 1\n    /  \\\n   15   7     Level 2</pre><strong>Output:</strong> [[3],[9,20],[15,7]]</li><li><strong>Input:</strong> root = [1]<br><strong>Output:</strong> [[1]]</li><li><strong>Input:</strong> root = []<br><strong>Output:</strong> []</li></ul><h3>Constraints:</h3><ul><li>The number of nodes in the tree is in the range <code>[0, 2000]</code></li><li><code>-1000 <= Node.val <= 1000</code></li></ul>",
+  "entry_function": "levelOrder",
+  "template": "# Definition for a binary tree node.\n# class TreeNode:\n#     def __init__(self, val=0, left=None, right=None):\n#         self.val = val\n#         self.left = left\n#         self.right = right\n\ndef levelOrder(root):\n    ",
+  "solution_text": "<h3>Binary Tree Level Order Traversal</h3><p><strong>Algorithm:</strong></p><ol><li>Use BFS (Breadth-First Search) with a queue</li><li>Start by adding root to queue</li><li>For each level, process all nodes currently in queue</li><li>Add each node's children to queue for next level</li><li>Collect values level by level into result</li></ol><p><strong>Time Complexity:</strong> O(n) - visit each node once</p><p><strong>Space Complexity:</strong> O(n) - queue can hold up to n/2 nodes at last level</p><p><strong>Key Insights:</strong></p><ul><li>BFS naturally processes nodes level by level</li><li>Track level size to know when current level ends</li><li>Queue ensures left-to-right ordering within each level</li></ul>",
+  "solution_code": "def levelOrder(root):\n    if not root:\n        return []\n    \n    from collections import deque\n    result = []\n    queue = deque([root])\n    \n    while queue:\n        level_size = len(queue)\n        level_values = []\n        \n        for _ in range(level_size):\n            node = queue.popleft()\n            level_values.append(node.val)\n            \n            if node.left:\n                queue.append(node.left)\n            if node.right:\n                queue.append(node.right)\n        \n        result.append(level_values)\n    \n    return result",
+  "prepare": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n    \n    def __repr__(self):\n        return f'TreeNode({self.val})'\n\ndef build_tree(arr):\n    if not arr or arr[0] is None:\n        return None\n    from collections import deque\n    root = TreeNode(arr[0])\n    queue = deque([root])\n    i = 1\n    while queue and i < len(arr):\n        node = queue.popleft()\n        if i < len(arr):\n            if arr[i] is not None:\n                node.left = TreeNode(arr[i])\n                queue.append(node.left)\n            i += 1\n        if i < len(arr):\n            if arr[i] is not None:\n                node.right = TreeNode(arr[i])\n                queue.append(node.right)\n            i += 1\n    return root\n\ndef prepare(test_case_input):\n    root = build_tree(test_case_input['root'])\n    return (root,)",
+  "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "root": [3, 9, 20, null, null, 15, 7]
+      },
+      "output": [[3], [9, 20], [15, 7]]
+    },
+    {
+      "id": 2,
+      "input": {
+        "root": [1]
+      },
+      "output": [[1]]
+    },
+    {
+      "id": 3,
+      "input": {
+        "root": []
+      },
+      "output": []
+    },
+    {
+      "id": 4,
+      "input": {
+        "root": [1, 2, 3, 4, 5, 6, 7]
+      },
+      "output": [[1], [2, 3], [4, 5, 6, 7]]
+    },
+    {
+      "id": 5,
+      "input": {
+        "root": [1, 2, null, 3, null, 4]
+      },
+      "output": [[1], [2], [3], [4]]
+    },
+    {
+      "id": 6,
+      "input": {
+        "root": [1, null, 2, null, 3, null, 4]
+      },
+      "output": [[1], [2], [3], [4]]
+    },
+    {
+      "id": 7,
+      "input": {
+        "root": [5, 3, 8, 1, 4, 7, 9]
+      },
+      "output": [[5], [3, 8], [1, 4, 7, 9]]
+    },
+    {
+      "id": 8,
+      "input": {
+        "root": [1, 2, 3]
+      },
+      "output": [[1], [2, 3]]
+    },
+    {
+      "id": 9,
+      "input": {
+        "root": [10, 5, 15, 3, 7, 12, 20]
+      },
+      "output": [[10], [5, 15], [3, 7, 12, 20]]
+    },
+    {
+      "id": 10,
+      "input": {
+        "root": [1, 2, 3, 4, null, null, 5]
+      },
+      "output": [[1], [2, 3], [4, 5]]
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "index": 204,
+  "filename": "adapter-pattern",
+  "title": "Adapter Pattern",
+  "difficulty": "Easy",
+  "tags": [
+    "Design Patterns"
+  ],
+  "keywords": [
+    "adapter",
+    "pattern",
+    "design",
+    "structural",
+    "interface",
+    "square",
+    "circle",
+    "OOP",
+    "wrapper"
+  ],
+  "description": "<h2>Adapter Pattern</h2><p>Implement the Adapter design pattern.</p><p>The Adapter is a structural design pattern that allows incompatible interfaces to work together. It wraps an existing class with a new interface so that it becomes compatible with the client's interface.</p><p>You are given completed <code>SquareHole</code>, <code>Square</code> and <code>Circle</code> classes. A Square fits into a SquareHole if the Square's side length is less than or equal to the SquareHole's length. A Circle has a radius and a Circle fits into a SquareHole if the Circle's diameter is less than or equal to the SquareHole's length.</p><p>Complete the implementation of the <code>CircleToSquareAdapter</code> class such that it adapts a Circle to a Square.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> squareHole = SquareHole(5), square = Square(5), circle = Circle(5)<br><strong>Output:</strong> squareHole.canFit(square) = true, squareHole.canFit(CircleToSquareAdapter(circle)) = false<br><strong>Explanation:</strong> Square with side 5 fits in hole of size 5. Circle with radius 5 has diameter 10, which does not fit.</li><li><strong>Input:</strong> squareHole = SquareHole(5), square = Square(6), circle = Circle(2)<br><strong>Output:</strong> squareHole.canFit(square) = false, squareHole.canFit(CircleToSquareAdapter(circle)) = true<br><strong>Explanation:</strong> Square with side 6 does not fit in hole of size 5. Circle with radius 2 has diameter 4, which fits.</li></ul>",
+  "entry_function": "testCanFit",
+  "template": "class Square:\n    def __init__(self, sideLength: float = 0.0):\n        self.sideLength = sideLength\n\n    def getSideLength(self) -> float:\n        return self.sideLength\n\nclass SquareHole:\n    def __init__(self, sideLength: float):\n        self.sideLength = sideLength\n\n    def canFit(self, square: Square) -> bool:\n        return self.sideLength >= square.getSideLength()\n\nclass Circle:\n    def __init__(self, radius: float):\n        self.radius = radius\n\n    def getRadius(self) -> float:\n        return self.radius\n\nclass CircleToSquareAdapter(Square):\n    # Write your code here\n    pass",
+  "solution_text": "<h3>Adapter Pattern</h3><p><strong>Concept:</strong></p><p>The Adapter Pattern wraps an existing class with a new interface so that it becomes compatible with the client's expected interface. In this case, we adapt a Circle to behave like a Square so it can be used with the SquareHole's <code>canFit</code> method.</p><p><strong>Implementation:</strong></p><ol><li>Create <code>CircleToSquareAdapter</code> that extends <code>Square</code></li><li>Store a reference to the <code>Circle</code> object</li><li>Override <code>getSideLength()</code> to return the circle's diameter (2 * radius)</li></ol><p><strong>Key Insight:</strong></p><p>A circle fits into a square hole if its diameter is less than or equal to the hole's side length. By returning the diameter as the \"side length\", we make the circle compatible with the SquareHole's existing <code>canFit</code> logic.</p><p><strong>Benefits:</strong></p><ul><li><strong>Interface Compatibility:</strong> Allows Circle to work with SquareHole without modifying either class</li><li><strong>Single Responsibility:</strong> Separates interface conversion from business logic</li><li><strong>Open/Closed Principle:</strong> New adapters can be added without modifying existing code</li></ul><p><strong>Time Complexity:</strong> O(1) for all operations</p><p><strong>Space Complexity:</strong> O(1) for the adapter object</p>",
+  "solution_code": "class Square:\n    def __init__(self, sideLength: float = 0.0):\n        self.sideLength = sideLength\n\n    def getSideLength(self) -> float:\n        return self.sideLength\n\nclass SquareHole:\n    def __init__(self, sideLength: float):\n        self.sideLength = sideLength\n\n    def canFit(self, square: Square) -> bool:\n        return self.sideLength >= square.getSideLength()\n\nclass Circle:\n    def __init__(self, radius: float):\n        self.radius = radius\n\n    def getRadius(self) -> float:\n        return self.radius\n\nclass CircleToSquareAdapter(Square):\n    def __init__(self, circle: Circle):\n        self.circle = circle\n\n    def getSideLength(self) -> float:\n        return 2 * self.circle.getRadius()",
+  "prepare": "def testCanFit(holeSize, shapeType, shapeSize):\n    hole = SquareHole(holeSize)\n    if shapeType == 'square':\n        shape = Square(shapeSize)\n    else:\n        circle = Circle(shapeSize)\n        shape = CircleToSquareAdapter(circle)\n    return hole.canFit(shape)\n\ndef prepare(test_case_input):\n    return (test_case_input['holeSize'], test_case_input['shapeType'], test_case_input['shapeSize'])",
+  "verify": "def verify(actual_output, expected_output):\n    def bool_to_string(val):\n        return 'true' if val else 'false'\n    expected_bool = expected_output == 'true' if isinstance(expected_output, str) else expected_output\n    passed = actual_output == expected_bool\n    return [passed, bool_to_string(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "holeSize": 5,
+        "shapeType": "square",
+        "shapeSize": 5
+      },
+      "output": "true"
+    },
+    {
+      "id": 2,
+      "input": {
+        "holeSize": 5,
+        "shapeType": "circle",
+        "shapeSize": 5
+      },
+      "output": "false"
+    },
+    {
+      "id": 3,
+      "input": {
+        "holeSize": 5,
+        "shapeType": "square",
+        "shapeSize": 6
+      },
+      "output": "false"
+    },
+    {
+      "id": 4,
+      "input": {
+        "holeSize": 5,
+        "shapeType": "circle",
+        "shapeSize": 2
+      },
+      "output": "true"
+    },
+    {
+      "id": 5,
+      "input": {
+        "holeSize": 10,
+        "shapeType": "circle",
+        "shapeSize": 5
+      },
+      "output": "true"
+    },
+    {
+      "id": 6,
+      "input": {
+        "holeSize": 10,
+        "shapeType": "circle",
+        "shapeSize": 5.1
+      },
+      "output": "false"
+    },
+    {
+      "id": 7,
+      "input": {
+        "holeSize": 100,
+        "shapeType": "square",
+        "shapeSize": 100
+      },
+      "output": "true"
+    },
+    {
+      "id": 8,
+      "input": {
+        "holeSize": 100,
+        "shapeType": "circle",
+        "shapeSize": 50
+      },
+      "output": "true"
+    },
+    {
+      "id": 9,
+      "input": {
+        "holeSize": 7,
+        "shapeType": "circle",
+        "shapeSize": 3.5
+      },
+      "output": "true"
+    },
+    {
+      "id": 10,
+      "input": {
+        "holeSize": 7,
+        "shapeType": "circle",
+        "shapeSize": 3.6
+      },
+      "output": "false"
+    }
+  ]
+}

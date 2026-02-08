@@ -2702,8 +2702,154 @@
         "leetcode",
         "102"
       ]
+    },
+    {
+      "index": 209,
+      "filename": "prototype-pattern",
+      "title": "Prototype Pattern",
+      "difficulty": "Easy",
+      "tags": [
+        "Design Patterns"
+      ],
+      "keywords": [
+        "prototype",
+        "pattern",
+        "design",
+        "creational",
+        "clone",
+        "copy",
+        "shape",
+        "square",
+        "rectangle",
+        "OOP"
+      ]
+    },
+    {
+      "index": 210,
+      "filename": "fibonacci-number",
+      "title": "Fibonacci Number",
+      "difficulty": "Easy",
+      "tags": [
+        "Math"
+      ],
+      "keywords": [
+        "fibonacci",
+        "number",
+        "recursion",
+        "memoization",
+        "dynamic",
+        "programming",
+        "base",
+        "case",
+        "leetcode",
+        "509"
+      ]
+    },
+    {
+      "index": 211,
+      "filename": "power-of-two",
+      "title": "Power of Two",
+      "difficulty": "Easy",
+      "tags": [
+        "Math"
+      ],
+      "keywords": [
+        "power",
+        "two",
+        "recursion",
+        "bit",
+        "manipulation",
+        "divide",
+        "leetcode",
+        "231"
+      ]
+    },
+    {
+      "index": 212,
+      "filename": "powx-n",
+      "title": "Pow(x, n)",
+      "difficulty": "Medium",
+      "tags": [
+        "Math"
+      ],
+      "keywords": [
+        "pow",
+        "power",
+        "exponent",
+        "divide",
+        "conquer",
+        "recursion",
+        "binary",
+        "exponentiation",
+        "leetcode",
+        "50"
+      ]
+    },
+    {
+      "index": 213,
+      "filename": "subsets",
+      "title": "Subsets",
+      "difficulty": "Medium",
+      "tags": [
+        "Backtracking"
+      ],
+      "keywords": [
+        "subsets",
+        "power",
+        "set",
+        "backtracking",
+        "recursion",
+        "include",
+        "exclude",
+        "combination",
+        "leetcode",
+        "78"
+      ]
+    },
+    {
+      "index": 214,
+      "filename": "merge-k-sorted-lists",
+      "title": "Merge k Sorted Lists",
+      "difficulty": "Hard",
+      "tags": [
+        "Linked List"
+      ],
+      "keywords": [
+        "merge",
+        "sorted",
+        "lists",
+        "linked",
+        "list",
+        "divide",
+        "conquer",
+        "recursion",
+        "heap",
+        "leetcode",
+        "23"
+      ]
+    },
+    {
+      "index": 215,
+      "filename": "basic-calculator",
+      "title": "Basic Calculator",
+      "difficulty": "Hard",
+      "tags": [
+        "Stack"
+      ],
+      "keywords": [
+        "basic",
+        "calculator",
+        "expression",
+        "parentheses",
+        "recursion",
+        "stack",
+        "math",
+        "parsing",
+        "leetcode",
+        "224"
+      ]
     }
   ],
-  "lastUpdated": "2026-02-02T21:17:33.462Z",
-  "totalQuestions": 139
+  "lastUpdated": "2026-02-08T15:10:24.992Z",
+  "totalQuestions": 146
 }

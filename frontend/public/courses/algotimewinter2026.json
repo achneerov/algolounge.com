@@ -5,6 +5,88 @@
   "keywords": ["algorithms", "data structures", "technical interviews", "problem solving", "winter", "two pointers", "arrays", "linked list", "strings", "hash table", "design"],
   "badge": "Winter 2026",
   "units": {
+    "week5": {
+      "title": "Week 5",
+      "description": "Build recursive thinking from simple base cases to divide & conquer and backtracking.",
+      "questions": [
+        {
+          "filename": "prototype-pattern",
+          "urls": [
+            { "url": "https://neetcode.io/problems/prototype", "tooltip": "NeetCode Problem", "color": "#16a34a", "visibleString": "NeetCode" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Design Patterns", "color": "#8b5cf6" }
+          ]
+        },
+        {
+          "filename": "fibonacci-number",
+          "urls": [
+            { "url": "https://leetcode.com/problems/fibonacci-number/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/fibonacci-number", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Math", "color": "#3b82f6" }
+          ]
+        },
+        {
+          "filename": "power-of-two",
+          "urls": [
+            { "url": "https://leetcode.com/problems/power-of-two/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/power-of-two", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Math", "color": "#3b82f6" }
+          ]
+        },
+        {
+          "filename": "powx-n",
+          "urls": [
+            { "url": "https://leetcode.com/problems/powx-n/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/powx-n", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Math", "color": "#3b82f6" }
+          ]
+        },
+        {
+          "filename": "subsets",
+          "urls": [
+            { "url": "https://leetcode.com/problems/subsets/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/subsets", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Backtracking", "color": "#f59e0b" }
+          ]
+        },
+        {
+          "filename": "merge-k-sorted-lists",
+          "urls": [
+            { "url": "https://leetcode.com/problems/merge-k-sorted-lists/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/merge-k-sorted-lists", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Linked List", "color": "#ec4899" }
+          ]
+        },
+        {
+          "filename": "basic-calculator",
+          "urls": [
+            { "url": "https://leetcode.com/problems/basic-calculator/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/basic-calculator", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Stack", "color": "#eab308" }
+          ]
+        }
+      ]
+    },
     "week4": {
       "title": "Week 4",
       "description": "Binary trees fundamentals: comparison, traversal, and tree properties.",

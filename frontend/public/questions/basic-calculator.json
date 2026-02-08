@@ -1,0 +1,40 @@
+{
+  "index": 215,
+  "filename": "basic-calculator",
+  "title": "Basic Calculator",
+  "difficulty": "Hard",
+  "tags": [
+    "Stack"
+  ],
+  "keywords": [
+    "basic",
+    "calculator",
+    "expression",
+    "parentheses",
+    "recursion",
+    "stack",
+    "math",
+    "parsing",
+    "leetcode",
+    "224"
+  ],
+  "description": "<h2>Basic Calculator</h2><p>Given a string <code>s</code> representing a valid mathematical expression, implement a basic calculator to evaluate it, and return the result.</p><p><strong>Note:</strong> You are <strong>not</strong> allowed to use any built-in function which evaluates strings as mathematical expressions, such as <code>eval()</code>.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> s = \"1 + 1\"<br><strong>Output:</strong> 2</li><li><strong>Input:</strong> s = \" 2-1 + 2 \"<br><strong>Output:</strong> 3</li><li><strong>Input:</strong> s = \"(1+(4+5+2)-3)+(6+8)\"<br><strong>Output:</strong> 23</li></ul><h3>Constraints:</h3><ul><li><code>1 &lt;= s.length &lt;= 3 * 10<sup>5</sup></code></li><li><code>s</code> consists of digits, <code>'+'</code>, <code>'-'</code>, <code>'('</code>, <code>')'</code>, and <code>' '</code></li><li><code>s</code> represents a valid expression</li><li><code>'+'</code> is <strong>not</strong> used as a unary operation (i.e., <code>\"+1\"</code> and <code>\"+(2 + 3)\"</code> are invalid)</li><li><code>'-'</code> could be used as a unary operation (i.e., <code>\"-1\"</code> and <code>\"-(2 + 3)\"</code> are valid)</li><li>There will be no two consecutive operators in the input</li></ul>",
+  "entry_function": "calculate",
+  "template": "def calculate(s):\n    ",
+  "solution_text": "<h3>Basic Calculator</h3><p><strong>Algorithm:</strong></p><ol><li>Use a stack to handle parentheses</li><li>Track the current number, result, and sign</li><li>When hitting '(', push current result and sign onto stack</li><li>When hitting ')', pop and combine with the sub-expression result</li></ol><p><strong>Time Complexity:</strong> O(n) - single pass through the string</p><p><strong>Space Complexity:</strong> O(n) - stack depth for nested parentheses</p><p><strong>Key Insights:</strong></p><ul><li>Stack stores the running result and sign before entering parentheses</li><li>On ')', the sub-expression result is multiplied by the stored sign and added to stored result</li><li>Handles unary minus by tracking sign state</li></ul>",
+  "solution_code": "def calculate(s):\n    stack = []\n    result = 0\n    num = 0\n    sign = 1\n    \n    for ch in s:\n        if ch.isdigit():\n            num = num * 10 + int(ch)\n        elif ch == '+':\n            result += sign * num\n            num = 0\n            sign = 1\n        elif ch == '-':\n            result += sign * num\n            num = 0\n            sign = -1\n        elif ch == '(':\n            stack.append(result)\n            stack.append(sign)\n            result = 0\n            sign = 1\n        elif ch == ')':\n            result += sign * num\n            num = 0\n            result *= stack.pop()  # sign before parenthesis\n            result += stack.pop()  # result before parenthesis\n    \n    result += sign * num\n    return result",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['s'],)",
+  "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+  "test_cases": [
+    { "id": 1, "input": { "s": "1 + 1" }, "output": 2 },
+    { "id": 2, "input": { "s": " 2-1 + 2 " }, "output": 3 },
+    { "id": 3, "input": { "s": "(1+(4+5+2)-3)+(6+8)" }, "output": 23 },
+    { "id": 4, "input": { "s": "1" }, "output": 1 },
+    { "id": 5, "input": { "s": "100" }, "output": 100 },
+    { "id": 6, "input": { "s": "1-(2+3)" }, "output": -4 },
+    { "id": 7, "input": { "s": "10 - (3 + (2 - 1))" }, "output": 6 },
+    { "id": 8, "input": { "s": "-(3+2)" }, "output": -5 },
+    { "id": 9, "input": { "s": "1 + (2 - (3 + (4 - 5)))" }, "output": 1 },
+    { "id": 10, "input": { "s": "0 + 0" }, "output": 0 }
+  ]
+}

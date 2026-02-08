@@ -1,0 +1,80 @@
+{
+  "index": 209,
+  "filename": "prototype-pattern",
+  "title": "Prototype Pattern",
+  "difficulty": "Easy",
+  "tags": [
+    "Design Patterns"
+  ],
+  "keywords": [
+    "prototype",
+    "pattern",
+    "design",
+    "creational",
+    "clone",
+    "copy",
+    "shape",
+    "square",
+    "rectangle",
+    "OOP"
+  ],
+  "description": "<h2>Prototype Pattern</h2><p>Implement the Prototype design pattern.</p><p>The Prototype is a creational design pattern that allows an object to copy itself. It is particularly useful when the creation of an object is more convenient through copying an existing object than through creation from scratch.</p><p>You are given a <code>Shape</code> prototype interface that supports cloning itself within the <code>Rectangle</code> and <code>Square</code> classes.</p><p>You need to implement the following:</p><ul><li>The <code>clone()</code> method in the <code>Rectangle</code> class which returns a new instance of the <code>Rectangle</code> class.</li><li>The <code>clone()</code> method in the <code>Square</code> class which returns a new instance of the <code>Square</code> class.</li><li>The <code>clone_shapes()</code> method in the <code>Test</code> class which returns a list of cloned shapes.</li></ul><h3>Examples:</h3><ul><li><strong>Input:</strong> square = Square(10)<br><strong>Output:</strong> square.clone().get_length() = 10, square is not square.clone() = True<br><strong>Explanation:</strong> Clone has same length but is a different object.</li><li><strong>Input:</strong> rectangle = Rectangle(10, 20)<br><strong>Output:</strong> rectangle.clone().get_width() = 10, rectangle.clone().get_height() = 20<br><strong>Explanation:</strong> Clone has same dimensions but is a different object.</li></ul><p><strong>Note:</strong> Each clone should have the same attributes as the original shape, but they should not be the same object instance.</p>",
+  "entry_function": "testPrototype",
+  "template": "from abc import ABC, abstractmethod\nfrom typing import List\n\nclass Shape(ABC):\n    @abstractmethod\n    def clone(self):\n        pass\n\nclass Square(Shape):\n    def __init__(self, length: int):\n        self.length = length\n\n    def get_length(self) -> int:\n        return self.length\n\n    def clone(self) -> Shape:\n        # Write your code here\n        pass\n\nclass Rectangle(Shape):\n    def __init__(self, width: int, height: int):\n        self.width = width\n        self.height = height\n\n    def get_width(self) -> int:\n        return self.width\n\n    def get_height(self) -> int:\n        return self.height\n\n    def clone(self) -> Shape:\n        # Write your code here\n        pass\n\nclass Test:\n    def clone_shapes(self, shapes: List[Shape]) -> List[Shape]:\n        # Write your code here\n        pass",
+  "solution_text": "<h3>Prototype Pattern</h3><p><strong>Concept:</strong></p><p>The Prototype Pattern enables objects to create copies of themselves without coupling to their specific classes. Each class implements a <code>clone()</code> method that returns a new instance with the same attributes.</p><p><strong>Implementation:</strong></p><ol><li><code>Square.clone()</code> returns a new <code>Square</code> with the same length</li><li><code>Rectangle.clone()</code> returns a new <code>Rectangle</code> with the same width and height</li><li><code>Test.clone_shapes()</code> iterates through shapes and calls <code>clone()</code> on each</li></ol><p><strong>Key Insight:</strong></p><p>The caller doesn't need to know the concrete class — it just calls <code>clone()</code> on the <code>Shape</code> interface. This makes it easy to copy objects polymorphically.</p><p><strong>Benefits:</strong></p><ul><li><strong>Decoupling:</strong> Client code doesn't depend on concrete classes</li><li><strong>Convenience:</strong> Complex objects can be copied without rebuilding from scratch</li><li><strong>Polymorphism:</strong> Clone works through the abstract interface</li></ul><p><strong>Time Complexity:</strong> O(1) for individual clone, O(n) for clone_shapes</p><p><strong>Space Complexity:</strong> O(1) for individual clone, O(n) for clone_shapes</p>",
+  "solution_code": "from abc import ABC, abstractmethod\nfrom typing import List\n\nclass Shape(ABC):\n    @abstractmethod\n    def clone(self):\n        pass\n\nclass Square(Shape):\n    def __init__(self, length: int):\n        self.length = length\n\n    def get_length(self) -> int:\n        return self.length\n\n    def clone(self) -> Shape:\n        return Square(self.length)\n\nclass Rectangle(Shape):\n    def __init__(self, width: int, height: int):\n        self.width = width\n        self.height = height\n\n    def get_width(self) -> int:\n        return self.width\n\n    def get_height(self) -> int:\n        return self.height\n\n    def clone(self) -> Shape:\n        return Rectangle(self.width, self.height)\n\nclass Test:\n    def clone_shapes(self, shapes: List[Shape]) -> List[Shape]:\n        return [shape.clone() for shape in shapes]",
+  "prepare": "def testPrototype(action, params):\n    if action == 'square_clone':\n        s = Square(params[0])\n        c = s.clone()\n        if s is c:\n            return 'FAIL: clone is same object'\n        return c.get_length()\n    elif action == 'rectangle_clone':\n        r = Rectangle(params[0], params[1])\n        c = r.clone()\n        if r is c:\n            return 'FAIL: clone is same object'\n        return [c.get_width(), c.get_height()]\n    elif action == 'clone_shapes':\n        shapes = []\n        for p in params:\n            if p[0] == 'square':\n                shapes.append(Square(p[1]))\n            else:\n                shapes.append(Rectangle(p[1], p[2]))\n        t = Test()\n        cloned = t.clone_shapes(shapes)\n        for i in range(len(shapes)):\n            if shapes[i] is cloned[i]:\n                return 'FAIL: clone at index ' + str(i) + ' is same object'\n        result = []\n        for c in cloned:\n            if isinstance(c, Square):\n                result.append(['square', c.get_length()])\n            else:\n                result.append(['rectangle', c.get_width(), c.get_height()])\n        return result\n\ndef prepare(test_case_input):\n    return (test_case_input['action'], test_case_input['params'])",
+  "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": { "action": "square_clone", "params": [10] },
+      "output": 10
+    },
+    {
+      "id": 2,
+      "input": { "action": "square_clone", "params": [0] },
+      "output": 0
+    },
+    {
+      "id": 3,
+      "input": { "action": "square_clone", "params": [100] },
+      "output": 100
+    },
+    {
+      "id": 4,
+      "input": { "action": "rectangle_clone", "params": [10, 20] },
+      "output": [10, 20]
+    },
+    {
+      "id": 5,
+      "input": { "action": "rectangle_clone", "params": [5, 15] },
+      "output": [5, 15]
+    },
+    {
+      "id": 6,
+      "input": { "action": "rectangle_clone", "params": [0, 0] },
+      "output": [0, 0]
+    },
+    {
+      "id": 7,
+      "input": { "action": "clone_shapes", "params": [["square", 10], ["rectangle", 10, 20]] },
+      "output": [["square", 10], ["rectangle", 10, 20]]
+    },
+    {
+      "id": 8,
+      "input": { "action": "clone_shapes", "params": [["square", 5], ["square", 15]] },
+      "output": [["square", 5], ["square", 15]]
+    },
+    {
+      "id": 9,
+      "input": { "action": "clone_shapes", "params": [["rectangle", 3, 7], ["rectangle", 8, 12]] },
+      "output": [["rectangle", 3, 7], ["rectangle", 8, 12]]
+    },
+    {
+      "id": 10,
+      "input": { "action": "clone_shapes", "params": [["square", 42], ["rectangle", 1, 2], ["square", 7]] },
+      "output": [["square", 42], ["rectangle", 1, 2], ["square", 7]]
+    }
+  ]
+}

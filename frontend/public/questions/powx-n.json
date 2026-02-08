@@ -1,0 +1,40 @@
+{
+  "index": 212,
+  "filename": "powx-n",
+  "title": "Pow(x, n)",
+  "difficulty": "Medium",
+  "tags": [
+    "Math"
+  ],
+  "keywords": [
+    "pow",
+    "power",
+    "exponent",
+    "divide",
+    "conquer",
+    "recursion",
+    "binary",
+    "exponentiation",
+    "leetcode",
+    "50"
+  ],
+  "description": "<h2>Pow(x, n)</h2><p>Implement <code>pow(x, n)</code>, which calculates <code>x</code> raised to the power <code>n</code> (i.e., <code>x<sup>n</sup></code>).</p><h3>Examples:</h3><ul><li><strong>Input:</strong> x = 2.00000, n = 10<br><strong>Output:</strong> 1024.00000</li><li><strong>Input:</strong> x = 2.10000, n = 3<br><strong>Output:</strong> 9.26100</li><li><strong>Input:</strong> x = 2.00000, n = -2<br><strong>Output:</strong> 0.25000</li></ul><h3>Constraints:</h3><ul><li><code>-100.0 &lt; x &lt; 100.0</code></li><li><code>-2<sup>31</sup> &lt;= n &lt;= 2<sup>31</sup> - 1</code></li><li><code>n</code> is an integer</li><li>Either <code>x</code> is not zero or <code>n &gt; 0</code></li></ul>",
+  "entry_function": "myPow",
+  "template": "def myPow(x, n):\n    ",
+  "solution_text": "<h3>Pow(x, n)</h3><p><strong>Algorithm:</strong></p><ol><li>Handle negative exponent by inverting x and negating n</li><li>Use recursive binary exponentiation (fast power)</li><li>If n is even: pow(x, n) = pow(x * x, n / 2)</li><li>If n is odd: pow(x, n) = x * pow(x * x, (n - 1) / 2)</li></ol><p><strong>Time Complexity:</strong> O(log n) - halving exponent each step</p><p><strong>Space Complexity:</strong> O(log n) - recursion stack</p><p><strong>Key Insights:</strong></p><ul><li>Naive approach of multiplying x n times is O(n) — too slow for large n</li><li>Binary exponentiation reduces to O(log n) by squaring</li><li>Must handle negative exponents: x^(-n) = (1/x)^n</li></ul>",
+  "solution_code": "def myPow(x, n):\n    if n == 0:\n        return 1.0\n    if n < 0:\n        x = 1 / x\n        n = -n\n    \n    if n % 2 == 0:\n        return myPow(x * x, n // 2)\n    else:\n        return x * myPow(x * x, (n - 1) // 2)",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['x'], test_case_input['n'])",
+  "verify": "def verify(actual_output, expected_output):\n    passed = abs(actual_output - expected_output) < 1e-4\n    output_str = '{:.5f}'.format(actual_output)\n    return [passed, output_str]",
+  "test_cases": [
+    { "id": 1, "input": { "x": 2.0, "n": 10 }, "output": 1024.0 },
+    { "id": 2, "input": { "x": 2.1, "n": 3 }, "output": 9.261 },
+    { "id": 3, "input": { "x": 2.0, "n": -2 }, "output": 0.25 },
+    { "id": 4, "input": { "x": 1.0, "n": 100 }, "output": 1.0 },
+    { "id": 5, "input": { "x": 0.5, "n": 3 }, "output": 0.125 },
+    { "id": 6, "input": { "x": 3.0, "n": 0 }, "output": 1.0 },
+    { "id": 7, "input": { "x": -2.0, "n": 3 }, "output": -8.0 },
+    { "id": 8, "input": { "x": -2.0, "n": 4 }, "output": 16.0 },
+    { "id": 9, "input": { "x": 0.5, "n": -2 }, "output": 4.0 },
+    { "id": 10, "input": { "x": 2.0, "n": 20 }, "output": 1048576.0 }
+  ]
+}

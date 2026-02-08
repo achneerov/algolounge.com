@@ -1,0 +1,81 @@
+{
+  "index": 214,
+  "filename": "merge-k-sorted-lists",
+  "title": "Merge k Sorted Lists",
+  "difficulty": "Hard",
+  "tags": [
+    "Linked List"
+  ],
+  "keywords": [
+    "merge",
+    "sorted",
+    "lists",
+    "linked",
+    "list",
+    "divide",
+    "conquer",
+    "recursion",
+    "heap",
+    "leetcode",
+    "23"
+  ],
+  "description": "<h2>Merge k Sorted Lists</h2><p>You are given an array of <code>k</code> linked-lists <code>lists</code>, each linked-list is sorted in ascending order.</p><p>Merge all the linked-lists into one sorted linked-list and return it.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> lists = [[1,4,5],[1,3,4],[2,6]]<br><strong>Output:</strong> [1,1,2,3,4,4,5,6]</li><li><strong>Input:</strong> lists = []<br><strong>Output:</strong> []</li><li><strong>Input:</strong> lists = [[]]<br><strong>Output:</strong> []</li></ul><h3>Constraints:</h3><ul><li><code>k == lists.length</code></li><li><code>0 &lt;= k &lt;= 10000</code></li><li><code>0 &lt;= lists[i].length &lt;= 500</code></li><li><code>-10000 &lt;= lists[i][j] &lt;= 10000</code></li><li><code>lists[i]</code> is sorted in ascending order</li></ul>",
+  "entry_function": "mergeKLists",
+  "template": "# Definition for singly-linked list.\n# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\ndef mergeKLists(lists):\n    ",
+  "solution_text": "<h3>Merge k Sorted Lists</h3><p><strong>Algorithm (Divide & Conquer):</strong></p><ol><li>Recursively split the list of linked lists in half</li><li>Merge each pair of lists using a helper merge function</li><li>Continue until only one merged list remains</li></ol><p><strong>Time Complexity:</strong> O(N log k) where N is total nodes and k is number of lists</p><p><strong>Space Complexity:</strong> O(log k) recursion stack for divide & conquer</p><p><strong>Key Insights:</strong></p><ul><li>Divide and conquer reduces k-way merge to log(k) rounds of 2-way merges</li><li>Each round processes all N nodes once, giving O(N log k) total</li><li>This is more efficient than merging lists one by one, which would be O(Nk)</li></ul>",
+  "solution_code": "def mergeKLists(lists):\n    if not lists:\n        return None\n    \n    def mergeTwoLists(l1, l2):\n        dummy = ListNode(0)\n        current = dummy\n        while l1 and l2:\n            if l1.val <= l2.val:\n                current.next = l1\n                l1 = l1.next\n            else:\n                current.next = l2\n                l2 = l2.next\n            current = current.next\n        current.next = l1 or l2\n        return dummy.next\n    \n    def divideAndConquer(lists, left, right):\n        if left == right:\n            return lists[left]\n        mid = (left + right) // 2\n        l = divideAndConquer(lists, left, mid)\n        r = divideAndConquer(lists, mid + 1, right)\n        return mergeTwoLists(l, r)\n    \n    return divideAndConquer(lists, 0, len(lists) - 1)",
+  "prepare": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef prepare(test_case_input):\n    def build_list(arr):\n        if not arr:\n            return None\n        head = ListNode(arr[0])\n        current = head\n        for val in arr[1:]:\n            current.next = ListNode(val)\n            current = current.next\n        return head\n    \n    lists = [build_list(arr) for arr in test_case_input['lists']]\n    return (lists,)",
+  "verify": "def verify(actual_output, expected_output):\n    def list_to_array(node):\n        result = []\n        while node:\n            result.append(node.val)\n            node = node.next\n        return result\n    \n    def list_to_string(lst):\n        if not lst:\n            return '[]'\n        return '[' + ', '.join(str(x) for x in lst) + ']'\n    \n    actual_array = list_to_array(actual_output)\n    passed = actual_array == expected_output\n    output_str = list_to_string(actual_array)\n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": { "lists": [[1, 4, 5], [1, 3, 4], [2, 6]] },
+      "output": [1, 1, 2, 3, 4, 4, 5, 6]
+    },
+    {
+      "id": 2,
+      "input": { "lists": [] },
+      "output": []
+    },
+    {
+      "id": 3,
+      "input": { "lists": [[]] },
+      "output": []
+    },
+    {
+      "id": 4,
+      "input": { "lists": [[1]] },
+      "output": [1]
+    },
+    {
+      "id": 5,
+      "input": { "lists": [[1, 2, 3], [4, 5, 6]] },
+      "output": [1, 2, 3, 4, 5, 6]
+    },
+    {
+      "id": 6,
+      "input": { "lists": [[5], [3], [1], [4], [2]] },
+      "output": [1, 2, 3, 4, 5]
+    },
+    {
+      "id": 7,
+      "input": { "lists": [[-1, 0, 1], [-2, 2], [-3, 3]] },
+      "output": [-3, -2, -1, 0, 1, 2, 3]
+    },
+    {
+      "id": 8,
+      "input": { "lists": [[1, 1, 1], [1, 1, 1]] },
+      "output": [1, 1, 1, 1, 1, 1]
+    },
+    {
+      "id": 9,
+      "input": { "lists": [[], [1], []] },
+      "output": [1]
+    },
+    {
+      "id": 10,
+      "input": { "lists": [[1, 3, 5, 7], [2, 4, 6, 8], [0, 9, 10]] },
+      "output": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    }
+  ]
+}

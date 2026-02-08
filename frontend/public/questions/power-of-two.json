@@ -1,0 +1,38 @@
+{
+  "index": 211,
+  "filename": "power-of-two",
+  "title": "Power of Two",
+  "difficulty": "Easy",
+  "tags": [
+    "Math"
+  ],
+  "keywords": [
+    "power",
+    "two",
+    "recursion",
+    "bit",
+    "manipulation",
+    "divide",
+    "leetcode",
+    "231"
+  ],
+  "description": "<h2>Power of Two</h2><p>Given an integer <code>n</code>, return <code>true</code> if it is a power of two. Otherwise, return <code>false</code>.</p><p>An integer <code>n</code> is a power of two, if there exists an integer <code>x</code> such that <code>n == 2<sup>x</sup></code>.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> n = 1<br><strong>Output:</strong> true<br><strong>Explanation:</strong> 2<sup>0</sup> = 1</li><li><strong>Input:</strong> n = 16<br><strong>Output:</strong> true<br><strong>Explanation:</strong> 2<sup>4</sup> = 16</li><li><strong>Input:</strong> n = 3<br><strong>Output:</strong> false</li></ul><h3>Constraints:</h3><ul><li><code>-2<sup>31</sup> &lt;= n &lt;= 2<sup>31</sup> - 1</code></li></ul>",
+  "entry_function": "isPowerOfTwo",
+  "template": "def isPowerOfTwo(n):\n    ",
+  "solution_text": "<h3>Power of Two</h3><p><strong>Algorithm:</strong></p><ol><li>Base case: if n &lt;= 0, return False</li><li>Base case: if n == 1, return True (2<sup>0</sup> = 1)</li><li>If n is odd, return False (not divisible by 2)</li><li>Recursively check n // 2</li></ol><p><strong>Time Complexity:</strong> O(log n) - halving each time</p><p><strong>Space Complexity:</strong> O(log n) - recursion stack depth</p><p><strong>Key Insights:</strong></p><ul><li>A power of two repeatedly divides evenly by 2 until reaching 1</li><li>Alternatively, bit trick: n &gt; 0 and (n &amp; (n - 1)) == 0</li><li>Powers of two in binary have exactly one 1-bit</li></ul>",
+  "solution_code": "def isPowerOfTwo(n):\n    if n <= 0:\n        return False\n    if n == 1:\n        return True\n    if n % 2 != 0:\n        return False\n    return isPowerOfTwo(n // 2)",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['n'],)",
+  "verify": "def verify(actual_output, expected_output):\n    def bool_to_string(val):\n        return 'true' if val else 'false'\n    expected_bool = expected_output == 'true' if isinstance(expected_output, str) else expected_output\n    passed = actual_output == expected_bool\n    return [passed, bool_to_string(actual_output)]",
+  "test_cases": [
+    { "id": 1, "input": { "n": 1 }, "output": "true" },
+    { "id": 2, "input": { "n": 16 }, "output": "true" },
+    { "id": 3, "input": { "n": 3 }, "output": "false" },
+    { "id": 4, "input": { "n": 0 }, "output": "false" },
+    { "id": 5, "input": { "n": -1 }, "output": "false" },
+    { "id": 6, "input": { "n": 2 }, "output": "true" },
+    { "id": 7, "input": { "n": 4 }, "output": "true" },
+    { "id": 8, "input": { "n": 1024 }, "output": "true" },
+    { "id": 9, "input": { "n": 6 }, "output": "false" },
+    { "id": 10, "input": { "n": -16 }, "output": "false" }
+  ]
+}

@@ -2848,8 +2848,29 @@
         "leetcode",
         "224"
       ]
+    },
+    {
+      "index": 216,
+      "filename": "unique-paths",
+      "title": "Unique Paths",
+      "difficulty": "Medium",
+      "tags": [
+        "2D Dynamic Programming"
+      ],
+      "keywords": [
+        "unique",
+        "paths",
+        "grid",
+        "robot",
+        "dynamic",
+        "programming",
+        "dp",
+        "2d",
+        "combinatorics",
+        "math"
+      ]
     }
   ],
-  "lastUpdated": "2026-02-08T15:10:24.992Z",
-  "totalQuestions": 146
+  "lastUpdated": "2026-02-16T02:24:32.589Z",
+  "totalQuestions": 147
 }

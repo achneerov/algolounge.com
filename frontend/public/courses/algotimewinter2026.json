@@ -2,9 +2,92 @@
   "filename": "algotimewinter2026",
   "course_name": "Algotime Winter 2026",
   "course_description": "Welcome to Algotime Winter 2026! Practice these key algorithm problems to sharpen your skills.",
-  "keywords": ["algorithms", "data structures", "technical interviews", "problem solving", "winter", "two pointers", "arrays", "linked list", "strings", "hash table", "design"],
+  "keywords": ["algorithms", "data structures", "technical interviews", "problem solving", "winter", "two pointers", "arrays", "linked list", "strings", "hash table", "design", "dynamic programming", "bit manipulation"],
   "badge": "Winter 2026",
   "units": {
+    "week6": {
+      "title": "Week 6",
+      "description": "Transform recursive solutions into efficient dynamic programs — from memoization to tabulation.",
+      "questions": [
+        {
+          "filename": "single-number",
+          "urls": [
+            { "url": "https://leetcode.com/problems/single-number/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/single-number", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Bit Manipulation", "color": "#6366f1" }
+          ]
+        },
+        {
+          "filename": "climbing-stairs",
+          "urls": [
+            { "url": "https://leetcode.com/problems/climbing-stairs/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/climbing-stairs", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Dynamic Programming", "color": "#f97316" }
+          ]
+        },
+        {
+          "filename": "min-cost-climbing-stairs",
+          "urls": [
+            { "url": "https://leetcode.com/problems/min-cost-climbing-stairs/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/min-cost-climbing-stairs", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Dynamic Programming", "color": "#f97316" }
+          ]
+        },
+        {
+          "filename": "house-robber",
+          "urls": [
+            { "url": "https://leetcode.com/problems/house-robber/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/house-robber", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Dynamic Programming", "color": "#f97316" }
+          ]
+        },
+        {
+          "filename": "maximum-subarray",
+          "urls": [
+            { "url": "https://leetcode.com/problems/maximum-subarray/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/maximum-subarray", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Dynamic Programming", "color": "#f97316" }
+          ]
+        },
+        {
+          "filename": "unique-paths",
+          "urls": [
+            { "url": "https://leetcode.com/problems/unique-paths/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/unique-paths", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Dynamic Programming", "color": "#f97316" }
+          ]
+        },
+        {
+          "filename": "distinct-subsequences",
+          "urls": [
+            { "url": "https://leetcode.com/problems/distinct-subsequences/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/distinct-subsequences", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Dynamic Programming", "color": "#f97316" }
+          ]
+        }
+      ]
+    },
     "week5": {
       "title": "Week 5",
       "description": "Build recursive thinking from simple base cases to divide & conquer and backtracking.",

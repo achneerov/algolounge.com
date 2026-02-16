@@ -3,7 +3,7 @@
   "filename": "maximum-subarray",
   "title": "Maximum Subarray",
   "difficulty": "Medium",
-  "tags": [],
+  "tags": ["Dynamic Programming"],
   "keywords": [
     "maximum",
     "subarray",

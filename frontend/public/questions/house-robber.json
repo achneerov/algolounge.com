@@ -3,7 +3,7 @@
   "filename": "house-robber",
   "title": "House Robber",
   "difficulty": "Medium",
-  "tags": [],
+  "tags": ["Dynamic Programming"],
   "keywords": [
     "house",
     "robber",

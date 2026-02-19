@@ -1,14 +1,15 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Tag } from '../../../services/tag.service';
 
 interface ParsedSection {
   type: 'title' | 'description' | 'examples' | 'constraints' | 'generic';
   content: string;
   examples?: Array<{
-    input?: string;
+    input?: string | SafeHtml;
     output?: string;
-    explanation?: string;
+    explanation?: string | SafeHtml;
   }>;
   constraints?: string[];
 }
@@ -26,10 +27,20 @@ export class DescriptionComponent implements OnChanges {
   @Input() questionTags: Tag[] = [];
   parsedSections: ParsedSection[] = [];
 
+  constructor(private sanitizer: DomSanitizer) {}
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['content'] && this.content) {
       this.parsedSections = this.parseContent(this.content);
     }
+  }
+
+  // Bypass sanitization for HTML that contains inline styles.
+  // Content comes from static JSON files in the codebase, not user input.
+  private trust(html: string): string | SafeHtml {
+    return html.includes('style=')
+      ? this.sanitizer.bypassSecurityTrustHtml(html)
+      : html;
   }
 
   private parseContent(html: string): ParsedSection[] {
@@ -104,12 +115,12 @@ export class DescriptionComponent implements OnChanges {
 
     if (!listElement) return null;
 
-    const examples: Array<{ input?: string; output?: string; explanation?: string }> = [];
+    const examples: Array<{ input?: string | SafeHtml; output?: string; explanation?: string | SafeHtml }> = [];
     const items = Array.from(listElement.querySelectorAll('li'));
 
     items.forEach(item => {
       const text = item.innerHTML;
-      const example: { input?: string; output?: string; explanation?: string } = {};
+      const example: { input?: string | SafeHtml; output?: string; explanation?: string | SafeHtml } = {};
 
       // Try to extract with <strong> tags first (newer format)
       // Only stop at <br> when followed by Output (allows multi-line inputs)
@@ -118,8 +129,8 @@ export class DescriptionComponent implements OnChanges {
         let inputText = inputMatch[1].trim();
         inputText = inputText.replace(/<\/?code>/gi, '');
         inputText = inputText.replace(/<br\s*\/?>/gi, '\n'); // Convert <br> to newlines
-        inputText = inputText.replace(/<[^>]+>/gi, ''); // Remove remaining HTML tags
-        example.input = inputText.trim();
+        inputText = inputText.replace(/<(?!\/?span\b)[^>]+>/gi, ''); // Remove non-span HTML tags
+        example.input = this.trust(inputText.trim());
       } else {
         // Try plain text format (older format): "Input: ... <br>"
         inputMatch = text.match(/Input:\s*(.*?)(?=<br\s*\/?>\s*Output:|Output:|$)/is);
@@ -127,8 +138,8 @@ export class DescriptionComponent implements OnChanges {
           let inputText = inputMatch[1].trim();
           inputText = inputText.replace(/<\/?code>/gi, '');
           inputText = inputText.replace(/<br\s*\/?>/gi, '\n'); // Convert <br> to newlines
-          inputText = inputText.replace(/<[^>]+>/gi, ''); // Remove remaining HTML tags
-          example.input = inputText.trim();
+          inputText = inputText.replace(/<(?!\/?span\b)[^>]+>/gi, ''); // Remove non-span HTML tags
+          example.input = this.trust(inputText.trim());
         }
       }
 
@@ -139,7 +150,7 @@ export class DescriptionComponent implements OnChanges {
         let outputText = outputMatch[1].trim();
         outputText = outputText.replace(/<\/?code>/gi, '');
         outputText = outputText.replace(/<br\s*\/?>/gi, '\n'); // Convert <br> to newlines
-        outputText = outputText.replace(/<[^>]+>/gi, ''); // Remove remaining HTML tags
+        outputText = outputText.replace(/<(?!\/?span\b)[^>]+>/gi, ''); // Remove non-span HTML tags
         example.output = outputText.trim();
       } else {
         // Try plain text format
@@ -148,7 +159,7 @@ export class DescriptionComponent implements OnChanges {
           let outputText = outputMatch[1].trim();
           outputText = outputText.replace(/<\/?code>/gi, '');
           outputText = outputText.replace(/<br\s*\/?>/gi, '\n'); // Convert <br> to newlines
-          outputText = outputText.replace(/<[^>]+>/gi, ''); // Remove remaining HTML tags
+          outputText = outputText.replace(/<(?!\/?span\b)[^>]+>/gi, ''); // Remove non-span HTML tags
           example.output = outputText.trim();
         }
       }
@@ -156,11 +167,11 @@ export class DescriptionComponent implements OnChanges {
       // Extract Explanation (both formats)
       let explanationMatch = text.match(/<strong>Explanation:<\/strong>\s*(.*?)(?=<\/li>|$)/is);
       if (explanationMatch) {
-        example.explanation = explanationMatch[1].trim();
+        example.explanation = this.trust(explanationMatch[1].trim());
       } else {
         explanationMatch = text.match(/Explanation:\s*(.*?)(?=<\/li>|$)/is);
         if (explanationMatch) {
-          example.explanation = explanationMatch[1].trim();
+          example.explanation = this.trust(explanationMatch[1].trim());
         }
       }
 

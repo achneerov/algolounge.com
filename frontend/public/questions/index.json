@@ -1118,7 +1118,7 @@
       "title": "Climbing Stairs",
       "difficulty": "Easy",
       "tags": [
-        "1D Dynamic Programming"
+        "Dynamic Programming"
       ],
       "keywords": [
         "climbing",
@@ -1414,7 +1414,9 @@
       "filename": "house-robber",
       "title": "House Robber",
       "difficulty": "Medium",
-      "tags": [],
+      "tags": [
+        "Dynamic Programming"
+      ],
       "keywords": [
         "house",
         "robber",
@@ -1637,7 +1639,9 @@
       "filename": "maximum-subarray",
       "title": "Maximum Subarray",
       "difficulty": "Medium",
-      "tags": [],
+      "tags": [
+        "Dynamic Programming"
+      ],
       "keywords": [
         "maximum",
         "subarray",
@@ -2150,7 +2154,7 @@
       "title": "Distinct Subsequences",
       "difficulty": "Hard",
       "tags": [
-        "2D Dynamic Programming"
+        "Dynamic Programming"
       ],
       "keywords": [
         "dynamic-programming",
@@ -2165,7 +2169,7 @@
       "title": "Min Cost Climbing Stairs",
       "difficulty": "Easy",
       "tags": [
-        "1D Dynamic Programming"
+        "Dynamic Programming"
       ],
       "keywords": [
         "min",
@@ -2855,7 +2859,7 @@
       "title": "Unique Paths",
       "difficulty": "Medium",
       "tags": [
-        "2D Dynamic Programming"
+        "Dynamic Programming"
       ],
       "keywords": [
         "unique",
@@ -2869,8 +2873,34 @@
         "combinatorics",
         "math"
       ]
+    },
+    {
+      "index": 217,
+      "filename": "shut-the-box",
+      "title": "Shut the Box",
+      "difficulty": "Hard",
+      "tags": [
+        "Matrix",
+        "BFS",
+        "3D Geometry",
+        "Enumeration"
+      ],
+      "keywords": [
+        "shut",
+        "box",
+        "cuboid",
+        "net",
+        "fold",
+        "grid",
+        "panels",
+        "surface area",
+        "3d",
+        "bfs",
+        "mesh",
+        "rectangular"
+      ]
     }
   ],
-  "lastUpdated": "2026-02-16T02:24:32.589Z",
-  "totalQuestions": 147
+  "lastUpdated": "2026-02-19T20:13:53.199Z",
+  "totalQuestions": 148
 }

@@ -16,6 +16,14 @@
   box-sizing: border-box;
   background: transparent;
   color: var(--color-text-primary);
+
+  // Box-face colors for colored grid examples
+  :deep(.face-f) { color: #4d9de0; } // front  – blue
+  :deep(.face-k) { color: #e05252; } // back   – red
+  :deep(.face-t) { color: #3bb273; } // top    – green
+  :deep(.face-o) { color: #9b59b6; } // bottom – purple
+  :deep(.face-l) { color: #e67e22; } // left   – orange
+  :deep(.face-r) { color: #f1c40f; } // right  – yellow
 }
 
 .parsed-content {

@@ -1,0 +1,263 @@
+{
+  "index": 221,
+  "filename": "pacific-atlantic-water-flow",
+  "title": "Pacific Atlantic Water Flow",
+  "difficulty": "Medium",
+  "tags": [
+    "Graph",
+    "DFS"
+  ],
+  "keywords": [
+    "pacific",
+    "atlantic",
+    "water",
+    "flow",
+    "ocean",
+    "grid",
+    "dfs",
+    "bfs",
+    "matrix",
+    "graph",
+    "leetcode",
+    "417",
+    "medium"
+  ],
+  "description": "<h2>Pacific Atlantic Water Flow</h2><p>There is an <code>m x n</code> rectangular island that borders both the <strong>Pacific Ocean</strong> and <strong>Atlantic Ocean</strong>. The Pacific Ocean touches the island's left and top edges, and the Atlantic Ocean touches the island's right and bottom edges.</p><p>The island is partitioned into a grid of square cells. You are given an <code>m x n</code> integer matrix <code>heights</code> where <code>heights[r][c]</code> represents the height above sea level of the cell at coordinate <code>(r, c)</code>.</p><p>The island receives a lot of rain, and the rain water can flow to neighboring cells directly north, south, east, and west if the neighboring cell's height is <strong>less than or equal to</strong> the current cell's height. Water can flow from any cell adjacent to an ocean into the ocean.</p><p>Return a <strong>2D list</strong> of grid coordinates <code>result</code> where <code>result[i] = [r<sub>i</sub>, c<sub>i</sub>]</code> denotes that rain water can flow from cell <code>(r<sub>i</sub>, c<sub>i</sub>)</code> to <strong>both</strong> the Pacific and Atlantic oceans.</p><h3>Examples:</h3><ul><li>Input: <code>heights = [[1,2,2,3,5],[3,2,3,4,4],[2,4,5,3,1],[6,7,1,4,5],[5,1,1,2,4]]</code><br><br>Output: <code>[[0,4],[1,3],[1,4],[2,2],[3,0],[3,1],[4,0]]</code><br><br>Explanation: These cells can reach both oceans.</li><li>Input: <code>heights = [[1]]</code><br><br>Output: <code>[[0,0]]</code></li></ul><h3>Constraints:</h3><ul><li><code>m == heights.length</code></li><li><code>n == heights[r].length</code></li><li><code>1 <= m, n <= 200</code></li><li><code>0 <= heights[r][c] <= 10^5</code></li></ul>",
+  "entry_function": "pacificAtlantic",
+  "template": "def pacificAtlantic(heights):\n    ",
+  "solution_text": "<h3>Pacific Atlantic Water Flow</h3><p><strong>Algorithm:</strong></p><ol><li>Instead of flowing water downhill from every cell, reverse the problem: start DFS from ocean borders and flow uphill</li><li>Run DFS from all Pacific border cells (top row + left column)</li><li>Run DFS from all Atlantic border cells (bottom row + right column)</li><li>Find cells reachable from both oceans (intersection of two sets)</li></ol><p><strong>Time Complexity:</strong> O(m × n) - each cell visited at most twice (once per ocean)</p><p><strong>Space Complexity:</strong> O(m × n) - two visited sets</p><p><strong>Key Insights:</strong></p><ul><li>Reverse the flow direction: start from oceans and go uphill</li><li>Two separate DFS/BFS traversals, one per ocean</li><li>Cells in the intersection of both visited sets form the answer</li><li>Much more efficient than brute-force DFS from every cell</li></ul>",
+  "solution_code": "def pacificAtlantic(heights):\n    if not heights or not heights[0]:\n        return []\n    \n    rows, cols = len(heights), len(heights[0])\n    pacific = set()\n    atlantic = set()\n    \n    def dfs(r, c, visited, prev_height):\n        if (r, c) in visited or r < 0 or r >= rows or c < 0 or c >= cols:\n            return\n        if heights[r][c] < prev_height:\n            return\n        \n        visited.add((r, c))\n        dfs(r + 1, c, visited, heights[r][c])\n        dfs(r - 1, c, visited, heights[r][c])\n        dfs(r, c + 1, visited, heights[r][c])\n        dfs(r, c - 1, visited, heights[r][c])\n    \n    for c in range(cols):\n        dfs(0, c, pacific, heights[0][c])          # Top row -> Pacific\n        dfs(rows - 1, c, atlantic, heights[rows - 1][c])  # Bottom row -> Atlantic\n    \n    for r in range(rows):\n        dfs(r, 0, pacific, heights[r][0])            # Left col -> Pacific\n        dfs(r, cols - 1, atlantic, heights[r][cols - 1])  # Right col -> Atlantic\n    \n    result = []\n    for r in range(rows):\n        for c in range(cols):\n            if (r, c) in pacific and (r, c) in atlantic:\n                result.append([r, c])\n    \n    return result",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for pacificAtlantic function\"\"\"\n    return (test_case_input['heights'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the pacific atlantic result - order independent\"\"\"\n    # Sort both for comparison (order doesn't matter)\n    actual_sorted = sorted([list(x) for x in actual_output])\n    expected_sorted = sorted([list(x) for x in expected_output])\n    \n    passed = actual_sorted == expected_sorted\n    output_str = str(actual_sorted)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "heights": [
+          [
+            1,
+            2,
+            2,
+            3,
+            5
+          ],
+          [
+            3,
+            2,
+            3,
+            4,
+            4
+          ],
+          [
+            2,
+            4,
+            5,
+            3,
+            1
+          ],
+          [
+            6,
+            7,
+            1,
+            4,
+            5
+          ],
+          [
+            5,
+            1,
+            1,
+            2,
+            4
+          ]
+        ]
+      },
+      "output": [
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "heights": [
+          [
+            1
+          ]
+        ]
+      },
+      "output": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "input": {
+        "heights": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "output": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 4,
+      "input": {
+        "heights": [
+          [
+            10,
+            10,
+            10
+          ],
+          [
+            10,
+            1,
+            10
+          ],
+          [
+            10,
+            10,
+            10
+          ]
+        ]
+      },
+      "output": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 5,
+      "input": {
+        "heights": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            8,
+            9,
+            4
+          ],
+          [
+            7,
+            6,
+            5
+          ]
+        ]
+      },
+      "output": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ]
+    }
+  ]
+}

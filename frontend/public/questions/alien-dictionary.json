@@ -1,0 +1,98 @@
+{
+  "index": 217,
+  "filename": "alien-dictionary",
+  "title": "Alien Dictionary",
+  "difficulty": "Hard",
+  "tags": [
+    "Graph",
+    "Topological Sort"
+  ],
+  "keywords": [
+    "alien",
+    "dictionary",
+    "order",
+    "characters",
+    "graph",
+    "topological",
+    "sort",
+    "leetcode",
+    "269",
+    "neetcode",
+    "hard"
+  ],
+  "description": "<h2>Alien Dictionary</h2><p>There is a foreign language which uses the latin alphabet, but the order among letters is <strong>not</strong> \"a\", \"b\", \"c\" ... \"z\" as in English.</p><p>You receive a list of non-empty strings <code>words</code> from the dictionary, where the words are <strong>sorted lexicographically based on the rules of this new language</strong>.</p><p>Derive the order of letters in this language. If the order is invalid, return an empty string. If there are multiple valid orderings of letters, return <strong>any</strong> of them.</p><p>A string <code>a</code> is lexicographically smaller than a string <code>b</code> if either of the following is true:</p><ul><li>The first letter where they differ is smaller in <code>a</code> than in <code>b</code>.</li><li><code>a</code> is a prefix of <code>b</code> (and <code>a != b</code>).</li></ul><h3>Examples:</h3><ul><li>Input: <code>words = [\"z\",\"o\"]</code><br><br>Output: <code>\"zo\"</code><br><br>Explanation: From \"z\" and \"o\", we know 'z' < 'o'.</li><li>Input: <code>words = [\"hrn\",\"hrf\",\"er\",\"enn\",\"rfnn\"]</code><br><br>Output: <code>\"hernf\"</code><br><br>Explanation: From the given words we can derive: 'h' < 'e' < 'r', 'n' < 'f', 'e' < 'r'.</li></ul><h3>Constraints:</h3><ul><li><code>1 <= words.length <= 100</code></li><li><code>1 <= words[i].length <= 100</code></li><li><code>words[i]</code> consists of only lowercase English letters</li></ul>",
+  "entry_function": "alienOrder",
+  "template": "def alienOrder(words):\n    ",
+  "solution_text": "<h3>Alien Dictionary</h3><p><strong>Algorithm:</strong></p><ol><li>Build a graph of character dependencies by comparing adjacent words</li><li>For each adjacent pair, find the first differing character — this gives an edge (earlier char → later char)</li><li>Detect invalid input: if a longer word comes before its prefix, return \"\"</li><li>Use BFS topological sort (Kahn's algorithm) to derive the ordering</li><li>If not all characters are included in the result, a cycle exists — return \"\"</li></ol><p><strong>Time Complexity:</strong> O(C) where C is the total length of all words</p><p><strong>Space Complexity:</strong> O(1) or O(U + min(U², N)) where U is unique characters, N is number of words</p><p><strong>Key Insights:</strong></p><ul><li>Compare adjacent words to extract ordering constraints</li><li>Build directed graph of character precedence</li><li>Topological sort gives valid character ordering</li><li>Handle edge case: word is prefix of previous word (invalid)</li></ul>",
+  "solution_code": "def alienOrder(words):\n    from collections import defaultdict, deque\n    \n    # Build graph: adjacency list and in-degree\n    adj = defaultdict(set)\n    in_degree = {c: 0 for word in words for c in word}\n    \n    for i in range(len(words) - 1):\n        w1, w2 = words[i], words[i + 1]\n        min_len = min(len(w1), len(w2))\n        \n        # Invalid case: longer word is prefix\n        if len(w1) > len(w2) and w1[:min_len] == w2[:min_len]:\n            return \"\"\n        \n        for j in range(min_len):\n            if w1[j] != w2[j]:\n                if w2[j] not in adj[w1[j]]:\n                    adj[w1[j]].add(w2[j])\n                    in_degree[w2[j]] += 1\n                break\n    \n    # BFS topological sort\n    queue = deque([c for c in in_degree if in_degree[c] == 0])\n    result = []\n    \n    while queue:\n        c = queue.popleft()\n        result.append(c)\n        for neighbor in adj[c]:\n            in_degree[neighbor] -= 1\n            if in_degree[neighbor] == 0:\n                queue.append(neighbor)\n    \n    if len(result) != len(in_degree):\n        return \"\"\n    \n    return \"\".join(result)",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for alienOrder function\"\"\"\n    return (test_case_input['words'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the alien dictionary result\"\"\"\n    passed = actual_output == expected_output\n    output_str = '\"' + str(actual_output) + '\"'\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "words": [
+          "z",
+          "o"
+        ]
+      },
+      "output": "zo"
+    },
+    {
+      "id": 2,
+      "input": {
+        "words": [
+          "hrn",
+          "hrf",
+          "er",
+          "enn",
+          "rfnn"
+        ]
+      },
+      "output": "hernf"
+    },
+    {
+      "id": 3,
+      "input": {
+        "words": [
+          "wrt",
+          "wrf",
+          "er",
+          "ett",
+          "rftt"
+        ]
+      },
+      "output": "wertf"
+    },
+    {
+      "id": 4,
+      "input": {
+        "words": [
+          "z",
+          "x",
+          "z"
+        ]
+      },
+      "output": ""
+    },
+    {
+      "id": 5,
+      "input": {
+        "words": [
+          "abc",
+          "ab"
+        ]
+      },
+      "output": ""
+    },
+    {
+      "id": 6,
+      "input": {
+        "words": [
+          "z"
+        ]
+      },
+      "output": "z"
+    }
+  ]
+}

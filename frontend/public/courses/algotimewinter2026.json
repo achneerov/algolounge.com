@@ -2,9 +2,92 @@
   "filename": "algotimewinter2026",
   "course_name": "Algotime Winter 2026",
   "course_description": "Welcome to Algotime Winter 2026! Practice these key algorithm problems to sharpen your skills.",
-  "keywords": ["algorithms", "data structures", "technical interviews", "problem solving", "winter", "two pointers", "arrays", "linked list", "strings", "hash table", "design", "dynamic programming", "bit manipulation"],
+  "keywords": ["algorithms", "data structures", "technical interviews", "problem solving", "winter", "two pointers", "arrays", "linked list", "strings", "hash table", "design", "dynamic programming", "bit manipulation", "graph", "topological sort", "bfs", "dfs"],
   "badge": "Winter 2026",
   "units": {
+    "week7": {
+      "title": "Week 7",
+      "description": "Explore graph representations, traversals, and classic graph algorithms — from BFS/DFS to topological sort.",
+      "questions": [
+        {
+          "filename": "reverse-vowels-of-a-string",
+          "urls": [
+            { "url": "https://leetcode.com/problems/reverse-vowels-of-a-string/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/reverse-vowels-of-a-string", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "String", "color": "#3b82f6" }
+          ]
+        },
+        {
+          "filename": "move-zeroes",
+          "urls": [
+            { "url": "https://leetcode.com/problems/move-zeroes/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/move-zeroes", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Arrays and Hashing", "color": "#3b82f6" }
+          ]
+        },
+        {
+          "filename": "find-the-town-judge",
+          "urls": [
+            { "url": "https://leetcode.com/problems/find-the-town-judge/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/find-the-town-judge", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Graph", "color": "#14b8a6" }
+          ]
+        },
+        {
+          "filename": "pacific-atlantic-water-flow",
+          "urls": [
+            { "url": "https://leetcode.com/problems/pacific-atlantic-water-flow/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/pacific-atlantic-water-flow", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Graph", "color": "#14b8a6" }
+          ]
+        },
+        {
+          "filename": "course-schedule-ii",
+          "urls": [
+            { "url": "https://leetcode.com/problems/course-schedule-ii/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/course-schedule-ii", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Graph", "color": "#14b8a6" }
+          ]
+        },
+        {
+          "filename": "alien-dictionary",
+          "urls": [
+            { "url": "https://leetcode.com/problems/alien-dictionary/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/alien-dictionary", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Graph", "color": "#14b8a6" }
+          ]
+        },
+        {
+          "filename": "swim-in-rising-water",
+          "urls": [
+            { "url": "https://leetcode.com/problems/swim-in-rising-water/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/swim-in-rising-water", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Graph", "color": "#14b8a6" }
+          ]
+        }
+      ]
+    },
     "week6": {
       "title": "Week 6",
       "description": "Transform recursive solutions into efficient dynamic programs — from memoization to tabulation.",

@@ -1,0 +1,161 @@
+{
+  "index": 218,
+  "filename": "course-schedule-ii",
+  "title": "Course Schedule II",
+  "difficulty": "Medium",
+  "tags": [
+    "Graph",
+    "Topological Sort"
+  ],
+  "keywords": [
+    "course",
+    "schedule",
+    "order",
+    "graph",
+    "topological",
+    "sort",
+    "bfs",
+    "kahn",
+    "leetcode",
+    "210",
+    "medium"
+  ],
+  "description": "<h2>Course Schedule II</h2><p>There are a total of <code>numCourses</code> courses you have to take, labeled from <code>0</code> to <code>numCourses - 1</code>. You are given an array <code>prerequisites</code> where <code>prerequisites[i] = [a<sub>i</sub>, b<sub>i</sub>]</code> indicates that you <strong>must</strong> take course <code>b<sub>i</sub></code> first if you want to take course <code>a<sub>i</sub></code>.</p><p>Return <em>the ordering of courses you should take to finish all courses</em>. If there are many valid answers, return <strong>any</strong> of them. If it is impossible to finish all courses, return <strong>an empty array</strong>.</p><h3>Examples:</h3><ul><li>Input: <code>numCourses = 2, prerequisites = [[1,0]]</code><br><br>Output: <code>[0,1]</code><br><br>Explanation: There are 2 courses. To take course 1 you should have finished course 0. So the correct order is [0,1].</li><li>Input: <code>numCourses = 4, prerequisites = [[1,0],[2,0],[3,1],[3,2]]</code><br><br>Output: <code>[0,1,2,3]</code> or <code>[0,2,1,3]</code><br><br>Explanation: There are 4 courses. To take course 3 you should have finished both courses 1 and 2. Both courses 1 and 2 should be taken after course 0.</li><li>Input: <code>numCourses = 1, prerequisites = []</code><br><br>Output: <code>[0]</code></li></ul><h3>Constraints:</h3><ul><li><code>1 <= numCourses <= 2000</code></li><li><code>0 <= prerequisites.length <= numCourses * (numCourses - 1)</code></li><li><code>prerequisites[i].length == 2</code></li><li><code>0 <= a<sub>i</sub>, b<sub>i</sub> < numCourses</code></li><li><code>a<sub>i</sub> != b<sub>i</sub></code></li><li>All pairs <code>[a<sub>i</sub>, b<sub>i</sub>]</code> are distinct</li></ul>",
+  "entry_function": "findOrder",
+  "template": "def findOrder(numCourses, prerequisites):\n    ",
+  "solution_text": "<h3>Course Schedule II</h3><p><strong>Algorithm (Kahn's / BFS Topological Sort):</strong></p><ol><li>Build adjacency list and compute in-degree for each course</li><li>Add all courses with in-degree 0 to a queue (no prerequisites)</li><li>Process queue: remove course, add to result, decrement in-degree of neighbors</li><li>When a neighbor's in-degree becomes 0, add it to the queue</li><li>If all courses are in result, return it; otherwise return empty array (cycle exists)</li></ol><p><strong>Time Complexity:</strong> O(V + E) - process each course and prerequisite once</p><p><strong>Space Complexity:</strong> O(V + E) - adjacency list, in-degree array, and queue</p><p><strong>Key Insights:</strong></p><ul><li>Extension of Course Schedule I: now return the actual ordering</li><li>Kahn's algorithm naturally produces a valid topological ordering</li><li>If result has fewer courses than numCourses, a cycle exists</li><li>Multiple valid orderings may exist</li></ul>",
+  "solution_code": "def findOrder(numCourses, prerequisites):\n    from collections import deque, defaultdict\n    \n    # Build adjacency list and in-degree count\n    graph = defaultdict(list)\n    in_degree = [0] * numCourses\n    \n    for course, prereq in prerequisites:\n        graph[prereq].append(course)\n        in_degree[course] += 1\n    \n    # Start with courses that have no prerequisites\n    queue = deque()\n    for i in range(numCourses):\n        if in_degree[i] == 0:\n            queue.append(i)\n    \n    result = []\n    \n    while queue:\n        course = queue.popleft()\n        result.append(course)\n        \n        for neighbor in graph[course]:\n            in_degree[neighbor] -= 1\n            if in_degree[neighbor] == 0:\n                queue.append(neighbor)\n    \n    return result if len(result) == numCourses else []",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for findOrder function\"\"\"\n    return (test_case_input['numCourses'], test_case_input['prerequisites'])",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the course order result\"\"\"\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    \n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "numCourses": 2,
+        "prerequisites": [
+          [
+            1,
+            0
+          ]
+        ]
+      },
+      "output": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "numCourses": 4,
+        "prerequisites": [
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            3,
+            2
+          ]
+        ]
+      },
+      "output": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": 3,
+      "input": {
+        "numCourses": 1,
+        "prerequisites": []
+      },
+      "output": [
+        0
+      ]
+    },
+    {
+      "id": 4,
+      "input": {
+        "numCourses": 2,
+        "prerequisites": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "output": []
+    },
+    {
+      "id": 5,
+      "input": {
+        "numCourses": 3,
+        "prerequisites": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ]
+      },
+      "output": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "id": 6,
+      "input": {
+        "numCourses": 5,
+        "prerequisites": [
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            3,
+            2
+          ]
+        ]
+      },
+      "output": [
+        0,
+        4,
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

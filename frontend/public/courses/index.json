@@ -33,11 +33,15 @@
         "hash table",
         "design",
         "dynamic programming",
-        "bit manipulation"
+        "bit manipulation",
+        "graph",
+        "topological sort",
+        "bfs",
+        "dfs"
       ],
       "description": "Welcome to Algotime Winter 2026! Practice these key algorithm problems to sharpen your skills.",
       "badge": "Winter 2026",
-      "stats": "40 questions • 6 stages"
+      "stats": "47 questions • 7 stages"
     },
     {
       "filename": "foundations",
@@ -73,6 +77,6 @@
       "stats": "23 questions • 5 stages"
     }
   ],
-  "lastUpdated": "2026-02-19T20:13:53.218Z",
+  "lastUpdated": "2026-02-23T22:07:48.273Z",
   "totalCourses": 4
 }

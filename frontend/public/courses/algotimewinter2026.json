@@ -2,9 +2,81 @@
   "filename": "algotimewinter2026",
   "course_name": "Algotime Winter 2026",
   "course_description": "Welcome to Algotime Winter 2026! Practice these key algorithm problems to sharpen your skills.",
-  "keywords": ["algorithms", "data structures", "technical interviews", "problem solving", "winter", "two pointers", "arrays", "linked list", "strings", "hash table", "design", "dynamic programming", "bit manipulation", "graph", "topological sort", "bfs", "dfs"],
+  "keywords": ["algorithms", "data structures", "technical interviews", "problem solving", "winter", "two pointers", "arrays", "linked list", "strings", "hash table", "design", "dynamic programming", "bit manipulation", "graph", "topological sort", "bfs", "dfs", "heap", "priority queue"],
   "badge": "Winter 2026",
   "units": {
+    "week8": {
+      "title": "Week 8",
+      "description": "Master heaps and priority queues — from basic heap operations to merging sorted streams and designing real-world systems.",
+      "questions": [
+        {
+          "filename": "contains-duplicate",
+          "urls": [
+            { "url": "https://leetcode.com/problems/contains-duplicate/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/contains-duplicate", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Arrays and Hashing", "color": "#3b82f6" }
+          ]
+        },
+        {
+          "filename": "last-stone-weight",
+          "urls": [
+            { "url": "https://leetcode.com/problems/last-stone-weight/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/last-stone-weight", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Heap / Priority Queue", "color": "#f97316" }
+          ]
+        },
+        {
+          "filename": "kth-largest-element-in-a-stream",
+          "urls": [
+            { "url": "https://leetcode.com/problems/kth-largest-element-in-a-stream/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/kth-largest-element-in-a-stream", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Heap / Priority Queue", "color": "#f97316" }
+          ]
+        },
+        {
+          "filename": "meeting-rooms-ii",
+          "urls": [
+            { "url": "https://leetcode.com/problems/meeting-rooms-ii/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/meeting-rooms-ii", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Heap / Priority Queue", "color": "#f97316" }
+          ]
+        },
+        {
+          "filename": "design-twitter",
+          "urls": [
+            { "url": "https://leetcode.com/problems/design-twitter/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/design-twitter", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Heap / Priority Queue", "color": "#f97316" }
+          ]
+        },
+        {
+          "filename": "find-median-from-data-stream",
+          "urls": [
+            { "url": "https://leetcode.com/problems/find-median-from-data-stream/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/find-median-from-data-stream", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Heap / Priority Queue", "color": "#f97316" }
+          ]
+        }
+      ]
+    },
     "week7": {
       "title": "Week 7",
       "description": "Explore graph representations, traversals, and classic graph algorithms — from BFS/DFS to topological sort.",

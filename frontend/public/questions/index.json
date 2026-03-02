@@ -40,6 +40,30 @@
     },
     {
       "index": 0,
+      "filename": "design-twitter",
+      "title": "Design Twitter",
+      "difficulty": "Medium",
+      "tags": [
+        "Heap / Priority Queue"
+      ],
+      "keywords": [
+        "design",
+        "twitter",
+        "heap",
+        "priority",
+        "queue",
+        "hash",
+        "map",
+        "set",
+        "merge",
+        "feed",
+        "follow",
+        "leetcode",
+        "355"
+      ]
+    },
+    {
+      "index": 0,
       "filename": "factory-method-pattern",
       "title": "Factory Method Pattern",
       "difficulty": "Easy",
@@ -219,6 +243,30 @@
         "top",
         "empty",
         "LIFO"
+      ]
+    },
+    {
+      "index": 0,
+      "filename": "kth-largest-element-in-a-stream",
+      "title": "Kth Largest Element in a Stream",
+      "difficulty": "Easy",
+      "tags": [
+        "Heap / Priority Queue"
+      ],
+      "keywords": [
+        "kth",
+        "largest",
+        "element",
+        "stream",
+        "heap",
+        "priority",
+        "queue",
+        "min",
+        "heap",
+        "class",
+        "design",
+        "leetcode",
+        "703"
       ]
     },
     {
@@ -510,7 +558,7 @@
       "difficulty": "Medium",
       "tags": [
         "Intervals",
-        "Heap"
+        "Heap / Priority Queue"
       ],
       "keywords": [
         "meeting",
@@ -2876,6 +2924,29 @@
     },
     {
       "index": 217,
+      "filename": "alien-dictionary 2",
+      "title": "Alien Dictionary",
+      "difficulty": "Hard",
+      "tags": [
+        "Graph",
+        "Topological Sort"
+      ],
+      "keywords": [
+        "alien",
+        "dictionary",
+        "order",
+        "characters",
+        "graph",
+        "topological",
+        "sort",
+        "leetcode",
+        "269",
+        "neetcode",
+        "hard"
+      ]
+    },
+    {
+      "index": 217,
       "filename": "alien-dictionary",
       "title": "Alien Dictionary",
       "difficulty": "Hard",
@@ -2895,6 +2966,55 @@
         "269",
         "neetcode",
         "hard"
+      ]
+    },
+    {
+      "index": 217,
+      "filename": "shut-the-box",
+      "title": "Shut the Box",
+      "difficulty": "Hard",
+      "tags": [
+        "Matrix",
+        "BFS",
+        "3D Geometry",
+        "Enumeration"
+      ],
+      "keywords": [
+        "shut",
+        "box",
+        "cuboid",
+        "net",
+        "fold",
+        "grid",
+        "panels",
+        "surface area",
+        "3d",
+        "bfs",
+        "mesh",
+        "rectangular"
+      ]
+    },
+    {
+      "index": 218,
+      "filename": "course-schedule-ii 2",
+      "title": "Course Schedule II",
+      "difficulty": "Medium",
+      "tags": [
+        "Graph",
+        "Topological Sort"
+      ],
+      "keywords": [
+        "course",
+        "schedule",
+        "order",
+        "graph",
+        "topological",
+        "sort",
+        "bfs",
+        "kahn",
+        "leetcode",
+        "210",
+        "medium"
       ]
     },
     {
@@ -2922,6 +3042,26 @@
     },
     {
       "index": 219,
+      "filename": "find-the-town-judge 2",
+      "title": "Find the Town Judge",
+      "difficulty": "Easy",
+      "tags": [
+        "Graph"
+      ],
+      "keywords": [
+        "town",
+        "judge",
+        "trust",
+        "graph",
+        "indegree",
+        "outdegree",
+        "leetcode",
+        "997",
+        "easy"
+      ]
+    },
+    {
+      "index": 219,
       "filename": "find-the-town-judge",
       "title": "Find the Town Judge",
       "difficulty": "Easy",
@@ -2937,6 +3077,27 @@
         "outdegree",
         "leetcode",
         "997",
+        "easy"
+      ]
+    },
+    {
+      "index": 220,
+      "filename": "move-zeroes 2",
+      "title": "Move Zeroes",
+      "difficulty": "Easy",
+      "tags": [
+        "Arrays and Hashing",
+        "Two Pointers"
+      ],
+      "keywords": [
+        "move",
+        "zeroes",
+        "zeros",
+        "array",
+        "two pointers",
+        "in-place",
+        "leetcode",
+        "283",
         "easy"
       ]
     },
@@ -2959,6 +3120,31 @@
         "leetcode",
         "283",
         "easy"
+      ]
+    },
+    {
+      "index": 221,
+      "filename": "pacific-atlantic-water-flow 2",
+      "title": "Pacific Atlantic Water Flow",
+      "difficulty": "Medium",
+      "tags": [
+        "Graph",
+        "DFS"
+      ],
+      "keywords": [
+        "pacific",
+        "atlantic",
+        "water",
+        "flow",
+        "ocean",
+        "grid",
+        "dfs",
+        "bfs",
+        "matrix",
+        "graph",
+        "leetcode",
+        "417",
+        "medium"
       ]
     },
     {
@@ -2988,6 +3174,25 @@
     },
     {
       "index": 222,
+      "filename": "reverse-vowels-of-a-string 2",
+      "title": "Reverse Vowels of a String",
+      "difficulty": "Easy",
+      "tags": [
+        "String",
+        "Two Pointers"
+      ],
+      "keywords": [
+        "reverse",
+        "vowels",
+        "string",
+        "two pointers",
+        "leetcode",
+        "345",
+        "easy"
+      ]
+    },
+    {
+      "index": 222,
       "filename": "reverse-vowels-of-a-string",
       "title": "Reverse Vowels of a String",
       "difficulty": "Easy",
@@ -3003,6 +3208,32 @@
         "leetcode",
         "345",
         "easy"
+      ]
+    },
+    {
+      "index": 223,
+      "filename": "swim-in-rising-water 2",
+      "title": "Swim in Rising Water",
+      "difficulty": "Hard",
+      "tags": [
+        "Graph",
+        "BFS",
+        "Heap / Priority Queue"
+      ],
+      "keywords": [
+        "swim",
+        "rising",
+        "water",
+        "grid",
+        "graph",
+        "bfs",
+        "dijkstra",
+        "heap",
+        "priority queue",
+        "binary search",
+        "leetcode",
+        "778",
+        "hard"
       ]
     },
     {
@@ -3030,34 +3261,8 @@
         "778",
         "hard"
       ]
-    },
-    {
-      "index": 217,
-      "filename": "shut-the-box",
-      "title": "Shut the Box",
-      "difficulty": "Hard",
-      "tags": [
-        "Matrix",
-        "BFS",
-        "3D Geometry",
-        "Enumeration"
-      ],
-      "keywords": [
-        "shut",
-        "box",
-        "cuboid",
-        "net",
-        "fold",
-        "grid",
-        "panels",
-        "surface area",
-        "3d",
-        "bfs",
-        "mesh",
-        "rectangular"
-      ]
     }
   ],
-  "lastUpdated": "2026-02-19T20:13:53.199Z",
-  "totalQuestions": 148
+  "lastUpdated": "2026-03-02T16:41:46.814Z",
+  "totalQuestions": 164
 }

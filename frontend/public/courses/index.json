@@ -37,11 +37,13 @@
         "graph",
         "topological sort",
         "bfs",
-        "dfs"
+        "dfs",
+        "heap",
+        "priority queue"
       ],
       "description": "Welcome to Algotime Winter 2026! Practice these key algorithm problems to sharpen your skills.",
       "badge": "Winter 2026",
-      "stats": "47 questions • 7 stages"
+      "stats": "53 questions • 8 stages"
     },
     {
       "filename": "foundations",
@@ -77,6 +79,6 @@
       "stats": "23 questions • 5 stages"
     }
   ],
-  "lastUpdated": "2026-02-23T22:07:48.273Z",
+  "lastUpdated": "2026-03-02T16:41:46.823Z",
   "totalCourses": 4
 }

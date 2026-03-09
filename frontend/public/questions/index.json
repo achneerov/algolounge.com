@@ -3261,8 +3261,106 @@
         "778",
         "hard"
       ]
+    },
+    {
+      "index": 224,
+      "filename": "longest-substring-without-repeating-characters",
+      "title": "Longest Substring Without Repeating Characters",
+      "difficulty": "Medium",
+      "tags": [
+        "Sliding Window"
+      ],
+      "keywords": [
+        "longest",
+        "substring",
+        "without",
+        "repeating",
+        "characters",
+        "sliding",
+        "window",
+        "hash",
+        "set",
+        "leetcode",
+        "3"
+      ]
+    },
+    {
+      "index": 225,
+      "filename": "longest-repeating-character-replacement",
+      "title": "Longest Repeating Character Replacement",
+      "difficulty": "Medium",
+      "tags": [
+        "Sliding Window"
+      ],
+      "keywords": [
+        "longest",
+        "repeating",
+        "character",
+        "replacement",
+        "sliding",
+        "window",
+        "leetcode",
+        "424"
+      ]
+    },
+    {
+      "index": 226,
+      "filename": "permutation-in-string",
+      "title": "Permutation In String",
+      "difficulty": "Medium",
+      "tags": [
+        "Sliding Window"
+      ],
+      "keywords": [
+        "permutation",
+        "string",
+        "sliding",
+        "window",
+        "hash",
+        "map",
+        "anagram",
+        "leetcode",
+        "567"
+      ]
+    },
+    {
+      "index": 227,
+      "filename": "minimum-window-substring",
+      "title": "Minimum Window Substring",
+      "difficulty": "Hard",
+      "tags": [
+        "Sliding Window"
+      ],
+      "keywords": [
+        "minimum",
+        "window",
+        "substring",
+        "sliding",
+        "hash",
+        "map",
+        "leetcode",
+        "76"
+      ]
+    },
+    {
+      "index": 228,
+      "filename": "sliding-window-maximum",
+      "title": "Sliding Window Maximum",
+      "difficulty": "Hard",
+      "tags": [
+        "Sliding Window"
+      ],
+      "keywords": [
+        "sliding",
+        "window",
+        "maximum",
+        "deque",
+        "monotonic",
+        "leetcode",
+        "239"
+      ]
     }
   ],
-  "lastUpdated": "2026-03-02T16:41:46.814Z",
-  "totalQuestions": 164
+  "lastUpdated": "2026-03-09T19:56:12.243Z",
+  "totalQuestions": 169
 }

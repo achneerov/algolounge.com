@@ -2,9 +2,81 @@
   "filename": "algotimewinter2026",
   "course_name": "Algotime Winter 2026",
   "course_description": "Welcome to Algotime Winter 2026! Practice these key algorithm problems to sharpen your skills.",
-  "keywords": ["algorithms", "data structures", "technical interviews", "problem solving", "winter", "two pointers", "arrays", "linked list", "strings", "hash table", "design", "dynamic programming", "bit manipulation", "graph", "topological sort", "bfs", "dfs", "heap", "priority queue"],
+  "keywords": ["algorithms", "data structures", "technical interviews", "problem solving", "winter", "two pointers", "arrays", "linked list", "strings", "hash table", "design", "dynamic programming", "bit manipulation", "graph", "topological sort", "bfs", "dfs", "heap", "priority queue", "sliding window"],
   "badge": "Winter 2026",
   "units": {
+    "week9": {
+      "title": "Week 9",
+      "description": "Master the sliding window technique — from fixed-size windows to dynamic shrinking and expanding for optimal substrings and subarrays.",
+      "questions": [
+        {
+          "filename": "best-time-to-buy-and-sell-stock",
+          "urls": [
+            { "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/best-time-to-buy-and-sell-stock", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Easy", "color": "#22c55e" },
+            { "text": "Sliding Window", "color": "#06b6d4" }
+          ]
+        },
+        {
+          "filename": "longest-substring-without-repeating-characters",
+          "urls": [
+            { "url": "https://leetcode.com/problems/longest-substring-without-repeating-characters/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/longest-substring-without-repeating-characters", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Sliding Window", "color": "#06b6d4" }
+          ]
+        },
+        {
+          "filename": "longest-repeating-character-replacement",
+          "urls": [
+            { "url": "https://leetcode.com/problems/longest-repeating-character-replacement/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/longest-repeating-character-replacement", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Sliding Window", "color": "#06b6d4" }
+          ]
+        },
+        {
+          "filename": "permutation-in-string",
+          "urls": [
+            { "url": "https://leetcode.com/problems/permutation-in-string/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/permutation-in-string", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Medium", "color": "#f59e0b" },
+            { "text": "Sliding Window", "color": "#06b6d4" }
+          ]
+        },
+        {
+          "filename": "minimum-window-substring",
+          "urls": [
+            { "url": "https://leetcode.com/problems/minimum-window-substring/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/minimum-window-substring", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Sliding Window", "color": "#06b6d4" }
+          ]
+        },
+        {
+          "filename": "sliding-window-maximum",
+          "urls": [
+            { "url": "https://leetcode.com/problems/sliding-window-maximum/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
+            { "url": "https://neetcode.io/solutions/sliding-window-maximum", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+          ],
+          "tags": [
+            { "text": "Hard", "color": "#ef4444" },
+            { "text": "Sliding Window", "color": "#06b6d4" }
+          ]
+        }
+      ]
+    },
     "week8": {
       "title": "Week 8",
       "description": "Master heaps and priority queues — from basic heap operations to merging sorted streams and designing real-world systems.",

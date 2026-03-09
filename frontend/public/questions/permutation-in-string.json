@@ -1,0 +1,37 @@
+{
+  "index": 226,
+  "filename": "permutation-in-string",
+  "title": "Permutation In String",
+  "difficulty": "Medium",
+  "tags": ["Sliding Window"],
+  "keywords": [
+    "permutation",
+    "string",
+    "sliding",
+    "window",
+    "hash",
+    "map",
+    "anagram",
+    "leetcode",
+    "567"
+  ],
+  "description": "<h2>Permutation In String</h2><p>Given two strings <code>s1</code> and <code>s2</code>, return <code>true</code> if <code>s2</code> contains a permutation of <code>s1</code>, or <code>false</code> otherwise.</p><p>In other words, return <code>true</code> if one of <code>s1</code>'s permutations is the substring of <code>s2</code>.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> <code>s1 = \"ab\"</code>, <code>s2 = \"eidbaooo\"</code><br><strong>Output:</strong> <code>true</code><br><strong>Explanation:</strong> <code>s2</code> contains one permutation of <code>s1</code>: <code>\"ba\"</code>.</li><li><strong>Input:</strong> <code>s1 = \"ab\"</code>, <code>s2 = \"eidboaoo\"</code><br><strong>Output:</strong> <code>false</code></li></ul><h3>Constraints:</h3><ul><li><code>1 <= s1.length, s2.length <= 10<sup>4</sup></code></li><li><code>s1</code> and <code>s2</code> consist of lowercase English letters.</li></ul>",
+  "entry_function": "checkInclusion",
+  "template": "def checkInclusion(s1, s2):\n    ",
+  "solution_text": "<h3>Permutation In String</h3><p><strong>Algorithm (Sliding Window with Frequency Matching):</strong></p><ol><li>Count character frequencies of <code>s1</code>.</li><li>Use a sliding window of size <code>len(s1)</code> over <code>s2</code>.</li><li>Track how many character frequencies match between the window and <code>s1</code>.</li><li>When all 26 characters match, we found a permutation.</li><li>Slide the window: add the new right character, remove the old left character, update match count.</li></ol><p><strong>Time Complexity:</strong> O(n) where n = len(s2)</p><p><strong>Space Complexity:</strong> O(1) — fixed 26-character arrays</p>",
+  "solution_code": "def checkInclusion(s1, s2):\n    if len(s1) > len(s2):\n        return False\n    \n    s1_count = {}\n    window = {}\n    \n    for c in s1:\n        s1_count[c] = s1_count.get(c, 0) + 1\n    \n    for i in range(len(s2)):\n        c = s2[i]\n        window[c] = window.get(c, 0) + 1\n        \n        if i >= len(s1):\n            left = s2[i - len(s1)]\n            window[left] -= 1\n            if window[left] == 0:\n                del window[left]\n        \n        if window == s1_count:\n            return True\n    \n    return False",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['s1'], test_case_input['s2'])",
+  "verify": "def verify(actual_output, expected_output):\n    expected_bool = expected_output == 'true'\n    passed = actual_output == expected_bool\n    return [passed, str(actual_output)]",
+  "test_cases": [
+    { "id": 1, "input": { "s1": "ab", "s2": "eidbaooo" }, "output": "true" },
+    { "id": 2, "input": { "s1": "ab", "s2": "eidboaoo" }, "output": "false" },
+    { "id": 3, "input": { "s1": "a", "s2": "a" }, "output": "true" },
+    { "id": 4, "input": { "s1": "ab", "s2": "a" }, "output": "false" },
+    { "id": 5, "input": { "s1": "adc", "s2": "dcda" }, "output": "true" },
+    { "id": 6, "input": { "s1": "abc", "s2": "bbbca" }, "output": "true" },
+    { "id": 7, "input": { "s1": "abc", "s2": "ccccbbbbaaaa" }, "output": "false" },
+    { "id": 8, "input": { "s1": "hello", "s2": "ooolleoooleh" }, "output": "false" },
+    { "id": 9, "input": { "s1": "ab", "s2": "ab" }, "output": "true" },
+    { "id": 10, "input": { "s1": "abc", "s2": "cba" }, "output": "true" }
+  ]
+}

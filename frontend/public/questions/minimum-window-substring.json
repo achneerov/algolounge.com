@@ -1,0 +1,36 @@
+{
+  "index": 227,
+  "filename": "minimum-window-substring",
+  "title": "Minimum Window Substring",
+  "difficulty": "Hard",
+  "tags": ["Sliding Window"],
+  "keywords": [
+    "minimum",
+    "window",
+    "substring",
+    "sliding",
+    "hash",
+    "map",
+    "leetcode",
+    "76"
+  ],
+  "description": "<h2>Minimum Window Substring</h2><p>Given two strings <code>s</code> and <code>t</code> of lengths <code>m</code> and <code>n</code> respectively, return <em>the minimum window substring of <code>s</code> such that every character in <code>t</code> (including duplicates) is included in the window</em>. If there is no such substring, return the empty string <code>\"\"</code>.</p><p>The testcases will be generated such that the answer is <strong>unique</strong>.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> <code>s = \"ADOBECODEBANC\"</code>, <code>t = \"ABC\"</code><br><strong>Output:</strong> <code>\"BANC\"</code><br><strong>Explanation:</strong> The minimum window substring <code>\"BANC\"</code> includes <code>'A'</code>, <code>'B'</code>, and <code>'C'</code> from string <code>t</code>.</li><li><strong>Input:</strong> <code>s = \"a\"</code>, <code>t = \"a\"</code><br><strong>Output:</strong> <code>\"a\"</code><br><strong>Explanation:</strong> The entire string <code>s</code> is the minimum window.</li><li><strong>Input:</strong> <code>s = \"a\"</code>, <code>t = \"aa\"</code><br><strong>Output:</strong> <code>\"\"</code><br><strong>Explanation:</strong> Both <code>'a'</code>s from <code>t</code> must be included in the window. Since the largest window of <code>s</code> only has one <code>'a'</code>, return empty string.</li></ul><h3>Constraints:</h3><ul><li><code>m == s.length</code></li><li><code>n == t.length</code></li><li><code>1 <= m, n <= 10<sup>5</sup></code></li><li><code>s</code> and <code>t</code> consist of uppercase and lowercase English letters.</li></ul>",
+  "entry_function": "minWindow",
+  "template": "def minWindow(s, t):\n    ",
+  "solution_text": "<h3>Minimum Window Substring</h3><p><strong>Algorithm (Sliding Window with Two Pointers):</strong></p><ol><li>Count character frequencies of <code>t</code>.</li><li>Expand the window by moving the right pointer, adding characters to the window count.</li><li>Track <code>have</code> — the number of characters that meet the required frequency.</li><li>When <code>have == need</code>, we have a valid window. Try to shrink from the left to minimize.</li><li>Track the minimum valid window found.</li></ol><p><strong>Time Complexity:</strong> O(m + n) where m = len(s), n = len(t)</p><p><strong>Space Complexity:</strong> O(m + n)</p>",
+  "solution_code": "def minWindow(s, t):\n    if not t or not s:\n        return \"\"\n    \n    count_t = {}\n    for c in t:\n        count_t[c] = count_t.get(c, 0) + 1\n    \n    need = len(count_t)\n    have = 0\n    window = {}\n    res = \"\"\n    res_len = float('inf')\n    l = 0\n    \n    for r in range(len(s)):\n        c = s[r]\n        window[c] = window.get(c, 0) + 1\n        \n        if c in count_t and window[c] == count_t[c]:\n            have += 1\n        \n        while have == need:\n            if (r - l + 1) < res_len:\n                res_len = r - l + 1\n                res = s[l:r + 1]\n            \n            window[s[l]] -= 1\n            if s[l] in count_t and window[s[l]] < count_t[s[l]]:\n                have -= 1\n            l += 1\n    \n    return res",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['s'], test_case_input['t'])",
+  "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+  "test_cases": [
+    { "id": 1, "input": { "s": "ADOBECODEBANC", "t": "ABC" }, "output": "BANC" },
+    { "id": 2, "input": { "s": "a", "t": "a" }, "output": "a" },
+    { "id": 3, "input": { "s": "a", "t": "aa" }, "output": "" },
+    { "id": 4, "input": { "s": "aa", "t": "aa" }, "output": "aa" },
+    { "id": 5, "input": { "s": "abc", "t": "b" }, "output": "b" },
+    { "id": 6, "input": { "s": "ab", "t": "b" }, "output": "b" },
+    { "id": 7, "input": { "s": "bba", "t": "ab" }, "output": "ba" },
+    { "id": 8, "input": { "s": "cabwefgewcwaefgcf", "t": "cae" }, "output": "cwae" },
+    { "id": 9, "input": { "s": "abc", "t": "ac" }, "output": "abc" },
+    { "id": 10, "input": { "s": "abc", "t": "d" }, "output": "" }
+  ]
+}

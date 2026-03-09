@@ -1,0 +1,36 @@
+{
+  "index": 225,
+  "filename": "longest-repeating-character-replacement",
+  "title": "Longest Repeating Character Replacement",
+  "difficulty": "Medium",
+  "tags": ["Sliding Window"],
+  "keywords": [
+    "longest",
+    "repeating",
+    "character",
+    "replacement",
+    "sliding",
+    "window",
+    "leetcode",
+    "424"
+  ],
+  "description": "<h2>Longest Repeating Character Replacement</h2><p>You are given a string <code>s</code> and an integer <code>k</code>. You can choose any character of the string and change it to any other uppercase English letter. You can perform this operation at most <code>k</code> times.</p><p>Return <em>the length of the longest substring containing the same letter you can get after performing the above operations</em>.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> <code>s = \"ABAB\"</code>, <code>k = 2</code><br><strong>Output:</strong> <code>4</code><br><strong>Explanation:</strong> Replace the two <code>'A'</code>s with two <code>'B'</code>s or vice versa.</li><li><strong>Input:</strong> <code>s = \"AABABBA\"</code>, <code>k = 1</code><br><strong>Output:</strong> <code>4</code><br><strong>Explanation:</strong> Replace the one <code>'A'</code> in the middle with <code>'B'</code> and form <code>\"AABBBBA\"</code>. The substring <code>\"BBBB\"</code> has the longest repeating letters, which is 4. There may exist other ways to achieve this answer too.</li></ul><h3>Constraints:</h3><ul><li><code>1 <= s.length <= 10<sup>5</sup></code></li><li><code>s</code> consists of only uppercase English letters.</li><li><code>0 <= k <= s.length</code></li></ul>",
+  "entry_function": "characterReplacement",
+  "template": "def characterReplacement(s, k):\n    ",
+  "solution_text": "<h3>Longest Repeating Character Replacement</h3><p><strong>Algorithm (Sliding Window with Frequency Count):</strong></p><ol><li>Use a sliding window with left pointer <code>l</code> and right pointer <code>r</code>.</li><li>Track the frequency of each character in the window.</li><li>Track <code>max_freq</code> — the count of the most frequent character in the window.</li><li>If <code>window_size - max_freq > k</code>, we need more than <code>k</code> replacements, so shrink from the left.</li><li>The answer is the maximum window size seen.</li></ol><p><strong>Time Complexity:</strong> O(n)</p><p><strong>Space Complexity:</strong> O(1) — at most 26 characters</p><p><strong>Key Insight:</strong> We don't need to decrease <code>max_freq</code> when shrinking the window. It only needs to increase to find a longer valid window.</p>",
+  "solution_code": "def characterReplacement(s, k):\n    count = {}\n    l = 0\n    max_freq = 0\n    res = 0\n    \n    for r in range(len(s)):\n        count[s[r]] = count.get(s[r], 0) + 1\n        max_freq = max(max_freq, count[s[r]])\n        \n        while (r - l + 1) - max_freq > k:\n            count[s[l]] -= 1\n            l += 1\n        \n        res = max(res, r - l + 1)\n    \n    return res",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['s'], test_case_input['k'])",
+  "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+  "test_cases": [
+    { "id": 1, "input": { "s": "ABAB", "k": 2 }, "output": 4 },
+    { "id": 2, "input": { "s": "AABABBA", "k": 1 }, "output": 4 },
+    { "id": 3, "input": { "s": "AAAA", "k": 0 }, "output": 4 },
+    { "id": 4, "input": { "s": "ABCD", "k": 0 }, "output": 1 },
+    { "id": 5, "input": { "s": "ABCD", "k": 2 }, "output": 3 },
+    { "id": 6, "input": { "s": "AAAB", "k": 0 }, "output": 3 },
+    { "id": 7, "input": { "s": "ABBB", "k": 2 }, "output": 4 },
+    { "id": 8, "input": { "s": "A", "k": 0 }, "output": 1 },
+    { "id": 9, "input": { "s": "ABAA", "k": 0 }, "output": 2 },
+    { "id": 10, "input": { "s": "KRSCDCSONAJNHLBMDQGIFCPEKPOHQIHLTDIQGEKLRLCQNBOHNDQGHJPNDQPERNFSSSRDEQLFPCCCARFMDLHADJADAGNNSBNCJQOF", "k": 4 }, "output": 7 }
+  ]
+}

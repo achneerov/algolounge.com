@@ -2,7 +2,28 @@
   "filename": "algotimewinter2026",
   "course_name": "Algotime Winter 2026",
   "course_description": "Welcome to Algotime Winter 2026! Practice these key algorithm problems to sharpen your skills.",
-  "keywords": ["algorithms", "data structures", "technical interviews", "problem solving", "winter", "two pointers", "arrays", "linked list", "strings", "hash table", "design", "dynamic programming", "bit manipulation", "graph", "topological sort", "bfs", "dfs", "heap", "priority queue", "sliding window"],
+  "keywords": [
+    "algorithms",
+    "data structures",
+    "technical interviews",
+    "problem solving",
+    "winter",
+    "two pointers",
+    "arrays",
+    "linked list",
+    "strings",
+    "hash table",
+    "design",
+    "dynamic programming",
+    "bit manipulation",
+    "graph",
+    "topological sort",
+    "bfs",
+    "dfs",
+    "heap",
+    "priority queue",
+    "sliding window"
+  ],
   "badge": "Winter 2026",
   "units": {
     "week9": {
@@ -12,67 +33,127 @@
         {
           "filename": "best-time-to-buy-and-sell-stock",
           "urls": [
-            { "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/best-time-to-buy-and-sell-stock", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/best-time-to-buy-and-sell-stock",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Sliding Window", "color": "#06b6d4" }
+            "Easy",
+            "Sliding Window"
           ]
         },
         {
           "filename": "longest-substring-without-repeating-characters",
           "urls": [
-            { "url": "https://leetcode.com/problems/longest-substring-without-repeating-characters/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/longest-substring-without-repeating-characters", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/longest-substring-without-repeating-characters",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Sliding Window", "color": "#06b6d4" }
+            "Medium",
+            "Sliding Window"
           ]
         },
         {
           "filename": "longest-repeating-character-replacement",
           "urls": [
-            { "url": "https://leetcode.com/problems/longest-repeating-character-replacement/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/longest-repeating-character-replacement", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/longest-repeating-character-replacement/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/longest-repeating-character-replacement",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Sliding Window", "color": "#06b6d4" }
+            "Medium",
+            "Sliding Window"
           ]
         },
         {
           "filename": "permutation-in-string",
           "urls": [
-            { "url": "https://leetcode.com/problems/permutation-in-string/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/permutation-in-string", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/permutation-in-string/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/permutation-in-string",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Sliding Window", "color": "#06b6d4" }
+            "Medium",
+            "Sliding Window"
           ]
         },
         {
           "filename": "minimum-window-substring",
           "urls": [
-            { "url": "https://leetcode.com/problems/minimum-window-substring/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/minimum-window-substring", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/minimum-window-substring/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/minimum-window-substring",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Hard", "color": "#ef4444" },
-            { "text": "Sliding Window", "color": "#06b6d4" }
+            "Hard",
+            "Sliding Window"
           ]
         },
         {
           "filename": "sliding-window-maximum",
           "urls": [
-            { "url": "https://leetcode.com/problems/sliding-window-maximum/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/sliding-window-maximum", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/sliding-window-maximum/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/sliding-window-maximum",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Hard", "color": "#ef4444" },
-            { "text": "Sliding Window", "color": "#06b6d4" }
+            "Hard",
+            "Sliding Window"
           ]
         }
       ]
@@ -84,67 +165,127 @@
         {
           "filename": "contains-duplicate",
           "urls": [
-            { "url": "https://leetcode.com/problems/contains-duplicate/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/contains-duplicate", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/contains-duplicate/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/contains-duplicate",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Arrays and Hashing", "color": "#3b82f6" }
+            "Easy",
+            "Arrays and Hashing"
           ]
         },
         {
           "filename": "last-stone-weight",
           "urls": [
-            { "url": "https://leetcode.com/problems/last-stone-weight/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/last-stone-weight", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/last-stone-weight/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/last-stone-weight",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Heap / Priority Queue", "color": "#f97316" }
+            "Easy",
+            "Heap / Priority Queue"
           ]
         },
         {
           "filename": "kth-largest-element-in-a-stream",
           "urls": [
-            { "url": "https://leetcode.com/problems/kth-largest-element-in-a-stream/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/kth-largest-element-in-a-stream", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/kth-largest-element-in-a-stream/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/kth-largest-element-in-a-stream",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Heap / Priority Queue", "color": "#f97316" }
+            "Easy",
+            "Heap / Priority Queue"
           ]
         },
         {
           "filename": "meeting-rooms-ii",
           "urls": [
-            { "url": "https://leetcode.com/problems/meeting-rooms-ii/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/meeting-rooms-ii", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/meeting-rooms-ii/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/meeting-rooms-ii",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Heap / Priority Queue", "color": "#f97316" }
+            "Medium",
+            "Heap / Priority Queue"
           ]
         },
         {
           "filename": "design-twitter",
           "urls": [
-            { "url": "https://leetcode.com/problems/design-twitter/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/design-twitter", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/design-twitter/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/design-twitter",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Heap / Priority Queue", "color": "#f97316" }
+            "Medium",
+            "Heap / Priority Queue"
           ]
         },
         {
           "filename": "find-median-from-data-stream",
           "urls": [
-            { "url": "https://leetcode.com/problems/find-median-from-data-stream/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/find-median-from-data-stream", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/find-median-from-data-stream/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/find-median-from-data-stream",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Hard", "color": "#ef4444" },
-            { "text": "Heap / Priority Queue", "color": "#f97316" }
+            "Hard",
+            "Heap / Priority Queue"
           ]
         }
       ]
@@ -156,78 +297,148 @@
         {
           "filename": "reverse-vowels-of-a-string",
           "urls": [
-            { "url": "https://leetcode.com/problems/reverse-vowels-of-a-string/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/reverse-vowels-of-a-string", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/reverse-vowels-of-a-string/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/reverse-vowels-of-a-string",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "String", "color": "#3b82f6" }
+            "Easy",
+            "String"
           ]
         },
         {
           "filename": "move-zeroes",
           "urls": [
-            { "url": "https://leetcode.com/problems/move-zeroes/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/move-zeroes", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/move-zeroes/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/move-zeroes",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Arrays and Hashing", "color": "#3b82f6" }
+            "Easy",
+            "Arrays and Hashing"
           ]
         },
         {
           "filename": "find-the-town-judge",
           "urls": [
-            { "url": "https://leetcode.com/problems/find-the-town-judge/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/find-the-town-judge", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/find-the-town-judge/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/find-the-town-judge",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Graph", "color": "#14b8a6" }
+            "Easy",
+            "Graph"
           ]
         },
         {
           "filename": "pacific-atlantic-water-flow",
           "urls": [
-            { "url": "https://leetcode.com/problems/pacific-atlantic-water-flow/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/pacific-atlantic-water-flow", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/pacific-atlantic-water-flow/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/pacific-atlantic-water-flow",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Graph", "color": "#14b8a6" }
+            "Medium",
+            "Graph"
           ]
         },
         {
           "filename": "course-schedule-ii",
           "urls": [
-            { "url": "https://leetcode.com/problems/course-schedule-ii/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/course-schedule-ii", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/course-schedule-ii/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/course-schedule-ii",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Graph", "color": "#14b8a6" }
+            "Medium",
+            "Graph"
           ]
         },
         {
           "filename": "alien-dictionary",
           "urls": [
-            { "url": "https://leetcode.com/problems/alien-dictionary/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/alien-dictionary", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/alien-dictionary/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/alien-dictionary",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Hard", "color": "#ef4444" },
-            { "text": "Graph", "color": "#14b8a6" }
+            "Hard",
+            "Graph"
           ]
         },
         {
           "filename": "swim-in-rising-water",
           "urls": [
-            { "url": "https://leetcode.com/problems/swim-in-rising-water/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/swim-in-rising-water", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/swim-in-rising-water/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/swim-in-rising-water",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Hard", "color": "#ef4444" },
-            { "text": "Graph", "color": "#14b8a6" }
+            "Hard",
+            "Graph"
           ]
         }
       ]
@@ -239,78 +450,148 @@
         {
           "filename": "single-number",
           "urls": [
-            { "url": "https://leetcode.com/problems/single-number/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/single-number", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/single-number/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/single-number",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Bit Manipulation", "color": "#6366f1" }
+            "Easy",
+            "Bit Manipulation"
           ]
         },
         {
           "filename": "climbing-stairs",
           "urls": [
-            { "url": "https://leetcode.com/problems/climbing-stairs/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/climbing-stairs", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/climbing-stairs/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/climbing-stairs",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Dynamic Programming", "color": "#f97316" }
+            "Easy",
+            "Dynamic Programming"
           ]
         },
         {
           "filename": "min-cost-climbing-stairs",
           "urls": [
-            { "url": "https://leetcode.com/problems/min-cost-climbing-stairs/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/min-cost-climbing-stairs", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/min-cost-climbing-stairs/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/min-cost-climbing-stairs",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Dynamic Programming", "color": "#f97316" }
+            "Easy",
+            "Dynamic Programming"
           ]
         },
         {
           "filename": "house-robber",
           "urls": [
-            { "url": "https://leetcode.com/problems/house-robber/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/house-robber", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/house-robber/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/house-robber",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Dynamic Programming", "color": "#f97316" }
+            "Medium",
+            "Dynamic Programming"
           ]
         },
         {
           "filename": "maximum-subarray",
           "urls": [
-            { "url": "https://leetcode.com/problems/maximum-subarray/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/maximum-subarray", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/maximum-subarray/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/maximum-subarray",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Dynamic Programming", "color": "#f97316" }
+            "Medium",
+            "Dynamic Programming"
           ]
         },
         {
           "filename": "unique-paths",
           "urls": [
-            { "url": "https://leetcode.com/problems/unique-paths/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/unique-paths", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/unique-paths/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/unique-paths",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Dynamic Programming", "color": "#f97316" }
+            "Medium",
+            "Dynamic Programming"
           ]
         },
         {
           "filename": "distinct-subsequences",
           "urls": [
-            { "url": "https://leetcode.com/problems/distinct-subsequences/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/distinct-subsequences", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/distinct-subsequences/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/distinct-subsequences",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Hard", "color": "#ef4444" },
-            { "text": "Dynamic Programming", "color": "#f97316" }
+            "Hard",
+            "Dynamic Programming"
           ]
         }
       ]
@@ -322,77 +603,142 @@
         {
           "filename": "prototype-pattern",
           "urls": [
-            { "url": "https://neetcode.io/problems/prototype", "tooltip": "NeetCode Problem", "color": "#16a34a", "visibleString": "NeetCode" }
+            {
+              "url": "https://neetcode.io/problems/prototype",
+              "tooltip": "NeetCode Problem",
+              "color": "#16a34a",
+              "visibleString": "NeetCode"
+            }
           ],
           "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Design Patterns", "color": "#8b5cf6" }
+            "Easy",
+            "Design Patterns"
           ]
         },
         {
           "filename": "fibonacci-number",
           "urls": [
-            { "url": "https://leetcode.com/problems/fibonacci-number/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/fibonacci-number", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/fibonacci-number/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/fibonacci-number",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Math", "color": "#3b82f6" }
+            "Easy",
+            "Math"
           ]
         },
         {
           "filename": "power-of-two",
           "urls": [
-            { "url": "https://leetcode.com/problems/power-of-two/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/power-of-two", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/power-of-two/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/power-of-two",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Math", "color": "#3b82f6" }
+            "Easy",
+            "Math"
           ]
         },
         {
           "filename": "powx-n",
           "urls": [
-            { "url": "https://leetcode.com/problems/powx-n/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/powx-n", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/powx-n/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/powx-n",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Math", "color": "#3b82f6" }
+            "Medium",
+            "Math"
           ]
         },
         {
           "filename": "subsets",
           "urls": [
-            { "url": "https://leetcode.com/problems/subsets/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/subsets", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/subsets/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/subsets",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Backtracking", "color": "#f59e0b" }
+            "Medium",
+            "Backtracking"
           ]
         },
         {
           "filename": "merge-k-sorted-lists",
           "urls": [
-            { "url": "https://leetcode.com/problems/merge-k-sorted-lists/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/merge-k-sorted-lists", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/merge-k-sorted-lists/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/merge-k-sorted-lists",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Hard", "color": "#ef4444" },
-            { "text": "Linked List", "color": "#ec4899" }
+            "Hard",
+            "Linked List"
           ]
         },
         {
           "filename": "basic-calculator",
           "urls": [
-            { "url": "https://leetcode.com/problems/basic-calculator/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/basic-calculator", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/basic-calculator/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/basic-calculator",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Hard", "color": "#ef4444" },
-            { "text": "Stack", "color": "#eab308" }
+            "Hard",
+            "Stack"
           ]
         }
       ]
@@ -404,66 +750,121 @@
         {
           "filename": "adapter-pattern",
           "urls": [
-            { "url": "https://neetcode.io/problems/adapter", "tooltip": "NeetCode Problem", "color": "#16a34a", "visibleString": "NeetCode" }
+            {
+              "url": "https://neetcode.io/problems/adapter",
+              "tooltip": "NeetCode Problem",
+              "color": "#16a34a",
+              "visibleString": "NeetCode"
+            }
           ],
           "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Design Patterns", "color": "#8b5cf6" }
+            "Easy",
+            "Design Patterns"
           ]
         },
         {
           "filename": "same-tree",
           "urls": [
-            { "url": "https://leetcode.com/problems/same-tree/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/same-tree", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/same-tree/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/same-tree",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Trees", "color": "#10b981" }
+            "Easy",
+            "Trees"
           ]
         },
         {
           "filename": "subtree-of-another-tree",
           "urls": [
-            { "url": "https://leetcode.com/problems/subtree-of-another-tree/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/subtree-of-another-tree", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/subtree-of-another-tree/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/subtree-of-another-tree",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Trees", "color": "#10b981" }
+            "Easy",
+            "Trees"
           ]
         },
         {
           "filename": "lowest-common-ancestor-of-a-bst",
           "urls": [
-            { "url": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/lowest-common-ancestor-of-a-binary-search-tree", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/lowest-common-ancestor-of-a-binary-search-tree",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Trees", "color": "#10b981" }
+            "Medium",
+            "Trees"
           ]
         },
         {
           "filename": "binary-tree-level-order-traversal",
           "urls": [
-            { "url": "https://leetcode.com/problems/binary-tree-level-order-traversal/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/binary-tree-level-order-traversal", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/binary-tree-level-order-traversal/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/binary-tree-level-order-traversal",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Trees", "color": "#10b981" }
+            "Medium",
+            "Trees"
           ]
         },
         {
           "filename": "binary-tree-maximum-path-sum",
           "urls": [
-            { "url": "https://leetcode.com/problems/binary-tree-maximum-path-sum/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/binary-tree-maximum-path-sum", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/binary-tree-maximum-path-sum/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/binary-tree-maximum-path-sum",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Hard", "color": "#ef4444" },
-            { "text": "Trees", "color": "#10b981" }
+            "Hard",
+            "Trees"
           ]
         }
       ]
@@ -475,67 +876,121 @@
         {
           "filename": "factory-method-pattern",
           "urls": [
-            { "url": "https://neetcode.io/problems/factory", "tooltip": "NeetCode Problem", "color": "#16a34a", "visibleString": "NeetCode" }
+            {
+              "url": "https://neetcode.io/problems/factory",
+              "tooltip": "NeetCode Problem",
+              "color": "#16a34a",
+              "visibleString": "NeetCode"
+            }
           ],
           "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Design Patterns", "color": "#8b5cf6" }
+            "Easy",
+            "Design Patterns"
           ]
         },
         {
           "filename": "design-hashset",
           "urls": [
-            { "url": "https://leetcode.com/problems/design-hashset/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/design-hashset", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/design-hashset/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/design-hashset",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Hash Set", "color": "#8b5cf6" }
+            "Easy",
+            "Hash Set"
           ]
         },
         {
           "filename": "design-hashmap",
           "urls": [
-            { "url": "https://leetcode.com/problems/design-hashmap/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/design-hashmap", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/design-hashmap/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/design-hashmap",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Hash Map", "color": "#3b82f6" }
+            "Easy",
+            "Hash Map"
           ]
         },
-
         {
           "filename": "repeated-dna-sequences",
           "urls": [
-            { "url": "https://leetcode.com/problems/repeated-dna-sequences/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/repeated-dna-sequences", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/repeated-dna-sequences/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/repeated-dna-sequences",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Hash Map", "color": "#3b82f6" }
+            "Medium",
+            "Hash Map"
           ]
         },
         {
           "filename": "fraction-to-recurring-decimal",
           "urls": [
-            { "url": "https://leetcode.com/problems/fraction-to-recurring-decimal/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/fraction-to-recurring-decimal", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/fraction-to-recurring-decimal/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/fraction-to-recurring-decimal",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Hash Map", "color": "#3b82f6" }
+            "Medium",
+            "Hash Map"
           ]
         },
         {
           "filename": "sudoku-solver",
           "urls": [
-            { "url": "https://leetcode.com/problems/sudoku-solver/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/sudoku-solver", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/sudoku-solver/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/sudoku-solver",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Hard", "color": "#ef4444" },
-            { "text": "Backtracking", "color": "#f59e0b" }
+            "Hard",
+            "Backtracking"
           ]
         }
       ]
@@ -547,78 +1002,148 @@
         {
           "filename": "string-reversal",
           "urls": [
-            { "url": "https://leetcode.com/problems/reverse-string/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/reverse-string", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/reverse-string/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/reverse-string",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Strings", "color": "#06b6d4" }
+            "Easy",
+            "Strings"
           ]
         },
         {
           "filename": "implement-linked-list",
           "urls": [
-            { "url": "https://leetcode.com/problems/design-linked-list/description/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/design-linked-list", "tooltip": "NeetCode Problem", "color": "#16a34a", "visibleString": "NeetCode" }
+            {
+              "url": "https://leetcode.com/problems/design-linked-list/description/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/design-linked-list",
+              "tooltip": "NeetCode Problem",
+              "color": "#16a34a",
+              "visibleString": "NeetCode"
+            }
           ],
           "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Linked List", "color": "#ec4899" }
+            "Easy",
+            "Linked List"
           ]
         },
         {
           "filename": "palindrome-linked-list",
           "urls": [
-            { "url": "https://leetcode.com/problems/palindrome-linked-list/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/palindrome-linked-list", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/palindrome-linked-list/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/palindrome-linked-list",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Linked List", "color": "#ec4899" }
+            "Easy",
+            "Linked List"
           ]
         },
         {
           "filename": "linked-list-cycle",
           "urls": [
-            { "url": "https://leetcode.com/problems/linked-list-cycle/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/linked-list-cycle", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/linked-list-cycle/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/linked-list-cycle",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Linked List", "color": "#ec4899" }
+            "Easy",
+            "Linked List"
           ]
         },
         {
           "filename": "linked-list-cycle-ii",
           "urls": [
-            { "url": "https://leetcode.com/problems/linked-list-cycle-ii/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/linked-list-cycle-ii", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/linked-list-cycle-ii/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/linked-list-cycle-ii",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Linked List", "color": "#ec4899" }
+            "Medium",
+            "Linked List"
           ]
         },
         {
           "filename": "remove-nth-node-from-end-of-list",
           "urls": [
-            { "url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/remove-nth-node-from-end-of-list", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/remove-nth-node-from-end-of-list",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Linked List", "color": "#ec4899" }
+            "Medium",
+            "Linked List"
           ]
         },
         {
           "filename": "reverse-nodes-in-k-group",
           "urls": [
-            { "url": "https://leetcode.com/problems/reverse-nodes-in-k-group/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/reverse-nodes-in-k-group", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/reverse-nodes-in-k-group/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/reverse-nodes-in-k-group",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Hard", "color": "#ef4444" },
-            { "text": "Linked List", "color": "#ec4899" }
+            "Hard",
+            "Linked List"
           ]
         }
       ]
@@ -630,77 +1155,147 @@
         {
           "filename": "two-sum",
           "urls": [
-            { "url": "https://leetcode.com/problems/two-sum/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/two-sum", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/two-sum/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/two-sum",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Arrays and Hashing", "color": "#3b82f6" }
+            "Easy",
+            "Arrays and Hashing"
           ]
         },
         {
           "filename": "palindrome-checker",
           "urls": [
-            { "url": "https://leetcode.com/problems/valid-palindrome/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/valid-palindrome", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/valid-palindrome/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/valid-palindrome",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Easy", "color": "#22c55e" },
-            { "text": "Two Pointers", "color": "#a855f7" }
+            "Easy",
+            "Two Pointers"
           ]
         },
         {
           "filename": "two-sum-ii-input-array-is-sorted",
           "urls": [
-            { "url": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/two-sum-ii-input-array-is-sorted", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/two-sum-ii-input-array-is-sorted",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Two Pointers", "color": "#a855f7" }
+            "Medium",
+            "Two Pointers"
           ]
         },
         {
           "filename": "3sum",
           "urls": [
-            { "url": "https://leetcode.com/problems/3sum/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/3sum", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/3sum/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/3sum",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Two Pointers", "color": "#a855f7" }
+            "Medium",
+            "Two Pointers"
           ]
         },
         {
           "filename": "container-with-most-water",
           "urls": [
-            { "url": "https://leetcode.com/problems/container-with-most-water/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/container-with-most-water", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/container-with-most-water/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/container-with-most-water",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Medium", "color": "#f59e0b" },
-            { "text": "Two Pointers", "color": "#a855f7" }
+            "Medium",
+            "Two Pointers"
           ]
         },
         {
           "filename": "trapping-rain-water",
           "urls": [
-            { "url": "https://leetcode.com/problems/trapping-rain-water/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/trapping-rain-water", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/trapping-rain-water/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/trapping-rain-water",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Hard", "color": "#ef4444" },
-            { "text": "Two Pointers", "color": "#a855f7" }
+            "Hard",
+            "Two Pointers"
           ]
         },
         {
           "filename": "maximal-rectangle",
           "urls": [
-            { "url": "https://leetcode.com/problems/maximal-rectangle/", "tooltip": "LeetCode Problem", "color": "#f59e0b", "visibleString": "LeetCode" },
-            { "url": "https://neetcode.io/solutions/maximal-rectangle", "tooltip": "Solution", "color": "#16a34a", "visibleString": "Answer" }
+            {
+              "url": "https://leetcode.com/problems/maximal-rectangle/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/maximal-rectangle",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
           ],
           "tags": [
-            { "text": "Stack", "color": "#eab308" }
+            "Stack"
           ]
         }
       ]

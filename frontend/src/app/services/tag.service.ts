@@ -15,8 +15,7 @@ export interface Tag {
   providedIn: 'root'
 })
 export class TagService {
-  private tagConfig: TagConfig | null = null;
-  private configLoaded = false;
+  private tagConfig: TagConfig = { difficulties: {}, tags: {} };
 
   constructor(private http: HttpClient) {
     this.loadTagConfig();
@@ -26,7 +25,6 @@ export class TagService {
     this.http.get<TagConfig>('/tags-config.json').subscribe({
       next: (data) => {
         this.tagConfig = data;
-        this.configLoaded = true;
       },
       error: (error) => {
         console.error('Failed to load tags config:', error);
@@ -38,20 +36,14 @@ export class TagService {
    * Get color for a difficulty level (Easy, Medium, Hard)
    */
   getDifficultyColor(difficulty: string): string {
-    if (!this.tagConfig) {
-      return '#94a3b8'; // Default gray color
-    }
-    return this.tagConfig.difficulties[difficulty] || '#94a3b8';
+    return this.tagConfig.difficulties[difficulty];
   }
 
   /**
    * Get color for a tag
    */
   getTagColor(tagName: string): string {
-    if (!this.tagConfig) {
-      return '#94a3b8'; // Default gray color
-    }
-    return this.tagConfig.tags[tagName] || '#94a3b8';
+    return this.tagConfig.difficulties[tagName] || this.tagConfig.tags[tagName];
   }
 
   /**
@@ -98,10 +90,4 @@ export class TagService {
     return result;
   }
 
-  /**
-   * Check if config is loaded
-   */
-  isConfigLoaded(): boolean {
-    return this.configLoaded;
-  }
 }

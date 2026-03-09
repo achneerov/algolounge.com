@@ -3,11 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { LocalStorageService } from '../../services/local-storage.service';
-
-interface CourseTag {
-  text: string;
-  color: string;
-}
+import { TagService } from '../../services/tag.service';
 
 interface CourseUrl {
   url: string;
@@ -20,7 +16,7 @@ interface CourseQuestion {
   filename: string;
   title: string;
   urls?: CourseUrl[];
-  tags?: CourseTag[];
+  tags?: { text: string; color: string }[];
 }
 
 interface CourseUnit {
@@ -51,7 +47,8 @@ export class UnitDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private http: HttpClient,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private tagService: TagService
   ) {}
 
   ngOnInit() {
@@ -104,7 +101,10 @@ export class UnitDetailComponent implements OnInit {
               filename: question.filename,
               title: this.formatQuestionTitle(question.filename),
               urls: question.urls,
-              tags: question.tags
+              tags: question.tags?.map((tag: string) => ({
+                text: tag,
+                color: this.tagService.getTagColor(tag)
+              }))
             });
           }
         }

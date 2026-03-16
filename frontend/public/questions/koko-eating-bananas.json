@@ -1,0 +1,116 @@
+{
+  "index": 230,
+  "filename": "koko-eating-bananas",
+  "title": "Koko Eating Bananas",
+  "difficulty": "Medium",
+  "tags": [
+    "Binary Search"
+  ],
+  "keywords": [
+    "koko",
+    "eating",
+    "bananas",
+    "binary search",
+    "answer",
+    "minimum",
+    "speed",
+    "leetcode",
+    "875"
+  ],
+  "description": "<h2>Koko Eating Bananas</h2><p>Leetcode 875. Koko Eating Bananas</p><p>Koko loves to eat bananas. There are <code>n</code> piles of bananas, the <code>i</code>-th pile has <code>piles[i]</code> bananas. The guards have gone and will come back in <code>h</code> hours.</p><p>Koko can decide her bananas-per-hour eating speed <code>k</code>. Each hour, she chooses a pile and eats <code>k</code> bananas from it. If the pile has fewer than <code>k</code> bananas, she eats all of them and does not eat any more bananas during that hour.</p><p>Koko likes to eat slowly but still wants to finish all the bananas before the guards return. Return the <strong>minimum</strong> integer <code>k</code> such that she can eat all the bananas within <code>h</code> hours.</p><h3>Examples</h3><ul><li>Input: <code>piles = [3,6,7,11]</code>, <code>h = 8</code><br>Output: <code>4</code></li><li>Input: <code>piles = [30,11,23,4,20]</code>, <code>h = 5</code><br>Output: <code>30</code></li><li>Input: <code>piles = [30,11,23,4,20]</code>, <code>h = 6</code><br>Output: <code>23</code></li></ul><h3>Constraints</h3><ul><li><code>1 <= piles.length <= 10^4</code></li><li><code>piles.length <= h <= 10^9</code></li><li><code>1 <= piles[i] <= 10^9</code></li></ul>",
+  "entry_function": "minEatingSpeed",
+  "template": "def minEatingSpeed(piles, h):\n    ",
+  "solution_text": "<h3>Koko Eating Bananas</h3><p><strong>Key Insight:</strong> This is a classic <em>binary search on the answer</em> problem. The answer <code>k</code> lies in the range <code>[1, max(piles)]</code>. For a given speed <code>k</code>, the total hours needed is <code>sum(ceil(p / k) for p in piles)</code>. This is a monotone decreasing function of <code>k</code>, so we can binary search for the smallest valid <code>k</code>.</p><p><strong>Algorithm:</strong></p><ol><li>Set <code>left = 1</code>, <code>right = max(piles)</code>.</li><li>At each <code>mid</code>, compute the total hours needed.</li><li>If hours <code>&lt;= h</code>, the speed is feasible — try slower (move right pointer left).</li><li>Otherwise try faster (move left pointer right).</li><li>Return <code>left</code>.</li></ol><p><strong>Time Complexity:</strong> O(n log m) where m = max(piles)</p><p><strong>Space Complexity:</strong> O(1)</p>",
+  "solution_code": "import math\n\ndef minEatingSpeed(piles, h):\n    left, right = 1, max(piles)\n\n    while left < right:\n        mid = (left + right) // 2\n        hours = sum(math.ceil(p / mid) for p in piles)\n\n        if hours <= h:\n            right = mid\n        else:\n            left = mid + 1\n\n    return left",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['piles'], test_case_input['h'])",
+  "verify": "def verify(actual_output, expected_output):\n    return [actual_output == expected_output, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "piles": [
+          3,
+          6,
+          7,
+          11
+        ],
+        "h": 8
+      },
+      "output": 4
+    },
+    {
+      "id": 2,
+      "input": {
+        "piles": [
+          30,
+          11,
+          23,
+          4,
+          20
+        ],
+        "h": 5
+      },
+      "output": 30
+    },
+    {
+      "id": 3,
+      "input": {
+        "piles": [
+          30,
+          11,
+          23,
+          4,
+          20
+        ],
+        "h": 6
+      },
+      "output": 23
+    },
+    {
+      "id": 4,
+      "input": {
+        "piles": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "h": 4
+      },
+      "output": 1
+    },
+    {
+      "id": 5,
+      "input": {
+        "piles": [
+          1000000000
+        ],
+        "h": 2
+      },
+      "output": 500000000
+    },
+    {
+      "id": 6,
+      "input": {
+        "piles": [
+          312884470
+        ],
+        "h": 312884469
+      },
+      "output": 2
+    },
+    {
+      "id": 7,
+      "input": {
+        "piles": [
+          3,
+          6,
+          7,
+          11
+        ],
+        "h": 4
+      },
+      "output": 11
+    }
+  ]
+}

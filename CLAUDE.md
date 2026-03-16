@@ -146,6 +146,23 @@ Code runs client-side via Pyodide in a Web Worker with 5-second timeout.
 4. Implement `verify` for custom validation (order-independent comparisons, etc.)
 5. Run `npm run sync-index`
 
+### Boolean Outputs
+The worker injects `expected_output` directly into Python as a literal via `JSON.stringify`. JSON booleans (`true`/`false`) are not valid Python — do **not** use them as `output` values in test cases.
+
+Instead, store boolean outputs as strings and normalize in `verify`:
+
+```json
+{ "id": 1, "input": { ... }, "output": "true" }
+```
+
+```python
+def verify(actual_output, expected_output):
+    if isinstance(expected_output, str):
+        expected_output = expected_output.lower() == 'true'
+    passed = bool(actual_output) == bool(expected_output)
+    return [passed, 'true' if actual_output else 'false']
+```
+
 ## Environment
 **Backend** (`backend/.env.local`):
 ```bash

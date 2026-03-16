@@ -3359,8 +3359,82 @@
         "leetcode",
         "239"
       ]
+    },
+    {
+      "index": 229,
+      "filename": "find-minimum-in-rotated-sorted-array",
+      "title": "Find Minimum in Rotated Sorted Array",
+      "difficulty": "Medium",
+      "tags": [
+        "Binary Search"
+      ],
+      "keywords": [
+        "rotated",
+        "sorted",
+        "array",
+        "minimum",
+        "binary search",
+        "leetcode",
+        "153"
+      ]
+    },
+    {
+      "index": 230,
+      "filename": "koko-eating-bananas",
+      "title": "Koko Eating Bananas",
+      "difficulty": "Medium",
+      "tags": [
+        "Binary Search"
+      ],
+      "keywords": [
+        "koko",
+        "eating",
+        "bananas",
+        "binary search",
+        "answer",
+        "minimum",
+        "speed",
+        "leetcode",
+        "875"
+      ]
+    },
+    {
+      "index": 231,
+      "filename": "search-a-2d-matrix",
+      "title": "Search a 2D Matrix",
+      "difficulty": "Medium",
+      "tags": [
+        "Binary Search"
+      ],
+      "keywords": [
+        "matrix",
+        "binary search",
+        "2d",
+        "sorted",
+        "search",
+        "leetcode",
+        "74"
+      ]
+    },
+    {
+      "index": 232,
+      "filename": "search-in-rotated-sorted-array",
+      "title": "Search in Rotated Sorted Array",
+      "difficulty": "Medium",
+      "tags": [
+        "Binary Search"
+      ],
+      "keywords": [
+        "rotated",
+        "sorted",
+        "array",
+        "search",
+        "binary search",
+        "leetcode",
+        "33"
+      ]
     }
   ],
-  "lastUpdated": "2026-03-09T19:56:12.243Z",
-  "totalQuestions": 169
+  "lastUpdated": "2026-03-16T18:59:40.733Z",
+  "totalQuestions": 173
 }

@@ -26,6 +26,138 @@
   ],
   "badge": "Winter 2026",
   "units": {
+    "week10": {
+      "title": "Week 10",
+      "description": "Master binary search — from sorted arrays to rotated arrays and binary search on the answer.",
+      "questions": [
+        {
+          "filename": "binary-search",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/binary-search/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/binary-search",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Easy",
+            "Binary Search"
+          ]
+        },
+        {
+          "filename": "search-a-2d-matrix",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/search-a-2d-matrix/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/search-a-2d-matrix",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Medium",
+            "Binary Search"
+          ]
+        },
+        {
+          "filename": "find-minimum-in-rotated-sorted-array",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/find-minimum-in-rotated-sorted-array",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Medium",
+            "Binary Search"
+          ]
+        },
+        {
+          "filename": "search-in-rotated-sorted-array",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/search-in-rotated-sorted-array/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/search-in-rotated-sorted-array",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Medium",
+            "Binary Search"
+          ]
+        },
+        {
+          "filename": "koko-eating-bananas",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/koko-eating-bananas/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/koko-eating-bananas",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Medium",
+            "Binary Search"
+          ]
+        },
+        {
+          "filename": "median-of-two-sorted-arrays",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/median-of-two-sorted-arrays/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/median-of-two-sorted-arrays",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Hard",
+            "Binary Search"
+          ]
+        }
+      ]
+    },
     "week9": {
       "title": "Week 9",
       "description": "Master the sliding window technique — from fixed-size windows to dynamic shrinking and expanding for optimal substrings and subarrays.",

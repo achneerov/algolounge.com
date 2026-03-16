@@ -1,0 +1,91 @@
+{
+  "index": 231,
+  "filename": "search-a-2d-matrix",
+  "title": "Search a 2D Matrix",
+  "difficulty": "Medium",
+  "tags": [
+    "Binary Search"
+  ],
+  "keywords": [
+    "matrix",
+    "binary search",
+    "2d",
+    "sorted",
+    "search",
+    "leetcode",
+    "74"
+  ],
+  "description": "<h2>Search a 2D Matrix</h2><p>Leetcode 74. Search a 2D Matrix</p><p>You are given an <code>m x n</code> 2D integer matrix with the following two properties:</p><ul><li>Each row is sorted in non-decreasing order.</li><li>The first integer of each row is greater than the last integer of the previous row.</li></ul><p>Given an integer <code>target</code>, return <code>True</code> if <code>target</code> is in the matrix, or <code>False</code> otherwise.</p><p>You must write a solution in <code>O(log(m * n))</code> time complexity.</p><h3>Examples</h3><ul><li>Input: <code>matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]]</code>, <code>target = 3</code><br>Output: <code>True</code></li><li>Input: <code>matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]]</code>, <code>target = 13</code><br>Output: <code>False</code></li></ul><h3>Constraints</h3><ul><li><code>m == matrix.length</code></li><li><code>n == matrix[i].length</code></li><li><code>1 <= m, n <= 100</code></li><li><code>-10^4 <= matrix[i][j], target <= 10^4</code></li></ul>",
+  "entry_function": "searchMatrix",
+  "template": "def searchMatrix(matrix, target):\n    ",
+  "solution_text": "<h3>Search a 2D Matrix</h3><p><strong>Key Insight:</strong> Treat the matrix as a flattened sorted array of length <code>m * n</code>. A virtual index <code>i</code> maps to row <code>i // n</code> and column <code>i % n</code>.</p><p><strong>Algorithm:</strong></p><ol><li>Set <code>left = 0</code>, <code>right = m * n - 1</code>.</li><li>Binary search on the virtual index.</li><li>Convert <code>mid</code> back to <code>matrix[mid // n][mid % n]</code> for comparison.</li><li>Return <code>True</code> if found, <code>False</code> otherwise.</li></ol><p><strong>Time Complexity:</strong> O(log(m * n))</p><p><strong>Space Complexity:</strong> O(1)</p>",
+  "solution_code": "def searchMatrix(matrix, target):\n    m, n = len(matrix), len(matrix[0])\n    left, right = 0, m * n - 1\n\n    while left <= right:\n        mid = (left + right) // 2\n        mid_val = matrix[mid // n][mid % n]\n\n        if mid_val == target:\n            return True\n        elif mid_val < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n\n    return False",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['matrix'], test_case_input['target'])",
+  "verify": "def verify(actual_output, expected_output):\n    if isinstance(expected_output, str):\n        expected_output = expected_output.lower() == 'true'\n    passed = bool(actual_output) == bool(expected_output)\n    return [passed, 'true' if actual_output else 'false']",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "matrix": [[1,3,5,7],[10,11,16,20],[23,30,34,60]],
+        "target": 3
+      },
+      "output": "true"
+    },
+    {
+      "id": 2,
+      "input": {
+        "matrix": [[1,3,5,7],[10,11,16,20],[23,30,34,60]],
+        "target": 13
+      },
+      "output": "false"
+    },
+    {
+      "id": 3,
+      "input": {
+        "matrix": [[1]],
+        "target": 1
+      },
+      "output": "true"
+    },
+    {
+      "id": 4,
+      "input": {
+        "matrix": [[1]],
+        "target": 2
+      },
+      "output": "false"
+    },
+    {
+      "id": 5,
+      "input": {
+        "matrix": [[1,3,5,7],[10,11,16,20],[23,30,34,60]],
+        "target": 60
+      },
+      "output": "true"
+    },
+    {
+      "id": 6,
+      "input": {
+        "matrix": [[1,3,5,7],[10,11,16,20],[23,30,34,60]],
+        "target": 1
+      },
+      "output": "true"
+    },
+    {
+      "id": 7,
+      "input": {
+        "matrix": [[1,3,5,7],[10,11,16,20],[23,30,34,60]],
+        "target": 0
+      },
+      "output": "false"
+    },
+    {
+      "id": 8,
+      "input": {
+        "matrix": [[1,3,5,7],[10,11,16,20],[23,30,34,60]],
+        "target": 100
+      },
+      "output": "false"
+    }
+  ]
+}

@@ -3433,8 +3433,61 @@
         "leetcode",
         "33"
       ]
+    },
+    {
+      "index": 233,
+      "filename": "backspace-string-compare",
+      "title": "Backspace String Compare",
+      "difficulty": "Easy",
+      "tags": [
+        "Stack"
+      ],
+      "keywords": [
+        "backspace",
+        "string",
+        "compare",
+        "stack",
+        "typing",
+        "delete",
+        "editor"
+      ]
+    },
+    {
+      "index": 234,
+      "filename": "decode-string",
+      "title": "Decode String",
+      "difficulty": "Medium",
+      "tags": [
+        "Stack"
+      ],
+      "keywords": [
+        "decode",
+        "string",
+        "stack",
+        "nested",
+        "brackets",
+        "repeat",
+        "encoding"
+      ]
+    },
+    {
+      "index": 235,
+      "filename": "next-greater-element",
+      "title": "Next Greater Element",
+      "difficulty": "Medium",
+      "tags": [
+        "Stack"
+      ],
+      "keywords": [
+        "next",
+        "greater",
+        "element",
+        "monotonic",
+        "stack",
+        "array"
+      ]
     }
   ],
-  "lastUpdated": "2026-03-16T18:59:40.733Z",
-  "totalQuestions": 173
+  "lastUpdated": "2026-03-23T21:12:20.731Z",
+  "totalQuestions": 176
 }

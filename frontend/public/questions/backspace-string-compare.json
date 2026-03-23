@@ -1,0 +1,75 @@
+{
+  "index": 233,
+  "filename": "backspace-string-compare",
+  "title": "Backspace String Compare",
+  "difficulty": "Easy",
+  "tags": ["Stack"],
+  "keywords": [
+    "backspace",
+    "string",
+    "compare",
+    "stack",
+    "typing",
+    "delete",
+    "editor"
+  ],
+  "description": "<h2>Backspace String Compare</h2><p>Given two strings <code>s</code> and <code>t</code>, return <code>true</code> if they are equal when both are typed into empty text editors. <code>'#'</code> means a backspace character.</p><p>Note that after backspacing an empty text, the text will continue empty.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> <code>s = \"ab#c\", t = \"ad#c\"</code><br><strong>Output:</strong> <code>true</code><br><strong>Explanation:</strong> Both s and t become \"ac\".</li><li><strong>Input:</strong> <code>s = \"ab##\", t = \"c#d#\"</code><br><strong>Output:</strong> <code>true</code><br><strong>Explanation:</strong> Both s and t become \"\".</li><li><strong>Input:</strong> <code>s = \"a#c\", t = \"b\"</code><br><strong>Output:</strong> <code>false</code><br><strong>Explanation:</strong> s becomes \"c\" while t becomes \"b\".</li></ul><h3>Constraints:</h3><ul><li><code>1 &lt;= s.length, t.length &lt;= 200</code></li><li><code>s</code> and <code>t</code> only contain lowercase letters and <code>'#'</code> characters.</li></ul>",
+  "entry_function": "backspaceCompare",
+  "template": "def backspaceCompare(s, t):\n    ",
+  "solution_text": "<h3>Backspace String Compare</h3><p><strong>Algorithm:</strong></p><ol><li>Build the final string for both s and t using a stack</li><li>For each character, if it's '#', pop from stack (if non-empty)</li><li>Otherwise, push the character onto the stack</li><li>Compare the two resulting stacks</li></ol><p><strong>Time Complexity:</strong> O(n + m) where n and m are the lengths of s and t</p><p><strong>Space Complexity:</strong> O(n + m) for the two stacks</p><p><strong>Key Insights:</strong></p><ul><li>Stack naturally handles the backspace operation (push characters, pop on '#')</li><li>Process both strings independently, then compare results</li><li>Handle edge case where '#' appears when stack is empty</li></ul>",
+  "solution_code": "def backspaceCompare(s, t):\n    def build(string):\n        stack = []\n        for char in string:\n            if char == '#':\n                if stack:\n                    stack.pop()\n            else:\n                stack.append(char)\n        return stack\n    \n    return build(s) == build(t)",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['s'], test_case_input['t'])",
+  "verify": "def verify(actual_output, expected_output):\n    if isinstance(expected_output, str):\n        expected_output = expected_output.lower() == 'true'\n    passed = bool(actual_output) == bool(expected_output)\n    output_str = 'true' if actual_output else 'false'\n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": { "s": "ab#c", "t": "ad#c" },
+      "output": "true"
+    },
+    {
+      "id": 2,
+      "input": { "s": "ab##", "t": "c#d#" },
+      "output": "true"
+    },
+    {
+      "id": 3,
+      "input": { "s": "a#c", "t": "b" },
+      "output": "false"
+    },
+    {
+      "id": 4,
+      "input": { "s": "a##c", "t": "#a#c" },
+      "output": "true"
+    },
+    {
+      "id": 5,
+      "input": { "s": "abc", "t": "abc" },
+      "output": "true"
+    },
+    {
+      "id": 6,
+      "input": { "s": "###", "t": "" },
+      "output": "true"
+    },
+    {
+      "id": 7,
+      "input": { "s": "bxj##tw", "t": "bxo#j##tw" },
+      "output": "true"
+    },
+    {
+      "id": 8,
+      "input": { "s": "ab#c#d", "t": "ad#c#d" },
+      "output": "true"
+    },
+    {
+      "id": 9,
+      "input": { "s": "a", "t": "b" },
+      "output": "false"
+    },
+    {
+      "id": 10,
+      "input": { "s": "xywrrmp", "t": "xywrrmu#p" },
+      "output": "true"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "index": 234,
+  "filename": "decode-string",
+  "title": "Decode String",
+  "difficulty": "Medium",
+  "tags": ["Stack"],
+  "keywords": [
+    "decode",
+    "string",
+    "stack",
+    "nested",
+    "brackets",
+    "repeat",
+    "encoding"
+  ],
+  "description": "<h2>Decode String</h2><p>Given an encoded string, return its decoded string.</p><p>The encoding rule is: <code>k[encoded_string]</code>, where the <code>encoded_string</code> inside the square brackets is being repeated exactly <code>k</code> times. Note that <code>k</code> is guaranteed to be a positive integer.</p><p>You may assume that the input string is always valid; there are no extra white spaces, square brackets are well-formed, etc. Furthermore, you may assume that the original data does not contain any digits and that digits are only for those repeat numbers, <code>k</code>. For example, there will not be input like <code>3a</code> or <code>2[4]</code>.</p><p>The test cases are generated so that the length of the output will never exceed <code>10^5</code>.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> <code>s = \"3[a]2[bc]\"</code><br><strong>Output:</strong> <code>\"aaabcbc\"</code></li><li><strong>Input:</strong> <code>s = \"3[a2[c]]\"</code><br><strong>Output:</strong> <code>\"accaccacc\"</code></li><li><strong>Input:</strong> <code>s = \"2[abc]3[cd]ef\"</code><br><strong>Output:</strong> <code>\"abcabccdcdcdef\"</code></li></ul><h3>Constraints:</h3><ul><li><code>1 &lt;= s.length &lt;= 30</code></li><li><code>s</code> consists of lowercase English letters, digits, and square brackets <code>'[]'</code>.</li><li><code>s</code> is guaranteed to be a valid input.</li><li>All the integers in <code>s</code> are in the range <code>[1, 300]</code>.</li></ul>",
+  "entry_function": "decodeString",
+  "template": "def decodeString(s):\n    ",
+  "solution_text": "<h3>Decode String</h3><p><strong>Algorithm:</strong></p><ol><li>Use two stacks: one for repeat counts, one for accumulated strings</li><li>When encountering a digit, build the full number (could be multi-digit)</li><li>When encountering '[', push current string and count onto stacks</li><li>When encountering ']', pop and repeat: previous_string + current_string * count</li><li>Otherwise, append the character to current string</li></ol><p><strong>Time Complexity:</strong> O(n) where n is the length of the decoded output</p><p><strong>Space Complexity:</strong> O(n) for the stacks and result string</p><p><strong>Key Insights:</strong></p><ul><li>Stack handles the nesting naturally &mdash; each '[' saves current state</li><li>Each ']' restores the previous state and applies the repetition</li><li>Numbers can be multi-digit, so accumulate digits before '['</li></ul>",
+  "solution_code": "def decodeString(s):\n    count_stack = []\n    string_stack = []\n    current_string = ''\n    current_num = 0\n    \n    for char in s:\n        if char.isdigit():\n            current_num = current_num * 10 + int(char)\n        elif char == '[':\n            count_stack.append(current_num)\n            string_stack.append(current_string)\n            current_string = ''\n            current_num = 0\n        elif char == ']':\n            num = count_stack.pop()\n            prev_string = string_stack.pop()\n            current_string = prev_string + current_string * num\n        else:\n            current_string += char\n    \n    return current_string",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['s'],)",
+  "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": { "s": "3[a]2[bc]" },
+      "output": "aaabcbc"
+    },
+    {
+      "id": 2,
+      "input": { "s": "3[a2[c]]" },
+      "output": "accaccacc"
+    },
+    {
+      "id": 3,
+      "input": { "s": "2[abc]3[cd]ef" },
+      "output": "abcabccdcdcdef"
+    },
+    {
+      "id": 4,
+      "input": { "s": "abc" },
+      "output": "abc"
+    },
+    {
+      "id": 5,
+      "input": { "s": "10[a]" },
+      "output": "aaaaaaaaaa"
+    },
+    {
+      "id": 6,
+      "input": { "s": "2[2[b]]" },
+      "output": "bbbb"
+    },
+    {
+      "id": 7,
+      "input": { "s": "1[a]" },
+      "output": "a"
+    },
+    {
+      "id": 8,
+      "input": { "s": "3[z]2[2[y]pq4[2[jk]e1[f]]]ef" },
+      "output": "zzzyypqjkjkefjkjkefjkjkefjkjkefyypqjkjkefjkjkefjkjkefjkjkefef"
+    },
+    {
+      "id": 9,
+      "input": { "s": "2[a3[b]]" },
+      "output": "abbbabbb"
+    },
+    {
+      "id": 10,
+      "input": { "s": "xy2[a]z" },
+      "output": "xyaaz"
+    }
+  ]
+}

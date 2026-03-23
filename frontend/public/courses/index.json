@@ -40,11 +40,12 @@
         "dfs",
         "heap",
         "priority queue",
-        "sliding window"
+        "sliding window",
+        "stack"
       ],
       "description": "Welcome to Algotime Winter 2026! Practice these key algorithm problems to sharpen your skills.",
       "badge": "Winter 2026",
-      "stats": "65 questions • 10 stages"
+      "stats": "73 questions • 11 stages"
     },
     {
       "filename": "foundations",
@@ -80,6 +81,6 @@
       "stats": "23 questions • 5 stages"
     }
   ],
-  "lastUpdated": "2026-03-16T18:59:40.744Z",
+  "lastUpdated": "2026-03-23T21:12:20.741Z",
   "totalCourses": 4
 }

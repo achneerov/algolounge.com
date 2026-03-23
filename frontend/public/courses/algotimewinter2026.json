@@ -22,10 +22,185 @@
     "dfs",
     "heap",
     "priority queue",
-    "sliding window"
+    "sliding window",
+    "stack"
   ],
   "badge": "Winter 2026",
   "units": {
+    "week11": {
+      "title": "Week 11",
+      "description": "Master the stack data structure \u2014 from basic bracket matching and string processing to monotonic stacks for next-greater-element patterns.",
+      "questions": [
+        {
+          "filename": "valid-parentheses",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/valid-parentheses/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/valid-parentheses",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Easy",
+            "Stack"
+          ]
+        },
+        {
+          "filename": "backspace-string-compare",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/backspace-string-compare/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/backspace-string-compare",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Easy",
+            "Stack"
+          ]
+        },
+        {
+          "filename": "baseball-game",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/baseball-game/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/baseball-game",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Medium",
+            "Stack"
+          ]
+        },
+        {
+          "filename": "evaluate-reverse-polish-notation",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/evaluate-reverse-polish-notation/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/evaluate-reverse-polish-notation",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Medium",
+            "Stack"
+          ]
+        },
+        {
+          "filename": "daily-temperatures",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/daily-temperatures/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/daily-temperatures",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Medium",
+            "Stack"
+          ]
+        },
+        {
+          "filename": "decode-string",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/decode-string/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/decode-string",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Medium",
+            "Stack"
+          ]
+        },
+        {
+          "filename": "next-greater-element",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/next-greater-element-ii/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/next-greater-element-ii",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Medium",
+            "Stack"
+          ]
+        },
+        {
+          "filename": "largest-rectangle-in-histogram",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/largest-rectangle-in-histogram/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/largest-rectangle-in-histogram",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Hard",
+            "Stack"
+          ]
+        }
+      ]
+    },
     "week10": {
       "title": "Week 10",
       "description": "Master binary search — from sorted arrays to rotated arrays and binary search on the answer.",

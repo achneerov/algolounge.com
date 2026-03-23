@@ -1,0 +1,74 @@
+{
+  "index": 235,
+  "filename": "next-greater-element",
+  "title": "Next Greater Element",
+  "difficulty": "Medium",
+  "tags": ["Stack"],
+  "keywords": [
+    "next",
+    "greater",
+    "element",
+    "monotonic",
+    "stack",
+    "array"
+  ],
+  "description": "<h2>Next Greater Element</h2><p>Given a circular integer array <code>nums</code> (i.e., the next element of <code>nums[nums.length - 1]</code> is <code>nums[0]</code>), return the <strong>next greater number</strong> for every element in <code>nums</code>.</p><p>The <strong>next greater number</strong> of a number <code>x</code> is the first greater number to its traversing-order next in the array, which means you could search circularly to find its next greater number. If it doesn't exist, return <code>-1</code> for this number.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> <code>nums = [1, 2, 1]</code><br><strong>Output:</strong> <code>[2, -1, 2]</code><br><strong>Explanation:</strong> The next greater number for 1 is 2. The number 2 has no greater number. The next greater of the last 1 is 2 (wrapping around).</li><li><strong>Input:</strong> <code>nums = [1, 2, 3, 4, 3]</code><br><strong>Output:</strong> <code>[2, 3, 4, -1, 4]</code></li><li><strong>Input:</strong> <code>nums = [5, 4, 3, 2, 1]</code><br><strong>Output:</strong> <code>[-1, 5, 5, 5, 5]</code><br><strong>Explanation:</strong> Every element except 5 wraps around and finds 5 as the next greater.</li></ul><h3>Constraints:</h3><ul><li><code>1 &lt;= nums.length &lt;= 10000</code></li><li><code>-10^9 &lt;= nums[i] &lt;= 10^9</code></li></ul>",
+  "entry_function": "nextGreaterElements",
+  "template": "def nextGreaterElements(nums):\n    ",
+  "solution_text": "<h3>Next Greater Element</h3><p><strong>Algorithm:</strong></p><ol><li>Initialize result array with -1 for all positions</li><li>Use a monotonic decreasing stack storing indices</li><li>Iterate through the array twice (to handle circular nature)</li><li>For each element, pop indices from stack while current element is greater</li><li>Set result for each popped index to current element</li></ol><p><strong>Time Complexity:</strong> O(n) &mdash; each element pushed and popped at most twice</p><p><strong>Space Complexity:</strong> O(n) for stack and result array</p><p><strong>Key Insights:</strong></p><ul><li>Traversing the array twice simulates the circular behavior</li><li>Use modulo to wrap indices: <code>i % n</code></li><li>Only push indices from the first pass onto the stack (avoid duplicates)</li><li>Monotonic stack ensures we always find the <em>next</em> greater efficiently</li></ul>",
+  "solution_code": "def nextGreaterElements(nums):\n    n = len(nums)\n    result = [-1] * n\n    stack = []\n    \n    for i in range(2 * n):\n        while stack and nums[stack[-1]] < nums[i % n]:\n            idx = stack.pop()\n            result[idx] = nums[i % n]\n        if i < n:\n            stack.append(i)\n    \n    return result",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['nums'],)",
+  "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    output_str = str(actual_output)\n    return [passed, output_str]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": { "nums": [1, 2, 1] },
+      "output": [2, -1, 2]
+    },
+    {
+      "id": 2,
+      "input": { "nums": [1, 2, 3, 4, 3] },
+      "output": [2, 3, 4, -1, 4]
+    },
+    {
+      "id": 3,
+      "input": { "nums": [5, 4, 3, 2, 1] },
+      "output": [-1, 5, 5, 5, 5]
+    },
+    {
+      "id": 4,
+      "input": { "nums": [1, 1, 1, 1] },
+      "output": [-1, -1, -1, -1]
+    },
+    {
+      "id": 5,
+      "input": { "nums": [7] },
+      "output": [-1]
+    },
+    {
+      "id": 6,
+      "input": { "nums": [3, 8, 4, 1, 2] },
+      "output": [8, -1, 8, 2, 3]
+    },
+    {
+      "id": 7,
+      "input": { "nums": [100, 1, 11, 1, 120, 111, 123, 1, -1, -100] },
+      "output": [120, 11, 120, 120, 123, 123, -1, 100, 100, 100]
+    },
+    {
+      "id": 8,
+      "input": { "nums": [2, 3, 1] },
+      "output": [3, -1, 2]
+    },
+    {
+      "id": 9,
+      "input": { "nums": [1, 5, 3, 6, 8] },
+      "output": [5, 6, 6, 8, -1]
+    },
+    {
+      "id": 10,
+      "input": { "nums": [9, 8, 7, 3, 2, 1, 6] },
+      "output": [-1, 9, 9, 6, 6, 6, 9]
+    }
+  ]
+}

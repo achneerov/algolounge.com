@@ -3486,8 +3486,81 @@
         "stack",
         "array"
       ]
+    },
+    {
+      "index": 236,
+      "filename": "first-unique-character-in-a-string",
+      "title": "First Unique Character in a String",
+      "difficulty": "Easy",
+      "tags": [
+        "String"
+      ],
+      "keywords": [
+        "string",
+        "hash table",
+        "counting",
+        "first",
+        "unique",
+        "character",
+        "index",
+        "leetcode",
+        "387"
+      ]
+    },
+    {
+      "index": 237,
+      "filename": "implement-trie-prefix-tree",
+      "title": "Implement Trie (Prefix Tree)",
+      "difficulty": "Medium",
+      "tags": [
+        "Trie"
+      ],
+      "keywords": [
+        "trie",
+        "prefix",
+        "insert",
+        "search",
+        "startsWith",
+        "leetcode",
+        "208"
+      ]
+    },
+    {
+      "index": 238,
+      "filename": "longest-word-in-dictionary",
+      "title": "Longest Word in Dictionary",
+      "difficulty": "Easy",
+      "tags": [
+        "String",
+        "Trie"
+      ],
+      "keywords": [
+        "dictionary",
+        "words",
+        "prefix",
+        "lexicographical",
+        "leetcode",
+        "720"
+      ]
+    },
+    {
+      "index": 239,
+      "filename": "replace-words",
+      "title": "Replace Words",
+      "difficulty": "Medium",
+      "tags": [
+        "Trie"
+      ],
+      "keywords": [
+        "dictionary",
+        "sentence",
+        "root",
+        "prefix",
+        "leetcode",
+        "648"
+      ]
     }
   ],
-  "lastUpdated": "2026-03-23T21:12:20.731Z",
-  "totalQuestions": 176
+  "lastUpdated": "2026-03-30T21:43:34.199Z",
+  "totalQuestions": 180
 }

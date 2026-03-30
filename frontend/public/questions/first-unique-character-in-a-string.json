@@ -1,0 +1,71 @@
+{
+  "index": 236,
+  "filename": "first-unique-character-in-a-string",
+  "title": "First Unique Character in a String",
+  "difficulty": "Easy",
+  "tags": [
+    "String"
+  ],
+  "keywords": [
+    "string",
+    "hash table",
+    "counting",
+    "first",
+    "unique",
+    "character",
+    "index",
+    "leetcode",
+    "387"
+  ],
+  "description": "<h2>First Unique Character in a String</h2><p>Given a string <code>s</code>, find the <strong>first</strong> non-repeating character in it and return its index. If it does not exist, return <code>-1</code>.</p><h3>Examples:</h3><ul><li>Input: s = &quot;leetcode&quot;<br>Output: <code>0</code><br>Explanation: The character &#39;l&#39; at index 0 is the first that does not repeat.</li><li>Input: s = &quot;loveleetcode&quot;<br>Output: <code>2</code></li><li>Input: s = &quot;aabb&quot;<br>Output: <code>-1</code></li></ul><h3>Constraints:</h3><ul><li><code>1 &lt;= s.length &lt;= 10<sup>5</sup></code></li><li><code>s</code> consists of only lowercase English letters</li></ul>",
+  "entry_function": "firstUniqChar",
+  "template": "def firstUniqChar(s):\n  ",
+  "solution_text": "<h3>First Unique Character in a String</h3><p><strong>Algorithm:</strong></p><ol><li>Count occurrences of each character (hash map or array of size 26)</li><li>Scan the string left to right by index</li><li>Return the first index whose character count is 1</li><li>If none, return -1</li></ol><p><strong>Time Complexity:</strong> O(n) — two passes over the string</p><p><strong>Space Complexity:</strong> O(1) for lowercase English letters (at most 26 counters)</p><p><strong>Key Insights:</strong></p><ul><li>Order matters: the first character with count 1 in left-to-right order wins</li><li>A single pass counting then enumerating by index preserves problem order</li></ul>",
+  "solution_code": "def firstUniqChar(s):\n    from collections import Counter\n    count = Counter(s)\n    for i, c in enumerate(s):\n        if count[c] == 1:\n            return i\n    return -1",
+  "prepare": "def prepare(test_case_input):\n    \"\"\"Prepare arguments for firstUniqChar function\"\"\"\n    return (test_case_input['s'],)",
+  "verify": "def verify(actual_output, expected_output):\n    \"\"\"Verify the index result\"\"\"\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "s": "leetcode"
+      },
+      "output": 0
+    },
+    {
+      "id": 2,
+      "input": {
+        "s": "loveleetcode"
+      },
+      "output": 2
+    },
+    {
+      "id": 3,
+      "input": {
+        "s": "aabb"
+      },
+      "output": -1
+    },
+    {
+      "id": 4,
+      "input": {
+        "s": "z"
+      },
+      "output": 0
+    },
+    {
+      "id": 5,
+      "input": {
+        "s": "dddccdbba"
+      },
+      "output": 8
+    },
+    {
+      "id": 6,
+      "input": {
+        "s": "stress"
+      },
+      "output": 1
+    }
+  ]
+}

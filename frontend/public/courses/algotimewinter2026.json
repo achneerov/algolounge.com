@@ -23,10 +23,122 @@
     "heap",
     "priority queue",
     "sliding window",
-    "stack"
+    "stack",
+    "trie"
   ],
   "badge": "Winter 2026",
   "units": {
+    "week12": {
+      "title": "Week 12",
+      "description": "Trie (prefix tree) and string search \u2014 warm up with counting on strings, then dictionary words, implement a trie, replace roots in a sentence, and find all words on a board.",
+      "questions": [
+        {
+          "filename": "first-unique-character-in-a-string",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/first-unique-character-in-a-string/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/first-unique-character-in-a-string",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Easy",
+            "String"
+          ]
+        },
+        {
+          "filename": "longest-word-in-dictionary",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/longest-word-in-dictionary/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/longest-word-in-dictionary",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Easy",
+            "Trie"
+          ]
+        },
+        {
+          "filename": "implement-trie-prefix-tree",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/implement-trie-prefix-tree/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/implement-trie-prefix-tree",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Medium",
+            "Trie"
+          ]
+        },
+        {
+          "filename": "replace-words",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/replace-words/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/replace-words",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Medium",
+            "Trie"
+          ]
+        },
+        {
+          "filename": "word-search-ii",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/word-search-ii/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/word-search-ii",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Hard",
+            "Trie"
+          ]
+        }
+      ]
+    },
     "week11": {
       "title": "Week 11",
       "description": "Master the stack data structure \u2014 from basic bracket matching and string processing to monotonic stacks for next-greater-element patterns.",

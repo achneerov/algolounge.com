@@ -1,0 +1,111 @@
+{
+  "index": 237,
+  "filename": "implement-trie-prefix-tree",
+  "title": "Implement Trie (Prefix Tree)",
+  "difficulty": "Medium",
+  "tags": [
+    "Trie"
+  ],
+  "keywords": [
+    "trie",
+    "prefix",
+    "insert",
+    "search",
+    "startsWith",
+    "leetcode",
+    "208"
+  ],
+  "description": "<h2>Implement Trie (Prefix Tree)</h2><p>A <strong>trie</strong> (pronounced as &quot;try&quot;) or <strong>prefix tree</strong> is a tree data structure used to efficiently store and retrieve keys in a dataset of strings. There are various applications of this data structure, such as autocomplete and spellchecker.</p><p>Implement the <code>Trie</code> class:</p><ul><li><code>Trie()</code> Initializes the trie object.</li><li><code>void insert(String word)</code> Inserts the string <code>word</code> into the trie.</li><li><code>boolean search(String word)</code> Returns <code>true</code> if the string <code>word</code> is in the trie (i.e., was inserted before), and <code>false</code> otherwise.</li><li><code>boolean startsWith(String prefix)</code> Returns <code>true</code> if there is a previously inserted string <code>word</code> that has the prefix <code>prefix</code>, and <code>false</code> otherwise.</li></ul><p>Operations are exercised via the runner <code>executeTrieOperations(operations)</code> using strings like <code>Trie()</code>, <code>insert(&quot;apple&quot;)</code>, <code>search(&quot;apple&quot;)</code>, <code>startsWith(&quot;app&quot;)</code>. Boolean results are returned as <code>1</code> (true) or <code>0</code> (false).</p><h3>Constraints:</h3><ul><li><code>1 &lt;= word.length, prefix.length &lt;= 2000</code></li><li><code>word</code> and <code>prefix</code> consist only of lowercase English letters</li><li>At most <code>3 * 10<sup>4</sup></code> calls in total to <code>insert</code>, <code>search</code>, and <code>startsWith</code></li></ul>",
+  "entry_function": "executeTrieOperations",
+  "template": "class TrieNode:\n    def __init__(self):\n        pass\n\nclass Trie:\n    def __init__(self):\n        pass\n\n    def insert(self, word: str) -> None:\n        pass\n\n    def search(self, word: str) -> bool:\n        pass\n\n    def startsWith(self, prefix: str) -> bool:\n        pass",
+  "solution_text": "<h3>Implement Trie</h3><p><strong>Algorithm:</strong></p><ol><li>Each node maps characters to child nodes</li><li><code>insert</code>: walk or create path; mark end of word on last character</li><li><code>search</code>: follow path; require end-of-word flag</li><li><code>startsWith</code>: follow path; prefix may end mid-word</li></ol><p><strong>Time Complexity:</strong> O(m) per operation, m = word length</p><p><strong>Space Complexity:</strong> O(ALPHABET_SIZE * N * M) worst case for stored characters</p>",
+  "solution_code": "class TrieNode:\n    def __init__(self):\n        self.children = {}\n        self.is_end = False\n\nclass Trie:\n    def __init__(self):\n        self.root = TrieNode()\n\n    def insert(self, word: str) -> None:\n        node = self.root\n        for c in word:\n            if c not in node.children:\n                node.children[c] = TrieNode()\n            node = node.children[c]\n        node.is_end = True\n\n    def search(self, word: str) -> bool:\n        node = self.root\n        for c in word:\n            if c not in node.children:\n                return False\n            node = node.children[c]\n        return node.is_end\n\n    def startsWith(self, prefix: str) -> bool:\n        node = self.root\n        for c in prefix:\n            if c not in node.children:\n                return False\n            node = node.children[c]\n        return True",
+  "prepare": "import re\n\ndef parse_operation(op_str):\n    op_str = op_str.strip()\n    m = re.match(r'(\\w+)\\((.*)\\)\\s*$', op_str)\n    if not m:\n        return op_str, []\n    name = m.group(1)\n    inner = m.group(2).strip()\n    if not inner:\n        return name, []\n    args = []\n    i = 0\n    while i < len(inner):\n        while i < len(inner) and inner[i] in ', \\t':\n            i += 1\n        if i >= len(inner):\n            break\n        if inner[i] == '\"':\n            i += 1\n            j = i\n            while j < len(inner) and inner[j] != '\"':\n                j += 1\n            args.append(inner[i:j])\n            i = j + 1\n        else:\n            j = i\n            while j < len(inner) and inner[j] not in ',':\n                j += 1\n            args.append(inner[i:j].strip())\n            i = j\n    return name, args\n\ndef executeTrieOperations(operations):\n    results = []\n    trie = None\n    for op_str in operations:\n        op, args = parse_operation(op_str)\n        if op == 'Trie':\n            trie = Trie()\n            results.append(None)\n        elif op == 'insert':\n            trie.insert(args[0])\n            results.append(None)\n        elif op == 'search':\n            results.append(1 if trie.search(args[0]) else 0)\n        elif op == 'startsWith':\n            results.append(1 if trie.startsWith(args[0]) else 0)\n    return results\n\ndef prepare(test_case_input):\n    return (test_case_input['operations'],)",
+  "verify": "def verify(actual_output, expected_output):\n    if len(actual_output) != len(expected_output):\n        return [False, str(actual_output)]\n    for actual, expected in zip(actual_output, expected_output):\n        if actual != expected:\n            return [False, str(actual_output)]\n    return [True, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "operations": [
+          "Trie()",
+          "insert(\"apple\")",
+          "search(\"apple\")",
+          "search(\"app\")",
+          "startsWith(\"app\")",
+          "insert(\"app\")",
+          "search(\"app\")"
+        ]
+      },
+      "output": [
+        null,
+        null,
+        1,
+        0,
+        1,
+        null,
+        1
+      ]
+    },
+    {
+      "id": 2,
+      "input": {
+        "operations": [
+          "Trie()",
+          "insert(\"a\")",
+          "search(\"a\")",
+          "search(\"ab\")",
+          "startsWith(\"a\")"
+        ]
+      },
+      "output": [
+        null,
+        null,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "input": {
+        "operations": [
+          "Trie()",
+          "insert(\"hello\")",
+          "startsWith(\"hell\")",
+          "startsWith(\"hello\")",
+          "search(\"hello\")",
+          "search(\"hell\")"
+        ]
+      },
+      "output": [
+        null,
+        null,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": 4,
+      "input": {
+        "operations": [
+          "Trie()",
+          "insert(\"xyz\")",
+          "search(\"xyz\")",
+          "startsWith(\"x\")",
+          "startsWith(\"xy\")",
+          "search(\"x\")"
+        ]
+      },
+      "output": [
+        null,
+        null,
+        1,
+        1,
+        1,
+        0
+      ]
+    }
+  ]
+}

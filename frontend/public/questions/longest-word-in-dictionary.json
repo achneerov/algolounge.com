@@ -1,0 +1,91 @@
+{
+  "index": 238,
+  "filename": "longest-word-in-dictionary",
+  "title": "Longest Word in Dictionary",
+  "difficulty": "Easy",
+  "tags": [
+    "String",
+    "Trie"
+  ],
+  "keywords": [
+    "dictionary",
+    "words",
+    "prefix",
+    "lexicographical",
+    "leetcode",
+    "720"
+  ],
+  "description": "<h2>Longest Word in Dictionary</h2><p>Given an array of strings <code>words</code> representing an English dictionary, return the longest word in <code>words</code> that can be built one character at a time by other words in <code>words</code>.</p><p>If there is more than one possible answer, return the longest word with the smallest lexicographical order. If there is no answer, return <code>&quot;&quot;</code>.</p><h3>Examples:</h3><ul><li>Input: words = [&quot;w&quot;,&quot;wo&quot;,&quot;wor&quot;,&quot;worl&quot;,&quot;world&quot;]<br>Output: &quot;world&quot;<br>Explanation: The word &quot;world&quot; can be built one character at a time by &quot;w&quot;, &quot;wo&quot;, &quot;wor&quot;, and &quot;worl&quot;, then &quot;world&quot;.</li><li>Input: words = [&quot;a&quot;,&quot;banana&quot;,&quot;app&quot;,&quot;appl&quot;,&quot;ap&quot;,&quot;apply&quot;,&quot;apple&quot;]<br>Output: &quot;apple&quot;<br>Explanation: Both &quot;apply&quot; and &quot;apple&quot; can be built from other words in the dictionary, but &quot;apple&quot; is lexicographically smaller than &quot;apply&quot;.</li></ul><h3>Constraints:</h3><ul><li><code>1 &lt;= words.length &lt;= 1000</code></li><li><code>1 &lt;= words[i].length &lt;= 30</code></li><li><code>words[i]</code> consists of lowercase English letters</li></ul>",
+  "entry_function": "longestWord",
+  "template": "def longestWord(words):\n  ",
+  "solution_text": "<h3>Longest Word in Dictionary</h3><p><strong>Algorithm:</strong></p><ol><li>Put all words in a set for O(1) prefix lookups</li><li>Iterate words in sorted order (lexicographic)</li><li>A word is valid if it has length 1 or its prefix without the last character is in the set</li><li>Keep the best word by longer length, breaking ties with lexicographically smaller string</li></ol><p><strong>Time Complexity:</strong> O(n log n + m) for sorting and checking, where n is number of words and m total characters</p><p><strong>Space Complexity:</strong> O(n) for the set</p>",
+  "solution_code": "def longestWord(words):\n    word_set = set(words)\n    built = {\"\"}\n    best = \"\"\n    for w in sorted(words):\n        if w[:-1] in built:\n            built.add(w)\n            if len(w) > len(best):\n                best = w\n    return best",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['words'],)",
+  "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    return [passed, repr(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "words": [
+          "w",
+          "wo",
+          "wor",
+          "worl",
+          "world"
+        ]
+      },
+      "output": "world"
+    },
+    {
+      "id": 2,
+      "input": {
+        "words": [
+          "a",
+          "banana",
+          "app",
+          "appl",
+          "ap",
+          "apply",
+          "apple"
+        ]
+      },
+      "output": "apple"
+    },
+    {
+      "id": 3,
+      "input": {
+        "words": [
+          "m",
+          "ma",
+          "mat",
+          "math"
+        ]
+      },
+      "output": "math"
+    },
+    {
+      "id": 4,
+      "input": {
+        "words": [
+          "a",
+          "ab",
+          "abc"
+        ]
+      },
+      "output": "abc"
+    },
+    {
+      "id": 5,
+      "input": {
+        "words": [
+          "b",
+          "br",
+          "bre",
+          "brea",
+          "bread"
+        ]
+      },
+      "output": "bread"
+    }
+  ]
+}

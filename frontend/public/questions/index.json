@@ -535,6 +535,24 @@
     },
     {
       "index": 1,
+      "filename": "employee-free-time",
+      "title": "Employee Free Time",
+      "difficulty": "Hard",
+      "tags": [
+        "Intervals"
+      ],
+      "keywords": [
+        "intervals",
+        "merge",
+        "sorting",
+        "heap",
+        "array",
+        "hard",
+        "leetcode"
+      ]
+    },
+    {
+      "index": 1,
       "filename": "insert-interval",
       "title": "Insert Interval",
       "difficulty": "Medium",
@@ -629,6 +647,23 @@
     },
     {
       "index": 1,
+      "filename": "non-overlapping-intervals",
+      "title": "Non-Overlapping Intervals",
+      "difficulty": "Medium",
+      "tags": [
+        "Intervals"
+      ],
+      "keywords": [
+        "intervals",
+        "greedy",
+        "sorting",
+        "array",
+        "medium",
+        "leetcode"
+      ]
+    },
+    {
+      "index": 1,
       "filename": "reconstruct-itinerary",
       "title": "Reconstruct Itinerary",
       "difficulty": "Hard",
@@ -646,6 +681,23 @@
         "backtracking",
         "lexical",
         "order",
+        "leetcode"
+      ]
+    },
+    {
+      "index": 1,
+      "filename": "summary-ranges",
+      "title": "Summary Ranges",
+      "difficulty": "Easy",
+      "tags": [
+        "Intervals"
+      ],
+      "keywords": [
+        "intervals",
+        "ranges",
+        "array",
+        "sorted",
+        "easy",
         "leetcode"
       ]
     },
@@ -3561,6 +3613,6 @@
       ]
     }
   ],
-  "lastUpdated": "2026-03-30T21:43:34.199Z",
-  "totalQuestions": 180
+  "lastUpdated": "2026-04-06T21:30:14.777Z",
+  "totalQuestions": 183
 }

@@ -1,0 +1,62 @@
+{
+  "index": 1,
+  "filename": "employee-free-time",
+  "title": "Employee Free Time",
+  "difficulty": "Hard",
+  "tags": [
+    "Intervals"
+  ],
+  "keywords": [
+    "intervals",
+    "merge",
+    "sorting",
+    "heap",
+    "array",
+    "hard",
+    "leetcode"
+  ],
+  "description": "<h2>Employee Free Time</h2><p>We are given a list <code>schedule</code> of employees, which represents the working time for each employee.</p><p>Each employee has a list of non-overlapping intervals, and these intervals are in sorted order.</p><p>Return the list of <strong>finite</strong> intervals representing the <strong>common free time</strong> for all employees, also in sorted order.</p><p>Even though we represent intervals as <code>[a, b]</code>, the intervals within <code>schedule</code> are guaranteed to be non-overlapping for each individual employee.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> schedule = [[[1,2],[5,6]],[[1,3]],[[4,10]]]<br><strong>Output:</strong> [[3,4]]<br><strong>Explanation:</strong> There are a total of three employees. All together, the combined working hours are [[1,3],[4,10]]. The free time would be [3,4].</li><li><strong>Input:</strong> schedule = [[[1,3],[6,7]],[[2,4]],[[2,5],[9,12]]]<br><strong>Output:</strong> [[5,6],[7,9]]<br><strong>Explanation:</strong> The combined working hours are [[1,5],[6,7],[9,12]]. The free time is [5,6] and [7,9].</li></ul><h3>Constraints:</h3><ul><li><code>1 <= schedule.length <= 50</code></li><li><code>1 <= schedule[i].length <= 50</code></li><li><code>0 <= schedule[i][j][0] < schedule[i][j][1] <= 10^8</code></li></ul>",
+  "entry_function": "employeeFreeTime",
+  "template": "def employeeFreeTime(schedule):\n    ",
+  "solution_text": "<h3>Employee Free Time</h3><p><strong>Algorithm:</strong></p><ol><li>Flatten all intervals from every employee into one list</li><li>Sort by start time</li><li>Merge overlapping intervals</li><li>Find gaps between merged intervals - these are free times</li></ol><p><strong>Time Complexity:</strong> O(n log n) where n is the total number of intervals</p><p><strong>Space Complexity:</strong> O(n)</p><p><strong>Key Insights:</strong></p><ul><li>Individual employee schedules don't matter - flatten everything</li><li>After merging all work intervals, any gap is a common free time</li><li>This reduces to \"merge intervals\" followed by \"find gaps\"</li></ul>",
+  "solution_code": "def employeeFreeTime(schedule):\n    # Flatten all intervals\n    intervals = []\n    for emp in schedule:\n        for interval in emp:\n            intervals.append(interval)\n    \n    # Sort by start time\n    intervals.sort(key=lambda x: x[0])\n    \n    # Merge overlapping intervals\n    merged = [intervals[0]]\n    for start, end in intervals[1:]:\n        if start <= merged[-1][1]:\n            merged[-1] = [merged[-1][0], max(merged[-1][1], end)]\n        else:\n            merged.append([start, end])\n    \n    # Find gaps between merged intervals\n    result = []\n    for i in range(1, len(merged)):\n        result.append([merged[i - 1][1], merged[i][0]])\n    \n    return result",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['schedule'],)",
+  "verify": "def verify(actual_output, expected_output):\n    # Normalize to lists of lists for comparison\n    actual = [list(x) for x in actual_output] if actual_output else []\n    expected = [list(x) for x in expected_output] if expected_output else []\n    passed = actual == expected\n    return [passed, str(actual)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "schedule": [[[1, 2], [5, 6]], [[1, 3]], [[4, 10]]]
+      },
+      "output": [[3, 4]]
+    },
+    {
+      "id": 2,
+      "input": {
+        "schedule": [[[1, 3], [6, 7]], [[2, 4]], [[2, 5], [9, 12]]]
+      },
+      "output": [[5, 6], [7, 9]]
+    },
+    {
+      "id": 3,
+      "input": {
+        "schedule": [[[1, 2]], [[3, 4]], [[5, 6]]]
+      },
+      "output": [[2, 3], [4, 5]]
+    },
+    {
+      "id": 4,
+      "input": {
+        "schedule": [[[1, 10]], [[2, 5]], [[3, 7]]]
+      },
+      "output": []
+    },
+    {
+      "id": 5,
+      "input": {
+        "schedule": [[[0, 1], [4, 5]], [[2, 3]]]
+      },
+      "output": [[1, 2], [3, 4]]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "index": 1,
+  "filename": "summary-ranges",
+  "title": "Summary Ranges",
+  "difficulty": "Easy",
+  "tags": [
+    "Intervals"
+  ],
+  "keywords": [
+    "intervals",
+    "ranges",
+    "array",
+    "sorted",
+    "easy",
+    "leetcode"
+  ],
+  "description": "<h2>Summary Ranges</h2><p>You are given a <strong>sorted unique</strong> integer array <code>nums</code>.</p><p>A <strong>range</strong> <code>[a,b]</code> is the set of all integers from <code>a</code> to <code>b</code> (inclusive).</p><p>Return the <strong>smallest sorted</strong> list of ranges that <strong>cover all the numbers in the array exactly</strong>. That is, each element of <code>nums</code> is covered by exactly one of the ranges, and there is no integer <code>x</code> such that <code>x</code> is in one of the ranges but not in <code>nums</code>.</p><p>Each range <code>[a,b]</code> in the list should be output as:</p><ul><li><code>\"a->b\"</code> if <code>a != b</code></li><li><code>\"a\"</code> if <code>a == b</code></li></ul><h3>Examples:</h3><ul><li><strong>Input:</strong> nums = [0,1,2,4,5,7]<br><strong>Output:</strong> [\"0->2\",\"4->5\",\"7\"]<br><strong>Explanation:</strong> The ranges are [0,2], [4,5], and [7].</li><li><strong>Input:</strong> nums = [0,2,3,4,8,10,11]<br><strong>Output:</strong> [\"0\",\"2->4\",\"8\",\"10->11\"]<br><strong>Explanation:</strong> The ranges are [0,0], [2,4], [8,8], and [10,11].</li></ul><h3>Constraints:</h3><ul><li><code>0 <= nums.length <= 20</code></li><li><code>-2^31 <= nums[i] <= 2^31 - 1</code></li><li>All values of <code>nums</code> are <strong>unique</strong></li><li><code>nums</code> is sorted in <strong>ascending</strong> order</li></ul>",
+  "entry_function": "summaryRanges",
+  "template": "def summaryRanges(nums):\n    ",
+  "solution_text": "<h3>Summary Ranges</h3><p><strong>Algorithm:</strong></p><ol><li>Use two pointers to track the start and end of each range</li><li>Walk through the sorted array</li><li>When the next number is not consecutive, close the current range</li><li>Format each range as \"a->b\" or \"a\"</li></ol><p><strong>Time Complexity:</strong> O(n)</p><p><strong>Space Complexity:</strong> O(1) excluding output</p><p><strong>Key Insights:</strong></p><ul><li>Since the array is sorted and unique, consecutive numbers differ by exactly 1</li><li>Track the start of each range and extend until a gap is found</li></ul>",
+  "solution_code": "def summaryRanges(nums):\n    result = []\n    i = 0\n    while i < len(nums):\n        start = nums[i]\n        while i + 1 < len(nums) and nums[i + 1] == nums[i] + 1:\n            i += 1\n        if nums[i] != start:\n            result.append(str(start) + '->' + str(nums[i]))\n        else:\n            result.append(str(start))\n        i += 1\n    return result",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['nums'],)",
+  "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "nums": [0, 1, 2, 4, 5, 7]
+      },
+      "output": ["0->2", "4->5", "7"]
+    },
+    {
+      "id": 2,
+      "input": {
+        "nums": [0, 2, 3, 4, 8, 10, 11]
+      },
+      "output": ["0", "2->4", "8", "10->11"]
+    },
+    {
+      "id": 3,
+      "input": {
+        "nums": []
+      },
+      "output": []
+    },
+    {
+      "id": 4,
+      "input": {
+        "nums": [-1]
+      },
+      "output": ["-1"]
+    },
+    {
+      "id": 5,
+      "input": {
+        "nums": [0, 1, 2, 3, 4]
+      },
+      "output": ["0->4"]
+    }
+  ]
+}

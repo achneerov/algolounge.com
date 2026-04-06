@@ -28,6 +28,117 @@
   ],
   "badge": "Winter 2026",
   "units": {
+    "week13": {
+      "title": "Week 13",
+      "description": "Intervals \u2014 sort, merge, and find gaps between intervals. Start with range summaries, check for overlaps, merge intervals, remove the fewest to eliminate overlaps, and find common free time across schedules.",
+      "questions": [
+        {
+          "filename": "summary-ranges",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/summary-ranges/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/summary-ranges",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Easy",
+            "Intervals"
+          ]
+        },
+        {
+          "filename": "meeting-rooms",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/meeting-rooms/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/meeting-rooms",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Easy",
+            "Intervals"
+          ]
+        },
+        {
+          "filename": "merge-intervals",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/merge-intervals/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/merge-intervals",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Medium",
+            "Intervals"
+          ]
+        },
+        {
+          "filename": "non-overlapping-intervals",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/non-overlapping-intervals/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/non-overlapping-intervals",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Medium",
+            "Intervals"
+          ]
+        },
+        {
+          "filename": "employee-free-time",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/employee-free-time/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/employee-free-time",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Hard",
+            "Intervals"
+          ]
+        }
+      ]
+    },
     "week12": {
       "title": "Week 12",
       "description": "Trie (prefix tree) and string search \u2014 warm up with counting on strings, then dictionary words, implement a trie, replace roots in a sentence, and find all words on a board.",
@@ -315,7 +426,7 @@
     },
     "week10": {
       "title": "Week 10",
-      "description": "Master binary search — from sorted arrays to rotated arrays and binary search on the answer.",
+      "description": "Master binary search \u2014 from sorted arrays to rotated arrays and binary search on the answer.",
       "questions": [
         {
           "filename": "binary-search",
@@ -447,7 +558,7 @@
     },
     "week9": {
       "title": "Week 9",
-      "description": "Master the sliding window technique — from fixed-size windows to dynamic shrinking and expanding for optimal substrings and subarrays.",
+      "description": "Master the sliding window technique \u2014 from fixed-size windows to dynamic shrinking and expanding for optimal substrings and subarrays.",
       "questions": [
         {
           "filename": "best-time-to-buy-and-sell-stock",
@@ -579,7 +690,7 @@
     },
     "week8": {
       "title": "Week 8",
-      "description": "Master heaps and priority queues — from basic heap operations to merging sorted streams and designing real-world systems.",
+      "description": "Master heaps and priority queues \u2014 from basic heap operations to merging sorted streams and designing real-world systems.",
       "questions": [
         {
           "filename": "contains-duplicate",
@@ -711,7 +822,7 @@
     },
     "week7": {
       "title": "Week 7",
-      "description": "Explore graph representations, traversals, and classic graph algorithms — from BFS/DFS to topological sort.",
+      "description": "Explore graph representations, traversals, and classic graph algorithms \u2014 from BFS/DFS to topological sort.",
       "questions": [
         {
           "filename": "reverse-vowels-of-a-string",
@@ -864,7 +975,7 @@
     },
     "week6": {
       "title": "Week 6",
-      "description": "Transform recursive solutions into efficient dynamic programs — from memoization to tabulation.",
+      "description": "Transform recursive solutions into efficient dynamic programs \u2014 from memoization to tabulation.",
       "questions": [
         {
           "filename": "single-number",

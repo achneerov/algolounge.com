@@ -1,0 +1,61 @@
+{
+  "index": 1,
+  "filename": "non-overlapping-intervals",
+  "title": "Non-Overlapping Intervals",
+  "difficulty": "Medium",
+  "tags": [
+    "Intervals"
+  ],
+  "keywords": [
+    "intervals",
+    "greedy",
+    "sorting",
+    "array",
+    "medium",
+    "leetcode"
+  ],
+  "description": "<h2>Non-Overlapping Intervals</h2><p>Given an array of intervals <code>intervals</code> where <code>intervals[i] = [starti, endi]</code>, return <em>the minimum number of intervals you need to remove to make the rest of the intervals non-overlapping</em>.</p><p>Note that intervals which only touch at a point are <strong>non-overlapping</strong>. For example, <code>[1, 2]</code> and <code>[2, 3]</code> are non-overlapping.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> intervals = [[1,2],[2,3],[3,4],[1,3]]<br><strong>Output:</strong> 1<br><strong>Explanation:</strong> [1,3] can be removed and the rest are non-overlapping.</li><li><strong>Input:</strong> intervals = [[1,2],[1,2],[1,2]]<br><strong>Output:</strong> 2<br><strong>Explanation:</strong> You need to remove two [1,2] to make the rest non-overlapping.</li><li><strong>Input:</strong> intervals = [[1,2],[2,3]]<br><strong>Output:</strong> 0<br><strong>Explanation:</strong> You don't need to remove any intervals since they are already non-overlapping.</li></ul><h3>Constraints:</h3><ul><li><code>1 <= intervals.length <= 10^5</code></li><li><code>intervals[i].length == 2</code></li><li><code>-5 * 10^4 <= starti < endi <= 5 * 10^4</code></li></ul>",
+  "entry_function": "eraseOverlapIntervals",
+  "template": "def eraseOverlapIntervals(intervals):\n    ",
+  "solution_text": "<h3>Non-Overlapping Intervals</h3><p><strong>Algorithm:</strong></p><ol><li>Sort intervals by end time</li><li>Greedily keep intervals that don't overlap with the last kept interval</li><li>Count the number of removed intervals</li></ol><p><strong>Time Complexity:</strong> O(n log n) due to sorting</p><p><strong>Space Complexity:</strong> O(1) if sorting in-place</p><p><strong>Key Insights:</strong></p><ul><li>This is equivalent to finding the maximum number of non-overlapping intervals (activity selection problem)</li><li>Sorting by end time and greedily picking the earliest-ending interval maximizes the number we can keep</li><li>The answer is total intervals minus the max non-overlapping count</li></ul>",
+  "solution_code": "def eraseOverlapIntervals(intervals):\n    intervals.sort(key=lambda x: x[1])\n    count = 0\n    prev_end = float('-inf')\n    for start, end in intervals:\n        if start >= prev_end:\n            prev_end = end\n        else:\n            count += 1\n    return count",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['intervals'],)",
+  "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "intervals": [[1, 2], [2, 3], [3, 4], [1, 3]]
+      },
+      "output": 1
+    },
+    {
+      "id": 2,
+      "input": {
+        "intervals": [[1, 2], [1, 2], [1, 2]]
+      },
+      "output": 2
+    },
+    {
+      "id": 3,
+      "input": {
+        "intervals": [[1, 2], [2, 3]]
+      },
+      "output": 0
+    },
+    {
+      "id": 4,
+      "input": {
+        "intervals": [[1, 100], [11, 22], [1, 11], [2, 12]]
+      },
+      "output": 2
+    },
+    {
+      "id": 5,
+      "input": {
+        "intervals": [[0, 2], [1, 3], [2, 4], [3, 5], [4, 6]]
+      },
+      "output": 2
+    }
+  ]
+}

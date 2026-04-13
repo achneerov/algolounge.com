@@ -873,7 +873,9 @@
       "filename": "best-time-to-buy-and-sell-stock-ii",
       "title": "Best Time to Buy and Sell Stock II",
       "difficulty": "Medium",
-      "tags": [],
+      "tags": [
+        "Greedy"
+      ],
       "keywords": [
         "best",
         "time",
@@ -3611,8 +3613,91 @@
         "leetcode",
         "648"
       ]
+    },
+    {
+      "index": 240,
+      "filename": "assign-cookies",
+      "title": "Assign Cookies",
+      "difficulty": "Easy",
+      "tags": [
+        "Greedy"
+      ],
+      "keywords": [
+        "assign",
+        "cookies",
+        "greedy",
+        "sort",
+        "two pointers",
+        "leetcode",
+        "455",
+        "children",
+        "content"
+      ]
+    },
+    {
+      "index": 241,
+      "filename": "jump-game",
+      "title": "Jump Game",
+      "difficulty": "Medium",
+      "tags": [
+        "Greedy"
+      ],
+      "keywords": [
+        "jump",
+        "game",
+        "greedy",
+        "reach",
+        "array",
+        "leetcode",
+        "55",
+        "furthest",
+        "index"
+      ]
+    },
+    {
+      "index": 242,
+      "filename": "lemonade-change",
+      "title": "Lemonade Change",
+      "difficulty": "Easy",
+      "tags": [
+        "Greedy"
+      ],
+      "keywords": [
+        "lemonade",
+        "change",
+        "greedy",
+        "simulation",
+        "leetcode",
+        "860",
+        "bills",
+        "cash",
+        "register"
+      ]
+    },
+    {
+      "index": 243,
+      "filename": "minimum-number-of-refueling-stops",
+      "title": "Minimum Number of Refueling Stops",
+      "difficulty": "Hard",
+      "tags": [
+        "Greedy",
+        "Heap / Priority Queue"
+      ],
+      "keywords": [
+        "minimum",
+        "refueling",
+        "stops",
+        "greedy",
+        "heap",
+        "priority queue",
+        "leetcode",
+        "871",
+        "fuel",
+        "gas",
+        "station"
+      ]
     }
   ],
-  "lastUpdated": "2026-04-06T21:30:14.777Z",
-  "totalQuestions": 183
+  "lastUpdated": "2026-04-13T21:57:18.253Z",
+  "totalQuestions": 187
 }

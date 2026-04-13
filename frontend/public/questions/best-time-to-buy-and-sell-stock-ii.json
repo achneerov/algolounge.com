@@ -3,7 +3,9 @@
   "filename": "best-time-to-buy-and-sell-stock-ii",
   "title": "Best Time to Buy and Sell Stock II",
   "difficulty": "Medium",
-  "tags": [],
+  "tags": [
+    "Greedy"
+  ],
   "keywords": [
     "best",
     "time",

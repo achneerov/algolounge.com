@@ -1,0 +1,243 @@
+{
+  "index": 243,
+  "filename": "minimum-number-of-refueling-stops",
+  "title": "Minimum Number of Refueling Stops",
+  "difficulty": "Hard",
+  "tags": [
+    "Greedy",
+    "Heap / Priority Queue"
+  ],
+  "keywords": [
+    "minimum",
+    "refueling",
+    "stops",
+    "greedy",
+    "heap",
+    "priority queue",
+    "leetcode",
+    "871",
+    "fuel",
+    "gas",
+    "station"
+  ],
+  "description": "<h2>Minimum Number of Refueling Stops</h2><p>A car travels from a starting position to a destination which is <code>target</code> miles east of the starting position.</p><p>There are gas stations along the way. The gas stations are represented as an array <code>stations</code> where <code>stations[i] = [position<sub>i</sub>, fuel<sub>i</sub>]</code> indicates that the <code>i<sup>th</sup></code> gas station is <code>position<sub>i</sub></code> miles east of the starting position and has <code>fuel<sub>i</sub></code> liters of gas.</p><p>The car starts with an infinite tank of gas, which initially has <code>startFuel</code> liters of fuel in it. It uses one liter of gas per one mile that it drives. When the car reaches a gas station, it may stop and refuel, transferring all the gas from the station into the car.</p><p>Return the <strong>minimum</strong> number of refueling stops the car must make in order to reach its destination. If it cannot reach the destination, return <code>-1</code>.</p><p>Note that if the car reaches a gas station with <code>0</code> fuel left, the car can still refuel there. If the car reaches the destination with <code>0</code> fuel left, it is still considered to have arrived.</p><h3>Examples</h3><ul><li><strong>Input:</strong> target = 1, startFuel = 1, stations = []<br><strong>Output:</strong> 0<br><strong>Explanation:</strong> We can reach the target without refueling.</li><li><strong>Input:</strong> target = 100, startFuel = 1, stations = [[10,100]]<br><strong>Output:</strong> -1<br><strong>Explanation:</strong> We can not reach the target (or even the first gas station).</li><li><strong>Input:</strong> target = 100, startFuel = 10, stations = [[10,60],[20,30],[30,30],[60,40]]<br><strong>Output:</strong> 2<br><strong>Explanation:</strong> We start with 10 liters of fuel. We drive to position 10, expending 10 liters of fuel. We refuel from 0 liters to 60 liters of gas. Then, we drive from position 10 to position 60 (expending 50 liters of fuel), and refuel from 10 liters to 50 liters of gas. We then drive to and reach the target. We made 2 refueling stops along the way, so we return 2.</li></ul><h3>Constraints</h3><ul><li><code>1 <= target, startFuel <= 10^9</code></li><li><code>0 <= stations.length <= 500</code></li><li><code>1 <= position<sub>i</sub> < position<sub>i+1</sub> < target</code></li><li><code>1 <= fuel<sub>i</sub> <= 10^9</code></li></ul>",
+  "entry_function": "minRefuelStops",
+  "template": "import heapq\n\ndef minRefuelStops(target, startFuel, stations):\n    ",
+  "solution_text": "<h3>Minimum Number of Refueling Stops</h3><p><strong>Algorithm (Greedy + Max-Heap):</strong></p><ol><li>Track how far the car can currently reach (<code>fuel</code>, equivalent to total fuel accumulated)</li><li>Walk through stations in order. Every station the car <em>can</em> reach goes into a max-heap of \"potential fuel we could tap into\"</li><li>If the car can't reach the next unseen station (or the target), pop the largest fuel from the heap and count a stop</li><li>If the heap is empty and we still can't reach the target, return <code>-1</code></li></ol><p><strong>Time Complexity:</strong> O(n log n) — each station is pushed and popped once</p><p><strong>Space Complexity:</strong> O(n) for the heap</p><p><strong>Key Insights:</strong></p><ul><li>Greedy choice: when we <em>must</em> refuel, always pick the station with the <strong>largest</strong> tank we've already passed — regardless of when we passed it</li><li>This works because stopping is order-independent: we only need the <em>count</em> of stops, not the order</li><li>The heap lets us defer the \"where to refuel\" decision until we actually run out of gas</li></ul>",
+  "solution_code": "import heapq\n\ndef minRefuelStops(target, startFuel, stations):\n    heap = []\n    stops = 0\n    fuel = startFuel\n    i = 0\n    n = len(stations)\n    while fuel < target:\n        while i < n and stations[i][0] <= fuel:\n            heapq.heappush(heap, -stations[i][1])\n            i += 1\n        if not heap:\n            return -1\n        fuel += -heapq.heappop(heap)\n        stops += 1\n    return stops",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['target'], test_case_input['startFuel'], test_case_input['stations'])",
+  "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "target": 1,
+        "startFuel": 1,
+        "stations": []
+      },
+      "output": 0
+    },
+    {
+      "id": 2,
+      "input": {
+        "target": 100,
+        "startFuel": 1,
+        "stations": [
+          [
+            10,
+            100
+          ]
+        ]
+      },
+      "output": -1
+    },
+    {
+      "id": 3,
+      "input": {
+        "target": 100,
+        "startFuel": 10,
+        "stations": [
+          [
+            10,
+            60
+          ],
+          [
+            20,
+            30
+          ],
+          [
+            30,
+            30
+          ],
+          [
+            60,
+            40
+          ]
+        ]
+      },
+      "output": 2
+    },
+    {
+      "id": 4,
+      "input": {
+        "target": 100,
+        "startFuel": 50,
+        "stations": [
+          [
+            50,
+            50
+          ]
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 5,
+      "input": {
+        "target": 10,
+        "startFuel": 10,
+        "stations": []
+      },
+      "output": 0
+    },
+    {
+      "id": 6,
+      "input": {
+        "target": 10,
+        "startFuel": 5,
+        "stations": [
+          [
+            5,
+            5
+          ]
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 7,
+      "input": {
+        "target": 100,
+        "startFuel": 10,
+        "stations": [
+          [
+            10,
+            60
+          ]
+        ]
+      },
+      "output": -1
+    },
+    {
+      "id": 8,
+      "input": {
+        "target": 100,
+        "startFuel": 50,
+        "stations": [
+          [
+            25,
+            25
+          ],
+          [
+            50,
+            25
+          ],
+          [
+            75,
+            25
+          ]
+        ]
+      },
+      "output": 2
+    },
+    {
+      "id": 9,
+      "input": {
+        "target": 100,
+        "startFuel": 50,
+        "stations": [
+          [
+            10,
+            1
+          ],
+          [
+            20,
+            60
+          ],
+          [
+            50,
+            1
+          ]
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 10,
+      "input": {
+        "target": 100,
+        "startFuel": 100,
+        "stations": []
+      },
+      "output": 0
+    },
+    {
+      "id": 11,
+      "input": {
+        "target": 100,
+        "startFuel": 10,
+        "stations": [
+          [
+            60,
+            100
+          ]
+        ]
+      },
+      "output": -1
+    },
+    {
+      "id": 12,
+      "input": {
+        "target": 200,
+        "startFuel": 50,
+        "stations": [
+          [
+            50,
+            50
+          ],
+          [
+            100,
+            50
+          ],
+          [
+            150,
+            50
+          ]
+        ]
+      },
+      "output": 3
+    },
+    {
+      "id": 13,
+      "input": {
+        "target": 350,
+        "startFuel": 100,
+        "stations": [
+          [
+            100,
+            50
+          ],
+          [
+            150,
+            200
+          ],
+          [
+            200,
+            100
+          ]
+        ]
+      },
+      "output": 2
+    }
+  ]
+}

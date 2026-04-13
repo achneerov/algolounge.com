@@ -1,0 +1,207 @@
+{
+  "index": 240,
+  "filename": "assign-cookies",
+  "title": "Assign Cookies",
+  "difficulty": "Easy",
+  "tags": [
+    "Greedy"
+  ],
+  "keywords": [
+    "assign",
+    "cookies",
+    "greedy",
+    "sort",
+    "two pointers",
+    "leetcode",
+    "455",
+    "children",
+    "content"
+  ],
+  "description": "<h2>Assign Cookies</h2><p>Assume you are an awesome parent and want to give your children some cookies. But, you should give each child at most one cookie.</p><p>Each child <code>i</code> has a greed factor <code>g[i]</code>, which is the minimum size of a cookie that the child will be content with; and each cookie <code>j</code> has a size <code>s[j]</code>. If <code>s[j] >= g[i]</code>, we can assign the cookie <code>j</code> to the child <code>i</code>, and the child <code>i</code> will be content. Your goal is to maximize the number of your content children and output the maximum number.</p><h3>Examples</h3><ul><li><strong>Input:</strong> g = [1,2,3], s = [1,1]<br><strong>Output:</strong> 1<br><strong>Explanation:</strong> You have 3 children and 2 cookies. The greed factors of 3 children are 1, 2, 3. You have 2 cookies of size 1, so you can only make the child whose greed factor is 1 content. You need to output 1.</li><li><strong>Input:</strong> g = [1,2], s = [1,2,3]<br><strong>Output:</strong> 2<br><strong>Explanation:</strong> You have 2 children and 3 cookies. The greed factors of 2 children are 1, 2. You have 3 cookies and their sizes are big enough to gratify all of the children. You need to output 2.</li></ul><h3>Constraints</h3><ul><li><code>1 <= g.length <= 3 * 10^4</code></li><li><code>0 <= s.length <= 3 * 10^4</code></li><li><code>1 <= g[i], s[j] <= 2^31 - 1</code></li></ul>",
+  "entry_function": "findContentChildren",
+  "template": "def findContentChildren(g, s):\n    ",
+  "solution_text": "<h3>Assign Cookies</h3><p><strong>Algorithm:</strong></p><ol><li>Sort both the greed factors and the cookie sizes in ascending order</li><li>Use two pointers: one for children (<code>i</code>) and one for cookies (<code>j</code>)</li><li>For each cookie, if it can satisfy the current child (<code>s[j] >= g[i]</code>), give it to them and advance both pointers</li><li>Otherwise, advance only the cookie pointer (cookie too small, try next)</li><li>Return the number of content children</li></ol><p><strong>Time Complexity:</strong> O(n log n + m log m) where n and m are the lengths of <code>g</code> and <code>s</code></p><p><strong>Space Complexity:</strong> O(1) extra beyond the sort</p><p><strong>Key Insights:</strong></p><ul><li>Greedy choice: always try to satisfy the least-greedy remaining child with the smallest cookie that works</li><li>This leaves larger cookies available for greedier children</li><li>Sorting exposes the natural pairing order</li></ul>",
+  "solution_code": "def findContentChildren(g, s):\n    g.sort()\n    s.sort()\n    i = 0\n    j = 0\n    while i < len(g) and j < len(s):\n        if s[j] >= g[i]:\n            i += 1\n        j += 1\n    return i",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['g'], test_case_input['s'])",
+  "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "g": [
+          1,
+          2,
+          3
+        ],
+        "s": [
+          1,
+          1
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 2,
+      "input": {
+        "g": [
+          1,
+          2
+        ],
+        "s": [
+          1,
+          2,
+          3
+        ]
+      },
+      "output": 2
+    },
+    {
+      "id": 3,
+      "input": {
+        "g": [
+          10,
+          9,
+          8,
+          7
+        ],
+        "s": [
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      "output": 2
+    },
+    {
+      "id": 4,
+      "input": {
+        "g": [
+          1
+        ],
+        "s": []
+      },
+      "output": 0
+    },
+    {
+      "id": 5,
+      "input": {
+        "g": [
+          1
+        ],
+        "s": [
+          1
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 6,
+      "input": {
+        "g": [
+          1
+        ],
+        "s": [
+          2
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 7,
+      "input": {
+        "g": [
+          2
+        ],
+        "s": [
+          1
+        ]
+      },
+      "output": 0
+    },
+    {
+      "id": 8,
+      "input": {
+        "g": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "s": [
+          5
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 9,
+      "input": {
+        "g": [
+          5,
+          4,
+          3,
+          2,
+          1
+        ],
+        "s": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "output": 5
+    },
+    {
+      "id": 10,
+      "input": {
+        "g": [
+          1,
+          2,
+          3
+        ],
+        "s": [
+          3
+        ]
+      },
+      "output": 1
+    },
+    {
+      "id": 11,
+      "input": {
+        "g": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "s": [
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      "output": 2
+    },
+    {
+      "id": 12,
+      "input": {
+        "g": [
+          1,
+          1,
+          1
+        ],
+        "s": [
+          1,
+          1,
+          1
+        ]
+      },
+      "output": 3
+    }
+  ]
+}

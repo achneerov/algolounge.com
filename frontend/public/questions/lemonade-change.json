@@ -1,0 +1,178 @@
+{
+  "index": 242,
+  "filename": "lemonade-change",
+  "title": "Lemonade Change",
+  "difficulty": "Easy",
+  "tags": [
+    "Greedy"
+  ],
+  "keywords": [
+    "lemonade",
+    "change",
+    "greedy",
+    "simulation",
+    "leetcode",
+    "860",
+    "bills",
+    "cash",
+    "register"
+  ],
+  "description": "<h2>Lemonade Change</h2><p>At a lemonade stand, each lemonade costs <code>$5</code>. Customers are standing in a queue to buy from you and order one at a time (in the order specified by <code>bills</code>). Each customer will only buy one lemonade and pay with either a <code>$5</code>, <code>$10</code>, or <code>$20</code> bill. You must provide the correct change to each customer so that the net transaction is that the customer pays <code>$5</code>.</p><p>Note that you do not have any change in hand at first.</p><p>Given an integer array <code>bills</code> where <code>bills[i]</code> is the bill the <code>ith</code> customer pays, return <code>true</code> if you can provide every customer with the correct change, or <code>false</code> otherwise.</p><h3>Examples</h3><ul><li><strong>Input:</strong> bills = [5,5,5,10,20]<br><strong>Output:</strong> true<br><strong>Explanation:</strong> From the first 3 customers, we collect three $5 bills in order. From the fourth customer, we collect a $10 bill and give back a $5. From the fifth customer, we give a $10 bill and a $5 bill. Since all customers got correct change, we output true.</li><li><strong>Input:</strong> bills = [5,5,10,10,20]<br><strong>Output:</strong> false<br><strong>Explanation:</strong> From the first two customers in order, we collect two $5 bills. For the next two customers in order, we collect a $10 bill and give back a $5 bill. For the last customer, we can not give the change of $15 back because we only have two $10 bills. Since not every customer received the correct change, the answer is false.</li></ul><h3>Constraints</h3><ul><li><code>1 <= bills.length <= 10^5</code></li><li><code>bills[i]</code> is either <code>5</code>, <code>10</code>, or <code>20</code></li></ul>",
+  "entry_function": "lemonadeChange",
+  "template": "def lemonadeChange(bills):\n    ",
+  "solution_text": "<h3>Lemonade Change</h3><p><strong>Algorithm:</strong></p><ol><li>Keep running counters of <code>$5</code> and <code>$10</code> bills on hand (we never give <code>$20</code> as change)</li><li>For a <code>$5</code> customer: just take the bill</li><li>For a <code>$10</code> customer: need one <code>$5</code> back. Fail if we don't have one</li><li>For a <code>$20</code> customer: need <code>$15</code> back. Prefer giving one <code>$10</code> + one <code>$5</code> over three <code>$5</code> bills</li><li>If we can't make change for any customer, return <code>false</code></li></ol><p><strong>Time Complexity:</strong> O(n) — single pass over <code>bills</code></p><p><strong>Space Complexity:</strong> O(1) — only two counters</p><p><strong>Key Insights:</strong></p><ul><li>Greedy choice on the <code>$20</code> customer: use a <code>$10</code> + <code>$5</code> first, saving the <code>$5</code>s for future <code>$10</code> customers who <em>must</em> be paid in <code>$5</code></li><li>Hoarding <code>$5</code>s is always at least as good as any alternative</li></ul>",
+  "solution_code": "def lemonadeChange(bills):\n    five = 0\n    ten = 0\n    for bill in bills:\n        if bill == 5:\n            five += 1\n        elif bill == 10:\n            if five == 0:\n                return False\n            five -= 1\n            ten += 1\n        else:\n            if ten > 0 and five > 0:\n                ten -= 1\n                five -= 1\n            elif five >= 3:\n                five -= 3\n            else:\n                return False\n    return True",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['bills'],)",
+  "verify": "def verify(actual_output, expected_output):\n    def bool_to_string(val):\n        return 'true' if val else 'false'\n    expected_bool = expected_output == 'true' if isinstance(expected_output, str) else expected_output\n    passed = actual_output == expected_bool\n    return [passed, bool_to_string(actual_output)]",
+  "test_cases": [
+    {
+      "id": 1,
+      "input": {
+        "bills": [
+          5,
+          5,
+          5,
+          10,
+          20
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 2,
+      "input": {
+        "bills": [
+          5,
+          5,
+          10,
+          10,
+          20
+        ]
+      },
+      "output": "false"
+    },
+    {
+      "id": 3,
+      "input": {
+        "bills": [
+          5
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 4,
+      "input": {
+        "bills": [
+          10
+        ]
+      },
+      "output": "false"
+    },
+    {
+      "id": 5,
+      "input": {
+        "bills": [
+          20
+        ]
+      },
+      "output": "false"
+    },
+    {
+      "id": 6,
+      "input": {
+        "bills": [
+          5,
+          5,
+          10
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 7,
+      "input": {
+        "bills": [
+          5,
+          5,
+          5,
+          5,
+          20,
+          20,
+          20
+        ]
+      },
+      "output": "false"
+    },
+    {
+      "id": 8,
+      "input": {
+        "bills": [
+          5,
+          5,
+          10,
+          20
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 9,
+      "input": {
+        "bills": [
+          5,
+          5,
+          5,
+          5,
+          10,
+          5,
+          10,
+          10,
+          10,
+          20
+        ]
+      },
+      "output": "true"
+    },
+    {
+      "id": 10,
+      "input": {
+        "bills": [
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          20,
+          20,
+          20
+        ]
+      },
+      "output": "false"
+    },
+    {
+      "id": 11,
+      "input": {
+        "bills": [
+          10,
+          10
+        ]
+      },
+      "output": "false"
+    },
+    {
+      "id": 12,
+      "input": {
+        "bills": [
+          5,
+          5,
+          5,
+          20
+        ]
+      },
+      "output": "true"
+    }
+  ]
+}

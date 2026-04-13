@@ -24,10 +24,123 @@
     "priority queue",
     "sliding window",
     "stack",
-    "trie"
+    "trie",
+    "intervals",
+    "greedy"
   ],
   "badge": "Winter 2026",
   "units": {
+    "week14": {
+      "title": "Week 14",
+      "description": "Greedy algorithms \u2014 make the locally-best choice and prove it leads to a global optimum. Pair cookies with children, give lemonade change, track reachability in a jump game, capture every stock gain, and refuel at the right stations to reach the target.",
+      "questions": [
+        {
+          "filename": "assign-cookies",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/assign-cookies/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/assign-cookies",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Easy",
+            "Greedy"
+          ]
+        },
+        {
+          "filename": "lemonade-change",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/lemonade-change/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/lemonade-change",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Easy",
+            "Greedy"
+          ]
+        },
+        {
+          "filename": "jump-game",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/jump-game/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/jump-game",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Medium",
+            "Greedy"
+          ]
+        },
+        {
+          "filename": "best-time-to-buy-and-sell-stock-ii",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/best-time-to-buy-and-sell-stock-ii",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Medium",
+            "Greedy"
+          ]
+        },
+        {
+          "filename": "minimum-number-of-refueling-stops",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/minimum-number-of-refueling-stops/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/minimum-number-of-refueling-stops",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Hard",
+            "Greedy"
+          ]
+        }
+      ]
+    },
     "week13": {
       "title": "Week 13",
       "description": "Intervals \u2014 sort, merge, and find gaps between intervals. Start with range summaries, check for overlaps, merge intervals, remove the fewest to eliminate overlaps, and find common free time across schedules.",

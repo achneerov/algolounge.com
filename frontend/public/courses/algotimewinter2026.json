@@ -30,6 +30,180 @@
   ],
   "badge": "Winter 2026",
   "units": {
+    "week15": {
+      "title": "Week 15",
+      "description": "Review week \u2014 revisit core patterns with a mixed set across themes. Warm up with hashing, stacks, binary search, and DP, then tackle sliding window and graph scheduling, finishing with two-pointer rainwater and merging k sorted lists.",
+      "questions": [
+        {
+          "filename": "two-sum",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/two-sum/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/two-sum",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Easy",
+            "Arrays and Hashing"
+          ]
+        },
+        {
+          "filename": "valid-parentheses",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/valid-parentheses/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/valid-parentheses",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Easy",
+            "Stack"
+          ]
+        },
+        {
+          "filename": "binary-search",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/binary-search/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/binary-search",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Easy",
+            "Binary Search"
+          ]
+        },
+        {
+          "filename": "climbing-stairs",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/climbing-stairs/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/climbing-stairs",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Easy",
+            "Dynamic Programming"
+          ]
+        },
+        {
+          "filename": "longest-substring-without-repeating-characters",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/longest-substring-without-repeating-characters",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Medium",
+            "Sliding Window"
+          ]
+        },
+        {
+          "filename": "course-schedule-ii",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/course-schedule-ii/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/course-schedule-ii",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Medium",
+            "Graph"
+          ]
+        },
+        {
+          "filename": "trapping-rain-water",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/trapping-rain-water/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/trapping-rain-water",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Hard",
+            "Two Pointers"
+          ]
+        },
+        {
+          "filename": "merge-k-sorted-lists",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/merge-k-sorted-lists/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/merge-k-sorted-lists",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": [
+            "Hard",
+            "Linked List"
+          ]
+        }
+      ]
+    },
     "week14": {
       "title": "Week 14",
       "description": "Greedy algorithms \u2014 make the locally-best choice and prove it leads to a global optimum. Pair cookies with children, give lemonade change, track reachability in a jump game, capture every stock gain, and refuel at the right stations to reach the target.",

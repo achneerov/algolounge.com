@@ -3696,8 +3696,72 @@
         "gas",
         "station"
       ]
+    },
+    {
+      "index": 244,
+      "filename": "roman-to-integer",
+      "title": "Roman to Integer",
+      "difficulty": "Easy",
+      "tags": [
+        "Arrays and Hashing"
+      ],
+      "keywords": [
+        "roman",
+        "integer",
+        "numeral",
+        "conversion",
+        "string",
+        "hash",
+        "map",
+        "subtraction",
+        "leetcode",
+        "13"
+      ]
+    },
+    {
+      "index": 245,
+      "filename": "palindrome-number",
+      "title": "Palindrome Number",
+      "difficulty": "Easy",
+      "tags": [
+        "Arrays and Hashing"
+      ],
+      "keywords": [
+        "palindrome",
+        "number",
+        "integer",
+        "reverse",
+        "digit",
+        "math",
+        "leetcode",
+        "9"
+      ]
+    },
+    {
+      "index": 246,
+      "filename": "edit-distance",
+      "title": "Edit Distance",
+      "difficulty": "Hard",
+      "tags": [
+        "Dynamic Programming"
+      ],
+      "keywords": [
+        "edit",
+        "distance",
+        "levenshtein",
+        "dynamic",
+        "programming",
+        "insert",
+        "delete",
+        "replace",
+        "string",
+        "2d",
+        "dp",
+        "leetcode",
+        "72"
+      ]
     }
   ],
-  "lastUpdated": "2026-04-20T20:45:28.264Z",
-  "totalQuestions": 187
+  "lastUpdated": "2026-05-03T21:46:07.224Z",
+  "totalQuestions": 190
 }

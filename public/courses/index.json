@@ -18,6 +18,26 @@
       "stats": "85 questions • 16 stages"
     },
     {
+      "filename": "algotimesummer2026",
+      "title": "Algotime Summer 2026",
+      "keywords": [
+        "algorithms",
+        "data structures",
+        "technical interviews",
+        "problem solving",
+        "summer",
+        "arrays",
+        "strings",
+        "hash table",
+        "dynamic programming",
+        "math",
+        "two pointers"
+      ],
+      "description": "Welcome to Algotime Summer 2026! Practice these key algorithm problems to sharpen your skills.",
+      "badge": "Summer 2026",
+      "stats": "6 questions • 1 stages"
+    },
+    {
       "filename": "algotimewinter2026",
       "title": "Algotime Winter 2026",
       "keywords": [
@@ -84,6 +104,6 @@
       "stats": "23 questions • 5 stages"
     }
   ],
-  "lastUpdated": "2026-04-20T20:45:28.274Z",
-  "totalCourses": 4
+  "lastUpdated": "2026-05-03T21:46:07.236Z",
+  "totalCourses": 5
 }

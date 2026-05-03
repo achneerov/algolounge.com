@@ -1,0 +1,135 @@
+{
+  "filename": "algotimesummer2026",
+  "course_name": "Algotime Summer 2026",
+  "course_description": "Welcome to Algotime Summer 2026! Practice these key algorithm problems to sharpen your skills.",
+  "keywords": [
+    "algorithms",
+    "data structures",
+    "technical interviews",
+    "problem solving",
+    "summer",
+    "arrays",
+    "strings",
+    "hash table",
+    "dynamic programming",
+    "math",
+    "two pointers"
+  ],
+  "badge": "Summer 2026",
+  "units": {
+    "week1": {
+      "title": "Week 1",
+      "description": "Kick off the summer with foundational string and math problems, classic hash-map grouping, and two iconic dynamic programming challenges. A mix of fresh problems and proven classics to warm up every pattern you'll need.",
+      "questions": [
+        {
+          "filename": "roman-to-integer",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/roman-to-integer/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/roman-to-integer",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": ["Easy", "Arrays and Hashing"]
+        },
+        {
+          "filename": "palindrome-number",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/palindrome-number/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/palindrome-number",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": ["Easy", "Math"]
+        },
+        {
+          "filename": "anagram-groups",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/group-anagrams/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/anagram-groups",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": ["Medium", "Arrays and Hashing"]
+        },
+        {
+          "filename": "longest-palindromic-substring",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/longest-palindromic-substring/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/longest-palindromic-substring",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": ["Medium", "Two Pointers"]
+        },
+        {
+          "filename": "edit-distance",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/edit-distance/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/edit-distance",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": ["Hard", "Dynamic Programming"]
+        },
+        {
+          "filename": "trapping-rain-water",
+          "urls": [
+            {
+              "url": "https://leetcode.com/problems/trapping-rain-water/",
+              "tooltip": "LeetCode Problem",
+              "color": "#f59e0b",
+              "visibleString": "LeetCode"
+            },
+            {
+              "url": "https://neetcode.io/solutions/trapping-rain-water",
+              "tooltip": "Solution",
+              "color": "#16a34a",
+              "visibleString": "Answer"
+            }
+          ],
+          "tags": ["Hard", "Two Pointers"]
+        }
+      ]
+    }
+  }
+}

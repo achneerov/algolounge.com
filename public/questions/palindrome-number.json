@@ -1,0 +1,36 @@
+{
+  "index": 245,
+  "filename": "palindrome-number",
+  "title": "Palindrome Number",
+  "difficulty": "Easy",
+  "tags": ["Arrays and Hashing"],
+  "keywords": [
+    "palindrome",
+    "number",
+    "integer",
+    "reverse",
+    "digit",
+    "math",
+    "leetcode",
+    "9"
+  ],
+  "description": "<h2>Palindrome Number</h2><p>Given an integer <code>x</code>, return <code>true</code> if <code>x</code> is a <strong>palindrome</strong>, and <code>false</code> otherwise.</p><p>An integer is a palindrome when it reads the same forward and backward.</p><h3>Examples:</h3><ul><li><strong>Input:</strong> x = 121<br><strong>Output:</strong> true<br><strong>Explanation:</strong> 121 reads as 121 from left to right and from right to left.</li><li><strong>Input:</strong> x = -121<br><strong>Output:</strong> false<br><strong>Explanation:</strong> From left to right, it reads -121. From right to left, it reads 121-. Therefore it is not a palindrome.</li><li><strong>Input:</strong> x = 10<br><strong>Output:</strong> false<br><strong>Explanation:</strong> Reads 01 from right to left. Therefore it is not a palindrome.</li></ul><h3>Constraints:</h3><ul><li><code>-2<sup>31</sup> <= x <= 2<sup>31</sup> - 1</code></li></ul><p><strong>Follow up:</strong> Could you solve it without converting the integer to a string?</p>",
+  "entry_function": "isPalindrome",
+  "template": "def isPalindrome(x):\n    ",
+  "solution_text": "<h3>Palindrome Number</h3><p><strong>Algorithm (reverse half the number):</strong></p><ol><li>Negative numbers and numbers ending in 0 (except 0 itself) are never palindromes</li><li>Reverse only the second half of the digits to avoid overflow</li><li>Stop when the reversed half is >= the remaining first half</li><li>Compare: for even-digit numbers check equality; for odd-digit numbers, divide the reversed half by 10</li></ol><p><strong>Time Complexity:</strong> O(log n) — we process roughly half the digits</p><p><strong>Space Complexity:</strong> O(1)</p><p><strong>Key Insights:</strong></p><ul><li>Negative numbers always fail (the minus sign breaks symmetry)</li><li>Any positive number ending in 0 (except 0 itself) cannot be a palindrome since no number starts with 0</li><li>Reversing only half the number avoids integer overflow entirely</li></ul>",
+  "solution_code": "def isPalindrome(x):\n    if x < 0 or (x != 0 and x % 10 == 0):\n        return False\n    reversed_half = 0\n    while x > reversed_half:\n        reversed_half = reversed_half * 10 + x % 10\n        x //= 10\n    return x == reversed_half or x == reversed_half // 10",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['x'],)",
+  "verify": "def verify(actual_output, expected_output):\n    if isinstance(expected_output, str):\n        expected_output = expected_output.lower() == 'true'\n    passed = bool(actual_output) == bool(expected_output)\n    return [passed, 'true' if actual_output else 'false']",
+  "test_cases": [
+    {"id": 1, "input": {"x": 121}, "output": "true"},
+    {"id": 2, "input": {"x": -121}, "output": "false"},
+    {"id": 3, "input": {"x": 10}, "output": "false"},
+    {"id": 4, "input": {"x": 0}, "output": "true"},
+    {"id": 5, "input": {"x": 1}, "output": "true"},
+    {"id": 6, "input": {"x": 1221}, "output": "true"},
+    {"id": 7, "input": {"x": 12321}, "output": "true"},
+    {"id": 8, "input": {"x": 123}, "output": "false"},
+    {"id": 9, "input": {"x": 1000021}, "output": "false"},
+    {"id": 10, "input": {"x": 9999999}, "output": "true"}
+  ]
+}

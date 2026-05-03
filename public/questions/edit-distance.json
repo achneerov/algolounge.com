@@ -1,0 +1,41 @@
+{
+  "index": 246,
+  "filename": "edit-distance",
+  "title": "Edit Distance",
+  "difficulty": "Hard",
+  "tags": ["Dynamic Programming"],
+  "keywords": [
+    "edit",
+    "distance",
+    "levenshtein",
+    "dynamic",
+    "programming",
+    "insert",
+    "delete",
+    "replace",
+    "string",
+    "2d",
+    "dp",
+    "leetcode",
+    "72"
+  ],
+  "description": "<h2>Edit Distance</h2><p>Given two strings <code>word1</code> and <code>word2</code>, return the minimum number of operations required to convert <code>word1</code> to <code>word2</code>.</p><p>You have the following three operations permitted on a word:</p><ul><li><strong>Insert</strong> a character</li><li><strong>Delete</strong> a character</li><li><strong>Replace</strong> a character</li></ul><h3>Examples:</h3><ul><li><strong>Input:</strong> word1 = \"horse\", word2 = \"ros\"<br><strong>Output:</strong> 3<br><strong>Explanation:</strong> horse → rorse (replace 'h' with 'r') → rose (delete 'r') → ros (delete 'e')</li><li><strong>Input:</strong> word1 = \"intention\", word2 = \"execution\"<br><strong>Output:</strong> 5</li><li><strong>Input:</strong> word1 = \"\", word2 = \"abc\"<br><strong>Output:</strong> 3<br><strong>Explanation:</strong> Insert three characters.</li></ul><h3>Constraints:</h3><ul><li><code>0 <= word1.length <= 500</code></li><li><code>0 <= word2.length <= 500</code></li><li><code>word1</code> and <code>word2</code> consist of lowercase English letters</li></ul>",
+  "entry_function": "minDistance",
+  "template": "def minDistance(word1, word2):\n    ",
+  "solution_text": "<h3>Edit Distance</h3><p><strong>Algorithm (2D Dynamic Programming):</strong></p><ol><li>Build a DP table <code>dp</code> where <code>dp[i][j]</code> = minimum edits to convert <code>word1[:i]</code> to <code>word2[:j]</code></li><li>Base cases: converting any prefix to an empty string costs as many deletions as its length; converting an empty string to any prefix costs as many insertions as its length</li><li>Transition: if characters match, <code>dp[i][j] = dp[i-1][j-1]</code>; otherwise take 1 + min(replace, delete, insert)</li></ol><p><strong>Time Complexity:</strong> O(m × n) where m and n are the lengths of word1 and word2</p><p><strong>Space Complexity:</strong> O(m × n) for the DP table (reducible to O(n) with a rolling array)</p><p><strong>Key Insights:</strong></p><ul><li>This is the classic Levenshtein distance algorithm, foundational to spell-checkers and diff tools</li><li>When characters match, no operation is needed — we inherit the cost from the diagonal cell</li><li>The three operations map directly to three adjacent cells: replace (diagonal), delete (above), insert (left)</li></ul>",
+  "solution_code": "def minDistance(word1, word2):\n    m, n = len(word1), len(word2)\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n    for i in range(m + 1):\n        dp[i][0] = i\n    for j in range(n + 1):\n        dp[0][j] = j\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            if word1[i - 1] == word2[j - 1]:\n                dp[i][j] = dp[i - 1][j - 1]\n            else:\n                dp[i][j] = 1 + min(dp[i - 1][j - 1], dp[i - 1][j], dp[i][j - 1])\n    return dp[m][n]",
+  "prepare": "def prepare(test_case_input):\n    return (test_case_input['word1'], test_case_input['word2'])",
+  "verify": "def verify(actual_output, expected_output):\n    passed = actual_output == expected_output\n    return [passed, str(actual_output)]",
+  "test_cases": [
+    {"id": 1, "input": {"word1": "horse", "word2": "ros"}, "output": 3},
+    {"id": 2, "input": {"word1": "intention", "word2": "execution"}, "output": 5},
+    {"id": 3, "input": {"word1": "", "word2": "abc"}, "output": 3},
+    {"id": 4, "input": {"word1": "abc", "word2": ""}, "output": 3},
+    {"id": 5, "input": {"word1": "", "word2": ""}, "output": 0},
+    {"id": 6, "input": {"word1": "abc", "word2": "abc"}, "output": 0},
+    {"id": 7, "input": {"word1": "a", "word2": "b"}, "output": 1},
+    {"id": 8, "input": {"word1": "kitten", "word2": "sitting"}, "output": 3},
+    {"id": 9, "input": {"word1": "sunday", "word2": "saturday"}, "output": 3},
+    {"id": 10, "input": {"word1": "pneumonoultramicroscopicsilicovolcanoconiosis", "word2": "ultramicroscopically"}, "output": 27}
+  ]
+}
